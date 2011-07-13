@@ -1,0 +1,243 @@
+
+SunSpec Test Tool README
+------------------------
+
+Version 0.8
+
+
+Dependencies
+------------
+
+* libmodbus
+
+The test tool depends on version 2.9.3 of libmodbus to implement the
+modbus communication layer.  The libmodbus project is available here:
+http://libmodbus.org
+
+Download version 2.9.3 (the current development release) from 
+http://github.com/downloads/stephane/libmodbus/libmodbus-2.9.3.tar.gz
+
+2.9.* is considered the "unstable" branch of libmodbus.  At the time
+I'm writing this 2.9.4 has already been released.  Don't use it, as it
+is not compatable with the current source code.
+
+FYI, I'm using the "unstable" branch rather than the older "stable"
+version b/c the newer code simplified creating the test server.
+
+Build and install libmodbus on your system.  libmodbus installs in
+/usr/local/lib, so make sure /usr/local/lib is in your LD search path.
+
+
+* pkg-config
+
+pkg-config is used to link properly against libmodbus.  You will need
+to install pkg-config if its not already present on your system.
+
+
+* flex & bison
+
+GNU flex (lex) and bison (yacc) is used to write the configuration language
+parser.
+
+
+Building
+--------
+
+In the src/ subdirectory, type "make."
+
+The build has currently only been tested on Ubuntu 10.4.  It should 
+work on other systems but YMMV.
+
+
+Running
+-------
+
+You must always specify a model definition file to be able to decode
+any discovered SunSpec data models.  The model definition file contains
+both a description of the SunSpec data model as well as canned test
+data for running a "test slave" used to test the tool itself.
+
+All these examples assume you are running in the src/ directory:
+
+Quickstart:
+
+* To read data from slave 10 through a modbus tcp server running on
+  the standard port:
+
+  ./suns -m ../models/device.model -i modbus-host-or-ip -a 10
+
+
+* To read data from a modbus rtu slave at address 10 using a USB RS485 adapter:
+
+  ./suns -m ../models/device.model -p /dev/ttyUSB0 -a 10
+
+
+* To run a test modbus tcp server on port 1502:
+
+  ./suns -m ../models/device.model -P 1502 -s
+
+
+* To read data from that test server:
+
+  ./suns -m ../models/device.model -P 1502
+
+
+To learn more about what is going on, specify additional verbosity by
+adding up to for "-v" flags.
+
+The model file is not strictly required, but the tool is not very
+useful without it.  Without a model file the tool will search for
+sunspec blocks and then report the DID of every block it finds until
+it hits the end marker.  Without the model definition file the tool
+can't interpret the values in any of these blocks.
+
+
+Sunspec Background
+------------------
+
+The following is a summary of information in the Common Model
+specification.
+
+SunSpec is currently defined to use modbus, as this is the most common
+non-proprietary interface method currently used in the solar world.
+
+SunSpec is designed to allow an unknown device to be discovered by
+defining a flexible data model marked using a "magic value" stored in
+either modbus register 40001 or 50001.
+
+Immediately following the SunSpec magic value should be the Common Model
+data block.  This describes information common to all devices, like
+manufacturer name and serial number.
+
+Following the common model should appear at least one data model,
+describing the information specific to this device.  Additional data models
+can follow.
+
+    +-------------------+
+    | sunspec magic:    |
+    | 0x5375 0x6e53     |
+    +-------------------+
+    |                   |
+    | common model      |
+    | block             |
+    |                   |
+    +-------------------+
+    |                   |
+    | one required      |
+    | model block       |
+    |                   |
+    +-------------------+
+    |                   |
+    | optional          |
+    | additional        |
+    | model blocks      |
+    /                   /
+    /                   /
+    |                   |
+    +-------------------+
+    | end marker        |
+    | 0xFFFF            |
+    +-------------------+
+
+Every SunSpec data model starts with a Device ID (DID) value, followed
+by the length of the block.  The presence of the length register allows
+a reading application to skip over data models which it does not a priori
+know about.
+
+
+The internal structure of SunSpec data models allows for fixed length
+and variable length data models.
+
+
+1)  Fixed length data blocks:
+
+    +-----------------+
+    | device id       |
+    +-----------------+
+    | model length    |
+    +-----------------+
+    | fixed length    |
+    | data block      |
+    |                 |
+    |                 |
+    |                 |
+    +-----------------+
+    
+    Examples: common, ac_meter, inverter
+
+    In these cases the length register provided by the device must be
+    the fixed size defined in the SunSpec model.
+
+
+2)  Variable length data blocks:
+
+    Variable length data models are always a multiple of a fixed size
+    data block which is repeated in the modbus register address space.
+    The reading device must read the model length register value to
+    determine how many individual records exist on the given device.
+
+    Variable length records come in two forms:
+
+ a) A fixed "header" block which is not repeated, followed by a variable
+    length section.
+
+    +-----------------+
+    | device id       |
+    +-----------------+
+    | model length    |
+    +-----------------+
+    | fixed length    |
+    | data block      |
+    |                 |
+    |                 |
+    |                 |
+    +-----------------+
+    | variable length |
+    | data block      |
+    |                 |
+    |                 |
+    |                 |
+    +-----------------+
+
+    To determine the number of records in the variable length section, the
+    reading application needs to know the length of the fixed length section,
+    the length of each record in the variable length section, and the length
+    of a specific data model on a device.
+
+    number of records = (length - fixed length) / variable section length
+
+    An example of a data model like this is the String Combiner model (401).
+
+    The string combiner has a fixed section of length 14 registers, followed
+    by a variable length section with a record length of 8 registers.  Thus
+    if a device reports a String combiner model of length 118, the reading
+    application can determine there will be data from 12 strings.
+
+    12 = (118 - 22) / 8
+
+
+ b) A variable length section with no initial fixed length block.  This case
+    devolves into the previous case by thinking of the fixed length
+    block size as zero.
+
+    +-----------------+
+    | DID             |
+    +-----------------+
+    | Model Length    |
+    +-----------------+
+    | variable length |
+    | data block      |
+    |                 |
+    |                 |
+    |                 |
+    +-----------------+
+    
+    Examples: Irradiance Model (302), Back of Module Temperature (303),
+              Inclinometer Model (304)
+
+    If the reading application discovers DID 304 with a length of 18 it
+    knows there are 3 individual records, since it knows the record length
+    is 6 registers.
+
+    3 = (18 - 0) / 6
+
