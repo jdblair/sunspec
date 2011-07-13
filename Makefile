@@ -34,6 +34,16 @@
 
 DISTFILE=sunspec.tar.gz
 
+all:
+	@echo "This is the top-level Makefile for the sunspec project"
+	@echo
+	@echo "To build the software:"
+	@echo "    cd src; make"
+	@echo
+	@echo "To generate the distribution tarball:"
+	@echo "    make dist"
+	@echo
+
 
 $(DISTFILE):
 	@echo "exporting from git to create $(DISTFILE)"
