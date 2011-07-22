@@ -49,6 +49,31 @@ The build has currently only been tested on Ubuntu 10.4.  It should
 work on other systems but YMMV.
 
 
+Build Issues FAQ
+----------------
+
+* make fails with "cannot find -lmodbus"
+
+/usr/bin/ld: cannot find -lmodbus
+collect2: ld returned 1 exit status
+make: *** [suns] Error 1
+
+You probably have not installed libmodbus in /usr/local/lib.
+Type "sudo make install" in the libmodbus-2.9.3 directory.
+
+
+* running suns fails with "error loading shared libraries: libmodbus.so.4"
+
+./suns: error while loading shared libraries: libmodbus.so.4: cannot open shared object file: No such file or directory
+
+
+You most likeley don't have libmodbus.so in your LD search path. To
+fix this on my Ubuntu build system, and most other distros (as root):
+
+echo /usr/local/lib >> /etc/ld.so.conf
+ldconfig
+
+
 Running
 -------
 
