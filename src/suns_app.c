@@ -112,10 +112,12 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
                       "must provide decimal number", optarg);
                 option_error = 1;
             }
+            app->transport = SUNS_TCP;
             break;
             
         case 'p':
             app->serial_port = optarg;
+            app->transport = SUNS_RTU;
             break;
             
         case 'b':
@@ -165,7 +167,7 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
         debug("forcing hostname to localhost (127.0.0.1)");
         app->hostname = "127.0.0.1";
     }
- 
+
     /* bail if we hit an error */
     if (option_error) {
         exit(EXIT_FAILURE);
@@ -361,13 +363,18 @@ int suns_init_modbus(suns_app_t *app)
               modbus_strerror(errno));
     }
 
-    /* modbus_connect() needs to be called by both the slave
-       and the master to open the modbus layer */
-    rc = modbus_connect(app->mb_ctx);
-    if (rc < 0) {
-        error("modbus_connect() returned %d: %s",
-              rc, modbus_strerror(errno));
-        return rc;
+    /* this something else a bit tricky about libmodbus
+       we need to call modbus_connect() for RTU mode on both the
+       master and the slave.  However, in TCP mode we get an error
+       if we call modbus_connect() on the slave (test server) side. */
+    if (app->transport == SUNS_RTU ||
+        (app->transport == SUNS_TCP && ! app->test_server)) {
+        rc = modbus_connect(app->mb_ctx);
+        if (rc < 0) {
+            error("modbus_connect() returned %d: %s",
+                  rc, modbus_strerror(errno));
+            return rc;
+        }
     }
 
     /* set timeout to 4 seconds */

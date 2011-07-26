@@ -469,8 +469,14 @@ model suns {
   }
 }
 
+
 #
-# base meteorological model
+# environmental models
+#
+
+#
+# original base meteorological model
+# deprecated?
 #
 model suns {
   name "met"
@@ -508,17 +514,55 @@ data suns_met301_test {
 }
 
 #
+# version 1.1 base meteorological model
+#
+model suns {
+  name "met_v1.1"
+  did 307 "meteorological v1.1"
+  datapoints repeating {
+    E_BaseMet_AirTemperature         { int16 }
+    E_BaseMet_RelativeHumidity       { int16 }
+    E_BaseMet_BarometricPressure     { int16 }
+    E_BaseMet_WindSpeed              { int16 }
+    E_BaseMet_WindDirection          { int16 }
+    E_BaseMet_Rain                   { int16 }
+    E_BaseMet_Snow                   { int16 }
+    E_BaseMet_PPTType                { int16 }
+    E_BaseMet_ElectricField          { int16 }
+    E_BaseMet_SurfaceWetness         { int16 }
+    E_BaseMet_SoilMoisture           { int16 }
+  }
+}
+
+
+data suns_met307_test {
+	307
+	11
+	uint16:18
+	uint16:222
+	uint16:17
+	uint16:234
+	uint16:10
+	uint16:0
+	uint16:0x80000000
+	uint16:0x80000000
+	uint16:0x80000000
+	uint16:0x80000000
+	uint16:0x80000000
+}
+
+#
 # irradiance model
 #
 model suns {
   name "met_irr"
   did 302 "irradiance"
   datapoints repeating {
-    E_Irradiance_Global_Horizontal   { int32 }
-    E_Irradiance_Plane_of_Array      { int32 }
-    E_Irradiance_Diffuse             { int32 }
-    E_Irradiance_Direct              { int32 }
-    E_Irradiance_Other               { int32 }
+    E_Irradiance_Global_Horizontal   { uint16 }
+    E_Irradiance_Plane_of_Array      { uint16 }
+    E_Irradiance_Diffuse             { uint16 }
+    E_Irradiance_Direct              { uint16 }
+    E_Irradiance_Other               { uint16 }
   }
 }
 
@@ -529,18 +573,18 @@ model suns {
   name "met_bom"
   did 303 "back of module temperature"
   datapoints repeating {
-    E_BOM_Temp                       { int32 }
+    E_BOM_Temp                       { uint16 }
   }
 }
 
 
 data suns_met303_test {
 	303
-	8
-	int32:20
-	int32:18
-	int32:19
-	int32:21
+	4
+	uint16:20
+	uint16:18
+	uint16:19
+	uint16:21
 }	
 	
 
@@ -567,6 +611,52 @@ data suns_met304_test {
 	int32:93
 	int32:0x80000000
 	int32:0x80000000
+}
+
+
+#
+# location
+#
+model suns {
+  name "location"
+  did 305 "location"
+  datapoints {
+    E_GPS_UTC                       { string.10 }
+    E_GPS_Date                      { string.08 }
+    E_GPS_Location                  { string.40 }
+    E_GPS_Latitude                  { int32 }
+    E_GPS_Longitude                 { int32 }
+    E_GPS_Altitude                  { int32 }
+  }
+}
+
+#
+# reference point
+#
+model suns {
+  name "reference point"
+  did 306 "reference_point"
+  datapoints {
+    E_RefPoint_Irradiance           { int16 }
+    E_RefPoint_Current              { int32 }
+    E_RefPoint_Voltage              { int32 }
+    E_RefPoint_Temperature          { int32 }
+  }
+}
+
+
+#
+# mini weather model map
+#
+model suns {
+  name "mini_met"
+  did 308 "mini_met"
+  datapoints {
+    E_Irradiance_Global_Horizontal  { uint16 }
+    E_BOM_Temp                      { int16 }
+    E_BaseMet_AirTemperature        { int16 }
+    E_BaseMet_WindSpeed             { int16 }
+  }
 }
 
 
