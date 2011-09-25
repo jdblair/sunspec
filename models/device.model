@@ -2,7 +2,6 @@
 #
 #
 # sunspec modbus device models
-# $Id: $
 #
 #
 # Copyright (c) 2011, John D. Blair <jdb@moship.net>
@@ -573,7 +572,7 @@ model suns {
   name "met_bom"
   did 303 "back of module temperature"
   datapoints repeating {
-    E_BOM_Temp                       { uint16 }
+    E_BOM_Temp                       { int16 }
   }
 }
 
@@ -581,10 +580,10 @@ model suns {
 data suns_met303_test {
 	303
 	4
-	uint16:20
-	uint16:18
-	uint16:19
-	uint16:21
+	int16:20
+	int16:18
+	int16:19
+	int16:21
 }	
 	
 
