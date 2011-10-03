@@ -74,40 +74,40 @@ model suns {
   did 102 "split-phase inverter"
   did 103 "three-phase inverter"
   datapoints {
-    I_AC_Current               {  uint16.I_AC_Current_SF amps }
-    I_AC_CurrentA              {  uint16.I_AC_Current_SF amps }
-    I_AC_CurrentB              {  uint16.I_AC_Current_SF amps }
-    I_AC_CurrentC              {  uint16.I_AC_Current_SF amps }
+    I_AC_Current               {  uint16.I_AC_Current_SF u="amps" }
+    I_AC_CurrentA              {  uint16.I_AC_Current_SF u="amps" }
+    I_AC_CurrentB              {  uint16.I_AC_Current_SF u="amps" }
+    I_AC_CurrentC              {  uint16.I_AC_Current_SF u="amps" }
     I_AC_Current_SF            {  sunssf }
-    I_AC_VoltageAB             {  uint16.I_AC_Voltage_SF volts }
-    I_AC_VoltageBC             {  uint16.I_AC_Voltage_SF volts }
-    I_AC_VoltageCA             {  uint16.I_AC_Voltage_SF volts }
-    I_AC_VoltageAN             {  uint16.I_AC_Voltage_SF volts }
-    I_AC_VoltageBN             {  uint16.I_AC_Voltage_SF volts }
-    I_AC_VoltageCN             {  uint16.I_AC_Voltage_SF volts }
+    I_AC_VoltageAB             {  uint16.I_AC_Voltage_SF u="volts" }
+    I_AC_VoltageBC             {  uint16.I_AC_Voltage_SF u="volts" }
+    I_AC_VoltageCA             {  uint16.I_AC_Voltage_SF u="volts" }
+    I_AC_VoltageAN             {  uint16.I_AC_Voltage_SF u="volts" }
+    I_AC_VoltageBN             {  uint16.I_AC_Voltage_SF u="volts" }
+    I_AC_VoltageCN             {  uint16.I_AC_Voltage_SF u="volts" }
     I_AC_Voltage_SF            {  sunssf }
-    I_AC_Power                 {  int16.I_AC_Power_SF watts }
+    I_AC_Power                 {  int16.I_AC_Power_SF u="watts" }
     I_AC_Power_SF              {  sunssf }
-    I_AC_Frequency             {  uint16.I_AC_Frequency_SF hertz }
+    I_AC_Frequency             {  uint16.I_AC_Frequency_SF u="hertz" }
     I_AC_Frequency_SF          {  sunssf }
-    I_AC_VA                    {  int16.I_AC_VA_SF va }
+    I_AC_VA                    {  int16.I_AC_VA_SF u="va" }
     I_AC_VA_SF                 {  sunssf }
-    I_AC_VAR                   {  int16.I_AC_VAR_SF var }
+    I_AC_VAR                   {  int16.I_AC_VAR_SF u="var" }
     I_AC_VAR_SF                {  sunssf }
-    I_AC_PF                    {  int16.I_AC_PF_SF pf }
+    I_AC_PF                    {  int16.I_AC_PF_SF u="pf" }
     I_AC_PF_SF                 {  sunssf }
-    I_AC_Energy_WH             {  uint32.I_AC_Energy_WH_SF watthours }
+    I_AC_Energy_WH             {  uint32.I_AC_Energy_WH_SF u="watthours" }
     I_AC_Energy_WH_SF          {  sunssf }
-    I_DC_Current               {  uint16.I_DC_Current_SF amps }
+    I_DC_Current               {  uint16.I_DC_Current_SF u="amps" }
     I_DC_Current_SF            {  sunssf }
-    I_DC_Voltage               {  uint16.I_DC_Voltage_SF volts }
+    I_DC_Voltage               {  uint16.I_DC_Voltage_SF u="volts" }
     I_DC_Voltage_SF            {  sunssf }
-    I_DC_Power                 {  int16.I_DC_Power_SF watts }
+    I_DC_Power                 {  int16.I_DC_Power_SF u="watts" }
     I_DC_Power_SF              {  sunssf }
-    I_Temp_Cab                 {  int16.I_Temp_SF degrees_c }
-    I_Temp_Sink                {  int16.I_Temp_SF degrees_c }
-    I_Temp_Trans               {  int16.I_Temp_SF degrees_c }
-    I_Temp_Other               {  int16.I_Temp_SF degrees_c }
+    I_Temp_Cab                 {  int16.I_Temp_SF u="degrees_c" }
+    I_Temp_Sink                {  int16.I_Temp_SF u="degrees_c" }
+    I_Temp_Trans               {  int16.I_Temp_SF u="degrees_c" }
+    I_Temp_Other               {  int16.I_Temp_SF u="degrees_c" }
     I_Temp_SF                  {  sunssf }
     I_Status                   {  enum16.I_Status_Enum }
     I_Status_Vendor            {  enum16 }

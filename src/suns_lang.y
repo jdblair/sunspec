@@ -99,6 +99,7 @@
     struct suns_define_block *define_block;
     struct suns_define *define;
     struct suns_dp_block *datapoints_block;
+    struct suns_attribute *attribute;
 }
 
 %token <number_u> UINT
@@ -112,7 +113,7 @@
 
 %type <type_pair> suns_type;
 %type <dp> suns_dp;
-%type <list> suns_dp_list defines;
+%type <list> suns_dp_list defines attributes;
 %type <model> model_elmts model_block;
 %type <number_u> len;
 %type <string> name;
@@ -122,7 +123,7 @@
 %type <define_block> define_block;
 %type <define> define;
 %type <datapoints_block> datapoints_block;
-%type <number_li> signed_or_unsigned_int;
+%type <attribute> attribute;
 
 /* %destructor { list_free($$, free); } config; */
 /* %destructor { free($$); } suns_type suns_type_with_name 
@@ -137,14 +138,14 @@ blocks: /* empty */
 
 block: model_block | data_block
 
-did: DIDTOK signed_or_unsigned_int STRING
+did: DIDTOK INT STRING
 {
     $$ = malloc(sizeof(suns_model_did_t));
     $$->did = $2;
     $$->name = $3;
 }
 
-len: LENTOK signed_or_unsigned_int
+len: LENTOK INT
 {
     $$ = $2;
 }
@@ -225,42 +226,20 @@ suns_dp_list: /* empty */
     list_node_add($$, list_node_new($2));
 };
 
-suns_dp: NAME OBRACE signed_or_unsigned_int suns_type EBRACE
+suns_dp: NAME OBRACE INT suns_type attributes EBRACE
 {
     $$->name = strdup($1);
     $$->offset = $3;
     $$->type_pair = $4;
+    $$->attributes = $5;
 }
-       /* look for lists containing a units identified */
-       | NAME OBRACE signed_or_unsigned_int suns_type NAME EBRACE
-{
-    $$->name = strdup($1);
-    $$->offset = $3;
-    $$->type_pair = $4;
-}
-       | NAME OBRACE suns_type EBRACE
+       | NAME OBRACE suns_type attributes EBRACE
 {
     $$->name = strdup($1);
     $$->offset = 0;
     $$->type_pair = $3;
-}
-       | NAME OBRACE suns_type NAME EBRACE
-{
-    $$->name = strdup($1);
-    $$->offset = 0;
-    $$->type_pair = $3;
+    $$->attributes = $4;
 };
-
-/*
-named_string: NAME STRING
-{
-    printf("NAME = %s, %p\n", $1, $1);
-    printf("STRING = %s, %p\n", $2, $2);
-};
-*/
-
-
-signed_or_unsigned_int: INT | UINT
 
 suns_type: NAME DOT NAME
 {
@@ -273,7 +252,7 @@ suns_type: NAME DOT NAME
     }
     $$->name = $3;
 }
-         | NAME DOT signed_or_unsigned_int
+         | NAME DOT INT
 {
     /* type with int subscript - could be string or numeric type */
     $$ = malloc(sizeof(suns_type_pair_t)); 
@@ -301,6 +280,29 @@ suns_type: NAME DOT NAME
     }
     $$->name = NULL;
 }
+
+attributes: /* empty */
+{
+    $$ = list_new();
+}
+          | attributes attribute
+{
+    list_node_add($$, list_node_new($2));
+}
+
+attribute: NAME EQUAL STRING
+{
+    $$ = malloc(sizeof(suns_attribute_t));
+    $$->name = strdup($1);
+    $$->value = strdup($3);
+}
+         | NAME
+{
+    $$ = malloc(sizeof(suns_attribute_t));
+    $$->name = strdup($1);
+    $$->value = NULL;
+}
+
 
 /* any string representation of a suns_value_t
    this is a number or string optionally accompanied by a type_pair */
@@ -462,7 +464,14 @@ define_block: DEFINETOK NAME OBRACE defines EBRACE
 }
 
 
-define: NAME OBRACE signed_or_unsigned_int STRING EBRACE
+define: NAME OBRACE INT STRING EBRACE
+{
+    $$ = malloc(sizeof(suns_define_t));
+    $$->name = $1;
+    $$->value = $3;
+    $$->string = $4;
+} 
+      | NAME OBRACE UINT STRING EBRACE
 {
     $$ = malloc(sizeof(suns_define_t));
     $$->name = $1;

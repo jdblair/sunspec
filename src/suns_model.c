@@ -456,7 +456,9 @@ int suns_buf_to_value(unsigned char *buf,
     /* set the value to the specified type */
     v->tp = *tp;
 
-    memcpy(v->raw, buf, min(16, suns_type_size(tp->type)));
+    /* stash the "raw" binary value */
+    v->raw_len = min(16, suns_type_size(tp->type));
+    memcpy(v->raw, buf, v->raw_len);
     
     return 0;
 }
@@ -1140,8 +1142,6 @@ int suns_decode_dp_block(suns_dp_block_t *dp_block,
     }
 
     debug("len_multiple = %d", len_multiple);
-
-    /* dump_buffer(stdout, buf, len); */
     
     for (i = 0; i < len_multiple; i++) {
         list_for_each(dp_block->dp_list, c) {
@@ -1160,6 +1160,9 @@ int suns_decode_dp_block(suns_dp_block_t *dp_block,
                 suns_value_set_index(v, repeat_index);
 
                 suns_buf_to_value(buf + byte_offset, dp->type_pair, v);
+
+                /* check for attributes we care about */
+                v->units = suns_find_attribute(dp, "u");
 
                 debug("v->tp.type = %s", suns_type_string(v->tp.type));
                 list_node_add(value_list, list_node_new(v));
@@ -1297,3 +1300,20 @@ int suns_resolve_scale_factors(suns_dataset_t *dataset)
 
     return 0;
 }
+
+
+char * suns_find_attribute(suns_dp_t *dp, char *name)
+{
+    list_node_t *c;
+    
+    list_for_each(dp->attributes, c) {
+        suns_attribute_t *a = c->data;
+        if (strcmp(a->name, name) == 0) {
+            return a->value;
+        }
+    }
+
+    /* not found */
+    return NULL;
+}
+

@@ -188,6 +188,15 @@ void suns_dp_fprint(FILE *stream, suns_dp_t *dp)
     if (dp->offset > 0)
         fprintf(stream, "%3d ", dp->offset);
     suns_type_pair_fprint(stream, dp->type_pair);
+    
+    list_node_t *c;
+    list_for_each(dp->attributes, c) {
+        suns_attribute_t *a = c->data;
+        fprintf(stream, " %s", a->name);
+        if (a->value) {
+            fprintf(stream, "=\"%s\"", a->value);
+        }
+    }
     fprintf(stream, " }\n");
 }
 
@@ -565,6 +574,9 @@ int suns_dataset_text_fprintf(FILE *stream, suns_dataset_t *data)
             fprintf(stream, "     ");
         }
         fprintf(stream, "%-26s%20s", v->name, scaled_value_buf);
+
+        if (v->units)
+            fprintf(stream, " %s", v->units);
 
         fprintf(stream, "\n");
     }    

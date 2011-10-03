@@ -97,6 +97,7 @@ typedef struct suns_dp {
     char *name;
     int offset;            /* in modbus registers, starting with 1 */
     suns_type_pair_t *type_pair;
+    list_t *attributes;
 } suns_dp_t;
 
 typedef struct suns_model {
@@ -204,7 +205,8 @@ typedef struct suns_value {
     size_t raw_len;            /* length of the raw data */
     int index;                 /* index in repeating blocks */
     int repeating;             /* is this value part of a repeating block? */
-    time_t unixtime;           /* option value-specific timestamp */
+    time_t unixtime;           /* optional value-specific timestamp */
+    char *units;               /* optional units string */
 } suns_value_t;
 
 
@@ -316,5 +318,6 @@ suns_dp_t *suns_search_dp_block_for_dp_by_name(suns_dp_block_t *dp_block,
 suns_dp_t *suns_search_model_for_dp_by_name(suns_model_t *model, char *name);
 suns_value_t *suns_search_value_list(list_t *list, char *name);
 int suns_resolve_scale_factors(suns_dataset_t *dataset);
+char * suns_find_attribute(suns_dp_t *dp, char *name);
 
 #endif /* _SUNS_MODEL_H_ */

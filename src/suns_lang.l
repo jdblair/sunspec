@@ -91,7 +91,7 @@ data              { return DATATOK; }
                     }
                     return FLOAT;
                   }
-[a-zA-Z][a-zA-Z0-9_\-]+     { yylval.string = strdup(yytext); return NAME; }
+[a-zA-Z][a-zA-Z0-9_\-]*     { yylval.string = strdup(yytext); return NAME; }
 \{                { return OBRACE; }
 \}                { return EBRACE; }
 \(                { return OPAREN; }
