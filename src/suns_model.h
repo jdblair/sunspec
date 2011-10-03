@@ -53,6 +53,8 @@
 #define SUNS_ID_HIGH 0x5375
 #define SUNS_ID_LOW  0x6e53
 
+/* if you add or remove a numeric type you must update
+   suns_value_is_numeric() appropriately */
 typedef enum suns_type {
     SUNS_NULL = 0,  /* just initialized value */
     SUNS_INT16,
@@ -62,9 +64,9 @@ typedef enum suns_type {
     SUNS_UINT32,
     SUNS_FLOAT32,
     SUNS_ACC32,
-    SUNS_INT64,
-    SUNS_UINT64,
-    SUNS_FLOAT64,
+    SUNS_INT64,         /* not yet supported */
+    SUNS_UINT64,        /* not yet supported */
+    SUNS_FLOAT64,       /* not yet supported */
     SUNS_ENUM16,
     SUNS_BITFIELD16,
     SUNS_BITFIELD32,
@@ -77,20 +79,10 @@ typedef enum suns_type {
 typedef struct suns_type_pair {
     suns_type_t type;
 
-    union {
-	char *name;        /* scale factor name */
-	size_t len;        /* string length */
-	int sf;            /* scale factor value */
-    } sub;                 /* sub = "subscript" */
-
-    /* shortcut is an optimization
-       once a subscript has been resolved we tuck its actual
-       value here so we don't have to look it up every time we use it */
-    union {
-	struct suns_value  *sf;
-	struct suns_define *define;
-    } shortcut;
-
+    /* the type's subscript is one of the following: */
+    char *name;        /* scale factor name (other datapoint) */
+    size_t len;        /* string length */
+    int sf;            /* fixed scale factor */
 } suns_type_pair_t;
 
 
@@ -114,7 +106,7 @@ typedef struct suns_model {
     list_t *did_list;
     uint16_t len;
     uint16_t base_len;     /* some models have a fixed "header"
-			      followed by a variable length section */
+                              followed by a variable length section */
     
     /* suns_dp_block_t *dp_block; */
     list_t *dp_blocks;
@@ -197,47 +189,53 @@ typedef enum suns_value_meta {
 #define SUNS_VALUE_RAW_SIZE 8
 typedef struct suns_value {
     char *name;                /* datapoint name associated with this */
+    char *name_with_index;     /* composite name including index */
     suns_type_pair_t tp;       /* type_pair of value */
     suns_value_meta_t meta;    /* meta-value (null, error, etc.) */
     union {                    /* actual value */
-	uint16_t u16;
-	uint32_t u32;
-	int16_t i16;
-	int32_t i32;
-	float f32;             /* FIXME: host float size may be wrong! */
-	char *s;               /* string - must be free()d if not NULL */
+        uint16_t u16;
+        uint32_t u32;
+        int16_t i16;
+        int32_t i32;
+        float f32;             /* FIXME: host float size may be wrong! */
+        char *s;               /* string - must be free()d if not NULL */
     } value;
     unsigned char raw[SUNS_VALUE_RAW_SIZE]; /* "raw" from-the-wire data */
     size_t raw_len;            /* length of the raw data */
+    int index;                 /* index in repeating blocks */
+    int repeating;             /* is this value part of a repeating block? */
+    time_t unixtime;           /* option value-specific timestamp */
 } suns_value_t;
 
 
+/* datasets are a collection of datapoints associated with a single
+   sunspec model */
 typedef struct suns_dataset {
-    int addr;
-    struct timeval *timestamp;
     suns_model_did_t *did;
-    list_t *values;
+    list_t *values;  /* list of suns_value_t */
 } suns_dataset_t;
 
 
-typedef void (*suns_model_fprintf_f)(FILE *stream, suns_model_t *model);
+/* a logical device */
+typedef struct suns_device {
+    int addr;
+    list_t *datasets;
+    char *logger_id;
+    char *namespace;
+    time_t unixtime;
 
-typedef struct suns_model_export_format {
+    /* these pointers are set when the common block dataset is added */
+    suns_dataset_t *common;
+    char *manufacturer;
+    char *model;
+    char *serial_number;
+} suns_device_t;
+    
+
+typedef struct suns_attribute {
     char *name;
-    suns_model_fprintf_f fprintf;
-} suns_model_export_format_t;
-
-
-typedef int (*suns_dataset_fprintf_f)(FILE *stream,
-				      suns_dataset_t *data);
-
-typedef struct suns_dataset_output_format {
-    char *name;
-    suns_dataset_fprintf_f fprintf;
-} suns_dataset_output_format_t;
-
-
-
+    char *value;
+} suns_attribute_t;
 
 
 char * suns_type_string(suns_type_t type);
@@ -261,12 +259,17 @@ int suns_buf_to_value(unsigned char *buf,
 suns_dataset_t *suns_dataset_new(suns_model_did_t *did);
 void suns_dataset_free(suns_dataset_t *d);
 
+suns_device_t *suns_device_new(void);
+void suns_device_free(suns_device_t *d);
+int suns_device_add_dataset(suns_device_t *d, suns_dataset_t *data);
+
 /* suns_value_t stuff */
 suns_model_t *suns_model_new();
 suns_value_t *suns_value_new(void);
-void suns_value_free(void *v);
+void suns_value_free(suns_value_t *v);
 void suns_value_init(suns_value_t *v);
-int suns_snprintf_value(char *str, size_t size, suns_value_t *v);
+int suns_value_set_index(suns_value_t *v, int index);
+int suns_value_set_name(suns_value_t *v, char *name);
 void suns_value_set_null(suns_value_t *v);
 void suns_value_set_uint16(suns_value_t *v, uint16_t u16);
 uint16_t suns_value_get_uint16(suns_value_t *v);
@@ -285,7 +288,7 @@ uint16_t suns_value_get_bitfield16(suns_value_t *v);
 void suns_value_set_bitfield32(suns_value_t *v, uint32_t u32);
 uint32_t suns_value_get_bitfield32(suns_value_t *v);
 void suns_value_set_sunssf(suns_value_t *v, uint16_t u16);
-uint16_t suns_value_get_sunssf(suns_value_t *v);
+int16_t suns_value_get_sunssf(suns_value_t *v);
 void suns_value_set_string(suns_value_t *v, char *string, size_t len);
 char * suns_value_get_string(suns_value_t *v);
 void suns_value_set_acc16(suns_value_t *v, uint16_t u16);
@@ -308,7 +311,10 @@ void suns_model_fill_offsets(suns_model_t *m);
 suns_define_t *suns_search_enum_defines(list_t *list, unsigned int value);
 suns_define_t *suns_search_bitfield_defines(list_t *list, unsigned int value);
 
+suns_dp_t *suns_search_dp_block_for_dp_by_name(suns_dp_block_t *dp_block,
+                                               char *name);
+suns_dp_t *suns_search_model_for_dp_by_name(suns_model_t *model, char *name);
+suns_value_t *suns_search_value_list(list_t *list, char *name);
+int suns_resolve_scale_factors(suns_dataset_t *dataset);
+
 #endif /* _SUNS_MODEL_H_ */
-
-
-

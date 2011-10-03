@@ -40,6 +40,8 @@
 
 #include <modbus.h>
 
+#include "suns_model.h"
+
 typedef enum suns_transport {
     SUNS_TCP,
     SUNS_RTU
@@ -57,6 +59,8 @@ typedef struct suns_app {
     int addr;
     char *export_fmt;  /* model export format */
     char *output_fmt;  /* dataset output format */
+    char *logger_id;   /* logger id for sunspec data posts */
+    char *namespace;   /* logger id namespace for sunspec data posts */
 } suns_app_t;
 
 
@@ -68,6 +72,6 @@ int suns_init_modbus(suns_app_t *app);
 int suns_app_swap_registers(uint16_t *reg,
                             int num_regs,
                             unsigned char *buf);
-int suns_app_read_device(suns_app_t *app);
+int suns_app_read_device(suns_app_t *app, suns_device_t *device);
 int suns_app_read_data_model(modbus_t *ctx);
 void suns_app_help(int argc, char *argv[]);

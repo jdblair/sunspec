@@ -41,13 +41,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 #include <unistd.h>
+#include <getopt.h>
 
 #include "trx/macros.h"
 #include "trx/debug.h"
 #include "suns_model.h"
 #include "suns_parser.h"
 #include "suns_lang.tab.h"
+
 
 
 /* global parser state

@@ -55,5 +55,6 @@ int string_escape(char *in, char *out, size_t out_len,
 
 char *string_trim_quotes(char *string);
 
+int string_escape_xml(char *in, char *out, size_t out_len);
 
 #endif /* _STRING_H_ */

@@ -33,7 +33,7 @@
 #
 
 
-SRC=buffer.c debug.c list.c string.c
+SRC=buffer.c debug.c list.c string.c date.c
 OBJ=$(SRC:.c=.o)
 CFLAGS=-fPIC -g -c -Wall
 

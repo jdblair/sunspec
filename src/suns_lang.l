@@ -42,6 +42,7 @@
 %{
 #include <stdio.h>
 #include <string.h>
+#include <strings.h>
 #include "trx/string.h"
 #include "suns_lang.tab.h"
 #include "suns_parser.h"
@@ -50,6 +51,7 @@ extern int line_no;
     
     
 %}
+
 
 %%
 model             { return MODELTOK; }
@@ -71,23 +73,17 @@ data              { return DATATOK; }
                     yylval.string = string_trim_quotes(strdup(yytext));
                     return CHARS;
                   }
+[\-+]?[0-9]+      {
+                    if (sscanf(yytext, "%d", &(yylval.number_i)) != 1) {
+                      yyerror("'%s' is not a valid integer");
+                    }
+                    return INT;
+                  }
 0x[0-9A-Fa-f]+    {
                     if (sscanf(yytext, "%x", &(yylval.number_u)) != 1) {
                       yyerror("'%s' is not a valid integer");
                     }
                     return UINT;
-                  }
-[0-9]+            {
-                    if (sscanf(yytext, "%u", &(yylval.number_u)) != 1) {
-                      yyerror("'%s' is not a valid integer");
-                    }
-                    return UINT;
-                  }
-[\-+][0-9]+       {
-                    if (sscanf(yytext, "%d", &(yylval.number_i)) != 1) {
-                      yyerror("'%s' is not a valid integer");
-                    }
-                    return INT;
                   }
 [\-+]?[0-9]+\.[0-9]+ {
                     if (sscanf(yytext, "%f", &(yylval.number_f)) != 1) {
@@ -109,3 +105,4 @@ data              { return DATATOK; }
 \n                { line_no++; }
 [ \t]+            /* ignore whitespace */;
 %%
+

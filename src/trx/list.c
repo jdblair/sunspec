@@ -81,6 +81,10 @@ list_node_t *list_node_new(void *data)
     assert(data != NULL);
 
     list_node_t *new = malloc(sizeof(list_node_t));
+    if (new == NULL) {
+        return NULL;
+    }
+        
     new->data = data;
     new->next = NULL;
     new->prev = NULL;
@@ -158,9 +162,13 @@ int list_node_del(list_t *list, list_node_t *goner)
 int list_node_insert_after(list_t *list, list_node_t *where, list_node_t *new)
 {
     assert(list != NULL);
-    assert(new != NULL);
+    assert(where != NULL);
 
     list_node_t *next;
+
+    if (new == NULL) {
+        return -1;
+    }
 
     if (list->tail == where) {
         /* new node is the last node */

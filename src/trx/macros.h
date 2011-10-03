@@ -51,11 +51,11 @@
 
 /* max and min are universally useful */
 #ifndef max
-#define max(a,b) (a > b ? a : b)
+#define max(a,b) ((a) > (b) ? (a) : (b))
 #endif
 
 #ifndef min
-#define min(a,b) (a < b ? a : b)
+#define min(a,b) ((a) < (b) ? (a) : (b))
 #endif
 
 /* logging and reporting facilities */

@@ -38,18 +38,21 @@
  *
  */
 
+#define _BSD_SOURCE  /* for big/little endian macros */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-
 #include <stdint.h>
 #include <endian.h>
+#include <getopt.h>
 
 #include "trx/debug.h"
 #include "trx/macros.h"
 #include "suns_unit_tests.h"
 #include "suns_model.h"
+#include "suns_output.h"
 
 
 int test_getopt(int argc, char *argv[])
@@ -772,7 +775,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
     }
 
     total++;
-    suns_snprintf_value(buf, BUFFER_SIZE, v);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     if (strcmp(buf, "null") == 0) {
         debug("null test passed (buf = %s)", buf);
         pass++;
@@ -783,7 +786,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
     /* uint16 */
     total++;
     suns_value_set_uint16(v, 12345);
-    suns_snprintf_value(buf, BUFFER_SIZE, v);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     if (strcmp(buf, "12345") == 0) {
         debug("uint16 test passed (buf = %s)", buf);
         pass++;
@@ -794,7 +797,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
     /* int16 */
     total++;
     suns_value_set_int16(v, -12345);
-    suns_snprintf_value(buf, BUFFER_SIZE, v);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     if (strcmp(buf, "-12345") == 0) {
         debug("int16 test passed (buf = %s)", buf);
         pass++;
@@ -805,7 +808,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
     /* uint32 */
     total++;
     suns_value_set_uint32(v, 12345678);
-    suns_snprintf_value(buf, BUFFER_SIZE, v);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     if (strcmp(buf, "12345678") == 0) {
         debug("uint32 test passed (buf = %s)", buf);
         pass++;
@@ -816,7 +819,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
     /* int32 */
     total++;
     suns_value_set_int32(v, -12345678);
-    suns_snprintf_value(buf, BUFFER_SIZE, v);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     if (strcmp(buf, "-12345678") == 0) {
         debug("int32 test passed (buf = %s)", buf);
         pass++;
@@ -827,7 +830,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
     /* float32 */
     total++;
     suns_value_set_float32(v, 9.87654321);
-    suns_snprintf_value(buf, BUFFER_SIZE, v);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     /* output truncates to 7 digits by default */
     if (strcmp(buf, "9.876543") == 0) { 
         debug("float32 test passed (buf = %s)", buf);
@@ -839,7 +842,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
     /* enum16 */
     total++;
     suns_value_set_enum16(v, 42);
-    suns_snprintf_value(buf, BUFFER_SIZE, v);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     if (strcmp(buf, "42") == 0) {
         debug("enum16 test passed (buf = %s)", buf);
         pass++;
@@ -850,7 +853,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
     /* bitfield16 */
     total++;
     suns_value_set_bitfield16(v, 0xcd);
-    suns_snprintf_value(buf, BUFFER_SIZE, v);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     if (strcmp(buf, "0x00cd") == 0) {
         debug("bitfield16 test passed (buf = %s)", buf);
         pass++;
@@ -861,7 +864,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
     /* bitfield32 */
     total++;
     suns_value_set_bitfield32(v, 0xabcd);
-    suns_snprintf_value(buf, BUFFER_SIZE, v);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     if (strcmp(buf, "0x0000abcd") == 0) {
         debug("bitfield32 test passed (buf = %s)", buf);
         pass++;
@@ -872,7 +875,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
     /* string */
     total++;
     suns_value_set_string(v, "pan galactic gargle blaster", 32);
-    suns_snprintf_value(buf, BUFFER_SIZE, v);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     if (strcmp(buf, "pan galactic gargle blaster") == 0) {
         debug("string test passed (buf = \"%s\")", buf);
         pass++;
@@ -883,7 +886,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
     /* other meta values */
     total++;
     v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
-    suns_snprintf_value(buf, BUFFER_SIZE, v);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     if (strcmp(buf, "not implemented") == 0) {
         debug("SUNS_VALUE_NOT_IMPLEMENTED test passed (buf = \"%s\")", buf);
         pass++;
@@ -893,7 +896,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
         
     total++;
     v->meta = SUNS_VALUE_ERROR;
-    suns_snprintf_value(buf, BUFFER_SIZE, v);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     if (strcmp(buf, "error") == 0) {
         debug("SUNS_VALUE_ERROR test passed (buf = \"%s\")", buf);
         pass++;
@@ -903,7 +906,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
     
     total++;
     v->meta = SUNS_VALUE_UNDEF;
-    suns_snprintf_value(buf, BUFFER_SIZE, v);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     if (strcmp(buf, "undef") == 0) {
         debug("SUNS_VALUE_UNDEF test passed (buf = \"%s\")", buf);
         pass++;

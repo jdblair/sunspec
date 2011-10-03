@@ -39,6 +39,60 @@
  */
 
 
+typedef int (*suns_value_snprintf_f)(char *buf, size_t len,
+                                     suns_value_t *value);
+
+/* this vector table describes functions for converting each value type
+   into a string.  this lets us describe a "driver" that handles the
+   output idiosyncracies of any one given format.
+
+   for example, the xml format needs to xml-escape all strings.
+*/
+typedef struct suns_output_vector {
+    suns_value_snprintf_f null;
+    suns_value_snprintf_f undef;
+    suns_value_snprintf_f int16;
+    suns_value_snprintf_f uint16;
+    suns_value_snprintf_f acc16;
+    suns_value_snprintf_f int32;
+    suns_value_snprintf_f uint32;
+    suns_value_snprintf_f float32;
+    suns_value_snprintf_f acc32;
+    suns_value_snprintf_f enum16;
+    suns_value_snprintf_f bitfield16;
+    suns_value_snprintf_f bitfield32;
+    suns_value_snprintf_f sunssf;
+    suns_value_snprintf_f string;
+    suns_value_snprintf_f meta;
+} suns_output_vector_t;
+    
+
+typedef void (*suns_model_fprintf_f)(FILE *stream, suns_model_t *model);
+
+typedef struct suns_model_export_format {
+    char *name;
+    suns_model_fprintf_f fprintf;
+} suns_model_export_format_t;
+
+
+typedef int (*suns_dataset_fprintf_f)(FILE *stream,
+				      suns_dataset_t *data);
+
+typedef struct suns_dataset_output_format {
+    char *name;
+    suns_dataset_fprintf_f fprintf;
+} suns_dataset_output_format_t;
+
+
+typedef int (*suns_device_fprintf_f)(FILE *stream,
+				      suns_device_t *data);
+
+typedef struct suns_device_output_format {
+    char *name;
+    suns_device_fprintf_f fprintf;
+} suns_device_output_format_t;
+
+
 void suns_dp_fprint(FILE *stream, suns_dp_t *dp);
 void suns_define_block_fprint(FILE *stream, suns_define_block_t *block);
 void suns_define_fprint(FILE *stream, suns_define_t *define);
@@ -52,7 +106,20 @@ int suns_model_export(char *type, suns_model_t *model, FILE *stream);
 int suns_model_export_all(char *fmt, list_t *model_list, FILE *stream);
 int suns_dataset_text_fprintf(FILE *stream, suns_dataset_t *data);
 int suns_dataset_output(char *fmt, suns_dataset_t *data, FILE *stream);
+int suns_device_output(char *fmt, suns_device_t *device, FILE *stream);
 void suns_model_sql_fprintf(FILE *stream, suns_model_t *model);
 int suns_dataset_sql_fprintf(FILE *stream, suns_dataset_t *data);
 void suns_model_csv_fprintf(FILE *stream, suns_model_t *model);
 int suns_dataset_csv_fprintf(FILE *string, suns_dataset_t *data);
+int suns_dataset_xml_fprintf(FILE *stream, suns_dataset_t *data);
+int suns_device_xml_fprintf(FILE *stream, suns_device_t *device);
+
+int suns_snprintf_value(char *str, size_t size,
+                        suns_value_t *v, suns_output_vector_t *fmt);
+void suns_model_fprintf(FILE *stream, suns_model_t *model);
+int suns_snprintf_value_text(char *str, size_t size,
+                             suns_value_t *v);
+int suns_snprintf_value_sf_text(char *str, size_t size,
+                                suns_value_t *v);
+int suns_snprintf_value_sql(char *str, size_t size,
+                            suns_value_t *v);

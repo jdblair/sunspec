@@ -44,6 +44,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "string.h"
+#include "debug.h"
 
 /*
  * Copy a null-terminated string *in into *out, escaping single-quotes,
@@ -110,6 +112,86 @@ int string_escape(char *in, char *out, size_t out_len,
 }
 
 
+/* escapes the 5 xml entities which cannot appear in strings
+   also escapes non-printing ascii characters (1-32 and 127)
+   returns the number of characters actually written to *out */
+int string_escape_xml(char *in, char *out, size_t out_len)
+{
+    typedef struct xml_escape_map {
+        char glyph;
+        char *entity;
+        size_t len;   /* optimization */
+    } xml_escape_map_t;
+
+    /* the 5 xml escape entities */
+    xml_escape_map_t map[] = {
+        { '"',  "&quot;",  6 },
+        { '\'', "&apos;",  6 },
+        { '<',  "&lt;",    4 },
+        { '>',  "&gt;",    4 },
+        { '&',  "&amp;",   5 },
+        { '\0', NULL,      0 }
+    };
+
+    int i;
+    int in_offset = 0;
+    int out_offset = 0;
+    
+    /* read *in one character at a time */
+    while (in[in_offset] != '\0') {
+        
+        /* check against our table of escape values */
+        for (i = 0; map[i].glyph != '\0'; i++) {
+            if (in[in_offset] == map[i].glyph) {
+                if ((out_len - out_offset) > map[i].len) {
+                    /* we know we have space for map[i].entity */
+                    strcpy(out + out_offset, map[i].entity);
+                    out_offset += map[i].len;
+                    break;
+                } else {
+                    /* no space for entity; no sense copying just
+                       part of it */
+                    debug("not enough space to escape entire string");
+                    break;
+                }
+            }
+        }
+
+        /* are we on some other character?  use the ascii escape code */
+        /* these escape codes are for html
+           i'm not actually sure they're ok for use generally in xml */
+        if (map[i].glyph == '\0') {
+            /* check for non-printing characters */
+            if (in[in_offset] < 32) {
+                if ((out_len - out_offset) > 5) {
+                    /* always takes up 5 characters */
+                    sprintf(out + out_offset, "&#%02x;", (int) in[in_offset]);
+                    out_offset += 5;
+                }
+            } else if (in[in_offset] == 127) {
+                if ((out_len - out_offset) > 6) {
+                    /* always takes up 6 characters */
+                    sprintf(out + out_offset, "&#127;");
+                    out_offset += 6;
+                }
+            } else {
+                /* copy ordinary non-escape character */
+                out[out_offset] = in[in_offset];
+                out_offset++;
+            }
+        }
+
+        in_offset++;
+    }            
+
+    /* tie off the string */
+    out[out_offset] = '\0';
+    in_offset++;
+
+    return out_offset;
+}
+                                       
+
 /* trims quotes from the provided string
    this is DESTRUCTIVE!  it modifies the string you pass */
 char *string_trim_quotes(char *string)
@@ -129,3 +211,5 @@ char *string_trim_quotes(char *string)
 
     return p;
 }
+
+

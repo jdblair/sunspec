@@ -40,9 +40,12 @@
 
 
 %{
+#define _BSD_SOURCE  /* for big/little endian macros */
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <endian.h>
 
 #include "trx/macros.h"
 #include "trx/debug.h"
@@ -119,6 +122,7 @@
 %type <define_block> define_block;
 %type <define> define;
 %type <datapoints_block> datapoints_block;
+%type <number_li> signed_or_unsigned_int;
 
 /* %destructor { list_free($$, free); } config; */
 /* %destructor { free($$); } suns_type suns_type_with_name 
@@ -133,14 +137,14 @@ blocks: /* empty */
 
 block: model_block | data_block
 
-did: DIDTOK UINT STRING
+did: DIDTOK signed_or_unsigned_int STRING
 {
     $$ = malloc(sizeof(suns_model_did_t));
     $$->did = $2;
     $$->name = $3;
 }
 
-len: LENTOK UINT
+len: LENTOK signed_or_unsigned_int
 {
     $$ = $2;
 }
@@ -221,14 +225,14 @@ suns_dp_list: /* empty */
     list_node_add($$, list_node_new($2));
 };
 
-suns_dp: NAME OBRACE UINT suns_type EBRACE
+suns_dp: NAME OBRACE signed_or_unsigned_int suns_type EBRACE
 {
     $$->name = strdup($1);
     $$->offset = $3;
     $$->type_pair = $4;
 }
        /* look for lists containing a units identified */
-       | NAME OBRACE UINT suns_type NAME EBRACE
+       | NAME OBRACE signed_or_unsigned_int suns_type NAME EBRACE
 {
     $$->name = strdup($1);
     $$->offset = $3;
@@ -255,7 +259,8 @@ named_string: NAME STRING
 };
 */
 
-              /* number: INT | UINT | FLOAT */
+
+signed_or_unsigned_int: INT | UINT
 
 suns_type: NAME DOT NAME
 {
@@ -266,11 +271,11 @@ suns_type: NAME DOT NAME
         yyerror("invalid suns type");
         YYERROR;
     }
-    $$->sub.name = $3;
+    $$->name = $3;
 }
-         | NAME DOT UINT
+         | NAME DOT signed_or_unsigned_int
 {
-    /* type with uint subscript - could be string or numeric type */
+    /* type with int subscript - could be string or numeric type */
     $$ = malloc(sizeof(suns_type_pair_t)); 
     $$->type = suns_type_from_name($1);
     if ($$->type == SUNS_UNDEF) {
@@ -279,14 +284,11 @@ suns_type: NAME DOT NAME
     }
     switch ($$->type) {
     case SUNS_STRING:
-        $$->sub.len = $3;
+        $$->len = $3;
         break;
     default:
-        $$->sub.sf  = $3;
+        $$->sf  = $3;
     }
-}
-         | NAME DOT INT
-{
 }
          | NAME
 {
@@ -297,7 +299,7 @@ suns_type: NAME DOT NAME
         yyerror("invalid suns type");
         YYERROR;
     }
-    $$->sub.name = NULL;
+    $$->name = NULL;
 }
 
 /* any string representation of a suns_value_t
@@ -419,7 +421,7 @@ suns_value: UINT
     $$ = suns_value_new();
     if ($1->type != SUNS_STRING)
         yyerror("string literal can only be declared as a string value");
-    suns_value_set_string($$, $3, $1->sub.len);
+    suns_value_set_string($$, $3, $1->len);
 }
     
 
@@ -460,7 +462,7 @@ define_block: DEFINETOK NAME OBRACE defines EBRACE
 }
 
 
-define: NAME OBRACE UINT STRING EBRACE
+define: NAME OBRACE signed_or_unsigned_int STRING EBRACE
 {
     $$ = malloc(sizeof(suns_define_t));
     $$->name = $1;

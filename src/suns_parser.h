@@ -50,9 +50,13 @@
 typedef struct suns_parser_state {
     char *model_file;
     FILE *input_file;
-    list_t *model_list;
-    list_t *did_list;
-    list_t *data_block_list;
+
+    /* the rest of this is the parsed s-lang document
+       which describes the sunspec data models and all
+       of the test data blocks */
+    list_t *model_list;          /* all models */
+    list_t *did_list;            /* index of all dids (dids > models) */
+    list_t *data_block_list;     /* static test data blocks */
 } suns_parser_state_t;
 
 /* prototypes so compiling bison and flex output doesn't cause warnings */
@@ -66,7 +70,10 @@ suns_dp_t * suns_model_find_dp_by_name(list_t *list, char *name);
 int parser_getopt(int argc, char *argv[]);
 int suns_parse_model_file(const char *file);
 
+/* accessor used to access the global parser state */
 suns_parser_state_t *suns_get_parser_state(void);
+
+/* accessors used to access the parsed suns model definition file */
 list_t *suns_get_model_list(void);
 list_t *suns_get_did_list(void);
 list_t *suns_get_data_block_list(void);

@@ -39,13 +39,17 @@
  *
  */
 
+#define _BSD_SOURCE  /* for big/little endian macros */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 #include <unistd.h>
 #include <modbus.h>
 #include <errno.h>
 #include <endian.h>
+#include <getopt.h>
 
 #include "trx/macros.h"
 #include "trx/debug.h"
@@ -70,6 +74,7 @@ void suns_app_init(suns_app_t *app)
     app->addr = 1;
     app->export_fmt = NULL;
     app->output_fmt = "text";
+    app->logger_id = NULL;
 }
 
 
@@ -86,7 +91,7 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
 
     /* FIXME: add long options */
 
-    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:")) != -1) {
+    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:")) != -1) {
         switch (opt) {
         case 't':
             if (strcasecmp(optarg, "tcp") == 0) {
@@ -156,7 +161,15 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
         case 'o':
             app->output_fmt = optarg;
             break;
-                        
+
+        case 'I':
+            app->logger_id = optarg;
+            break;
+
+        case 'N':
+            app->namespace = optarg;
+            break;
+
         default:
             suns_app_help(argc, argv);
             exit(EXIT_SUCCESS);
@@ -191,6 +204,8 @@ void suns_app_help(int argc, char *argv[])
     printf("      -b: baud rate for modbus rtu (default: 9600)\n");
     printf("      -m: specify model file\n");
     printf("      -s: run as a test server\n");
+    printf("      -I: logger id (for sunspec logger xml output)\n");
+    printf("      -N: logger id namespace (for sunspec logger xml output, defaults to 'mac')\n");
     printf("      -v: verbose level (up to -vvvv for most verbose)\n");
     printf("\n");
 }
@@ -392,17 +407,20 @@ int suns_init_modbus(suns_app_t *app)
    uint16_t and put it into an array of unsigned char in big-endian
    byte order
 
-   libmodbus presents retrieved registers in an array of uint16_t in 
-   host byte order.  on x86, which is little ending, this means they've
-   been swapped from the modbus big-endian on-the-wire format.
+   libmodbus presents retrieved registers in an array of uint16_t in
+   host byte order.  on x86, which is little ending, this means
+   they've been swapped from the modbus big-endian on-the-wire format.
 
-   this wouldn't be such a big deal if we were only reading 16 bit integers,
-   but sunspec is composed of other structured data types, and the rest
-   of the code i've already developed assumes it is reading an un-tampered
-   buffer representing data pulled straight off the wire.
+   this wouldn't be such a big deal if we were only reading 16 bit
+   integers, but sunspec is composed of other structured data types,
+   and the rest of the code i've already developed assumes it is
+   reading an un-tampered buffer representing data pulled straight off
+   the wire.
 
    my plan is to eliminate this by submitting a patch to libmodbus
-   which fixes the issue
+   which fixes the issue, or by changing the assumptions i make about
+   the data i'm decoding so words, not bytes are the smallest data
+   unit.
 */
    
 int suns_app_swap_registers(uint16_t *reg,
@@ -420,7 +438,7 @@ int suns_app_swap_registers(uint16_t *reg,
 
 
 
-int suns_app_read_device(suns_app_t *app)
+int suns_app_read_device(suns_app_t *app, suns_device_t *device)
 {
     int rc = 0;
     int i;
@@ -443,7 +461,7 @@ int suns_app_read_device(suns_app_t *app)
         debug("i = %d", i);
         /* libmodbus uses zero as the base address */
         rc = modbus_read_registers(app->mb_ctx, search_registers[i] - 1,
-                                         2, regs);
+                                   2, regs);
         if (rc < 0) {
             debug("modbus_read_registers() returned %d: %s",
                   rc, modbus_strerror(errno));
@@ -547,14 +565,18 @@ int suns_app_read_device(suns_app_t *app)
 
         /* kludge around the way libmodbus works */
         suns_app_swap_registers(regs, len + 2, buf);
-
+        
+        /* if the did for this blob is known, decode it and
+           attach it to the suns_device_t */
         if (did) {
             /* suns_decode_data() requires the length in bytes, not
                modbus registers */
+
             /* add 2 to len to include did & len registers */
             data = suns_decode_data(sps->did_list, buf, (len + 2) * 2);
-            suns_dataset_output(app->output_fmt, data, stdout);
-            suns_dataset_free(data);
+            
+            /* add the dataset to the device */
+            suns_device_add_dataset(device, data);
         } else {
             /* unknown data block */
             if (verbose_level > 0) {
@@ -582,6 +604,9 @@ int main(int argc, char **argv)
     /* list_node_t *c; */
     suns_app_t app;
     list_node_t *c;
+
+    /* to put our results */
+    suns_device_t *device;
 
     /* global parser state */
     suns_parser_state_t *sps = suns_get_parser_state();
@@ -633,8 +658,24 @@ int main(int argc, char **argv)
     } else {
         /* run client / master */
         debug("suns client (master) mode");
-        suns_app_read_device(&app);
-    }
+        device = suns_device_new();
+
+        if (device == NULL) {
+            error("memory error: suns_device_new() failed");
+            exit(EXIT_FAILURE);
+        }
+        
+        device->logger_id = app.logger_id;
+        device->namespace = app.namespace;
+                  
+        if (suns_app_read_device(&app, device) < 0) {
+            error("failure to read device");
+            exit(EXIT_FAILURE);
+            suns_device_free(device);
+        }
+        
+        suns_device_output(app.output_fmt, device, stdout);
+}
 
     exit(EXIT_SUCCESS);
 }
