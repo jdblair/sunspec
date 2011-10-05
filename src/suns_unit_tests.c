@@ -2,7 +2,6 @@
 
 /*
  * suns_unit_tests.c
- * $Id: $
  *
  * unit tests for internal data transformations
  *
@@ -645,7 +644,7 @@ int unit_test_buf_to_value(const char **name)
     unsigned char acc16_buf2[] = { 0xFF, 0xFF };
     tp.type = SUNS_ACC16;
     suns_buf_to_value(acc16_buf2, &tp, v);
-    if (v->tp.type != SUNS_VALUE_NOT_IMPLEMENTED) {
+    if (v->meta != SUNS_VALUE_NOT_IMPLEMENTED) {
         debug("acc16 0xFFFF check passed");
         pass++;
     } else {
@@ -717,7 +716,7 @@ int unit_test_buf_to_value(const char **name)
     unsigned char acc32_buf2[] = { 0xFF, 0xFF, 0xFF, 0xFF };
     tp.type = SUNS_ACC32;
     suns_buf_to_value(acc32_buf2, &tp, v);
-    if (v->tp.type != SUNS_VALUE_NOT_IMPLEMENTED) {
+    if (v->meta != SUNS_VALUE_NOT_IMPLEMENTED) {
         debug("acc32 0xFFFFFFFF check passed");
         pass++;
     } else {
@@ -767,7 +766,7 @@ int unit_test_snprintf_suns_value_t(const char **name)
 
     /* check initialized values */
     total++;
-    if (v->meta == SUNS_NULL) {
+    if (v->meta == SUNS_VALUE_NULL) {
         debug("v is initialized to SUNS_NULL");
         pass++;
     } else {
