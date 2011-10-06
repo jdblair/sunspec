@@ -74,40 +74,40 @@ model suns {
   did 102 "split-phase inverter"
   did 103 "three-phase inverter"
   datapoints {
-    I_AC_Current               {  uint16.I_AC_Current_SF u="amps" }
-    I_AC_CurrentA              {  uint16.I_AC_Current_SF u="amps" }
-    I_AC_CurrentB              {  uint16.I_AC_Current_SF u="amps" }
-    I_AC_CurrentC              {  uint16.I_AC_Current_SF u="amps" }
+    I_AC_Current               {  uint16.I_AC_Current_SF u=amps }
+    I_AC_CurrentA              {  uint16.I_AC_Current_SF u=amps }
+    I_AC_CurrentB              {  uint16.I_AC_Current_SF u=amps }
+    I_AC_CurrentC              {  uint16.I_AC_Current_SF u=amps }
     I_AC_Current_SF            {  sunssf }
-    I_AC_VoltageAB             {  uint16.I_AC_Voltage_SF u="volts" }
-    I_AC_VoltageBC             {  uint16.I_AC_Voltage_SF u="volts" }
-    I_AC_VoltageCA             {  uint16.I_AC_Voltage_SF u="volts" }
-    I_AC_VoltageAN             {  uint16.I_AC_Voltage_SF u="volts" }
-    I_AC_VoltageBN             {  uint16.I_AC_Voltage_SF u="volts" }
-    I_AC_VoltageCN             {  uint16.I_AC_Voltage_SF u="volts" }
+    I_AC_VoltageAB             {  uint16.I_AC_Voltage_SF u=volts }
+    I_AC_VoltageBC             {  uint16.I_AC_Voltage_SF u=volts }
+    I_AC_VoltageCA             {  uint16.I_AC_Voltage_SF u=volts }
+    I_AC_VoltageAN             {  uint16.I_AC_Voltage_SF u=volts }
+    I_AC_VoltageBN             {  uint16.I_AC_Voltage_SF u=volts }
+    I_AC_VoltageCN             {  uint16.I_AC_Voltage_SF u=volts }
     I_AC_Voltage_SF            {  sunssf }
-    I_AC_Power                 {  int16.I_AC_Power_SF u="watts" }
+    I_AC_Power                 {  int16.I_AC_Power_SF u=watts }
     I_AC_Power_SF              {  sunssf }
-    I_AC_Frequency             {  uint16.I_AC_Frequency_SF u="hertz" }
+    I_AC_Frequency             {  uint16.I_AC_Frequency_SF u=hertz }
     I_AC_Frequency_SF          {  sunssf }
-    I_AC_VA                    {  int16.I_AC_VA_SF u="va" }
+    I_AC_VA                    {  int16.I_AC_VA_SF u=volt_amps }
     I_AC_VA_SF                 {  sunssf }
-    I_AC_VAR                   {  int16.I_AC_VAR_SF u="var" }
+    I_AC_VAR                   {  int16.I_AC_VAR_SF u=volt_amps_reactive }
     I_AC_VAR_SF                {  sunssf }
-    I_AC_PF                    {  int16.I_AC_PF_SF u="pf" }
+    I_AC_PF                    {  int16.I_AC_PF_SF u=powerfactor }
     I_AC_PF_SF                 {  sunssf }
-    I_AC_Energy_WH             {  uint32.I_AC_Energy_WH_SF u="watthours" }
+    I_AC_Energy_WH             {  uint32.I_AC_Energy_WH_SF u=watthours }
     I_AC_Energy_WH_SF          {  sunssf }
-    I_DC_Current               {  uint16.I_DC_Current_SF u="amps" }
+    I_DC_Current               {  uint16.I_DC_Current_SF u=amps }
     I_DC_Current_SF            {  sunssf }
-    I_DC_Voltage               {  uint16.I_DC_Voltage_SF u="volts" }
+    I_DC_Voltage               {  uint16.I_DC_Voltage_SF u=volts }
     I_DC_Voltage_SF            {  sunssf }
-    I_DC_Power                 {  int16.I_DC_Power_SF u="watts" }
+    I_DC_Power                 {  int16.I_DC_Power_SF u=watts }
     I_DC_Power_SF              {  sunssf }
-    I_Temp_Cab                 {  int16.I_Temp_SF u="degrees_c" }
-    I_Temp_Sink                {  int16.I_Temp_SF u="degrees_c" }
-    I_Temp_Trans               {  int16.I_Temp_SF u="degrees_c" }
-    I_Temp_Other               {  int16.I_Temp_SF u="degrees_c" }
+    I_Temp_Cab                 {  int16.I_Temp_SF u=degrees_c }
+    I_Temp_Sink                {  int16.I_Temp_SF u=degrees_c }
+    I_Temp_Trans               {  int16.I_Temp_SF u=degrees_c }
+    I_Temp_Other               {  int16.I_Temp_SF u=degrees_c }
     I_Temp_SF                  {  sunssf }
     I_Status                   {  enum16.I_Status_Enum }
     I_Status_Vendor            {  enum16 }
@@ -119,7 +119,7 @@ model suns {
     I_Event_4_Vendor           {  bitfield32 }
   }
 
-  define T_enum16_Enum {
+  define I_Status_Enum {
     I_STATUS_OFF               { 1 "Off" }
     I_STATUS_SLEEPING          { 2 "Sleeping (auto-shutdown)" }
     I_STATUS_STARTING          { 3 "Starting up" }
@@ -209,29 +209,29 @@ model suns {
   did 112 "split-phase inverter (float)"
   did 113 "three-phase inverter (float)"
   datapoints {
-    I_AC_Current_f             {  float32 amps }
-    I_AC_CurrentA_f            {  float32 amps }
-    I_AC_CurrentB_f            {  float32 amps }
-    I_AC_CurrentC_f            {  float32 amps }
-    I_AC_VoltageAB_f           {  float32 volts }
-    I_AC_VoltageBC_f           {  float32 volts }
-    I_AC_VoltageCA_f           {  float32 volts }
-    I_AC_VoltageAN_f           {  float32 volts }
-    I_AC_VoltageBN_f           {  float32 volts }
-    I_AC_VoltageCN_f           {  float32 volts }
-    I_AC_Power_f               {  float32 watts }
-    I_AC_Frequency_f           {  float32 hertz }
-    I_AC_VA_f                  {  float32 va }
-    I_AC_VAR_f                 {  float32 var }
-    I_AC_PF_f                  {  float32 pf }
-    I_AC_Energy_WH_f           {  float32 watthours }
-    I_DC_Current_f             {  float32 amps }
-    I_DC_Voltage_f             {  float32 volts }
-    I_DC_Power_f               {  float32 watts }
-    I_Temp_Cab_f               {  float32 degrees_c }
-    I_Temp_Sink_f              {  float32 degrees_c }
-    I_Temp_Trans_f             {  float32 degrees_c }
-    I_Temp_Other_f             {  float32 degrees_c }
+    I_AC_Current_f             {  float32 u=amps }
+    I_AC_CurrentA_f            {  float32 u=amps }
+    I_AC_CurrentB_f            {  float32 u=amps }
+    I_AC_CurrentC_f            {  float32 u=amps }
+    I_AC_VoltageAB_f           {  float32 u=volts }
+    I_AC_VoltageBC_f           {  float32 u=volts }
+    I_AC_VoltageCA_f           {  float32 u=volts }
+    I_AC_VoltageAN_f           {  float32 u=volts }
+    I_AC_VoltageBN_f           {  float32 u=volts }
+    I_AC_VoltageCN_f           {  float32 u=volts }
+    I_AC_Power_f               {  float32 u=watts }
+    I_AC_Frequency_f           {  float32 u=hertz }
+    I_AC_VA_f                  {  float32 u=va }
+    I_AC_VAR_f                 {  float32 u=var }
+    I_AC_PF_f                  {  float32 u=pf }
+    I_AC_Energy_WH_f           {  float32 u=watthours }
+    I_DC_Current_f             {  float32 u=amps }
+    I_DC_Voltage_f             {  float32 u=volts }
+    I_DC_Power_f               {  float32 u=watts }
+    I_Temp_Cab_f               {  float32 u=degrees_c }
+    I_Temp_Sink_f              {  float32 u=degrees_c }
+    I_Temp_Trans_f             {  float32 u=degrees_c }
+    I_Temp_Other_f             {  float32 u=degrees_c }
     I_Status                   {  enum16.I_Status_Enum }
     I_Status_Vendor            {  enum16 }
     I_Event_1                  {  bitfield32.I_Event_1_BF }
@@ -285,76 +285,76 @@ model suns {
   did 203 "wye-connect three phase (abcn) meter"
   did 204 "delta-connect three phase (abc) meter"
   datapoints {
-    M_AC_Current                { int16.M_AC_Current_SF }
-    M_AC_Current_A              { int16.M_AC_Current_SF }
-    M_AC_Current_B              { int16.M_AC_Current_SF }
-    M_AC_Current_C              { int16.M_AC_Current_SF }
+    M_AC_Current                { int16.M_AC_Current_SF u=amps }
+    M_AC_Current_A              { int16.M_AC_Current_SF u=amps }
+    M_AC_Current_B              { int16.M_AC_Current_SF u=amps }
+    M_AC_Current_C              { int16.M_AC_Current_SF u=amps }
     M_AC_Current_SF             { sunssf                }
-    M_AC_Voltage_LN             { int16.M_AC_Voltage_SF }
-    M_AC_Voltage_AN             { int16.M_AC_Voltage_SF }
-    M_AC_Voltage_BN             { int16.M_AC_Voltage_SF }
-    M_AC_Voltage_CN             { int16.M_AC_Voltage_SF }
-    M_AC_Voltage_LL             { int16.M_AC_Voltage_SF }
-    M_AC_Voltage_AB             { int16.M_AC_Voltage_SF }
-    M_AC_Voltage_BC             { int16.M_AC_Voltage_SF }
-    M_AC_Voltage_CA             { int16.M_AC_Voltage_SF }
+    M_AC_Voltage_LN             { int16.M_AC_Voltage_SF u=volts }
+    M_AC_Voltage_AN             { int16.M_AC_Voltage_SF u=volts }
+    M_AC_Voltage_BN             { int16.M_AC_Voltage_SF u=volts }
+    M_AC_Voltage_CN             { int16.M_AC_Voltage_SF u=volts }
+    M_AC_Voltage_LL             { int16.M_AC_Voltage_SF u=volts }
+    M_AC_Voltage_AB             { int16.M_AC_Voltage_SF u=volts }
+    M_AC_Voltage_BC             { int16.M_AC_Voltage_SF u=volts }
+    M_AC_Voltage_CA             { int16.M_AC_Voltage_SF u=volts }
     M_AC_Voltage_SF             { sunssf                }
-    M_AC_Freq                   { int16.M_AC_Freq_SF    }
+    M_AC_Freq                   { int16.M_AC_Freq_SF    u=hz }
     M_AC_Freq_SF                { sunssf                }
-    M_AC_Power                  { int16.M_AC_Power_SF   }
-    M_AC_Power_A                { int16.M_AC_Power_SF   }
-    M_AC_Power_B                { int16.M_AC_Power_SF   }
-    M_AC_Power_C                { int16.M_AC_Power_SF   }
+    M_AC_Power                  { int16.M_AC_Power_SF   u=amps }
+    M_AC_Power_A                { int16.M_AC_Power_SF   u=amps }
+    M_AC_Power_B                { int16.M_AC_Power_SF   u=amps }
+    M_AC_Power_C                { int16.M_AC_Power_SF   u=amps }
     M_AC_Power_SF               { sunssf                }
-    M_AC_VA                     { int16.M_AC_VA_SF      }
-    M_AC_VA_A                   { int16.M_AC_VA_SF      }
-    M_AC_VA_B                   { int16.M_AC_VA_SF      }
-    M_AC_VA_C                   { int16.M_AC_VA_SF      }
+    M_AC_VA                     { int16.M_AC_VA_SF      u=volt_amps }
+    M_AC_VA_A                   { int16.M_AC_VA_SF      u=volt_amps }
+    M_AC_VA_B                   { int16.M_AC_VA_SF      u=volt_amps }
+    M_AC_VA_C                   { int16.M_AC_VA_SF      u=volt_amps }
     M_AC_VA_SF                  { sunssf                }
-    M_AC_VAR                    { int16.M_AC_VAR_SF     }
-    M_AC_VAR_A                  { int16.M_AC_VAR_SF     }
-    M_AC_VAR_B                  { int16.M_AC_VAR_SF     }
-    M_AC_VAR_C                  { int16.M_AC_VAR_SF     }
+    M_AC_VAR                    { int16.M_AC_VAR_SF     u=volt_amps_reactive }
+    M_AC_VAR_A                  { int16.M_AC_VAR_SF     u=volt_amps_reactive }
+    M_AC_VAR_B                  { int16.M_AC_VAR_SF     u=volt_amps_reactive }
+    M_AC_VAR_C                  { int16.M_AC_VAR_SF     u=volt_amps_reactive }
     M_AC_VAR_SF                 { sunssf                }
-    M_AC_PF                     { int16.M_AC_PF_SF      }
-    M_AC_PF_A                   { int16.M_AC_PF_SF      }
-    M_AC_PF_B                   { int16.M_AC_PF_SF      }
-    M_AC_PF_C                   { int16.M_AC_PF_SF      }
+    M_AC_PF                     { int16.M_AC_PF_SF      u=powerfactor }
+    M_AC_PF_A                   { int16.M_AC_PF_SF      u=powerfactor }
+    M_AC_PF_B                   { int16.M_AC_PF_SF      u=powerfactor }
+    M_AC_PF_C                   { int16.M_AC_PF_SF      u=powerfactor }
     M_AC_PF_SF                  { sunssf                }
-    M_Exported                  { acc32.M_Energy_W_SF   }
-    M_Exported_A                { acc32.M_Energy_W_SF   }
-    M_Exported_B                { acc32.M_Energy_W_SF   }
-    M_Exported_C                { acc32.M_Energy_W_SF   }
-    M_Imported                  { acc32.M_Energy_W_SF   }
-    M_Imported_A                { acc32.M_Energy_W_SF   }
-    M_Imported_B                { acc32.M_Energy_W_SF   }
-    M_Imported_C                { acc32.M_Energy_W_SF   }
+    M_Exported                  { acc32.M_Energy_W_SF   u=watt_hours }
+    M_Exported_A                { acc32.M_Energy_W_SF   u=watt_hours }
+    M_Exported_B                { acc32.M_Energy_W_SF   u=watt_hours }
+    M_Exported_C                { acc32.M_Energy_W_SF   u=watt_hours }
+    M_Imported                  { acc32.M_Energy_W_SF   u=watt_hours }
+    M_Imported_A                { acc32.M_Energy_W_SF   u=watt_hours }
+    M_Imported_B                { acc32.M_Energy_W_SF   u=watt_hours }
+    M_Imported_C                { acc32.M_Energy_W_SF   u=watt_hours }
     M_Energy_W_SF               { sunssf                }
-    M_Exported_VA               { acc32.M_Energy_VA_SF  }
-    M_Exported_VA_A             { acc32.M_Energy_VA_SF  }
-    M_Exported_VA_B             { acc32.M_Energy_VA_SF  }
-    M_Exported_VA_C             { acc32.M_Energy_VA_SF  }
-    M_Imported_VA               { acc32.M_Energy_VA_SF  }
-    M_Imported_VA_A             { acc32.M_Energy_VA_SF  }
-    M_Imported_VA_B             { acc32.M_Energy_VA_SF  }
-    M_Imported_VA_C             { acc32.M_Energy_VA_SF  }
+    M_Exported_VA               { acc32.M_Energy_VA_SF  u=volt_amps }
+    M_Exported_VA_A             { acc32.M_Energy_VA_SF  u=volt_amps }
+    M_Exported_VA_B             { acc32.M_Energy_VA_SF  u=volt_amps }
+    M_Exported_VA_C             { acc32.M_Energy_VA_SF  u=volt_amps }
+    M_Imported_VA               { acc32.M_Energy_VA_SF  u=volt_amps }
+    M_Imported_VA_A             { acc32.M_Energy_VA_SF  u=volt_amps }
+    M_Imported_VA_B             { acc32.M_Energy_VA_SF  u=volt_amps }
+    M_Imported_VA_C             { acc32.M_Energy_VA_SF  u=volt_amps }
     M_Energy_VA_SF              { sunssf                }
-    M_Import_VARh_Q1            { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q1A           { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q1B           { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q1C           { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q2            { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q2A           { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q2B           { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q2C           { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q3            { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q3A           { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q3B           { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q3C           { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q4            { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q4A           { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q4B           { acc32.M_Energy_VAR_SF }
-    M_Import_VARh_Q4C           { acc32.M_Energy_VAR_SF }
+    M_Import_VARh_Q1            { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q1A           { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q1B           { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q1C           { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q2            { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q2A           { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q2B           { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q2C           { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q3            { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q3A           { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q3B           { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q3C           { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q4            { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q4A           { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q4B           { acc32.M_Energy_VAR_SF u=var_hours }
+    M_Import_VARh_Q4C           { acc32.M_Energy_VAR_SF u=var_hours }
     M_Energy_VAR_SF             { sunssf                }
     M_Events                    { bitfield32            }
   }
@@ -389,63 +389,63 @@ model suns {
   did 203 "wye-connect three phase (abcn) meter"
   did 204 "delta-connect three phase (abc) meter"
   datapoints {
-    M_AC_Current_f              { float32  }
-    M_AC_Current_A_f            { float32  }
-    M_AC_Current_B_f            { float32  }
-    M_AC_Current_C_f            { float32  }
-    M_AC_Voltage_LN_f           { float32  }
-    M_AC_Voltage_AN_f           { float32  }
-    M_AC_Voltage_BN_f           { float32  }
-    M_AC_Voltage_CN_f		        { float32  }
-    M_AC_Voltage_LL_f		        { float32  }
-    M_AC_Voltage_AB_f	        	{ float32  }
-    M_AC_Voltage_BC_f	        	{ float32  }
-    M_AC_Voltage_CA_f		        { float32  }
-    M_AC_Freq_f                 { float32  }
-    M_AC_VA_f                   { float32  }
-    M_AC_VA_A_f                 { float32  }
-    M_AC_VA_B_f                 { float32  }
-    M_AC_VA_C_f                 { float32  }
-    M_AC_VAR_f                  { float32  }
-    M_AC_VAR_A_f                { float32  }
-    M_AC_VAR_B_f                { float32  }
-    M_AC_VAR_C_f                { float32  }
-    M_AC_PF_f                   { float32  }
-    M_AC_PF_A_f                 { float32  }
-    M_AC_PF_B_f                 { float32  }
-    M_AC_PF_C_f                 { float32  }
-    M_Exported_f                { acc32  }
-    M_Exported_A_f              { acc32  }
-    M_Exported_B_f              { acc32  }
-    M_Exported_C_f              { acc32  }
-    M_Imported_f                { acc32  }
-    M_Imported_A_f              { acc32  }
-    M_Imported_B_f              { acc32  }
-    M_Imported_C_f              { acc32  }
-    M_Exported_VA_f             { acc32  }
-    M_Exported_VA_A_f           { acc32  }
-    M_Exported_VA_B_f           { acc32  }
-    M_Exported_VA_C_f           { acc32  }
-    M_Imported_VA_f             { acc32  }
-    M_Imported_VA_A_f           { acc32  }
-    M_Imported_VA_B_f           { acc32  }
-    M_Imported_VA_C_f           { acc32  }
-    M_Import_VARh_Q1_f          { acc32  }
-    M_Import_VARh_Q1A_f         { acc32  }
-    M_Import_VARh_Q1B_f         { acc32  }
-    M_Import_VARh_Q1C_f         { acc32  }
-    M_Import_VARh_Q2_f          { acc32  }
-    M_Import_VARh_Q2A_f         { acc32  }
-    M_Import_VARh_Q2B_f         { acc32  }
-    M_Import_VARh_Q2C_f         { acc32  }
-    M_Import_VARh_Q3_f          { acc32  }
-    M_Import_VARh_Q3A_f         { acc32  }
-    M_Import_VARh_Q3B_f         { acc32  }
-    M_Import_VARh_Q3C_f         { acc32  }
-    M_Import_VARh_Q4_f          { acc32  }
-    M_Import_VARh_Q4A_f         { acc32  }
-    M_Import_VARh_Q4B_f         { acc32  }
-    M_Import_VARh_Q4C_f         { acc32  }
+    M_AC_Current_f              { float32 u=amps }
+    M_AC_Current_A_f            { float32 u=amps }
+    M_AC_Current_B_f            { float32 u=amps }
+    M_AC_Current_C_f            { float32 u=amps }
+    M_AC_Voltage_LN_f           { float32 u=volts }
+    M_AC_Voltage_AN_f           { float32 u=volts }
+    M_AC_Voltage_BN_f           { float32 u=volts }
+    M_AC_Voltage_CN_f		        { float32 u=volts }
+    M_AC_Voltage_LL_f		        { float32 u=volts }
+    M_AC_Voltage_AB_f	        	{ float32 u=volts }
+    M_AC_Voltage_BC_f	        	{ float32 u=volts }
+    M_AC_Voltage_CA_f		        { float32 u=volts }
+    M_AC_Freq_f                 { float32 u=hz }
+    M_AC_VA_f                   { float32 u=volt_amps }
+    M_AC_VA_A_f                 { float32 u=volt_amps }
+    M_AC_VA_B_f                 { float32 u=volt_amps }
+    M_AC_VA_C_f                 { float32 u=volt_amps }
+    M_AC_VAR_f                  { float32 u=volt_amps_reactive }
+    M_AC_VAR_A_f                { float32 u=volt_amps_reactive }
+    M_AC_VAR_B_f                { float32 u=volt_amps_reactive }
+    M_AC_VAR_C_f                { float32 u=volt_amps_reactive }
+    M_AC_PF_f                   { float32 u=powerfactor }
+    M_AC_PF_A_f                 { float32 u=powerfactor }
+    M_AC_PF_B_f                 { float32 u=powerfactor }
+    M_AC_PF_C_f                 { float32 u=powerfactor }
+    M_Exported_f                { acc32   u=watthours }
+    M_Exported_A_f              { acc32   u=watthours }
+    M_Exported_B_f              { acc32   u=watthours }
+    M_Exported_C_f              { acc32   u=watthours }
+    M_Imported_f                { acc32   u=watthours }
+    M_Imported_A_f              { acc32   u=watthours }
+    M_Imported_B_f              { acc32   u=watthours }
+    M_Imported_C_f              { acc32   u=watthours }
+    M_Exported_VA_f             { acc32   u=volt_amps }
+    M_Exported_VA_A_f           { acc32   u=volt_amps }
+    M_Exported_VA_B_f           { acc32   u=volt_amps }
+    M_Exported_VA_C_f           { acc32   u=volt_amps }
+    M_Imported_VA_f             { acc32   u=volt_amps }
+    M_Imported_VA_A_f           { acc32   u=volt_amps }
+    M_Imported_VA_B_f           { acc32   u=volt_amps }
+    M_Imported_VA_C_f           { acc32   u=volt_amps }
+    M_Import_VARh_Q1_f          { acc32   u=var_hours }
+    M_Import_VARh_Q1A_f         { acc32   u=var_hours }
+    M_Import_VARh_Q1B_f         { acc32   u=var_hours }
+    M_Import_VARh_Q1C_f         { acc32   u=var_hours }
+    M_Import_VARh_Q2_f          { acc32   u=var_hours }
+    M_Import_VARh_Q2A_f         { acc32   u=var_hours }
+    M_Import_VARh_Q2B_f         { acc32   u=var_hours }
+    M_Import_VARh_Q2C_f         { acc32   u=var_hours }
+    M_Import_VARh_Q3_f          { acc32   u=var_hours }
+    M_Import_VARh_Q3A_f         { acc32   u=var_hours }
+    M_Import_VARh_Q3B_f         { acc32   u=var_hours }
+    M_Import_VARh_Q3C_f         { acc32   u=var_hours }
+    M_Import_VARh_Q4_f          { acc32   u=var_hours }
+    M_Import_VARh_Q4A_f         { acc32   u=var_hours }
+    M_Import_VARh_Q4B_f         { acc32   u=var_hours }
+    M_Import_VARh_Q4C_f         { acc32   u=var_hours }
     M_Events                    { bitfield32 }
   }
     
@@ -481,17 +481,17 @@ model suns {
   name "met"
   did 301 "base meteorological"
   datapoints {
-    E_BaseMet_AirTemperature      { int32 }
-    E_BaseMet_RelativeHumidity    { int32 }
-    E_BaseMet_BarometricPressure  { int32 }
-    E_BaseMet_WindSpeed           { int32 }
-    E_BaseMet_WindDirection       { int32 }
-    E_BaseMet_Rain                { int32 }
-    E_BaseMet_Snow                { int32 }
+    E_BaseMet_AirTemperature      { int32 u=degrees_c }
+    E_BaseMet_RelativeHumidity    { int32 u=percent   }
+    E_BaseMet_BarometricPressure  { int32 u=HPa       }
+    E_BaseMet_WindSpeed           { int32 u="m/s"     }
+    E_BaseMet_WindDirection       { int32 u=degrees   }
+    E_BaseMet_Rain                { int32 u=inches    }
+    E_BaseMet_Snow                { int32 u=inches    }
     E_BaseMet_PPTType             { int32 }
-    E_BaseMet_ElectricalField     { int32 }
-    E_BaseMet_SurfaceWetness      { int32 }
-    E_BaseMet_SoilMoisture        { int32 }
+    E_BaseMet_ElectricalField     { int32 u="V/m" }
+    E_BaseMet_SurfaceWetness      { int32 u=kOhms }
+    E_BaseMet_SoilMoisture        { int32 u=percent }
   }
 }
 
@@ -519,17 +519,17 @@ model suns {
   name "met_v1.1"
   did 307 "meteorological v1.1"
   datapoints {
-    E_BaseMet_AirTemperature         { int16 }
-    E_BaseMet_RelativeHumidity       { int16 }
-    E_BaseMet_BarometricPressure     { int16 }
-    E_BaseMet_WindSpeed              { int16 }
-    E_BaseMet_WindDirection          { int16 }
-    E_BaseMet_Rain                   { int16 }
-    E_BaseMet_Snow                   { int16 }
-    E_BaseMet_PPTType                { int16 }
-    E_BaseMet_ElectricField          { int16 }
-    E_BaseMet_SurfaceWetness         { int16 }
-    E_BaseMet_SoilMoisture           { int16 }
+    E_BaseMet_AirTemperature         { int16.-1  u=degrees_c }
+    E_BaseMet_RelativeHumidity       { int16     u=percent   }
+    E_BaseMet_BarometricPressure     { int16     u=HPa       }
+    E_BaseMet_WindSpeed              { int16     u="m/s"     }
+    E_BaseMet_WindDirection          { int16     u=degrees   }
+    E_BaseMet_Rain                   { int16     u=inches    }
+    E_BaseMet_Snow                   { int16     u=inches    }
+    E_BaseMet_PPTType                { int16                 }
+    E_BaseMet_ElectricField          { int16     u="V/m"     }
+    E_BaseMet_SurfaceWetness         { int16     u=kOhms     }
+    E_BaseMet_SoilMoisture           { int16     u=percent   }
   }
 }
 
@@ -557,11 +557,11 @@ model suns {
   name "met_irr"
   did 302 "irradiance"
   datapoints repeating {
-    E_Irradiance_Global_Horizontal   { uint16 }
-    E_Irradiance_Plane_of_Array      { uint16 }
-    E_Irradiance_Diffuse             { uint16 }
-    E_Irradiance_Direct              { uint16 }
-    E_Irradiance_Other               { uint16 }
+    E_Irradiance_Global_Horizontal   { uint16 u="W/m^2" }
+    E_Irradiance_Plane_of_Array      { uint16 u="W/m^2" }
+    E_Irradiance_Diffuse             { uint16 u="W/m^2" }
+    E_Irradiance_Direct              { uint16 u="W/m^2" }
+    E_Irradiance_Other               { uint16 u="W/m^2" }
   }
 }
 
@@ -572,7 +572,7 @@ model suns {
   name "met_bom"
   did 303 "back of module temperature"
   datapoints repeating {
-    E_BOM_Temp                       { int16 }
+    E_BOM_Temp                       { int16.-1 u=degrees_c }
   }
 }
 
@@ -593,9 +593,9 @@ model suns {
   name "met_incl"
   did 304 "inclinometer"
   datapoints repeating {
-    E_InclinometerUx                 { int32.-2 }
-    E_InclinometerUy                 { int32.-2 }
-    E_InclinometerUz                 { int32.-2 }
+    E_InclinometerUx                 { int32.-2 u=degrees }
+    E_InclinometerUy                 { int32.-2 u=degrees }
+    E_InclinometerUz                 { int32.-2 u=degress }
   }
 }
 
@@ -622,9 +622,9 @@ model suns {
     E_GPS_UTC                       { string.10 }
     E_GPS_Date                      { string.08 }
     E_GPS_Location                  { string.40 }
-    E_GPS_Latitude                  { int32.-7  }
-    E_GPS_Longitude                 { int32.-7  }
-    E_GPS_Altitude                  { int32     }
+    E_GPS_Latitude                  { int32.-7  u=degrees }
+    E_GPS_Longitude                 { int32.-7  u=degrees }
+    E_GPS_Altitude                  { int32     u=meters  }
   }
 }
 
@@ -636,9 +636,9 @@ model suns {
   did 306 "reference_point"
   datapoints {
     E_RefPoint_Irradiance           { int16    }
-    E_RefPoint_Current              { int32.-2 }
-    E_RefPoint_Voltage              { int32.-2 }
-    E_RefPoint_Temperature          { int32    }
+    E_RefPoint_Current              { int32.-2 u=amps }
+    E_RefPoint_Voltage              { int32.-2 u=volts }
+    E_RefPoint_Temperature          { int32.-1 u=degrees_c}  # wrong in v1.1 of model
   }
 }
 
@@ -650,10 +650,10 @@ model suns {
   name "mini_met"
   did 308 "mini_met"
   datapoints {
-    E_Irradiance_Global_Horizontal  { uint16 }
-    E_BOM_Temp                      { int16 }
-    E_BaseMet_AirTemperature        { int16 }
-    E_BaseMet_WindSpeed             { int16 }
+    E_Irradiance_Global_Horizontal  { uint16 u="w/m^2" }
+    E_BOM_Temp                      { int16.-1 u=degrees_c }
+    E_BaseMet_AirTemperature        { int16.-1 u=degrees_c }
+    E_BaseMet_WindSpeed             { int16 u="m/s" }
   }
 }
 
@@ -666,25 +666,25 @@ model suns {
 	did 401 "string_combiner"
 	# common datapoints
 	datapoints {
-		SC_DC_Current_SF				{ sunssf }
-		SC_DC_AH_SF							{ sunssf }
-		SC_DC_Voltage_SF				{ sunssf }
-		SC_DC_Current_Max				{ uint16 }
+		SC_DC_Current_SF				{ sunssf u=amps }
+		SC_DC_AH_SF							{ sunssf u=amp_hours }
+		SC_DC_Voltage_SF				{ sunssf u=volts }
+		SC_DC_Current_Max				{ uint16.SC_DC_Current_SF }
 		SC_Num_Inputs						{ uint16 }
 		SC_Event								{ bitfield32 }
 		SC_Event_Vendor					{ bitfield32 }
-		SC_DC_Current						{ int16 }
-		SC_DC_AmpHour						{ uint32 }
-		SC_DC_Voltage						{ uint16 }
-		SC_Internal_Temp				{ uint16 }
+		SC_DC_Current						{ int16.SC_DC_Current_SF u=amps }
+		SC_DC_AmpHour						{ uint32.SC_DC_AH_SF u=amp_hours }
+		SC_DC_Voltage						{ uint16.SC_DC_Voltage_SF u=volts }
+		SC_Internal_Temp				{ uint16 u=degrees_c }
 	}  
 	# per-string datapoints
 	datapoints repeating {
 		SC_Input_ID							{ uint16 }
 		SC_Input_Event					{ bitfield32 }
 		SC_Input_Event_Vendor		{ bitfield32 }
-		SC_Input_DC_Current			{ int16 }
-		SC_Input_DC_AmpHours		{ uint32 }
+		SC_Input_DC_Current			{ int16.SC_DC_Current_SF u=amps }
+		SC_Input_DC_AmpHours		{ uint32.SC_DC_AH_SF u=amp_hours }
 	}
 }
 
@@ -701,29 +701,29 @@ model suns {
 		SC_DC_AH_SF							{ sunssf }
 		SC_DC_Voltage_SF				{ sunssf }
     SC_DC_Power_SF          { sunssf }
-		SC_DC_Current_Max				{ uint16 }
+		SC_DC_Current_Max				{ uint16 u=amps }
 		SC_Num_Inputs						{ uint16 }
 		SC_Event								{ bitfield32 }
 		SC_Event_Vendor					{ bitfield32 }
-		SC_DC_Current						{ int16 }
-		SC_DC_AmpHour						{ uint32 }
-		SC_DC_Voltage						{ uint16 }
-		SC_Internal_Temp				{ uint16 }
-    SC_DC_Power             { int16 }
-    SC_DC_PR                { uint16 }
-    SC_DC_Energy            { uint32 }
+		SC_DC_Current						{ int16  u=amps }
+		SC_DC_AmpHour						{ uint32 u=amps_hours }
+		SC_DC_Voltage						{ uint16 u=volts }
+		SC_Internal_Temp				{ uint16 u=degrees_c }
+    SC_DC_Power             { int16  u=amps }
+    SC_DC_PR                { uint16 u=percent }
+    SC_DC_Energy            { uint32 u=watt_hours }
 	}  
 	# per-string datapoints
 	datapoints repeating {
 		SC_Input_ID							{ uint16 }
 		SC_Input_Event					{ bitfield32 }
 		SC_Input_Event_Vendor		{ bitfield32 }
-		SC_Input_DC_Current			{ int16 }
-		SC_Input_DC_AmpHours		{ uint32 }
-    SC_Input_DC_Voltage     { uint16 }
-    SC_Input_DC_Power       { int16 }
-    SC_Input_DC_Energy      { uint32 }
-    SC_Input_DC_PR          { uint16 }
+		SC_Input_DC_Current			{ int16 u=amps }
+		SC_Input_DC_AmpHours		{ uint32 u=amp_hours }
+    SC_Input_DC_Voltage     { uint16 u=volts }
+    SC_Input_DC_Power       { int16 u=watts }
+    SC_Input_DC_Energy      { uint32 u=watt_hours }
+    SC_Input_DC_PR          { uint16 u=percent }
     SC_Input_Num_Modules    { uint16 }
 	}
 }

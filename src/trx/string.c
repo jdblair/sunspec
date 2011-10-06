@@ -44,6 +44,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+#include "macros.h"
 #include "string.h"
 #include "debug.h"
 
@@ -213,3 +215,24 @@ char *string_trim_quotes(char *string)
 }
 
 
+/*
+
+int string_fmt_decimal(char *buf, size_t len,
+                       long value, int power_of_ten)
+{
+    char *tmp_buf[BUFFER_SIZE];
+    int digits;
+    int rc = 0;
+
+    digits = snprintf(buf, len, "%l", &value);
+
+    if (digits > BUFFER_SIZE) {
+        debug("ascii encoded decimal number is larger than tmp buffer size");
+        error("internal memory error");
+        return -1;
+    }
+
+    return rc;
+}
+    
+*/

@@ -2,7 +2,6 @@
 
 /*
  * suns_app.h
- * $Id: $
  *
  * header file for the command-line UI to the features in the test app.
  *
@@ -38,6 +37,9 @@
  *
  */
 
+#ifndef _SUNS_APP_H_
+#define _SUNS_APP_H_
+
 #include <modbus.h>
 
 #include "suns_model.h"
@@ -54,13 +56,14 @@ typedef struct suns_app {
     char *serial_port;
     int baud;
     int test_server;
-    modbus_t *mb_ctx;  /* libmodbus context */
+    modbus_t *mb_ctx;     /* libmodbus context */
     int run_mainloop;
     int addr;
-    char *export_fmt;  /* model export format */
-    char *output_fmt;  /* dataset output format */
-    char *logger_id;   /* logger id for sunspec data posts */
-    char *namespace;   /* logger id namespace for sunspec data posts */
+    int max_modbus_read;  /* max modbus read length, in registers */
+    char *export_fmt;     /* model export format */
+    char *output_fmt;     /* dataset output format */
+    char *logger_id;      /* logger id for sunspec data posts */
+    char *namespace;      /* logger id namespace for sunspec data posts */
 } suns_app_t;
 
 
@@ -75,3 +78,9 @@ int suns_app_swap_registers(uint16_t *reg,
 int suns_app_read_device(suns_app_t *app, suns_device_t *device);
 int suns_app_read_data_model(modbus_t *ctx);
 void suns_app_help(int argc, char *argv[]);
+int suns_app_read_registers(suns_app_t *app,
+                            int start,
+                            int len,
+                            uint16_t *regs);
+
+#endif /* _SUNS_APP_H_ */

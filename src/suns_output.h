@@ -2,7 +2,6 @@
 
 /*
  * suns_output.h
- * $Id: $
  *
  * header file for the output functions
  *
@@ -38,6 +37,9 @@
  *
  */
 
+
+#ifndef _SUNS_OUTPUT_H_
+#define _SUNS_OUTPUT_H_
 
 typedef int (*suns_value_snprintf_f)(char *buf, size_t len,
                                      suns_value_t *value);
@@ -123,3 +125,11 @@ int suns_snprintf_value_sf_text(char *str, size_t size,
                                 suns_value_t *v);
 int suns_snprintf_value_sql(char *str, size_t size,
                             suns_value_t *v);
+int suns_device_text_fprintf(FILE *stream, suns_device_t *device);
+void suns_registers_fprintf(FILE * stream,
+                            unsigned char *buf, size_t len,
+                            char *line_prefix);
+void suns_binary_model_fprintf(FILE *stream, list_t *did_list,
+                               unsigned char *buf, size_t len);
+
+#endif /* _SUNS_OUTPUT_H_ */

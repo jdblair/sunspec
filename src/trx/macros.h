@@ -62,7 +62,7 @@
 
 #ifndef verbose
 #define verbose(level, format, arg...) if (verbose_level >= level) \
-	fprintf(stdout, format "\n" , ## arg)
+	fprintf(stderr, format "\n" , ## arg)
 #endif /* verbose */
 
 #ifndef error
@@ -71,7 +71,7 @@
 
 #ifndef warning
 #define warning(format, arg...) \
-    fprintf(stdout, "warning: " format "\n" , ## arg)
+    fprintf(stderr, "warning: " format "\n" , ## arg)
 #endif /* error */
 
 #ifndef log

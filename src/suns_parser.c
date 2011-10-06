@@ -2,7 +2,6 @@
 
 /*
  * suns_parser.c
- * $Id: $
  *
  * mostly glue code to interact with yacc
  *

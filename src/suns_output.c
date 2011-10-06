@@ -2,7 +2,6 @@
 
 /*
  * suns_output.c
- * $Id: $
  *
  * output functions for the various output formats
  *
@@ -56,7 +55,7 @@
 static suns_model_export_format_t suns_model_export_formats[] = {
     { "slang", suns_model_fprintf },
     /*    { "sql",   suns_model_sql_fprintf }, */
-    /*    { "csv",   suns_model_csv_fprintf }, */
+    { "csv",   suns_model_csv_fprintf },
     { NULL, NULL }
 };
 
@@ -70,6 +69,7 @@ static suns_dataset_output_format_t suns_dataset_output_formats[] = {
 };
 
 static suns_device_output_format_t suns_device_output_formats[] = {
+    { "text",  suns_device_text_fprintf },
     { "xml",  suns_device_xml_fprintf },
     { NULL, NULL }
 };
@@ -198,6 +198,78 @@ void suns_dp_fprint(FILE *stream, suns_dp_t *dp)
         }
     }
     fprintf(stream, " }\n");
+}
+
+
+/**
+ * Dump the provided data as a string of 16 bit unsigned hex values.
+ * If there is an odd number of bytes the data is padded.  (it would
+ * be better if *buf was an array o uint16_t, but using unsigned char
+ * the function compatible with the code that is calling.
+ */
+void suns_registers_fprintf(FILE * stream,
+                            unsigned char *buf, size_t len, char *line_prefix)
+{
+    int i;
+    int odd;
+
+    int start_byte = 0;
+
+    /* is len an even number? */
+    odd = len % 2;
+
+    fprintf(stream, "%s", line_prefix);
+    for (i = 0; i < len - odd; i++) {
+        if ((i + 1) % 2)
+            fprintf(stream, "0x%02x", buf[i]);
+        else
+            fprintf(stream, "%02x ", buf[i]);
+        if (((i + 1) % 16) == 0) {
+            fprintf(stream, "  # %03d - %03d\n%s",
+                    (start_byte / 2) + 1, (i / 2) + 1, line_prefix);
+            start_byte = i + 1;
+        }
+    }
+    
+    if (odd)
+        fprintf(stream, "0x%02x00", buf[len]);
+    
+    fprintf(stream, "  # %03d - %03d",
+            (start_byte / 2) + 1, ((i - 1) / 2) + 1);
+    if (odd)
+        fprintf(stream, "  (padded one byte to align)\n");
+
+    fprintf(stream, "%s\n", line_prefix);
+}
+
+
+/**
+ * Output a complete sunspec model as a list of 16 bit hex values,
+ * formatted in slang model format which can be loaded into the
+ * test slave mode for testing.
+ *
+ */
+void suns_binary_model_fprintf(FILE *stream, list_t *did_list,
+                              unsigned char *buf, size_t len)
+{
+    suns_model_did_t *did;
+    static char line_prefix[] = "  ";
+    
+    /* the first 2 bytes contain the did */
+    uint16_t did_value = be16toh(*((uint16_t *)buf));
+
+    did = suns_find_did(did_list, did_value);
+
+    fprintf(stream, "data captured_%d {\n", did_value);
+    if (did) {
+        fprintf(stream, "%s# did %d: %s model\n",
+                line_prefix, did->did, did->name);
+    } else {
+        fprintf(stream, "%s# unknown model block %d\n",
+                line_prefix, did_value);
+    }
+    suns_registers_fprintf(stream, buf, len, line_prefix);
+    fprintf(stream, "}\n");
 }
 
 
@@ -402,8 +474,6 @@ void suns_model_fprintf(FILE *stream, suns_model_t *model)
     list_node_t *c;
 
     fprintf(stream, "model suns {\n");
-    /* fprintf(stream, "  name \"%s\"\n", model->name);
-       fprintf(stream, "  did %d\n", model->did); */
     if (model->did_list) {
         list_for_each(model->did_list, c) {
             suns_model_did_t *did = c->data;
@@ -560,11 +630,12 @@ int suns_dataset_text_fprintf(FILE *stream, suns_dataset_t *data)
     list_for_each(data->values, c) {
         suns_value_t *v = c->data;
 
-        /* don't display scale factors and
-           not-implemented values unless verbose_level > 1 */
-        if ((verbose_level < 1) &&
-            ((v->tp.type == SUNS_SF) ||
-             (v->meta == SUNS_VALUE_NOT_IMPLEMENTED)))
+        /* don't display scale factors unless verbose_level > 1 */
+        if ((verbose_level < 1) && (v->tp.type == SUNS_SF))
+            continue;
+
+        /* don't display not-implemented values unless verbose_level > 1 */
+        if ((verbose_level < 1) && (v->meta == SUNS_VALUE_NOT_IMPLEMENTED))
             continue;
 
         suns_snprintf_value_sf_text(scaled_value_buf, BUFFER_SIZE, v);
@@ -578,13 +649,50 @@ int suns_dataset_text_fprintf(FILE *stream, suns_dataset_t *data)
         if (v->units)
             fprintf(stream, " %s", v->units);
 
+        /* display enum values */
+        if ((v->tp.type == SUNS_ENUM16) &&
+            (v->tp.name != NULL)) {
+            suns_define_block_t *b = 
+                suns_search_define_blocks(data->did->model->defines,
+                                          v->tp.name);
+            if (b) {
+                suns_define_t *d =
+                    suns_search_enum_defines(b->list,
+                                             suns_value_get_enum16(v));
+                if (d) {
+                    fprintf(stream, " %s", d->name);
+                }
+            }
+        }
+
         fprintf(stream, "\n");
     }    
     fprintf(stream, "\n");
 
     return 0;
 }
+
+
+int suns_device_text_fprintf(FILE *stream, suns_device_t *device)
+{
+    int rc = 0;
+    list_node_t *c;
+    char timestamp[BUFFER_SIZE];
     
+    /* set date to now */
+    date_snprintf_rfc3339(timestamp, BUFFER_SIZE, device->unixtime);
+    fprintf(stream, "Timestamp: %s\n\n", timestamp);
+    
+    list_for_each(device->datasets, c) {
+        suns_dataset_t *d = c->data;
+        
+        rc = suns_dataset_text_fprintf(stream, d);
+        if (rc < 0)
+            break;
+    }
+
+    return rc;
+}   
 
 /**********************************************************************
  *
@@ -735,22 +843,40 @@ void suns_model_csv_fprintf(FILE *stream, suns_model_t *model)
 {
     list_node_t *c, *d;
 
-    fprintf(stream, "notation,block_offset,size,word_offset,byte_offset,rw,name,type,units,contents,description\n");
+    fprintf(stream, "%s\n", model->name);
+    fprintf(stream, "start,end,size,rw,name,type,units,scale_factor,contents,description\n");
+    /*    fprintf(stream, "notation,block_offset,size,word_offset,byte_offset,rw,name,type,units,contents,description\n"); */
     list_for_each(model->dp_blocks, d) {
         suns_dp_block_t *dp_block = d->data;
         list_for_each(dp_block->dp_list, c) {
             suns_dp_t *dp = c->data;
             int size = suns_type_pair_size(dp->type_pair);
-            fprintf(stream, "%d,%d,%d,%d,%d,%s,%s,%s,%s,%s,%s\n",
-                    /* notation */       dp->offset + 40000,
-                    /* block_offset */   dp->offset,
-                    /* size */           size,
-                    /* word_offset */    size - 1,
-                    /* byte_offset */    (size - 1) * 2,
+            char sf[BUFFER_SIZE];
+            char *units;
+
+            /* fill in scale factor if necessary */
+            if (dp->type_pair->name) {
+                snprintf(sf, BUFFER_SIZE, "%s", dp->type_pair->name);
+            } else if (dp->type_pair->sf != 0) {
+                snprintf(sf, BUFFER_SIZE, "%d", dp->type_pair->sf);
+            } else {
+                sf[0] = '\0';
+            }
+
+            /* units */
+            units = suns_find_attribute(dp, "u");
+            if (! units)
+                units = "";
+
+            fprintf(stream, "%d,%d,%d,%s,%s,%s,%s,%s,%s,%s\n",
+                    /* start */          dp->offset,
+                    /* end */            dp->offset + (size / 2) - 1,
+                    /* size */           size / 2,
                     /* rw */             "",
                     /* name */           dp->name,
                     /* type */           suns_type_string(dp->type_pair->type),
-                    /* units */          "",
+                    /* units */          units,
+                    /* scale factor */   sf,
                     /* contents */       "",
                     /* description */    "");
         }
@@ -848,7 +974,7 @@ int suns_dataset_xml_fprintf(FILE *stream, suns_dataset_t *data)
             debug("NO SCALE FACTOR FOR %s", v->name);
         
         if (v->repeating)
-            fprintf(stream, " x=\"%d\"", v->index);
+            fprintf(stream, " x=\"%d\"", v->index + 1);
         fprintf(stream, ">%s</p>\n", value);
     }
     fprintf(stream, "   </m>\n");
@@ -862,17 +988,14 @@ int suns_device_xml_fprintf(FILE *stream, suns_device_t *device)
     int rc = 0;
     list_node_t *c;
     char safe_string[BUFFER_SIZE];
+    
+    /* root element */
+    /* fprintf(stream, "<sunSpecData v=\"1\" xmlns=\"http://www.sunspec.org/ws/data/\">\n"); */
+    fprintf(stream, "<sunSpecData v=\"1\">\n");
 
-    fprintf(stream, "<SunSpecData v=\"1\">\n");
     fprintf(stream, " <d");
 
     if (device->logger_id) {
-        if (device->namespace) {
-            string_escape_xml(device->namespace, safe_string, BUFFER_SIZE);
-            fprintf(stream, " ns=\"%s\"", device->namespace);
-        } else {
-            fprintf(stream, " ns=\"mac\"");
-        }
         string_escape_xml(device->logger_id, safe_string, BUFFER_SIZE);
         fprintf(stream, " lid=\"%s\"", safe_string);
     }
@@ -914,9 +1037,8 @@ int suns_device_xml_fprintf(FILE *stream, suns_device_t *device)
     }
 
     fprintf(stream, " </d>\n");
-    fprintf(stream, "</SunSpecData>\n");
+    fprintf(stream, "</sunSpecData>\n");
 
     return rc;
 }
-
 

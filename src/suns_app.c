@@ -2,7 +2,6 @@
 
 /*
  * suns_app.c
- * $Id: $
  *
  * This implements the command-line UI to the features in the test app.
  *
@@ -75,6 +74,7 @@ void suns_app_init(suns_app_t *app)
     app->export_fmt = NULL;
     app->output_fmt = "text";
     app->logger_id = NULL;
+    app->max_modbus_read = 125;  /* max defined in the modbus spec */
 }
 
 
@@ -91,7 +91,7 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
 
     /* FIXME: add long options */
 
-    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:")) != -1) {
+    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:l:")) != -1) {
         switch (opt) {
         case 't':
             if (strcasecmp(optarg, "tcp") == 0) {
@@ -168,6 +168,13 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
 
         case 'N':
             app->namespace = optarg;
+            break;
+
+        case 'l':
+            if (sscanf(optarg, "%d", &(app->max_modbus_read)) != 1) {
+                error("must provide decimal max modbus read length");
+                option_error = 1;
+            }
             break;
 
         default:
@@ -453,12 +460,11 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
     suns_parser_state_t *sps = suns_get_parser_state();    
 
     /* places to look for the sunspec signature */
-    int search_registers[] = { 1, 40001, 50001, -1 };
+    int search_registers[] = { 1, 40001, 50001, 0x40001, -1 };
     int base_register = -1;
 
     /* look for sunspec signature */
     for (i = 0; search_registers[i] >= 0; i++) {
-        debug("i = %d", i);
         /* libmodbus uses zero as the base address */
         rc = modbus_read_registers(app->mb_ctx, search_registers[i] - 1,
                                    2, regs);
@@ -484,6 +490,9 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
         return -1;
     }
 
+    if (base_register == 0x40001)
+        error("sunspec block found at 0x40001, not decimal 40001!");
+    
     offset = 2;
     
     /* loop over all data models as they are discovered */
@@ -505,9 +514,10 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
         }
 
         /* did we stumble upon an end marker? */
-        if (regs[0] == 0xFFFF) {
-            verbose(1, "found end marker at register %d",
-                    base_register + offset - 1);
+        if ((regs[0] == 0xFFFF) ||
+            (regs[1] == 0x0000)) {
+            verbose(1, "found end marker at register %d and %d",
+                    base_register + offset - 1, base_register + offset);
             rc = 0;
             break;
         }
@@ -517,14 +527,14 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
            we can't tell the difference between a did we don't know
            and some other data. */
         if (regs[0] == 0) {
-            warning("found 0x0000 where we should have found "
+            verbose(1, "found 0x0000 where we should have found "
                     "an end marker or another did.");
             rc = -1;
             break;
         }
 
         len = regs[1];
-        debug("found did = %d, len = %d", regs[0], len);
+        verbose(1, "found did = %d, len = %d", regs[0], len);
         did = suns_find_did(sps->did_list, regs[0]);
         
         if (did == NULL) {
@@ -551,14 +561,11 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
 
         /* retrieve data block, including the did and len */
         /* add 2 to len to include did & len registers */
-        rc = modbus_read_registers(app->mb_ctx,
-                                   base_register + offset - 1,
+        rc = suns_app_read_registers(app, base_register + offset - 1,
                                    len + 2, regs);
         if (rc < 0) {
-            debug("modbus_read_registers() returned %d: %s",
+            debug("suns_app_read_registers() returned %d: %s",
                   rc, modbus_strerror(errno));
-            error("modbus_read_registers() failed: register %d on address %d",
-                  base_register + offset, app->addr);
             rc = -1;
             break;
         }
@@ -566,6 +573,11 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
         /* kludge around the way libmodbus works */
         suns_app_swap_registers(regs, len + 2, buf);
         
+        if (verbose_level > 2) {
+            suns_binary_model_fprintf(stdout, sps->did_list,
+                                      buf, ((len + 2) * 2));
+        }            
+
         /* if the did for this blob is known, decode it and
            attach it to the suns_device_t */
         if (did) {
@@ -574,7 +586,7 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
 
             /* add 2 to len to include did & len registers */
             data = suns_decode_data(sps->did_list, buf, (len + 2) * 2);
-            
+
             /* add the dataset to the device */
             suns_device_add_dataset(device, data);
         } else {
@@ -675,9 +687,54 @@ int main(int argc, char **argv)
         }
         
         suns_device_output(app.output_fmt, device, stdout);
-}
-
+    }
+    
     exit(EXIT_SUCCESS);
 }
 
+
+
+/**
+ * This is a wrapper around modbus_read_registers() to allow us to read
+ * blocks of registers larger than what is allowed in a single modbus
+ * read.  A maximum of 125 registers may be read in a single read, per
+ * the modbus application protocol spec.  The number of registers read
+ * in a single modbus read can be set using app->max_modbus_read.
+ *
+ * \param app app context
+ * \param start starting registers
+ * \param len number of registers (not bytes)
+ * \param regs buffer to write the results to
+ *
+ */
+int suns_app_read_registers(suns_app_t *app,
+                            int start,
+                            int len,
+                            uint16_t *regs)
+{
+    int rc = 0;
+    int reg_offset = 0;
+    
+    while (reg_offset < len) {
+        int read_len = min((len - reg_offset), app->max_modbus_read);
+        
+        debug("start = %d, read_len = %d, (len - reg_offset) = %d", start, read_len, (len - reg_offset));
+
+        rc = modbus_read_registers(app->mb_ctx, start,
+                                   read_len, regs + reg_offset);
+
+        if (rc < 0) {
+            debug("modbus_read_registers() returned %d: %s",
+                  rc, modbus_strerror(errno));
+            error("modbus_read_registers() failed: register %d, "
+                  "length %d on address %d",
+                  start, read_len, app->addr);
+            return -1;
+        }
+
+        reg_offset += read_len;
+    }
+
+    return rc;
+}
 

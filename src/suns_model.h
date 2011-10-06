@@ -2,7 +2,6 @@
 
 /*
  * suns_model.h
- * $Id: $
  *
  * This is where all the data structures used to hold the sunspec model
  * as well as retrieved data are defined.
@@ -108,16 +107,9 @@ typedef struct suns_model {
     uint16_t len;
     uint16_t base_len;     /* some models have a fixed "header"
                               followed by a variable length section */
-    
-    /* suns_dp_block_t *dp_block; */
     list_t *dp_blocks;
-
     list_t *defines;
-    
-    list_t *enums;
-    list_t *bitfields;
     list_t *test_data;
-    /* suns_dp_t *dp_index; */  /* null terminated array */
 } suns_model_t;
 
 /*  suns_model_did_t is used to build an index of did values
@@ -310,8 +302,11 @@ int suns_decode_dp_block(suns_dp_block_t *dp_block,
 
 void suns_model_fill_offsets(suns_model_t *m);
 
+suns_define_block_t *suns_search_define_blocks(list_t *list, char *name);
 suns_define_t *suns_search_enum_defines(list_t *list, unsigned int value);
-suns_define_t *suns_search_bitfield_defines(list_t *list, unsigned int value);
+suns_define_t *suns_search_bitfield_defines_i(list_t *list,
+                                              unsigned int value,
+                                              list_node_t **c);
 
 suns_dp_t *suns_search_dp_block_for_dp_by_name(suns_dp_block_t *dp_block,
                                                char *name);

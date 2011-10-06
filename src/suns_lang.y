@@ -302,6 +302,12 @@ attribute: NAME EQUAL STRING
     $$->name = strdup($1);
     $$->value = NULL;
 }
+         | NAME EQUAL NAME
+{
+    $$ = malloc(sizeof(suns_attribute_t));
+    $$->name = strdup($1);
+    $$->value = strdup($3);
+}
 
 
 /* any string representation of a suns_value_t

@@ -2,7 +2,6 @@
 
 /*
  * suns_unit_tests.h
- * $Id: $
  *
  * unit tests for internal data transformations
  *
@@ -39,6 +38,9 @@
  */
 
 
+#ifndef _SUNS_UNIT_TESTS_H_
+#define _SUNS_UNIT_TESTS_H_
+
 #include "trx/debug.h"
 #include "trx/macros.h"
 
@@ -52,3 +54,5 @@ int unit_test_snprintf_suns_value_t(const char **name);
 int unit_test_type_name_conversion(const char **name);
 int unit_test_suns_value_meta_string(const char **name);
 int unit_test_suns_type_size(const char **name);
+
+#endif /* _SUNS_UNIT_TESTS_H_ */

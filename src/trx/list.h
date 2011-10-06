@@ -71,8 +71,8 @@ typedef int (*list_node_compare_f)(list_node_t *left,
 
 /* macro for iterating over the list
    current must be a pointer to list_node_t */
-#define list_for_each(list, current) \
-    for (current = list->head; current != NULL; current = current->next)
+#define list_for_each(list, current)                                \
+    for ((current) = (list)->head; (current) != NULL; (current) = (current)->next)
 
 typedef void (*list_free_data_f)(void *node);
 

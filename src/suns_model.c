@@ -443,9 +443,12 @@ int suns_buf_to_value(unsigned char *buf,
     /* now check for "not implemented" value */
     if ((tp->type == SUNS_INT16   && v->value.i16 == (int16_t)  0x8000)     ||
         (tp->type == SUNS_UINT16  && v->value.u16 == (uint16_t) 0xFFFF)     ||
+        (tp->type == SUNS_ENUM16  && v->value.u16 == (uint16_t) 0xFFFF)     ||
         (tp->type == SUNS_SF      && v->value.i16 == (int16_t)  0x8000)     ||
+        (tp->type == SUNS_BITFIELD16 && v->value.u16 == (uint16_t) 0xFFFF)  ||
         (tp->type == SUNS_INT32   && v->value.i32 == (int32_t)  0x80000000) ||
         (tp->type == SUNS_UINT32  && v->value.i32 == (uint32_t) 0xFFFFFFFF) ||
+        (tp->type == SUNS_BITFIELD32 && v->value.u32 == (uint32_t) 0xFFFFFFFF) ||
         (tp->type == SUNS_FLOAT32 && isnan(v->value.f32))) {
         v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
     } else {
@@ -840,7 +843,7 @@ float suns_value_get_float32(suns_value_t *v)
 void suns_value_set_enum16(suns_value_t *v, uint16_t u16)
 {
     assert(v != NULL);
-
+    
     v->value.u16 = u16;
     v->tp.type = SUNS_ENUM16;
     v->meta = SUNS_VALUE_OK;
@@ -1184,6 +1187,20 @@ int suns_decode_dp_block(suns_dp_block_t *dp_block,
 }
 
 
+suns_define_block_t *suns_search_define_blocks(list_t *list, char *name)
+{
+    list_node_t *c;
+
+    list_for_each(list, c) {
+        suns_define_block_t *block = c->data;
+        if (strcmp(block->name, name) == 0)
+            return block;
+    }
+
+    return NULL;
+}
+
+
 suns_define_t *suns_search_enum_defines(list_t *list, unsigned int value)
 {
     list_node_t *c;
@@ -1199,15 +1216,15 @@ suns_define_t *suns_search_enum_defines(list_t *list, unsigned int value)
     debug("value %d not found", value);
 
     return NULL;
-}
+ }
 
-
-suns_define_t *suns_search_bitfield_defines(list_t *list, unsigned int value)
+ 
+suns_define_t *suns_search_bitfield_defines_i(list_t *list,
+                                              unsigned int value,
+                                              list_node_t **c)
 {
-    list_node_t *c;
-
-    list_for_each(list, c) {
-        suns_define_t *define = c->data;
+    list_for_each(list, (*c)) {
+        suns_define_t *define = (*c)->data;
         if (define->value & value) {
             return define;
         }
