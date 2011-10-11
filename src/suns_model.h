@@ -233,7 +233,9 @@ typedef struct suns_attribute {
 
 
 char * suns_type_string(suns_type_t type);
-suns_type_pair_t *suns_type_pair_new(suns_type_t type);
+suns_type_pair_t *suns_type_pair_new(void);
+suns_dp_block_t *suns_dp_block_new(void);
+suns_dp_t *suns_dp_new(void);
 char * suns_value_meta_string(suns_value_meta_t meta);
 suns_type_t suns_type_from_name(char *name);
 void suns_model_free(suns_model_t *model);
@@ -258,7 +260,10 @@ void suns_device_free(suns_device_t *d);
 int suns_device_add_dataset(suns_device_t *d, suns_dataset_t *data);
 
 /* suns_value_t stuff */
-suns_model_t *suns_model_new();
+suns_model_t *suns_model_new(void);
+suns_model_did_t *suns_model_did_new(char *name,
+                                     uint16_t id,
+                                     suns_model_t *model);
 suns_value_t *suns_value_new(void);
 void suns_value_free(suns_value_t *v);
 void suns_value_init(suns_value_t *v);

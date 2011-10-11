@@ -53,7 +53,7 @@
 #include "trx/macros.h"
 
 
-suns_model_t *suns_model_new()
+suns_model_t *suns_model_new(void)
 {
     suns_model_t *m = malloc(sizeof(suns_model_t));
     if (m == NULL) {
@@ -68,6 +68,50 @@ suns_model_t *suns_model_new()
     m->base_len = 0;
 
     return m;
+}
+
+
+suns_model_did_t * suns_model_did_new(char *name,
+                                      uint16_t id,
+                                      suns_model_t *model)
+{
+    suns_model_did_t *did = malloc(sizeof(suns_model_did_t));
+    if (did == NULL) {
+        error("memory error: can't malloc(sizeof(suns_model_did_t))");
+        return NULL;
+    }
+    did->name = name;
+    did->did = id;
+    did->model = model;
+
+    return did;
+}
+
+
+suns_dp_block_t *suns_dp_block_new(void)
+{
+    suns_dp_block_t *dp_block = malloc(sizeof(suns_dp_block_t));
+    if (dp_block == NULL) {
+        error("memory error: can't malloc(sizeof(suns_dp_block_t))");
+        return NULL;
+    }
+
+    memset(dp_block, 0, sizeof(suns_dp_block_t));
+
+    return dp_block;
+}
+
+
+suns_dp_t *suns_dp_new(void)
+{
+    suns_dp_t *dp = malloc(sizeof(suns_dp_t));
+    if (dp == NULL) {
+        error("memory error: can't malloc(sizeof(suns_dp_t))");
+        return NULL;
+    }
+    memset(dp, 0, sizeof(suns_dp_t));
+
+    return dp;
 }
 
 
@@ -176,7 +220,7 @@ int suns_value_name_with_index(suns_value_t *v, char *buf, size_t len)
 }
 
 
-suns_type_pair_t *suns_type_pair_new(suns_type_t type)
+suns_type_pair_t *suns_type_pair_new(void)
 {
     suns_type_pair_t *type_pair;
 
@@ -1061,6 +1105,8 @@ void suns_model_fill_offsets(suns_model_t *m)
     list_node_t *c, *d;
     int offset = 3;  /* skip the header, did and len fields */
 
+    debug("HERE");
+
     list_for_each(m->dp_blocks, d) {
         suns_dp_block_t *dp_block = d->data;
         int dp_block_offset = 0;
@@ -1333,4 +1379,5 @@ char * suns_find_attribute(suns_dp_t *dp, char *name)
     /* not found */
     return NULL;
 }
+
 

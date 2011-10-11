@@ -91,7 +91,7 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
 
     /* FIXME: add long options */
 
-    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:l:")) != -1) {
+    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:l:X:")) != -1) {
         switch (opt) {
         case 't':
             if (strcasecmp(optarg, "tcp") == 0) {
@@ -137,6 +137,12 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
             /* keep running even if there are parsing errors */
             verbose(1, "parsing model file %s", optarg);
             suns_parse_model_file(optarg);
+            break;
+
+        case 'X': 
+            /* keep running even if there are parsing errors */
+            verbose(1, "parsing xml model file %s", optarg);
+            suns_parse_xml_model_file(optarg);
             break;
             
         case 's':
@@ -656,7 +662,7 @@ int main(int argc, char **argv)
     
     /* are we invoked in model export mode? */
     if (app.export_fmt != NULL) {
-        suns_model_export_all(app.export_fmt, sps->model_list, stdout);
+        suns_model_export_all(stdout, app.export_fmt, sps->model_list);
         exit(EXIT_SUCCESS);
     }
 

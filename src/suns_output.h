@@ -68,8 +68,17 @@ typedef struct suns_output_vector {
     suns_value_snprintf_f meta;
 } suns_output_vector_t;
     
+typedef int (*suns_model_list_fprintf_f)(FILE *stream,
+                                          char *type,
+                                          list_t *model_list);
 
-typedef void (*suns_model_fprintf_f)(FILE *stream, suns_model_t *model);
+typedef struct suns_model_list_export_format {
+    char *name;
+    suns_model_list_fprintf_f fprintf;
+} suns_model_list_export_format_t;
+
+typedef void (*suns_model_fprintf_f)(FILE *stream,
+                                    suns_model_t *model);
 
 typedef struct suns_model_export_format {
     char *name;
@@ -104,8 +113,8 @@ void suns_model_fprintf(FILE *stream, suns_model_t *model);
 void suns_dp_block_fprintf(FILE *stream, suns_dp_block_t *dp_block);
 void suns_data_fprintf(FILE *stream, suns_data_t *data);
 void suns_data_block_fprintf(FILE *stream, suns_data_block_t *block);
-int suns_model_export(char *type, suns_model_t *model, FILE *stream);
-int suns_model_export_all(char *fmt, list_t *model_list, FILE *stream);
+int suns_model_export(FILE *stream, char *type, suns_model_t *model);
+int suns_model_export_all(FILE *stream, char *type, list_t *model_list);
 int suns_dataset_text_fprintf(FILE *stream, suns_dataset_t *data);
 int suns_dataset_output(char *fmt, suns_dataset_t *data, FILE *stream);
 int suns_device_output(char *fmt, suns_device_t *device, FILE *stream);
@@ -131,5 +140,8 @@ void suns_registers_fprintf(FILE * stream,
                             char *line_prefix);
 void suns_binary_model_fprintf(FILE *stream, list_t *did_list,
                                unsigned char *buf, size_t len);
+void suns_model_xml_fprintf(FILE *stream, suns_model_t *model);
+int suns_model_xml_export_all(FILE *stream, char *type, list_t *list);
+
 
 #endif /* _SUNS_OUTPUT_H_ */

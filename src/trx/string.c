@@ -216,7 +216,6 @@ char *string_trim_quotes(char *string)
 
 
 /*
-
 int string_fmt_decimal(char *buf, size_t len,
                        long value, int power_of_ten)
 {
@@ -232,7 +231,11 @@ int string_fmt_decimal(char *buf, size_t len,
         return -1;
     }
 
+    if (power_of_ten < 0) {
+        int i;
+        for (i = 0; i < digits + power_of_ten; i++) {
+            buf
+
     return rc;
 }
-    
 */

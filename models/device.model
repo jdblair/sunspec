@@ -524,8 +524,8 @@ model suns {
     E_BaseMet_BarometricPressure     { int16     u=HPa       }
     E_BaseMet_WindSpeed              { int16     u="m/s"     }
     E_BaseMet_WindDirection          { int16     u=degrees   }
-    E_BaseMet_Rain                   { int16     u=inches    }
-    E_BaseMet_Snow                   { int16     u=inches    }
+    E_BaseMet_Rain                   { int16     u=mm        }
+    E_BaseMet_Snow                   { int16     u=mm        }
     E_BaseMet_PPTType                { int16                 }
     E_BaseMet_ElectricField          { int16     u="V/m"     }
     E_BaseMet_SurfaceWetness         { int16     u=kOhms     }
@@ -719,11 +719,11 @@ model suns {
 		SC_Input_Event					{ bitfield32 }
 		SC_Input_Event_Vendor		{ bitfield32 }
 		SC_Input_DC_Current			{ int16 u=amps }
-		SC_Input_DC_AmpHours		{ uint32 u=amp_hours }
-    SC_Input_DC_Voltage     { uint16 u=volts }
-    SC_Input_DC_Power       { int16 u=watts }
+		SC_Input_DC_AmpHours		{ uint32 u=amp_hours  }
+    SC_Input_DC_Voltage     { uint16 u=volts      }
+    SC_Input_DC_Power       { int16  u=watts      }
     SC_Input_DC_Energy      { uint32 u=watt_hours }
-    SC_Input_DC_PR          { uint16 u=percent }
+    SC_Input_DC_PR          { uint16 u=percent    }
     SC_Input_Num_Modules    { uint16 }
 	}
 }

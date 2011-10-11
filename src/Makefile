@@ -47,6 +47,7 @@ TEST_SERVER_SRC=test_server.c
 TEST_SERVER_OBJ=$(TEST_SERVER_SRC:.c=.o)
 
 LIBTRX=trx/libtrx.a
+LIBEZXML=ezxml/libezxml.a
 
 CFLAGS=-std=gnu99 -g -DDEBUG -Wall $(shell pkg-config --cflags libmodbus)
 LDFLAGS=-lm $(shell pkg-config --libs libmodbus) 
@@ -64,8 +65,8 @@ include $(SRC:.c=.d)
 unit_tests: $(UNIT_TESTS_OBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(UNIT_TESTS_OBJ) $(LIBTRX) -o unit_tests
 
-suns: $(OBJ) $(LIBTRX)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(LIBTRX) -o suns
+suns: $(OBJ) $(LIBTRX) $(LIBEZXML)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(LIBEZXML) $(LIBTRX) -o suns
 
 suns_lang.tab.c: suns_lang.y
 	$(YACC) -d -o suns_lang.tab.c suns_lang.y
@@ -81,14 +82,19 @@ check: $(SRC) suns_unit_tests.c
 $(LIBTRX):
 	make -C trx libtrx.a
 
+$(LIBEZXML):
+	make -C ezxml libezxml.a
+
 clean:
 	rm -f	suns_lang.tab.c suns_lang.tab.h \
 		suns_lang.yy.c *.o *.d $(BINFILES)
 	make -C trx clean
+	make -C ezxml clean
 
 distclean:
 	rm -f *~ *.o *.d $(BINFILES)
 	make -C trx distclean
+	make -C ezxml distclean
 
 # this little bit of magic generates the *.d dependency files
 # see section "4.14 Generating Prerequisites Automatically"

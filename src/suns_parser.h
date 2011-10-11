@@ -44,6 +44,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "ezxml/ezxml.h"
+
 #include "suns_model.h"
 
 typedef struct suns_parser_state {
@@ -76,5 +78,8 @@ suns_parser_state_t *suns_get_parser_state(void);
 list_t *suns_get_model_list(void);
 list_t *suns_get_did_list(void);
 list_t *suns_get_data_block_list(void);
+int suns_parse_xml_model_file(const char *file);
+suns_dp_block_t *suns_ezxml_to_dp_block(ezxml_t b);
+suns_dp_t *suns_ezxml_to_dp(ezxml_t p);
 
 #endif /* _SUNS_PARSER_H_ */

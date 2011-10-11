@@ -52,10 +52,16 @@
 #include "suns_output.h"
 
 /* list of model output formats */
+static suns_model_list_export_format_t suns_model_list_export_formats[] = {
+    { "xml",   suns_model_xml_export_all },
+    { NULL, NULL }
+};
+
 static suns_model_export_format_t suns_model_export_formats[] = {
     { "slang", suns_model_fprintf },
     /*    { "sql",   suns_model_sql_fprintf }, */
     { "csv",   suns_model_csv_fprintf },
+    { "xml",   suns_model_xml_fprintf },
     { NULL, NULL }
 };
 
@@ -73,48 +79,45 @@ static suns_device_output_format_t suns_device_output_formats[] = {
     { "xml",  suns_device_xml_fprintf },
     { NULL, NULL }
 };
-    
-    
+
 /* output a model in the given type */
-int suns_model_export(char *type, suns_model_t *model, FILE *stream)
+int suns_model_export(FILE *stream, char *type, suns_model_t *model)
 {
     assert(type);
     assert(model);
     assert(stream);
     
     int i;
-    suns_model_export_format_t *export = NULL;
-
+    
     for (i = 0; suns_model_export_formats[i].name != NULL; i++) {
         debug("i = %d", i);
         if (strcmp(suns_model_export_formats[i].name, type) == 0) {
-            export = &(suns_model_export_formats[i]);
-            break;
+            suns_model_export_formats[i].fprintf(stream, model);
+            return 0;
         }
     }
-
-    if (export == NULL) {
-        error("export format %s is not defined", type);
-        return -1;
-    }
-
-    export->fprintf(stream, model);
-
-    return 0;
+    
+    debug("export format %s is not defined", type);
+    return -1;
 }
 
-/* output all the models in a list_t in the given type */
-int suns_model_export_all(char *type, list_t *model_list, FILE *stream)
-{
-    list_node_t *c;
 
+/* output all the models in a list_t in the given type */
+int suns_model_export_all(FILE *stream, char *type, list_t *model_list)
+{
+    int i;
+    list_node_t *c;
+    
+    for (i = 0; suns_model_list_export_formats[i].name != NULL; i++) {
+        if (strcmp(suns_model_list_export_formats[i].name, type) == 0)
+            return suns_model_list_export_formats[i].fprintf(stream,
+                                                             type, model_list);
+    }
+
+    debug("export format %s is not defined", type);
     list_for_each(model_list, c) {
-        /* bail out on first failure since this is probably
-           caused by an invalid export format string */
-        debug("c = %p", c);
-        if (suns_model_export(type, c->data, stream) < 0) {
+        if (suns_model_export(stream, type, c->data) < 0)
             return -1;
-        }
     }
 
     return 0;
@@ -142,8 +145,6 @@ int suns_dataset_output(char *fmt, suns_dataset_t *data, FILE *stream)
         error("output format %s is not defined", fmt);
         return -1;
     }
-
-    output->fprintf(stream, data);
 
     return 0;
 }
@@ -190,11 +191,13 @@ void suns_dp_fprint(FILE *stream, suns_dp_t *dp)
     suns_type_pair_fprint(stream, dp->type_pair);
     
     list_node_t *c;
-    list_for_each(dp->attributes, c) {
-        suns_attribute_t *a = c->data;
-        fprintf(stream, " %s", a->name);
-        if (a->value) {
-            fprintf(stream, "=\"%s\"", a->value);
+    if (dp->attributes) {
+        list_for_each(dp->attributes, c) {
+            suns_attribute_t *a = c->data;
+            fprintf(stream, " %s", a->name);
+            if (a->value) {
+                fprintf(stream, "=\"%s\"", a->value);
+            }
         }
     }
     fprintf(stream, " }\n");
@@ -950,6 +953,7 @@ int suns_snprintf_value_xml(char *str, size_t size,
 }
 
 
+
 int suns_dataset_xml_fprintf(FILE *stream, suns_dataset_t *data)
 {
     list_node_t *c;
@@ -990,7 +994,7 @@ int suns_device_xml_fprintf(FILE *stream, suns_device_t *device)
     char safe_string[BUFFER_SIZE];
     
     /* root element */
-    /* fprintf(stream, "<sunSpecData v=\"1\" xmlns=\"http://www.sunspec.org/ws/data/\">\n"); */
+    /*    fprintf(stream, "<sunSpecData v=\"1\" xmlns=\"http://www.sunspec.org/data/v1\">\n"); */
     fprintf(stream, "<sunSpecData v=\"1\">\n");
 
     fprintf(stream, " <d");
@@ -1042,3 +1046,76 @@ int suns_device_xml_fprintf(FILE *stream, suns_device_t *device)
     return rc;
 }
 
+
+
+int suns_model_xml_export_all(FILE *stream, char *type, list_t *list)
+{
+    list_node_t *c;
+
+    const char root[] = "suns_models";
+
+    fprintf(stream, "<%s>\n", root);
+    list_for_each(list, c)
+        suns_model_xml_fprintf(stream, c->data);
+    fprintf(stream, "</%s>\n", root);
+
+    return 0;
+}
+
+
+void suns_model_xml_fprintf(FILE *stream, suns_model_t *model)
+{
+    list_node_t *c;
+
+    if (! model->did_list) {
+        error("no did list for provided model %s", model->name);
+        return;
+    }
+
+    list_for_each(model->did_list, c) {
+
+        suns_model_did_t *did = c->data;
+        fprintf(stream, "  <model id=\"%03d\" name=\"%s\">\n",
+                did->did, did->name);
+        
+        list_node_t *d;
+        list_for_each(model->dp_blocks, d) {
+            suns_dp_block_t *dp_block = d->data;
+            list_node_t *e;
+            fprintf(stream, "    <block");
+            if (dp_block->repeating)
+                fprintf(stream, " type=\"repeating\"");
+            fprintf(stream, ">\n");
+            list_for_each(dp_block->dp_list, e) {
+                suns_dp_t *dp = e->data;
+                fprintf(stream, "      <point name=\"%s\" type=\"%s\"",
+                        dp->name, suns_type_string(dp->type_pair->type));
+
+                if (dp->type_pair->type == SUNS_STRING)
+                    fprintf(stream, " size=\"%d\"", dp->type_pair->len);
+                
+                if (dp->type_pair->name)
+                    fprintf(stream, " sf=\"%s\"", dp->type_pair->name);
+
+                if (dp->type_pair->sf != 0)
+                    fprintf(stream, " sf=\"%d\"", dp->type_pair->sf);
+
+                fprintf(stream, " />\n");
+            }
+            fprintf(stream, "    </block>\n");
+        }
+        
+
+        fprintf(stream, "  </model>\n\n");
+    }
+
+    /* defines - enums & bitfields */
+    /*
+    list_for_each(model->defines, c) {
+        suns_define_block_fprint(stream, c->data);
+        fprintf(stream, "\n");
+    }
+    */
+
+
+}

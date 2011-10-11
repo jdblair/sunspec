@@ -44,12 +44,14 @@
 #include <unistd.h>
 #include <getopt.h>
 
+#include "ezxml/ezxml.h"
+
 #include "trx/macros.h"
 #include "trx/debug.h"
 #include "suns_model.h"
 #include "suns_parser.h"
 #include "suns_lang.tab.h"
-
+#include "suns_output.h"
 
 
 /* global parser state
@@ -150,3 +152,100 @@ int suns_parse_model_file(const char *file)
     return 0;
 }
 
+
+/*******************************************************/
+
+
+int suns_parse_xml_model_file(const char *file)
+{
+    int rc = 0;
+    suns_parser_state_t *sps = suns_get_parser_state();
+    
+    ezxml_t model;
+    ezxml_t x = ezxml_parse_file(file);
+    if (! x) {
+        error("ezxml returned NULL pointer");
+        return -1;
+    }
+
+    for (model = ezxml_child(x, "model"); model; model = model->next) {
+        suns_model_t *m = suns_model_new();
+        int did_int;
+        /* discard const; its ok. m->name should be a const char * */
+        m->name = (char *) ezxml_attr(model, "name");
+        m->type = "suns";
+        if (sscanf(ezxml_attr(model, "id"), "%d", (int*) &did_int) != 1) {
+            error("can't convert id \"%s\" to an integer",
+                  ezxml_attr(model, "id"));
+            continue;
+        }
+        suns_model_did_t *did = suns_model_did_new(m->name, did_int, m);
+        list_node_add(m->did_list, list_node_new(did));
+
+        ezxml_t block;
+        for (block = ezxml_child(model, "block"); block; block = block->next) {
+            suns_dp_block_t *b = suns_ezxml_to_dp_block(block);
+            list_node_add(m->dp_blocks, list_node_new(b));
+        }
+
+        list_node_add(sps->model_list, list_node_new(m));
+        debug("parsed xml model for %s", m->name);
+    }
+    debug("model = %p", model);
+    
+    return rc;
+}
+
+
+suns_dp_block_t *suns_ezxml_to_dp_block(ezxml_t b)
+{
+    suns_dp_block_t *dp_block = suns_dp_block_new();
+    dp_block->dp_list = list_new();
+    const char *type =  ezxml_attr(b, "type");
+    if (type &&
+        (strcasecmp("repeating", type) == 0))
+        dp_block->repeating = 1;
+
+    ezxml_t p;
+    for (p = ezxml_child(b, "point"); p; p = p->next) {
+        suns_dp_t *dp = suns_ezxml_to_dp(p);
+        list_node_add(dp_block->dp_list, list_node_new(dp));
+    }
+
+    return dp_block;
+}
+
+
+suns_dp_t *suns_ezxml_to_dp(ezxml_t p)
+{
+    suns_dp_t *dp = suns_dp_new();
+    if (! dp)
+        return NULL;
+    
+    /* discard const; its ok, dp->name should be a const char * */
+    dp->name = (char *) ezxml_attr(p, "name");
+    dp->type_pair = suns_type_pair_new();
+    dp->type_pair->type = suns_type_from_name((char *) ezxml_attr(p, "type"));
+
+    /* parse out the string length */
+    if (dp->type_pair->type == SUNS_STRING) {
+        if (sscanf(ezxml_attr(p, "size"), "%d", &(dp->type_pair->len)) != 1) {
+            error("can't parse size argument to point %s", dp->name);
+        }
+    }
+
+    /* parse the scale factor - can be an integer, or the name of a point */
+    char *sf = (char *) ezxml_attr(p, "sf");
+    if (sf) {
+        /* see if it is numeric */
+        if (sscanf(sf, "%d", &(dp->type_pair->sf)) != 1) {
+            /* its not numeric, treat it as a string */
+            dp->type_pair->name = sf;
+        }
+    }
+
+    /* debug("found type %s", ezxml_attr(p, "type"));
+       suns_type_pair_fprint(stdout, dp->type_pair); */
+
+    return dp;
+}
