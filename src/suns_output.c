@@ -647,8 +647,8 @@ int suns_dataset_text_fprintf(FILE *stream, suns_dataset_t *data)
         } else {
             fprintf(stream, "     ");
         }
-        fprintf(stream, "%-26s%20s", v->name, scaled_value_buf);
-
+        fprintf(stream, "%-30s%20s", v->name, scaled_value_buf);
+        
         if (v->units)
             fprintf(stream, " %s", v->units);
 
@@ -1099,6 +1099,14 @@ void suns_model_xml_fprintf(FILE *stream, suns_model_t *model)
 
                 if (dp->type_pair->sf != 0)
                     fprintf(stream, " sf=\"%d\"", dp->type_pair->sf);
+
+                if (dp->attributes) {
+                    list_node_t *f;
+                    list_for_each(dp->attributes, f) {
+                        suns_attribute_t *a = f->data;
+                        fprintf(stream, " %s=\"%s\"", a->name, a->value);
+                    }
+                }
 
                 fprintf(stream, " />\n");
             }

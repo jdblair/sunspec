@@ -718,10 +718,10 @@ model suns {
 		SC_Input_ID							{ uint16 }
 		SC_Input_Event					{ bitfield32 }
 		SC_Input_Event_Vendor		{ bitfield32 }
-		SC_Input_DC_Current			{ int16 u=amps }
-		SC_Input_DC_AmpHours		{ uint32 u=amp_hours  }
-    SC_Input_DC_Voltage     { uint16 u=volts      }
-    SC_Input_DC_Power       { int16  u=watts      }
+		SC_Input_DC_Current			{ int16.SC_DC_Current_SF u=amps }
+		SC_Input_DC_AmpHours		{ uint32.SC_DC_AH_SF u=amp_hours  }
+    SC_Input_DC_Voltage     { uint16.SC_DC_Voltage_SF u=volts      }
+    SC_Input_DC_Power       { int16.SC_DC_Poer_SF  u=watts      }
     SC_Input_DC_Energy      { uint32 u=watt_hours }
     SC_Input_DC_PR          { uint16 u=percent    }
     SC_Input_Num_Modules    { uint16 }

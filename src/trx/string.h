@@ -2,7 +2,6 @@
 
 /*
  * string.h
- * $Id: $
  *
  * String processing utility functions.
  *

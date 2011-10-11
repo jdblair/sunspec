@@ -1369,10 +1369,12 @@ char * suns_find_attribute(suns_dp_t *dp, char *name)
 {
     list_node_t *c;
     
-    list_for_each(dp->attributes, c) {
-        suns_attribute_t *a = c->data;
-        if (strcmp(a->name, name) == 0) {
+    if (dp->attributes) {
+        list_for_each(dp->attributes, c) {
+            suns_attribute_t *a = c->data;
+            if (strcmp(a->name, name) == 0) {
             return a->value;
+            }
         }
     }
 

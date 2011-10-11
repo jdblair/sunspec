@@ -181,6 +181,7 @@ int suns_parse_xml_model_file(const char *file)
         }
         suns_model_did_t *did = suns_model_did_new(m->name, did_int, m);
         list_node_add(m->did_list, list_node_new(did));
+        list_node_add(sps->did_list, list_node_new(did));
 
         ezxml_t block;
         for (block = ezxml_child(model, "block"); block; block = block->next) {
@@ -242,6 +243,16 @@ suns_dp_t *suns_ezxml_to_dp(ezxml_t p)
             /* its not numeric, treat it as a string */
             dp->type_pair->name = sf;
         }
+    }
+
+    char *u = (char *) ezxml_attr(p, "u");
+    if (u) {
+        if (! dp->attributes)
+            dp->attributes = list_new();
+        suns_attribute_t *a = malloc(sizeof(suns_attribute_t));
+        a->name = "u";
+        a->value = u;
+        list_node_add(dp->attributes, list_node_new(a));
     }
 
     /* debug("found type %s", ezxml_attr(p, "type"));
