@@ -301,10 +301,10 @@ model suns {
     M_AC_Voltage_SF             { sunssf                }
     M_AC_Freq                   { int16.M_AC_Freq_SF    u=hz }
     M_AC_Freq_SF                { sunssf                }
-    M_AC_Power                  { int16.M_AC_Power_SF   u=amps }
-    M_AC_Power_A                { int16.M_AC_Power_SF   u=amps }
-    M_AC_Power_B                { int16.M_AC_Power_SF   u=amps }
-    M_AC_Power_C                { int16.M_AC_Power_SF   u=amps }
+    M_AC_Power                  { int16.M_AC_Power_SF   u=watts }
+    M_AC_Power_A                { int16.M_AC_Power_SF   u=watts }
+    M_AC_Power_B                { int16.M_AC_Power_SF   u=watts }
+    M_AC_Power_C                { int16.M_AC_Power_SF   u=watts }
     M_AC_Power_SF               { sunssf                }
     M_AC_VA                     { int16.M_AC_VA_SF      u=volt_amps }
     M_AC_VA_A                   { int16.M_AC_VA_SF      u=volt_amps }

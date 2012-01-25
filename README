@@ -5,8 +5,22 @@ SunSpec Test Tool README
 Updates
 -------
 
+2011-Oct-05:  Added improvements and fixes based on testing during
+              the Sunspec Plugfest.
+                - corrected some environmental maps
+                - added support for models large enough to require
+                  multiple modbus reads (i.e., string combiners)
+                - added improved hexdump output in debugging mode
+
+2011-Oct-21:  Added the ezxml library.
+              Added xml model format.
+
 2012-Jan-24:  Changes to support libmodbus version 3.0.1, the
-	      current stable release rather than version 2.9.3.
+              current stable release rather than version 2.9.3.
+
+2012-Jan-25:  Makefile changes to fix build issues on Ubuntu 11.10.
+              Correct some unit labels that were incorrect in the
+              AC meter map.
 
 
 Dependencies
@@ -59,7 +73,7 @@ collect2: ld returned 1 exit status
 make: *** [suns] Error 1
 
 You probably have not installed libmodbus in /usr/local/lib.
-Type "sudo make install" in the libmodbus-2.9.3 directory.
+Type "sudo make install" in the libmodbus-3.0.1 directory.
 
 
 * running suns fails with "error loading shared libraries: libmodbus.so.4"
