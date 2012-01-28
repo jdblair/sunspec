@@ -39,6 +39,11 @@
 
 #define _BSD_SOURCE  /* for big/little endian macros */
 
+#define UNIT_ASSERT(exp) if (! (exp)) {			\
+	debug("ASSERT FAILED: " #exp);			\
+	return -1;					\
+    }
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

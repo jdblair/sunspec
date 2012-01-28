@@ -432,6 +432,30 @@ int suns_value_to_buffer(buffer_t *buf, suns_value_t *v)
 }
 
 
+/* sets v->meta to appropriately to SUNS_VALUE_OK or SUNS_VALUE_NOT_IMPLEMENTED
+   also returns the meta value.
+   this logic is used in at least two places so I'm breaking it out here */
+suns_value_meta_t suns_check_not_implemented(suns_type_pair_t *tp,
+                                             suns_value_t *v)
+{
+    if ((tp->type == SUNS_INT16   && v->value.i16 == (int16_t)  0x8000)     ||
+        (tp->type == SUNS_UINT16  && v->value.u16 == (uint16_t) 0xFFFF)     ||
+        (tp->type == SUNS_ENUM16  && v->value.u16 == (uint16_t) 0xFFFF)     ||
+        (tp->type == SUNS_SF      && v->value.i16 == (int16_t)  0x8000)     ||
+        (tp->type == SUNS_BITFIELD16 && v->value.u16 == (uint16_t) 0xFFFF)  ||
+        (tp->type == SUNS_INT32   && v->value.i32 == (int32_t)  0x80000000) ||
+        (tp->type == SUNS_UINT32  && v->value.i32 == (uint32_t) 0xFFFFFFFF) ||
+        (tp->type == SUNS_BITFIELD32 && v->value.u32 == (uint32_t) 0xFFFFFFFF) ||
+        (tp->type == SUNS_FLOAT32 && isnan(v->value.f32))) {
+        v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
+    } else {
+        /* mark the value as valid */
+        v->meta = SUNS_VALUE_OK;
+    }
+
+    return v->meta;
+}
+
 
 int suns_buf_to_value(unsigned char *buf,
                       suns_type_pair_t *tp,
@@ -484,21 +508,8 @@ int suns_buf_to_value(unsigned char *buf,
         return -2;
     }    
 
-    /* now check for "not implemented" value */
-    if ((tp->type == SUNS_INT16   && v->value.i16 == (int16_t)  0x8000)     ||
-        (tp->type == SUNS_UINT16  && v->value.u16 == (uint16_t) 0xFFFF)     ||
-        (tp->type == SUNS_ENUM16  && v->value.u16 == (uint16_t) 0xFFFF)     ||
-        (tp->type == SUNS_SF      && v->value.i16 == (int16_t)  0x8000)     ||
-        (tp->type == SUNS_BITFIELD16 && v->value.u16 == (uint16_t) 0xFFFF)  ||
-        (tp->type == SUNS_INT32   && v->value.i32 == (int32_t)  0x80000000) ||
-        (tp->type == SUNS_UINT32  && v->value.i32 == (uint32_t) 0xFFFFFFFF) ||
-        (tp->type == SUNS_BITFIELD32 && v->value.u32 == (uint32_t) 0xFFFFFFFF) ||
-        (tp->type == SUNS_FLOAT32 && isnan(v->value.f32))) {
-        v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
-    } else {
-        /* mark the value as valid */
-        v->meta = SUNS_VALUE_OK;
-    }
+    /* this sets v->meta appropriately */
+    suns_check_not_implemented(tp, v);
 
     /* set the value to the specified type */
     v->tp = *tp;
@@ -510,6 +521,105 @@ int suns_buf_to_value(unsigned char *buf,
     return 0;
 }
 
+
+/* parse a string into a value based on the type information in *tp */
+int suns_string_to_value(const char *string,
+                         suns_value_t *v,
+                         suns_type_pair_t *tp)
+{
+    /* We could just use a large enough numeric size to store all numbers
+       rather than splitting them up into 16 bit and 32 bit numbers.
+       If this was written from scratch this would make the most sense.
+       However, since we already have the machinery to do it, let's use
+       the precise built-in binary types.  */
+
+    switch (tp->type) {
+        
+        /* 16 bit signed integers */
+    case SUNS_INT16:
+    case SUNS_SF:
+        if (sscanf(string, "%hd", &(v->value.i16)) != 1) {
+            /* parsing error */
+            return -1;
+        }
+
+        break;
+
+        /* 16 bit unsigned integers */
+    case SUNS_UINT16:
+    case SUNS_ACC16:
+    case SUNS_ENUM16:
+    case SUNS_BITFIELD16:
+        if (sscanf(string, "%hu", &(v->value.u16)) != 1) {
+            /* parsing error */
+            return -1;
+        }
+
+        break;
+	
+        /* 32 bit signed integers */
+    case SUNS_INT32:
+        if (sscanf(string, "%d", &(v->value.i32)) != 1) {
+            /* parsing error */
+            return -1;
+        }
+
+        break;
+
+        /* 32 bit unsigned integers */
+    case SUNS_UINT32:
+    case SUNS_ACC32:
+    case SUNS_BITFIELD32:
+        if (sscanf(string, "%u", &(v->value.u32)) != 1) {
+            /* parsing error */
+            return -1;
+        }
+
+        break;
+        
+        /* 32 bit float */
+    case SUNS_FLOAT32: 
+        if (sscanf(string, "%f", &(v->value.f32)) != 1) {
+            /* parsing error */
+            return -1;
+        }
+
+        break;
+
+        /* strings */
+    case SUNS_STRING:
+        /* same as malloc() if tp->s == NULL */
+        v->value.s = realloc(v->value.s, tp->len + 1);
+        if (v->value.s == NULL) {
+            /* uh oh */
+            debug("malloc() returned NULL!");
+            return -3;
+        }
+
+        /* don't assume the string will be NULL terminated */
+        v->value.s[tp->len] = '\0';
+
+        /* copy out of the buffer */
+        strncpy(v->value.s, string, tp->len);
+
+        break;
+    
+    default:
+        /* this means we hit an unsupported datatype or SUNS_UNDEF */
+        debug("unsupported datatype %s(%d)",
+              suns_type_string(tp->type), tp->type);
+        return -2;
+    }    
+
+    /* this sets v->meta appropriately */
+    suns_check_not_implemented(tp, v);
+
+    /* set the value to the specified type */
+    v->tp = *tp;
+
+    /* stash the "raw" binary value */
+    return 0;
+}
 
 
 suns_value_t *suns_value_new(void)
@@ -619,10 +729,8 @@ int suns_value_is_numeric(suns_value_t *v)
 }
 
 
-suns_dataset_t *suns_dataset_new(suns_model_did_t *did)
+suns_dataset_t *suns_dataset_new(void)
 {
-    assert(did);
-
     suns_dataset_t *d;
 
     d = malloc(sizeof(suns_dataset_t));
@@ -631,8 +739,11 @@ suns_dataset_t *suns_dataset_new(suns_model_did_t *did)
         return NULL;
     }
 	
-    d->did = did;
     d->values = list_new();
+    if (d->values == NULL) {
+        debug("list_new() failed");
+        return NULL;
+    }
 
     return d;
 }
@@ -1034,11 +1145,12 @@ suns_dataset_t *suns_decode_data(list_t *did_list,
     
     suns_model_t *m = did->model;
 
-    data = suns_dataset_new(did);
+    data = suns_dataset_new();
     if (data == NULL) {
         debug("suns_dataset_new() failed");
         return NULL;
     }
+    data->did = did;
 
     debug("did %d found", did_value);
 
@@ -1104,8 +1216,6 @@ void suns_model_fill_offsets(suns_model_t *m)
 {
     list_node_t *c, *d;
     int offset = 3;  /* skip the header, did and len fields */
-
-    debug("HERE");
 
     list_for_each(m->dp_blocks, d) {
         suns_dp_block_t *dp_block = d->data;

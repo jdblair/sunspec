@@ -87,7 +87,7 @@ typedef struct suns_type_pair {
 
 typedef struct suns_dp_block {
     int repeating;
-    char *feature;
+    char *feature;    /* not sure i'm using this for anything */
     list_t *dp_list;
     int len;
 } suns_dp_block_t;
@@ -183,22 +183,24 @@ typedef enum suns_value_meta {
 typedef struct suns_value {
     char *name;                /* datapoint name associated with this */
     char *name_with_index;     /* composite name including index */
-    suns_type_pair_t tp;       /* type_pair of value */
+    suns_type_pair_t tp;       /* type_pair of value (note: not a pointer) */
     suns_value_meta_t meta;    /* meta-value (null, error, etc.) */
     union {                    /* actual value */
         uint16_t u16;
         uint32_t u32;
         int16_t i16;
         int32_t i32;
-        float f32;             /* FIXME: host float size may be wrong! */
-        char *s;               /* string - must be free()d if not NULL */
+        float f32;           /* FIXME: host float size may be wrong! */
+        char *s;             /* string - must be free()d if not NULL */
     } value;
     unsigned char raw[SUNS_VALUE_RAW_SIZE]; /* "raw" from-the-wire data */
-    size_t raw_len;            /* length of the raw data */
-    int index;                 /* index in repeating blocks */
-    int repeating;             /* is this value part of a repeating block? */
-    time_t unixtime;           /* optional value-specific timestamp */
-    char *units;               /* optional units string */
+    size_t raw_len;          /* length of the raw data */
+    int index;               /* index in repeating blocks */
+    int repeating;           /* is this value part of a repeating block? */
+    /* time_t unixtime; */         /* optional value-specific timestamp */
+    char *timestamp;         /* optional timestamp string in RFC 3339 format */
+    char *units;             /* optional units string */
+    char *description;       /* optional descriptive string */    
 } suns_value_t;
 
 
@@ -207,6 +209,10 @@ typedef struct suns_value {
 typedef struct suns_dataset {
     suns_model_did_t *did;
     list_t *values;  /* list of suns_value_t */
+
+    /* used for logger upload xml parsing */ 
+    char *ns;         /* namespace, for vendor extension blocks */
+    char *x;          /* index, for aggregated devices */
 } suns_dataset_t;
 
 
@@ -214,9 +220,17 @@ typedef struct suns_dataset {
 typedef struct suns_device {
     int addr;
     list_t *datasets;
-    char *logger_id;
-    char *namespace;
     time_t unixtime;
+
+    char *cid;    /* correlation id */
+    char *id;     /* optional device id string (overrides man, mod and sn) */
+    char *iface;  /* optional interface id string (only if d.id is used) */
+    char *lid;    /* logger id string; required by default */
+    char *man;    /* C_Manufacturer from common block */
+    char *mod;    /* C_Model from common block */
+    char *ns;     /* domain namespace for the logger id */
+    char *sn;     /* C_SerialNumber from the common block */
+    char *t;      /* timestamp in RFC 3339 format */
 
     /* these pointers are set when the common block dataset is added */
     suns_dataset_t *common;
@@ -249,10 +263,12 @@ int suns_type_size(suns_type_t type);
 int suns_type_pair_size(suns_type_pair_t *tp);
 int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len);
 int suns_value_to_buffer(buffer_t *buf, suns_value_t *v);
+suns_value_meta_t suns_check_not_implemented(suns_type_pair_t *tp,
+                                             suns_value_t *v);
 int suns_buf_to_value(unsigned char *buf,
-		      suns_type_pair_t *tp,
-		      suns_value_t *v);
-suns_dataset_t *suns_dataset_new(suns_model_did_t *did);
+                      suns_type_pair_t *tp,
+                      suns_value_t *v);
+suns_dataset_t *suns_dataset_new(void);
 void suns_dataset_free(suns_dataset_t *d);
 
 suns_device_t *suns_device_new(void);
@@ -264,6 +280,10 @@ suns_model_t *suns_model_new(void);
 suns_model_did_t *suns_model_did_new(char *name,
                                      uint16_t id,
                                      suns_model_t *model);
+int suns_string_to_value(const char *string,
+                         suns_value_t *v,
+                         suns_type_pair_t *tp);
+
 suns_value_t *suns_value_new(void);
 void suns_value_free(suns_value_t *v);
 void suns_value_init(suns_value_t *v);

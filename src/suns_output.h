@@ -50,7 +50,7 @@ typedef int (*suns_value_snprintf_f)(char *buf, size_t len,
 
    for example, the xml format needs to xml-escape all strings.
 */
-typedef struct suns_output_vector {
+typedef struct suns_value_output_vector {
     suns_value_snprintf_f null;
     suns_value_snprintf_f undef;
     suns_value_snprintf_f int16;
@@ -66,7 +66,7 @@ typedef struct suns_output_vector {
     suns_value_snprintf_f sunssf;
     suns_value_snprintf_f string;
     suns_value_snprintf_f meta;
-} suns_output_vector_t;
+} suns_value_output_vector_t;
     
 typedef int (*suns_model_list_fprintf_f)(FILE *stream,
                                           char *type,
@@ -126,7 +126,7 @@ int suns_dataset_xml_fprintf(FILE *stream, suns_dataset_t *data);
 int suns_device_xml_fprintf(FILE *stream, suns_device_t *device);
 
 int suns_snprintf_value(char *str, size_t size,
-                        suns_value_t *v, suns_output_vector_t *fmt);
+                        suns_value_t *v, suns_value_output_vector_t *fmt);
 void suns_model_fprintf(FILE *stream, suns_model_t *model);
 int suns_snprintf_value_text(char *str, size_t size,
                              suns_value_t *v);
@@ -142,6 +142,7 @@ void suns_binary_model_fprintf(FILE *stream, list_t *did_list,
                                unsigned char *buf, size_t len);
 void suns_model_xml_fprintf(FILE *stream, suns_model_t *model);
 int suns_model_xml_export_all(FILE *stream, char *type, list_t *list);
-
+void suns_model_xml_dp_block_fprintf(FILE *stream, suns_dp_block_t *dp_block);
+void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp);
 
 #endif /* _SUNS_OUTPUT_H_ */

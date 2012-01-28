@@ -62,8 +62,8 @@ typedef struct suns_app {
     int max_modbus_read;  /* max modbus read length, in registers */
     char *export_fmt;     /* model export format */
     char *output_fmt;     /* dataset output format */
-    char *logger_id;      /* logger id for sunspec data posts */
-    char *namespace;      /* logger id namespace for sunspec data posts */
+    char *lid;            /* logger id for sunspec data posts */
+    char *ns;             /* logger id namespace for sunspec data posts */
 } suns_app_t;
 
 

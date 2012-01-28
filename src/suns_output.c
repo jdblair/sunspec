@@ -402,9 +402,9 @@ static int value_output_meta(char *buf, size_t len, suns_value_t *v)
 
 
 /* convert a value to a string using the supplied
-   suns_output_vector_t vector table */
+   suns_value_output_vector_t vector table */
 int suns_snprintf_value(char *str, size_t size,
-                        suns_value_t *v, suns_output_vector_t *fmt)
+                        suns_value_t *v, suns_value_output_vector_t *fmt)
 {
     int len = 0;
 
@@ -463,6 +463,30 @@ int suns_snprintf_value(char *str, size_t size,
 
     return len;
 }
+
+
+/* This is the default set of string conversion functions for a
+   suns_value.  All of the actual output functions "inherit" from
+   this one by copying it and modifying the function pointers it
+   wants to over-ride.
+*/
+suns_value_output_vector_t suns_output_value_base_fmt = {
+    /* .null       =  */ value_output_null,
+    /* .undef      =  */ value_output_undef,
+    /* .int16      =  */ value_output_int16,
+    /* .uint16     =  */ value_output_uint16,
+    /* .acc16      =  */ value_output_uint16,
+    /* .int32      =  */ value_output_int32,
+    /* .uint32     =  */ value_output_uint32,
+    /* .float32    =  */ value_output_float32,
+    /* .acc32      =  */ value_output_int32,
+    /* .enum16     =  */ value_output_uint16,
+    /* .bitfield16 =  */ value_output_hex_uint16,
+    /* .bitfield32 =  */ value_output_hex_uint32,
+    /* .sunssf     =  */ value_output_int16,
+    /* .string     =  */ value_output_string,
+    /* .meta       =  */ value_output_meta,
+};
 
 
 
@@ -556,25 +580,8 @@ void suns_define_fprint(FILE *stream, suns_define_t *define)
 int suns_snprintf_value_text(char *str, size_t size,
                              suns_value_t *v)
 {
-    suns_output_vector_t fmt = {
-        .null       =  value_output_null,
-        .undef      =  value_output_undef,
-        .int16      =  value_output_int16,
-        .uint16     =  value_output_uint16,
-        .acc16      =  value_output_uint16,
-        .int32      =  value_output_int32,
-        .uint32     =  value_output_uint32,
-        .float32    =  value_output_float32,
-        .acc32      =  value_output_int32,
-        .enum16     =  value_output_uint16,
-        .bitfield16 =  value_output_hex_uint16,
-        .bitfield32 =  value_output_hex_uint32,
-        .sunssf     =  value_output_int16,
-        .string     =  value_output_string,
-        .meta       =  value_output_meta,
-    };
-
-    return suns_snprintf_value(str, size, v, &fmt);
+    suns_value_output_vector_t fmt = suns_output_value_base_fmt;
+    return suns_snprintf_value(str, size, v, &fmt); 
 }
 
 
@@ -582,24 +589,17 @@ int suns_snprintf_value_text(char *str, size_t size,
 int suns_snprintf_value_sf_text(char *str, size_t size,
                                 suns_value_t *v)
 {
-    suns_output_vector_t fmt = {
-        .null       =  value_output_null,
-        .undef      =  value_output_undef,
-        .int16      =  value_output_int16_sf,
-        .uint16     =  value_output_uint16_sf,
-        .acc16      =  value_output_uint16_sf,
-        .int32      =  value_output_int32_sf,
-        .uint32     =  value_output_uint32_sf,
-        .float32    =  value_output_float32_sf,
-        .acc32      =  value_output_int32_sf,
-        .enum16     =  value_output_uint16,
-        .bitfield16 =  value_output_hex_uint16,
-        .bitfield32 =  value_output_hex_uint32,
-        .sunssf     =  value_output_int16,
-        .string     =  value_output_string,
-        .meta       =  value_output_meta,
-    };
+    suns_value_output_vector_t fmt = suns_output_value_base_fmt;
 
+    /* override numeric values with functions which apply scale factors */
+    fmt.int16  = value_output_int16_sf;
+    fmt.uint16 = value_output_uint16_sf;
+    fmt.acc16 = value_output_uint16_sf;
+    fmt.int32  = value_output_int32_sf;
+    fmt.uint32 = value_output_uint32_sf;
+    fmt.acc32 = value_output_uint32_sf;
+    fmt.float32  = value_output_float32_sf;
+    
     return suns_snprintf_value(str, size, v, &fmt);
 }
 
@@ -719,23 +719,13 @@ static int value_output_sql_null(char *buf, size_t len, suns_value_t *v)
 int suns_snprintf_value_sql(char *str, size_t size,
                              suns_value_t *v)
 {
-    suns_output_vector_t fmt = {
-        .null       =  value_output_null,
-        .undef      =  value_output_undef,
-        .int16      =  value_output_int16,
-        .uint16     =  value_output_uint16,
-        .acc16      =  value_output_uint16,
-        .int32      =  value_output_int32,
-        .uint32     =  value_output_uint32,
-        .float32    =  value_output_float32,
-        .acc32      =  value_output_int32,
-        .enum16     =  value_output_uint16,
-        .bitfield16 =  value_output_uint16,
-        .bitfield32 =  value_output_uint32,
-        .sunssf     =  value_output_int16,
-        .string     =  value_output_sql_string,
-        .meta       =  value_output_sql_null, /* NULL for all other than OK */
-    };
+    suns_value_output_vector_t fmt = suns_output_value_base_fmt;
+
+    /* escape single quotes in strings */
+    fmt.string = value_output_sql_string;
+
+    /* NULL for all meta values other than SUNS_VALUE_OK */
+    fmt.meta   = value_output_sql_null;
 
     return suns_snprintf_value(str, size, v, &fmt);
 }
@@ -820,23 +810,12 @@ static int value_output_csv_null(char *buf, size_t len, suns_value_t *v)
 int suns_snprintf_value_csv(char *str, size_t size,
                              suns_value_t *v)
 {
-    suns_output_vector_t fmt = {
-        .null       =  value_output_null,
-        .undef      =  value_output_undef,
-        .int16      =  value_output_int16,
-        .uint16     =  value_output_uint16,
-        .acc16      =  value_output_uint16,
-        .int32      =  value_output_int32,
-        .uint32     =  value_output_uint32,
-        .float32    =  value_output_float32,
-        .acc32      =  value_output_int32,
-        .enum16     =  value_output_uint16,
-        .bitfield16 =  value_output_uint16,
-        .bitfield32 =  value_output_uint32,
-        .sunssf     =  value_output_int16,
-        .string     =  value_output_csv_string,
-        .meta       =  value_output_csv_null, /* NULL for all other than OK */
-    };
+    suns_value_output_vector_t fmt = suns_output_value_base_fmt;
+
+    /* escape quotes */
+    fmt.string     =  value_output_csv_string;
+    /* NULL for all other than SUNS_VALUE_OK */
+    fmt.meta       =  value_output_csv_null;
 
     return suns_snprintf_value(str, size, v, &fmt);
 }
@@ -931,23 +910,9 @@ static int value_output_xml_meta(char *buf, size_t len, suns_value_t *v)
 int suns_snprintf_value_xml(char *str, size_t size,
                              suns_value_t *v)
 {
-    suns_output_vector_t fmt = {
-        .null       =  value_output_null,
-        .undef      =  value_output_undef,
-        .int16      =  value_output_int16,
-        .uint16     =  value_output_uint16,
-        .acc16      =  value_output_uint16,
-        .int32      =  value_output_int32,
-        .uint32     =  value_output_uint32,
-        .float32    =  value_output_float32,
-        .acc32      =  value_output_int32,
-        .enum16     =  value_output_uint16,
-        .bitfield16 =  value_output_uint16,
-        .bitfield32 =  value_output_uint32,
-        .sunssf     =  value_output_int16,
-        .string     =  value_output_xml_string,
-        .meta       =  value_output_xml_meta,
-    };
+    suns_value_output_vector_t fmt = suns_output_value_base_fmt;
+    fmt.string     =  value_output_xml_string;
+    fmt.meta       =  value_output_xml_meta;
 
     return suns_snprintf_value(str, size, v, &fmt);
 }
@@ -999,13 +964,13 @@ int suns_device_xml_fprintf(FILE *stream, suns_device_t *device)
 
     fprintf(stream, " <d");
 
-    if (device->logger_id) {
-        string_escape_xml(device->logger_id, safe_string, BUFFER_SIZE);
+    if (device->lid) {
+        string_escape_xml(device->lid, safe_string, BUFFER_SIZE);
         fprintf(stream, " lid=\"%s\"", safe_string);
     }
 
-    if (device->namespace) {
-        string_escape_xml(device->namespace, safe_string, BUFFER_SIZE);
+    if (device->ns) {
+        string_escape_xml(device->ns, safe_string, BUFFER_SIZE);
         fprintf(stream, " ns=\"%s\"", safe_string);
     }        
     
@@ -1080,50 +1045,66 @@ void suns_model_xml_fprintf(FILE *stream, suns_model_t *model)
         
         list_node_t *d;
         list_for_each(model->dp_blocks, d) {
-            suns_dp_block_t *dp_block = d->data;
-            list_node_t *e;
-            fprintf(stream, "    <block");
-            if (dp_block->repeating)
-                fprintf(stream, " type=\"repeating\"");
-            fprintf(stream, ">\n");
-            list_for_each(dp_block->dp_list, e) {
-                suns_dp_t *dp = e->data;
-                fprintf(stream, "      <point name=\"%s\" type=\"%s\"",
-                        dp->name, suns_type_string(dp->type_pair->type));
-
-                if (dp->type_pair->type == SUNS_STRING)
-                    fprintf(stream, " size=\"%d\"", dp->type_pair->len);
-                
-                if (dp->type_pair->name)
-                    fprintf(stream, " sf=\"%s\"", dp->type_pair->name);
-
-                if (dp->type_pair->sf != 0)
-                    fprintf(stream, " sf=\"%d\"", dp->type_pair->sf);
-
-                if (dp->attributes) {
-                    list_node_t *f;
-                    list_for_each(dp->attributes, f) {
-                        suns_attribute_t *a = f->data;
-                        fprintf(stream, " %s=\"%s\"", a->name, a->value);
-                    }
-                }
-
-                fprintf(stream, " />\n");
-            }
-            fprintf(stream, "    </block>\n");
+            suns_model_xml_dp_block_fprintf(stream, d->data);
         }
         
 
         fprintf(stream, "  </model>\n\n");
     }
 
-    /* defines - enums & bitfields */
-    /*
-    list_for_each(model->defines, c) {
-        suns_define_block_fprint(stream, c->data);
-        fprintf(stream, "\n");
-    }
-    */
-
-
 }
+
+
+void suns_model_xml_dp_block_fprintf(FILE *stream, suns_dp_block_t *dp_block)
+{
+    list_node_t *c;
+    fprintf(stream, "    <block");
+    if (dp_block->repeating)
+        fprintf(stream, " type=\"repeating\"");
+    fprintf(stream, ">\n");
+    list_for_each(dp_block->dp_list, c) {
+        suns_model_xml_dp_fprintf(stream, c->data);
+    }
+    fprintf(stream, "    </block>\n");
+}
+
+void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp)
+{
+    fprintf(stream, "      <point name=\"%s\" type=\"%s\"",
+            dp->name, suns_type_string(dp->type_pair->type));
+    
+    if (dp->type_pair->type == SUNS_STRING)
+        fprintf(stream, " size=\"%d\"", dp->type_pair->len);
+    
+    /* the name string is overloaded-
+       it can be a scale factor reference, or a reference to
+       the definitions for an enum or bitfield
+       in the xml we are more explicit */
+    if (dp->type_pair->name) {
+        if ((dp->type_pair->type == SUNS_ENUM16) ||
+            (dp->type_pair->type == SUNS_BITFIELD16) ||
+            (dp->type_pair->type == SUNS_BITFIELD32)) {
+            fprintf(stream, " def=\"%s\"", dp->type_pair->name);
+        } else {
+            fprintf(stream, " sf=\"%s\"", dp->type_pair->name);
+        }
+    }
+    
+    if (dp->type_pair->sf != 0) {
+        fprintf(stream, " sf=\"%d\"", dp->type_pair->sf);
+    }            
+
+    if (dp->attributes) {
+        list_node_t *c;
+        list_for_each(dp->attributes, c) {
+            suns_attribute_t *a = c->data;
+            fprintf(stream, " %s=\"%s\"", a->name, a->value);
+        }
+    }
+
+    fprintf(stream, " />\n");
+}
+
+
+
+

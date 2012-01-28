@@ -73,7 +73,7 @@ void suns_app_init(suns_app_t *app)
     app->addr = 1;
     app->export_fmt = NULL;
     app->output_fmt = "text";
-    app->logger_id = NULL;
+    app->lid = NULL;
     app->max_modbus_read = 125;  /* max defined in the modbus spec */
 }
 
@@ -169,11 +169,11 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
             break;
 
         case 'I':
-            app->logger_id = optarg;
+            app->lid = optarg;
             break;
 
         case 'N':
-            app->namespace = optarg;
+            app->ns = optarg;
             break;
 
         case 'l':
@@ -551,9 +551,6 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
             /* we found a did we know about */
             
             /* is the length what we expect? */
-            /* FIXME: it is possible for a repeatable data block to 
-               be larger than what can fit into a single modbus frame.
-               in this case we need to retrieve it in multiple passes! */
             /* check out this pointer indirection!! */
             suns_dp_block_t *last_dp_block = did->model->dp_blocks->tail->data;
             if ((did->model->len != len) &&
@@ -683,8 +680,8 @@ int main(int argc, char **argv)
             exit(EXIT_FAILURE);
         }
         
-        device->logger_id = app.logger_id;
-        device->namespace = app.namespace;
+        device->lid = app.lid;
+        device->ns = app.ns;
                   
         if (suns_app_read_device(&app, device) < 0) {
             error("failure to read device");

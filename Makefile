@@ -54,6 +54,7 @@ dist: $(DISTFILE)
 clean:
 	rm -f $(DISTFILE)
 	make -C src clean
+	make -C lib clean
 
 distclean:
 	find . -name \*~ | xargs rm -v

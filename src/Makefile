@@ -46,10 +46,14 @@ UNIT_TESTS_OBJ=$(UNIT_TESTS_SRC:.c=.o)
 TEST_SERVER_SRC=test_server.c
 TEST_SERVER_OBJ=$(TEST_SERVER_SRC:.c=.o)
 
-LIBTRX=trx/libtrx.a
-LIBEZXML=ezxml/libezxml.a
+HOST_TEST_SRC=suns_model.c suns_host_parser.c suns_host_test.c
+HOST_TEST_OBJ=$(HOST_TEST_SRC:.c=.o)
+
+LIBTRX=../lib/trx/libtrx.a
+LIBEZXML=../lib/ezxml/libezxml.a
 
 CFLAGS=-std=gnu99 -g -DDEBUG -Wall $(shell pkg-config --cflags libmodbus)
+CFLAGS+=-I ../lib
 LDFLAGS=-lm $(shell pkg-config --libs libmodbus) 
 
 #LDLIBS=$(LIBTRX) $(shell pkg-config --libs libmodbus)
@@ -77,19 +81,20 @@ suns_lang.yy.c: suns_lang.l suns_lang.tab.h
 	$(LEX) -o suns_lang.yy.c suns_lang.l
 
 check: $(SRC) suns_unit_tests.c
-	splint -posixlib $(SRC) suns_unit_tests.c
+	splint -posixlib $(CFLAGS) $(SRC) suns_unit_tests.c
+
+suns_host_test: $(HOST_TEST_OBJ)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(HOST_TEST_OBJ) $(LIBEZXML) $(LIBTRX) -o suns_host_test
 
 $(LIBTRX):
-	make -C trx libtrx.a
+	make -C ../lib libtrx
 
 $(LIBEZXML):
-	make -C ezxml libezxml.a
+	make -C ../lib ezxml
 
 clean:
 	rm -f	suns_lang.tab.c suns_lang.tab.h \
 		suns_lang.yy.c *.o *.d $(BINFILES)
-	make -C trx clean
-	make -C ezxml clean
 
 distclean:
 	rm -f *~ *.o *.d $(BINFILES)
@@ -101,7 +106,7 @@ distclean:
 # of the GNU make info pages for details
 %.d: %.c
 	@set -e; rm -f $@; \
-	$(CC) -MM $(CPPFLAGS) $< > $@.$$$$; \
+	$(CC) -MM $(CFLAGS) $(CPPFLAGS) $< > $@.$$$$; \
 	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
 	rm -f $@.$$$$; \
 	echo generated $@
