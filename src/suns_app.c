@@ -324,7 +324,7 @@ int suns_app_test_server(suns_app_t *app)
         while (1) {
             debug("top of loop");
             
-            rc = modbus_receive(app->mb_ctx, -1, q);
+            rc = modbus_receive(app->mb_ctx, q);
             if (rc < 0) {
                 debug("modbus_receive() returned %d: %s",
                       rc, modbus_strerror(errno));
@@ -408,7 +408,7 @@ int suns_init_modbus(suns_app_t *app)
     /* set timeout to 4 seconds */
     timeout.tv_sec = 4;
     timeout.tv_usec = 0;
-    modbus_set_timeout_begin(app->mb_ctx, &timeout);
+    modbus_set_response_timeout(app->mb_ctx, &timeout);
 
     return 0;
 }

@@ -67,10 +67,10 @@ include $(SRC:.c=.d)
 # when possible the implicit rule for generating *.o files is used
 
 unit_tests: $(UNIT_TESTS_OBJ)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(UNIT_TESTS_OBJ) $(LIBTRX) -o unit_tests
+	$(CC) $(CFLAGS) $(UNIT_TESTS_OBJ) $(LDFLAGS) $(LIBTRX) -o unit_tests
 
 suns: $(OBJ) $(LIBTRX) $(LIBEZXML)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(LIBEZXML) $(LIBTRX) -o suns
+	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LIBEZXML) $(LIBTRX) -o suns
 
 suns_lang.tab.c: suns_lang.y
 	$(YACC) -d -o suns_lang.tab.c suns_lang.y
