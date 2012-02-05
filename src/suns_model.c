@@ -51,6 +51,7 @@
 #include "suns_model.h"
 #include "trx/debug.h"
 #include "trx/macros.h"
+#include "trx/string.h"
 
 
 suns_model_t *suns_model_new(void)
@@ -131,6 +132,7 @@ char * suns_type_string(suns_type_t type)
         "int64",
         "uint64",
         "float64",
+        "acc64",
         "enum16",
         "bitfield16",
         "bitfield32",
@@ -190,6 +192,7 @@ suns_type_t suns_type_from_name(char *name)
         { "int64",      SUNS_INT64 },
         { "uint64",     SUNS_UINT64 },
         { "float64",    SUNS_FLOAT64 },
+        { "acc64",      SUNS_ACC64 },
         { "enum16",     SUNS_ENUM16 },
         { "bitfield16", SUNS_BITFIELD16 },
         { "bitfield32", SUNS_BITFIELD32 },
@@ -309,6 +312,7 @@ int suns_type_size(suns_type_t type)
         8, /* SUNS_INT64 */
         8, /* SUNS_UINT64 */
         8, /* SUNS_FLOAT64 */
+        8, /* SUNS_ACC64 */
         2, /* SUNS_ENUM16 */
         2, /* SUNS_BITFIELD16 */
         4, /* SUNS_BITFIELD32 */
@@ -343,9 +347,6 @@ int suns_type_pair_size(suns_type_pair_t *tp)
 
 int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len)
 {
-    /* uint16_t tmp_u16;
-       uint32_t tmp_u32; */
-
     switch (v->tp.type) {
 
         /* 16 bit datatypes */
@@ -374,6 +375,18 @@ int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len)
         }
         /* we can safely treat all these values as uint for this purpose */
         *((uint32_t *) buf) = htobe32(v->value.u32);
+        break;
+
+    case SUNS_INT64:
+    case SUNS_UINT64:
+    case SUNS_FLOAT64:
+    case SUNS_ACC64:
+        if (len < 4) {
+            debug("not enough space for 64 bit conversion "
+                  "(type = %s,  len = %d)", suns_type_string(v->tp.type), len);
+        }
+        /* we can safely treat all these values as uint for this purpose */
+        *((uint64_t *) buf) = htobe64(v->value.u64);
         break;
 
         /* strings */
@@ -446,7 +459,10 @@ suns_value_meta_t suns_check_not_implemented(suns_type_pair_t *tp,
         (tp->type == SUNS_INT32   && v->value.i32 == (int32_t)  0x80000000) ||
         (tp->type == SUNS_UINT32  && v->value.i32 == (uint32_t) 0xFFFFFFFF) ||
         (tp->type == SUNS_BITFIELD32 && v->value.u32 == (uint32_t) 0xFFFFFFFF) ||
-        (tp->type == SUNS_FLOAT32 && isnan(v->value.f32))) {
+        (tp->type == SUNS_INT64   && v->value.i64 == (int64_t) 0x8000000000000000) ||
+        (tp->type == SUNS_UINT64  && v->value.u64 == (uint64_t) 0xFFFFFFFFFFFFFFFF) ||
+        (tp->type == SUNS_FLOAT32 && isnan(v->value.f32)) ||
+        (tp->type == SUNS_FLOAT64 && isnan(v->value.f64))) {
         v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
     } else {
         /* mark the value as valid */
@@ -482,6 +498,14 @@ int suns_buf_to_value(unsigned char *buf,
         v->value.u32 = be32toh(*((uint32_t *)buf));
         break;
 	
+        /* 64 bit datatypes */
+    case SUNS_INT64:
+    case SUNS_UINT64:
+    case SUNS_FLOAT64:
+    case SUNS_ACC64:
+        v->value.u64 = be64toh(*((uint64_t *)buf));
+        break;
+
         /* strings */
     case SUNS_STRING:
         /* same as malloc() if tp->s == NULL */
@@ -533,83 +557,120 @@ int suns_string_to_value(const char *string,
        However, since we already have the machinery to do it, let's use
        the precise built-in binary types.  */
 
-    switch (tp->type) {
-        
-        /* 16 bit signed integers */
-    case SUNS_INT16:
-    case SUNS_SF:
-        if (sscanf(string, "%hd", &(v->value.i16)) != 1) {
-            /* parsing error */
-            return -1;
-        }
-
-        break;
-
-        /* 16 bit unsigned integers */
-    case SUNS_UINT16:
-    case SUNS_ACC16:
-    case SUNS_ENUM16:
-    case SUNS_BITFIELD16:
-        if (sscanf(string, "%hu", &(v->value.u16)) != 1) {
-            /* parsing error */
-            return -1;
-        }
-
-        break;
-	
-        /* 32 bit signed integers */
-    case SUNS_INT32:
-        if (sscanf(string, "%d", &(v->value.i32)) != 1) {
-            /* parsing error */
-            return -1;
-        }
-
-        break;
-
-        /* 32 bit unsigned integers */
-    case SUNS_UINT32:
-    case SUNS_ACC32:
-    case SUNS_BITFIELD32:
-        if (sscanf(string, "%u", &(v->value.u32)) != 1) {
-            /* parsing error */
-            return -1;
-        }
-
-        break;
-        
-        /* 32 bit float */
-    case SUNS_FLOAT32: 
-        if (sscanf(string, "%f", &(v->value.f32)) != 1) {
-            /* parsing error */
-            return -1;
-        }
-
-        break;
-
-        /* strings */
-    case SUNS_STRING:
-        /* same as malloc() if tp->s == NULL */
-        v->value.s = realloc(v->value.s, tp->len + 1);
-        if (v->value.s == NULL) {
-            /* uh oh */
-            debug("malloc() returned NULL!");
-            return -3;
-        }
-
-        /* don't assume the string will be NULL terminated */
-        v->value.s[tp->len] = '\0';
-
-        /* copy out of the buffer */
-        strncpy(v->value.s, string, tp->len);
-
-        break;
+    /* set the value to the specified type */
+    v->tp = *tp;
     
-    default:
-        /* this means we hit an unsupported datatype or SUNS_UNDEF */
-        debug("unsupported datatype %s(%d)",
-              suns_type_string(tp->type), tp->type);
-        return -2;
-    }    
+    /* special case floating point values */
+    if (tp->type == SUNS_FLOAT32) {
+        if (sscanf(string, "%f", &(v->value.f32)) != 1) {
+            debug("can't parse '%s' to SUNS_FLOAT32", string);
+            return -1;
+        }
+        if (isnan(v->value.f32))
+            v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
+    } else if (tp->type == SUNS_FLOAT64) {
+        if (sscanf(string, "%lf", &(v->value.f64)) != 1) {
+            debug("can't parse '%s' to SUNS_FLOAT32", string);
+            return -1;
+        }
+        if (isnan(v->value.f64))
+            v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
+    } else {
+        char base[BUFFER_SIZE];
+        int exp;
+
+        if (string_decompose_decimal(string, base, BUFFER_SIZE, &exp) < 0)
+            return -1;
+
+        switch (tp->type) {
+        
+            /* 16 bit signed integers */
+        case SUNS_INT16:
+        case SUNS_SF:
+            if (sscanf(string, "%hd", &(v->value.i16)) < 0) {
+                debug("can't parse '%s' to int16", string);
+                return -1;
+            }
+            break;
+            
+            /* 16 bit unsigned integers */
+        case SUNS_UINT16:
+        case SUNS_ACC16:
+        case SUNS_ENUM16:
+        case SUNS_BITFIELD16:
+            if (sscanf(string, "%hu", &(v->value.u16)) < 0) {
+                debug("can't parse '%s' to uint16", string);
+                return -1;
+            }
+            break;
+            
+            /* 32 bit signed integers */
+        case SUNS_INT32:
+            if (sscanf(string, "%d", &(v->value.i32)) < 0) {
+                debug("can't parse '%s' to int32", string);
+                return -1;
+            }
+            break;
+
+            /* 64 bit unsigned integers */
+        case SUNS_UINT64:
+            if (sscanf(string, "%lu",
+                       (long unsigned int *) &(v->value.u64)) < 0) {
+                debug("can't parse '%s' to uint64", string);
+                return -1;
+            }
+            break;
+
+            /* 64 bit signed integers */
+        case SUNS_INT64:
+            if (sscanf(string, "%ld", (long int *) &(v->value.i64)) < 0) {
+                debug("can't parse '%s' to int64", string);
+                return -1;
+            }
+            break;
+                
+            /* 32 bit unsigned integers */
+        case SUNS_UINT32:
+        case SUNS_ACC32:
+        case SUNS_BITFIELD32:
+            if (sscanf(string, "%u", &(v->value.u32)) < 0) {
+                debug("can't parse '%s' to uint32", string);
+                return -1;
+            }
+            break;
+
+            /* strings */
+        case SUNS_STRING:
+            /* same as malloc() if tp->s == NULL */
+            v->value.s = realloc(v->value.s, tp->len + 1);
+            if (v->value.s == NULL) {
+                /* uh oh */
+                debug("malloc() returned NULL!");
+                return -3;
+            }
+
+            /* don't assume the string will be NULL terminated */
+            v->value.s[tp->len] = '\0';
+            
+            /* copy out of the buffer */
+            strncpy(v->value.s, string, tp->len);
+            
+            break;
+            
+        default:
+            /* this means we hit an unsupported datatype or SUNS_UNDEF */
+            debug("unsupported datatype %s(%d)",
+                  suns_type_string(tp->type), tp->type);
+            return -2;
+        }
+        
+        /* this sets v->meta appropriately */
+        suns_check_not_implemented(tp, v);
+        
+        /* store the exponent in the tp */
+        v->tp.sf = exp;
+        
+    }
 
     /* this sets v->meta appropriately */
     suns_check_not_implemented(tp, v);
@@ -973,6 +1034,69 @@ uint32_t suns_value_get_acc32(suns_value_t *v)
 }
 
 
+void suns_value_set_uint64(suns_value_t *v, uint64_t u64)
+{
+    assert(v != NULL);
+
+    v->value.u64 = u64;
+    v->tp.type = SUNS_UINT64;
+    if (u64 == (uint64_t) 0xFFFFFFFFFFFFFFFF) {
+        v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
+    } else {
+        v->meta = SUNS_VALUE_OK;
+    }
+}
+
+uint64_t suns_value_get_uint64(suns_value_t *v)
+{
+    assert(v != NULL);
+    assert(v->tp.type == SUNS_UINT64);
+
+    return v->value.u64;
+}
+
+
+void suns_value_set_int64(suns_value_t *v, int64_t i64)
+{
+    assert(v != NULL);
+
+    v->value.i64 = i64;
+    v->tp.type = SUNS_INT64;
+    if (i64 == (int64_t) 0x8000000000000000) {
+        v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
+    } else {
+        v->meta = SUNS_VALUE_OK;
+    }
+}
+
+int64_t suns_value_get_int64(suns_value_t *v)
+{
+    assert(v != NULL);
+    assert(v->tp.type == SUNS_UINT64);
+
+    return v->value.i64;
+}
+
+
+void suns_value_set_acc64(suns_value_t *v, uint64_t u64)
+{
+    assert(v != NULL);
+
+    v->value.u64 = u64;
+    v->tp.type = SUNS_ACC64;
+    v->meta = SUNS_VALUE_OK;
+}
+
+
+uint64_t suns_value_get_acc64(suns_value_t *v)
+{
+    assert(v != NULL);
+    assert(v->tp.type == SUNS_ACC64);
+
+    return v->value.u64;
+}
+
+
 void suns_value_set_float32(suns_value_t *v, float f32)
 {
     assert(v != NULL);
@@ -986,12 +1110,35 @@ void suns_value_set_float32(suns_value_t *v, float f32)
     }
 }
 
-float suns_value_get_float32(suns_value_t *v)
+float32_t suns_value_get_float32(suns_value_t *v)
 {
     assert(v != NULL);
     assert(v->tp.type == SUNS_FLOAT32);
 
     return v->value.f32;
+}
+
+
+void suns_value_set_float64(suns_value_t *v, float64_t f64)
+{
+    assert(v != NULL);
+
+    v->value.f64 = f64;
+    v->tp.type = SUNS_FLOAT64;
+    if (isnan(f64)) {
+        v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
+    } else {
+        v->meta = SUNS_VALUE_OK;
+    }
+}
+
+
+float64_t suns_value_get_float64(suns_value_t *v)
+{
+    assert(v != NULL);
+    assert(v->tp.type == SUNS_FLOAT64);
+
+    return v->value.f64;
 }
 
 
@@ -1491,5 +1638,4 @@ char * suns_find_attribute(suns_dp_t *dp, char *name)
     /* not found */
     return NULL;
 }
-
 

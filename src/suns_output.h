@@ -63,6 +63,10 @@ typedef struct suns_value_output_vector {
     suns_value_snprintf_f enum16;
     suns_value_snprintf_f bitfield16;
     suns_value_snprintf_f bitfield32;
+    suns_value_snprintf_f int64;
+    suns_value_snprintf_f uint64;
+    suns_value_snprintf_f acc64;
+    suns_value_snprintf_f float64;
     suns_value_snprintf_f sunssf;
     suns_value_snprintf_f string;
     suns_value_snprintf_f meta;
@@ -144,5 +148,37 @@ void suns_model_xml_fprintf(FILE *stream, suns_model_t *model);
 int suns_model_xml_export_all(FILE *stream, char *type, list_t *list);
 void suns_model_xml_dp_block_fprintf(FILE *stream, suns_dp_block_t *dp_block);
 void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp);
+int suns_snprintf_int_sf_e(char *buf,
+                           size_t len,
+                           int64_t x,
+                           int e);
+int suns_snprintf_uint_sf_e(char *buf,
+                            size_t len,
+                            uint64_t x,
+                            int e);
+int suns_snprintf_uint_sf_e(char *buf,
+                            size_t len,
+                            uint64_t x,
+                            int e);
+int suns_snprintf_int_sf(char *buf,
+                         size_t len,
+                         int64_t x,
+                         int e,
+                         int maxdigits);
+int suns_snprintf_uint_sf(char *buf,
+                          size_t len,
+                          uint64_t x,
+                          int e,
+                          int maxdigits);
+int _suns_snprintf_int_sf_e(char *buf,
+                            size_t len,
+                            char *base,
+                            int e);
+int _suns_snprintf_int_sf(char *buf,
+                          size_t len,
+                          char *base,
+                          int e,
+                          int maxdigits);
+
 
 #endif /* _SUNS_OUTPUT_H_ */

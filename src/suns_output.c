@@ -337,7 +337,7 @@ static int value_output_int16(char *buf, size_t len, suns_value_t *v)
 
 static int value_output_int16_sf(char *buf, size_t len, suns_value_t *v)
 {
-    return snprintf(buf, len, "%g", v->value.i16 * pow(10, v->tp.sf));
+    return suns_snprintf_int_sf(buf, len, v->value.i16, v->tp.sf, 16);
 }
     
 static int value_output_uint16(char *buf, size_t len, suns_value_t *v)
@@ -347,7 +347,7 @@ static int value_output_uint16(char *buf, size_t len, suns_value_t *v)
 
 static int value_output_uint16_sf(char *buf, size_t len, suns_value_t *v)
 {
-    return snprintf(buf, len, "%g", v->value.u16 * pow(10, v->tp.sf));
+    return suns_snprintf_uint_sf(buf, len, v->value.u16, v->tp.sf, 16);
 }
 
 static int value_output_int32(char *buf, size_t len, suns_value_t *v)
@@ -357,7 +357,7 @@ static int value_output_int32(char *buf, size_t len, suns_value_t *v)
 
 static int value_output_int32_sf(char *buf, size_t len, suns_value_t *v)
 {
-    return snprintf(buf, len, "%g", v->value.i32 * pow(10, v->tp.sf));
+    return suns_snprintf_int_sf(buf, len, v->value.i32, v->tp.sf, 16);
 }
 
 static int value_output_uint32(char *buf, size_t len, suns_value_t *v)
@@ -367,7 +367,7 @@ static int value_output_uint32(char *buf, size_t len, suns_value_t *v)
 
 static int value_output_uint32_sf(char *buf, size_t len, suns_value_t *v)
 {
-    return snprintf(buf, len, "%10g", v->value.u32 * pow(10, v->tp.sf));
+    return suns_snprintf_uint_sf(buf, len, v->value.u32, v->tp.sf, 16);
 }
 
 static int value_output_float32(char *buf, size_t len, suns_value_t *v)
@@ -378,6 +378,16 @@ static int value_output_float32(char *buf, size_t len, suns_value_t *v)
 static int value_output_float32_sf(char *buf, size_t len, suns_value_t *v)
 {
     return snprintf(buf, len, "%g", v->value.f32 * pow(10, v->tp.sf));
+}
+
+static int value_output_float64(char *buf, size_t len, suns_value_t *v)
+{
+    return snprintf(buf, len, "%f", v->value.f64);
+}
+
+static int value_output_float64_sf(char *buf, size_t len, suns_value_t *v)
+{
+    return snprintf(buf, len, "%g", v->value.f64 * pow(10, v->tp.sf));
 }
 
 static int value_output_hex_uint16(char *buf, size_t len, suns_value_t *v)
@@ -398,6 +408,26 @@ static int value_output_string(char *buf, size_t len, suns_value_t *v)
 static int value_output_meta(char *buf, size_t len, suns_value_t *v)
 {
     return snprintf(buf, len, "%s", suns_value_meta_string(v->meta));
+}
+
+static int value_output_int64(char *buf, size_t len, suns_value_t *v)
+{
+    return snprintf(buf, len, "%lld", v->value.i64);    
+}
+
+static int value_output_int64_sf(char *buf, size_t len, suns_value_t *v)
+{
+    return suns_snprintf_int_sf(buf, len, v->value.i64, v->tp.sf, 16);
+}
+    
+static int value_output_uint64(char *buf, size_t len, suns_value_t *v)
+{
+    return snprintf(buf, len, "%llu", v->value.u64);
+}
+
+static int value_output_uint64_sf(char *buf, size_t len, suns_value_t *v)
+{
+    return suns_snprintf_uint_sf(buf, len, v->value.u64, v->tp.sf, 16);
 }
 
 
@@ -447,6 +477,9 @@ int suns_snprintf_value(char *str, size_t size,
     case SUNS_FLOAT32:
         return fmt->float32(str, size, v);
 
+    case SUNS_FLOAT64:
+        return fmt->float64(str, size, v);
+
     case SUNS_BITFIELD16:
         return fmt->bitfield16(str, size, v);
 
@@ -455,6 +488,15 @@ int suns_snprintf_value(char *str, size_t size,
 
     case SUNS_STRING:
         return fmt->string(str, size, v);
+
+    case SUNS_INT64:
+        return fmt->int64(str, size, v);
+
+    case SUNS_UINT64:
+        return fmt->int64(str, size, v);
+
+    case SUNS_ACC64:
+        return fmt->acc64(str, size, v);
 
     default:
         len += snprintf(str + len, size - len,
@@ -470,6 +512,7 @@ int suns_snprintf_value(char *str, size_t size,
    this one by copying it and modifying the function pointers it
    wants to over-ride.
 */
+#if 0
 suns_value_output_vector_t suns_output_value_base_fmt = {
     /* .null       =  */ value_output_null,
     /* .undef      =  */ value_output_undef,
@@ -486,6 +529,29 @@ suns_value_output_vector_t suns_output_value_base_fmt = {
     /* .sunssf     =  */ value_output_int16,
     /* .string     =  */ value_output_string,
     /* .meta       =  */ value_output_meta,
+};
+#endif
+
+suns_value_output_vector_t suns_output_value_base_fmt = {
+    .null       =  value_output_null,
+    .undef      =  value_output_undef,
+    .int16      =  value_output_int16,
+    .uint16     =  value_output_uint16,
+    .acc16      =  value_output_uint16,
+    .int32      =  value_output_int32,
+    .uint32     =  value_output_uint32,
+    .float32    =  value_output_float32,
+    .acc32      =  value_output_int32,
+    .enum16     =  value_output_uint16,
+    .bitfield16 =  value_output_hex_uint16,
+    .bitfield32 =  value_output_hex_uint32,
+    .int64      =  value_output_int64,
+    .uint64     =  value_output_uint64,
+    .acc64      =  value_output_uint64,
+    .float64    =  value_output_float64,
+    .sunssf     =  value_output_int16,
+    .string     =  value_output_string,
+    .meta       =  value_output_meta,
 };
 
 
@@ -599,6 +665,10 @@ int suns_snprintf_value_sf_text(char *str, size_t size,
     fmt.uint32 = value_output_uint32_sf;
     fmt.acc32 = value_output_uint32_sf;
     fmt.float32  = value_output_float32_sf;
+    fmt.int64  = value_output_int64_sf;
+    fmt.uint64 = value_output_uint64_sf;
+    fmt.acc64 = value_output_uint64_sf;
+    fmt.float64  = value_output_float64_sf;
     
     return suns_snprintf_value(str, size, v, &fmt);
 }
@@ -683,7 +753,8 @@ int suns_device_text_fprintf(FILE *stream, suns_device_t *device)
     char timestamp[BUFFER_SIZE];
     
     /* set date to now */
-    date_snprintf_rfc3339(timestamp, BUFFER_SIZE, device->unixtime);
+    date_snprintf_rfc3339(timestamp, BUFFER_SIZE,
+                          device->unixtime, device->usec);
     fprintf(stream, "Timestamp: %s\n\n", timestamp);
     
     list_for_each(device->datasets, c) {
@@ -826,7 +897,7 @@ void suns_model_csv_fprintf(FILE *stream, suns_model_t *model)
     list_node_t *c, *d;
 
     fprintf(stream, "%s\n", model->name);
-    fprintf(stream, "start,end,size,rw,name,type,units,scale_factor,contents,description\n");
+    fprintf(stream, "offset,size,name,type,units,scale_factor\n");
     /*    fprintf(stream, "notation,block_offset,size,word_offset,byte_offset,rw,name,type,units,contents,description\n"); */
     list_for_each(model->dp_blocks, d) {
         suns_dp_block_t *dp_block = d->data;
@@ -850,17 +921,12 @@ void suns_model_csv_fprintf(FILE *stream, suns_model_t *model)
             if (! units)
                 units = "";
 
-            fprintf(stream, "%d,%d,%d,%s,%s,%s,%s,%s,%s,%s\n",
+            fprintf(stream, "%d,%d,%s,%s,%s\n",
                     /* start */          dp->offset,
-                    /* end */            dp->offset + (size / 2) - 1,
                     /* size */           size / 2,
-                    /* rw */             "",
                     /* name */           dp->name,
                     /* type */           suns_type_string(dp->type_pair->type),
-                    /* units */          units,
-                    /* scale factor */   sf,
-                    /* contents */       "",
-                    /* description */    "");
+                    /* scale factor */   sf);
         }
     }
     fprintf(stream, "\n");
@@ -990,7 +1056,8 @@ int suns_device_xml_fprintf(FILE *stream, suns_device_t *device)
     }
     
     /* set date to now */
-    date_snprintf_rfc3339_z(safe_string, BUFFER_SIZE, device->unixtime);
+    date_snprintf_rfc3339_z(safe_string, BUFFER_SIZE,
+                            device->unixtime, device->usec);
     fprintf(stream, " t=\"%s\">\n", safe_string);
     
     list_for_each(device->datasets, c) {
@@ -1068,6 +1135,7 @@ void suns_model_xml_dp_block_fprintf(FILE *stream, suns_dp_block_t *dp_block)
     fprintf(stream, "    </block>\n");
 }
 
+
 void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp)
 {
     fprintf(stream, "      <point name=\"%s\" type=\"%s\"",
@@ -1106,5 +1174,211 @@ void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp)
 }
 
 
+/* convert the provided integer and exponent into
+   normalized scientific notation.
+
+   the point of this function is to preserve base 10 numbers, rather than
+   convert them to base 2 floating points and back.
+
+   it looks like i could use gcc's _Decimal32 type to accomplish this, but
+   i'm going to do it by hand to maintain portability and control.
+
+   returns number of chars writte on success, -1 on failure (meaning
+   the buffer was too small); not the usual snprintf() behavior.
+*/
+int suns_snprintf_int_sf_e(char *buf,
+                           size_t len,
+                           int64_t x,
+                           int e)
+{
+    int numlen;
+    char tmpbuf[BUFFER_SIZE];
+
+    numlen = snprintf(tmpbuf, BUFFER_SIZE - 1, "%lld", (int64_t) x);
+    if (numlen > BUFFER_SIZE - 1) {
+        /* tmpbuf is too small */
+        debug("tmpbuf[BUFFER_SIZE] is too small to hold x = %lld", x);
+        return -1;
+    }
+
+    return _suns_snprintf_int_sf_e(buf, len, tmpbuf, e);
+}
+
+int suns_snprintf_uint_sf_e(char *buf,
+                            size_t len,
+                            uint64_t x,
+                            int e)
+{
+    int numlen;
+    char tmpbuf[BUFFER_SIZE];
+    
+    numlen = snprintf(tmpbuf, BUFFER_SIZE - 1, "%llu", (uint64_t) x);
+    if (numlen > BUFFER_SIZE - 1) {
+        /* tmpbuf is too small */
+        debug("tmpbuf[BUFFER_SIZE] is too small to hold x = %llu", x);
+        return -1;
+    }
+
+    return _suns_snprintf_int_sf_e(buf, len, tmpbuf, e);
+}
+
+/* inner function used after the type-specific conversion of the
+   base number to a string */
+int _suns_snprintf_int_sf_e(char *buf,
+                            size_t len,
+                            char *base,
+                            int e)
+{
+    int buf_char = 0;
+    int numlen = strlen(base);
+    int i;
+
+    if (numlen + 2 > len) {
+        debug("len = %d is too small for the base integer", len);
+        return -1;
+    }
+
+    /* normalize e */
+    e += numlen - 1;
+
+    /* copy first digit and decimal point */
+    buf[buf_char++] = base[0];
+    buf[buf_char++] = '.';
+
+    /* start on the 2nd digit and copy the rest */
+    for (i = 1; i < numlen; i++)
+        buf[buf_char++] = base[i];
+
+    /* now add exponent if needed */
+    if (e != 0) {
+        buf[buf_char++] = 'e';
+       
+        buf_char += snprintf(buf + numlen + 2, len - numlen - 3, "%d", e);
+        if (buf_char += snprintf(buf + numlen + 2, len - numlen - 3, "%d", e)
+            > len - numlen - 3) {
+            debug("len %d is to small", len);
+            return -1;
+        }
+    }
+
+    return buf_char;
+}
+
+
+
+/* outputs a sunspec value with its scale factor applied, with
+   no loss of precision due to conversion to base 2 floating point
+
+   this uses long int as its argument so it works for all 32 bit
+   datatype (signed and unsigned).  it will not work for unsigned 64 bit
+   integers, so this will have to be revisited at some point.
+ */
+int suns_snprintf_int_sf(char *buf,
+                         size_t len,
+                         int64_t x,
+                         int e,
+                         int maxdigits)
+{
+    int numlen;
+    char tmpbuf[BUFFER_SIZE];
+
+    numlen = snprintf(tmpbuf, BUFFER_SIZE, "%lld", x);
+    if (numlen > BUFFER_SIZE) {
+        /* tmpbuf is too small */
+        debug("tmpbuf[BUFFER_SIZE] is too small to hold x = %lld", x);
+        return -1;
+    }
+
+    return _suns_snprintf_int_sf(buf, len, tmpbuf, e, maxdigits);
+}
+
+int suns_snprintf_uint_sf(char *buf,
+                          size_t len,
+                          uint64_t x,
+                          int e,
+                          int maxdigits)
+{
+    int numlen;
+    char tmpbuf[BUFFER_SIZE];
+
+    numlen = snprintf(tmpbuf, BUFFER_SIZE, "%llu", x);
+    if (numlen > BUFFER_SIZE) {
+        /* tmpbuf is too small */
+        debug("tmpbuf[BUFFER_SIZE] is too small to hold x = %lld", x);
+        return -1;
+    }
+
+    return _suns_snprintf_int_sf(buf, len, tmpbuf, e, maxdigits);
+}
+
+int _suns_snprintf_int_sf(char *buf,
+                          size_t len,
+                          char *base,
+                          int e,
+                          int maxdigits)
+{
+    int numlen = strlen(base);
+    int i;
+    int buf_char = 0;
+
+    if (numlen > len) {
+        debug("len = %d < required minimum length for number = %d",
+              len, numlen);
+        return -1;
+    }
+
+    /* short circuit if e = 0 */
+    if (e == 0) {
+        strncpy(buf, base, len);
+        return 0;
+    }
+
+    /* if the resulting number of digits is greater than maxdigits use
+       scientific notation */
+    if ((numlen > maxdigits) ||
+        (numlen + abs(e) > maxdigits + 2)) {
+        return _suns_snprintf_int_sf_e(buf, len, base, e);
+    }
+
+    if (e < 0) {
+        /* negative e means a fractional value */
+        int base_char = 0;
+
+        /* this section writes the digits to the left of the decimal point */
+        if (e + numlen > 0) {
+            /* there are digits to the left of the decimal point */
+            for (i = 0; i < e + numlen; i++) {
+                buf[buf_char++] = base[base_char++];
+            }
+        } else {
+            /* all the digits are to the right of the decimal point */
+            buf[buf_char++] = '0';
+        }
+        
+        buf[buf_char++] = '.';
+
+        /* are there are zeros to the left of the digits? */
+        for (i = 0; i > e + numlen; i--) {
+            buf[buf_char++] = '0';
+        }
+        
+        /* now append the actual digits */
+        while (base_char < numlen) {
+            buf[buf_char++] = base[base_char++];
+        }
+
+    } else {
+        /* e must be positive (0 is taken care of above) */
+        for (i = 0; i < numlen; i++) {
+            buf[buf_char++] = base[i];
+        }
+        for (i = 0; i < e; i++) {
+            buf[buf_char++] = '0';
+        }
+    }
+    buf[buf_char] = '\0';  /* tie off the string */
+
+    return buf_char;
+}
 
 

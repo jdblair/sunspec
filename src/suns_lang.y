@@ -80,12 +80,9 @@
 
 %union 
 {
-    unsigned int number_u;
-    int number_i;
-    float number_f;
-    long int number_li;
-    unsigned long int number_lu;
-    double number_d;
+    double number_f;
+    int64_t number_i;
+    uint64_t number_u;
     char *string;
     struct suns_type_pair *type_pair;
     struct suns_dp *dp;
@@ -138,7 +135,7 @@ blocks: /* empty */
 
 block: model_block | data_block
 
-did: DIDTOK INT STRING
+did: DIDTOK UINT STRING
 {
     $$ = malloc(sizeof(suns_model_did_t));
     $$->did = $2;
@@ -269,6 +266,23 @@ suns_type: NAME DOT NAME
         $$->sf  = $3;
     }
 }
+         | NAME DOT UINT
+{
+    /* type with uint subscript - could be string or numeric type */
+    $$ = malloc(sizeof(suns_type_pair_t)); 
+    $$->type = suns_type_from_name($1);
+    if ($$->type == SUNS_UNDEF) {
+        yyerror("invalid suns type");
+        YYERROR;
+    }
+    switch ($$->type) {
+    case SUNS_STRING:
+        $$->len = $3;
+        break;
+    default:
+        $$->sf  = $3;
+    }
+}
          | NAME
 {
     /* simple type with no subscript */
@@ -314,13 +328,13 @@ attribute: NAME EQUAL STRING
    this is a number or string optionally accompanied by a type_pair */
 suns_value: UINT
 {
-    debug("UINT %d", $1);
+    debug("UINT %llu", $1);
     $$ = suns_value_new();
     suns_value_set_uint16($$, $1);
 }
     | INT
 {
-    debug("INT %d", $1);
+    debug("INT %lld", $1);
     $$ = suns_value_new();
     suns_value_set_int16($$, $1);
 }
@@ -344,11 +358,11 @@ suns_value: UINT
     case SUNS_INT16:
         suns_value_set_int16($$, $3);
         break;
-    case SUNS_INT32:
-        suns_value_set_int32($$, $3);
-        break;
     case SUNS_UINT16:
         suns_value_set_uint16($$, $3);
+        break;
+    case SUNS_INT32:
+        suns_value_set_int32($$, $3);
         break;
     case SUNS_UINT32:
         suns_value_set_uint32($$, $3);
@@ -364,6 +378,17 @@ suns_value: UINT
         break;
     case SUNS_BITFIELD32:
         suns_value_set_bitfield32($$, $3);
+        break;
+    case SUNS_INT64:
+        debug("HERE");
+        suns_value_set_int64($$, $3);
+        break;
+    case SUNS_UINT64:
+        debug("HERE");
+        suns_value_set_uint64($$, $3);
+        break;
+    case SUNS_FLOAT64:
+        suns_value_set_float64($$, $3);
         break;
     case SUNS_SF:
         suns_value_set_sunssf($$, $3);
@@ -403,12 +428,23 @@ suns_value: UINT
     case SUNS_BITFIELD32:
         suns_value_set_bitfield32($$, $3);
         break;
+    case SUNS_INT64:
+        debug("HERE");
+        suns_value_set_int64($$, $3);
+        break;
+    case SUNS_UINT64:
+        debug("HERE");
+        suns_value_set_uint64($$, $3);
+        break;
+    case SUNS_FLOAT64:
+        suns_value_set_float64($$, $3);
+        break;
     case SUNS_SF:
         suns_value_set_sunssf($$, $3);
         break;
     default:
         snprintf(yyerror_buf, BUFFER_SIZE,
-                 "unsupported type with int literal: %s",
+                 "unsupported type with uint literal: %s",
                  suns_type_string($1->type));
         yyerror(yyerror_buf);
     }

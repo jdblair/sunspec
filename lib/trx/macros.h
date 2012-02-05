@@ -1,11 +1,13 @@
 /* -*- tab-width: 4; indent-tabs-mode: nil -*- */
 
 /*
- * suns_unit_tests.h
+ * macros.h
+ * $Id: buffer.h 58 2010-09-25 16:07:06Z jdblair $
  *
- * unit tests for internal data transformations
+ * John's handy macros.
  *
- * Copyright (c) 2011, John D. Blair <jdb@moship.net>
+ *
+ * Copyright (c) 2007-2011, John D. Blair <jdb@moship.net>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -38,22 +40,70 @@
  */
 
 
-#ifndef _SUNS_UNIT_TESTS_H_
-#define _SUNS_UNIT_TESTS_H_
+#ifndef _MACROS_H_
+#define _MACROS_H_
 
-#include "trx/debug.h"
-#include "trx/macros.h"
+#include "debug.h"
 
-typedef int (*unit_test_f)(const char **name);
-int test_getopt(int argc, char *argv[]);
-int unit_test_type_sizes(const char **name);
-int unit_test_byte_order(const char **name);
-int unit_test_value_to_buf(const char **name);
-int unit_test_buf_to_value(const char **name);
-int unit_test_snprintf_suns_value_t(const char **name);
-int unit_test_type_name_conversion(const char **name);
-int unit_test_suns_value_meta_string(const char **name);
-int unit_test_suns_type_size(const char **name);
-int unit_test_suns_snprintf_int_sf_e(const char **name);
+#define SMALL_BUFFER_SIZE 16
+#define BUFFER_SIZE 128
+#define BIG_BUFFER_SIZE 1024
 
-#endif /* _SUNS_UNIT_TESTS_H_ */
+/* max and min are universally useful */
+#ifndef max
+#define max(a,b) ((a) > (b) ? (a) : (b))
+#endif
+
+#ifndef min
+#define min(a,b) ((a) < (b) ? (a) : (b))
+#endif
+
+/* logging and reporting facilities */
+
+#ifndef verbose
+#define verbose(level, format, arg...) if (verbose_level >= level) \
+	fprintf(stderr, format "\n" , ## arg)
+#endif /* verbose */
+
+#ifndef error
+#define error(format, arg...) fprintf(stderr, "ERROR: " format "\n", ## arg)
+#endif /* error */
+
+#ifndef warning
+#define warning(format, arg...) \
+    fprintf(stderr, "warning: " format "\n" , ## arg)
+#endif /* error */
+
+#ifndef log
+#define log(facility, level, format, arg...)
+#endif
+
+/* macro to simplify checking the return value of a function */
+#define return_if_fail(expr) \
+    {\
+	int r;			\
+	if ((r = (expr)) < 0) { \
+	    debug("%s returned %d", #expr, r);	\
+	    return r; \
+	} \
+    }
+
+#define error_if_fail(expr) \
+    {\
+	int r;			\
+	if ((r = (expr)) < 0) { \
+	    error("%s returned %d", #expr, r);	\
+	    return r; \
+	} \
+    }
+
+#define warning_if_fail(expr) \
+    {\
+	int r;			\
+	if ((r = (expr)) < 0) { \
+	    warning("%s returned %d: %m", #expr, r);	\
+	} \
+    }
+
+
+#endif /*_MACROS_H_ */

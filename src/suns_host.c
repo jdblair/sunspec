@@ -5,8 +5,10 @@
 #include <string.h>
 #include <stdarg.h>
 
-#include "ezxml.h"
-#include "macros.h"
+#include "suns_host.h"
+#include "ezxml/ezxml.h"
+#include "trx/list.h"
+#include "trx/macros.h"
 
 
 /* http status messages required by SunSpec */
@@ -26,7 +28,7 @@
 #define HTTP_CONTENT_HTML   "text/html"
 
 
-static suns_host_status_map_t host_status_map {
+static suns_host_status_map_t host_status_map = {
     { CODE_UNDEF,                  NULL };
     { CODE_OK,                     HTTP_STATUS_200 };
     { CODE_ACCESS_DENIED,          HTTP_STATUS_403 };
@@ -49,7 +51,7 @@ suns_host_result_t *suns_host_result_new(void)
     
     memset(r, 0, sizeof(suns_host_result_t));
 
-    r->dr_failures = list_new();
+    r->dr_fails = list_new();
 
     return r;
 }

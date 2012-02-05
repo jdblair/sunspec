@@ -1,11 +1,13 @@
 /* -*- tab-width: 4; indent-tabs-mode: nil -*- */
 
 /*
- * suns_unit_tests.h
+ * string.c
+ * $Id: $
  *
- * unit tests for internal data transformations
+ * Time handling functions
  *
- * Copyright (c) 2011, John D. Blair <jdb@moship.net>
+ *
+ * Copyright (c) 2010-2011, John D. Blair <jdb@moship.net>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -35,25 +37,9 @@
  * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
+ *
+ *
  */
 
-
-#ifndef _SUNS_UNIT_TESTS_H_
-#define _SUNS_UNIT_TESTS_H_
-
-#include "trx/debug.h"
-#include "trx/macros.h"
-
-typedef int (*unit_test_f)(const char **name);
-int test_getopt(int argc, char *argv[]);
-int unit_test_type_sizes(const char **name);
-int unit_test_byte_order(const char **name);
-int unit_test_value_to_buf(const char **name);
-int unit_test_buf_to_value(const char **name);
-int unit_test_snprintf_suns_value_t(const char **name);
-int unit_test_type_name_conversion(const char **name);
-int unit_test_suns_value_meta_string(const char **name);
-int unit_test_suns_type_size(const char **name);
-int unit_test_suns_snprintf_int_sf_e(const char **name);
-
-#endif /* _SUNS_UNIT_TESTS_H_ */
+#include <stdlib.h>
+#include <stdio.h>

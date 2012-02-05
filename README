@@ -22,6 +22,11 @@ Updates
               Correct some unit labels that were incorrect in the
               AC meter map.
 
+2012-Feb-04:  Added support for 64 bit data types.
+              Added custom decimal floating point text output routines
+              to eliminate approximation errors caused by computing
+              sunspec scale factors using IEEE 754 floating point numbers.
+
 
 Dependencies
 ------------

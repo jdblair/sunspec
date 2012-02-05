@@ -116,9 +116,9 @@ suns_dp_t * suns_model_find_dp_by_name(list_t *list, char *name)
 {
     list_node_t *c;
     list_for_each(list, c) {
-	suns_dp_t *dp = c->data;
-	if (strcmp(dp->name, name) == 0)
-	    return dp;
+    suns_dp_t *dp = c->data;
+    if (strcmp(dp->name, name) == 0)
+        return dp;
     }
 
     /* not found */
@@ -138,8 +138,8 @@ int suns_parse_model_file(const char *file)
 
     f = fopen(file, "r");
     if (f == NULL) {
-	debug("cannot open model file %s", file);
-	return -1;
+        debug("cannot open model file %s", file);
+        return -1;
     }
     
     /* set up the yacc/bison globals and call yyparse */

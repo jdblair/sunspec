@@ -52,8 +52,15 @@
 #define SUNS_ID_HIGH 0x5375
 #define SUNS_ID_LOW  0x6e53
 
+
+/* define floating point types */
+typedef float float32_t;
+typedef double float64_t;
+
 /* if you add or remove a numeric type you must update
    suns_value_is_numeric() appropriately */
+/* the order of values must match the order in
+   suns_type_string() ! */
 typedef enum suns_type {
     SUNS_NULL = 0,  /* just initialized value */
     SUNS_INT16,
@@ -63,9 +70,10 @@ typedef enum suns_type {
     SUNS_UINT32,
     SUNS_FLOAT32,
     SUNS_ACC32,
-    SUNS_INT64,         /* not yet supported */
-    SUNS_UINT64,        /* not yet supported */
-    SUNS_FLOAT64,       /* not yet supported */
+    SUNS_INT64,
+    SUNS_UINT64,
+    SUNS_FLOAT64,
+    SUNS_ACC64,
     SUNS_ENUM16,
     SUNS_BITFIELD16,
     SUNS_BITFIELD32,
@@ -82,6 +90,7 @@ typedef struct suns_type_pair {
     char *name;        /* scale factor name (other datapoint) */
     size_t len;        /* string length */
     int sf;            /* fixed scale factor */
+                       /* also used to store scale factors from logger xml */
 } suns_type_pair_t;
 
 
@@ -169,7 +178,6 @@ typedef struct named_list {
 } named_list_t;
 
 
-
 typedef enum suns_value_meta {
     SUNS_VALUE_NULL = 0,          /* default value is NULL */
     SUNS_VALUE_OK,                /* value is normal */
@@ -186,19 +194,22 @@ typedef struct suns_value {
     suns_type_pair_t tp;       /* type_pair of value (note: not a pointer) */
     suns_value_meta_t meta;    /* meta-value (null, error, etc.) */
     union {                    /* actual value */
-        uint16_t u16;
+        uint16_t u16;          
         uint32_t u32;
+        uint64_t u64;
         int16_t i16;
         int32_t i32;
-        float f32;           /* FIXME: host float size may be wrong! */
+        int64_t i64;
+        float32_t f32;
+        float64_t f64;
         char *s;             /* string - must be free()d if not NULL */
     } value;
     unsigned char raw[SUNS_VALUE_RAW_SIZE]; /* "raw" from-the-wire data */
     size_t raw_len;          /* length of the raw data */
     int index;               /* index in repeating blocks */
     int repeating;           /* is this value part of a repeating block? */
-    /* time_t unixtime; */         /* optional value-specific timestamp */
-    char *timestamp;         /* optional timestamp string in RFC 3339 format */
+    time_t unixtime;         /* optional value-specific timestamp */
+    int usec;                /* optional microsecond component */
     char *units;             /* optional units string */
     char *description;       /* optional descriptive string */    
 } suns_value_t;
@@ -221,6 +232,7 @@ typedef struct suns_device {
     int addr;
     list_t *datasets;
     time_t unixtime;
+    int usec;
 
     char *cid;    /* correlation id */
     char *id;     /* optional device id string (overrides man, mod and sn) */
@@ -230,7 +242,6 @@ typedef struct suns_device {
     char *mod;    /* C_Model from common block */
     char *ns;     /* domain namespace for the logger id */
     char *sn;     /* C_SerialNumber from the common block */
-    char *t;      /* timestamp in RFC 3339 format */
 
     /* these pointers are set when the common block dataset is added */
     suns_dataset_t *common;
@@ -298,7 +309,14 @@ void suns_value_set_uint32(suns_value_t *v, uint32_t u32);
 uint32_t suns_value_get_uint32(suns_value_t *v);
 void suns_value_set_int32(suns_value_t *v, int32_t i32);
 int32_t suns_value_get_int32(suns_value_t *v);
-void suns_value_set_float32(suns_value_t *v, float f32);
+void suns_value_set_float32(suns_value_t *v, float32_t f32);
+void suns_value_set_uint64(suns_value_t *v, uint64_t u64);
+uint64_t suns_value_get_uint64(suns_value_t *v);
+void suns_value_set_int64(suns_value_t *v, int64_t i64);
+int64_t suns_value_get_int64(suns_value_t *v);
+float32_t suns_value_get_float32(suns_value_t *v);
+void suns_value_set_float64(suns_value_t *v, float64_t f64);
+float64_t suns_value_get_float64(suns_value_t *v);
 float suns_value_get_float32(suns_value_t *v);
 void suns_value_set_enum16(suns_value_t *v, uint16_t u16);
 uint16_t suns_value_get_enum16(suns_value_t *v);
@@ -314,6 +332,8 @@ void suns_value_set_acc16(suns_value_t *v, uint16_t u16);
 uint16_t suns_value_get_acc16(suns_value_t *v);
 void suns_value_set_acc32(suns_value_t *v, uint32_t u32);
 uint32_t suns_value_get_acc32(suns_value_t *v);
+void suns_value_set_acc64(suns_value_t *v, uint64_t u64);
+uint64_t suns_value_get_acc64(suns_value_t *v);
 
 suns_model_did_t *suns_find_did(list_t *did_list, uint16_t did);
 suns_dataset_t *suns_decode_data(list_t *did_list,

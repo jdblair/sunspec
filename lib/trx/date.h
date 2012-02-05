@@ -43,12 +43,15 @@
 #ifndef _DATE_H_
 #define _DATE_H_
 
+#include "time.h"
+
 int date_iso8601_z(char *buf, size_t len, time_t unixtime);
 int date_iso8601(char *buf, size_t len, time_t unixtime);
-int date_snprintf_rfc3339_tm(char *buf, size_t len, struct tm *tm, int usec);
+int _date_snprintf_rfc3339_tm(char *buf, size_t len, char *fmt,
+                              struct tm *tm, int usec);
 int date_snprintf_rfc3339_z(char *buf, size_t len, time_t unixtime, int usec);
 int date_snprintf_rfc3339(char *buf, size_t len, time_t unixtime, int usec);
-int date_parse_rfc3339_tm(char *buf, struct tm *tm_time, int *usecs);
-int date_parse_rfc3339_to_unixtime_z(char *buf, time_t *unixtime, int *usecs);
+int date_parse_rfc3339_tm(char *buf, struct tm *tm_time, int *usec);
+int date_parse_rfc3339_to_unixtime_z(char *buf, time_t *unixtime, int *usec);
 
 #endif /* _DATE_H_ */

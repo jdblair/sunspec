@@ -6,11 +6,13 @@
 #include <sqlite3.h>
 
 #include "suns_model.h"
+#include "suns_parser.h"
 #include "suns_host.h"
 #include "suns_host_parser.h"
 
 #include "ezxml/ezxml.h"
 #include "trx/macros.h"
+#include "trx/date.h"
 
 
 /*
@@ -36,7 +38,7 @@ int suns_host_parse_logger_xml(FILE *stream,
     data = ezxml_parse_fp(stream);
     if (data == NULL) {
         result->status = STATUS_FAILURE;
-        result->CODE = CODE_INVALID_MESSAGE;
+        result->code = CODE_INVALID_MESSAGE;
         suns_host_result_set_message(result, "malformed xml: %s",
                                      ezxml_error(data));
         return -1;
@@ -45,12 +47,12 @@ int suns_host_parse_logger_xml(FILE *stream,
     /* we should be at a sunSpecData node */
     /* be liberal and check case-insensitively */
     if (strcasecmp(data->name, "sunSpecData") == 0) {
-        rc = suns_host_parse_sunspec_data(data, devices, error);
+        rc = suns_host_parse_sunspec_data(data, devices, result);
         if (rc < 0)
             return rc;
     } else {
         result->status = STATUS_FAILURE;
-        result->CODE = CODE_INVALID_MESSAGE;
+        result->code = CODE_INVALID_MESSAGE;
         suns_host_result_set_message(result, 
                                      "no sunSpecData element in xml");
         return -1;
@@ -77,12 +79,11 @@ int suns_host_parse_sunspec_data(ezxml_t sunspec_data,
     int rc = 0;
 
     const char *v;
-    int version;
     ezxml_t d;
     v = ezxml_attr(sunspec_data, "v");
     if (v) {
         result->status = STATUS_FAILURE;
-        result->CODE = CODE_INVALID_MESSAGE;
+        result->code = CODE_INVALID_MESSAGE;
         suns_host_result_set_message(result,
                                      "No v (version) field in sunSpecData element");
         return -1;
@@ -95,7 +96,7 @@ int suns_host_parse_sunspec_data(ezxml_t sunspec_data,
         device_rc = suns_host_parse_device(d, devices, dr_fail);
         if (device_rc < 0) {
             list_node_add(result->dr_fails, list_node_new(dr_fail));
-            result->status = DR_FAILURE;
+            result->status = STATUS_DR_FAILURE;
             /* preserve negative exit code for caller */
             rc = device_rc;
             /* don't return - attempt to parse additional devices */
@@ -115,6 +116,7 @@ int suns_host_parse_device(ezxml_t d,
 {
     int rc = 0;
     suns_device_t *device = suns_device_new();
+    char *t = NULL;
 
     /* this is the list of all possible device attributes */
     suns_attr_map_t device_attr[] = {
@@ -126,7 +128,7 @@ int suns_host_parse_device(ezxml_t d,
         { "mod",   device->model },          /* M */
         { "ns",    device->ns },             /* C */
         { "sn",    device->serial_number },  /* M */
-        { "t",     device->t },              /* M */
+        { "t",     t },                      /* M */
         { NULL,    NULL },
     };
 
@@ -135,9 +137,9 @@ int suns_host_parse_device(ezxml_t d,
         { "man",   device->manufacturer },   /* M */
         { "mod",   device->model },          /* M */
         { "sn",    device->serial_number },  /* M */
-        { "t",     device->t },              /* M */
+        { "t",     t },                      /* M */
         { NULL,    NULL },
-    }
+    };
 
     suns_parse_xml_attr(d, device_attr);
 
@@ -145,7 +147,7 @@ int suns_host_parse_device(ezxml_t d,
     dr_fail->man = device->manufacturer;
     dr_fail->mod = device->model;
     dr_fail->sn = device->serial_number;
-    dr_fail->t = device->t;
+    dr_fail->t = t;
     if (device->id)
         dr_fail->id = device->id;
 
@@ -160,6 +162,17 @@ int suns_host_parse_device(ezxml_t d,
                                           mandatory_attr[i].name);
             return -1;
         }
+    }
+
+    /* parse the timestamp */
+    if (date_parse_rfc3339_to_unixtime_z(t,
+                                         &(device->unixtime),
+                                         &(device->usec)) < 0) {
+        dr_fail->code = CODE_INVALID_MESSAGE;
+        suns_host_dr_fail_set_message(dr_fail,
+                                      "invalid rfc3339 timestamp string",
+                                      mandatory_attr[i].name);
+        return -1;
     }
 
     /* parse models into suns_dataset_t */
@@ -181,13 +194,11 @@ int suns_host_parse_model(ezxml_t m,
 {
     int rc = 0;
     suns_dataset_t *data;
-    char *id;
-    char *ns;
-    char *x;
+    char *id = NULL;
     int int_did;
     suns_parser_state_t *sps = suns_get_parser_state();
     suns_model_did_t *did;
-    suns_value_t *p;
+    ezxml_t p;
 
     data = suns_dataset_new();
 
@@ -201,7 +212,7 @@ int suns_host_parse_model(ezxml_t m,
 
     if (id == NULL) {
         dr_fail->status = STATUS_FAILURE;
-        dr_fail->CODE = CODE_INVALID_MESSAGE;
+        dr_fail->code = CODE_INVALID_MESSAGE;
         suns_host_dr_fail_set_message(dr_fail,
                                      "Missing required attribute \"id\""
                                      "in m element");
@@ -210,7 +221,7 @@ int suns_host_parse_model(ezxml_t m,
 
     if (sscanf(id, "%d", &int_did) != 1) {
         dr_fail->status = STATUS_FAILURE;
-        dr_fail->CODE = CODE_INVALID_MESSAGE;
+        dr_fail->code = CODE_INVALID_MESSAGE;
         suns_host_dr_fail_set_message(dr_fail,
                                      "Cannot parse \"id\" attribute value:"
                                       "\"%s\"", id);
@@ -222,14 +233,14 @@ int suns_host_parse_model(ezxml_t m,
 
     if (did == NULL) {
         dr_fail->status = STATUS_FAILURE;
-        dr_fail->CODE = UNKNOWN_DEVICE;
+        dr_fail->code = CODE_UNKNOWN_DEVICE;
         suns_host_dr_fail_set_message(dr_fail,
                                       "Unknown device id in m element: %d",
                                       int_did);
         return -1;
     }
 
-    for (p = ezxml_child(m, "p"); m; m = m->next) {
+    for (p = ezxml_child(m, "p"); p; p = p->next) {
         printf("p found\n");
         rc = suns_host_parse_datapoint(p, data, dr_fail);
         if (rc < 0)
@@ -244,13 +255,13 @@ int suns_host_parse_datapoint(ezxml_t p,
                               suns_dataset_t *data,
                               suns_host_dr_fail_t *dr_fail)
 {
-    int rc = 0;
-
     suns_model_t *model;
     suns_value_t *v = suns_value_new();
     suns_dp_t *dp;
-    char *sf;
-    char *value;
+    char *sf = NULL;
+    char *value = NULL;
+    char *timestamp = NULL;
+    char *x = NULL;
 
     model = data->did->model;
     
@@ -258,34 +269,93 @@ int suns_host_parse_datapoint(ezxml_t p,
         { "d",    v->description },
         { "id",   v->name },
         { "sf",   sf },
-        { "t",    v->timestamp },
+        { "t",    timestamp },
         { "u",    v->units },
-        { "x",    v->index },
+        { "x",    x },
     };
 
-    if (v->name == NULL) {
-        dr_fail->status = STATUS_FAILURE;
-        dr_fail->CODE = UNKNOWN_DEVICE;
-        suns_host_dr_fail_set_message(dr_fail,
-                                      "Unknown device id in m element: %d",
-                                      int_did);
-        
-        return -1;
-    }
+    suns_parse_xml_attr(p, point_attr);
 
     /* look up the datapoint name in the model */
     dp = suns_search_model_for_dp_by_name(model, v->name);
 
     if (dp == NULL) {
         dr_fail->status = STATUS_FAILURE;
-        dr_fail->CODE = INVALID_MESSAGE;
+        dr_fail->code = CODE_INVALID_MESSAGE;
         suns_host_dr_fail_set_message(dr_fail,
                                       "unrecognized datapoint name: %s",
                                       v->name);
         return -1;
     }
 
-    
+    /* parse timestamp, if present */
+    if (timestamp) {
+        struct tm tm;
+        if (date_parse_rfc3339_tm(timestamp, &tm, &(v->usec)) < 0) {
+            dr_fail->status = STATUS_FAILURE;
+            dr_fail->code = CODE_INVALID_MESSAGE;
+            suns_host_dr_fail_set_message(dr_fail,
+                                          "can't parse timestamp '%s' "
+                                          "in datapoint '%s'",
+                                          timestamp, v->name);
+            return -1;
+        }
+    }
+
+    /* parse value */
+    value = ezxml_txt(p);
+    if (value == NULL) {
+            dr_fail->status = STATUS_FAILURE;
+            dr_fail->code = CODE_INVALID_MESSAGE;
+            suns_host_dr_fail_set_message(dr_fail,
+                                          "no value in datapoint '%s'",
+                                          v->name);
+            return -1;
+    }
+    if (suns_string_to_value(value, v, dp->type_pair) < 0) {
+        debug("cannot parse value");
+        return -1;
+    }
+
+    /* parse scale factor */
+    if (sf != NULL) {
+        if (v->tp.sf != 0) {
+            /* this implies that suns_string_to_value() parsed a
+               decimal floating point value
+               
+               this is an error b/c there shouldn't be both a decimal
+               floating point in the value AND a scale factor present */
+            dr_fail->status = STATUS_FAILURE;
+            dr_fail->code = CODE_INVALID_MESSAGE;
+            suns_host_dr_fail_set_message(dr_fail,
+                                          "point %s contains a decimal value "
+                                          "'%s' and a sf attribute",
+                                          v->name, value);
+            return -1;
+        }
+        
+        if (sscanf(sf, "%d", &(v->tp.sf)) != 1) {
+            dr_fail->status = STATUS_FAILURE;
+            dr_fail->code = CODE_INVALID_MESSAGE;
+            suns_host_dr_fail_set_message(dr_fail,
+                                          "can't parse sf attribute '%s'", sf);
+            return -1;
+        }
+    }
+
+    /* parse index (x) if present */
+    if (x != NULL) {
+        if (sscanf(x, "%d", &(v->index)) != 1) {
+            dr_fail->status = STATUS_FAILURE;
+            dr_fail->code = CODE_INVALID_MESSAGE;
+            suns_host_dr_fail_set_message(dr_fail,
+                                          "can't parse x attribute '%s'", sf);
+            return -1;
+        }            
+    }
+
+    return 0;
+}
     
     
 
@@ -314,3 +384,6 @@ int suns_parse_xml_attr(ezxml_t x, suns_attr_map_t *map)
 
     return total;
 }
+
+
+

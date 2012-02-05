@@ -1,11 +1,12 @@
 /* -*- tab-width: 4; indent-tabs-mode: nil -*- */
 
 /*
- * suns_unit_tests.h
+ * debug.c
+ * $Id: debug.c 58 2010-09-25 16:07:06Z jdblair $
  *
- * unit tests for internal data transformations
- *
- * Copyright (c) 2011, John D. Blair <jdb@moship.net>
+ * Useful assert() and debugging functions.
+ * 
+ * Copyright (c) 2007-2011, John D. Blair <jdb@moship.net>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -38,22 +39,68 @@
  */
 
 
-#ifndef _SUNS_UNIT_TESTS_H_
-#define _SUNS_UNIT_TESTS_H_
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <sys/time.h>
 
-#include "trx/debug.h"
-#include "trx/macros.h"
+int verbose_level = 0;
+/* now debug.h won't define 'extern int verbose_level */
+#define _verbose_level_
 
-typedef int (*unit_test_f)(const char **name);
-int test_getopt(int argc, char *argv[]);
-int unit_test_type_sizes(const char **name);
-int unit_test_byte_order(const char **name);
-int unit_test_value_to_buf(const char **name);
-int unit_test_buf_to_value(const char **name);
-int unit_test_snprintf_suns_value_t(const char **name);
-int unit_test_type_name_conversion(const char **name);
-int unit_test_suns_value_meta_string(const char **name);
-int unit_test_suns_type_size(const char **name);
-int unit_test_suns_snprintf_int_sf_e(const char **name);
+#include "debug.h"
 
-#endif /* _SUNS_UNIT_TESTS_H_ */
+#ifdef ASSERT
+void assertion_failure(char *exp, char *file, char *base_file, int line)
+{
+    if (! strcmp(file, base_file)) {
+	fprintf(stderr,
+		"assert(%s) failed in file %s, line %d\n", exp, file, line);
+    } else {
+	fprintf(stderr,
+		"assert(%s) failed in file %s (included from %s), line %d\n",
+		exp, file, base_file, line);
+    }
+
+}
+#endif /* ASSERT */
+
+void dump_buffer(FILE *fp, unsigned char *buffer, size_t len)
+{
+    int i;
+    for (i = 0; i < len; i++) {
+        fprintf(fp, "%02x ", buffer[i]);
+    }
+    fprintf(fp, "\n");
+}
+
+
+void timestamp_dump_buffer(FILE *fp, char *comment,
+                           unsigned char *buffer, size_t len)
+{
+    debug_timestamp(fp);
+    fprintf(fp, "%s[%02x] ", comment, len);
+    dump_buffer(fp, buffer, len);
+}
+
+void debug_timestamp(FILE *fp) {
+    struct tm *tm;
+    struct timeval tv;
+
+    gettimeofday(&tv, NULL);
+    tm = localtime(&tv.tv_sec);
+
+    fprintf(fp, "%02d:%02d:%02d.%06d ",
+            tm->tm_hour, tm->tm_min, tm->tm_sec,
+            (int) tv.tv_usec);
+}
+
+void debug_mode(void)
+{
+#ifdef DEBUG
+    fprintf(stderr, "debug ON\n");
+#else
+    fprintf(stderr, "debug OFF\n");
+#endif
+}

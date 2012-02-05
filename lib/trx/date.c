@@ -104,19 +104,25 @@ int date_snprintf_rfc3339_z(char *buf, size_t len, time_t unixtime, int usec)
 {    
     struct tm tm;
     gmtime_r(&unixtime, &tm);  /* use rentrant version */
-    return date_snprintf_rfc3339_tm(buf, len, &tm, usec);
+    return _date_snprintf_rfc3339_tm(buf, len, "%Y-%m-%dT%TZ", &tm, usec);
 }
 
 int date_snprintf_rfc3339(char *buf, size_t len, time_t unixtime, int usec)
 {    
     struct tm tm;
     localtime_r(&unixtime, &tm);  /* use rentrant version */
-    return date_snprintf_rfc3339_tm(buf, len, &tm, usec);
+        
+    return _date_snprintf_rfc3339_tm(buf, len, "%Y-%m-%dT%T%z", &tm, usec);
 }
 
-int date_snprintf_rfc3339_tm(char *buf, size_t len, struct tm *tm, int usec)
+/* this is some logic that is shared between the two rfc3339 date 
+   output functions */
+int _date_snprintf_rfc3339_tm(char *buf, size_t len, char *fmt,
+                              struct tm *tm, int usec)
 {
-    offset = strftime(buf, len, "%Y-%m-%dT%TZ", &tm);
+    int offset;
+
+    offset = strftime(buf, len, fmt, tm);
     if (offset == 0)
         return -1;
     if (usec != 0) {

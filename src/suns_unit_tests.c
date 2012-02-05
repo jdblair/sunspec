@@ -128,36 +128,38 @@ int unit_test_type_sizes(const char **name)
     int total = 0;
     int pass = 0;
 
-    total++;
-    if (sizeof(int16_t) == 2) {
-        debug("sizeof(int16_t) passed");
-        pass++;
-    } else {
-        debug("sizeof(int16_t) failed");
-    }
-    
-    total++;
-    if (sizeof(uint16_t) == 2) {
-        debug("sizeof(uint16_t) passed");
-        pass++;
-    } else {
-        debug("sizeof(uint16_t) failed");
-    }
+    typedef struct type_check_map {
+        char *name;
+        size_t required;
+        size_t actual;
+    } type_check_map_t;
 
-    total++;
-    if (sizeof(int32_t) == 4) {
-        debug("sizeof(int32_t) passed");
-        pass++;
-    } else {
-        debug("sizeof(int32_t) failed");
-    }
+    type_check_map_t type_check[] = {
+        { "uint16_t", 2, sizeof(uint16_t) },
+        { "int16_t",  2, sizeof(int16_t) },
+        { "uint32_t", 4, sizeof(uint32_t) },
+        { "int32_t", 4, sizeof(int32_t) },
+        { "int64_t", 8, sizeof(int64_t) },
+        { "uint64_t", 8, sizeof(uint64_t) },
+        { "float",   4, sizeof(float) },
+        { "double",  8, sizeof(double) },
+        { NULL,      0, 0 },
+    };
 
-    total++;
-    if (sizeof(uint32_t) == 4) {
-        debug("sizeof(uint32_t) passed");
-        pass++;
-    } else {
-        debug("sizeof(uint32_t) failed");
+    int i;
+
+    for (i = 0; type_check[i].name != NULL; i++) {
+        total++;
+        if (type_check[i].required == type_check[i].actual) {
+            debug("sizeof(%s) passed", type_check[i].name);
+            pass++;
+        } else {
+            debug("sizeof(%s) failed (required = %d, actual = %d)",
+                  type_check[i].name,
+                  type_check[i].required,
+                  type_check[i].actual);
+        }
+        
     }
 
     return pass - total;
@@ -173,9 +175,10 @@ int unit_test_byte_order(const char **name)
     /* h = host, t = test, number = bytes */
     uint16_t h2, t2;
     uint32_t h4, t4;
+    uint64_t h8, t8;
 
     /* pointers to these test values */
-    unsigned char *ph2, *pt2, *ph4, *pt4;
+    unsigned char *ph2, *pt2, *ph4, *pt4, *ph8, *pt8;
 
     int pass = 0;
     int total = 0;
@@ -189,11 +192,21 @@ int unit_test_byte_order(const char **name)
           (0x22 << 16) +
           (0x11 << 8)  +
           (0x00 << 0));   /* least */
+    h8 = ((0x77LL << 56) +  /* most */
+          (0x66LL << 48) +
+          (0x55LL << 40) +
+          (0x44LL << 32) +
+          (0x33LL << 24) +
+          (0x22LL << 16) +
+          (0x11LL << 8)  +
+          (0x00LL << 0));   /* least */
 
     ph2 = (unsigned char *) &h2;
     pt2 = (unsigned char *) &t2;
     ph4 = (unsigned char *) &h4;
     pt4 = (unsigned char *) &t4;
+    ph8 = (unsigned char *) &h8;
+    pt8 = (unsigned char *) &t8;
 
     /* test that endian defines are set */
     total++;
@@ -310,7 +323,34 @@ int unit_test_byte_order(const char **name)
         debug("le32toh() failed");
     }
     
-    debug("%d out of %d byteorder tests passed", total, pass);
+    /* htole64() */
+    total++;
+    t8 = htole64(h8);
+    if (pt8[0] == 0x00 &&
+        pt8[1] == 0x11 &&
+        pt8[2] == 0x22 &&
+        pt8[3] == 0x33 &&
+        pt8[4] == 0x44 &&
+        pt8[5] == 0x55 &&
+        pt8[6] == 0x66 &&
+        pt8[7] == 0x77) {
+        debug("htole64() passed");
+        pass++;
+    } else {
+        debug("htole64() failed");
+    }
+
+    /* le64toh() */
+    total++;
+    t8 = le64toh(t8);
+    if (t8 == h8) {
+        debug("le64toh() passed");
+        pass++;
+    } else {
+        debug("le64toh() failed");
+    }
+    
+    debug("%d out of %d byteorder tests passed", pass, total);
 
     return pass - total;
 }
@@ -452,7 +492,7 @@ int unit_test_value_to_buf(const char **name)
     suns_value_to_buf(v, buf, SMALL_BUFFER_SIZE);
 	debug_dump_buffer((unsigned char *)&(v->value.u32), 4);
     debug_dump_buffer(buf, 4);
-    if (compare_buf(int32_buf, buf, 2) == 0) {
+    if (compare_buf(int32_buf, buf, 4) == 0) {
         debug("int32 passed");
         pass++;
     } else {
@@ -474,7 +514,7 @@ int unit_test_value_to_buf(const char **name)
     unsigned char uint32_buf[] = { 0x04, 0x8f, 0xf4, 0xea };
     suns_value_set_uint32(v, 76543210);
     suns_value_to_buf(v, buf, SMALL_BUFFER_SIZE);
-	debug_dump_buffer((unsigned char *)&(v->value.u32), 4);
+	debug_dump_buffer((unsigned char *)&(htole32(v->value.u32)), 4);
     debug_dump_buffer(buf, 4);
     if (compare_buf(uint32_buf, buf, 4) == 0) {
         debug("uint32 passed");
@@ -500,7 +540,7 @@ int unit_test_value_to_buf(const char **name)
     suns_value_to_buf(v, buf, SMALL_BUFFER_SIZE);
 	debug_dump_buffer((unsigned char *)&(v->value.u32), 4);
     debug_dump_buffer(buf, 4);
-    if (compare_buf(acc32_buf, buf, 2) == 0) {
+    if (compare_buf(acc32_buf, buf, 4) == 0) {
         debug("acc32 passed");
         pass++;
     } else {
@@ -533,6 +573,99 @@ int unit_test_value_to_buf(const char **name)
         pass++;
     } else {
         debug("float32 failed");
+    }
+
+    /* int64 */
+    total++;
+    unsigned char int64_buf[] = { 0xd7, 0x52, 0xe5, 0x34,
+                                  0x73, 0xd7, 0x0c, 0xf0 };
+    suns_value_set_int64(v, -2931028394020238096LL);
+    suns_value_to_buf(v, buf, SMALL_BUFFER_SIZE);
+	debug_dump_buffer((unsigned char *)&(v->value.u64), 8);
+    debug_dump_buffer(buf, 8);
+    if (compare_buf(int64_buf, buf, 8) == 0) {
+        debug("int64 passed");
+        pass++;
+    } else {
+        debug("int64 failed");
+    }        
+    
+    /* int64 not-implemented test */
+    total++;
+    suns_value_set_int64(v, 0x8000000000000000LL);
+    if (v->meta == SUNS_VALUE_NOT_IMPLEMENTED) {
+        debug("int64 not-implemented value passed");
+        pass++;
+    } else {
+        debug("int64 not-implemented value failed");
+    }        
+
+    /* uint64 */
+    total++;
+    unsigned char uint64_buf[] = { 0x35, 0x6d, 0x16, 0x87,
+                                   0x6e, 0xe2, 0x9b, 0xa4, };
+    suns_value_set_uint64(v, 3849758027408382884LL);
+    suns_value_to_buf(v, buf, SMALL_BUFFER_SIZE);
+	debug_dump_buffer((unsigned char *)&(v->value.u64), 4);
+    debug_dump_buffer(buf, 8);
+    if (compare_buf(uint64_buf, buf, 8) == 0) {
+        debug("uint64 passed");
+        pass++;
+    } else {
+        debug("uint64 failed");
+    }        
+
+    /* uint64 not-implemented test */
+    total++;
+    suns_value_set_uint64(v, 0xFFFFFFFFFFFFFFFFLL);
+    if (v->meta == SUNS_VALUE_NOT_IMPLEMENTED) {
+        debug("uint64 not-implemented value passed");
+        pass++;
+    } else {
+        debug("uint64 not-implemented value failed");
+    }        
+
+    /* acc64 */
+    total++;
+    unsigned char acc64_buf[] = { 0x73, 0x49, 0xcc, 0x69,
+                                  0x5e, 0x9a, 0xfd, 0x41, };
+    suns_value_set_acc64(v, 8307395740592438593LL);
+    suns_value_to_buf(v, buf, SMALL_BUFFER_SIZE);
+	debug_dump_buffer((unsigned char *)&(v->value.u64), 8);
+    debug_dump_buffer(buf, 8);
+    if (compare_buf(acc64_buf, buf, 8) == 0) {
+        debug("acc64 passed");
+        pass++;
+    } else {
+        debug("acc64 failed");
+    }        
+
+    /* make sure 0xFFFFFFFFFFFFFFFF is possible for acc64 */
+    total++;
+    suns_value_set_acc64(v, 0xFFFFFFFFFFFFFFFFLL);
+    suns_value_to_buf(v, buf, SMALL_BUFFER_SIZE);
+	debug_dump_buffer((unsigned char *)&(v->value.u64), 8);
+    debug_dump_buffer(buf, 8);
+    if (v->meta != SUNS_VALUE_NOT_IMPLEMENTED) {
+        debug("acc64 0xFFFFFFFFFFFFFFFF check passed");
+        pass++;
+    } else {
+        debug("acc64 0xFFFFFFFFFFFFFFFF check failed");
+    }
+
+    /* float64 */
+    total++;
+    unsigned char float64_buf[] = { 0x40, 0x05, 0xbf, 0x0a,
+                                    0x8b, 0x14, 0x57, 0x69, };
+    suns_value_set_float64(v, 2.7182818284590452354L);
+    suns_value_to_buf(v, buf, SMALL_BUFFER_SIZE);
+	debug_dump_buffer((unsigned char *)&(v->value.u64), 8);
+    debug_dump_buffer(buf, 8);
+    if (compare_buf(float64_buf, buf, 8) == 0) {
+        debug("float64 passed");
+        pass++;
+    } else {
+        debug("float64 failed");
     }
 
     /* string */
@@ -752,6 +885,112 @@ int unit_test_buf_to_value(const char **name)
         pass++;
     } else {
         debug("float32 not-implemented failed");
+    }
+
+    /* int64 */
+    total++;
+    unsigned char int64_buf[] = { 0xd7, 0x52, 0xe5, 0x34,
+                                  0x73, 0xd7, 0x0c, 0xf0 };
+    tp.type = SUNS_INT64;
+    suns_buf_to_value(int64_buf, &tp, v);
+    if (suns_value_get_int64(v) == -2931028394020238096LL) {
+        debug("int64 passed");
+        pass++;
+    } else {
+        debug("int64 failed");
+    }        
+    
+    /* int64 not-implemented */
+    total++;
+    unsigned char int64_ni_buf[] = { 0x80, 0x00, 0x00, 0x00,
+                                     0x00, 0x00, 0x00, 0x00 };
+    tp.type = SUNS_INT64;
+    suns_buf_to_value(int64_ni_buf, &tp, v);
+    if (v->meta == SUNS_VALUE_NOT_IMPLEMENTED) {
+        debug("int64 not-implemented passed");
+        pass++;
+    } else {
+        debug("int64 not-implemented failed");
+    }
+
+    /* uint64 */
+    total++;
+    unsigned char uint64_buf[] = { 0x35, 0x6d, 0x16, 0x87,
+                                  0x6e, 0xe2, 0x9b, 0xa4 };
+    tp.type = SUNS_UINT64;
+    suns_buf_to_value(uint64_buf, &tp, v);
+    if (suns_value_get_uint64(v) == 3849758027408382884LL) {
+        debug("uint64 passed");
+        pass++;
+    } else {
+        debug("uint64 failed");
+    }
+
+    /* uint64 not-implemented */
+    total++;
+    unsigned char uint64_ni_buf[] = { 0xFF, 0xFF, 0xFF, 0xFF,
+                                      0xFF, 0xFF, 0xFF, 0xFF };
+    tp.type = SUNS_UINT64;
+    suns_buf_to_value(uint64_ni_buf, &tp, v);
+    if (v->meta == SUNS_VALUE_NOT_IMPLEMENTED) {
+        debug("uint64 not-implemented passed");
+        pass++;
+    } else {
+        debug("uint64 not-implemented failed");
+    }
+
+    /* acc64 */
+    total++;
+    unsigned char acc64_buf[] = { 0x73, 0x49, 0xcc, 0x69,
+                                  0x5e, 0x9a, 0xfd, 0x41 };
+    tp.type = SUNS_ACC64;
+    suns_buf_to_value(acc64_buf, &tp, v);
+    if (suns_value_get_acc64(v) == 8307395740592438593LL) {
+        debug("acc64 passed");
+        pass++;
+    } else {
+        debug("acc64 failed");
+    }        
+
+    /* make sure 0xFFFFFFFFFFFFFFFF is possible with acc64 */
+    total++;
+    unsigned char acc64_buf2[] = { 0xFF, 0xFF, 0xFF, 0xFF,
+                                   0xFF, 0xFF, 0xFF, 0xFF };
+    tp.type = SUNS_ACC64;
+    suns_buf_to_value(acc64_buf2, &tp, v);
+    if (v->meta != SUNS_VALUE_NOT_IMPLEMENTED) {
+        debug("acc64 0xFFFFFFFF check passed");
+        pass++;
+    } else {
+        debug("acc64 0xFFFFFFFF check failed");
+    }        
+
+    /* float64 */
+    total++;
+    unsigned char float64_buf[] = { 0x40, 0x05, 0xbf, 0x0a,
+                                    0x8b, 0x14, 0x57, 0x69, };
+    tp.type = SUNS_FLOAT64;
+    suns_buf_to_value(float64_buf, &tp, v);
+
+    if (suns_value_get_float64(v) > 2.7182818284 && 
+        suns_value_get_float64(v) < 2.7182818285) {
+        debug("float64 passed");
+        pass++;
+    } else {
+        debug("float64 failed");
+    }        
+    
+    /* float64 not-implemented */
+    total++;
+    unsigned char float64_ni_buf[] = { 0x7F, 0xFF, 0x00, 0x00,
+                                       0x00, 0x00, 0x00, 0x01 };
+    tp.type = SUNS_FLOAT64;
+    suns_buf_to_value(float64_ni_buf, &tp, v);
+    if (v->meta == SUNS_VALUE_NOT_IMPLEMENTED) {
+        debug("float64 not-implemented passed");
+        pass++;
+    } else {
+        debug("float64 not-implemented failed");
     }
 
     debug("pass = %d, total = %d", pass, total);
@@ -1047,7 +1286,3 @@ int unit_test_suns_type_size(const char **name)
 
     return 0;
 }
-
-
-
-    

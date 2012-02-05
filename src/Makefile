@@ -46,7 +46,7 @@ UNIT_TESTS_OBJ=$(UNIT_TESTS_SRC:.c=.o)
 TEST_SERVER_SRC=test_server.c
 TEST_SERVER_OBJ=$(TEST_SERVER_SRC:.c=.o)
 
-HOST_TEST_SRC=suns_model.c suns_host_parser.c suns_host_test.c
+HOST_TEST_SRC=suns_model.c suns_host_parser.c suns_host_test.c suns_host.c
 HOST_TEST_OBJ=$(HOST_TEST_SRC:.c=.o)
 
 LIBTRX=../lib/trx/libtrx.a

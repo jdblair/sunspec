@@ -1,4 +1,7 @@
 
+#include "trx/list.h"
+#include "ezxml/ezxml.h"
+
 typedef enum suns_host_status {
     STATUS_SUCCESS = 0,
     STATUS_FAILURE,
@@ -18,7 +21,7 @@ typedef enum suns_host_code {
     CODE_UNEXPECTED_EXCEPTION,
     CODE_UNKNOWN_DEVICE,
     CODE_UNKNOWN_LOGGER,
-} suns_host_code_t
+} suns_host_code_t;
 
 /* used to map SunSpec status codes to HTTP status messages */
 typedef struct suns_host_status_map {
@@ -26,14 +29,7 @@ typedef struct suns_host_status_map {
     char *http_status;
 } suns_host_status_map_t;
 
-#define RESULT_STRING_SIZE=256
-
-typedef struct suns_host_parser {
-    ezxml_t xml;
-    list_t *devices;
-    suns_host_result_t *result;
-} suns_host_parser_t;
-    
+#define RESULT_STRING_SIZE 256
 
 
 /*
@@ -49,6 +45,13 @@ typedef struct suns_host_result {
     list_t *dr_fails;
 } suns_host_result_t;
 
+ 
+typedef struct suns_host_parser {
+    ezxml_t xml;
+    list_t *devices;
+    suns_host_result_t *result;
+} suns_host_parser_t;
+    
 
 typedef struct suns_host_dr_fail {
     char *man;

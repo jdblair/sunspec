@@ -1,11 +1,12 @@
 /* -*- tab-width: 4; indent-tabs-mode: nil -*- */
 
 /*
- * suns_unit_tests.h
+ * string.h
  *
- * unit tests for internal data transformations
+ * String processing utility functions.
  *
- * Copyright (c) 2011, John D. Blair <jdb@moship.net>
+ *
+ * Copyright (c) 2010-2011, John D. Blair <jdb@moship.net>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -35,25 +36,27 @@
  * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
+ *
+ *
  */
 
+#ifndef _STRING_H_
+#define _STRING_H_
 
-#ifndef _SUNS_UNIT_TESTS_H_
-#define _SUNS_UNIT_TESTS_H_
+#define string_escape_cstyle(in, out, out_len) \
+    string_escape(in, out, out_len, "\\\'\"", '\\')
 
-#include "trx/debug.h"
-#include "trx/macros.h"
+#define string_escape_sql(in, out, out_len) \
+    string_escape(in, out, out_len, "\'", '\'')
 
-typedef int (*unit_test_f)(const char **name);
-int test_getopt(int argc, char *argv[]);
-int unit_test_type_sizes(const char **name);
-int unit_test_byte_order(const char **name);
-int unit_test_value_to_buf(const char **name);
-int unit_test_buf_to_value(const char **name);
-int unit_test_snprintf_suns_value_t(const char **name);
-int unit_test_type_name_conversion(const char **name);
-int unit_test_suns_value_meta_string(const char **name);
-int unit_test_suns_type_size(const char **name);
-int unit_test_suns_snprintf_int_sf_e(const char **name);
+int string_escape(char *in, char *out, size_t out_len,
+                  char *esc_chars, char esc);
 
-#endif /* _SUNS_UNIT_TESTS_H_ */
+char *string_trim_quotes(char *string);
+
+int string_escape_xml(char *in, char *out, size_t out_len);
+int string_parse_decimal_long(char *buf, long int *base, int *e);
+int string_decompose_decimal(const char *buf,
+                             char *base, size_t base_len, int *e);
+
+#endif /* _STRING_H_ */
