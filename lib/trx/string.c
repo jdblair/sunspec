@@ -431,8 +431,9 @@ int string_read_until_eof(FILE *fp, char *buf, size_t len, size_t chunk_size)
     
     /* read until eof or error */
     while ((read_len =
-            fread(stdin_buf + offset, CHUNK_SIZE, num_chunks, stdin)) > 0) {
+            fread(buf + offset, chunk_size, num_chunks, stdin)) > 0) {
         offset += read_len;
+        debug("-> offset = %d", offset);
     }
 
     /* was it eof or error? */
@@ -442,4 +443,42 @@ int string_read_until_eof(FILE *fp, char *buf, size_t len, size_t chunk_size)
     }
 
     return offset;
+}
+
+
+int string_read_from_file_or_stdin(char *path, char *buf, size_t len)
+{
+    FILE *fp;
+    int rc;
+
+    debug("path = %s", path);
+    
+    /* special case: use - to mean stdin */
+    if (strcmp(path, "-") == 0) {
+        debug("reading from stdin");
+        fp = stdin;
+    } else {
+        fp = fopen(path, "r");
+        if (fp == NULL) {
+            debug("error opening file: %m");
+            return -1;
+        }
+        debug("read from file %s", path);
+    }
+
+    rc = string_read_until_eof(fp, buf, len, 1);
+
+    /* return right now if we're reading from stdin */
+    if (strcmp(path, "-") == 0)
+        return rc;
+
+    if (rc < 0) {
+        /* we've already failed so ignore return code from fclose */
+        fclose(fp);
+        return rc;
+    }
+    
+    /* pass return code from fclose() back to caller
+       to propogate possible failure */
+    return fclose(fp);
 }
