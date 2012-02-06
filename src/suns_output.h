@@ -61,6 +61,7 @@ typedef struct suns_value_output_vector {
     suns_value_snprintf_f float32;
     suns_value_snprintf_f acc32;
     suns_value_snprintf_f enum16;
+    suns_value_snprintf_f enum32;
     suns_value_snprintf_f bitfield16;
     suns_value_snprintf_f bitfield32;
     suns_value_snprintf_f int64;

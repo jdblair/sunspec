@@ -462,6 +462,9 @@ int suns_snprintf_value(char *str, size_t size,
     case SUNS_ENUM16:
         return fmt->enum16(str, size, v);
 
+    case SUNS_ENUM32:
+        return fmt->enum32(str, size, v);
+
     case SUNS_UINT16:
         return fmt->uint16(str, size, v);
 
@@ -512,26 +515,6 @@ int suns_snprintf_value(char *str, size_t size,
    this one by copying it and modifying the function pointers it
    wants to over-ride.
 */
-#if 0
-suns_value_output_vector_t suns_output_value_base_fmt = {
-    /* .null       =  */ value_output_null,
-    /* .undef      =  */ value_output_undef,
-    /* .int16      =  */ value_output_int16,
-    /* .uint16     =  */ value_output_uint16,
-    /* .acc16      =  */ value_output_uint16,
-    /* .int32      =  */ value_output_int32,
-    /* .uint32     =  */ value_output_uint32,
-    /* .float32    =  */ value_output_float32,
-    /* .acc32      =  */ value_output_int32,
-    /* .enum16     =  */ value_output_uint16,
-    /* .bitfield16 =  */ value_output_hex_uint16,
-    /* .bitfield32 =  */ value_output_hex_uint32,
-    /* .sunssf     =  */ value_output_int16,
-    /* .string     =  */ value_output_string,
-    /* .meta       =  */ value_output_meta,
-};
-#endif
-
 suns_value_output_vector_t suns_output_value_base_fmt = {
     .null       =  value_output_null,
     .undef      =  value_output_undef,
@@ -543,6 +526,7 @@ suns_value_output_vector_t suns_output_value_base_fmt = {
     .float32    =  value_output_float32,
     .acc32      =  value_output_int32,
     .enum16     =  value_output_uint16,
+    .enum32     =  value_output_uint32,
     .bitfield16 =  value_output_hex_uint16,
     .bitfield32 =  value_output_hex_uint32,
     .int64      =  value_output_int64,
@@ -723,15 +707,21 @@ int suns_dataset_text_fprintf(FILE *stream, suns_dataset_t *data)
             fprintf(stream, " %s", v->units);
 
         /* display enum values */
-        if ((v->tp.type == SUNS_ENUM16) &&
+        if (((v->tp.type == SUNS_ENUM16) ||
+             (v->tp.type == SUNS_ENUM32)) &&
             (v->tp.name != NULL)) {
             suns_define_block_t *b = 
                 suns_search_define_blocks(data->did->model->defines,
                                           v->tp.name);
             if (b) {
+                int value;
+                if (v->tp.type == SUNS_ENUM16)
+                    value = suns_value_get_enum16(v);
+                else
+                    value = suns_value_get_enum32(v);
+
                 suns_define_t *d =
-                    suns_search_enum_defines(b->list,
-                                             suns_value_get_enum16(v));
+                    suns_search_enum_defines(b->list, value);
                 if (d) {
                     fprintf(stream, " %s", d->name);
                 }
@@ -1150,6 +1140,7 @@ void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp)
        in the xml we are more explicit */
     if (dp->type_pair->name) {
         if ((dp->type_pair->type == SUNS_ENUM16) ||
+            (dp->type_pair->type == SUNS_ENUM32) ||
             (dp->type_pair->type == SUNS_BITFIELD16) ||
             (dp->type_pair->type == SUNS_BITFIELD32)) {
             fprintf(stream, " def=\"%s\"", dp->type_pair->name);

@@ -1093,6 +1093,17 @@ int unit_test_snprintf_suns_value_t(const char **name)
         debug("enum16 test failed (buf = %s)", buf);
     }
 
+    /* enum32 */
+    total++;
+    suns_value_set_enum32(v, 70000);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
+    if (strcmp(buf, "70000") == 0) {
+        debug("enum32 test passed (buf = %s)", buf);
+        pass++;
+    } else {
+        debug("enum32 test failed (buf = %s)", buf);
+    }
+
     /* bitfield16 */
     total++;
     suns_value_set_bitfield16(v, 0xcd);
@@ -1257,6 +1268,7 @@ int unit_test_suns_type_size(const char **name)
         { 8,     SUNS_UINT64 },
         { 8,     SUNS_FLOAT64 },
         { 2,     SUNS_ENUM16 },
+        { 4,     SUNS_ENUM32 },
         { 2,     SUNS_BITFIELD16 },
         { 4,     SUNS_BITFIELD32 },
         { 2,     SUNS_SF },
@@ -1286,3 +1298,5 @@ int unit_test_suns_type_size(const char **name)
 
     return 0;
 }
+
+

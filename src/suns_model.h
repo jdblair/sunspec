@@ -75,6 +75,7 @@ typedef enum suns_type {
     SUNS_FLOAT64,
     SUNS_ACC64,
     SUNS_ENUM16,
+    SUNS_ENUM32,
     SUNS_BITFIELD16,
     SUNS_BITFIELD32,
     SUNS_SF,
@@ -307,6 +308,8 @@ void suns_value_set_int16(suns_value_t *v, int16_t i16);
 int16_t suns_value_get_int16(suns_value_t *v);
 void suns_value_set_uint32(suns_value_t *v, uint32_t u32);
 uint32_t suns_value_get_uint32(suns_value_t *v);
+void suns_value_set_enum32(suns_value_t *v, uint32_t u32);
+uint32_t suns_value_get_enum32(suns_value_t *v);
 void suns_value_set_int32(suns_value_t *v, int32_t i32);
 int32_t suns_value_get_int32(suns_value_t *v);
 void suns_value_set_float32(suns_value_t *v, float32_t f32);

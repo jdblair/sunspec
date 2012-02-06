@@ -1,126 +1,141 @@
 
 model suns {
-	name "datatype test"
-	did 9999 "datatype test"
-	datapoints {
-		t_uint16          { uint16     }
-		t_int16           { int16      }
-		t_uint32          { uint32     }
-		t_int32	          { int32      }
-		t_uint16_ni       { uint16     }
-		t_int16_ni        { int16      }
-		t_uint32_ni       { uint32     }
-		t_int32_ni        { int32      }
-		t_float32         { float32    }
-		t_string_16       { string.16  }
-		t_string_08       { string.8   }
-		t_string_32       { string.32  }
-	        t_acc16           { acc16      }
-		t_acc16_2         { acc16      }
-	        t_acc32           { acc32      }
-	        t_acc32_2         { acc32      }
-		t_bitfield16      { bitfield16.t_bitfield16_bf }
-		t_bitfield32      { bitfield32 }
+    name "datatype test"
+    did 9999 "datatype test"
+    datapoints {
+        t_uint16          { uint16     }
+        t_int16           { int16      }
+        t_uint32          { uint32     }
+        t_int32           { int32      }
+        t_uint16_ni       { uint16     }
+        t_int16_ni        { int16      }
+        t_uint32_ni       { uint32     }
+        t_int32_ni        { int32      }
+        t_float32         { float32    }
+        t_string_16       { string.16  }
+        t_string_08       { string.8   }
+        t_string_32       { string.32  }
+        t_acc16           { acc16      }
+        t_acc16_2         { acc16      }
+        t_acc32           { acc32      }
+        t_acc32_2         { acc32      }
+        t_bitfield16      { bitfield16.t_bitfield16_bf }
+        t_bitfield32      { bitfield32 }
 
-		# 64 bit types
-		t_int64_max       { int64 }
-		t_int64_min       { int64 }
-	        t_int64_ni        { int64 }
-		t_uint64          { uint64 }
-		t_uint64_ni       { uint64 }
-	        t_acc64           { acc64 }
-		t_acc64_max       { acc64 }
+        # 64 bit types
+        t_int64_max       { int64 }
+        t_int64_min       { int64 }
+        t_int64_ni        { int64 }
+        t_uint64          { uint64 }
+        t_uint64_ni       { uint64 }
+        t_acc64           { acc64 }
+        t_acc64_max       { acc64 }
 
-		# scale factors
-		t_uint16_s1       { uint16.55 }
-		t_int32_s2        { uint32.-5 }
-		t_sf_a            { sunssf }
-		t_sf_b            { sunssf }
-	}  
-	datapoints repeating {
-		t_string_repeat   { string.8 }
-		t_enum1           { enum16.t_enum16_enum }
-	        t_uint64_scaled   { uint64.t_sf_a }
-		t_int32           { int32.t_sf_b }
-	}
+        # scale factors
+        t_uint16_s1       { uint16.55 }
+        t_int32_s2        { uint32.-5 }
+        t_sf_a            { sunssf }
+        t_sf_b            { sunssf }
+    }  
+    datapoints repeating {
+        t_string_repeat   { string.8 }
+        t_enum16          { enum16.t_enum16_enum }
+        t_enum32          { enum32.t_enum32_enum }
+        t_uint64_scaled   { uint64.t_sf_a }
+        t_int32           { int32.t_sf_b }
+    }
 
-	define t_enum16_enum {
-		TEST_ZERO   { 0 "value zero"  }
-		TEST_ONE    { 1 "value one"   }
-		TEST_TWO    { 2 "value two"   }
-		TEST_THREE  { 3 "value three" }
-		TEST_FOUR   { 4 "value four"  }
-		TEST_FIVE   { 5 "value five " }
-		TEST_SIX    { 6 "value six"   }
-		TEST_SEVEN  { 7 "value seven" }
-		TEST_EIGHT  { 8 "value eight" }
-	}
+    define t_enum16_enum {
+        TEST_ZERO   { 0 "value zero"  }
+        TEST_ONE    { 1 "value one"   }
+        TEST_TWO    { 2 "value two"   }
+        TEST_THREE  { 3 "value three" }
+        TEST_FOUR   { 4 "value four"  }
+        TEST_FIVE   { 5 "value five " }
+        TEST_SIX    { 6 "value six"   }
+        TEST_SEVEN  { 7 "value seven" }
+        TEST_EIGHT  { 8 "value eight" }
+    }
 
-	define t_bitfield16_bf {
-		TEST_BIT_01 { 0x01 "bit 01"   }
-		TEST_BIT_02 { 0x02 "bit 02"   }
-		TEST_BIT_03 { 0x03 "bit 03"   }
-		TEST_BIT_04 { 0x04 "bit 04"   }
-		TEST_BIT_05 { 0x05 "bit 05"   }
-		TEST_BIT_06 { 0x06 "bit 06"   }
-		TEST_BIT_07 { 0x07 "bit 07"   }
-		TEST_BIT_08 { 0x08 "bit 08"   }
-	}
+    define t_enum32_enum {
+        TEST_BIG_1  { 65536 "value one"   }
+        TEST_BIG_2  { 65537 "value two"   }
+        TEST_BIG_3  { 65538 "value three" }
+        TEST_BIG_4  { 65539 "value four"  }
+        TEST_BIG_5  { 65540 "value five " }
+        TEST_BIG_6  { 65541 "value six"   }
+        TEST_BIG_7  { 65542 "value seven" }
+        TEST_BIG_8  { 65543 "value eight" }
+    }
+
+    define t_bitfield16_bf {
+        TEST_BIT_01 { 0x01 "bit 01"   }
+        TEST_BIT_02 { 0x02 "bit 02"   }
+        TEST_BIT_03 { 0x03 "bit 03"   }
+        TEST_BIT_04 { 0x04 "bit 04"   }
+        TEST_BIT_05 { 0x05 "bit 05"   }
+        TEST_BIT_06 { 0x06 "bit 06"   }
+        TEST_BIT_07 { 0x07 "bit 07"   }
+        TEST_BIT_08 { 0x08 "bit 08"   }
+    }
 }
-		
+        
 
 
 data type_test {
-	uint16:9999                       # did
-	uint16:127                        # len
-	uint16:0x00                       # t_uint16
-	int16:-153                        # t_int16
-	uint32:4200000                    # t_uint32
-	int32:-4200000                    # t_int32
-	uint16:0xFFFF                     # t_uint16_ni - not implemented value
-	int16:0x8000                      # t_int16_ni  - not implemented value
-	uint32:0xFFFFFFFF                 # t_uint32_ni - not implemented value
-	int32:0x80000000                  # t_int32_ni  - not implemented value
-	float32:9.525                     # t_float32
-	string.16:"this is a string"      # t_string
-	string.8:"this is a string"       # t_string
-	string.32:"this is a string that is bigger"   # t_string
-	uint16:5555                       # t_acc16
-	uint16:0xFFFF                     # t_acc16_2
-	uint32:900000                     # t_acc32
-	uint32:0xFFFFFFFF                 # t_acc32_2
-	bitfield16:0x0F0F                 # t_bitfield16
-	bitfield32:0xFF00FF00             # t_bitfield32
+    uint16:9999                       # did
+    uint16:127                        # len
+    uint16:0x00                       # t_uint16
+    int16:-153                        # t_int16
+    uint32:4200000                    # t_uint32
+    int32:-4200000                    # t_int32
+    uint16:0xFFFF                     # t_uint16_ni - not implemented value
+    int16:0x8000                      # t_int16_ni  - not implemented value
+    uint32:0xFFFFFFFF                 # t_uint32_ni - not implemented value
+    int32:0x80000000                  # t_int32_ni  - not implemented value
+    float32:9.525                     # t_float32
+    string.16:"this is a string"      # t_string
+    string.8:"this is a string"       # t_string
+    string.32:"this is a string that is bigger"   # t_string
+    uint16:5555                       # t_acc16
+    uint16:0xFFFF                     # t_acc16_2
+    uint32:900000                     # t_acc32
+    uint32:0xFFFFFFFF                 # t_acc32_2
+    bitfield16:0x0F0F                 # t_bitfield16
+    bitfield32:0xFF00FF00             # t_bitfield32
 
-	# 64 bit types
-	int64:9223372036854775807         # t_int64 (max)
-	int64:-9223372036854775807	  # t_int64 (min)
-	int64:0x8000000000000000          # t_int64_ni  - not implemented value
-	uint64:4294967295                 # t_uint64
-	uint64:0xFFFFFFFFFFFFFFFF         # t_uint64    - not implemented value
-	uint64:123456789000               # t_acc64
-	uint64:0xFFFFFFFFFFFFFFFF         # t_acc64
+    # 64 bit types
+    int64:9223372036854775807         # t_int64 (max)
+    int64:-9223372036854775807    # t_int64 (min)
+    int64:0x8000000000000000          # t_int64_ni  - not implemented value
+    uint64:4294967295                 # t_uint64
+    uint64:0xFFFFFFFFFFFFFFFF         # t_uint64    - not implemented value
+    uint64:123456789000               # t_acc64
+    uint64:0xFFFFFFFFFFFFFFFF         # t_acc64
 
-	# scale factor tests
-	uint16:5289
-	int32:-4204
-	int16:14
-	int16:-2
+    # scale factor tests
+    uint16:5289
+    int32:-4204
+    int16:14
+    int16:-2
 
-	# repeating section
-	string.8:"block 1"
-	uint16:1                          # t_enum
-	uint64:32894
-	int32:-123
+    # repeating section
+    string.8:"block 1"
+    uint16:1                          # t_enum
+	uint32:65536
+    uint64:32894
+    int32:-123
 
-	string.8:"block 2"
-	uint16:2                          # t_enum
-	uint64:9348092381028430
-	int32:-1293940
+    string.8:"block 2"
+    uint16:2                          # t_enum
+	uint32:65537
+    uint64:9348092381028430
+    int32:-1293940
 
-	string.8:"block 3"
-	uint16:3                          # t_enum
-	uint64:2943013948
-	int32:-3941230
+    string.8:"block 3"
+    uint16:3                          # t_enum
+	uint32:65538
+    uint64:2943013948
+    int32:-3941230
 }
 

@@ -134,6 +134,7 @@ char * suns_type_string(suns_type_t type)
         "float64",
         "acc64",
         "enum16",
+        "enum32",
         "bitfield16",
         "bitfield32",
         "sunssf",
@@ -194,6 +195,7 @@ suns_type_t suns_type_from_name(char *name)
         { "float64",    SUNS_FLOAT64 },
         { "acc64",      SUNS_ACC64 },
         { "enum16",     SUNS_ENUM16 },
+        { "enum32",     SUNS_ENUM32 },
         { "bitfield16", SUNS_BITFIELD16 },
         { "bitfield32", SUNS_BITFIELD32 },
         { "sunssf",     SUNS_SF },
@@ -314,6 +316,7 @@ int suns_type_size(suns_type_t type)
         8, /* SUNS_FLOAT64 */
         8, /* SUNS_ACC64 */
         2, /* SUNS_ENUM16 */
+        4, /* SUNS_ENUM32 */
         2, /* SUNS_BITFIELD16 */
         4, /* SUNS_BITFIELD32 */
         2, /* SUNS_SF */
@@ -368,6 +371,7 @@ int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len)
     case SUNS_UINT32:
     case SUNS_FLOAT32:
     case SUNS_ACC32:
+    case SUNS_ENUM32:
     case SUNS_BITFIELD32:
         if (len < 4) {
             debug("not enough space for 32 bit conversion "
@@ -458,6 +462,7 @@ suns_value_meta_t suns_check_not_implemented(suns_type_pair_t *tp,
         (tp->type == SUNS_BITFIELD16 && v->value.u16 == (uint16_t) 0xFFFF)  ||
         (tp->type == SUNS_INT32   && v->value.i32 == (int32_t)  0x80000000) ||
         (tp->type == SUNS_UINT32  && v->value.i32 == (uint32_t) 0xFFFFFFFF) ||
+        (tp->type == SUNS_ENUM32  && v->value.i32 == (uint32_t) 0xFFFFFFFF) ||
         (tp->type == SUNS_BITFIELD32 && v->value.u32 == (uint32_t) 0xFFFFFFFF) ||
         (tp->type == SUNS_INT64   && v->value.i64 == (int64_t) 0x8000000000000000) ||
         (tp->type == SUNS_UINT64  && v->value.u64 == (uint64_t) 0xFFFFFFFFFFFFFFFF) ||
@@ -494,6 +499,7 @@ int suns_buf_to_value(unsigned char *buf,
     case SUNS_UINT32:
     case SUNS_FLOAT32:
     case SUNS_ACC32:
+    case SUNS_ENUM32:
     case SUNS_BITFIELD32:
         v->value.u32 = be32toh(*((uint32_t *)buf));
         break;
@@ -632,6 +638,7 @@ int suns_string_to_value(const char *string,
             /* 32 bit unsigned integers */
         case SUNS_UINT32:
         case SUNS_ACC32:
+        case SUNS_ENUM32:
         case SUNS_BITFIELD32:
             if (sscanf(string, "%u", &(v->value.u32)) < 0) {
                 debug("can't parse '%s' to uint32", string);
@@ -989,6 +996,28 @@ uint32_t suns_value_get_uint32(suns_value_t *v)
 {
     assert(v != NULL);
     assert(v->tp.type == SUNS_UINT32);
+
+    return v->value.u32;
+}
+
+
+void suns_value_set_enum32(suns_value_t *v, uint32_t u32)
+{
+    assert(v != NULL);
+
+    v->value.u32 = u32;
+    v->tp.type = SUNS_ENUM32;
+    if (u32 == (uint32_t) 0xFFFFFFFF) {
+        v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
+    } else {
+        v->meta = SUNS_VALUE_OK;
+    }
+}
+
+uint32_t suns_value_get_enum32(suns_value_t *v)
+{
+    assert(v != NULL);
+    assert(v->tp.type == SUNS_ENUM32);
 
     return v->value.u32;
 }
@@ -1362,11 +1391,16 @@ suns_dataset_t *suns_decode_data(list_t *did_list,
 void suns_model_fill_offsets(suns_model_t *m)
 {
     list_node_t *c, *d;
-    int offset = 3;  /* skip the header, did and len fields */
+    int offset = 0;
 
     list_for_each(m->dp_blocks, d) {
         suns_dp_block_t *dp_block = d->data;
         int dp_block_offset = 0;
+
+        if (! dp_block->repeating)
+            offset = 3;    /* skip the header, did and len fields */
+        else
+            offset = 1;
 
         list_for_each(dp_block->dp_list, c) {
             suns_dp_t *dp = c->data;
