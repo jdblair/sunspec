@@ -634,7 +634,7 @@ model suns {
 model suns {
   name "reference point"
   did 306 "reference_point"
-  datapoints {
+  datapoints repeating {
     E_RefPoint_Irradiance           { int16    }
     E_RefPoint_Current              { int32.-2 u=amps }
     E_RefPoint_Voltage              { int32.-2 u=volts }
@@ -755,5 +755,158 @@ data string_combiner_test {
 	bitfield32:0x0B	# 	SC_Input_Event_Vendor
 	3723  					# 	SC_Input_DC_Current
 	uint32:34948		# 	SC_Input_DC_AmpHours
+}
+
+
+#
+# Basic Aggregator Model
+#
+model suns {
+  did 002 "basic_aggregator"
+  datapoints {
+    A_Devices                     { uint16 }  
+	A_Count                       { uint16 }
+    A_Update_Number               { uint16 }
+    A_Status                      { enum16 }
+    A_Status_Vendor               { enum16 }
+    A_Event                       { bitfield32 }
+    A_Event_Vendor                { bitfield32 }
+    A_Control                     { enum16 }
+    A_Control_Vendor              { enum32 }
+    A_Control_Value               { enum32 }
+  }
+}
+      
+#
+# Panel Module (Floating Point)
+#
+model suns {
+  did 501 "panel_module_float"
+  datapoints {
+    P_Status                      { enum16 }
+    P_Status_Vendor               { enum16 }
+    P_Event                       { bitfield32 }
+    P_Event_Vendor                { bitfield32 }
+    P_Control                     { enum16 }
+    P_Control_Vendor              { enum32 }
+    P_Control_Value               { int32 }
+    P_Data_Timestamp              { uint32 u=seconds }
+    P_DC_Output_Current           { float32 u=amps }
+    P_DC_Output_Voltage           { float32 u=volts }
+    P_DC_Output_Energy            { float32 u=watthours }
+    P_DC_Output_Power             { float32 u=watts }
+    P_Temp                        { float32 u=degrees_c }
+    P_DC_Input_Current            { float32 u=amps }
+    P_DC_Input_Voltage            { float32 u=volts }
+    P_DC_Input_Energy             { float32 u=watthours }
+    P_DC_Input_Power              { float32 u=watts }
+  }
+
+  define P_Status {
+    P_STATUS_OFF              {  1 "Off" }
+    P_STATUS_SLEEPING         {  2 "Sleeping (auto-shutdown) or panel is at low/safe output power/voltage" }
+    P_STATUS_STARTING         {  3 "Starting up or ON but not producting power; panel might have high voltage but is not producing power" }
+    P_STATUS_MPPT             {  4 "Tracking MPPT power point" }
+    P_STATUS_THROTTLED        {  5 "Forced power reduction / power de-rating" }
+    P_STATUS_SHUTTING_DOWN    {  6 "Shutting down" }
+    P_STATUS_FAULT            {  7 "One or more faults exist" }
+    P_STATUS_STANDBY          {  8 "Standby (service or unit) - unlike SLEEPING in this mode the module might be at a high (unsafe) output voltage or power" }
+    P_STATUS_TEST             {  9 "Test mode" }
+    P_STATUS_OTHER            { 10 "As defined in vendor specific status" }
+  }
+
+  define P_Event {
+    P_EVENT_GROUND_FAULT      { 0x00000001 "Ground Fault" }
+    P_EVENT_INPUT_OVER_VOLTAGE  { 0x00000002 "DC input over-voltage" }
+    RESERVED                  { 0x00000004 "Reserved for u-inverter compatibility" }
+    P_EVENT_DC_DISCONNECT     { 0x00000008 "DC disconnect open" }
+    RESERVED                  { 0x00000010 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 0x00000020 "Reserved for u-inverter compatibility" }
+    P_EVENT_MANUAL_SHUTDOWN   { 0x00000040 "Manual shutdown" }
+    P_EVENT_OVER_TEMPERATURE  { 0x00000080 "Over Temperature" }
+    RESERVED                  { 0x00000100 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 0x00000200 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 0x00000400 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 0x00000800 "Reserved for u-inverter compatibility" }
+    P_EVENT_BLOWN_FUSE        { 0x00001000 "Blown Input Fuse" }
+    P_EVENT_UNDER_TEMPERATURE { 0x00002000 "Under Temperature" }
+    P_EVENT_MEMORY_LOSS       { 0x00004000 "Generic Memory or Communication Error." }
+    P_EVENT_ARC_DETECTION     { 0x00010000 "Arc Detection" }
+    P_EVENT_THEFT_DETECTION   { 0x00020000 "Theft Detection" }
+    P_EVENT_OUTPUT_OVER_CURRENT { 0x00040000 "Output Over Current" }
+    P_EVENT_OUTPUT_OVER_VOLTAGE { 0x00080000 "DC Output Over Voltage" }
+    P_EVENT_OUTPUT_UNDER_VOLTAGE { 0x00100000 "DC Output Under Voltage" }
+    P_EVENT_TEST_FAILED       { 0x00200000 "Last Self Test failed; see vendor eent for details." }
+    RESERVED                  { 0xFF600000 "Reserved for SunSpec" }
+  }
+}
+
+
+#
+# Panel Module (Integer)
+#
+model suns {
+  did 502 "panel_module_integer"
+  datapoints {
+    P_DC_Current_SF               { sunssf }
+    P_DC_Voltage_SF               { sunssf }
+    P_DC_Power_SF                 { sunssf }
+    P_DC_Energy_SF                { sunssf }
+    P_Status                      { enum16 }
+    P_Status_Vendor               { enum16 }
+    P_Event                       { bitfield32 }
+    P_Event_Vendor                { bitfield32 }
+    P_Control                     { enum16 }
+    P_Control_Vendor              { enum32 }
+    P_Control_Value               { int32 }
+    P_Data_Timestamp              { uint32 u=seconds }
+    P_DC_Output_Current           { int16 u=amps }
+    P_DC_Output_Voltage           { int16 u=volts }
+    P_DC_Output_Energy            { uint32 u=watthours }
+    P_DC_Output_Power             { int16 u=watts }
+    P_Temp                        { int16 u=degrees_c }
+    P_DC_Input_Current            { int16 u=amps }
+    P_DC_Input_Voltage            { int16 u=volts }
+    P_DC_Input_Energy             { uint32 u=watthours }
+    P_DC_Input_Power              { int16 u=watts }
+  }
+      
+  define P_Status {
+    P_STATUS_OFF              {  1 "Off" }
+    P_STATUS_SLEEPING         {  2 "Sleeping (auto-shutdown) or panel is at low/safe output power/voltage" }
+    P_STATUS_STARTING         {  3 "Starting up or ON but not producting power; panel might have high voltage but is not producing power" }
+    P_STATUS_MPPT             {  4 "Tracking MPPT power point" }
+    P_STATUS_THROTTLED        {  5 "Forced power reduction / power de-rating" }
+    P_STATUS_SHUTTING_DOWN    {  6 "Shutting down" }
+    P_STATUS_FAULT            {  7 "One or more faults exist" }
+    P_STATUS_STANDBY          {  8 "Standby (service or unit) - unlike SLEEPING in this mode the module might be at a high (unsafe) output voltage or power" }
+    P_STATUS_TEST             {  9 "Test mode" }
+    P_STATUS_OTHER            { 10 "As defined in vendor specific status" }
+  }
+
+  define P_Event {
+    P_EVENT_GROUND_FAULT      { 0x00000001 "Ground Fault" }
+    P_EVENT_INPUT_OVER_VOLTAGE  { 0x00000002 "DC input over-voltage" }
+    RESERVED                  { 0x00000004 "Reserved for u-inverter compatibility" }
+    P_EVENT_DC_DISCONNECT     { 0x00000008 "DC disconnect open" }
+    RESERVED                  { 0x00000010 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 0x00000020 "Reserved for u-inverter compatibility" }
+    P_EVENT_MANUAL_SHUTDOWN   { 0x00000040 "Manual shutdown" }
+    P_EVENT_OVER_TEMPERATURE  { 0x00000080 "Over Temperature" }
+    RESERVED                  { 0x00000100 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 0x00000200 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 0x00000400 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 0x00000800 "Reserved for u-inverter compatibility" }
+    P_EVENT_BLOWN_FUSE        { 0x00001000 "Blown Input Fuse" }
+    P_EVENT_UNDER_TEMPERATURE { 0x00002000 "Under Temperature" }
+    P_EVENT_MEMORY_LOSS       { 0x00004000 "Generic Memory or Communication Error." }
+    P_EVENT_ARC_DETECTION     { 0x00010000 "Arc Detection" }
+    P_EVENT_THEFT_DETECTION   { 0x00020000 "Theft Detection" }
+    P_EVENT_OUTPUT_OVER_CURRENT { 0x00040000 "Output Over Current" }
+    P_EVENT_OUTPUT_OVER_VOLTAGE { 0x00080000 "DC Output Over Voltage" }
+    P_EVENT_OUTPUT_UNDER_VOLTAGE { 0x00100000 "DC Output Under Voltage" }
+    P_EVENT_TEST_FAILED       { 0x00200000 "Last Self Test failed; see vendor eent for details." }
+    RESERVED                  { 0xFF600000 "Reserved for SunSpec" }
+  }
 }
 
