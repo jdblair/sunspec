@@ -64,6 +64,8 @@ typedef struct suns_app {
     char *output_fmt;     /* dataset output format */
     char *lid;            /* logger id for sunspec data posts */
     char *ns;             /* logger id namespace for sunspec data posts */
+    int timeout;          /* modbus timeout, in milliseconds (defaults to 2) */
+    int retries;          /* number of retries for modbus reads */
 } suns_app_t;
 
 

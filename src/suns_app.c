@@ -74,7 +74,9 @@ void suns_app_init(suns_app_t *app)
     app->export_fmt = NULL;
     app->output_fmt = "text";
     app->lid = NULL;
+    app->timeout = 2000;
     app->max_modbus_read = 125;  /* max defined in the modbus spec */
+    app->retries = 2;
 }
 
 
@@ -82,6 +84,7 @@ void suns_app_init(suns_app_t *app)
 int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
 {
     int opt;
+    float timeout_tmp;
 
     /* option_error is used to signal that some invalid combination of
        arguments has been used.  if option_error is non-zero getopt()
@@ -91,7 +94,8 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
 
     /* FIXME: add long options */
 
-    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:l:X:")) != -1) {
+    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:l:X:T:r:"))
+           != -1) {
         switch (opt) {
         case 't':
             if (strcasecmp(optarg, "tcp") == 0) {
@@ -183,6 +187,22 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
             }
             break;
 
+        case 'T':
+            if (sscanf(optarg, "%f", &timeout_tmp) != 1) {
+                error("can't parse provided timeout: %s", optarg);
+                option_error = 1;
+            }
+            app->timeout = timeout_tmp * 1000;
+            break;
+
+        case 'r':
+            if (sscanf(optarg, "%d", &(app->retries)) != 1) {
+                error("must provide decimal number of retries");
+                option_error = 1;
+            }
+            break;
+            
+
         default:
             suns_app_help(argc, argv);
             exit(EXIT_SUCCESS);
@@ -215,6 +235,8 @@ void suns_app_help(int argc, char *argv[])
     printf("      -P: port number for modbus tcp (default: 502)\n");
     printf("      -p: serial port for modbus rtu (default: /dev/ttyUSB0)\n");
     printf("      -b: baud rate for modbus rtu (default: 9600)\n");
+    printf("      -T: timeout, in seconds (can be fractional, like 1.5)\n");
+    printf("      -r: number of retries attempted for each modbus read\n");
     printf("      -m: specify model file\n");
     printf("      -s: run as a test server\n");
     printf("      -I: logger id (for sunspec logger xml output)\n");
@@ -308,7 +330,6 @@ int suns_app_test_server(suns_app_t *app)
         }
     }
     
-
     while (1) {
         /* wait for connection if modbus tcp */
         if (app->transport == SUNS_TCP) {
@@ -330,7 +351,7 @@ int suns_app_test_server(suns_app_t *app)
                       rc, modbus_strerror(errno));
                 break;
             }
-        
+
             /* the libmodbus machinery will service the
                request */
             rc = modbus_reply(app->mb_ctx, q, rc, mapping);
@@ -405,10 +426,16 @@ int suns_init_modbus(suns_app_t *app)
         }
     }
 
-    /* set timeout to 4 seconds */
-    timeout.tv_sec = 4;
-    timeout.tv_usec = 0;
+    /* modbus_get_response_timeout(app->mb_ctx, &timeout); */
+
+    /* set timeout */
+    debug("app->timeout = %d", app->timeout);
+    timeout.tv_sec = app->timeout / 1000;
+    timeout.tv_usec = (app->timeout % 1000) * 1000;
     modbus_set_response_timeout(app->mb_ctx, &timeout);
+
+    debug("timeout.tv_sec = %d", (int) timeout.tv_sec);
+    debug("timeout.tv_usec = %d", (int) timeout.tv_usec);
 
     return 0;
 }
@@ -471,18 +498,23 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
 
     /* look for sunspec signature */
     for (i = 0; search_registers[i] >= 0; i++) {
-        /* libmodbus uses zero as the base address */
-        rc = modbus_read_registers(app->mb_ctx, search_registers[i] - 1,
-                                   2, regs);
+        int retries;
+        rc = -1;
+        for (retries = 0; retries < app->retries && rc < 0; retries++) {
+            /* libmodbus uses zero as the base address */
+            debug("read register %d, try %d", search_registers[i], retries);
+            rc = modbus_read_registers(app->mb_ctx, search_registers[i] - 1,
+                                       2, regs);
+        }
+
         if (rc < 0) {
             debug("modbus_read_registers() returned %d: %s",
                   rc, modbus_strerror(errno));
-            error("modbus_read_registers() failed: register %d on address %d",
+            error("modbus_read_registers() failed: ");
+            error("register %d on address %d",
                   search_registers[i], app->addr);
-            continue;
-        }
-        if ( (regs[0] == SUNS_ID_HIGH) &&
-             (regs[1] == SUNS_ID_LOW) ) {
+        } else if ( (regs[0] == SUNS_ID_HIGH) &&
+                    (regs[1] == SUNS_ID_LOW) ) {
             base_register = search_registers[i];
             verbose(1, "found sunspec signature at register %d",
                     base_register);
@@ -507,9 +539,15 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
         debug("looking for sunspec data block at %d",
               base_register + offset);
 
-        rc = modbus_read_registers(app->mb_ctx,
-                                   base_register + offset - 1,
-                                   2, regs);
+        int retries;
+        rc = -1;
+        for (retries = 0; retries < app->retries && rc < 0; retries++) { 
+            debug("read register %d, try %d", base_register + offset, retries);
+            rc = modbus_read_registers(app->mb_ctx,
+                                       base_register + offset - 1,
+                                       2, regs);
+        }
+            
         if (rc < 0) {
             debug("modbus_read_registers() returned %d: %s",
                   rc, modbus_strerror(errno));
@@ -562,8 +600,6 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
             }
         }
 
-        /* retrieve data block, including the did and len */
-        /* add 2 to len to include did & len registers */
         rc = suns_app_read_registers(app, base_register + offset - 1,
                                    len + 2, regs);
         if (rc < 0) {
@@ -575,8 +611,11 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
 
         /* kludge around the way libmodbus works */
         suns_app_swap_registers(regs, len + 2, buf);
-        
+
+        /* dump the binary data in test model form */
         if (verbose_level > 2) {
+            /* suns_binary_model_fprintf requires the length in bytes,
+               not modbus registers */
             suns_binary_model_fprintf(stdout, sps->did_list,
                                       buf, ((len + 2) * 2));
         }            
@@ -628,6 +667,8 @@ int main(int argc, char **argv)
 
     /* initialize suns app global state */
     suns_app_init(&app);
+
+    debug("app.timeout = %d", app.timeout);
 
     /* initialize parser globals */
     suns_parser_init();
@@ -723,8 +764,13 @@ int suns_app_read_registers(suns_app_t *app,
         
         debug("start = %d, read_len = %d, (len - reg_offset) = %d", start, read_len, (len - reg_offset));
 
-        rc = modbus_read_registers(app->mb_ctx, start,
-                                   read_len, regs + reg_offset);
+        int retries;
+        rc = -1;
+        for (retries = 0; retries < app->retries && rc < 0; retries++) { 
+            debug("read register %d, try %d", start + 1, retries);
+            rc = modbus_read_registers(app->mb_ctx, start,
+                                       read_len, regs + reg_offset);
+        }
 
         if (rc < 0) {
             debug("modbus_read_registers() returned %d: %s",
