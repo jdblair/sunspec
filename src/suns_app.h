@@ -44,6 +44,8 @@
 
 #include "suns_model.h"
 
+#define SUNS_MODELPATH_ENV "SUNS_MODELPATH"
+
 typedef enum suns_transport {
     SUNS_TCP,
     SUNS_RTU
@@ -66,6 +68,7 @@ typedef struct suns_app {
     char *ns;             /* logger id namespace for sunspec data posts */
     int timeout;          /* modbus timeout, in milliseconds (defaults to 2) */
     int retries;          /* number of retries for modbus reads */
+    char *model_searchpath;  /* search path for model files */
 } suns_app_t;
 
 
@@ -84,5 +87,8 @@ int suns_app_read_registers(suns_app_t *app,
                             int start,
                             int len,
                             uint16_t *regs);
+int suns_app_model_search_path(suns_app_t *app, char const *path);
+int suns_app_model_search_dir(suns_app_t *app, char const *dirpath);
+
 
 #endif /* _SUNS_APP_H_ */

@@ -49,6 +49,7 @@
 #include <errno.h>
 #include <endian.h>
 #include <getopt.h>
+#include <dirent.h>
 
 #include "trx/macros.h"
 #include "trx/debug.h"
@@ -77,6 +78,10 @@ void suns_app_init(suns_app_t *app)
     app->timeout = 2000;
     app->max_modbus_read = 125;  /* max defined in the modbus spec */
     app->retries = 2;
+
+    /* override model_searchpath with SUNS_MODELPATH_ENV if it is set */
+    if ((app->model_searchpath = getenv(SUNS_MODELPATH_ENV)) == NULL)
+        app->model_searchpath = "/usr/local/lib/suns/models";
 }
 
 
@@ -94,7 +99,7 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
 
     /* FIXME: add long options */
 
-    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:l:X:T:r:"))
+    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:l:X:T:r:M:"))
            != -1) {
         switch (opt) {
         case 't':
@@ -201,7 +206,10 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
                 option_error = 1;
             }
             break;
-            
+
+        case 'M':
+            suns_app_model_search_dir(app, optarg);
+            break;
 
         default:
             suns_app_help(argc, argv);
@@ -235,9 +243,10 @@ void suns_app_help(int argc, char *argv[])
     printf("      -P: port number for modbus tcp (default: 502)\n");
     printf("      -p: serial port for modbus rtu (default: /dev/ttyUSB0)\n");
     printf("      -b: baud rate for modbus rtu (default: 9600)\n");
-    printf("      -T: timeout, in seconds (can be fractional, like 1.5)\n");
+    printf("      -T: timeout, in seconds (can be fractional, such as 1.5; default: 2.0)\n");
     printf("      -r: number of retries attempted for each modbus read\n");
     printf("      -m: specify model file\n");
+    printf("      -M: specify directory containing model files\n");
     printf("      -s: run as a test server\n");
     printf("      -I: logger id (for sunspec logger xml output)\n");
     printf("      -N: logger id namespace (for sunspec logger xml output, defaults to 'mac')\n");
@@ -655,7 +664,6 @@ int suns_app_read_data_model(modbus_t *ctx)
 
 int main(int argc, char **argv)
 {
-    /* list_node_t *c; */
     suns_app_t app;
     list_node_t *c;
 
@@ -676,6 +684,20 @@ int main(int argc, char **argv)
     /* parse options */
     /* this has the side effect of parsing any specified model files */
     suns_app_getopt(argc, argv, &app);
+
+    /* now load models found in the model searchpath */
+    /* ignore errors */
+    suns_app_model_search_path(&app, app.model_searchpath);
+
+    /* check if we've parsed any models */
+    if ((list_count(sps->model_list) <= 0) &&
+        (list_count(sps->data_block_list) <= 0)) {
+        error("No models or data defines were parsed.");
+        error("Check your model search path or specify a model file explicitly.");
+        error("use -D, -m or the SUNS_MODELPATH environment variable.");
+        error("model searchpath: %s", app.model_searchpath);
+        exit(EXIT_FAILURE);
+    }
 
     /* fill in offset data in any parsed model files */
     /* maybe this should be part of suns_parser.c? */
@@ -787,3 +809,92 @@ int suns_app_read_registers(suns_app_t *app,
     return rc;
 }
 
+
+int suns_app_model_search_path(suns_app_t *app, char const *path)
+{
+    int rc = 0;
+    char *pathdup;
+    char *saveptr = NULL;
+    char *token;
+
+    pathdup = strdup(path);
+
+    token = strtok_r(pathdup, ":", &saveptr);
+    while (token) {
+        rc = suns_app_model_search_dir(app, token);
+        /* ignore errors - if a part of the search path is not
+           accessible or a file can't be parsed we should
+           just keep searching */
+        if (rc < 0) {
+            debug("suns_app_model_search_dir() returned %d: %m", rc);
+        }
+        token = strtok_r(NULL, ":", &saveptr);
+        debug("token = %p, '%s'", token, token);
+    }
+
+    free(pathdup);
+
+    return rc;
+}
+
+
+int suns_app_model_search_dir(suns_app_t *app, char const *dirpath)
+{
+    int rc = 0;
+    DIR *dir;
+    struct dirent *entryp;
+
+    dir = opendir(dirpath);
+    if (dir == NULL) {
+        debug("can't open dir %s: %m", dirpath);
+        return -1;
+    }
+
+    entryp = readdir(dir);
+    while (entryp) {
+        int len;
+        char *filename = entryp->d_name;
+
+        len = strlen(filename);
+
+        /* check for *.xml */
+        if (((filename[len - 1] == 'l') || (filename[len - 1] == 'L')) &&
+            ((filename[len - 2] == 'm') || (filename[len - 2] == 'M')) &&
+            ((filename[len - 3] == 'x') || (filename[len - 3] == 'X')) &&
+            (filename[len - 4] == '.')) {
+            
+            char *buf = malloc(strlen(dirpath) + strlen(filename) + 2);
+            strcpy(buf, dirpath);
+            strcat(buf, "/");
+            strcat(buf, filename);
+            debug("parsing model file %s", filename);
+            if ((rc = suns_parse_xml_model_file(buf)) < 0)
+                return rc;
+            free(buf);
+        } 
+        debug("file: %s", filename);
+
+        if (((filename[len - 1] == 'l') || (filename[len - 1] == 'L')) &&
+            ((filename[len - 2] == 'e') || (filename[len - 2] == 'E')) &&
+            ((filename[len - 3] == 'd') || (filename[len - 3] == 'D')) &&
+            ((filename[len - 4] == 'o') || (filename[len - 4] == 'O')) &&
+            ((filename[len - 5] == 'm') || (filename[len - 5] == 'M')) &&
+            (filename[len - 6] == '.')) {
+
+            char *buf = malloc(strlen(dirpath) + strlen(filename) + 2);
+            strcpy(buf, dirpath);
+            strcat(buf, "/");
+            strcat(buf, filename);
+            debug("parsing model file %s", buf);
+            if ((rc = suns_parse_model_file(buf)) < 0)
+                return rc;
+            free(buf);
+        }
+            
+        entryp = readdir(dir);
+    }
+
+    closedir(dir);
+
+    return rc;
+}
