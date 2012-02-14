@@ -32,6 +32,16 @@
 # SUCH DAMAGE.
 #
 
+# default install command, allow to be overridden
+INSTALL ?= install
+
+# default install PREFIX, allow to be overridden
+PREFIX ?= /usr/local
+
+# location of model files
+SUNS_MODELPATH="\"$(PREFIX)/lib/suns/model\""
+
+
 BISON_OUT=suns_lang.tab.c
 FLEX_OUT=suns_lang.yy.c
 
@@ -46,17 +56,25 @@ UNIT_TESTS_OBJ=$(UNIT_TESTS_SRC:.c=.o)
 TEST_SERVER_SRC=test_server.c
 TEST_SERVER_OBJ=$(TEST_SERVER_SRC:.c=.o)
 
-HOST_TEST_SRC=suns_model.c suns_host_parser.c suns_host_test.c suns_host.c
+HOST_TEST_SRC=suns_model.c suns_host_parser.c suns_host_test.c suns_host.c \
+	suns_parser.c $(BISON_OUT) $(FLEX_OUT)
 HOST_TEST_OBJ=$(HOST_TEST_SRC:.c=.o)
 
 LIBTRX=../lib/trx/libtrx.a
 LIBEZXML=../lib/ezxml/libezxml.a
 
-CFLAGS=-std=gnu99 -g -DDEBUG -Wall $(shell pkg-config --cflags libmodbus)
+# cflags
+CFLAGS=-std=gnu99 -g
+CFLAGS+=-DDEBUG
+ifdef SUNS_MODELPATH
+CFLAGS+=-DSUNS_MODELPATH="$(SUNS_MODELPATH)"
+endif
+CFLAGS+=-Wall $(shell pkg-config --cflags libmodbus)
 CFLAGS+=-I ../lib
+
+# ldflags
 LDFLAGS=-lm $(shell pkg-config --libs libmodbus) 
 
-#LDLIBS=$(LIBTRX) $(shell pkg-config --libs libmodbus)
 
 all: $(BINFILES)
 
@@ -91,6 +109,12 @@ $(LIBTRX):
 
 $(LIBEZXML):
 	make -C ../lib ezxml
+
+install:
+	$(INSTALL) -d $(PREFIX)/bin
+	$(INSTALL) -o 755 suns $(PREFIX)/bin
+	$(INSTALL) -d $(PREFIX)/lib/suns/models
+	$(INSTALL) -o 644 ../models/device.model $(PREFIX)/lib/suns/models
 
 clean:
 	rm -f	suns_lang.tab.c suns_lang.tab.h \

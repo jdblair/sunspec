@@ -63,7 +63,7 @@
 void suns_app_init(suns_app_t *app)
 {
     memset(app, 0, sizeof(suns_app_t));
-
+    
     app->baud = 9600;
     app->serial_port = "/dev/ttyUSB0";
     app->hostname = "127.0.0.1";
@@ -81,7 +81,7 @@ void suns_app_init(suns_app_t *app)
 
     /* override model_searchpath with SUNS_MODELPATH_ENV if it is set */
     if ((app->model_searchpath = getenv(SUNS_MODELPATH_ENV)) == NULL)
-        app->model_searchpath = "/usr/local/lib/suns/models";
+        app->model_searchpath = SUNS_MODELPATH;
 }
 
 
@@ -713,12 +713,16 @@ int main(int argc, char **argv)
     } else {
         debug("unknown transport: %d", app.transport);
     }
+
     debug("hostname: %s", app.hostname);
     debug("tcp_port: %d", app.tcp_port);
     debug("serial_port: %s", app.serial_port);
     debug("baud: %d", app.baud);
     debug("test_server: %d", app.test_server);
     debug("export_fmt: %s", app.export_fmt);
+    debug("retries: %d", app.retries);
+    debug("timeout: %d", app.timeout);
+    debug("model_searchpath: %s", app.model_searchpath);
     
     /* are we invoked in model export mode? */
     if (app.export_fmt != NULL) {

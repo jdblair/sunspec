@@ -44,7 +44,14 @@
 
 #include "suns_model.h"
 
+
+
 #define SUNS_MODELPATH_ENV "SUNS_MODELPATH"
+
+#ifndef SUNS_MODELPATH
+#define SUNS_MODELPATH "/usr/local/lib/suns/models"
+#endif
+
 
 typedef enum suns_transport {
     SUNS_TCP,
