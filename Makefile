@@ -37,6 +37,9 @@ DISTFILE=sunspec.tar.gz
 all:
 	make -C src all
 
+install:
+	make -C src install
+
 
 $(DISTFILE):
 	@echo "exporting from git to create $(DISTFILE)"

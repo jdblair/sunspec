@@ -214,8 +214,10 @@ int unit_test_byte_order(const char **name)
     debug("wtf? PDP_ENDIAN?");
     return 1;
 #endif
+    /* just to be safe, test values that are 16, 32 and 64 bits wide */
     if ( ph2[0] == 0x11 &&
-         ph4[0] == 0x33 ) {
+         ph4[0] == 0x33 &&
+         ph8[0] == 0x77 ) {
         debug("host is big endian");
         /* is BIG_ENDIAN defined? */
 #if __BYTE_ORDER == __BIG_ENDIAN

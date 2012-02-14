@@ -39,7 +39,7 @@ INSTALL ?= install
 PREFIX ?= /usr/local
 
 # location of model files
-SUNS_MODELPATH="\"$(PREFIX)/lib/suns/model\""
+SUNS_MODELPATH="\"$(PREFIX)/lib/suns/models\""
 
 
 BISON_OUT=suns_lang.tab.c
