@@ -1,0 +1,48 @@
+#
+# common model
+#
+model suns {
+  name "common"
+  did 001 "common"
+  datapoints {
+    Mn             { string.32 lname="C_Manufacturer" }
+    Md             { string.32 lname="C_Model" }
+    Opt            { string.16 lname="C_Options" }
+    Vr             { string.16 lname="C_Version" }
+    SN             { string.32 lname="C_SerialNumber" }
+    DA             { uint16    lname="C_DeviceAddress" access="rw"}
+  }
+}
+
+data common_model_test {
+  001
+  65 
+  string.32 : "Amalgamated Industries"        # c_manufacturer
+  string.32 : "Composite SuperDevice"         # c_model
+  string.16 : "Mark 2 <&'>"                   # c_options
+  string.16 : "3.14.159"                      # c_version
+  string.32 : "9876543210"                    # c_serialnumber
+  uint16    : 99                              # c_deviceaddress
+}
+
+
+#
+# Basic Aggregator Model
+#
+model suns {
+  did 002 "basic_aggregator"
+  datapoints {
+    AID                           { uint16 }  
+    N                             { uint16 }
+    UN                            { uint16 }
+    St                            { enum16 }
+    StVnd                         { enum16 }
+    Evt                           { bitfield32 }
+    EvtVnd                        { bitfield32 }
+    Ctl                           { enum16 }
+    CtlVnd                        { enum32 }
+    CtlVl                         { enum32 }
+  }
+}
+
+     

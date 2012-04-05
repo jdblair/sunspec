@@ -442,7 +442,7 @@ int suns_value_to_buffer(buffer_t *buf, suns_value_t *v)
     rc =  suns_value_to_buf(v, (unsigned char *) buf->in,
                             buffer_space(buf));
 
-    debug("buf->in = %p, size = %d", buf->in, size);
+    /* debug("buf->in = %p, size = %d", buf->in, size); */
     buf->in += size;
 
     return rc;
@@ -585,7 +585,8 @@ int suns_string_to_value(const char *string,
         char base[BUFFER_SIZE];
         int exp;
 
-        if (string_decompose_decimal(string, base, BUFFER_SIZE, &exp) < 0)
+        if (tp->type != SUNS_STRING &&
+            string_decompose_decimal(string, base, BUFFER_SIZE, &exp) < 0)
             return -1;
 
         switch (tp->type) {
@@ -806,6 +807,8 @@ suns_dataset_t *suns_dataset_new(void)
         debug("malloc() failed");
         return NULL;
     }
+
+    memset(d, 0, sizeof(suns_dataset_t));
 	
     d->values = list_new();
     if (d->values == NULL) {
@@ -1280,6 +1283,8 @@ char * suns_value_get_string(suns_value_t *v)
    returns NULL if no matching did value is found */
 suns_model_did_t *suns_find_did(list_t *did_list, uint16_t did)
 {
+    assert(did_list);
+
     suns_model_did_t *d;
 
     debug("looking up model for did %d", did);
@@ -1368,6 +1373,7 @@ suns_dataset_t *suns_decode_data(list_t *did_list,
     int byte_offset = 0;
     list_for_each(m->dp_blocks, c) {
         byte_offset += suns_decode_dp_block(c->data,
+                                            /* offset +4 for header */
                                             buf + byte_offset + 4,
                                             (did_len * 2) - byte_offset,
                                             data->values);
@@ -1397,9 +1403,11 @@ void suns_model_fill_offsets(suns_model_t *m)
         suns_dp_block_t *dp_block = d->data;
         int dp_block_offset = 0;
 
+#if 0
         if (! dp_block->repeating)
-            offset = 3;    /* skip the header, did and len fields */
+             offset = 3;    /* skip the header, did and len fields */
         else
+#endif
             offset = 1;
 
         list_for_each(dp_block->dp_list, c) {
@@ -1450,9 +1458,12 @@ void suns_model_fill_offsets(suns_model_t *m)
     }
     
     /* fill in len field */
+    m->len = offset;
+#if 0    
     if (m->len < 1) {
         m->len = offset - 3;  /* offset starts numbering at 1 */
     }
+#endif 
 }
 
 
@@ -1503,6 +1514,7 @@ int suns_decode_dp_block(suns_dp_block_t *dp_block,
 
                 /* check for attributes we care about */
                 v->units = suns_find_attribute(dp, "u");
+                v->lname = suns_find_attribute(dp, "lname");
 
                 debug("v->tp.type = %s", suns_type_string(v->tp.type));
                 list_node_add(value_list, list_node_new(v));
@@ -1672,4 +1684,5 @@ char * suns_find_attribute(suns_dp_t *dp, char *name)
     /* not found */
     return NULL;
 }
+
 

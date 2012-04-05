@@ -58,6 +58,15 @@ typedef enum suns_transport {
     SUNS_RTU
 } suns_transport_t;
 
+
+typedef enum suns_mode {
+    SUNS_MODBUS_SLAVE,
+    SUNS_MODBUS_MASTER,
+    SUNS_LOGGER_HOST_CGI,
+    SUNS_LOGGER_XML_PARSER,
+    SUNS_EXPORT_MODEL,
+} suns_mode_t;
+
 typedef struct suns_app {
     suns_transport_t transport;
     char *hostname;
@@ -65,6 +74,7 @@ typedef struct suns_app {
     char *serial_port;
     int baud;
     int test_server;
+    int logger_host;
     modbus_t *mb_ctx;     /* libmodbus context */
     int run_mainloop;
     int addr;
@@ -75,6 +85,7 @@ typedef struct suns_app {
     char *ns;             /* logger id namespace for sunspec data posts */
     int timeout;          /* modbus timeout, in milliseconds (defaults to 2) */
     int retries;          /* number of retries for modbus reads */
+    int override_model_searchpath;  /* don't load from search path */
     char *model_searchpath;  /* search path for model files */
 } suns_app_t;
 
@@ -96,6 +107,7 @@ int suns_app_read_registers(suns_app_t *app,
                             uint16_t *regs);
 int suns_app_model_search_path(suns_app_t *app, char const *path);
 int suns_app_model_search_dir(suns_app_t *app, char const *dirpath);
+int suns_app_logger_host(suns_app_t *app);
 
 
 #endif /* _SUNS_APP_H_ */

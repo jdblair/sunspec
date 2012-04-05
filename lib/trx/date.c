@@ -458,7 +458,7 @@ int date_parse_rfc3339_to_unixtime_z(char *buf, time_t *unixtime, int *usecs)
     *unixtime = mktime(&tm_time);
     
     /* now apply the tm_gmtoff we saved above */
-    *unixtime -= tm_gmtoff;
+    *unixtime -= tm_time.tm_gmtoff;
 
     return 0;
 }

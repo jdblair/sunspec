@@ -214,10 +214,8 @@ int unit_test_byte_order(const char **name)
     debug("wtf? PDP_ENDIAN?");
     return 1;
 #endif
-    /* just to be safe, test values that are 16, 32 and 64 bits wide */
     if ( ph2[0] == 0x11 &&
-         ph4[0] == 0x33 &&
-         ph8[0] == 0x77 ) {
+         ph4[0] == 0x33 ) {
         debug("host is big endian");
         /* is BIG_ENDIAN defined? */
 #if __BYTE_ORDER == __BIG_ENDIAN
@@ -957,6 +955,8 @@ int unit_test_buf_to_value(const char **name)
     /* make sure 0xFFFFFFFFFFFFFFFF is possible with acc64 */
     total++;
     unsigned char acc64_buf2[] = { 0xFF, 0xFF, 0xFF, 0xFF,
+                                   0xFF, 0xFF, 0xFF, 0xFF,
+                                   0xFF, 0xFF, 0xFF, 0xFF,
                                    0xFF, 0xFF, 0xFF, 0xFF };
     tp.type = SUNS_ACC64;
     suns_buf_to_value(acc64_buf2, &tp, v);

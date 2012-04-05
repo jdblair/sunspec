@@ -1,0 +1,145 @@
+
+#
+# string_combiner
+#
+model suns {
+  name "string_combiner"
+  did 401 "string_combiner"
+  # common datapoints
+  datapoints {
+    DCA_SF                  { sunssf }
+    DCAH_SF                 { sunssf }
+    DCV_SF                  { sunssf }
+    DCA_Max                 { uint16.DCA_SF units=A }
+    N                       { uint16 }
+    Evt                     { bitfield32 }
+    EvtVnd                  { bitfield32 }
+    DCA                     { int16.DCA_SF units=A }
+    DCAH                    { uint32.DCAH_SF units=Ah }
+    DCV                     { uint16.DCV_SF units=V }
+    DCTmp                   { uint16 units=Tmp }
+  }  
+  # per-string datapoints
+  datapoints repeating {
+    InID                    { uint16 }
+    InEvt                   { bitfield32 }
+    InEvtVnd                { bitfield32 }
+    InDCA                   { int16.DCA_SF units=A }
+    InDCAH                  { uint32.DCAH_SF units=Ah }
+  }
+}
+
+
+#
+# string_combiner (deprecated)
+#
+model suns {
+  name "advanced_string_combiner"
+  did 402 "advanced_string_combiner"
+  # common datapoints
+  datapoints {
+    DCA_SF                  { sunssf }
+    DCAH_SF                 { sunssf }
+    DCV_SF                  { sunssf }
+    DCW_SF                  { sunssf }
+    DCWh_SF                 { sunssf }
+    DCAMax                  { uint16 units=amps }
+    N                       { uint16 }
+    Evt                     { bitfield32 }
+    EvtVnd                  { bitfield32 }
+    DCA                     { int16  units=amps }
+    DCAH                    { uint32 units=amps_hours }
+    DCV                     { uint16 units=volts }
+    Tmp                     { uint16 units=degrees_c }
+    DCW                     { int16  units=watts }
+    DC_PR                   { uint16 units=percent }
+    DC_Energy               { uint32 units=watt_hours }
+  }  
+  # per-string datapoints
+  datapoints repeating {
+    InID                    { uint16 }
+    InEvt                   { bitfield32 }
+    EvtVnd                  { bitfield32 }
+    InDCA                   { int16.DCA_SF units=A }
+    InDCAH                  { uint32.DCAH_SF units=Ah  }
+    InDCV                   { uint16.DCV_SF units=V      }
+    InDCW                   { int16.DCWh_SF  units=W      }
+    INDCWh                  { uint32 units=Wh }
+    InDCPR                  { uint16 units=percent }
+  }
+}
+
+
+data string_combiner_test {
+  401
+  30
+  -2              #   SC_DC_Current_SF
+  0               #   SC_DC_AH_SF
+  -2              #   SC_DC_Voltage_SF
+  5423            #   SC_DC_Current_Max
+  2               #   SC_Num_Inputs
+  bitfield32:0x00 #   SC_Event
+  bitfield32:0x00 #   SC_Event_Vendor
+  5295            #   SC_DC_Current
+  uint32:29832    #   SC_DC_AmpHour
+  31423           #   SC_DC_Voltage
+  22              #   SC_Internal_Temp
+
+  0               #   SC_Input_ID
+  bitfield32:0x01 #   SC_Input_Event
+  bitfield32:0x04 #   SC_Input_Event_Vendor
+  2623            #   SC_Input_DC_Current
+  uint32:20948    #   SC_Input_DC_AmpHours
+
+  1               #   SC_Input_ID
+  bitfield32:0x02 #   SC_Input_Event
+  bitfield32:0x0B #   SC_Input_Event_Vendor
+  3723            #   SC_Input_DC_Current
+  uint32:34948    #   SC_Input_DC_AmpHours
+}
+
+
+#
+# string_combiner
+#
+model suns {
+  name "advanced_string_combiner"
+  did 404 "advanced_string_combiner"
+  # common datapoints
+  datapoints {
+    DCA_SF                  { sunssf }
+    DCAH_SF                 { sunssf }
+    DCV_SF                  { sunssf }
+    DCW_SF                  { sunssf }
+    DCWh_SF                 { sunssf }
+    DCAMax                  { uint16 units=A }
+    N                       { uint16 }
+    Evt                     { bitfield32 }
+    EvtVnd                  { bitfield32 }
+    DCA                     { int16  units=A }
+    DCAH                    { uint32 units=Ah }
+    DCV                     { uint16 units=V }
+    Tmp                     { uint16 units=Tmp }
+    DCW                     { int16  units=W }
+    DCPR                    { uint16 units=percent }
+    DCWh                    { uint32 units=Wh }
+    InDCA_SF                { sunssf }
+    InDCAH_SF               { sunssf }
+    InDCV_SF                { sunssf }
+    InDCW_SF                { sunssf }
+  }  
+  # per-string datapoints
+  datapoints repeating {
+    InID                    { uint16 }
+    InEvt                   { bitfield32 }
+    EvtVnd                  { bitfield32 }
+    InDCA                   { int16.InDCA_SF units=A }
+    InDCAH                  { uint32.InDCAH_SF units=Ah  }
+    InDCV                   { uint16.InDCV_SF units=V      }
+    InDCW                   { int16.InDCW_SF  units=W      }
+    INDCWh                  { uint32.InDCWh_SF units=Wh }
+    InDCPR                  { uint16 units=percent }
+  }
+}
+
+

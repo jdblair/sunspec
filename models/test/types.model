@@ -21,6 +21,7 @@ model suns {
         t_acc32_2         { acc32      }
         t_bitfield16      { bitfield16.t_bitfield16_bf }
         t_bitfield32      { bitfield32 }
+        t_uint16_rw       { uint16 access=rw }
 
         # 64 bit types
         t_int64_max       { int64 }

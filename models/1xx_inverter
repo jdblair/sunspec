@@ -1,0 +1,210 @@
+
+#
+# inverter model
+#
+model suns {
+  name "inverter"
+  did 101 "single-phase inverter"
+  did 102 "split-phase inverter"
+  did 103 "three-phase inverter"
+  datapoints {
+    A               {  uint16.A_SF u=A lname=I_AC_Current }
+    AphA            {  uint16.A_SF u=A lname=I_AC_CurrentA }
+    AphB            {  uint16.A_SF u=A lname=I_AC_CurrentB }
+    AphC            {  uint16.A_SF u=A lname=I_AC_CurrentC }
+    A_SF            {  sunssf }
+    PPVphAB         {  uint16.V_SF u=V lname=I_AC_VoltageAB }
+    PPVphBC         {  uint16.V_SF u=V lname=I_AC_VoltageBC }
+    PPVphCA         {  uint16.V_SF u=V lname=I_AC_VoltageCA }
+    PhVphA          {  uint16.V_SF u=V lname=I_AC_VoltageAN }
+    PhVphB          {  uint16.V_SF u=V lname=I_AC_VoltageBN }
+    PhVphC          {  uint16.V_SF u=V lname=I_AC_VoltageCN }
+    V_SF            {  sunssf }
+    W               {  int16.W_SF u=W lname=I_AC_Power }
+    W_SF            {  sunssf }
+    Hz              {  uint16.Hz_SF u=Hz lname=I_AC_Frequency }
+    Hz_SF           {  sunssf }
+    VA              {  int16.VA_SF u=VA lname=I_AC_VA }
+    VA_SF           {  sunssf }
+    VAr             {  int16.VAr_SF u=VAr lname=I_AC_VAr }
+    VAr_SF          {  sunssf }
+    PF              {  int16.PF_SF u=PF lname=I_AC_PF }
+    PF_SF           {  sunssf }
+    WH              {  uint32.WH_SF u=Wh lname=I_AC_Energy_WH }
+    WH_SF           {  sunssf }
+    DCA             {  uint16.DCA_SF u=A lname=I_DC_Current }
+    DCA_SF          {  sunssf }
+    DCV             {  uint16.DCV_SF u=V lname=I_DC_Voltage }
+    DCV_SF          {  sunssf }
+    DCW             {  int16.DCW_SF u=W lname=I_DC_Power }
+    DCW_SF          {  sunssf }
+    TmpCab          {  int16.Tmp_SF u=Tmp lname=I_Temp_Cab }
+    TmpSnk          {  int16.Tmp_SF u=Tmp lname=I_Temp_Sink }
+    TmpTrns         {  int16.Tmp_SF u=Tmp lname=I_Temp_Trans }
+    TmpOt           {  int16.Tmp_SF u=Tmp lname=I_Temp_Other }
+    Tmp_SF          {  sunssf }
+    St              {  enum16.St_Enum lname=I_Status }
+    StVnd           {  enum16 lname=I_Status_Vendor }
+    Evt1            {  bitfield32.Evt_BF lname=I_Event_1 }
+    Evt2            {  bitfield32 lname=I_Event_1 }
+    EvtVnd1         {  bitfield32 lname=I_Event_1_Vendor }
+    EvtVnd2         {  bitfield32 lname=I_Event_2_Vendor }
+    EvtVnd3         {  bitfield32 lname=I_Event_3_Vendor }
+    EvtVnd4         {  bitfield32 lname=I_Event_4_Vendor }
+  }
+
+  define St_Enum {
+    I_STATUS_OFF               { 1 "Off" }
+    I_STATUS_SLEEPING          { 2 "Sleeping (auto-shutdown)" }
+    I_STATUS_STARTING          { 3 "Starting up" }
+    I_STATUS_MPPT              { 4 "Tracking power point" }
+    I_STATUS_THROTTLED         { 5 "Forced power reduction" }
+    I_STATUS_SHUTTING_DOWN     { 6 "Shutting down" }
+    I_STATUS_FAULT             { 7 "One or more faults exist" }
+    I_STATUS_STANDBY           { 8 "Standby (service on unit)" }
+  }
+
+  define Evt_BF {
+    I_EVENT_GROUND_FAULT       { 1 "Ground fault" }
+    I_EVENT_DC_OVER_VOLT       { 2 "DC over voltage" }
+    I_EVENT_AC_DISCONNECT      { 3 "AC disconnect open" }
+    I_EVENT_DC_DISCONNECT      { 4 "DC disconnect open" }
+    I_EVENT_GRID_DISCONNECT    { 5 "Grid shutdown" }
+    I_EVENT_CABINET_OPEN       { 6 "Cabinet open" }
+    I_EVENT_MANUAL_SHUTDOWN    { 7 "Manual shutdown" }
+    I_EVENT_OVER_TEMP          { 8 "Over temperature" }
+    I_EVENT_OVER_FREQUENCY     { 9 "Frequency above limit" }
+    I_EVENT_UNDER_FREQUENCY    { 10 "Frequency under limit" }
+    I_EVENT_AC_OVER_VOLT       { 11 "AC Voltage above limit" }
+    I_EVENT_AC_UNDER_VOLT      { 12 "AC Voltage under limit" }
+    I_EVENT_BLOWN_STRING_FUSE  { 13 "Blown String fuse on input" }
+    I_EVENT_UNDER_TEMP         { 14 "Under temperature" }
+    I_EVENT_MEMORY_LOSS        { 15 "Generic Memory or Communication error (internal)" }
+    I_EVENT_HW_TEST_FAILURE    { 16 "Hardware test failure" }
+  }
+}
+
+
+data inverter_model_test {
+  103
+  50
+  900       # I_AC_Current
+  300       # I_AC_CurrentA
+  290       # I_AC_CurrentB
+  302       # I_AC_CurrentC
+  -1        # I_AC_Current_SF
+  2080      # I_AC_VoltageAB
+  2080      # I_AC_VoltageBC
+  2080      # I_AC_VoltageCA
+  1200      # I_AC_VoltageAN
+  1200      # I_AC_VoltageBN
+  1200      # I_AC_VoltageCN
+  -1        # I_AC_Voltage_SF
+  23402     # I_AC_Power
+  -1         # I_AC_Power_SF
+  6002      # I_AC_Frequency
+  -2        # I_AC_Frequency_SF
+  0x8000    # I_AC_VA
+  0         # I_AC_VA_SF
+  0x8000    # I_AC_VAR
+  0         # I_AC_VAR_SF
+  0x8000    # I_AC_PF
+  0         # I_AC_PF_SF
+  uint32:32831049  # I_AC_Energy_WH
+  0         # I_AC_Energy_WH_SF
+  728       # I_DC_Current
+  -1        # I_DC_Current_SF
+  302       # I_DC_Voltage
+  0         # I_DC_Voltage_SF
+  219856    # I_DC_Power
+  0         # I_DC_Power_SF
+  31        # I_Temp_Cab
+  0x8000    # I_Temp_Sink
+  0x8000    # I_Temp_Trans
+  0x8000    # I_Temp_Other
+  0         # I_Temp_SF
+  4         # I_Status
+  0         # I_Status_Vendor
+  uint32:0  # I_Event_1
+  uint32:0  # I_Event_2
+  uint32:0  # I_Event_1_Vendor
+  uint32:0  # I_Event_2_Vendor
+  uint32:0  # I_Event_3_Vendor
+  uint32:0  # I_Event_4_Vendor
+}
+
+
+#
+# floating point inverter model
+#
+model suns {
+  name "inverter_f"
+  did 111 "single-phase inverter (float)"
+  did 112 "split-phase inverter (float)"
+  did 113 "three-phase inverter (float)"
+  datapoints {
+    A             {  float32 u=amps }
+    AphA          {  float32 u=amps }
+    AphB          {  float32 u=amps }
+    AphC          {  float32 u=amps }
+    PPVphAB       {  float32 u=volts }
+    PPVphBC       {  float32 u=volts }
+    PPVphCA       {  float32 u=volts }
+    PhVphA        {  float32 u=volts }
+    PhVphB        {  float32 u=volts }
+    PhVphC        {  float32 u=volts }
+    W             {  float32 u=watts }
+    Hz            {  float32 u=hertz }
+    VA            {  float32 u=va }
+    VAr           {  float32 u=var }
+    PF            {  float32 u=pf }
+    WH            {  float32 u=watthours }
+    DCA           {  float32 u=amps }
+    DCV           {  float32 u=volts }
+    DCW           {  float32 u=watts }
+    TmpCab        {  float32 u=degrees_c }
+    TmpSnk        {  float32 u=degrees_c }
+    TmpTrns       {  float32 u=degrees_c }
+    TmpOt         {  float32 u=degrees_c }
+    St            {  enum16.I_Status_Enum }
+    StVnd         {  enum16 }
+    Evt1          {  bitfield32.I_Event_1_BF }
+    Evt2          {  bitfield32 }
+    EvtVnd1       {  bitfield32 }
+    EvtVnd2       {  bitfield32 }
+    EvtVnd3       {  bitfield32 }
+    EvtVnd4       {  bitfield32 }
+  }
+
+  # it would be cool if we didn't have to repeat this
+  define T_enum16_Enum {
+    I_STATUS_OFF               { 1 "Off" }
+    I_STATUS_SLEEPING          { 2 "Sleeping (auto-shutdown)" }
+    I_STATUS_STARTING          { 3 "Starting up" }
+    I_STATUS_MPPT              { 4 "Tracking power point" }
+    I_STATUS_THROTTLED         { 5 "Forced power reduction" }
+    I_STATUS_SHUTTING_DOWN     { 6 "Shutting down" }
+    I_STATUS_FAULT             { 7 "One or more faults exist" }
+    I_STATUS_STANDBY           { 8 "Standby (service on unit)" }
+  }
+
+  define Evt_BF {
+    I_EVENT_GROUND_FAULT       { 1 "Ground fault" }
+    I_EVENT_DC_OVER_VOLT       { 2 "DC over voltage" }
+    I_EVENT_AC_DISCONNECT      { 3 "AC disconnect open" }
+    I_EVENT_DC_DISCONNECT      { 4 "DC disconnect open" }
+    I_EVENT_GRID_DISCONNECT    { 5 "Grid shutdown" }
+    I_EVENT_CABINET_OPEN       { 6 "Cabinet open" }
+    I_EVENT_MANUAL_SHUTDOWN    { 7 "Manual shutdown" }
+    I_EVENT_OVER_TEMP          { 8 "Over temperature" }
+    I_EVENT_OVER_FREQUENCY     { 9 "Frequency above limit" }
+    I_EVENT_UNDER_FREQUENCY    { 10 "Frequency under limit" }
+    I_EVENT_AC_OVER_VOLT       { 11 "AC Voltage above limit" }
+    I_EVENT_AC_UNDER_VOLT      { 12 "AC Voltage under limit" }
+    I_EVENT_BLOWN_STRING_FUSE  { 13 "Blown String fuse on input" }
+    I_EVENT_UNDER_TEMP         { 14 "Under temperature" }
+    I_EVENT_MEMORY_LOSS        { 15 "Generic Memory or Communication error (internal)" }
+    I_EVENT_HW_TEST_FAILURE    { 16 "Hardware test failure" }
+  }
+}
+

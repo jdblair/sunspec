@@ -44,7 +44,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
-#include <unistd.h>
+#include <unistd.h> 
 #include <modbus.h>
 #include <errno.h>
 #include <endian.h>
@@ -58,6 +58,8 @@
 #include "suns_output.h"
 #include "suns_parser.h"
 #include "suns_lang.tab.h"
+#include "suns_host.h"
+#include "suns_host_parser.h"
 
 
 void suns_app_init(suns_app_t *app)
@@ -69,6 +71,7 @@ void suns_app_init(suns_app_t *app)
     app->hostname = "127.0.0.1";
     app->tcp_port = 502;
     app->test_server = 0;
+    app->logger_host = 0;
     app->transport = SUNS_TCP;
     app->run_mainloop = 1;
     app->addr = 1;
@@ -78,6 +81,7 @@ void suns_app_init(suns_app_t *app)
     app->timeout = 2000;
     app->max_modbus_read = 125;  /* max defined in the modbus spec */
     app->retries = 2;
+    app->override_model_searchpath = 0;
 
     /* override model_searchpath with SUNS_MODELPATH_ENV if it is set */
     if ((app->model_searchpath = getenv(SUNS_MODELPATH_ENV)) == NULL)
@@ -99,7 +103,7 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
 
     /* FIXME: add long options */
 
-    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:l:X:T:r:M:"))
+    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:l:X:T:r:M:hH"))
            != -1) {
         switch (opt) {
         case 't':
@@ -145,12 +149,14 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
         case 'm':
             /* keep running even if there are parsing errors */
             verbose(1, "parsing model file %s", optarg);
-            suns_parse_model_file(optarg);
+            app->override_model_searchpath = 1;
+            (void) suns_parse_model_file(optarg);
             break;
 
         case 'X': 
             /* keep running even if there are parsing errors */
             verbose(1, "parsing xml model file %s", optarg);
+            app->override_model_searchpath = 1;
             suns_parse_xml_model_file(optarg);
             break;
             
@@ -211,6 +217,15 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
             suns_app_model_search_dir(app, optarg);
             break;
 
+        case 'h':
+            suns_app_help(argc, argv);
+            exit(EXIT_SUCCESS);
+            break;
+
+        case 'H':
+            app->logger_host = 1;
+            break;
+
         default:
             suns_app_help(argc, argv);
             exit(EXIT_SUCCESS);
@@ -254,15 +269,48 @@ void suns_app_help(int argc, char *argv[])
     printf("\n");
 }
 
+
+int suns_app_logger_host(suns_app_t *app)
+{
+    list_t *devices = list_new();
+    suns_host_result_t *result = suns_host_result_new();
+    char *result_xml;
+    int rc = 0;
+
+    rc = suns_host_parse_logger_xml(stdin, devices, result);
+    debug("rc = %d", rc);
+
+    rc = suns_host_result_xml(result, &result_xml);
+
+    fwrite(result_xml, 1, strlen(result_xml), stdout);
+    free(result_xml);
+
+    /*
+    list_node_t *c;
+    list_for_each(devices, c) {
+        suns_device_output(app->output_fmt, c->data, stdout);
+        }
+    */
+
+
+    debug("rc = %d", rc);
+
+    return rc;
+}
+
+
 int suns_app_test_server(suns_app_t *app)
 {
     modbus_mapping_t *mapping;
+    int header_length;
     int offset = 0;
     list_node_t *c;
     int socket;
     int rc = 0;
     uint8_t *q;
     suns_parser_state_t *parser = suns_get_parser_state();
+
+    header_length = modbus_get_header_length(app->mb_ctx);
 
     if (app->transport == SUNS_TCP) {
         q = malloc(MODBUS_TCP_MAX_ADU_LENGTH);
@@ -498,6 +546,10 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
     /* we need the parser state to gain access to the data model definitions */
     suns_parser_state_t *sps = suns_get_parser_state();    
 
+    /* datasets (aka models) are indexed in case more than one of the 
+       same kind occurs on a single device */
+    int dataset_index = 1;  /* start numbering at 1 */
+
     /* places to look for the sunspec signature */
     int search_registers[] = { 1, 40001, 50001, 0x40001, -1 };
     int base_register = -1;
@@ -624,7 +676,7 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
                not modbus registers */
             suns_binary_model_fprintf(stdout, sps->did_list,
                                       buf, ((len + 2) * 2));
-        }            
+        }
 
         /* if the did for this blob is known, decode it and
            attach it to the suns_device_t */
@@ -634,6 +686,8 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
 
             /* add 2 to len to include did & len registers */
             data = suns_decode_data(sps->did_list, buf, (len + 2) * 2);
+            /* assign index */
+            data->index = dataset_index;
 
             /* add the dataset to the device */
             suns_device_add_dataset(device, data);
@@ -646,6 +700,8 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
         
         /* jump ahead to next data block */
         offset += len + 2;
+
+        dataset_index++;
     }
 
     return rc;
@@ -684,7 +740,8 @@ int main(int argc, char **argv)
 
     /* now load models found in the model searchpath */
     /* ignore errors */
-    suns_app_model_search_path(&app, app.model_searchpath);
+    if (! app.override_model_searchpath)
+        suns_app_model_search_path(&app, app.model_searchpath);
 
     /* check if we've parsed any models */
     if ((list_count(sps->model_list) <= 0) &&
@@ -725,6 +782,14 @@ int main(int argc, char **argv)
     if (app.export_fmt != NULL) {
         suns_model_export_all(stdout, app.export_fmt, sps->model_list);
         exit(EXIT_SUCCESS);
+    }
+
+    /* are we invoked in host logger xml parse mode? */
+    if (app.logger_host) {
+        if (suns_app_logger_host(&app) < 0)
+            exit(EXIT_FAILURE);
+        else
+            exit(EXIT_SUCCESS);
     }
 
     /* initialize the modbus layer (same for server and client) */
@@ -822,6 +887,7 @@ int suns_app_model_search_path(suns_app_t *app, char const *path)
 
     token = strtok_r(pathdup, ":", &saveptr);
     while (token) {
+        debug("token = %p, '%s'", token, token);
         rc = suns_app_model_search_dir(app, token);
         /* ignore errors - if a part of the search path is not
            accessible or a file can't be parsed we should
@@ -830,7 +896,6 @@ int suns_app_model_search_path(suns_app_t *app, char const *path)
             debug("suns_app_model_search_dir() returned %d: %m", rc);
         }
         token = strtok_r(NULL, ":", &saveptr);
-        debug("token = %p, '%s'", token, token);
     }
 
     free(pathdup);
@@ -858,6 +923,15 @@ int suns_app_model_search_dir(suns_app_t *app, char const *dirpath)
 
         len = strlen(filename);
 
+        /* skip files that start . (directories and dot-files) */
+        if (filename[0] == '.') {
+            debug("skipping %s", filename);
+            entryp = readdir(dir);
+            continue;
+        }
+
+        debug("file: %s", filename);
+
         /* check for *.xml */
         if (((filename[len - 1] == 'l') || (filename[len - 1] == 'L')) &&
             ((filename[len - 2] == 'm') || (filename[len - 2] == 'M')) &&
@@ -873,7 +947,6 @@ int suns_app_model_search_dir(suns_app_t *app, char const *dirpath)
                 return rc;
             free(buf);
         } 
-        debug("file: %s", filename);
 
         if (((filename[len - 1] == 'l') || (filename[len - 1] == 'L')) &&
             ((filename[len - 2] == 'e') || (filename[len - 2] == 'E')) &&

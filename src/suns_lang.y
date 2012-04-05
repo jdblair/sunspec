@@ -328,19 +328,19 @@ attribute: NAME EQUAL STRING
    this is a number or string optionally accompanied by a type_pair */
 suns_value: UINT
 {
-    debug("UINT %llu", $1);
+    /* debug("UINT %llu", $1); */
     $$ = suns_value_new();
     suns_value_set_uint16($$, $1);
 }
     | INT
 {
-    debug("INT %lld", $1);
+    /* debug("INT %lld", $1); */
     $$ = suns_value_new();
     suns_value_set_int16($$, $1);
 }
     | FLOAT
 {
-    debug("FLOAT %f", $1);
+    /* debug("FLOAT %f", $1); */
     $$ = suns_value_new();
     suns_value_set_float32($$, $1);
 }
@@ -475,11 +475,11 @@ register_list: /* empty */
 }
     | register_list suns_value 
 {
-    debug("suns_value type = %s(%d)",
-          suns_type_string($2->tp.type), $2->tp.type);
-    debug("buffer_space($$) = %d, suns_type_size($2->tp.type) = %d", buffer_space($$), suns_type_size($2->tp.type));
+    /* debug("suns_value type = %s(%d)",
+       suns_type_string($2->tp.type), $2->tp.type); */
+    /* debug("buffer_space($$) = %d, suns_type_size($2->tp.type) = %d", buffer_space($$), suns_type_size($2->tp.type)); */
     if (buffer_space($$) < suns_type_pair_size(&($2->tp))) {
-        debug("resizing buffer!");
+        /* debug("resizing buffer!"); */
         buffer_resize($$, buffer_len($$) + BUFFER_SIZE);
     }
     suns_value_to_buffer($$, $2);

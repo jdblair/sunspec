@@ -136,6 +136,8 @@ int suns_parse_model_file(const char *file)
 {
     FILE *f;
 
+    debug_s(file);
+
     f = fopen(file, "r");
     if (f == NULL) {
         debug("cannot open model file %s", file);
@@ -230,9 +232,12 @@ suns_dp_t *suns_ezxml_to_dp(ezxml_t p)
 
     /* parse out the string length */
     if (dp->type_pair->type == SUNS_STRING) {
-        if (sscanf(ezxml_attr(p, "size"), "%d", &(dp->type_pair->len)) != 1) {
+        int size;
+        if (sscanf(ezxml_attr(p, "size"), "%d", &size) != 1) {
             error("can't parse size argument to point %s", dp->name);
         }
+        /* size attribute is modbus registers */
+        dp->type_pair->len = size * 2;
     }
 
     /* parse the scale factor - can be an integer, or the name of a point */

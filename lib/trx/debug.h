@@ -68,6 +68,17 @@ extern int verbose_level;
 #define debug_dump_buffer(buffer, len)
 
 #endif /* DEBUG */
+
+/* convenience functions for printing variables */
+/* these will be no-op of DEBUG is not defined */
+#define debug_i(val) debug(#val " = %d", val)
+#define debug_li(val) debug(#val " = %ld", val)
+#define debug_x(val) debug(#val " = %x", val)
+#define debug_p(val) debug(#val " = %p", val)
+#define debug_f(val) debug(#val " = %f", val)
+#define debug_c(val) debug(#val " = '%c'", val)
+#define debug_s(val) debug(#val " = \"%s\"", val)
+
 #endif /* debug */
 
 

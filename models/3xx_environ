@@ -1,0 +1,159 @@
+
+#
+# environmental models
+#
+
+#
+# original base meteorological model
+# DEPRECATED!  Only shown here for historical reasons
+#
+model suns {
+  name "met"
+  did 301 "base meteorological"
+  datapoints {
+    E_BaseMet_AirTemperature      { int32 units=Tmp      }
+    E_BaseMet_RelativeHumidity    { int32 units=percent  }
+    E_BaseMet_BarometricPressure  { int32 units=HPa      }
+    E_BaseMet_WindSpeed           { int32 units=ms       }
+    E_BaseMet_WindDirection       { int32 units=deg      }
+    E_BaseMet_Rain                { int32 units=inches   } # yes, inches!
+    E_BaseMet_Snow                { int32 units=inches   } # yes, inches!
+    E_BaseMet_PPTType             { int32            }
+    E_BaseMet_ElectricalField     { int32 units=Vm       }
+    E_BaseMet_SurfaceWetness      { int32 units=kOhms    }
+    E_BaseMet_SoilMoisture        { int32 units=percent  }
+  }
+}
+
+
+data suns_met301_test {
+  301
+  22
+  int32:18
+  int32:222
+  int32:17
+  int32:234
+  int32:10
+  int32:0
+  int32:0x80000000
+  int32:0x80000000
+  int32:0x80000000
+  int32:0x80000000
+  int32:0x80000000
+}
+
+#
+# version 1.1 base meteorological model
+#
+model suns {
+  name "met_v1.1"
+  did 307 "meteorological v1.1"
+  datapoints {
+    TmpAmb         { int16.-1  units=Tmp       }
+    RH             { int16     units=percent   }
+    Pres           { int16     units=HPa       }
+    WndSpd         { int16     units=ms        }
+    WndDir         { int16     units=deg       }
+    Rain           { int16     units=mm        }
+    Snw            { int16     units=mm        }
+    PPT            { int16                 }
+    ElecFld        { int16     units=Vm        }
+    SurWet         { int16     units=kOhms     }
+    SoilWet        { int16     units=percent   }
+  }
+}
+
+
+data suns_met307_test {
+  307
+  11
+  uint16:18
+  uint16:222
+  uint16:17
+  uint16:234
+  uint16:10
+  uint16:0
+  uint16:0x80000000
+  uint16:0x80000000
+  uint16:0x80000000
+  uint16:0x80000000
+  uint16:0x80000000
+}
+
+#
+# irradiance model
+#
+model suns {
+  name "met_irr"
+  did 302 "irradiance"
+  datapoints repeating {
+    GHI   { uint16 units=Wm2 lname=E_Irradiance_Global_Horizontal }
+    POAI  { uint16 units=Wm2 lname=E_Irradiance_Plane_of_Array }
+    DFI   { uint16 units=Wm2 lname=E_Irradiance_Diffuse }
+    DNI   { uint16 units=Wm2 lname=E_Irradiance_Direct }
+    OTI   { uint16 units=Wm2 lname=E_Irradiance_Other }
+  }
+}
+
+#
+# back of module temperature
+#
+model suns {
+  name "met_bom"
+  did 303 "back of module temperature"
+  datapoints repeating {
+    TmpBOM { int16.-1 units=Tmp }
+  }
+}
+
+
+data suns_met303_test {
+  303
+  4
+  int16:20
+  int16:18
+  int16:19
+  int16:21
+} 
+
+#
+# inclinometer
+#
+model suns {
+  name "met_incl"
+  did 304 "inclinometer"
+  datapoints repeating {
+    InclX                 { int32.-2 units=deg }
+    InclY                 { int32.-2 units=deg }
+    InclZ                 { int32.-2 units=deg }
+  }
+}
+
+
+data suns_met304_test {
+  304
+  12
+  int32:920
+  int32:0x80000000
+  int32:0x80000000
+  int32:930
+  int32:0x80000000
+  int32:0x80000000
+}
+
+
+#
+# location
+#
+model suns {
+  name "location"
+  did 305 "location"
+  datapoints {
+    Tm                     { string.10 }
+    Date                   { string.08 }
+    Loc                    { string.40 }
+    Lat                    { int32.-7  units=deg }
+    Long                   { int32.-7  units=deg }
+    Alt                    { int32     units=m  }
+  }
+}

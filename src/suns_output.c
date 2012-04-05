@@ -970,6 +970,10 @@ int suns_snprintf_value_xml(char *str, size_t size,
     fmt.string     =  value_output_xml_string;
     fmt.meta       =  value_output_xml_meta;
 
+    /* xml data format does not allow values in hex */
+    fmt.bitfield16 =  value_output_uint16;
+    fmt.bitfield32 =  value_output_uint32;
+
     return suns_snprintf_value(str, size, v, &fmt);
 }
 
@@ -980,7 +984,10 @@ int suns_dataset_xml_fprintf(FILE *stream, suns_dataset_t *data)
     list_node_t *c;
     char value[BUFFER_SIZE];
     
-    fprintf(stream, "   <m id=\"%d\">\n", data->did->did);
+    fprintf(stream, "   <m id=\"%d\"", data->did->did);
+    if (data->index != 0)
+        fprintf(stream, " x=\"%d\"", data->index);
+    fprintf(stream, ">\n");
 
     list_for_each(data->values, c) {
         suns_value_t *v = c->data;
@@ -996,7 +1003,7 @@ int suns_dataset_xml_fprintf(FILE *stream, suns_dataset_t *data)
         if (v->tp.sf != 0)
             fprintf(stream, " sf=\"%d\"", v->tp.sf);
         else
-            debug("NO SCALE FACTOR FOR %s", v->name);
+            debug("no scale factor for %s", v->name);
         
         if (v->repeating)
             fprintf(stream, " x=\"%d\"", v->index + 1);
@@ -1074,9 +1081,9 @@ int suns_model_xml_export_all(FILE *stream, char *type, list_t *list)
 {
     list_node_t *c;
 
-    const char root[] = "suns_models";
+    const char root[] = "sunSpecModels";
 
-    fprintf(stream, "<%s>\n", root);
+    fprintf(stream, "<%s v=\"1\">\n", root);
     list_for_each(list, c)
         suns_model_xml_fprintf(stream, c->data);
     fprintf(stream, "</%s>\n", root);
@@ -1097,16 +1104,19 @@ void suns_model_xml_fprintf(FILE *stream, suns_model_t *model)
     list_for_each(model->did_list, c) {
 
         suns_model_did_t *did = c->data;
-        fprintf(stream, "  <model id=\"%03d\" name=\"%s\">\n",
-                did->did, did->name);
+        fprintf(stream, "  <model id=\"%d\" len=\"%d\">\n",
+                did->did, model->len);
         
         list_node_t *d;
         list_for_each(model->dp_blocks, d) {
             suns_model_xml_dp_block_fprintf(stream, d->data);
         }
-        
 
-        fprintf(stream, "  </model>\n\n");
+        list_for_each(model->defines, d) {
+            suns_model_xml_define_block_fprintf(stream, d->data);
+        }
+
+        fprintf(stream, "  </model>\n");
     }
 
 }
@@ -1115,9 +1125,11 @@ void suns_model_xml_fprintf(FILE *stream, suns_model_t *model)
 void suns_model_xml_dp_block_fprintf(FILE *stream, suns_dp_block_t *dp_block)
 {
     list_node_t *c;
+
     fprintf(stream, "    <block");
     if (dp_block->repeating)
-        fprintf(stream, " type=\"repeating\"");
+        fprintf(stream, " type=\"repeating\"");    
+    fprintf(stream, " len=\"%d\"", dp_block->len);
     fprintf(stream, ">\n");
     list_for_each(dp_block->dp_list, c) {
         suns_model_xml_dp_fprintf(stream, c->data);
@@ -1126,13 +1138,36 @@ void suns_model_xml_dp_block_fprintf(FILE *stream, suns_dp_block_t *dp_block)
 }
 
 
+void suns_model_xml_define_block_fprintf(FILE *stream,
+                                         suns_define_block_t *block)
+{
+    list_node_t *c;
+
+    fprintf(stream, "    <define name=\"%s\">\n", block->name);
+    list_for_each(block->list, c) {
+        suns_model_xml_define_fprintf(stream, c->data);
+    }
+    fprintf(stream, "    </define>\n");
+
+}
+
+void suns_model_xml_define_fprintf(FILE *stream,
+                                   suns_define_t *define)
+{
+    fprintf(stream, "      <symbol name=\"%s\" value=\"%d\" />\n",
+            define->name, define->value);
+}
+
 void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp)
 {
-    fprintf(stream, "      <point name=\"%s\" type=\"%s\"",
-            dp->name, suns_type_string(dp->type_pair->type));
+    fprintf(stream, "      <point id=\"%s\" offset=\"%d\" "
+            "type=\"%s\"",
+            dp->name,
+            dp->offset - 1,
+            suns_type_string(dp->type_pair->type));
     
     if (dp->type_pair->type == SUNS_STRING)
-        fprintf(stream, " size=\"%d\"", dp->type_pair->len);
+        fprintf(stream, " len=\"%d\"", dp->type_pair->len / 2);
     
     /* the name string is overloaded-
        it can be a scale factor reference, or a reference to
@@ -1143,7 +1178,7 @@ void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp)
             (dp->type_pair->type == SUNS_ENUM32) ||
             (dp->type_pair->type == SUNS_BITFIELD16) ||
             (dp->type_pair->type == SUNS_BITFIELD32)) {
-            fprintf(stream, " def=\"%s\"", dp->type_pair->name);
+            fprintf(stream, " define=\"%s\"", dp->type_pair->name);
         } else {
             fprintf(stream, " sf=\"%s\"", dp->type_pair->name);
         }

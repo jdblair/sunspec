@@ -192,6 +192,7 @@ typedef enum suns_value_meta {
 typedef struct suns_value {
     char *name;                /* datapoint name associated with this */
     char *name_with_index;     /* composite name including index */
+    char *lname;               /* long/legacy name */
     suns_type_pair_t tp;       /* type_pair of value (note: not a pointer) */
     suns_value_meta_t meta;    /* meta-value (null, error, etc.) */
     union {                    /* actual value */
@@ -224,7 +225,10 @@ typedef struct suns_dataset {
 
     /* used for logger upload xml parsing */ 
     char *ns;         /* namespace, for vendor extension blocks */
-    char *x;          /* index, for aggregated devices */
+    
+    int index;        /* index, for aggregated devices */
+    int unixtime;
+    int usec;
 } suns_dataset_t;
 
 
@@ -235,20 +239,22 @@ typedef struct suns_device {
     time_t unixtime;
     int usec;
 
+    /* common is set when the common block dataset is added,
+       for easy reference */
+    suns_dataset_t *common;
+
+    /* these are set when the common block dataset is added or
+       the logger xml is parsed, also for easy reference */
+    char *manufacturer;
+    char *model;
+    char *serial_number;
+
+    /* attributes set in the logger xml format */
     char *cid;    /* correlation id */
     char *id;     /* optional device id string (overrides man, mod and sn) */
     char *iface;  /* optional interface id string (only if d.id is used) */
     char *lid;    /* logger id string; required by default */
-    char *man;    /* C_Manufacturer from common block */
-    char *mod;    /* C_Model from common block */
     char *ns;     /* domain namespace for the logger id */
-    char *sn;     /* C_SerialNumber from the common block */
-
-    /* these pointers are set when the common block dataset is added */
-    suns_dataset_t *common;
-    char *manufacturer;
-    char *model;
-    char *serial_number;
 } suns_device_t;
     
 
@@ -362,5 +368,9 @@ suns_dp_t *suns_search_model_for_dp_by_name(suns_model_t *model, char *name);
 suns_value_t *suns_search_value_list(list_t *list, char *name);
 int suns_resolve_scale_factors(suns_dataset_t *dataset);
 char * suns_find_attribute(suns_dp_t *dp, char *name);
+void suns_model_xml_define_block_fprintf(FILE *stream,
+                                         suns_define_block_t *block);
+void suns_model_xml_define_fprintf(FILE *stream,
+                                   suns_define_t *define);
 
 #endif /* _SUNS_MODEL_H_ */

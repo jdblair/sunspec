@@ -4,10 +4,11 @@
 
 #include "ezxml/ezxml.h"
 #include "trx/list.h"
+#include "suns_model.h"
 
 typedef struct suns_attr_map {
     char *name;
-    const char *value;
+    char **value;
 } suns_attr_map_t;
 
 

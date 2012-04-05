@@ -46,6 +46,7 @@ BISON_OUT=suns_lang.tab.c
 FLEX_OUT=suns_lang.yy.c
 
 SRC=suns_parser.c suns_model.c suns_app.c suns_output.c \
+	suns_host_parser.c suns_host.c \
 	$(BISON_OUT) $(FLEX_OUT)
 OBJ=$(SRC:.c=.o)
 BINFILES=suns unit_tests
@@ -57,8 +58,12 @@ TEST_SERVER_SRC=test_server.c
 TEST_SERVER_OBJ=$(TEST_SERVER_SRC:.c=.o)
 
 HOST_TEST_SRC=suns_model.c suns_host_parser.c suns_host_test.c suns_host.c \
-	suns_parser.c $(BISON_OUT) $(FLEX_OUT)
+	suns_parser.c suns_output_sqlite.c suns_output.c $(BISON_OUT) $(FLEX_OUT)
 HOST_TEST_OBJ=$(HOST_TEST_SRC:.c=.o)
+
+SUNS_STORE_SRC=suns_model.c suns_store.c suns_read_sqlite.c \
+	suns_parser.c suns_output_sqlite.c suns_output.c $(BISON_OUT) $(FLEX_OUT)
+SUNS_STORE_OBJ=$(SUNS_STORE_SRC:.c=.o)
 
 LIBTRX=../lib/trx/libtrx.a
 LIBEZXML=../lib/ezxml/libezxml.a
@@ -102,7 +107,11 @@ check: $(SRC) suns_unit_tests.c
 	splint -posixlib $(CFLAGS) $(SRC) suns_unit_tests.c
 
 suns_host_test: $(HOST_TEST_OBJ)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(HOST_TEST_OBJ) $(LIBEZXML) $(LIBTRX) -o suns_host_test
+	$(CC) $(CFLAGS) $(LDFLAGS) -lsqlite3 $(HOST_TEST_OBJ) $(LIBEZXML) $(LIBTRX) -o suns_host_test
+
+suns_store: $(SUNS_STORE_OBJ)
+	$(CC) $(CFLAGS) $(LDFLAGS) -lsqlite3 $(SUNS_STORE_OBJ) $(LIBEZXML) $(LIBTRX) -o suns_store
+
 
 $(LIBTRX):
 	make -C ../lib libtrx
