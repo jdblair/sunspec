@@ -119,11 +119,16 @@ $(LIBTRX):
 $(LIBEZXML):
 	make -C ../lib ezxml
 
+MODELS=../models/0xx_common ../models/10x_inverter ../models/2xx_meter ../models/3xx_environ ../models/4xx_string_combiner ../models/5xx_panel
+# ../models/12x_inverter_control
+
 install:
 	$(INSTALL) -d $(PREFIX)/bin
 	$(INSTALL) -o 755 suns $(PREFIX)/bin
 	$(INSTALL) -d $(PREFIX)/lib/suns/models
-	$(INSTALL) -o 644 ../models/device.model $(PREFIX)/lib/suns/models
+	$(INSTALL) -o 644 $(MODELS) $(PREFIX)/lib/suns/models
+	# make sure the old model file is removed
+	rm -f $(PREFIX)/lib/suns/models/device.model
 
 clean:
 	rm -f	suns_lang.tab.c suns_lang.tab.h \
