@@ -11,17 +11,17 @@ model suns {
   name "met"
   did 301 "base meteorological"
   datapoints {
-    E_BaseMet_AirTemperature      { int32 units=Tmp      }
-    E_BaseMet_RelativeHumidity    { int32 units=percent  }
-    E_BaseMet_BarometricPressure  { int32 units=HPa      }
-    E_BaseMet_WindSpeed           { int32 units=ms       }
-    E_BaseMet_WindDirection       { int32 units=deg      }
-    E_BaseMet_Rain                { int32 units=inches   } # yes, inches!
-    E_BaseMet_Snow                { int32 units=inches   } # yes, inches!
+    E_BaseMet_AirTemperature      { int32 u=C        }
+    E_BaseMet_RelativeHumidity    { int32 u=perc  }
+    E_BaseMet_BarometricPressure  { int32 u=hPa      }
+    E_BaseMet_WindSpeed           { int32 u=ms       }
+    E_BaseMet_WindDirection       { int32 u=deg      }
+    E_BaseMet_Rain                { int32 u=in       } # yes, inches!
+    E_BaseMet_Snow                { int32 u=in       } # yes, inches!
     E_BaseMet_PPTType             { int32            }
-    E_BaseMet_ElectricalField     { int32 units=Vm       }
-    E_BaseMet_SurfaceWetness      { int32 units=kOhms    }
-    E_BaseMet_SoilMoisture        { int32 units=percent  }
+    E_BaseMet_ElectricalField     { int32 u=Vm       }
+    E_BaseMet_SurfaceWetness      { int32 u=kOhms    }
+    E_BaseMet_SoilMoisture        { int32 u=perc  }
   }
 }
 
@@ -49,17 +49,17 @@ model suns {
   name "met_v1.1"
   did 307 "meteorological v1.1"
   datapoints {
-    TmpAmb         { int16.-1  units=Tmp       }
-    RH             { int16     units=percent   }
-    Pres           { int16     units=HPa       }
-    WndSpd         { int16     units=ms        }
-    WndDir         { int16     units=deg       }
-    Rain           { int16     units=mm        }
-    Snw            { int16     units=mm        }
+    TmpAmb         { int16.-1  u=C       }
+    RH             { int16     u=perc   }
+    Pres           { int16     u=HPa       }
+    WndSpd         { int16     u=ms        }
+    WndDir         { int16     u=deg       }
+    Rain           { int16     u=mm        }
+    Snw            { int16     u=mm        }
     PPT            { int16                 }
-    ElecFld        { int16     units=Vm        }
-    SurWet         { int16     units=kOhms     }
-    SoilWet        { int16     units=percent   }
+    ElecFld        { int16     u=Vm        }
+    SurWet         { int16     u=kOhms     }
+    SoilWet        { int16     u=perc   }
   }
 }
 
@@ -87,11 +87,11 @@ model suns {
   name "met_irr"
   did 302 "irradiance"
   datapoints repeating {
-    GHI   { uint16 units=Wm2 lname=E_Irradiance_Global_Horizontal }
-    POAI  { uint16 units=Wm2 lname=E_Irradiance_Plane_of_Array }
-    DFI   { uint16 units=Wm2 lname=E_Irradiance_Diffuse }
-    DNI   { uint16 units=Wm2 lname=E_Irradiance_Direct }
-    OTI   { uint16 units=Wm2 lname=E_Irradiance_Other }
+    GHI   { uint16 u=Wm2 lname=E_Irradiance_Global_Horizontal }
+    POAI  { uint16 u=Wm2 lname=E_Irradiance_Plane_of_Array }
+    DFI   { uint16 u=Wm2 lname=E_Irradiance_Diffuse }
+    DNI   { uint16 u=Wm2 lname=E_Irradiance_Direct }
+    OTI   { uint16 u=Wm2 lname=E_Irradiance_Other }
   }
 }
 
@@ -102,7 +102,7 @@ model suns {
   name "met_bom"
   did 303 "back of module temperature"
   datapoints repeating {
-    TmpBOM { int16.-1 units=Tmp }
+    TmpBOM { int16.-1 u=C req }
   }
 }
 
@@ -123,9 +123,9 @@ model suns {
   name "met_incl"
   did 304 "inclinometer"
   datapoints repeating {
-    InclX                 { int32.-2 units=deg }
-    InclY                 { int32.-2 units=deg }
-    InclZ                 { int32.-2 units=deg }
+    InclX                 { int32.-2 u=deg req }
+    InclY                 { int32.-2 u=deg }
+    InclZ                 { int32.-2 u=deg }
   }
 }
 
@@ -152,8 +152,8 @@ model suns {
     Tm                     { string.10 }
     Date                   { string.08 }
     Loc                    { string.40 }
-    Lat                    { int32.-7  units=deg }
-    Long                   { int32.-7  units=deg }
-    Alt                    { int32     units=m  }
+    Lat                    { int32.-7  u=deg req }
+    Long                   { int32.-7  u=deg req }
+    Alt                    { int32     u=m  }
   }
 }

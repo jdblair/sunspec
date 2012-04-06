@@ -1179,20 +1179,27 @@ void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp)
             (dp->type_pair->type == SUNS_BITFIELD16) ||
             (dp->type_pair->type == SUNS_BITFIELD32)) {
             fprintf(stream, " define=\"%s\"", dp->type_pair->name);
-        } else {
-            fprintf(stream, " sf=\"%s\"", dp->type_pair->name);
-        }
+            /*        } else {
+                      fprintf(stream, " sf=\"%s\"", dp->type_pair->name); */
+            }
     }
     
     if (dp->type_pair->sf != 0) {
         fprintf(stream, " sf=\"%d\"", dp->type_pair->sf);
     }            
 
+    /* output additional point attributes by searching the attribute list */
     if (dp->attributes) {
         list_node_t *c;
         list_for_each(dp->attributes, c) {
             suns_attribute_t *a = c->data;
-            fprintf(stream, " %s=\"%s\"", a->name, a->value);
+
+            /* units */
+            if (strcmp(a->name, "u") == 0) {
+                fprintf(stream, " units=\"%s\"", a->value);
+            }
+
+            /* ignore lname */
         }
     }
 

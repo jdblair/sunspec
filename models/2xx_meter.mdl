@@ -9,27 +9,27 @@ model suns {
   did 203 "wye-connect three phase (abcn) meter"
   did 204 "delta-connect three phase (abc) meter"
   datapoints {
-    A                 { int16.A_SF     u=A    lname="M_AC_Current"    }
-    AphA              { int16.A_SF     u=A    lname="M_AC_Current_A"  }
-    AphB              { int16.A_SF     u=A    lname="M_AC_Current_B"  }
-    AphC              { int16.A_SF     u=A    lname="M_AC_Current_C"  }
+    A                 { int16.A_SF     u=A    req lname="M_AC_Current"    }
+    AphA              { int16.A_SF     u=A    req lname="M_AC_Current_A"  }
+    AphB              { int16.A_SF     u=A    req="202,203,204" lname="M_AC_Current_B"  }
+    AphC              { int16.A_SF     u=A    req lname="M_AC_Current_C"  }
     A_SF              { sunssf                                        }
-    PhV               { int16.V_SF     u=V    lname="M_AC_Voltage_LN" }
-    PhVphA            { int16.V_SF     u=V    lname="M_AC_Voltage_AN" }
-    PhVphB            { int16.V_SF     u=V    lname="M_AC_Voltage_BN" }
-    PhVphC            { int16.V_SF     u=V    lname="M_AC_Voltage_CN" }
-    PPV               { int16.V_SF     u=V    lname="M_AC_Voltage_LL" }
-    PhVphAB           { int16.V_SF     u=V    lname="M_AC_Voltage_AB" }
-    PhVphBC           { int16.V_SF     u=V    lname="M_AC_Voltage_BC" }
-    PhVphCA           { int16.V_SF     u=V    lname="M_AC_Voltage_CA" }
-    V_SF              { sunssf                                        }
-    Hz                { int16.Hz_SF    u=Hz   lname="M_AC_Freq"       }
+    PhV               { int16.V_SF     u=V    req lname="M_AC_Voltage_LN" }
+    PhVphA            { int16.V_SF     u=V    req="201,202,203" lname="M_AC_Voltage_AN" }
+    PhVphB            { int16.V_SF     u=V    req="202,203" lname="M_AC_Voltage_BN" }
+    PhVphC            { int16.V_SF     u=V    req="203" lname="M_AC_Voltage_CN" }
+    PPV               { int16.V_SF     u=V    req lname="M_AC_Voltage_LL" }
+    PhVphAB           { int16.V_SF     u=V    req="202,203,304" lname="M_AC_Voltage_AB" }
+    PhVphBC           { int16.V_SF     u=V    req="203,204" lname="M_AC_Voltage_BC" }
+    PhVphCA           { int16.V_SF     u=V    req="203,204" lname="M_AC_Voltage_CA" }
+    V_SF              { sunssf                req                         }
+    Hz                { int16.Hz_SF    u=Hz   req lname="M_AC_Freq"       }
     Hz_SF             { sunssf                                        }
-    W                 { int16.W_SF     u=W    lname="M_AC_Power"      }
+    W                 { int16.W_SF     u=W    req lname="M_AC_Power"      }
     WphA              { int16.W_SF     u=W    lname="M_AC_Power_A"    }
     WphB              { int16.W_SF     u=W    lname="M_AC_Power_B"    }
     WphC              { int16.W_SF     u=W    lname="M_AC_Power_C"    }
-    W_SF              { sunssf                                        }
+    W_SF              { sunssf                req                         }
     VA                { int16.VA_SF    u=VA   lname="M_AC_VA"         }
     VAphA             { int16.VA_SF    u=VA   lname="M_AC_VA_A"       }
     VAphB             { int16.VA_SF    u=VA   lname="M_AC_VA_B"       }
@@ -45,15 +45,15 @@ model suns {
     PFphB             { int16.PF_SF    u=PF   lname="M_AC_PF_B"       }
     PFphC             { int16.PF_SF    u=PF   lname="M_AC_PF_C"       }
     PF_SF             { sunssf                                        }
-    TotWhExp          { acc32.TotWh_SF u=Wh   lname="M_Exported"      }
+    TotWhExp          { acc32.TotWh_SF u=Wh   req lname="M_Exported"      }
     TotWhExpPhA       { acc32.TotWh_SF u=Wh   lname="M_Exported_A"    }
     TotWhExpPhB       { acc32.TotWh_SF u=Wh   lname="M_Exported_B"    }
     TotWhExpPhC       { acc32.TotWh_SF u=Wh   lname="M_Exported_C"    }
-    TotWhImp          { acc32.TotWh_SF u=Wh   lname="M_Imported"      }
+    TotWhImp          { acc32.TotWh_SF u=Wh   req lname="M_Imported"      }
     TotWhImpPhA       { acc32.TotWh_SF u=Wh   lname="M_Imported_A"    }
     TotWhImpPhAB      { acc32.TotWh_SF u=Wh   lname="M_Imported_B"    }
     TotWhImpPhAC      { acc32.TotWh_SF u=Wh   lname="M_Imported_C"    }
-    TotWh_SF          { sunssf                                        }
+    TotWh_SF          { sunssf                req                         }
     TotVAhExp         { acc32.TotVAh_SF   u=VAh  lname="M_Exported_VA"    }
     TotVAhExpPhA      { acc32.TotVAh_SF   u=VAh  lname="M_Exported_VA_A"  }
     TotVAhExpPhB      { acc32.TotVAh_SF   u=VAh  lname="M_Exported_VA_B"  }
@@ -80,25 +80,39 @@ model suns {
     TotVArhImpQ4PhB   { acc32.TotVArh_SF u=VArh lname="M_Import_VARh_Q4B" }
     TotVArhImpQ4PhC   { acc32.TotVArh_SF u=VArh lname="M_Import_VARh_Q4C" }
     TotVArh_SF        { sunssf                                            }
-    Evt               { bitfield32       def=Evt_BF                       }
+    Evt               { bitfield32.Evt_BF          req                    }
   }
 
   define Evt_BF {
-    M_EVENT_Power_failure       { 0x00000004 "Loss of power or phase" }
-    M_EVENT_Under_Voltage       { 0x00000008 "Voltage below threshold (Phase Loss)" }
-    M_EVENT_Low_PF              { 0x00000010 "Power Factor below threshold" }
-    M_EVENT_Over_Current        { 0x00000020 "Current Input over threshold" }
-    M_EVENT_Over_Voltage        { 0x00000040 "Voltage Input over threshold" }
-    M_EVENT_Missing_Sensor      { 0x00000080 "Sensor not connected" }
-    M_EVENT_Reserved1           { 0x00000100 "Reserved for future" }
-    M_EVENT_Reserved2           { 0x00000200 "Reserved for future" }
-    M_EVENT_Reserved3           { 0x00000400 "Reserved for future" }
-    M_EVENT_Reserved4           { 0x00000800 "Reserved for future" }
-    M_EVENT_Reserved5           { 0x00001000 "Reserved for future" }
-    M_EVENT_Reserved6           { 0x00002000 "Reserved for future" }
-    M_EVENT_Reserved7           { 0x00004000 "Reserved for future" }
-    M_EVENT_Reserved8           { 0x00008000 "Reserved for future" }
-    M_EVENT_OEM1-15             { 0x7FFF0000 "Reserved for OEMs" }
+    M_EVENT_Power_failure       { 2 "Loss of power or phase" }
+    M_EVENT_Under_Voltage       { 3 "Voltage below threshold (Phase Loss)" }
+    M_EVENT_Low_PF              { 4 "Power Factor below threshold" }
+    M_EVENT_Over_Current        { 5 "Current Input over threshold" }
+    M_EVENT_Over_Voltage        { 6 "Voltage Input over threshold" }
+    M_EVENT_Missing_Sensor      { 7 "Sensor not connected" }
+    M_EVENT_Reserved1           { 8 "Reserved for future" }
+    M_EVENT_Reserved2           { 9 "Reserved for future" }
+    M_EVENT_Reserved3           { 10 "Reserved for future" }
+    M_EVENT_Reserved4           { 11 "Reserved for future" }
+    M_EVENT_Reserved5           { 12 "Reserved for future" }
+    M_EVENT_Reserved6           { 13 "Reserved for future" }
+    M_EVENT_Reserved7           { 14 "Reserved for future" }
+    M_EVENT_Reserved8           { 15 "Reserved for future" }
+    M_EVENT_OEM01               { 16 "OEM 1" }
+    M_EVENT_OEM02               { 17 "OEM 2" }
+    M_EVENT_OEM03               { 18 "OEM 3" }
+    M_EVENT_OEM04               { 19 "OEM 4" }
+    M_EVENT_OEM05               { 20 "OEM 5" }
+    M_EVENT_OEM06               { 21 "OEM 6" }
+    M_EVENT_OEM07               { 22 "OEM 7" }
+    M_EVENT_OEM08               { 23 "OEM 8" }
+    M_EVENT_OEM09               { 24 "OEM 9" }
+    M_EVENT_OEM10               { 25 "OEM 10" }
+    M_EVENT_OEM11               { 26 "OEM 11" }
+    M_EVENT_OEM12               { 27 "OEM 12" }
+    M_EVENT_OEM13               { 28 "OEM 13" }
+    M_EVENT_OEM14               { 29 "OEM 14" }
+    M_EVENT_OEM15               { 30 "OEM 15" }
   }
 }
 
@@ -113,20 +127,20 @@ model suns {
   did 213 "wye-connect three phase (abcn) meter"
   did 214 "delta-connect three phase (abc) meter"
   datapoints {
-    A               { float32 u=A }
-    AphA            { float32 u=A }
-    AphB            { float32 u=A }
-    AphC            { float32 u=A }
-    PhV             { float32 u=V }
-    PhVphA          { float32 u=V }
-    PhVphB          { float32 u=V }
-    PhVphC          { float32 u=V }
-    PPV             { float32 u=V }
-    PPVphAB         { float32 u=V }
-    PPVphBC         { float32 u=V }
-    PPVphCA         { float32 u=V }
-    Hz              { float32 u=Hz }
-    W               { float32 u=W }
+    A               { float32 u=A req }
+    AphA            { float32 u=A req }
+    AphB            { float32 u=A req="212,213,214" }
+    AphC            { float32 u=A req="213,214" }
+    PhV             { float32 u=V req="212,213" }
+    PhVphA          { float32 u=V req="212,213" }
+    PhVphB          { float32 u=V req="212,213" }
+    PhVphC          { float32 u=V req="213" }
+    PPV             { float32 u=V req="212,213,214" }
+    PPVphAB         { float32 u=V req="212,213,214" }
+    PPVphBC         { float32 u=V req="213,214" }
+    PPVphCA         { float32 u=V req="213,214" }
+    Hz              { float32 u=Hz req }
+    W               { float32 u=W req }
     WphA            { float32 u=W }
     WphB            { float32 u=W }
     WphC            { float32 u=W }
@@ -142,11 +156,11 @@ model suns {
     PFphA           { float32 u=PF }
     PFphB           { float32 u=PF }
     PFphC           { float32 u=PF }
-    TotWhExp        { acc32   u=Wh }
+    TotWhExp        { acc32   u=Wh req }
     TotWhExpPhA     { acc32   u=Wh }
     TotWhExpPhB     { acc32   u=Wh }
     TotWhExpPhC     { acc32   u=Wh }
-    TotWhImp        { acc32   u=Wh }
+    TotWhImp        { acc32   u=Wh req }
     TotWhImpPhA     { acc32   u=Wh }
     TotWhImpPhB     { acc32   u=Wh }
     TotWhImpPhC     { acc32   u=Wh }
@@ -174,7 +188,7 @@ model suns {
     TotVArhImpQ4phA { acc32   u=VArh }
     TotVArhImpQ4phB { acc32   u=VArh }
     TotVArhImpQ4phC { acc32   u=VArh }
-    Evt             { bitfield32.Evt_BF }
+    Evt             { bitfield32.Evt_BF req }
   }
     
   define Evt_BF {

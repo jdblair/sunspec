@@ -5,12 +5,12 @@ model suns {
   name "common"
   did 001 "common"
   datapoints {
-    Mn             { string.32 lname="C_Manufacturer" }
-    Md             { string.32 lname="C_Model" }
-    Opt            { string.16 lname="C_Options" }
-    Vr             { string.16 lname="C_Version" }
-    SN             { string.32 lname="C_SerialNumber" }
-    DA             { uint16    lname="C_DeviceAddress" access="rw"}
+    Mn             { string.32 req lname="C_Manufacturer" }
+    Md             { string.32 req lname="C_Model" }
+    Opt            { string.16     lname="C_Options" }
+    Vr             { string.16     lname="C_Version" }
+    SN             { string.32 req lname="C_SerialNumber" }
+    DA             { uint16        lname="C_DeviceAddress" access=rw }
   }
 }
 
@@ -32,17 +32,56 @@ data common_model_test {
 model suns {
   did 002 "basic_aggregator"
   datapoints {
-    AID                           { uint16 }  
-    N                             { uint16 }
-    UN                            { uint16 }
-    St                            { enum16 }
+    AID                           { uint16 req }  
+    N                             { uint16 req }
+    UN                            { uint16 req }
+    St                            { enum16.St_enum req }
     StVnd                         { enum16 }
-    Evt                           { bitfield32 }
+    Evt                           { bitfield32.Evt_bf req }
     EvtVnd                        { bitfield32 }
-    Ctl                           { enum16 }
+    Ctl                           { enum16.Ctl_enum }
     CtlVnd                        { enum32 }
     CtlVl                         { enum32 }
   }
-}
+
+  define St_enum {
+    A_STATUS_OFF        { 1 "Off - not communicating with aggregated devices" }
+    A_STATUS_ON         { 2 "On - communicating with aggregated devices" }
+    A_MEMORY_FULL       { 3 "Aggregator memory full / too many devices used" }
+    A_FAULT_OTHER       { 4 "See vendor status for details" }
+  }
+
+  define Evt_bf {
+    P_EVENT_GROUND_FAULT      { 0 "Ground Fault" }
+    P_EVENT_INPUT_OVER_VOLTAGE  { 1 "DC input over-voltage" }
+    RESERVED                  { 2 "Reserved for u-inverter compatibility" }
+    P_EVENT_DC_DISCONNECT     { 3 "DC disconnect open" }
+    RESERVED                  { 4 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 5 "Reserved for u-inverter compatibility" }
+    P_EVENT_MANUAL_SHUTDOWN   { 6 "Manual shutdown" }
+    P_EVENT_OVER_TEMPERATURE  { 7 "Over Temperature" }
+    RESERVED                  { 8 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 9 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 10 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 11 "Reserved for u-inverter compatibility" }
+    P_EVENT_BLOWN_FUSE        { 12 "Blown Input Fuse" }
+    P_EVENT_UNDER_TEMPERATURE { 13 "Under Temperature" }
+    P_EVENT_MEMORY_LOSS       { 14 "Generic Memory or Communication Error." }
+    P_EVENT_ARC_DETECTION     { 15 "Arc Detection" }
+    P_EVENT_THEFT_DETECTION   { 16 "Theft Detection" }
+    P_EVENT_OUTPUT_OVER_CURRENT { 17 "Output Over Current" }
+    P_EVENT_OUTPUT_OVER_VOLTAGE { 18 "DC Output Over Voltage" }
+    P_EVENT_OUTPUT_UNDER_VOLTAGE { 19 "DC Output Under Voltage" }
+    P_EVENT_TEST_FAILED       { 20 "Last Self Test failed; see vendor event for details." }
+  }
+
+  define Ctl_enum {
+    P_CONTROL_NO_CONTROL      { 0  "no control value" }
+    P_CONTROL_AUTOMATIC       { 1  "allow normal operation" }
+    P_CONTROL_FORCE_OFF       { 2  "force module to OFF or safe mode" }
+    P_CONTROL_TEST            { 3  "enter test mode" }
+    P_CONTROL_THROTTLE        { 4  "CtlVl register is % of max rated power of the optimizer" }
+  }
+}   
 
      

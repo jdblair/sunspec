@@ -102,13 +102,6 @@ typedef struct suns_dp_block {
     int len;
 } suns_dp_block_t;
 
-typedef struct suns_dp {
-    char *name;
-    int offset;            /* in modbus registers, starting with 1 */
-    suns_type_pair_t *type_pair;
-    list_t *attributes;
-} suns_dp_t;
-
 typedef struct suns_model {
     char *comment;
     char *name;
@@ -121,6 +114,13 @@ typedef struct suns_model {
     list_t *defines;
     list_t *test_data;
 } suns_model_t;
+
+typedef struct suns_dp {
+    char *name;
+    int offset;            /* in modbus registers, starting with 1 */
+    suns_type_pair_t *type_pair;
+    list_t *attributes;
+} suns_dp_t;
 
 /*  suns_model_did_t is used to build an index of did values
     more than one did can reference the same model */

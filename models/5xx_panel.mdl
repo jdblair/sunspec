@@ -6,26 +6,26 @@
 model suns {
   did 501 "panel_module_float"
   datapoints {
-    Stat                { enum16.Stat }
+    Stat                { enum16.Stat_enum req }
     StatVend            { enum16 }
-    Evt                 { bitfield32.Evt }
+    Evt                 { bitfield32.Evt_bf req }
     EvtVend             { bitfield32 }
     Ctl                 { enum16 }
     CtlVend             { enum32 }
     CtlVal              { int32 }
-    Tms                 { uint32  units=Tms }
-    OutA                { float32 units=A }
-    OutV                { float32 units=V }
-    OutWh               { float32 units=Wh }
-    OutPwr              { float32 units=W }
-    Tmp                 { float32 units=Tmp }
-    InA                 { float32 units=A }
-    InV                 { float32 units=V }
-    InWh                { float32 units=Wh }
-    InPwr               { float32 units=W }
+    Tms                 { uint32  u=Tms1970 }
+    OutA                { float32 u=A }
+    OutV                { float32 u=V }
+    OutWh               { float32 u=Wh }
+    OutPwr              { float32 u=W }
+    Tmp                 { float32 u=C }
+    InA                 { float32 u=A }
+    InV                 { float32 u=V }
+    InWh                { float32 u=Wh }
+    InPwr               { float32 u=W }
   }
 
-  define Stat {
+  define Stat_enum {
     P_STATUS_OFF              {  1 "Off" }
     P_STATUS_SLEEPING         {  2 "Sleeping (auto-shutdown) or panel is at low/safe output power/voltage" }
     P_STATUS_STARTING         {  3 "Starting up or ON but not producting power; panel might have high voltage but is not producing power" }
@@ -38,29 +38,28 @@ model suns {
     P_STATUS_OTHER            { 10 "As defined in vendor specific status" }
   }
 
-  define Evt {
-    P_EVENT_GROUND_FAULT      { 0x00000001 "Ground Fault" }
-    P_EVENT_INPUT_OVER_VOLTAGE  { 0x00000002 "DC input over-voltage" }
-    RESERVED                  { 0x00000004 "Reserved for u-inverter compatibility" }
-    P_EVENT_DC_DISCONNECT     { 0x00000008 "DC disconnect open" }
-    RESERVED                  { 0x00000010 "Reserved for u-inverter compatibility" }
-    RESERVED                  { 0x00000020 "Reserved for u-inverter compatibility" }
-    P_EVENT_MANUAL_SHUTDOWN   { 0x00000040 "Manual shutdown" }
-    P_EVENT_OVER_TEMPERATURE  { 0x00000080 "Over Temperature" }
-    RESERVED                  { 0x00000100 "Reserved for u-inverter compatibility" }
-    RESERVED                  { 0x00000200 "Reserved for u-inverter compatibility" }
-    RESERVED                  { 0x00000400 "Reserved for u-inverter compatibility" }
-    RESERVED                  { 0x00000800 "Reserved for u-inverter compatibility" }
-    P_EVENT_BLOWN_FUSE        { 0x00001000 "Blown Input Fuse" }
-    P_EVENT_UNDER_TEMPERATURE { 0x00002000 "Under Temperature" }
-    P_EVENT_MEMORY_LOSS       { 0x00004000 "Generic Memory or Communication Error." }
-    P_EVENT_ARC_DETECTION     { 0x00010000 "Arc Detection" }
-    P_EVENT_THEFT_DETECTION   { 0x00020000 "Theft Detection" }
-    P_EVENT_OUTPUT_OVER_CURRENT { 0x00040000 "Output Over Current" }
-    P_EVENT_OUTPUT_OVER_VOLTAGE { 0x00080000 "DC Output Over Voltage" }
-    P_EVENT_OUTPUT_UNDER_VOLTAGE { 0x00100000 "DC Output Under Voltage" }
-    P_EVENT_TEST_FAILED       { 0x00200000 "Last Self Test failed; see vendor eent for details." }
-    RESERVED                  { 0xFF600000 "Reserved for SunSpec" }
+  define Evt_bf {
+    P_EVENT_GROUND_FAULT      { 1 "Ground Fault" }
+    P_EVENT_INPUT_OVER_VOLTAGE  { 2 "DC input over-voltage" }
+    RESERVED                  { 3 "Reserved for u-inverter compatibility" }
+    P_EVENT_DC_DISCONNECT     { 4 "DC disconnect open" }
+    RESERVED                  { 5 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 6 "Reserved for u-inverter compatibility" }
+    P_EVENT_MANUAL_SHUTDOWN   { 7 "Manual shutdown" }
+    P_EVENT_OVER_TEMPERATURE  { 8 "Over Temperature" }
+    RESERVED                  { 9 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 10 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 11 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 12 "Reserved for u-inverter compatibility" }
+    P_EVENT_BLOWN_FUSE        { 13 "Blown Input Fuse" }
+    P_EVENT_UNDER_TEMPERATURE { 14 "Under Temperature" }
+    P_EVENT_MEMORY_LOSS       { 15 "Generic Memory or Communication Error." }
+    P_EVENT_ARC_DETECTION     { 16 "Arc Detection" }
+    P_EVENT_THEFT_DETECTION   { 17 "Theft Detection" }
+    P_EVENT_OUTPUT_OVER_CURRENT { 18 "Output Over Current" }
+    P_EVENT_OUTPUT_OVER_VOLTAGE { 19 "DC Output Over Voltage" }
+    P_EVENT_OUTPUT_UNDER_VOLTAGE { 20 "DC Output Under Voltage" }
+    P_EVENT_TEST_FAILED       { 21 "Last Self Test failed; see vendor event for details." }
   }
 }
 
@@ -74,23 +73,23 @@ model suns {
     V_SF               { sunssf }
     Pwr_SF             { sunssf }
     Wh_SF              { sunssf }
-    Stat               { enum16 }
+    Stat               { enum16 req }
     StatVend           { enum16 }
-    Evt                { bitfield32 }
+    Evt                { bitfield32 req }
     EvtVend            { bitfield32 }
     Ctl                { enum16 }
     CtlVend            { enum32 }
     CtlVal             { int32 }
-    Tms                { uint32 units=Tms }
-    OutA               { int16.A_SF units=A }
-    OutV               { int16.V_SF units=V }
-    OutWh              { uint32.Wh_SF units=Wh }
-    OutPw              { int16.Pwr_SF units=W }
-    Tmp                { int16 units=Tmp }
-    InA                { int16.A_SF units=A }
-    InV                { int16.V_SF units=V }
-    InWh               { uint32.Wh_SF units=Wh }
-    InPwr              { int16.Pwr_SF units=W }
+    Tms                { uint32 u=Tms }
+    OutA               { int16.A_SF u=A }
+    OutV               { int16.V_SF u=V }
+    OutWh              { uint32.Wh_SF u=Wh }
+    OutPw              { int16.Pwr_SF u=W }
+    Tmp                { int16 u=C }
+    InA                { int16.A_SF u=A }
+    InV                { int16.V_SF u=V }
+    InWh               { uint32.Wh_SF u=Wh }
+    InPwr              { int16.Pwr_SF u=W }
   }
       
   define Stat {
@@ -107,28 +106,27 @@ model suns {
   }
 
   define Evt {
-    P_EVENT_GROUND_FAULT      { 0x00000001 "Ground Fault" }
-    P_EVENT_INPUT_OVER_VOLTAGE  { 0x00000002 "DC input over-voltage" }
-    RESERVED                  { 0x00000004 "Reserved for u-inverter compatibility" }
-    P_EVENT_DC_DISCONNECT     { 0x00000008 "DC disconnect open" }
-    RESERVED                  { 0x00000010 "Reserved for u-inverter compatibility" }
-    RESERVED                  { 0x00000020 "Reserved for u-inverter compatibility" }
-    P_EVENT_MANUAL_SHUTDOWN   { 0x00000040 "Manual shutdown" }
-    P_EVENT_OVER_TEMPERATURE  { 0x00000080 "Over Temperature" }
-    RESERVED                  { 0x00000100 "Reserved for u-inverter compatibility" }
-    RESERVED                  { 0x00000200 "Reserved for u-inverter compatibility" }
-    RESERVED                  { 0x00000400 "Reserved for u-inverter compatibility" }
-    RESERVED                  { 0x00000800 "Reserved for u-inverter compatibility" }
-    P_EVENT_BLOWN_FUSE        { 0x00001000 "Blown Input Fuse" }
-    P_EVENT_UNDER_TEMPERATURE { 0x00002000 "Under Temperature" }
-    P_EVENT_MEMORY_LOSS       { 0x00004000 "Generic Memory or Communication Error." }
-    P_EVENT_ARC_DETECTION     { 0x00010000 "Arc Detection" }
-    P_EVENT_THEFT_DETECTION   { 0x00020000 "Theft Detection" }
-    P_EVENT_OUTPUT_OVER_CURRENT { 0x00040000 "Output Over Current" }
-    P_EVENT_OUTPUT_OVER_VOLTAGE { 0x00080000 "DC Output Over Voltage" }
-    P_EVENT_OUTPUT_UNDER_VOLTAGE { 0x00100000 "DC Output Under Voltage" }
-    P_EVENT_TEST_FAILED       { 0x00200000 "Last Self Test failed; see vendor eent for details." }
-    RESERVED                  { 0xFF600000 "Reserved for SunSpec" }
+    P_EVENT_GROUND_FAULT      { 1 "Ground Fault" }
+    P_EVENT_INPUT_OVER_VOLTAGE  { 2 "DC input over-voltage" }
+    RESERVED                  { 3 "Reserved for u-inverter compatibility" }
+    P_EVENT_DC_DISCONNECT     { 4 "DC disconnect open" }
+    RESERVED                  { 5 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 6 "Reserved for u-inverter compatibility" }
+    P_EVENT_MANUAL_SHUTDOWN   { 7 "Manual shutdown" }
+    P_EVENT_OVER_TEMPERATURE  { 8 "Over Temperature" }
+    RESERVED                  { 9 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 10 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 11 "Reserved for u-inverter compatibility" }
+    RESERVED                  { 12 "Reserved for u-inverter compatibility" }
+    P_EVENT_BLOWN_FUSE        { 13 "Blown Input Fuse" }
+    P_EVENT_UNDER_TEMPERATURE { 14 "Under Temperature" }
+    P_EVENT_MEMORY_LOSS       { 15 "Generic Memory or Communication Error." }
+    P_EVENT_ARC_DETECTION     { 16 "Arc Detection" }
+    P_EVENT_THEFT_DETECTION   { 17 "Theft Detection" }
+    P_EVENT_OUTPUT_OVER_CURRENT { 18 "Output Over Current" }
+    P_EVENT_OUTPUT_OVER_VOLTAGE { 19 "DC Output Over Voltage" }
+    P_EVENT_OUTPUT_UNDER_VOLTAGE { 20 "DC Output Under Voltage" }
+    P_EVENT_TEST_FAILED       { 21 "Last Self Test failed; see vendor event for details." }
   }
 }
 

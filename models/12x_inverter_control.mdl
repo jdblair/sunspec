@@ -5,18 +5,18 @@ model suns {
     name "inverter_nameplate"
     did 120 "inverter_nameplate"
     datapoints {
-        WRtg            { uint16.WRtg_SF }
-        WRtg_SF         { sunssf }
-        VARtg           { uint16 }
-        VARtg_SF        { sunssf }
-        VArPosRtg       { uint16.VArRtg_SF }
-        VArNegRtg       { uint16.VArRtg_SF }
-        VArRtg_SF       { sunssf }
-        ARtg            { uint16 }
-        ARtg_SF         { sunssf }
-        PFLeadRtg       { int16.PFRtg_SF }
-        PFLagRtg        { int16.PFRtg_SF }
-        PFRtg_SF        { sunssf }
+        WRtg            { uint16.WRtg_SF req }
+        WRtg_SF         { sunssf req }
+        VARtg           { uint16 req }
+        VARtg_SF        { sunssf req }
+        VArPosRtg       { uint16.VArRtg_SF req }
+        VArNegRtg       { uint16.VArRtg_SF req }
+        VArRtg_SF       { sunssf req }
+        ARtg            { uint16 req }
+        ARtg_SF         { sunssf req }
+        PFLeadRtg       { int16.PFRtgSF req }
+        PFLagRtg        { int16.PFRtg_SF req }
+        PFRtg_SF        { sunssf req }
         WHRtg_SF        { sunssf }
         MaxChgRte       { uint16.MaxChgRte_SF }
         MaxChgRte_SF    { int16 }
@@ -32,35 +32,36 @@ model suns {
     name "inverter_basic_settings"
     did 121 "inverter_basic_settings"
     datapoints {
-        WMax            { uint16.WMax_SF }
-        WMax_SF         { sunssf }
-        WRef            { uint16.WMax_SF }
-        VMax            { uint16.VMinMax_SF }
-        VMin            { uint16.VMinMax_SF }
-        VMinMax_SF      { sunssf }
-        VAMax           { uint16.VAMax_SF }
-        VAMax_SF        { sunssf }
-        VArPosMax       { uint16.VArMax_SF }
-        VArNegMax       { uint16.VArMax_SF }
-        VArMax_SF       { sunssf }
-        VRef            { uint16.VRef_SF }
-        VRef_SF         { sunssf }
-        VRefOfs         { int16.VRefOfs_SF }
-        VRefOfs_SF      { sunssf }
-        WGra            { int16.WGra_SF }
-        WGra_SF         { sunssf }
-        PFSign          { enum16.PFSign_enum }
-        PFLeadMin       { int16.PFMin_SF }
-        PFLagMin        { int16.PFMin_SF }
-        PFMin_SF        { sunssf }
-        VArAct          { enum16.VArAct_enum }
-        ClcTotVA        { enum16.ClcTotVA_enum }
-        MaxRmpRte       { uint16.MaxRmpRte_SF }
-        MaxRmpRte_SF    { sunssf }
-        ECPNomHz        { uint16.ECPNomHz_SF }
-        ECPNomHz_SF     { sunssf }
-        Connected_Phase { enum16.Connected_Phase_enum }
+        WMax            { uint16.WMax_SF u=W access=rw req }
+        WMax_SF         { sunssf access=rw access=rw req }
+        WRef            { uint16.WMax_SF u=W access=rw }
+        VMax            { uint16.VMinMax_SF u=V access=rw }
+        VMin            { uint16.VMinMax_SF u=V access=rw }
+        VMinMax_SF      { sunssf access=rw }
+        VAMax           { uint16.VAMax_SF u=VA access=rw }
+        VAMax_SF        { sunssf access=rw }
+        VArPosMax       { uint16.VArMax_SF u=VAr access=rw }
+        VArNegMax       { uint16.VArMax_SF u=VAr access=rw }
+        VArMax_SF       { sunssf access=rw u=VAr }
+        VRef            { uint16.VRef_SF u=V access=rw req }
+        VRef_SF         { sunssf access=rw req }
+        VRefOfs         { int16.VRefOfs_SF u=V access=rw req }
+        VRefOfs_SF      { sunssf access=rw req }
+        WGra            { int16.WGra_SF u=perc access=rw }
+        WGra_SF         { sunssf access=rw }
+        PFSign          { enum16.PFSign_enum access=rw }
+        PFLeadMin       { int16.PFMin_SF u=cosT access=rw }
+        PFLagMin        { int16.PFMin_SF u=cosT access=rw }
+        PFMin_SF        { sunssf access=rw }
+        VArAct          { enum16.VArAct_enum access=rw }
+        ClcTotVA        { enum16.ClcTotVA_enum access=rw }
+        MaxRmpRte       { uint16.MaxRmpRte_SF u=perc access=rw }
+        MaxRmpRte_SF    { sunssf access=rw }
+        ECPNomHz        { uint16.ECPNomHz_SF u=Hz access=rw }
+        ECPNomHz_SF     { sunssf access=rw }
+        Connected_Phase { enum16.Connected_Phase_enum access=rw }
     }
+
     define PFSign_enum {
         I_IEC  { 1 "IEC sign convention" }
         I_IEEE { 2 "IEEE sign convention" }
@@ -94,17 +95,17 @@ model suns {
         PVConn                  { enum16.ConnAvail_enum }
         StorConn                { enum16.ConnAvail_enum }
         ECPConn                 { enum16.ECPConn_enum }
-        AC_Active_Energy        { acc64 }
-        AC_Apparent_Energy      { acc64 }
-        AC_Reactive_Energy_Q1   { acc64 }
-        AC_Reactive_Energy_Q2   { acc64 }
-        AC_Reactive_Energy_Q3   { acc64 }
-        AC_Reactive_Energy_Q4   { acc64 }
-        VArAval                 { uint16.VArAval_SF }
+        ActWh                   { acc64 u=Wh }
+        ActVAh                  { acc64 u=VAh }
+        ActVArhQ1               { acc64 u=VArh }
+        ActVArhQ2               { acc64 u=VArh }
+        ActVArhQ3               { acc64 u=VArh }
+        ActVArhQ4               { acc64 u=VArh }
+        VArAval                 { uint16.VArAval_SF u=VAr }
         VArAval_SF              { sunssf }
-        StaSetPtLimMask         { bitfield32.StaSetPtLimMask_bf }
+        StaSetLimMsk            { bitfield32.StaSetLimMsk_bf }
         TmSrc                   { string.16 }
-        CurrTime                { uint32 }
+        CurrTime                { uint32 u=Tms2000 }
     }
 
 
@@ -123,14 +124,14 @@ model suns {
         CONNECTED               { 1 "connected" }
     }
 
-    define StaSetPtLimMask_bf {
-        WMax                    { 0x01 "" }
-        VAMax                   { 0x02 "" }
-        VArPosMax               { 0x04 "" }
-        VArNegMax               { 0x08 "" }
-        VArAval                 { 0x10 "" }
-        PFLeadMin               { 0x20 "" }
-        PFLagMin                { 0x40 "" }
+    define StaSetLimMsk_bf {
+        WMax                    { 1 "" }
+        VAMax                   { 2 "" }
+        VArPosMax               { 3 "" }
+        VArNegMax               { 4 "" }
+        VArAval                 { 5 "" }
+        PFLeadMin               { 6 "" }
+        PFLagMin                { 7 "" }
     }
 }
 
@@ -142,15 +143,46 @@ model suns {
     name "Immediate_Inverter_Controls"
     did 123 "Immediate_Inverter_Controls"
     datapoints {
-        ImmCtl_Mode         { bitfield16.ImmCtl_bf access=rw }
-        Connect             { enum16.Bool_enum access=rw }
-        Connect_WinTms      { uint16 access=rw }
-        Connect_RvrtTms     { uint16 access=rw }
-        WMaxLimPct          { uint16.WMaxLimPct_SF access=rw }
-        WMaxLimPct_SF       { sunssf }
-        WMaxLimPct_WinTms   { uint16 access=rw }
-        WMaxLimPct_RvrtTms  { uint16 access=rw }
-        WMaxLimPct_RmpTims  { uint16.WMaxLimPct_SF access=rw }
+        Mod                 { bitfield16.ImmCtl_bf access=rw req }
+        Conn                { enum16.Conn_enum access=rw req }
+        Conn_WinTms         { uint16 access=rw u=Tms }
+        Conn_RvrtTms        { uint16 access=rw u=Tms }
+        WMaxLimPct          { uint16.WMaxLimPct_SF access=rw u=perc req }
+        WMaxLimPct_SF       { sunssf req }
+        WMaxLimPct_WinTms   { uint16 access=rw u=Tms }
+        WMaxLimPct_RvrtTms  { uint16 access=rw u=Tms }
+        WMaxLimPct_RmpTms   { uint16.WMaxLimPct_SF access=rw u=Tms }
+        OutPFSet            { int16.OutPFSet_SF u=cosT req access=rw }
+        PFExt               { enum16.PFExt_enum access=rw }
+        OutPFSet_SF         { sunssf req access=rw }
+        OutPFSet_WinTms     { uint16 u=Tms access=rw }
+        OutPFSet_RvrtTms    { uint16 u=Tms access=rw }
+        VArLim_Mode         { enum16.VArLim_Mode_enum req access=rw }
+        VArWMaxPct          { uint16 u=perc access=rw }
+        VArWMaxPct_SF       { sunssf access=rw }
+        VArMaxPct           { uint16 u=perc access=rw }
+        VArAvalPct          { uint16 u=perc access=rw }
+        VArPct_SF           { sunssf access=rw }
+        VArPct_WinTms       { uint16 u=Tms access=rw }
+        VArPct_RvrtTms      { uint16 u=Tms access=rw }
+        VArPct_RmpTms       { uint16 u=Tms access=rw }
+    }
+
+    define Conn_enum {
+        DISCONNECT          { 0 "disconnect from grid" }
+        CONNECT             { 1 "connect to gred" }
+    }
+
+    define PFExt_enum {
+        OVER                { 0 "overexcited" }
+        UNDER               { 1 "underexcited" }
+    }
+
+    define VArLim_Mode_enum {
+        NO_LIMIT            { 0 "no VAR limit" }
+        WMAX                { 1 "limit as percentage of WMax" }
+        VARMAX              { 2 "limit as percentage of VArMax" }
+        VARAVAL             { 3 "limit as percentage of VArAval" }
     }
 }
 

@@ -10,22 +10,22 @@ model suns {
     DCA_SF                  { sunssf }
     DCAH_SF                 { sunssf }
     DCV_SF                  { sunssf }
-    DCA_Max                 { uint16.DCA_SF units=A }
+    DCA_Max                 { uint16.DCA_SF u=A }
     N                       { uint16 }
     Evt                     { bitfield32 }
     EvtVnd                  { bitfield32 }
-    DCA                     { int16.DCA_SF units=A }
-    DCAH                    { uint32.DCAH_SF units=Ah }
-    DCV                     { uint16.DCV_SF units=V }
-    DCTmp                   { uint16 units=Tmp }
+    DCA                     { int16.DCA_SF u=A }
+    DCAH                    { uint32.DCAH_SF u=Ah }
+    DCV                     { uint16.DCV_SF u=V }
+    DCTmp                   { uint16 u=C }
   }  
   # per-string datapoints
   datapoints repeating {
     InID                    { uint16 }
     InEvt                   { bitfield32 }
     InEvtVnd                { bitfield32 }
-    InDCA                   { int16.DCA_SF units=A }
-    InDCAH                  { uint32.DCAH_SF units=Ah }
+    InDCA                   { int16.DCA_SF u=A }
+    InDCAH                  { uint32.DCAH_SF u=Ah }
   }
 }
 
@@ -43,29 +43,29 @@ model suns {
     DCV_SF                  { sunssf }
     DCW_SF                  { sunssf }
     DCWh_SF                 { sunssf }
-    DCAMax                  { uint16 units=amps }
+    DCAMax                  { uint16 u=A }
     N                       { uint16 }
     Evt                     { bitfield32 }
     EvtVnd                  { bitfield32 }
-    DCA                     { int16  units=amps }
-    DCAH                    { uint32 units=amps_hours }
-    DCV                     { uint16 units=volts }
-    Tmp                     { uint16 units=degrees_c }
-    DCW                     { int16  units=watts }
-    DC_PR                   { uint16 units=percent }
-    DC_Energy               { uint32 units=watt_hours }
+    DCA                     { int16  u=A }
+    DCAH                    { uint32 u=Ah }
+    DCV                     { uint16 u=V }
+    Tmp                     { uint16 u=C }
+    DCW                     { int16  u=W }
+    DC_PR                   { uint16 u=perc }
+    DC_Energy               { uint32 u=Wh }
   }  
   # per-string datapoints
   datapoints repeating {
     InID                    { uint16 }
     InEvt                   { bitfield32 }
     EvtVnd                  { bitfield32 }
-    InDCA                   { int16.DCA_SF units=A }
-    InDCAH                  { uint32.DCAH_SF units=Ah  }
-    InDCV                   { uint16.DCV_SF units=V      }
-    InDCW                   { int16.DCWh_SF  units=W      }
-    INDCWh                  { uint32 units=Wh }
-    InDCPR                  { uint16 units=percent }
+    InDCA                   { int16.DCA_SF u=A }
+    InDCAH                  { uint32.DCAH_SF u=Ah  }
+    InDCV                   { uint16.DCV_SF u=V      }
+    InDCW                   { int16.DCWh_SF  u=W      }
+    INDCWh                  { uint32 u=Wh }
+    InDCPR                  { uint16 u=perc }
   }
 }
 
@@ -107,22 +107,22 @@ model suns {
   did 404 "advanced_string_combiner"
   # common datapoints
   datapoints {
-    DCA_SF                  { sunssf }
+    DCA_SF                  { sunssf req }
     DCAH_SF                 { sunssf }
     DCV_SF                  { sunssf }
     DCW_SF                  { sunssf }
     DCWh_SF                 { sunssf }
-    DCAMax                  { uint16 units=A }
-    N                       { uint16 }
-    Evt                     { bitfield32 }
+    DCAMax                  { uint16 u=A req }
+    N                       { uint16 req }
+    Evt                     { bitfield32 req }
     EvtVnd                  { bitfield32 }
-    DCA                     { int16  units=A }
-    DCAH                    { uint32 units=Ah }
-    DCV                     { uint16 units=V }
-    Tmp                     { uint16 units=Tmp }
-    DCW                     { int16  units=W }
-    DCPR                    { uint16 units=percent }
-    DCWh                    { uint32 units=Wh }
+    DCA                     { int16  u=A req }
+    DCAH                    { uint32 u=Ah }
+    DCV                     { uint16 u=V }
+    Tmp                     { uint16 u=C }
+    DCW                     { int16  u=W }
+    DCPR                    { uint16 u=perc }
+    DCWh                    { uint32 u=Wh }
     InDCA_SF                { sunssf }
     InDCAH_SF               { sunssf }
     InDCV_SF                { sunssf }
@@ -130,15 +130,15 @@ model suns {
   }  
   # per-string datapoints
   datapoints repeating {
-    InID                    { uint16 }
-    InEvt                   { bitfield32 }
+    InID                    { uint16 req }
+    InEvt                   { bitfield32 req }
     EvtVnd                  { bitfield32 }
-    InDCA                   { int16.InDCA_SF units=A }
-    InDCAH                  { uint32.InDCAH_SF units=Ah  }
-    InDCV                   { uint16.InDCV_SF units=V      }
-    InDCW                   { int16.InDCW_SF  units=W      }
-    INDCWh                  { uint32.InDCWh_SF units=Wh }
-    InDCPR                  { uint16 units=percent }
+    InDCA                   { int16.InDCA_SF u=A req }
+    InDCAH                  { uint32.InDCAH_SF u=Ah  }
+    InDCV                   { uint16.InDCV_SF u=V      }
+    InDCW                   { int16.InDCW_SF  u=W      }
+    INDCWh                  { uint32.InDCWh_SF u=Wh }
+    InDCPR                  { uint16 u=perc }
   }
 }
 
