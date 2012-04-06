@@ -904,79 +904,122 @@ int suns_app_model_search_path(suns_app_t *app, char const *path)
 }
 
 
+int suns_app_model_search_dir_xml_filter(const struct dirent * dirp)
+{
+    const char *filename = dirp->d_name;
+
+    int len = strlen(filename);
+
+    /* skip files that start . (directories and dot-files) */
+    if (filename[0] == '.') {
+        debug("skipping %s", filename);
+        return 0;
+    }
+    
+    debug("file: %s", filename);
+    
+    /* check for *.xml */
+    if (((filename[len - 1] == 'l') || (filename[len - 1] == 'L')) &&
+        ((filename[len - 2] == 'm') || (filename[len - 2] == 'M')) &&
+        ((filename[len - 3] == 'x') || (filename[len - 3] == 'X')) &&
+        (filename[len - 4] == '.')) {
+        return 1;
+    } 
+
+    debug("skipping %s", filename);
+    return 0;
+}
+
+
+int suns_app_model_search_dir_filter(const struct dirent * dirp)
+{
+    const char *filename = dirp->d_name;
+
+    int len = strlen(filename);
+
+    /* skip files that start . (directories and dot-files) */
+    if (filename[0] == '.') {
+        debug("skipping %s", filename);
+        return 0;
+    }
+    
+    debug("file: %s", filename);
+    
+    if (
+        /* .model */
+        (((filename[len - 1] == 'l') || (filename[len - 1] == 'L')) &&
+         ((filename[len - 2] == 'e') || (filename[len - 2] == 'E')) &&
+         ((filename[len - 3] == 'd') || (filename[len - 3] == 'D')) &&
+         ((filename[len - 4] == 'o') || (filename[len - 4] == 'O')) &&
+         ((filename[len - 5] == 'm') || (filename[len - 5] == 'M')) &&
+         (filename[len - 6] == '.')) ||
+        /* .mdl */
+        (((filename[len - 1] == 'l') || (filename[len - 3] == 'D')) &&
+         ((filename[len - 2] == 'd') || (filename[len - 4] == 'O')) &&
+         ((filename[len - 3] == 'm') || (filename[len - 5] == 'M')) &&
+         (filename[len - 4] == '.'))
+        ) {
+        return 1;
+    }
+
+    debug("skipping %s", filename);
+    return 0;
+}
+
+
 int suns_app_model_search_dir(suns_app_t *app, char const *dirpath)
 {
     int rc = 0;
-    DIR *dir;
-    struct dirent *entryp;
+    int n = 0;
+    int i;
+    struct dirent **namelist;
 
-    dir = opendir(dirpath);
-    if (dir == NULL) {
-        debug("can't open dir %s: %m", dirpath);
-        return -1;
+    /* first parse sunslang style files */
+    n = scandir(dirpath, &namelist,
+                 suns_app_model_search_dir_filter, alphasort);
+
+    if (n < 0) {
+        error("scandir returned error");
+        return n;
     }
 
-    entryp = readdir(dir);
-    while (entryp) {
-        int len;
-        char *filename = entryp->d_name;
+    for (i = 0; i < n; i++) {
+        debug("parsing model file %s", namelist[i]->d_name);
+        char *buf = malloc(strlen(dirpath) + strlen(namelist[i]->d_name) + 2);
+        strcpy(buf, dirpath);
+        strcat(buf, "/");
+        strcat(buf, namelist[i]->d_name);
 
-        len = strlen(filename);
+        /* keep parsing files even if one generates an error */
+        suns_parse_model_file(buf);
+        free(namelist[i]);
+        free(buf);
+    }
+    free(namelist);
 
-        /* skip files that start . (directories and dot-files) */
-        if (filename[0] == '.') {
-            debug("skipping %s", filename);
-            entryp = readdir(dir);
-            continue;
-        }
+    /* now re-scan and look for *.xml files */
+    n = scandir(dirpath, &namelist,
+                 suns_app_model_search_dir_xml_filter, alphasort);
 
-        debug("file: %s", filename);
-
-        /* check for *.xml */
-        if (((filename[len - 1] == 'l') || (filename[len - 1] == 'L')) &&
-            ((filename[len - 2] == 'm') || (filename[len - 2] == 'M')) &&
-            ((filename[len - 3] == 'x') || (filename[len - 3] == 'X')) &&
-            (filename[len - 4] == '.')) {
-            
-            char *buf = malloc(strlen(dirpath) + strlen(filename) + 2);
-            strcpy(buf, dirpath);
-            strcat(buf, "/");
-            strcat(buf, filename);
-            debug("parsing model file %s", filename);
-            if ((rc = suns_parse_xml_model_file(buf)) < 0)
-                return rc;
-            free(buf);
-        } 
-
-        if (
-            /* .model */
-            (((filename[len - 1] == 'l') || (filename[len - 1] == 'L')) &&
-             ((filename[len - 2] == 'e') || (filename[len - 2] == 'E')) &&
-             ((filename[len - 3] == 'd') || (filename[len - 3] == 'D')) &&
-             ((filename[len - 4] == 'o') || (filename[len - 4] == 'O')) &&
-             ((filename[len - 5] == 'm') || (filename[len - 5] == 'M')) &&
-             (filename[len - 6] == '.')) ||
-            /* .mdl */
-            (((filename[len - 1] == 'l') || (filename[len - 3] == 'D')) &&
-             ((filename[len - 2] == 'd') || (filename[len - 4] == 'O')) &&
-             ((filename[len - 3] == 'm') || (filename[len - 5] == 'M')) &&
-             (filename[len - 4] == '.'))
-            ) {
-
-            char *buf = malloc(strlen(dirpath) + strlen(filename) + 2);
-            strcpy(buf, dirpath);
-            strcat(buf, "/");
-            strcat(buf, filename);
-            debug("parsing model file %s", buf);
-            if ((rc = suns_parse_model_file(buf)) < 0)
-                return rc;
-            free(buf);
-        }
-            
-        entryp = readdir(dir);
+    if (n < 0) {
+        error("scandir returned error");
+        return n;
     }
 
-    closedir(dir);
+    for (i = 0; i < n; i++) {
+        debug("parsing model file %s", namelist[i]->d_name);
+        char *buf = malloc(strlen(dirpath) + strlen(namelist[i]->d_name) + 2);
+        strcpy(buf, dirpath);
+        strcat(buf, "/");
+        strcat(buf, namelist[i]->d_name);
+
+        /* keep parsing files even if one generates an error */
+        suns_parse_xml_model_file(buf);
+        free(namelist[i]);
+        free(buf);
+    }
+    free(namelist);
+
 
     return rc;
 }
