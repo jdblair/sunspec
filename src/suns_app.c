@@ -948,12 +948,20 @@ int suns_app_model_search_dir(suns_app_t *app, char const *dirpath)
             free(buf);
         } 
 
-        if (((filename[len - 1] == 'l') || (filename[len - 1] == 'L')) &&
-            ((filename[len - 2] == 'e') || (filename[len - 2] == 'E')) &&
-            ((filename[len - 3] == 'd') || (filename[len - 3] == 'D')) &&
-            ((filename[len - 4] == 'o') || (filename[len - 4] == 'O')) &&
-            ((filename[len - 5] == 'm') || (filename[len - 5] == 'M')) &&
-            (filename[len - 6] == '.')) {
+        if (
+            /* .model */
+            (((filename[len - 1] == 'l') || (filename[len - 1] == 'L')) &&
+             ((filename[len - 2] == 'e') || (filename[len - 2] == 'E')) &&
+             ((filename[len - 3] == 'd') || (filename[len - 3] == 'D')) &&
+             ((filename[len - 4] == 'o') || (filename[len - 4] == 'O')) &&
+             ((filename[len - 5] == 'm') || (filename[len - 5] == 'M')) &&
+             (filename[len - 6] == '.')) ||
+            /* .mdl */
+            (((filename[len - 1] == 'l') || (filename[len - 3] == 'D')) &&
+             ((filename[len - 2] == 'd') || (filename[len - 4] == 'O')) &&
+             ((filename[len - 3] == 'm') || (filename[len - 5] == 'M')) &&
+             (filename[len - 4] == '.'))
+            ) {
 
             char *buf = malloc(strlen(dirpath) + strlen(filename) + 2);
             strcpy(buf, dirpath);

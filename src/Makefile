@@ -119,10 +119,15 @@ $(LIBTRX):
 $(LIBEZXML):
 	make -C ../lib ezxml
 
-MODELS=../models/0xx_common ../models/10x_inverter ../models/2xx_meter ../models/3xx_environ ../models/4xx_string_combiner ../models/5xx_panel
-# ../models/12x_inverter_control
+MODELS=../models/0xx_common.mdl \
+	../models/10x_inverter.mdl \
+	../models/2xx_meter.mdl \
+	../models/3xx_environ.mdl \
+	../models/4xx_string_combiner.mdl \
+	../models/5xx_panel.mdl
+# ../models/12x_inverter_control.mdl
 
-install:
+install: suns
 	$(INSTALL) -d $(PREFIX)/bin
 	$(INSTALL) -o 755 suns $(PREFIX)/bin
 	$(INSTALL) -d $(PREFIX)/lib/suns/models
