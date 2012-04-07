@@ -7,7 +7,7 @@
  * This includes all the data structures used for every component of the
  * abstract internal representation.
  *
- * Copyright (c) 2011, John D. Blair <jdb@moship.net>
+ * Copyright (c) 2011-2012, John D. Blair <jdb@moship.net>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without

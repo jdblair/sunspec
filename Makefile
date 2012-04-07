@@ -1,7 +1,7 @@
 #
 # Sunspec Test Tool Makefile
 #
-# Copyright (c) 2011, John D. Blair <jdb@moship.net>
+# Copyright (c) 2011-2012, John D. Blair <jdb@moship.net>
 # All rights reserved.
 # 
 # Redistribution and use in source and binary forms, with or without
