@@ -97,6 +97,7 @@
     struct suns_define *define;
     struct suns_dp_block *datapoints_block;
     struct suns_attribute *attribute;
+    struct suns_data_block *data_block;
 }
 
 %token <number_u> UINT
@@ -121,6 +122,7 @@
 %type <define> define;
 %type <datapoints_block> datapoints_block;
 %type <attribute> attribute;
+%type <data_block> data_block;
 
 /* %destructor { list_free($$, free); } config; */
 /* %destructor { free($$); } suns_type suns_type_with_name 
@@ -131,9 +133,23 @@
 config: blocks;
 
 blocks: /* empty */
-      | blocks block;
+      | blocks model_block
+{
+    /* add the model to the global model list */
+    list_node_add(sps->model_list, list_node_new($2));
+}
+      | blocks data_block
+{    
+    /* add the data block to the global list */
+    list_node_add(sps->data_block_list, list_node_new($2));
+}
+      | blocks define_block
+{
+    /* add the define block to the global list */
+    list_node_add(sps->define_list, list_node_new($2));
+}
 
-block: model_block | data_block
+
 
 did: DIDTOK UINT STRING
 {
@@ -157,9 +173,6 @@ model_block: MODELTOK NAME OBRACE model_elmts EBRACE
     /* model_blocks are the same struct as model_elmts */
     $$ = $4;
     $$->type = $2;
-
-    /* add the model to the global model list */
-    list_node_add(sps->model_list, list_node_new($$));
 }
 
 model_elmts: /* empty */
@@ -492,9 +505,6 @@ data_block: DATATOK NAME OBRACE register_list EBRACE
 
     d->name = strdup($2);
     d->data = $4;
-    
-    /* add the data block to the global list */
-    list_node_add(sps->data_block_list, list_node_new(d));
 }
 
 
@@ -520,6 +530,13 @@ define: NAME OBRACE INT STRING EBRACE
     $$->value = $3;
     $$->string = $4;
 }
+      | NAME OBRACE STRING EBRACE
+{
+    $$ = malloc(sizeof(suns_define_t));
+    $$->name = $1;
+    $$->value = 0;
+    $$->string = $3;
+}
 
 defines: /* empty */
 {
@@ -534,4 +551,3 @@ defines: /* empty */
 
   
 %%
-

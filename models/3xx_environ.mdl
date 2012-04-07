@@ -51,7 +51,7 @@ model suns {
     E_BaseMet_Snow                { int32 u=in       } # yes, inches!
     E_BaseMet_PPTType             { int32            }
     E_BaseMet_ElectricalField     { int32 u=Vm       }
-    E_BaseMet_SurfaceWetness      { int32 u=kOhms    }
+    E_BaseMet_SurfaceWetness      { int32 u=kO       }
     E_BaseMet_SoilMoisture        { int32 u=perc  }
   }
 }
@@ -89,7 +89,7 @@ model suns {
     Snw            { int16     u=mm        }
     PPT            { int16                 }
     ElecFld        { int16     u=Vm        }
-    SurWet         { int16     u=kOhms     }
+    SurWet         { int16     u=kO        }
     SoilWet        { int16     u=perc   }
   }
 }

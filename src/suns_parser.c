@@ -107,7 +107,7 @@ void suns_parser_init(void)
     _sps.model_list = list_new();
     _sps.did_list = list_new();
     _sps.data_block_list = list_new();
-
+    _sps.define_list = list_new();
 }
 
 

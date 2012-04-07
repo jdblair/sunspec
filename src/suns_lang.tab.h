@@ -148,11 +148,12 @@ typedef union YYSTYPE
     struct suns_define *define;
     struct suns_dp_block *datapoints_block;
     struct suns_attribute *attribute;
+    struct suns_data_block *data_block;
 
 
 
 /* Line 1676 of yacc.c  */
-#line 156 "suns_lang.tab.h"
+#line 157 "suns_lang.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

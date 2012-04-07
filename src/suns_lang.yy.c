@@ -527,7 +527,7 @@ char *yytext;
  *
  * flex (lex) lexer for the sunspec model description language.
  *
- * Copyright (c) 2011-2012, John D. Blair <jdb@moship.net>
+ * Copyright (c) 2011, John D. Blair <jdb@moship.net>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without

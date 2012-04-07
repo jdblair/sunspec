@@ -59,6 +59,7 @@ typedef struct suns_parser_state {
     list_t *model_list;          /* all models */
     list_t *did_list;            /* index of all dids (dids > models) */
     list_t *data_block_list;     /* static test data blocks */
+    list_t *define_list;         /* global defines */
 } suns_parser_state_t;
 
 /* prototypes so compiling bison and flex output doesn't cause warnings */
