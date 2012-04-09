@@ -1,0 +1,75 @@
+<sunSpecModels v="1">
+  <model id="301" len="22">
+    <block len="22">
+      <point id="E_BaseMet_AirTemperature" offset="0" type="int32" units="C" />
+      <point id="E_BaseMet_RelativeHumidity" offset="2" type="int32" units="perc" />
+      <point id="E_BaseMet_BarometricPressure" offset="4" type="int32" units="hPa" />
+      <point id="E_BaseMet_WindSpeed" offset="6" type="int32" units="ms" />
+      <point id="E_BaseMet_WindDirection" offset="8" type="int32" units="deg" />
+      <point id="E_BaseMet_Rain" offset="10" type="int32" units="in" />
+      <point id="E_BaseMet_Snow" offset="12" type="int32" units="in" />
+      <point id="E_BaseMet_PPTType" offset="14" type="int32" />
+      <point id="E_BaseMet_ElectricalField" offset="16" type="int32" units="Vm" />
+      <point id="E_BaseMet_SurfaceWetness" offset="18" type="int32" units="kO" />
+      <point id="E_BaseMet_SoilMoisture" offset="20" type="int32" units="perc" />
+    </block>
+  </model>
+  <strings id="301" locale="en">
+  </strings>
+  <model id="307" len="11">
+    <block len="11">
+      <point id="TmpAmb" offset="0" type="int16" sf="-1" units="C" />
+      <point id="RH" offset="1" type="int16" units="perc" />
+      <point id="Pres" offset="2" type="int16" units="HPa" />
+      <point id="WndSpd" offset="3" type="int16" units="ms" />
+      <point id="WndDir" offset="4" type="int16" units="deg" />
+      <point id="Rain" offset="5" type="int16" units="mm" />
+      <point id="Snw" offset="6" type="int16" units="mm" />
+      <point id="PPT" offset="7" type="int16" />
+      <point id="ElecFld" offset="8" type="int16" units="Vm" />
+      <point id="SurWet" offset="9" type="int16" units="kO" />
+      <point id="SoilWet" offset="10" type="int16" units="perc" />
+    </block>
+  </model>
+  <strings id="307" locale="en">
+  </strings>
+  <model id="302" len="5">
+    <block type="repeating" len="5">
+      <point id="GHI" offset="0" type="uint16" units="Wm2" />
+      <point id="POAI" offset="1" type="uint16" units="Wm2" />
+      <point id="DFI" offset="2" type="uint16" units="Wm2" />
+      <point id="DNI" offset="3" type="uint16" units="Wm2" />
+      <point id="OTI" offset="4" type="uint16" units="Wm2" />
+    </block>
+  </model>
+  <strings id="302" locale="en">
+  </strings>
+  <model id="303" len="1">
+    <block type="repeating" len="1">
+      <point id="TmpBOM" offset="0" type="int16" sf="-1" units="C" mandatory="true" />
+    </block>
+  </model>
+  <strings id="303" locale="en">
+  </strings>
+  <model id="304" len="6">
+    <block type="repeating" len="6">
+      <point id="InclX" offset="0" type="int32" sf="-2" units="deg" mandatory="true" />
+      <point id="InclY" offset="2" type="int32" sf="-2" units="deg" />
+      <point id="InclZ" offset="4" type="int32" sf="-2" units="deg" />
+    </block>
+  </model>
+  <strings id="304" locale="en">
+  </strings>
+  <model id="305" len="35">
+    <block len="35">
+      <point id="Tm" offset="0" type="string" len="5" />
+      <point id="Date" offset="5" type="string" len="4" />
+      <point id="Loc" offset="9" type="string" len="20" />
+      <point id="Lat" offset="29" type="int32" sf="-7" units="deg" mandatory="true" />
+      <point id="Long" offset="31" type="int32" sf="-7" units="deg" mandatory="true" />
+      <point id="Alt" offset="33" type="int32" units="m" />
+    </block>
+  </model>
+  <strings id="305" locale="en">
+  </strings>
+</sunSpecModels>

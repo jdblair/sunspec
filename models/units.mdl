@@ -35,15 +35,15 @@ define units {
     C	{ "degrees c" }
     cosT	{ "cos(theta)" }
     Hz	{ "hertz" }
-    PF	{ "powerfactor (percent)" }
-    Tms	{ "seconds (time)" }
-    Tms1970	{ "seconds since 1970 (unixtime)" }
-    Tms2000	{ "seconds since 2000" }
+    PFPct	{ "powerfactor (percent)" }
+    s	{ "seconds (time)" }
+    s1970	{ "seconds since 1970 (unixtime)" }
+    s2000	{ "seconds since 2000" }
     V	{ "volts" }
     VA	{ "volt amps" }
     VAh	{ "volt amp hours" }
-    VAr	{ "volt amps reactive" }
-    VArh	{ "volt amp reactive hours" }
+    var	{ "volt amps reactive" }
+    varh	{ "volt amp reactive hours" }
     Vm	{ "volts per meter" }
     W	{ "watts" }
     Wh	{ "watt hours" }
@@ -55,5 +55,5 @@ define units {
     m	{ "meters" }
     mm	{ "milimeters" }
     ms	{ "meters per second" }
-    perc	{ "percent" }
+    Pct	{ "percent" }
 }

@@ -39,54 +39,132 @@ model suns {
   did 102 "split-phase inverter"
   did 103 "three-phase inverter"
   datapoints {
-    A               {  uint16.A_SF u=A lname=I_AC_Current req }
-    AphA            {  uint16.A_SF u=A lname=I_AC_CurrentA req }
-    AphB            {  uint16.A_SF u=A lname=I_AC_CurrentB req={ m102 m103 } }
-    AphC            {  uint16.A_SF u=A lname=I_AC_CurrentC req={ m103 } }
+    A               {  uint16.A_SF u=A label="AC Current" req }
+    AphA            {  uint16.A_SF u=A label="AC Current A" req }
+    AphB            {  uint16.A_SF u=A label="AC Current B" req={ 102 103 } }
+    AphC            {  uint16.A_SF u=A label="AC Current C" req={ 103 } }
     A_SF            {  sunssf req }
-    PPVphAB         {  uint16.V_SF u=V lname=I_AC_VoltageAB req={ m103 } }
-    PPVphBC         {  uint16.V_SF u=V lname=I_AC_VoltageBC req={ m103 } }
-    PPVphCA         {  uint16.V_SF u=V lname=I_AC_VoltageCA req={ m103 } }
-    PhVphA          {  uint16.V_SF u=V lname=I_AC_VoltageAN req={ m101 } }
-    PhVphB          {  uint16.V_SF u=V lname=I_AC_VoltageBN req={ m102 m103 } }
-    PhVphC          {  uint16.V_SF u=V lname=I_AC_VoltageCN req={ m103 } }
+    PPVphAB         {  uint16.V_SF u=V label="AC Voltage AB" req={ 103 } }
+    PPVphBC         {  uint16.V_SF u=V label="AC Voltage BC" req={ 103 } }
+    PPVphCA         {  uint16.V_SF u=V label="AC Voltage CA" req={ 103 } }
+    PhVphA          {  uint16.V_SF u=V label="AC Voltage AN" req={ 101 } }
+    PhVphB          {  uint16.V_SF u=V label="AC Voltage BN" req={ 102 103 } }
+    PhVphC          {  uint16.V_SF u=V label="AC Voltage CN" req={ 103 } }
     V_SF            {  sunssf req }
-    W               {  int16.W_SF u=W lname=I_AC_Power req }
+    W               {  int16.W_SF u=W label="AC Power" req }
     W_SF            {  sunssf req }
-    Hz              {  uint16.Hz_SF u=Hz lname=I_AC_Frequency req }
+    Hz              {  uint16.Hz_SF u=Hz label="AC Frequency" req }
     Hz_SF           {  sunssf req }
-    VA              {  int16.VA_SF u=VA lname=I_AC_VA }
+    VA              {  int16.VA_SF u=VA label="AC Real Power" }
     VA_SF           {  sunssf }
-    VAr             {  int16.VAr_SF u=VAr lname=I_AC_VAr }
+    VAr             {  int16.VAr_SF u=VAr label="AC Reactive Power" }
     VAr_SF          {  sunssf }
-    PF              {  int16.PF_SF u=PF lname=I_AC_PF }
+    PF              {  int16.PF_SF u=PF label="AC Power Factor" }
     PF_SF           {  sunssf }
-    WH              {  uint32.WH_SF u=Wh lname=I_AC_Energy_WH req }
+    WH              {  uint32.WH_SF u=Wh label="AC Energy" req }
     WH_SF           {  sunssf req }
-    DCA             {  uint16.DCA_SF u=A lname=I_DC_Current }
+    DCA             {  uint16.DCA_SF u=A label="DC Current" }
     DCA_SF          {  sunssf }
-    DCV             {  uint16.DCV_SF u=V lname=I_DC_Voltage }
+    DCV             {  uint16.DCV_SF u=V label="DC Voltage" }
     DCV_SF          {  sunssf }
-    DCW             {  int16.DCW_SF u=W lname=I_DC_Power }
+    DCW             {  int16.DCW_SF u=W label="DC Power" }
     DCW_SF          {  sunssf }
-    TmpCab          {  int16.Tmp_SF u=C lname=I_Temp_Cab req }
-    TmpSnk          {  int16.Tmp_SF u=C lname=I_Temp_Sink }
-    TmpTrns         {  int16.Tmp_SF u=C lname=I_Temp_Trans }
-    TmpOt           {  int16.Tmp_SF u=C lname=I_Temp_Other }
+    TmpCab          {  int16.Tmp_SF u=C label="Cabinet (Ambient) Temperature" req }
+    TmpSnk          {  int16.Tmp_SF u=C label="Heat Sink Temperature" }
+    TmpTrns         {  int16.Tmp_SF u=C label="Transformer Temperature" }
+    TmpOt           {  int16.Tmp_SF u=C label="Other Temperature" }
     Tmp_SF          {  sunssf req }
-    St              {  enum16.InverterSt_Enum lname=I_Status req }
-    StVnd           {  enum16 lname=I_Status_Vendor }
-    Evt1            {  bitfield32.InverterEvt_BF lname=I_Event_1 req }
-    Evt2            {  bitfield32 lname=I_Event_1 req }
-    EvtVnd1         {  bitfield32 lname=I_Event_1_Vendor }
-    EvtVnd2         {  bitfield32 lname=I_Event_2_Vendor }
-    EvtVnd3         {  bitfield32 lname=I_Event_3_Vendor }
-    EvtVnd4         {  bitfield32 lname=I_Event_4_Vendor }
+    St              {  enum16.InverterSt_Enum label="Operating State" req }
+    StVnd           {  enum16 label= "Vendor Operating State" }
+    Evt1            {  bitfield32.InverterEvt_BF label="Event Bitfield" req }
+    Evt2            {  bitfield32 label="Event Bitfield 2" req }
+    EvtVnd1         {  bitfield32 label="Vendor Event Bitfield 1" }
+    EvtVnd2         {  bitfield32 label="Vendor Event Bitfield 2" }
+    EvtVnd3         {  bitfield32 label="Vendor Event Bitfield 3" }
+    EvtVnd4         {  bitfield32 label="Vendor Event Bitfield 4" }
+  }
+
+
+  define InverterSt_Enum {
+    I_STATUS_OFF               { 1 "Off" }
+    I_STATUS_SLEEPING          { 2 "Sleeping (auto-shutdown)" }
+    I_STATUS_STARTING          { 3 "Starting up" }
+    I_STATUS_MPPT              { 4 "Tracking power point" }
+    I_STATUS_THROTTLED         { 5 "Forced power reduction" }
+    I_STATUS_SHUTTING_DOWN     { 6 "Shutting down" }
+    I_STATUS_FAULT             { 7 "One or more faults exist" }
+    I_STATUS_STANDBY           { 8 "Standby (service on unit)" }
+  }
+  
+  define InverterEvt_BF {
+    I_EVENT_GROUND_FAULT       { 0 "Ground fault" }
+    I_EVENT_DC_OVER_VOLT       { 1 "DC over voltage" }
+    I_EVENT_AC_DISCONNECT      { 2 "AC disconnect open" }
+    I_EVENT_DC_DISCONNECT      { 3 "DC disconnect open" }
+    I_EVENT_GRID_DISCONNECT    { 4 "Grid shutdown" }
+    I_EVENT_CABINET_OPEN       { 5 "Cabinet open" }
+    I_EVENT_MANUAL_SHUTDOWN    { 6 "Manual shutdown" }
+    I_EVENT_OVER_TEMP          { 7 "Over temperature" }
+    I_EVENT_OVER_FREQUENCY     { 8 "Frequency above limit" }
+    I_EVENT_UNDER_FREQUENCY    { 9  "Frequency under limit" }
+    I_EVENT_AC_OVER_VOLT       { 10 "AC Voltage above limit" }
+    I_EVENT_AC_UNDER_VOLT      { 11 "AC Voltage under limit" }
+    I_EVENT_BLOWN_STRING_FUSE  { 12 "Blown String fuse on input" }
+    I_EVENT_UNDER_TEMP         { 13 "Under temperature" }
+    I_EVENT_MEMORY_LOSS        { 14 "Generic Memory or Communication error (internal)" }
+    I_EVENT_HW_TEST_FAILURE    { 15 "Hardware test failure" }
   }
 }
 
+data inverter_mod101_test {
+    101
+    50
+    900       # I_AC_Current
+    900       # I_AC_CurrentA
+    0xFFFF    # I_AC_CurrentB
+    0xFFFF    # I_AC_CurrentC
+    -1        # I_AC_Current_SF
+    0xFFFF    # I_AC_VoltageAB
+    0xFFFF    # I_AC_VoltageBC
+    0xFFFF    # I_AC_VoltageCA
+    1200      # I_AC_VoltageAN
+    0xFFFF    # I_AC_VoltageBN
+    0xFFFF    # I_AC_VoltageCN
+    -1        # I_AC_Voltage_SF
+    23402     # I_AC_Power
+    -1        # I_AC_Power_SF
+    6002      # I_AC_Frequency
+    -2        # I_AC_Frequency_SF
+    0x8000    # I_AC_VA
+    0         # I_AC_VA_SF
+    0x8000    # I_AC_VAR
+    0         # I_AC_VAR_SF
+    0x8000    # I_AC_PF
+    0         # I_AC_PF_SF
+    uint32:32831049  # I_AC_Energy_WH
+    0         # I_AC_Energy_WH_SF
+    728       # I_DC_Current
+    -1        # I_DC_Current_SF
+    302       # I_DC_Voltage
+    0         # I_DC_Voltage_SF
+    21985     # I_DC_Power
+    0         # I_DC_Power_SF
+    31        # I_Temp_Cab
+    0x8000    # I_Temp_Sink
+    0x8000    # I_Temp_Trans
+    0x8000    # I_Temp_Other
+    0         # I_Temp_SF
+    4         # I_Status
+    0         # I_Status_Vendor
+    bitfield32:0x0000FFFF # I_Event_1
+    bitfield32:65535 # I_Event_2
+    bitfield32:0 # I_Event_1_Vendor
+    bitfield32:0 # I_Event_2_Vendor
+    bitfield32:0 # I_Event_3_Vendor
+    bitfield32:0 # I_Event_4_Vendor
+}
 
-data inverter_model_test {
+data inverter_mod103_test {
   103
   50
   900       # I_AC_Current
@@ -144,66 +222,103 @@ model suns {
   did 112 "split-phase inverter (float)"
   did 113 "three-phase inverter (float)"
   datapoints {
-    A             {  float32 u=A req }
-    AphA          {  float32 u=A req }
-    AphB          {  float32 u=A req={ m112 m113 } }
-    AphC          {  float32 u=A req={ m113 } }
-    PPVphAB       {  float32 u=V req={ m113 } }
-    PPVphBC       {  float32 u=V req={ m113 } }
-    PPVphCA       {  float32 u=V req={ m113 } }
-    PhVphA        {  float32 u=V req }
-    PhVphB        {  float32 u=V req={ m112 m113 } }
-    PhVphC        {  float32 u=V req={ m113 } }
-    W             {  float32 u=W req }
-    Hz            {  float32 u=Hz req }
-    VA            {  float32 u=VA }
-    VAr           {  float32 u=VAr }
-    PF            {  float32 u=PF }
-    WH            {  float32 u=Wh req }
-    DCA           {  float32 u=A }
-    DCV           {  float32 u=V }
-    DCW           {  float32 u=W }
-    TmpCab        {  float32 u=C req }
-    TmpSnk        {  float32 u=C }
-    TmpTrns       {  float32 u=C }
-    TmpOt         {  float32 u=C }
-    St            {  enum16.InverterSt_Enum req }
-    StVnd         {  enum16 }
-    Evt1          {  bitfield32.InverterEvt_BF req }
-    Evt2          {  bitfield32 req }
-    EvtVnd1       {  bitfield32 }
-    EvtVnd2       {  bitfield32 }
-    EvtVnd3       {  bitfield32 }
-    EvtVnd4       {  bitfield32 }
+    A             {  float32 u=A label="AC Current" req }
+    AphA          {  float32 u=A label="AC Current A" req }
+    AphB          {  float32 u=A label="AC Current B" req={ 112 113 } }
+    AphC          {  float32 u=A label="AC Current C" req={ 113 } }
+    PPVphAB       {  float32 u=V label="AC Voltage AB" req={ 113 } }
+    PPVphBC       {  float32 u=V label="AC Voltage BC" req={ 113 } }
+    PPVphCA       {  float32 u=V label="AC Voltage CA" req={ 113 } }
+    PhVphA        {  float32 u=V label="AC Voltage AN" req }
+    PhVphB        {  float32 u=V label="AC Voltage BN" req={ 112 113 } }
+    PhVphC        {  float32 u=V label="AC Voltage CN" req={ 113 } }
+    W             {  float32 u=W label="AC Power" req }
+    Hz            {  float32 u=Hz label="AC Frequency" req }
+    VA            {  float32 u=VA label="AC Real Power" }
+    VAr           {  float32 u=VAr label="AC Reactive Power" }
+    PF            {  float32 u=PF label="AC Power Factor" }
+    WH            {  float32 u=Wh label="AC Energy" req }
+    DCA           {  float32 u=A label="DC Current" }
+    DCV           {  float32 u=V label="DC Voltage" }
+    DCW           {  float32 u=W label="DC Power" }
+    TmpCab        {  float32 u=C label="Cabinet Temperature" req }
+    TmpSnk        {  float32 u=C label="Heat Sink Temperature" }
+    TmpTrns       {  float32 u=C label="Transformer Temperature" }
+    TmpOt         {  float32 u=C label="Other Temperature" }
+    St              {  enum16.InverterSt_Enum label="Operating State" req }
+    StVnd           {  enum16 label= "Vendor Operating State" }
+    Evt1            {  bitfield32.InverterEvt_BF label="Event Bitfield" req }
+    Evt2            {  bitfield32 label="Event Bitfield 2" req }
+    EvtVnd1         {  bitfield32 label="Vendor Event Bitfield 1" }
+    EvtVnd2         {  bitfield32 label="Vendor Event Bitfield 2" }
+    EvtVnd3         {  bitfield32 label="Vendor Event Bitfield 3" }
+    EvtVnd4         {  bitfield32 label="Vendor Event Bitfield 4" }
+  }
+
+  define InverterSt_Enum {
+    I_STATUS_OFF               { 1 "Off" }
+    I_STATUS_SLEEPING          { 2 "Sleeping (auto-shutdown)" }
+    I_STATUS_STARTING          { 3 "Starting up" }
+    I_STATUS_MPPT              { 4 "Tracking power point" }
+    I_STATUS_THROTTLED         { 5 "Forced power reduction" }
+    I_STATUS_SHUTTING_DOWN     { 6 "Shutting down" }
+    I_STATUS_FAULT             { 7 "One or more faults exist" }
+    I_STATUS_STANDBY           { 8 "Standby (service on unit)" }
+  }
+  
+  define InverterEvt_BF {
+    I_EVENT_GROUND_FAULT       { 0 "Ground fault" }
+    I_EVENT_DC_OVER_VOLT       { 1 "DC over voltage" }
+    I_EVENT_AC_DISCONNECT      { 2 "AC disconnect open" }
+    I_EVENT_DC_DISCONNECT      { 3 "DC disconnect open" }
+    I_EVENT_GRID_DISCONNECT    { 4 "Grid shutdown" }
+    I_EVENT_CABINET_OPEN       { 5 "Cabinet open" }
+    I_EVENT_MANUAL_SHUTDOWN    { 6 "Manual shutdown" }
+    I_EVENT_OVER_TEMP          { 7 "Over temperature" }
+    I_EVENT_OVER_FREQUENCY     { 8 "Frequency above limit" }
+    I_EVENT_UNDER_FREQUENCY    { 9  "Frequency under limit" }
+    I_EVENT_AC_OVER_VOLT       { 10 "AC Voltage above limit" }
+    I_EVENT_AC_UNDER_VOLT      { 11 "AC Voltage under limit" }
+    I_EVENT_BLOWN_STRING_FUSE  { 12 "Blown String fuse on input" }
+    I_EVENT_UNDER_TEMP         { 13 "Under temperature" }
+    I_EVENT_MEMORY_LOSS        { 14 "Generic Memory or Communication error (internal)" }
+    I_EVENT_HW_TEST_FAILURE    { 15 "Hardware test failure" }
   }
 }
+  
 
-define InverterSt_Enum {
-  I_STATUS_OFF               { 1 "Off" }
-  I_STATUS_SLEEPING          { 2 "Sleeping (auto-shutdown)" }
-  I_STATUS_STARTING          { 3 "Starting up" }
-  I_STATUS_MPPT              { 4 "Tracking power point" }
-  I_STATUS_THROTTLED         { 5 "Forced power reduction" }
-  I_STATUS_SHUTTING_DOWN     { 6 "Shutting down" }
-  I_STATUS_FAULT             { 7 "One or more faults exist" }
-  I_STATUS_STANDBY           { 8 "Standby (service on unit)" }
-}
-
-define InverterEvt_BF {
-  I_EVENT_GROUND_FAULT       { 0 "Ground fault" }
-  I_EVENT_DC_OVER_VOLT       { 1 "DC over voltage" }
-  I_EVENT_AC_DISCONNECT      { 2 "AC disconnect open" }
-  I_EVENT_DC_DISCONNECT      { 3 "DC disconnect open" }
-  I_EVENT_GRID_DISCONNECT    { 4 "Grid shutdown" }
-  I_EVENT_CABINET_OPEN       { 5 "Cabinet open" }
-  I_EVENT_MANUAL_SHUTDOWN    { 6 "Manual shutdown" }
-  I_EVENT_OVER_TEMP          { 7 "Over temperature" }
-  I_EVENT_OVER_FREQUENCY     { 8 "Frequency above limit" }
-  I_EVENT_UNDER_FREQUENCY    { 9  "Frequency under limit" }
-  I_EVENT_AC_OVER_VOLT       { 10 "AC Voltage above limit" }
-  I_EVENT_AC_UNDER_VOLT      { 11 "AC Voltage under limit" }
-  I_EVENT_BLOWN_STRING_FUSE  { 12 "Blown String fuse on input" }
-  I_EVENT_UNDER_TEMP         { 13 "Under temperature" }
-  I_EVENT_MEMORY_LOSS        { 14 "Generic Memory or Communication error (internal)" }
-  I_EVENT_HW_TEST_FAILURE    { 15 "Hardware test failure" }
+data inverter_mod113_test {
+    113
+    60
+    90.0      # I_AC_Current_f
+    30.0      # I_AC_CurrentA_f
+    29.0      # I_AC_CurrentB_f
+    30.2      # I_AC_CurrentC_f
+    208.0     # I_AC_VoltageAB_f
+    208.0     # I_AC_VoltageBC_f
+    208.0     # I_AC_VoltageCA_f
+    float32:120 # I_AC_VoltageAN_f
+    float32:120 # I_AC_VoltageBN_f
+    float32:120 # I_AC_VoltageCN_f
+    2340.2    # I_AC_Power_f
+    60.02     # I_AC_Frequency_f
+    float32:0 # I_AC_VA_f
+    float32:0 # I_AC_VAR_f
+    float32:0 # I_AC_PF_f
+    float32:32831049 # I_AC_Energy_WH_f
+    72.8      # I_DC_Current_f
+    302.0     # I_DC_Voltage_f
+    21985.0   # I_DC_Power_f
+    31.0      # I_Temp_Cab_f
+    float32:0.0 # I_Temp_Sink_f
+    float32:0.0 # I_Temp_Trans_f
+    float32:0.0 # I_Temp_Other_f
+    4         # I_Status
+    0         # I_Status_Vendor
+    bitfield32:0x00 # I_Event_1
+    bitfield32:0x00 # I_Event_2
+    bitfield32:0x00 # I_Event_1_Vendor
+    bitfield32:0x00 # I_Event_2_Vendor
+    bitfield32:0x00 # I_Event_3_Vendor
+    bitfield32:0x00 # I_Event_4_Vendor
 }

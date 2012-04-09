@@ -130,6 +130,9 @@ int suns_dataset_sql_fprintf(FILE *stream, suns_dataset_t *data);
 void suns_model_csv_fprintf(FILE *stream, suns_model_t *model);
 int suns_dataset_csv_fprintf(FILE *string, suns_dataset_t *data);
 int suns_dataset_xml_fprintf(FILE *stream, suns_dataset_t *data);
+void suns_model_xml_strings(FILE *stream,
+                            suns_model_did_t *did,
+                            list_t *dp_block_list);
 int suns_device_xml_fprintf(FILE *stream, suns_device_t *device);
 
 int suns_snprintf_value(char *str, size_t size,
@@ -151,8 +154,12 @@ void suns_binary_model_fprintf(FILE *stream, list_t *did_list,
 void suns_model_xml_fprintf(FILE *stream, suns_model_t *model);
 int suns_model_xml_export_all(FILE *stream, char *type,
                               list_t *list, list_t *define_list);
-void suns_model_xml_dp_block_fprintf(FILE *stream, suns_dp_block_t *dp_block);
-void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp);
+void suns_model_xml_dp_block_fprintf(FILE *stream,
+                                     suns_dp_block_t *dp_block,
+                                     int did);
+void suns_model_xml_dp_fprintf(FILE *stream,
+                               suns_dp_t *dp,
+                               int did);
 int suns_snprintf_int_sf_e(char *buf,
                            size_t len,
                            int64_t x,

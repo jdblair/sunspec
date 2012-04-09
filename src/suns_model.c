@@ -141,6 +141,7 @@ char * suns_type_string(suns_type_t type)
         "bitfield32",
         "sunssf",
         "string",
+        "pad",
         "undef",
         NULL
     };
@@ -202,6 +203,7 @@ suns_type_t suns_type_from_name(char *name)
         { "bitfield32", SUNS_BITFIELD32 },
         { "sunssf",     SUNS_SF },
         { "string",     SUNS_STRING },
+        { "pad",        SUNS_PAD },
         { "undef",      SUNS_UNDEF },
         { NULL,         -1 },
     };
@@ -323,6 +325,7 @@ int suns_type_size(suns_type_t type)
         4, /* SUNS_BITFIELD32 */
         2, /* SUNS_SF */
         0, /* SUNS_STRING */
+        2, /* SUNS_PAD */
         0, /* SUNS_UNDEF */
     };
 
@@ -1472,7 +1475,7 @@ int suns_decode_dp_block(suns_dp_block_t *dp_block,
     int i;
     list_node_t *c;
     suns_value_t *v;
-    int repeat_index = 0;
+    int repeat_index = 1;  /* repeat index is 1 based */
 
     if (dp_block->repeating) {
         debug("repeating block");
@@ -1503,7 +1506,7 @@ int suns_decode_dp_block(suns_dp_block_t *dp_block,
 
                 /* check for attributes we care about */
                 v->units = suns_find_attribute(dp, "u");
-                v->lname = suns_find_attribute(dp, "lname");
+                v->label = suns_find_attribute(dp, "label");
 
                 debug("v->tp.type = %s", suns_type_string(v->tp.type));
                 list_node_add(value_list, list_node_new(v));

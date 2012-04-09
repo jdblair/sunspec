@@ -36,12 +36,12 @@ model suns {
   name "common"
   did 001 "common"
   datapoints {
-    Mn             { string.32 req lname="C_Manufacturer" }
-    Md             { string.32 req lname="C_Model" }
-    Opt            { string.16     lname="C_Options" }
-    Vr             { string.16     lname="C_Version" }
-    SN             { string.32 req lname="C_SerialNumber" }
-    DA             { uint16        lname="C_DeviceAddress" access=rw }
+    Mn             { string.32 req label="Manufacturer" }
+    Md             { string.32 req label="Model" }
+    Opt            { string.16     label="Options" }
+    Vr             { string.16     label="Version" }
+    SN             { string.32 req label="Serial Number" }
+    DA             { uint16        label="Device Address" access=rw }
   }
 }
 

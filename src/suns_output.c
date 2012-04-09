@@ -111,8 +111,6 @@ int suns_model_export_all(FILE *stream, char *type,
     int i;
     list_node_t *c;
 
-    debug("here");
-    
     for (i = 0; suns_model_list_export_formats[i].name != NULL; i++) {
         if (strcmp(suns_model_list_export_formats[i].name, type) == 0)
             return suns_model_list_export_formats[i].fprintf(stream,
@@ -752,7 +750,9 @@ int suns_dataset_text_fprintf(FILE *stream, suns_dataset_t *data)
         } else {
             fprintf(stream, "     ");
         }
-        fprintf(stream, "%-30s%20s", v->name, scaled_value_buf);
+        fprintf(stream, "%-30s%20s",
+                (v->label ? v->label : v->name),
+                scaled_value_buf);
         
         if (v->units)
             fprintf(stream, " %s", v->units);
@@ -1162,7 +1162,7 @@ void suns_model_xml_fprintf(FILE *stream, suns_model_t *model)
         
         list_node_t *d;
         list_for_each(model->dp_blocks, d) {
-            suns_model_xml_dp_block_fprintf(stream, d->data);
+            suns_model_xml_dp_block_fprintf(stream, d->data, did->did);
         }
 
         list_for_each(model->defines, d) {
@@ -1170,12 +1170,42 @@ void suns_model_xml_fprintf(FILE *stream, suns_model_t *model)
         }
 
         fprintf(stream, "  </model>\n");
+
+        /* strings */
+        suns_model_xml_strings(stream, did, model->dp_blocks);
     }
 
 }
 
 
-void suns_model_xml_dp_block_fprintf(FILE *stream, suns_dp_block_t *dp_block)
+void suns_model_xml_strings(FILE *stream,
+                            suns_model_did_t *did,
+                            list_t *dp_block_list)
+{
+    list_node_t *c;
+
+    fprintf(stream, "  <strings id=\"%d\" locale=\"en\">\n", did->did);
+    list_for_each(dp_block_list, c) {
+        suns_dp_block_t *dp_block = c->data;
+        list_node_t *d;
+        list_for_each(dp_block->dp_list, d) {
+            suns_dp_t *dp = d->data;
+            char *label = suns_find_attribute(dp, "label");
+            if (label) {
+                fprintf(stream, "    <point name=\"%s\">\n", dp->name);
+                fprintf(stream, "      <label>%s</label>\n", label);
+                fprintf(stream, "      <description></description>\n");    
+                fprintf(stream, "      <notes></notes>\n");
+                fprintf(stream, "    </point>\n");
+            }
+        }
+    }
+    fprintf(stream, "  </strings>\n");    
+}
+
+void suns_model_xml_dp_block_fprintf(FILE *stream,
+                                     suns_dp_block_t *dp_block,
+                                     int did)
 {
     list_node_t *c;
 
@@ -1185,7 +1215,7 @@ void suns_model_xml_dp_block_fprintf(FILE *stream, suns_dp_block_t *dp_block)
     fprintf(stream, " len=\"%d\"", dp_block->len);
     fprintf(stream, ">\n");
     list_for_each(dp_block->dp_list, c) {
-        suns_model_xml_dp_fprintf(stream, c->data);
+        suns_model_xml_dp_fprintf(stream, c->data, did);
     }
     fprintf(stream, "    </block>\n");
 }
@@ -1211,12 +1241,14 @@ void suns_model_xml_define_fprintf(FILE *stream,
             define->name, define->value);
 }
 
-void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp)
+void suns_model_xml_dp_fprintf(FILE *stream,
+                               suns_dp_t *dp,
+                               int did)
 {
     fprintf(stream, "      <point id=\"%s\" offset=\"%d\" "
             "type=\"%s\"",
             dp->name,
-            dp->offset - 1,
+            dp->offset,
             suns_type_string(dp->type_pair->type));
     
     if (dp->type_pair->type == SUNS_STRING)
@@ -1232,14 +1264,14 @@ void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp)
             (dp->type_pair->type == SUNS_BITFIELD16) ||
             (dp->type_pair->type == SUNS_BITFIELD32)) {
             fprintf(stream, " define=\"%s\"", dp->type_pair->name);
-            /*        } else {
-                      fprintf(stream, " sf=\"%s\"", dp->type_pair->name); */
-            }
+        }
     }
     
     if (dp->type_pair->sf != 0) {
         fprintf(stream, " sf=\"%d\"", dp->type_pair->sf);
-    }            
+    } else if (dp->type_pair->name != NULL) {
+        fprintf(stream, " sf=\"%s\"", dp->type_pair->name);
+    }
 
     /* output additional point attributes by searching the attribute list */
     if (dp->attributes) {
@@ -1252,7 +1284,23 @@ void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp)
                 fprintf(stream, " units=\"%s\"", a->value);
             }
 
-            /* ignore lname */
+            /* req */
+            if (strcmp(a->name, "req") == 0) {
+                /* is it a nested attribute? */
+                if (a->list) {
+                    char buf[BUFFER_SIZE];
+                    list_node_t *d;
+                    snprintf(buf, BUFFER_SIZE, "%d", did);
+                    list_for_each(a->list, d) {
+                        suns_attribute_t *a2 = d->data;
+                        if (strcmp(buf, a2->name) == 0) { 
+                            fprintf(stream, " mandatory=\"true\"");
+                       }
+                    }
+                } else {
+                    fprintf(stream, " mandatory=\"true\"");
+                }
+            }
         }
     }
 

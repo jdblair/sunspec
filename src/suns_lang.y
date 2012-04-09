@@ -158,7 +158,8 @@ did: DIDTOK UINT STRING
     $$->name = $3;
 }
 
-len: LENTOK INT
+
+len: LENTOK UINT
 {
     $$ = $2;
 }
@@ -236,7 +237,7 @@ suns_dp_list: /* empty */
     list_node_add($$, list_node_new($2));
 };
 
-suns_dp: NAME OBRACE INT suns_type attributes EBRACE
+suns_dp: NAME OBRACE UINT suns_type attributes EBRACE
 {
     $$->name = strdup($1);
     $$->offset = $3;
@@ -354,6 +355,18 @@ attribute: NAME EQUAL STRING
     $$ = malloc(sizeof(suns_attribute_t));
     $$->name = strdup($1);
     $$->list = $4;
+}
+         | UINT
+{
+    $$ = malloc(sizeof(suns_attribute_t));
+    $$->name = malloc(32);
+    snprintf($$->name, 32, "%lld", $1);
+}
+         | INT
+{
+    $$ = malloc(sizeof(suns_attribute_t));
+    $$->name = malloc(32);
+    snprintf($$->name, 32, "%lld", $1);
 }
 
 

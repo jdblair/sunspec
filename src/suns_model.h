@@ -80,6 +80,7 @@ typedef enum suns_type {
     SUNS_BITFIELD32,
     SUNS_SF,
     SUNS_STRING,
+    SUNS_PAD,
     SUNS_UNDEF,  /* must always be last item */
 } suns_type_t;
 
@@ -215,6 +216,7 @@ typedef struct suns_value {
     int usec;                /* optional microsecond component */
     char *units;             /* optional units string */
     char *description;       /* optional descriptive string */    
+    char *label;             /* short descriptive label */
 } suns_value_t;
 
 

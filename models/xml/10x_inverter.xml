@@ -1,0 +1,1358 @@
+<sunSpecModels v="1">
+  <model id="101" len="50">
+    <block len="50">
+      <point id="A" offset="0" type="uint16" sf="A_SF" units="A" mandatory="true" />
+      <point id="AphA" offset="1" type="uint16" sf="A_SF" units="A" mandatory="true" />
+      <point id="AphB" offset="2" type="uint16" sf="A_SF" units="A" />
+      <point id="AphC" offset="3" type="uint16" sf="A_SF" units="A" />
+      <point id="A_SF" offset="4" type="sunssf" mandatory="true" />
+      <point id="PPVphAB" offset="5" type="uint16" sf="V_SF" units="V" />
+      <point id="PPVphBC" offset="6" type="uint16" sf="V_SF" units="V" />
+      <point id="PPVphCA" offset="7" type="uint16" sf="V_SF" units="V" />
+      <point id="PhVphA" offset="8" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="PhVphB" offset="9" type="uint16" sf="V_SF" units="V" />
+      <point id="PhVphC" offset="10" type="uint16" sf="V_SF" units="V" />
+      <point id="V_SF" offset="11" type="sunssf" mandatory="true" />
+      <point id="W" offset="12" type="int16" sf="W_SF" units="W" mandatory="true" />
+      <point id="W_SF" offset="13" type="sunssf" mandatory="true" />
+      <point id="Hz" offset="14" type="uint16" sf="Hz_SF" units="Hz" mandatory="true" />
+      <point id="Hz_SF" offset="15" type="sunssf" mandatory="true" />
+      <point id="VA" offset="16" type="int16" sf="VA_SF" units="VA" />
+      <point id="VA_SF" offset="17" type="sunssf" />
+      <point id="VAr" offset="18" type="int16" sf="VAr_SF" units="VAr" />
+      <point id="VAr_SF" offset="19" type="sunssf" />
+      <point id="PF" offset="20" type="int16" sf="PF_SF" units="PF" />
+      <point id="PF_SF" offset="21" type="sunssf" />
+      <point id="WH" offset="22" type="uint32" sf="WH_SF" units="Wh" mandatory="true" />
+      <point id="WH_SF" offset="24" type="sunssf" mandatory="true" />
+      <point id="DCA" offset="25" type="uint16" sf="DCA_SF" units="A" />
+      <point id="DCA_SF" offset="26" type="sunssf" />
+      <point id="DCV" offset="27" type="uint16" sf="DCV_SF" units="V" />
+      <point id="DCV_SF" offset="28" type="sunssf" />
+      <point id="DCW" offset="29" type="int16" sf="DCW_SF" units="W" />
+      <point id="DCW_SF" offset="30" type="sunssf" />
+      <point id="TmpCab" offset="31" type="int16" sf="Tmp_SF" units="C" mandatory="true" />
+      <point id="TmpSnk" offset="32" type="int16" sf="Tmp_SF" units="C" />
+      <point id="TmpTrns" offset="33" type="int16" sf="Tmp_SF" units="C" />
+      <point id="TmpOt" offset="34" type="int16" sf="Tmp_SF" units="C" />
+      <point id="Tmp_SF" offset="35" type="sunssf" mandatory="true" />
+      <point id="St" offset="36" type="enum16" define="InverterSt_Enum" sf="InverterSt_Enum" mandatory="true" />
+      <point id="StVnd" offset="37" type="enum16" />
+      <point id="Evt1" offset="38" type="bitfield32" define="InverterEvt_BF" sf="InverterEvt_BF" mandatory="true" />
+      <point id="Evt2" offset="40" type="bitfield32" mandatory="true" />
+      <point id="EvtVnd1" offset="42" type="bitfield32" />
+      <point id="EvtVnd2" offset="44" type="bitfield32" />
+      <point id="EvtVnd3" offset="46" type="bitfield32" />
+      <point id="EvtVnd4" offset="48" type="bitfield32" />
+    </block>
+    <define name="InverterSt_Enum">
+      <symbol name="I_STATUS_OFF" value="1" />
+      <symbol name="I_STATUS_SLEEPING" value="2" />
+      <symbol name="I_STATUS_STARTING" value="3" />
+      <symbol name="I_STATUS_MPPT" value="4" />
+      <symbol name="I_STATUS_THROTTLED" value="5" />
+      <symbol name="I_STATUS_SHUTTING_DOWN" value="6" />
+      <symbol name="I_STATUS_FAULT" value="7" />
+      <symbol name="I_STATUS_STANDBY" value="8" />
+    </define>
+    <define name="InverterEvt_BF">
+      <symbol name="I_EVENT_GROUND_FAULT" value="0" />
+      <symbol name="I_EVENT_DC_OVER_VOLT" value="1" />
+      <symbol name="I_EVENT_AC_DISCONNECT" value="2" />
+      <symbol name="I_EVENT_DC_DISCONNECT" value="3" />
+      <symbol name="I_EVENT_GRID_DISCONNECT" value="4" />
+      <symbol name="I_EVENT_CABINET_OPEN" value="5" />
+      <symbol name="I_EVENT_MANUAL_SHUTDOWN" value="6" />
+      <symbol name="I_EVENT_OVER_TEMP" value="7" />
+      <symbol name="I_EVENT_OVER_FREQUENCY" value="8" />
+      <symbol name="I_EVENT_UNDER_FREQUENCY" value="9" />
+      <symbol name="I_EVENT_AC_OVER_VOLT" value="10" />
+      <symbol name="I_EVENT_AC_UNDER_VOLT" value="11" />
+      <symbol name="I_EVENT_BLOWN_STRING_FUSE" value="12" />
+      <symbol name="I_EVENT_UNDER_TEMP" value="13" />
+      <symbol name="I_EVENT_MEMORY_LOSS" value="14" />
+      <symbol name="I_EVENT_HW_TEST_FAILURE" value="15" />
+    </define>
+  </model>
+  <strings id="101" locale="en">
+    <point name="A">
+      <label>AC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphA">
+      <label>AC Current A</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphB">
+      <label>AC Current B</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphC">
+      <label>AC Current C</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphAB">
+      <label>AC Voltage AB</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphBC">
+      <label>AC Voltage BC</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphCA">
+      <label>AC Voltage CA</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphA">
+      <label>AC Voltage AN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphB">
+      <label>AC Voltage BN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphC">
+      <label>AC Voltage CN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="W">
+      <label>AC Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Hz">
+      <label>AC Frequency</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="VA">
+      <label>AC Real Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="VAr">
+      <label>AC Reactive Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PF">
+      <label>AC Power Factor</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="WH">
+      <label>AC Energy</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCA">
+      <label>DC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCV">
+      <label>DC Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCW">
+      <label>DC Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpCab">
+      <label>Cabinet (Ambient) Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpSnk">
+      <label>Heat Sink Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpTrns">
+      <label>Transformer Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpOt">
+      <label>Other Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="St">
+      <label>Operating State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="StVnd">
+      <label>Vendor Operating State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Evt1">
+      <label>Event Bitfield</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Evt2">
+      <label>Event Bitfield 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd1">
+      <label>Vendor Event Bitfield 1</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd2">
+      <label>Vendor Event Bitfield 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd3">
+      <label>Vendor Event Bitfield 3</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd4">
+      <label>Vendor Event Bitfield 4</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+  <model id="102" len="50">
+    <block len="50">
+      <point id="A" offset="0" type="uint16" sf="A_SF" units="A" mandatory="true" />
+      <point id="AphA" offset="1" type="uint16" sf="A_SF" units="A" mandatory="true" />
+      <point id="AphB" offset="2" type="uint16" sf="A_SF" units="A" mandatory="true" />
+      <point id="AphC" offset="3" type="uint16" sf="A_SF" units="A" />
+      <point id="A_SF" offset="4" type="sunssf" mandatory="true" />
+      <point id="PPVphAB" offset="5" type="uint16" sf="V_SF" units="V" />
+      <point id="PPVphBC" offset="6" type="uint16" sf="V_SF" units="V" />
+      <point id="PPVphCA" offset="7" type="uint16" sf="V_SF" units="V" />
+      <point id="PhVphA" offset="8" type="uint16" sf="V_SF" units="V" />
+      <point id="PhVphB" offset="9" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="PhVphC" offset="10" type="uint16" sf="V_SF" units="V" />
+      <point id="V_SF" offset="11" type="sunssf" mandatory="true" />
+      <point id="W" offset="12" type="int16" sf="W_SF" units="W" mandatory="true" />
+      <point id="W_SF" offset="13" type="sunssf" mandatory="true" />
+      <point id="Hz" offset="14" type="uint16" sf="Hz_SF" units="Hz" mandatory="true" />
+      <point id="Hz_SF" offset="15" type="sunssf" mandatory="true" />
+      <point id="VA" offset="16" type="int16" sf="VA_SF" units="VA" />
+      <point id="VA_SF" offset="17" type="sunssf" />
+      <point id="VAr" offset="18" type="int16" sf="VAr_SF" units="VAr" />
+      <point id="VAr_SF" offset="19" type="sunssf" />
+      <point id="PF" offset="20" type="int16" sf="PF_SF" units="PF" />
+      <point id="PF_SF" offset="21" type="sunssf" />
+      <point id="WH" offset="22" type="uint32" sf="WH_SF" units="Wh" mandatory="true" />
+      <point id="WH_SF" offset="24" type="sunssf" mandatory="true" />
+      <point id="DCA" offset="25" type="uint16" sf="DCA_SF" units="A" />
+      <point id="DCA_SF" offset="26" type="sunssf" />
+      <point id="DCV" offset="27" type="uint16" sf="DCV_SF" units="V" />
+      <point id="DCV_SF" offset="28" type="sunssf" />
+      <point id="DCW" offset="29" type="int16" sf="DCW_SF" units="W" />
+      <point id="DCW_SF" offset="30" type="sunssf" />
+      <point id="TmpCab" offset="31" type="int16" sf="Tmp_SF" units="C" mandatory="true" />
+      <point id="TmpSnk" offset="32" type="int16" sf="Tmp_SF" units="C" />
+      <point id="TmpTrns" offset="33" type="int16" sf="Tmp_SF" units="C" />
+      <point id="TmpOt" offset="34" type="int16" sf="Tmp_SF" units="C" />
+      <point id="Tmp_SF" offset="35" type="sunssf" mandatory="true" />
+      <point id="St" offset="36" type="enum16" define="InverterSt_Enum" sf="InverterSt_Enum" mandatory="true" />
+      <point id="StVnd" offset="37" type="enum16" />
+      <point id="Evt1" offset="38" type="bitfield32" define="InverterEvt_BF" sf="InverterEvt_BF" mandatory="true" />
+      <point id="Evt2" offset="40" type="bitfield32" mandatory="true" />
+      <point id="EvtVnd1" offset="42" type="bitfield32" />
+      <point id="EvtVnd2" offset="44" type="bitfield32" />
+      <point id="EvtVnd3" offset="46" type="bitfield32" />
+      <point id="EvtVnd4" offset="48" type="bitfield32" />
+    </block>
+    <define name="InverterSt_Enum">
+      <symbol name="I_STATUS_OFF" value="1" />
+      <symbol name="I_STATUS_SLEEPING" value="2" />
+      <symbol name="I_STATUS_STARTING" value="3" />
+      <symbol name="I_STATUS_MPPT" value="4" />
+      <symbol name="I_STATUS_THROTTLED" value="5" />
+      <symbol name="I_STATUS_SHUTTING_DOWN" value="6" />
+      <symbol name="I_STATUS_FAULT" value="7" />
+      <symbol name="I_STATUS_STANDBY" value="8" />
+    </define>
+    <define name="InverterEvt_BF">
+      <symbol name="I_EVENT_GROUND_FAULT" value="0" />
+      <symbol name="I_EVENT_DC_OVER_VOLT" value="1" />
+      <symbol name="I_EVENT_AC_DISCONNECT" value="2" />
+      <symbol name="I_EVENT_DC_DISCONNECT" value="3" />
+      <symbol name="I_EVENT_GRID_DISCONNECT" value="4" />
+      <symbol name="I_EVENT_CABINET_OPEN" value="5" />
+      <symbol name="I_EVENT_MANUAL_SHUTDOWN" value="6" />
+      <symbol name="I_EVENT_OVER_TEMP" value="7" />
+      <symbol name="I_EVENT_OVER_FREQUENCY" value="8" />
+      <symbol name="I_EVENT_UNDER_FREQUENCY" value="9" />
+      <symbol name="I_EVENT_AC_OVER_VOLT" value="10" />
+      <symbol name="I_EVENT_AC_UNDER_VOLT" value="11" />
+      <symbol name="I_EVENT_BLOWN_STRING_FUSE" value="12" />
+      <symbol name="I_EVENT_UNDER_TEMP" value="13" />
+      <symbol name="I_EVENT_MEMORY_LOSS" value="14" />
+      <symbol name="I_EVENT_HW_TEST_FAILURE" value="15" />
+    </define>
+  </model>
+  <strings id="102" locale="en">
+    <point name="A">
+      <label>AC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphA">
+      <label>AC Current A</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphB">
+      <label>AC Current B</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphC">
+      <label>AC Current C</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphAB">
+      <label>AC Voltage AB</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphBC">
+      <label>AC Voltage BC</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphCA">
+      <label>AC Voltage CA</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphA">
+      <label>AC Voltage AN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphB">
+      <label>AC Voltage BN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphC">
+      <label>AC Voltage CN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="W">
+      <label>AC Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Hz">
+      <label>AC Frequency</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="VA">
+      <label>AC Real Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="VAr">
+      <label>AC Reactive Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PF">
+      <label>AC Power Factor</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="WH">
+      <label>AC Energy</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCA">
+      <label>DC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCV">
+      <label>DC Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCW">
+      <label>DC Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpCab">
+      <label>Cabinet (Ambient) Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpSnk">
+      <label>Heat Sink Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpTrns">
+      <label>Transformer Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpOt">
+      <label>Other Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="St">
+      <label>Operating State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="StVnd">
+      <label>Vendor Operating State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Evt1">
+      <label>Event Bitfield</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Evt2">
+      <label>Event Bitfield 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd1">
+      <label>Vendor Event Bitfield 1</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd2">
+      <label>Vendor Event Bitfield 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd3">
+      <label>Vendor Event Bitfield 3</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd4">
+      <label>Vendor Event Bitfield 4</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+  <model id="103" len="50">
+    <block len="50">
+      <point id="A" offset="0" type="uint16" sf="A_SF" units="A" mandatory="true" />
+      <point id="AphA" offset="1" type="uint16" sf="A_SF" units="A" mandatory="true" />
+      <point id="AphB" offset="2" type="uint16" sf="A_SF" units="A" mandatory="true" />
+      <point id="AphC" offset="3" type="uint16" sf="A_SF" units="A" mandatory="true" />
+      <point id="A_SF" offset="4" type="sunssf" mandatory="true" />
+      <point id="PPVphAB" offset="5" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="PPVphBC" offset="6" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="PPVphCA" offset="7" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="PhVphA" offset="8" type="uint16" sf="V_SF" units="V" />
+      <point id="PhVphB" offset="9" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="PhVphC" offset="10" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="V_SF" offset="11" type="sunssf" mandatory="true" />
+      <point id="W" offset="12" type="int16" sf="W_SF" units="W" mandatory="true" />
+      <point id="W_SF" offset="13" type="sunssf" mandatory="true" />
+      <point id="Hz" offset="14" type="uint16" sf="Hz_SF" units="Hz" mandatory="true" />
+      <point id="Hz_SF" offset="15" type="sunssf" mandatory="true" />
+      <point id="VA" offset="16" type="int16" sf="VA_SF" units="VA" />
+      <point id="VA_SF" offset="17" type="sunssf" />
+      <point id="VAr" offset="18" type="int16" sf="VAr_SF" units="VAr" />
+      <point id="VAr_SF" offset="19" type="sunssf" />
+      <point id="PF" offset="20" type="int16" sf="PF_SF" units="PF" />
+      <point id="PF_SF" offset="21" type="sunssf" />
+      <point id="WH" offset="22" type="uint32" sf="WH_SF" units="Wh" mandatory="true" />
+      <point id="WH_SF" offset="24" type="sunssf" mandatory="true" />
+      <point id="DCA" offset="25" type="uint16" sf="DCA_SF" units="A" />
+      <point id="DCA_SF" offset="26" type="sunssf" />
+      <point id="DCV" offset="27" type="uint16" sf="DCV_SF" units="V" />
+      <point id="DCV_SF" offset="28" type="sunssf" />
+      <point id="DCW" offset="29" type="int16" sf="DCW_SF" units="W" />
+      <point id="DCW_SF" offset="30" type="sunssf" />
+      <point id="TmpCab" offset="31" type="int16" sf="Tmp_SF" units="C" mandatory="true" />
+      <point id="TmpSnk" offset="32" type="int16" sf="Tmp_SF" units="C" />
+      <point id="TmpTrns" offset="33" type="int16" sf="Tmp_SF" units="C" />
+      <point id="TmpOt" offset="34" type="int16" sf="Tmp_SF" units="C" />
+      <point id="Tmp_SF" offset="35" type="sunssf" mandatory="true" />
+      <point id="St" offset="36" type="enum16" define="InverterSt_Enum" sf="InverterSt_Enum" mandatory="true" />
+      <point id="StVnd" offset="37" type="enum16" />
+      <point id="Evt1" offset="38" type="bitfield32" define="InverterEvt_BF" sf="InverterEvt_BF" mandatory="true" />
+      <point id="Evt2" offset="40" type="bitfield32" mandatory="true" />
+      <point id="EvtVnd1" offset="42" type="bitfield32" />
+      <point id="EvtVnd2" offset="44" type="bitfield32" />
+      <point id="EvtVnd3" offset="46" type="bitfield32" />
+      <point id="EvtVnd4" offset="48" type="bitfield32" />
+    </block>
+    <define name="InverterSt_Enum">
+      <symbol name="I_STATUS_OFF" value="1" />
+      <symbol name="I_STATUS_SLEEPING" value="2" />
+      <symbol name="I_STATUS_STARTING" value="3" />
+      <symbol name="I_STATUS_MPPT" value="4" />
+      <symbol name="I_STATUS_THROTTLED" value="5" />
+      <symbol name="I_STATUS_SHUTTING_DOWN" value="6" />
+      <symbol name="I_STATUS_FAULT" value="7" />
+      <symbol name="I_STATUS_STANDBY" value="8" />
+    </define>
+    <define name="InverterEvt_BF">
+      <symbol name="I_EVENT_GROUND_FAULT" value="0" />
+      <symbol name="I_EVENT_DC_OVER_VOLT" value="1" />
+      <symbol name="I_EVENT_AC_DISCONNECT" value="2" />
+      <symbol name="I_EVENT_DC_DISCONNECT" value="3" />
+      <symbol name="I_EVENT_GRID_DISCONNECT" value="4" />
+      <symbol name="I_EVENT_CABINET_OPEN" value="5" />
+      <symbol name="I_EVENT_MANUAL_SHUTDOWN" value="6" />
+      <symbol name="I_EVENT_OVER_TEMP" value="7" />
+      <symbol name="I_EVENT_OVER_FREQUENCY" value="8" />
+      <symbol name="I_EVENT_UNDER_FREQUENCY" value="9" />
+      <symbol name="I_EVENT_AC_OVER_VOLT" value="10" />
+      <symbol name="I_EVENT_AC_UNDER_VOLT" value="11" />
+      <symbol name="I_EVENT_BLOWN_STRING_FUSE" value="12" />
+      <symbol name="I_EVENT_UNDER_TEMP" value="13" />
+      <symbol name="I_EVENT_MEMORY_LOSS" value="14" />
+      <symbol name="I_EVENT_HW_TEST_FAILURE" value="15" />
+    </define>
+  </model>
+  <strings id="103" locale="en">
+    <point name="A">
+      <label>AC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphA">
+      <label>AC Current A</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphB">
+      <label>AC Current B</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphC">
+      <label>AC Current C</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphAB">
+      <label>AC Voltage AB</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphBC">
+      <label>AC Voltage BC</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphCA">
+      <label>AC Voltage CA</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphA">
+      <label>AC Voltage AN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphB">
+      <label>AC Voltage BN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphC">
+      <label>AC Voltage CN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="W">
+      <label>AC Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Hz">
+      <label>AC Frequency</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="VA">
+      <label>AC Real Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="VAr">
+      <label>AC Reactive Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PF">
+      <label>AC Power Factor</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="WH">
+      <label>AC Energy</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCA">
+      <label>DC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCV">
+      <label>DC Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCW">
+      <label>DC Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpCab">
+      <label>Cabinet (Ambient) Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpSnk">
+      <label>Heat Sink Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpTrns">
+      <label>Transformer Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpOt">
+      <label>Other Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="St">
+      <label>Operating State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="StVnd">
+      <label>Vendor Operating State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Evt1">
+      <label>Event Bitfield</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Evt2">
+      <label>Event Bitfield 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd1">
+      <label>Vendor Event Bitfield 1</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd2">
+      <label>Vendor Event Bitfield 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd3">
+      <label>Vendor Event Bitfield 3</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd4">
+      <label>Vendor Event Bitfield 4</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+  <model id="111" len="60">
+    <block len="60">
+      <point id="A" offset="0" type="float32" units="A" mandatory="true" />
+      <point id="AphA" offset="2" type="float32" units="A" mandatory="true" />
+      <point id="AphB" offset="4" type="float32" units="A" />
+      <point id="AphC" offset="6" type="float32" units="A" />
+      <point id="PPVphAB" offset="8" type="float32" units="V" />
+      <point id="PPVphBC" offset="10" type="float32" units="V" />
+      <point id="PPVphCA" offset="12" type="float32" units="V" />
+      <point id="PhVphA" offset="14" type="float32" units="V" mandatory="true" />
+      <point id="PhVphB" offset="16" type="float32" units="V" />
+      <point id="PhVphC" offset="18" type="float32" units="V" />
+      <point id="W" offset="20" type="float32" units="W" mandatory="true" />
+      <point id="Hz" offset="22" type="float32" units="Hz" mandatory="true" />
+      <point id="VA" offset="24" type="float32" units="VA" />
+      <point id="VAr" offset="26" type="float32" units="VAr" />
+      <point id="PF" offset="28" type="float32" units="PF" />
+      <point id="WH" offset="30" type="float32" units="Wh" mandatory="true" />
+      <point id="DCA" offset="32" type="float32" units="A" />
+      <point id="DCV" offset="34" type="float32" units="V" />
+      <point id="DCW" offset="36" type="float32" units="W" />
+      <point id="TmpCab" offset="38" type="float32" units="C" mandatory="true" />
+      <point id="TmpSnk" offset="40" type="float32" units="C" />
+      <point id="TmpTrns" offset="42" type="float32" units="C" />
+      <point id="TmpOt" offset="44" type="float32" units="C" />
+      <point id="St" offset="46" type="enum16" define="InverterSt_Enum" sf="InverterSt_Enum" mandatory="true" />
+      <point id="StVnd" offset="47" type="enum16" />
+      <point id="Evt1" offset="48" type="bitfield32" define="InverterEvt_BF" sf="InverterEvt_BF" mandatory="true" />
+      <point id="Evt2" offset="50" type="bitfield32" mandatory="true" />
+      <point id="EvtVnd1" offset="52" type="bitfield32" />
+      <point id="EvtVnd2" offset="54" type="bitfield32" />
+      <point id="EvtVnd3" offset="56" type="bitfield32" />
+      <point id="EvtVnd4" offset="58" type="bitfield32" />
+    </block>
+    <define name="InverterSt_Enum">
+      <symbol name="I_STATUS_OFF" value="1" />
+      <symbol name="I_STATUS_SLEEPING" value="2" />
+      <symbol name="I_STATUS_STARTING" value="3" />
+      <symbol name="I_STATUS_MPPT" value="4" />
+      <symbol name="I_STATUS_THROTTLED" value="5" />
+      <symbol name="I_STATUS_SHUTTING_DOWN" value="6" />
+      <symbol name="I_STATUS_FAULT" value="7" />
+      <symbol name="I_STATUS_STANDBY" value="8" />
+    </define>
+    <define name="InverterEvt_BF">
+      <symbol name="I_EVENT_GROUND_FAULT" value="0" />
+      <symbol name="I_EVENT_DC_OVER_VOLT" value="1" />
+      <symbol name="I_EVENT_AC_DISCONNECT" value="2" />
+      <symbol name="I_EVENT_DC_DISCONNECT" value="3" />
+      <symbol name="I_EVENT_GRID_DISCONNECT" value="4" />
+      <symbol name="I_EVENT_CABINET_OPEN" value="5" />
+      <symbol name="I_EVENT_MANUAL_SHUTDOWN" value="6" />
+      <symbol name="I_EVENT_OVER_TEMP" value="7" />
+      <symbol name="I_EVENT_OVER_FREQUENCY" value="8" />
+      <symbol name="I_EVENT_UNDER_FREQUENCY" value="9" />
+      <symbol name="I_EVENT_AC_OVER_VOLT" value="10" />
+      <symbol name="I_EVENT_AC_UNDER_VOLT" value="11" />
+      <symbol name="I_EVENT_BLOWN_STRING_FUSE" value="12" />
+      <symbol name="I_EVENT_UNDER_TEMP" value="13" />
+      <symbol name="I_EVENT_MEMORY_LOSS" value="14" />
+      <symbol name="I_EVENT_HW_TEST_FAILURE" value="15" />
+    </define>
+  </model>
+  <strings id="111" locale="en">
+    <point name="A">
+      <label>AC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphA">
+      <label>AC Current A</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphB">
+      <label>AC Current B</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphC">
+      <label>AC Current C</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphAB">
+      <label>AC Voltage AB</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphBC">
+      <label>AC Voltage BC</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphCA">
+      <label>AC Voltage CA</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphA">
+      <label>AC Voltage AN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphB">
+      <label>AC Voltage BN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphC">
+      <label>AC Voltage CN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="W">
+      <label>AC Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Hz">
+      <label>AC Frequency</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="VA">
+      <label>AC Real Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="VAr">
+      <label>AC Reactive Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PF">
+      <label>AC Power Factor</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="WH">
+      <label>AC Energy</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCA">
+      <label>DC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCV">
+      <label>DC Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCW">
+      <label>DC Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpCab">
+      <label>Cabinet Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpSnk">
+      <label>Heat Sink Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpTrns">
+      <label>Transformer Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpOt">
+      <label>Other Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="St">
+      <label>Operating State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="StVnd">
+      <label>Vendor Operating State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Evt1">
+      <label>Event Bitfield</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Evt2">
+      <label>Event Bitfield 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd1">
+      <label>Vendor Event Bitfield 1</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd2">
+      <label>Vendor Event Bitfield 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd3">
+      <label>Vendor Event Bitfield 3</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd4">
+      <label>Vendor Event Bitfield 4</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+  <model id="112" len="60">
+    <block len="60">
+      <point id="A" offset="0" type="float32" units="A" mandatory="true" />
+      <point id="AphA" offset="2" type="float32" units="A" mandatory="true" />
+      <point id="AphB" offset="4" type="float32" units="A" mandatory="true" />
+      <point id="AphC" offset="6" type="float32" units="A" />
+      <point id="PPVphAB" offset="8" type="float32" units="V" />
+      <point id="PPVphBC" offset="10" type="float32" units="V" />
+      <point id="PPVphCA" offset="12" type="float32" units="V" />
+      <point id="PhVphA" offset="14" type="float32" units="V" mandatory="true" />
+      <point id="PhVphB" offset="16" type="float32" units="V" mandatory="true" />
+      <point id="PhVphC" offset="18" type="float32" units="V" />
+      <point id="W" offset="20" type="float32" units="W" mandatory="true" />
+      <point id="Hz" offset="22" type="float32" units="Hz" mandatory="true" />
+      <point id="VA" offset="24" type="float32" units="VA" />
+      <point id="VAr" offset="26" type="float32" units="VAr" />
+      <point id="PF" offset="28" type="float32" units="PF" />
+      <point id="WH" offset="30" type="float32" units="Wh" mandatory="true" />
+      <point id="DCA" offset="32" type="float32" units="A" />
+      <point id="DCV" offset="34" type="float32" units="V" />
+      <point id="DCW" offset="36" type="float32" units="W" />
+      <point id="TmpCab" offset="38" type="float32" units="C" mandatory="true" />
+      <point id="TmpSnk" offset="40" type="float32" units="C" />
+      <point id="TmpTrns" offset="42" type="float32" units="C" />
+      <point id="TmpOt" offset="44" type="float32" units="C" />
+      <point id="St" offset="46" type="enum16" define="InverterSt_Enum" sf="InverterSt_Enum" mandatory="true" />
+      <point id="StVnd" offset="47" type="enum16" />
+      <point id="Evt1" offset="48" type="bitfield32" define="InverterEvt_BF" sf="InverterEvt_BF" mandatory="true" />
+      <point id="Evt2" offset="50" type="bitfield32" mandatory="true" />
+      <point id="EvtVnd1" offset="52" type="bitfield32" />
+      <point id="EvtVnd2" offset="54" type="bitfield32" />
+      <point id="EvtVnd3" offset="56" type="bitfield32" />
+      <point id="EvtVnd4" offset="58" type="bitfield32" />
+    </block>
+    <define name="InverterSt_Enum">
+      <symbol name="I_STATUS_OFF" value="1" />
+      <symbol name="I_STATUS_SLEEPING" value="2" />
+      <symbol name="I_STATUS_STARTING" value="3" />
+      <symbol name="I_STATUS_MPPT" value="4" />
+      <symbol name="I_STATUS_THROTTLED" value="5" />
+      <symbol name="I_STATUS_SHUTTING_DOWN" value="6" />
+      <symbol name="I_STATUS_FAULT" value="7" />
+      <symbol name="I_STATUS_STANDBY" value="8" />
+    </define>
+    <define name="InverterEvt_BF">
+      <symbol name="I_EVENT_GROUND_FAULT" value="0" />
+      <symbol name="I_EVENT_DC_OVER_VOLT" value="1" />
+      <symbol name="I_EVENT_AC_DISCONNECT" value="2" />
+      <symbol name="I_EVENT_DC_DISCONNECT" value="3" />
+      <symbol name="I_EVENT_GRID_DISCONNECT" value="4" />
+      <symbol name="I_EVENT_CABINET_OPEN" value="5" />
+      <symbol name="I_EVENT_MANUAL_SHUTDOWN" value="6" />
+      <symbol name="I_EVENT_OVER_TEMP" value="7" />
+      <symbol name="I_EVENT_OVER_FREQUENCY" value="8" />
+      <symbol name="I_EVENT_UNDER_FREQUENCY" value="9" />
+      <symbol name="I_EVENT_AC_OVER_VOLT" value="10" />
+      <symbol name="I_EVENT_AC_UNDER_VOLT" value="11" />
+      <symbol name="I_EVENT_BLOWN_STRING_FUSE" value="12" />
+      <symbol name="I_EVENT_UNDER_TEMP" value="13" />
+      <symbol name="I_EVENT_MEMORY_LOSS" value="14" />
+      <symbol name="I_EVENT_HW_TEST_FAILURE" value="15" />
+    </define>
+  </model>
+  <strings id="112" locale="en">
+    <point name="A">
+      <label>AC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphA">
+      <label>AC Current A</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphB">
+      <label>AC Current B</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphC">
+      <label>AC Current C</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphAB">
+      <label>AC Voltage AB</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphBC">
+      <label>AC Voltage BC</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphCA">
+      <label>AC Voltage CA</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphA">
+      <label>AC Voltage AN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphB">
+      <label>AC Voltage BN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphC">
+      <label>AC Voltage CN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="W">
+      <label>AC Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Hz">
+      <label>AC Frequency</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="VA">
+      <label>AC Real Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="VAr">
+      <label>AC Reactive Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PF">
+      <label>AC Power Factor</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="WH">
+      <label>AC Energy</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCA">
+      <label>DC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCV">
+      <label>DC Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCW">
+      <label>DC Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpCab">
+      <label>Cabinet Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpSnk">
+      <label>Heat Sink Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpTrns">
+      <label>Transformer Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpOt">
+      <label>Other Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="St">
+      <label>Operating State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="StVnd">
+      <label>Vendor Operating State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Evt1">
+      <label>Event Bitfield</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Evt2">
+      <label>Event Bitfield 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd1">
+      <label>Vendor Event Bitfield 1</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd2">
+      <label>Vendor Event Bitfield 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd3">
+      <label>Vendor Event Bitfield 3</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd4">
+      <label>Vendor Event Bitfield 4</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+  <model id="113" len="60">
+    <block len="60">
+      <point id="A" offset="0" type="float32" units="A" mandatory="true" />
+      <point id="AphA" offset="2" type="float32" units="A" mandatory="true" />
+      <point id="AphB" offset="4" type="float32" units="A" mandatory="true" />
+      <point id="AphC" offset="6" type="float32" units="A" mandatory="true" />
+      <point id="PPVphAB" offset="8" type="float32" units="V" mandatory="true" />
+      <point id="PPVphBC" offset="10" type="float32" units="V" mandatory="true" />
+      <point id="PPVphCA" offset="12" type="float32" units="V" mandatory="true" />
+      <point id="PhVphA" offset="14" type="float32" units="V" mandatory="true" />
+      <point id="PhVphB" offset="16" type="float32" units="V" mandatory="true" />
+      <point id="PhVphC" offset="18" type="float32" units="V" mandatory="true" />
+      <point id="W" offset="20" type="float32" units="W" mandatory="true" />
+      <point id="Hz" offset="22" type="float32" units="Hz" mandatory="true" />
+      <point id="VA" offset="24" type="float32" units="VA" />
+      <point id="VAr" offset="26" type="float32" units="VAr" />
+      <point id="PF" offset="28" type="float32" units="PF" />
+      <point id="WH" offset="30" type="float32" units="Wh" mandatory="true" />
+      <point id="DCA" offset="32" type="float32" units="A" />
+      <point id="DCV" offset="34" type="float32" units="V" />
+      <point id="DCW" offset="36" type="float32" units="W" />
+      <point id="TmpCab" offset="38" type="float32" units="C" mandatory="true" />
+      <point id="TmpSnk" offset="40" type="float32" units="C" />
+      <point id="TmpTrns" offset="42" type="float32" units="C" />
+      <point id="TmpOt" offset="44" type="float32" units="C" />
+      <point id="St" offset="46" type="enum16" define="InverterSt_Enum" sf="InverterSt_Enum" mandatory="true" />
+      <point id="StVnd" offset="47" type="enum16" />
+      <point id="Evt1" offset="48" type="bitfield32" define="InverterEvt_BF" sf="InverterEvt_BF" mandatory="true" />
+      <point id="Evt2" offset="50" type="bitfield32" mandatory="true" />
+      <point id="EvtVnd1" offset="52" type="bitfield32" />
+      <point id="EvtVnd2" offset="54" type="bitfield32" />
+      <point id="EvtVnd3" offset="56" type="bitfield32" />
+      <point id="EvtVnd4" offset="58" type="bitfield32" />
+    </block>
+    <define name="InverterSt_Enum">
+      <symbol name="I_STATUS_OFF" value="1" />
+      <symbol name="I_STATUS_SLEEPING" value="2" />
+      <symbol name="I_STATUS_STARTING" value="3" />
+      <symbol name="I_STATUS_MPPT" value="4" />
+      <symbol name="I_STATUS_THROTTLED" value="5" />
+      <symbol name="I_STATUS_SHUTTING_DOWN" value="6" />
+      <symbol name="I_STATUS_FAULT" value="7" />
+      <symbol name="I_STATUS_STANDBY" value="8" />
+    </define>
+    <define name="InverterEvt_BF">
+      <symbol name="I_EVENT_GROUND_FAULT" value="0" />
+      <symbol name="I_EVENT_DC_OVER_VOLT" value="1" />
+      <symbol name="I_EVENT_AC_DISCONNECT" value="2" />
+      <symbol name="I_EVENT_DC_DISCONNECT" value="3" />
+      <symbol name="I_EVENT_GRID_DISCONNECT" value="4" />
+      <symbol name="I_EVENT_CABINET_OPEN" value="5" />
+      <symbol name="I_EVENT_MANUAL_SHUTDOWN" value="6" />
+      <symbol name="I_EVENT_OVER_TEMP" value="7" />
+      <symbol name="I_EVENT_OVER_FREQUENCY" value="8" />
+      <symbol name="I_EVENT_UNDER_FREQUENCY" value="9" />
+      <symbol name="I_EVENT_AC_OVER_VOLT" value="10" />
+      <symbol name="I_EVENT_AC_UNDER_VOLT" value="11" />
+      <symbol name="I_EVENT_BLOWN_STRING_FUSE" value="12" />
+      <symbol name="I_EVENT_UNDER_TEMP" value="13" />
+      <symbol name="I_EVENT_MEMORY_LOSS" value="14" />
+      <symbol name="I_EVENT_HW_TEST_FAILURE" value="15" />
+    </define>
+  </model>
+  <strings id="113" locale="en">
+    <point name="A">
+      <label>AC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphA">
+      <label>AC Current A</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphB">
+      <label>AC Current B</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="AphC">
+      <label>AC Current C</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphAB">
+      <label>AC Voltage AB</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphBC">
+      <label>AC Voltage BC</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PPVphCA">
+      <label>AC Voltage CA</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphA">
+      <label>AC Voltage AN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphB">
+      <label>AC Voltage BN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PhVphC">
+      <label>AC Voltage CN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="W">
+      <label>AC Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Hz">
+      <label>AC Frequency</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="VA">
+      <label>AC Real Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="VAr">
+      <label>AC Reactive Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="PF">
+      <label>AC Power Factor</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="WH">
+      <label>AC Energy</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCA">
+      <label>DC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCV">
+      <label>DC Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="DCW">
+      <label>DC Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpCab">
+      <label>Cabinet Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpSnk">
+      <label>Heat Sink Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpTrns">
+      <label>Transformer Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="TmpOt">
+      <label>Other Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="St">
+      <label>Operating State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="StVnd">
+      <label>Vendor Operating State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Evt1">
+      <label>Event Bitfield</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="Evt2">
+      <label>Event Bitfield 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd1">
+      <label>Vendor Event Bitfield 1</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd2">
+      <label>Vendor Event Bitfield 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd3">
+      <label>Vendor Event Bitfield 3</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point name="EvtVnd4">
+      <label>Vendor Event Bitfield 4</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+</sunSpecModels>

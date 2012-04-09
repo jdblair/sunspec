@@ -33,7 +33,7 @@
 # inverter nameplate ratings
 #
 model suns {
-    name "inverter_nameplate"
+    name "inverter nameplate"
     did 120 "inverter_nameplate"
     datapoints {
         WRtg            { uint16.WRtg_SF req }
@@ -237,12 +237,8 @@ model suns {
         VV_RmpTms           { uint16 }
         VV_Volt_SF          { sunssf }
         VV_RmpIncDec_SF     { sunssf }
-}
-
-model suns {
-    name "Static_Volt-Var_Curve"
-    did 8008 "Static_Volt-Var_Curve"
-    datapoints {
+    }
+    datapoints repeating {
         CrvNam              { string.16 }
         ActPt               { uint16 }
         DeptRef             { uint16 }
@@ -250,8 +246,6 @@ model suns {
         RmpPT1Tms           { uint16 }
         RmpDecTmm           { uint16 }
         RmpIncTmm           { uint16 }
-    }
-    datapoints repeating {
         V01                 { uint16 }
         VAr01               {  int16 }
         V02                 { uint16 }
