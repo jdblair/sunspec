@@ -1,72 +1,26 @@
 <sunSpecModels v="1">
-  <model id="120" len="18">
-    <block len="18">
-      <point id="WRtg" offset="0" type="uint16" sf="WRtg_SF" units="W" mandatory="true" />
+  <model id="120" len="17">
+    <block len="17">
+      <point id="WRtg" offset="0" type="uint16" sf="WRtg_SF" mandatory="true" />
       <point id="WRtg_SF" offset="1" type="sunssf" mandatory="true" />
-      <point id="VARtg" offset="2" type="uint16" mandatory="true" units="var" />
+      <point id="VARtg" offset="2" type="uint16" mandatory="true" />
       <point id="VARtg_SF" offset="3" type="sunssf" mandatory="true" />
-      <point id="VArPosRtg" offset="4" type="uint16" sf="VArRtg_SF" units="var" mandatory="true" />
-      <point id="VArNegRtg" offset="5" type="uint16" sf="VArRtg_SF" mandatory="true" units="var" />
+      <point id="VArPosRtg" offset="4" type="uint16" sf="VArRtg_SF" mandatory="true" />
+      <point id="VArNegRtg" offset="5" type="uint16" sf="VArRtg_SF" mandatory="true" />
       <point id="VArRtg_SF" offset="6" type="sunssf" mandatory="true" />
-      <point id="ARtg" offset="7" type="uint16" mandatory="true" units="A" />
+      <point id="ARtg" offset="7" type="uint16" mandatory="true" />
       <point id="ARtg_SF" offset="8" type="sunssf" mandatory="true" />
-      <point id="PFLeadRtg" offset="9" type="int16" sf="PFRtgSF" mandatory="true" units="cosT" />
-      <point id="PFLagRtg" offset="10" type="int16" sf="PFRtg_SF" mandatory="true" units="costT" />
+      <point id="PFLeadRtg" offset="9" type="int16" sf="PFRtgSF" mandatory="true" />
+      <point id="PFLagRtg" offset="10" type="int16" sf="PFRtg_SF" mandatory="true" />
       <point id="PFRtg_SF" offset="11" type="sunssf" mandatory="true" />
       <point id="WHRtg_SF" offset="12" type="sunssf" />
-      <point id="MaxChgRte" offset="13" type="uint16" sf="MaxChgRte_SF" units="W" />
+      <point id="MaxChgRte" offset="13" type="uint16" sf="MaxChgRte_SF" />
       <point id="MaxChgRte_SF" offset="14" type="int16" />
-      <point id="MaxDisChgRte" offset="15" type="uint16" sf="MaxDisChgRte_SF" units="W" />
+      <point id="MaxDisChgRte" offset="15" type="uint16" sf="MaxDisChgRte_SF" />
       <point id="MaxDisChgRte_SF" offset="16" type="int16" />
-      <point id="Reserved" offset="17" type="pad" />
     </block>
   </model>
   <strings id="120" locale="en">
-    <point name="WRtg">
-      <label>Continuous Power Rating</label>
-      <description></description>
-      <notes></notes>
-    </point>
-    <point name="VARtg">
-      <label>Continuous Volt-Ampere Rating</label>
-      <description></description>
-      <notes></notes>
-    </point>
-    <point name="VArPosRtg">
-      <label>Continuous Positive VAR Rating</label>
-      <description></description>
-      <notes></notes>
-    </point>
-    <point name="VArNegRtg">
-      <label>Continuous Negative VAR Rating</label>
-      <description></description>
-      <notes></notes>
-    </point>
-    <point name="ARtg">
-      <label>Max AC Current Rating</label>
-      <description></description>
-      <notes></notes>
-    </point>
-    <point name="PFLeadRtg">
-      <label>Min Power Factor Rating (Leading)</label>
-      <description></description>
-      <notes></notes>
-    </point>
-    <point name="PFLagRtg">
-      <label>Min Power Factor Rating (Lagging)</label>
-      <description></description>
-      <notes></notes>
-    </point>
-    <point name="MaxChgRte">
-      <label>Max Charge Rate</label>
-      <description></description>
-      <notes></notes>
-    </point>
-    <point name="MaxDisChgRte">
-      <label>Max Discharge Rate</label>
-      <description></description>
-      <notes></notes>
-    </point>
   </strings>
   <model id="121" len="28">
     <block len="28">
@@ -87,43 +41,43 @@
       <point id="VRefOfs_SF" offset="14" type="sunssf" mandatory="true" />
       <point id="WGra" offset="15" type="int16" sf="WGra_SF" units="perc" />
       <point id="WGra_SF" offset="16" type="sunssf" />
-      <point id="PFSign" offset="17" type="enum16" define="PFSign_enum" sf="PFSign_enum" />
+      <point id="PFSign" offset="17" type="enum16" define="PFSign_enum" />
       <point id="PFLeadMin" offset="18" type="int16" sf="PFMin_SF" units="cosT" />
       <point id="PFLagMin" offset="19" type="int16" sf="PFMin_SF" units="cosT" />
       <point id="PFMin_SF" offset="20" type="sunssf" />
-      <point id="VArAct" offset="21" type="enum16" define="VArAct_enum" sf="VArAct_enum" />
-      <point id="ClcTotVA" offset="22" type="enum16" define="ClcTotVA_enum" sf="ClcTotVA_enum" />
+      <point id="VArAct" offset="21" type="enum16" define="VArAct_enum" />
+      <point id="ClcTotVA" offset="22" type="enum16" define="ClcTotVA_enum" />
       <point id="MaxRmpRte" offset="23" type="uint16" sf="MaxRmpRte_SF" units="perc" />
       <point id="MaxRmpRte_SF" offset="24" type="sunssf" />
       <point id="ECPNomHz" offset="25" type="uint16" sf="ECPNomHz_SF" units="Hz" />
       <point id="ECPNomHz_SF" offset="26" type="sunssf" />
-      <point id="Connected_Phase" offset="27" type="enum16" define="Connected_Phase_enum" sf="Connected_Phase_enum" />
+      <point id="Connected_Phase" offset="27" type="enum16" define="Connected_Phase_enum" />
     </block>
     <define name="PFSign_enum">
-      <symbol name="I_IEC" value="1" />
-      <symbol name="I_IEEE" value="2" />
+      <symbol id="I_IEC" value="1" />
+      <symbol id="I_IEEE" value="2" />
     </define>
     <define name="VArAct_enum">
-      <symbol name="switch" value="1" />
-      <symbol name="maintain" value="2" />
+      <symbol id="switch" value="1" />
+      <symbol id="maintain" value="2" />
     </define>
     <define name="ClcTotVA_enum">
-      <symbol name="vector" value="1" />
-      <symbol name="arithmetic" value="2" />
+      <symbol id="vector" value="1" />
+      <symbol id="arithmetic" value="2" />
     </define>
     <define name="Connected_Phase_enum">
-      <symbol name="PhA" value="1" />
-      <symbol name="PhB" value="2" />
-      <symbol name="PhC" value="3" />
+      <symbol id="PhA" value="1" />
+      <symbol id="PhB" value="2" />
+      <symbol id="PhC" value="3" />
     </define>
   </model>
   <strings id="121" locale="en">
   </strings>
   <model id="122" len="41">
     <block len="41">
-      <point id="PVConn" offset="0" type="enum16" define="ConnAvail_enum" sf="ConnAvail_enum" />
-      <point id="StorConn" offset="1" type="enum16" define="ConnAvail_enum" sf="ConnAvail_enum" />
-      <point id="ECPConn" offset="2" type="enum16" define="ECPConn_enum" sf="ECPConn_enum" />
+      <point id="PVConn" offset="0" type="enum16" define="ConnAvail_enum" />
+      <point id="StorConn" offset="1" type="enum16" define="ConnAvail_enum" />
+      <point id="ECPConn" offset="2" type="enum16" define="ECPConn_enum" />
       <point id="ActWh" offset="3" type="acc64" units="Wh" />
       <point id="ActVAh" offset="7" type="acc64" units="VAh" />
       <point id="ActVArhQ1" offset="11" type="acc64" units="VArh" />
@@ -132,39 +86,39 @@
       <point id="ActVArhQ4" offset="23" type="acc64" units="VArh" />
       <point id="VArAval" offset="27" type="uint16" sf="VArAval_SF" units="VAr" />
       <point id="VArAval_SF" offset="28" type="sunssf" />
-      <point id="StaSetLimMsk" offset="29" type="bitfield32" define="StaSetLimMsk_bf" sf="StaSetLimMsk_bf" />
+      <point id="StaSetLimMsk" offset="29" type="bitfield32" define="StaSetLimMsk_bf" />
       <point id="TmSrc" offset="31" type="string" len="8" />
       <point id="CurrTime" offset="39" type="uint32" units="Tms2000" />
     </block>
     <define name="ConnAvail_enum">
-      <symbol name="NA" value="0" />
-      <symbol name="DISCONNECTED_UNAVAIL" value="1" />
-      <symbol name="DISCONNECTED_AVAIL" value="2" />
-      <symbol name="CONNECTED_UNAVAIL" value="3" />
-      <symbol name="CONNECTED_AVAIL" value="4" />
-      <symbol name="CONNECTED_ON" value="5" />
-      <symbol name="TEST_MODE" value="6" />
+      <symbol id="NA" value="0" />
+      <symbol id="DISCONNECTED_UNAVAIL" value="1" />
+      <symbol id="DISCONNECTED_AVAIL" value="2" />
+      <symbol id="CONNECTED_UNAVAIL" value="3" />
+      <symbol id="CONNECTED_AVAIL" value="4" />
+      <symbol id="CONNECTED_ON" value="5" />
+      <symbol id="TEST_MODE" value="6" />
     </define>
     <define name="ConnBool_enum">
-      <symbol name="DISCONNECTED" value="0" />
-      <symbol name="CONNECTED" value="1" />
+      <symbol id="DISCONNECTED" value="0" />
+      <symbol id="CONNECTED" value="1" />
     </define>
     <define name="StaSetLimMsk_bf">
-      <symbol name="WMax" value="1" />
-      <symbol name="VAMax" value="2" />
-      <symbol name="VArPosMax" value="3" />
-      <symbol name="VArNegMax" value="4" />
-      <symbol name="VArAval" value="5" />
-      <symbol name="PFLeadMin" value="6" />
-      <symbol name="PFLagMin" value="7" />
+      <symbol id="WMax" value="1" />
+      <symbol id="VAMax" value="2" />
+      <symbol id="VArPosMax" value="3" />
+      <symbol id="VArNegMax" value="4" />
+      <symbol id="VArAval" value="5" />
+      <symbol id="PFLeadMin" value="6" />
+      <symbol id="PFLagMin" value="7" />
     </define>
   </model>
   <strings id="122" locale="en">
   </strings>
   <model id="123" len="23">
     <block len="23">
-      <point id="Mod" offset="0" type="bitfield16" define="ImmCtl_bf" sf="ImmCtl_bf" mandatory="true" />
-      <point id="Conn" offset="1" type="enum16" define="Conn_enum" sf="Conn_enum" mandatory="true" />
+      <point id="Mod" offset="0" type="bitfield16" define="ImmCtl_bf" mandatory="true" />
+      <point id="Conn" offset="1" type="enum16" define="Conn_enum" mandatory="true" />
       <point id="Conn_WinTms" offset="2" type="uint16" units="Tms" />
       <point id="Conn_RvrtTms" offset="3" type="uint16" units="Tms" />
       <point id="WMaxLimPct" offset="4" type="uint16" sf="WMaxLimPct_SF" units="perc" mandatory="true" />
@@ -173,11 +127,11 @@
       <point id="WMaxLimPct_RvrtTms" offset="7" type="uint16" units="Tms" />
       <point id="WMaxLimPct_RmpTms" offset="8" type="uint16" sf="WMaxLimPct_SF" units="Tms" />
       <point id="OutPFSet" offset="9" type="int16" sf="OutPFSet_SF" units="cosT" mandatory="true" />
-      <point id="PFExt" offset="10" type="enum16" define="PFExt_enum" sf="PFExt_enum" />
+      <point id="PFExt" offset="10" type="enum16" define="PFExt_enum" />
       <point id="OutPFSet_SF" offset="11" type="sunssf" mandatory="true" />
       <point id="OutPFSet_WinTms" offset="12" type="uint16" units="Tms" />
       <point id="OutPFSet_RvrtTms" offset="13" type="uint16" units="Tms" />
-      <point id="VArLim_Mode" offset="14" type="enum16" define="VArLim_Mode_enum" sf="VArLim_Mode_enum" mandatory="true" />
+      <point id="VArLim_Mode" offset="14" type="enum16" define="VArLim_Mode_enum" mandatory="true" />
       <point id="VArWMaxPct" offset="15" type="uint16" units="perc" />
       <point id="VArWMaxPct_SF" offset="16" type="sunssf" />
       <point id="VArMaxPct" offset="17" type="uint16" units="perc" />
@@ -188,18 +142,18 @@
       <point id="VArPct_RmpTms" offset="22" type="uint16" units="Tms" />
     </block>
     <define name="Conn_enum">
-      <symbol name="DISCONNECT" value="0" />
-      <symbol name="CONNECT" value="1" />
+      <symbol id="DISCONNECT" value="0" />
+      <symbol id="CONNECT" value="1" />
     </define>
     <define name="PFExt_enum">
-      <symbol name="OVER" value="0" />
-      <symbol name="UNDER" value="1" />
+      <symbol id="OVER" value="0" />
+      <symbol id="UNDER" value="1" />
     </define>
     <define name="VArLim_Mode_enum">
-      <symbol name="NO_LIMIT" value="0" />
-      <symbol name="WMAX" value="1" />
-      <symbol name="VARMAX" value="2" />
-      <symbol name="VARAVAL" value="3" />
+      <symbol id="NO_LIMIT" value="0" />
+      <symbol id="WMAX" value="1" />
+      <symbol id="VARMAX" value="2" />
+      <symbol id="VARAVAL" value="3" />
     </define>
   </model>
   <strings id="123" locale="en">

@@ -22,62 +22,62 @@
     </block>
   </model>
   <strings id="401" locale="en">
-    <point name="N">
+    <point id="N">
       <label>Number of Inputs</label>
       <description></description>
       <notes></notes>
     </point>
-    <point name="Evt">
+    <point id="Evt">
       <label>Combiner Event Flags</label>
       <description></description>
       <notes></notes>
     </point>
-    <point name="EvtVnd">
+    <point id="EvtVnd">
       <label>Combiner Vendor Event Flags</label>
       <description></description>
       <notes></notes>
     </point>
-    <point name="DCA">
+    <point id="DCA">
       <label>DC Current</label>
       <description></description>
       <notes></notes>
     </point>
-    <point name="DCAH">
+    <point id="DCAH">
       <label>DC Amp Hours</label>
       <description></description>
       <notes></notes>
     </point>
-    <point name="DCV">
+    <point id="DCV">
       <label>DC Voltage</label>
       <description></description>
       <notes></notes>
     </point>
-    <point name="DCTmp">
+    <point id="DCTmp">
       <label>Temperature</label>
       <description></description>
       <notes></notes>
     </point>
-    <point name="InID">
+    <point id="InID">
       <label>Input ID</label>
       <description></description>
       <notes></notes>
     </point>
-    <point name="InEvt">
+    <point id="InEvt">
       <label>Input Event Flags</label>
       <description></description>
       <notes></notes>
     </point>
-    <point name="InEvtVnd">
+    <point id="InEvtVnd">
       <label>Input Vendor Event Flags</label>
       <description></description>
       <notes></notes>
     </point>
-    <point name="InDCA">
+    <point id="InDCA">
       <label>Input DC Current</label>
       <description></description>
       <notes></notes>
     </point>
-    <point name="InDCAH">
+    <point id="InDCAH">
       <label>Input DC Amp Hours</label>
       <description></description>
       <notes></notes>

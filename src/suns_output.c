@@ -1192,7 +1192,7 @@ void suns_model_xml_strings(FILE *stream,
             suns_dp_t *dp = d->data;
             char *label = suns_find_attribute(dp, "label");
             if (label) {
-                fprintf(stream, "    <point name=\"%s\">\n", dp->name);
+                fprintf(stream, "    <point id=\"%s\">\n", dp->name);
                 fprintf(stream, "      <label>%s</label>\n", label);
                 fprintf(stream, "      <description></description>\n");    
                 fprintf(stream, "      <notes></notes>\n");
@@ -1237,7 +1237,7 @@ void suns_model_xml_define_block_fprintf(FILE *stream,
 void suns_model_xml_define_fprintf(FILE *stream,
                                    suns_define_t *define)
 {
-    fprintf(stream, "      <symbol name=\"%s\" value=\"%d\" />\n",
+    fprintf(stream, "      <symbol id=\"%s\" value=\"%d\" />\n",
             define->name, define->value);
 }
 
@@ -1253,25 +1253,23 @@ void suns_model_xml_dp_fprintf(FILE *stream,
     
     if (dp->type_pair->type == SUNS_STRING)
         fprintf(stream, " len=\"%d\"", dp->type_pair->len / 2);
-    
-    /* the name string is overloaded-
-       it can be a scale factor reference, or a reference to
-       the definitions for an enum or bitfield
-       in the xml we are more explicit */
-    if (dp->type_pair->name) {
+    else if (dp->type_pair->sf != 0) {
+        fprintf(stream, " sf=\"%d\"", dp->type_pair->sf);
+    } else if (dp->type_pair->name != NULL) {
+        /* the name string is overloaded-
+           it can be a scale factor reference, or a reference to
+           the definitions for an enum or bitfield
+           in the xml we are more explicit */
         if ((dp->type_pair->type == SUNS_ENUM16) ||
             (dp->type_pair->type == SUNS_ENUM32) ||
             (dp->type_pair->type == SUNS_BITFIELD16) ||
             (dp->type_pair->type == SUNS_BITFIELD32)) {
             fprintf(stream, " define=\"%s\"", dp->type_pair->name);
+        } else {
+            fprintf(stream, " sf=\"%s\"", dp->type_pair->name);
         }
     }
     
-    if (dp->type_pair->sf != 0) {
-        fprintf(stream, " sf=\"%d\"", dp->type_pair->sf);
-    } else if (dp->type_pair->name != NULL) {
-        fprintf(stream, " sf=\"%s\"", dp->type_pair->name);
-    }
 
     /* output additional point attributes by searching the attribute list */
     if (dp->attributes) {

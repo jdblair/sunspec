@@ -55,7 +55,7 @@ model suns {
     W_SF            {  sunssf req }
     Hz              {  uint16.Hz_SF u=Hz label="AC Frequency" req }
     Hz_SF           {  sunssf req }
-    VA              {  int16.VA_SF u=VA label="AC Real Power" }
+    VA              {  int16.VA_SF u=VA label="AC Apparent Power" }
     VA_SF           {  sunssf }
     VAr             {  int16.VAr_SF u=VAr label="AC Reactive Power" }
     VAr_SF          {  sunssf }
@@ -234,7 +234,7 @@ model suns {
     PhVphC        {  float32 u=V label="AC Voltage CN" req={ 113 } }
     W             {  float32 u=W label="AC Power" req }
     Hz            {  float32 u=Hz label="AC Frequency" req }
-    VA            {  float32 u=VA label="AC Real Power" }
+    VA            {  float32 u=VA label="AC Apparent Power" }
     VAr           {  float32 u=VAr label="AC Reactive Power" }
     PF            {  float32 u=PF label="AC Power Factor" }
     WH            {  float32 u=Wh label="AC Energy" req }

@@ -61,10 +61,10 @@ model suns {
     WphB              { int16.W_SF     u=W    label="Phase B AC Power" }
     WphC              { int16.W_SF     u=W    label="Phase C AC Power" }
     W_SF              { sunssf req }
-    VA                { int16.VA_SF    u=VA   label="AC Real Power" }
-    VAphA             { int16.VA_SF    u=VA   label="Phase A AC Real Power" }
-    VAphB             { int16.VA_SF    u=VA   label="Phase B AC Real Power" }
-    VAphC             { int16.VA_SF    u=VA   label="Phase C AC Real Power" }
+    VA                { int16.VA_SF    u=VA   label="AC Apparent Power" }
+    VAphA             { int16.VA_SF    u=VA   label="Phase A AC Apparent Power" }
+    VAphB             { int16.VA_SF    u=VA   label="Phase B AC Apparent Power" }
+    VAphC             { int16.VA_SF    u=VA   label="Phase C AC Apparent Power" }
     VA_SF             { sunssf                                        }
     VAR               { int16.VAR_SF   u=var  label="AC Reactive Power" }
     VARphA            { int16.VAR_SF   u=var  label="Phase A AC Reactive Power" }
