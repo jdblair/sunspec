@@ -523,11 +523,10 @@ char *yytext;
 /* -*- tab-width: 4; indent-tabs-mode: nil -*- */
 /*
  * suns_lang.l
- * $Id: $
  *
  * flex (lex) lexer for the sunspec model description language.
  *
- * Copyright (c) 2011, John D. Blair <jdb@moship.net>
+ * Copyright (c) 2011-2012, John D. Blair <jdb@moship.net>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -558,7 +557,7 @@ char *yytext;
  * SUCH DAMAGE.
  *
  */
-#line 43 "suns_lang.l"
+#line 42 "suns_lang.l"
 #include <stdio.h>
 #include <string.h>
 #include <strings.h>
@@ -569,7 +568,7 @@ char *yytext;
 extern int line_no;
     
     
-#line 573 "suns_lang.yy.c"
+#line 572 "suns_lang.yy.c"
 
 #define INITIAL 0
 
@@ -756,9 +755,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 56 "suns_lang.l"
+#line 55 "suns_lang.l"
 
-#line 762 "suns_lang.yy.c"
+#line 761 "suns_lang.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -843,62 +842,62 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 57 "suns_lang.l"
+#line 56 "suns_lang.l"
 { return MODELTOK; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 58 "suns_lang.l"
+#line 57 "suns_lang.l"
 { return NAMETOK; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 59 "suns_lang.l"
+#line 58 "suns_lang.l"
 { return DIDTOK; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 60 "suns_lang.l"
+#line 59 "suns_lang.l"
 { return LENTOK; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 61 "suns_lang.l"
+#line 60 "suns_lang.l"
 { return DPTOK; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 62 "suns_lang.l"
+#line 61 "suns_lang.l"
 { return DEFINETOK; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 63 "suns_lang.l"
+#line 62 "suns_lang.l"
 { return ENUMTOK; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 64 "suns_lang.l"
+#line 63 "suns_lang.l"
 { return ENUMTOK; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 65 "suns_lang.l"
+#line 64 "suns_lang.l"
 { return BFTOK; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 66 "suns_lang.l"
+#line 65 "suns_lang.l"
 { return COMMENTTOK; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 67 "suns_lang.l"
+#line 66 "suns_lang.l"
 { return DATATOK; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 68 "suns_lang.l"
+#line 67 "suns_lang.l"
 {
                     yylval.string = string_trim_quotes(strdup(yytext));
                     return STRING;
@@ -906,7 +905,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 72 "suns_lang.l"
+#line 71 "suns_lang.l"
 {
                     yylval.string = string_trim_quotes(strdup(yytext));
                     return CHARS;
@@ -914,7 +913,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 76 "suns_lang.l"
+#line 75 "suns_lang.l"
 {
                     if (sscanf(yytext, "%lld", &(yylval.number_i)) != 1) {
                       yyerror("'%s' is not a valid integer");
@@ -924,7 +923,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 82 "suns_lang.l"
+#line 81 "suns_lang.l"
 {
                     if (sscanf(yytext, "%llu", &(yylval.number_u)) != 1) {
                       yyerror("'%s' is not a valid unsigned integer");
@@ -934,7 +933,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 88 "suns_lang.l"
+#line 87 "suns_lang.l"
 {
                     if (sscanf(yytext, "%llx", &(yylval.number_u)) != 1) {
                       yyerror("'%s' is not a valid unsigned integer");
@@ -944,7 +943,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 94 "suns_lang.l"
+#line 93 "suns_lang.l"
 {
                     if (sscanf(yytext, "%lf", &(yylval.number_f)) != 1) {
                       yyerror("'%s' is not a valid float");
@@ -954,76 +953,76 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 100 "suns_lang.l"
+#line 99 "suns_lang.l"
 { yylval.string = strdup(yytext); return NAME; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 101 "suns_lang.l"
+#line 100 "suns_lang.l"
 { return OBRACE; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 102 "suns_lang.l"
+#line 101 "suns_lang.l"
 { return EBRACE; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 103 "suns_lang.l"
+#line 102 "suns_lang.l"
 { return OPAREN; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 104 "suns_lang.l"
+#line 103 "suns_lang.l"
 { return EPAREN; }
 	YY_BREAK
 case 23:
 /* rule 23 can match eol */
 YY_RULE_SETUP
-#line 105 "suns_lang.l"
+#line 104 "suns_lang.l"
 /* ignore comments */;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 106 "suns_lang.l"
+#line 105 "suns_lang.l"
 { return COLON; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 107 "suns_lang.l"
+#line 106 "suns_lang.l"
 { return EQUAL; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 108 "suns_lang.l"
+#line 107 "suns_lang.l"
 { return SEMICOLON; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 109 "suns_lang.l"
+#line 108 "suns_lang.l"
 { return DOT; }
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 110 "suns_lang.l"
+#line 109 "suns_lang.l"
 { return EOF; }
 	YY_BREAK
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
-#line 111 "suns_lang.l"
+#line 110 "suns_lang.l"
 { line_no++; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 112 "suns_lang.l"
+#line 111 "suns_lang.l"
 /* ignore whitespace */;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 113 "suns_lang.l"
+#line 112 "suns_lang.l"
 ECHO;
 	YY_BREAK
-#line 1027 "suns_lang.yy.c"
+#line 1026 "suns_lang.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -2019,7 +2018,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 113 "suns_lang.l"
+#line 112 "suns_lang.l"
 
 
 

@@ -168,6 +168,7 @@ typedef struct suns_define {
     char *name;
     unsigned int value;
     char *string;
+    list_t *attributes;
 } suns_define_t;
     
 /* named_list_t is used to store general lists of suns_value_t
@@ -261,6 +262,7 @@ typedef struct suns_device {
 typedef struct suns_attribute {
     char *name;
     char *value;
+    list_t *list;
 } suns_attribute_t;
 
 
@@ -357,6 +359,8 @@ int suns_decode_dp_block(suns_dp_block_t *dp_block,
 void suns_model_fill_offsets(suns_model_t *m);
 
 suns_define_block_t *suns_search_define_blocks(list_t *list, char *name);
+suns_define_t *suns_define_new(void);
+void suns_define_free(suns_define_t *d);
 suns_define_t *suns_search_enum_defines(list_t *list, unsigned int value);
 suns_define_t *suns_search_bitfield_defines_i(list_t *list,
                                               unsigned int value,

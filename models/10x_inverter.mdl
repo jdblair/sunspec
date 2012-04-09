@@ -41,15 +41,15 @@ model suns {
   datapoints {
     A               {  uint16.A_SF u=A lname=I_AC_Current req }
     AphA            {  uint16.A_SF u=A lname=I_AC_CurrentA req }
-    AphB            {  uint16.A_SF u=A lname=I_AC_CurrentB req="102,103" }
-    AphC            {  uint16.A_SF u=A lname=I_AC_CurrentC req="103" }
+    AphB            {  uint16.A_SF u=A lname=I_AC_CurrentB req={ m102 m103 } }
+    AphC            {  uint16.A_SF u=A lname=I_AC_CurrentC req={ m103 } }
     A_SF            {  sunssf req }
-    PPVphAB         {  uint16.V_SF u=V lname=I_AC_VoltageAB req="103" }
-    PPVphBC         {  uint16.V_SF u=V lname=I_AC_VoltageBC req="103" }
-    PPVphCA         {  uint16.V_SF u=V lname=I_AC_VoltageCA req="103" }
-    PhVphA          {  uint16.V_SF u=V lname=I_AC_VoltageAN req="101" }
-    PhVphB          {  uint16.V_SF u=V lname=I_AC_VoltageBN req="102,103" }
-    PhVphC          {  uint16.V_SF u=V lname=I_AC_VoltageCN req="103" }
+    PPVphAB         {  uint16.V_SF u=V lname=I_AC_VoltageAB req={ m103 } }
+    PPVphBC         {  uint16.V_SF u=V lname=I_AC_VoltageBC req={ m103 } }
+    PPVphCA         {  uint16.V_SF u=V lname=I_AC_VoltageCA req={ m103 } }
+    PhVphA          {  uint16.V_SF u=V lname=I_AC_VoltageAN req={ m101 } }
+    PhVphB          {  uint16.V_SF u=V lname=I_AC_VoltageBN req={ m102 m103 } }
+    PhVphC          {  uint16.V_SF u=V lname=I_AC_VoltageCN req={ m103 } }
     V_SF            {  sunssf req }
     W               {  int16.W_SF u=W lname=I_AC_Power req }
     W_SF            {  sunssf req }
@@ -74,44 +74,14 @@ model suns {
     TmpTrns         {  int16.Tmp_SF u=C lname=I_Temp_Trans }
     TmpOt           {  int16.Tmp_SF u=C lname=I_Temp_Other }
     Tmp_SF          {  sunssf req }
-    St              {  enum16.St_Enum lname=I_Status req }
+    St              {  enum16.InverterSt_Enum lname=I_Status req }
     StVnd           {  enum16 lname=I_Status_Vendor }
-    Evt1            {  bitfield32.Evt_BF lname=I_Event_1 req }
+    Evt1            {  bitfield32.InverterEvt_BF lname=I_Event_1 req }
     Evt2            {  bitfield32 lname=I_Event_1 req }
     EvtVnd1         {  bitfield32 lname=I_Event_1_Vendor }
     EvtVnd2         {  bitfield32 lname=I_Event_2_Vendor }
     EvtVnd3         {  bitfield32 lname=I_Event_3_Vendor }
     EvtVnd4         {  bitfield32 lname=I_Event_4_Vendor }
-  }
-
-  define St_Enum {
-    I_STATUS_OFF               { 1 "Off" }
-    I_STATUS_SLEEPING          { 2 "Sleeping (auto-shutdown)" }
-    I_STATUS_STARTING          { 3 "Starting up" }
-    I_STATUS_MPPT              { 4 "Tracking power point" }
-    I_STATUS_THROTTLED         { 5 "Forced power reduction" }
-    I_STATUS_SHUTTING_DOWN     { 6 "Shutting down" }
-    I_STATUS_FAULT             { 7 "One or more faults exist" }
-    I_STATUS_STANDBY           { 8 "Standby (service on unit)" }
-  }
-
-  define Evt_BF {
-    I_EVENT_GROUND_FAULT       { 0 "Ground fault" }
-    I_EVENT_DC_OVER_VOLT       { 1 "DC over voltage" }
-    I_EVENT_AC_DISCONNECT      { 2 "AC disconnect open" }
-    I_EVENT_DC_DISCONNECT      { 3 "DC disconnect open" }
-    I_EVENT_GRID_DISCONNECT    { 4 "Grid shutdown" }
-    I_EVENT_CABINET_OPEN       { 5 "Cabinet open" }
-    I_EVENT_MANUAL_SHUTDOWN    { 6 "Manual shutdown" }
-    I_EVENT_OVER_TEMP          { 7 "Over temperature" }
-    I_EVENT_OVER_FREQUENCY     { 8 "Frequency above limit" }
-    I_EVENT_UNDER_FREQUENCY    { 9  "Frequency under limit" }
-    I_EVENT_AC_OVER_VOLT       { 10 "AC Voltage above limit" }
-    I_EVENT_AC_UNDER_VOLT      { 11 "AC Voltage under limit" }
-    I_EVENT_BLOWN_STRING_FUSE  { 12 "Blown String fuse on input" }
-    I_EVENT_UNDER_TEMP         { 13 "Under temperature" }
-    I_EVENT_MEMORY_LOSS        { 14 "Generic Memory or Communication error (internal)" }
-    I_EVENT_HW_TEST_FAILURE    { 15 "Hardware test failure" }
   }
 }
 
@@ -176,14 +146,14 @@ model suns {
   datapoints {
     A             {  float32 u=A req }
     AphA          {  float32 u=A req }
-    AphB          {  float32 u=A req=112,113 }
-    AphC          {  float32 u=A req=113 }
-    PPVphAB       {  float32 u=V req=113 }
-    PPVphBC       {  float32 u=V req=113 }
-    PPVphCA       {  float32 u=V req=113 }
+    AphB          {  float32 u=A req={ m112 m113 } }
+    AphC          {  float32 u=A req={ m113 } }
+    PPVphAB       {  float32 u=V req={ m113 } }
+    PPVphBC       {  float32 u=V req={ m113 } }
+    PPVphCA       {  float32 u=V req={ m113 } }
     PhVphA        {  float32 u=V req }
-    PhVphB        {  float32 u=V req=112,113 }
-    PhVphC        {  float32 u=V req=113 }
+    PhVphB        {  float32 u=V req={ m112 m113 } }
+    PhVphC        {  float32 u=V req={ m113 } }
     W             {  float32 u=W req }
     Hz            {  float32 u=Hz req }
     VA            {  float32 u=VA }
@@ -197,45 +167,43 @@ model suns {
     TmpSnk        {  float32 u=C }
     TmpTrns       {  float32 u=C }
     TmpOt         {  float32 u=C }
-    St            {  enum16.St_Enum req }
+    St            {  enum16.InverterSt_Enum req }
     StVnd         {  enum16 }
-    Evt1          {  bitfield32.Evt_BF req }
+    Evt1          {  bitfield32.InverterEvt_BF req }
     Evt2          {  bitfield32 req }
     EvtVnd1       {  bitfield32 }
     EvtVnd2       {  bitfield32 }
     EvtVnd3       {  bitfield32 }
     EvtVnd4       {  bitfield32 }
   }
-
-  # it would be cool if we didn't have to repeat this
-  define St_Enum {
-    I_STATUS_OFF               { 1 "Off" }
-    I_STATUS_SLEEPING          { 2 "Sleeping (auto-shutdown)" }
-    I_STATUS_STARTING          { 3 "Starting up" }
-    I_STATUS_MPPT              { 4 "Tracking power point" }
-    I_STATUS_THROTTLED         { 5 "Forced power reduction" }
-    I_STATUS_SHUTTING_DOWN     { 6 "Shutting down" }
-    I_STATUS_FAULT             { 7 "One or more faults exist" }
-    I_STATUS_STANDBY           { 8 "Standby (service on unit)" }
-  }
-
-  define Evt_BF {
-    I_EVENT_GROUND_FAULT       { 0 "Ground fault" }
-    I_EVENT_DC_OVER_VOLT       { 1 "DC over voltage" }
-    I_EVENT_AC_DISCONNECT      { 2 "AC disconnect open" }
-    I_EVENT_DC_DISCONNECT      { 3 "DC disconnect open" }
-    I_EVENT_GRID_DISCONNECT    { 4 "Grid shutdown" }
-    I_EVENT_CABINET_OPEN       { 5 "Cabinet open" }
-    I_EVENT_MANUAL_SHUTDOWN    { 6 "Manual shutdown" }
-    I_EVENT_OVER_TEMP          { 7 "Over temperature" }
-    I_EVENT_OVER_FREQUENCY     { 8 "Frequency above limit" }
-    I_EVENT_UNDER_FREQUENCY    { 9  "Frequency under limit" }
-    I_EVENT_AC_OVER_VOLT       { 10 "AC Voltage above limit" }
-    I_EVENT_AC_UNDER_VOLT      { 11 "AC Voltage under limit" }
-    I_EVENT_BLOWN_STRING_FUSE  { 12 "Blown String fuse on input" }
-    I_EVENT_UNDER_TEMP         { 13 "Under temperature" }
-    I_EVENT_MEMORY_LOSS        { 14 "Generic Memory or Communication error (internal)" }
-    I_EVENT_HW_TEST_FAILURE    { 15 "Hardware test failure" }
-  }
 }
 
+define InverterSt_Enum {
+  I_STATUS_OFF               { 1 "Off" }
+  I_STATUS_SLEEPING          { 2 "Sleeping (auto-shutdown)" }
+  I_STATUS_STARTING          { 3 "Starting up" }
+  I_STATUS_MPPT              { 4 "Tracking power point" }
+  I_STATUS_THROTTLED         { 5 "Forced power reduction" }
+  I_STATUS_SHUTTING_DOWN     { 6 "Shutting down" }
+  I_STATUS_FAULT             { 7 "One or more faults exist" }
+  I_STATUS_STANDBY           { 8 "Standby (service on unit)" }
+}
+
+define InverterEvt_BF {
+  I_EVENT_GROUND_FAULT       { 0 "Ground fault" }
+  I_EVENT_DC_OVER_VOLT       { 1 "DC over voltage" }
+  I_EVENT_AC_DISCONNECT      { 2 "AC disconnect open" }
+  I_EVENT_DC_DISCONNECT      { 3 "DC disconnect open" }
+  I_EVENT_GRID_DISCONNECT    { 4 "Grid shutdown" }
+  I_EVENT_CABINET_OPEN       { 5 "Cabinet open" }
+  I_EVENT_MANUAL_SHUTDOWN    { 6 "Manual shutdown" }
+  I_EVENT_OVER_TEMP          { 7 "Over temperature" }
+  I_EVENT_OVER_FREQUENCY     { 8 "Frequency above limit" }
+  I_EVENT_UNDER_FREQUENCY    { 9  "Frequency under limit" }
+  I_EVENT_AC_OVER_VOLT       { 10 "AC Voltage above limit" }
+  I_EVENT_AC_UNDER_VOLT      { 11 "AC Voltage under limit" }
+  I_EVENT_BLOWN_STRING_FUSE  { 12 "Blown String fuse on input" }
+  I_EVENT_UNDER_TEMP         { 13 "Under temperature" }
+  I_EVENT_MEMORY_LOSS        { 14 "Generic Memory or Communication error (internal)" }
+  I_EVENT_HW_TEST_FAILURE    { 15 "Hardware test failure" }
+}

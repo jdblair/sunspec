@@ -74,8 +74,9 @@ typedef struct suns_value_output_vector {
 } suns_value_output_vector_t;
     
 typedef int (*suns_model_list_fprintf_f)(FILE *stream,
-                                          char *type,
-                                          list_t *model_list);
+                                         char *type,
+                                         list_t *model_list,
+                                         list_t *define_list);
 
 typedef struct suns_model_list_export_format {
     char *name;
@@ -119,7 +120,8 @@ void suns_dp_block_fprintf(FILE *stream, suns_dp_block_t *dp_block);
 void suns_data_fprintf(FILE *stream, suns_data_t *data);
 void suns_data_block_fprintf(FILE *stream, suns_data_block_t *block);
 int suns_model_export(FILE *stream, char *type, suns_model_t *model);
-int suns_model_export_all(FILE *stream, char *type, list_t *model_list);
+int suns_model_export_all(FILE *stream, char *type,
+                          list_t *model_list, list_t *define_list);
 int suns_dataset_text_fprintf(FILE *stream, suns_dataset_t *data);
 int suns_dataset_output(char *fmt, suns_dataset_t *data, FILE *stream);
 int suns_device_output(char *fmt, suns_device_t *device, FILE *stream);
@@ -140,13 +142,15 @@ int suns_snprintf_value_sf_text(char *str, size_t size,
 int suns_snprintf_value_sql(char *str, size_t size,
                             suns_value_t *v);
 int suns_device_text_fprintf(FILE *stream, suns_device_t *device);
+void suns_attribute_fprintf(FILE *stream, suns_attribute_t *a, int offset);
 void suns_registers_fprintf(FILE * stream,
                             unsigned char *buf, size_t len,
                             char *line_prefix);
 void suns_binary_model_fprintf(FILE *stream, list_t *did_list,
                                unsigned char *buf, size_t len);
 void suns_model_xml_fprintf(FILE *stream, suns_model_t *model);
-int suns_model_xml_export_all(FILE *stream, char *type, list_t *list);
+int suns_model_xml_export_all(FILE *stream, char *type,
+                              list_t *list, list_t *define_list);
 void suns_model_xml_dp_block_fprintf(FILE *stream, suns_dp_block_t *dp_block);
 void suns_model_xml_dp_fprintf(FILE *stream, suns_dp_t *dp);
 int suns_snprintf_int_sf_e(char *buf,

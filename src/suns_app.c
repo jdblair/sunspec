@@ -745,7 +745,8 @@ int main(int argc, char **argv)
 
     /* check if we've parsed any models */
     if ((list_count(sps->model_list) <= 0) &&
-        (list_count(sps->data_block_list) <= 0)) {
+        (list_count(sps->data_block_list) <= 0) &&
+        (list_count(sps->define_list) <= 0)) {
         error("No models or data defines were parsed.");
         error("Check your model search path or specify a model file explicitly.");
         error("use -D, -m or the SUNS_MODELPATH environment variable.");
@@ -780,7 +781,8 @@ int main(int argc, char **argv)
     
     /* are we invoked in model export mode? */
     if (app.export_fmt != NULL) {
-        suns_model_export_all(stdout, app.export_fmt, sps->model_list);
+        suns_model_export_all(stdout, app.export_fmt,
+                              sps->model_list, sps->define_list);
         exit(EXIT_SUCCESS);
     }
 

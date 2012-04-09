@@ -50,10 +50,12 @@
 #include "trx/debug.h"
 #include "suns_model.h"
 #include "suns_output.h"
+#include "suns_parser.h"
 
 /* list of model output formats */
 static suns_model_list_export_format_t suns_model_list_export_formats[] = {
-    { "xml",   suns_model_xml_export_all },
+    /*     { "slang",   suns_model_export_all }, */
+    { "xml",     suns_model_xml_export_all },
     { NULL, NULL }
 };
 
@@ -103,25 +105,45 @@ int suns_model_export(FILE *stream, char *type, suns_model_t *model)
 
 
 /* output all the models in a list_t in the given type */
-int suns_model_export_all(FILE *stream, char *type, list_t *model_list)
+int suns_model_export_all(FILE *stream, char *type,
+                          list_t *model_list, list_t *define_list)
 {
     int i;
     list_node_t *c;
+
+    debug("here");
     
     for (i = 0; suns_model_list_export_formats[i].name != NULL; i++) {
         if (strcmp(suns_model_list_export_formats[i].name, type) == 0)
             return suns_model_list_export_formats[i].fprintf(stream,
-                                                             type, model_list);
+                                                             type,
+                                                             model_list,
+                                                             define_list);
     }
 
     debug("export format %s is not defined", type);
+
     list_for_each(model_list, c) {
         if (suns_model_export(stream, type, c->data) < 0)
             return -1;
     }
 
+    list_for_each(define_list, c) {
+        suns_define_block_fprint(stream, c->data);
+    }
+
     return 0;
 }
+
+
+int suns_model_export_slang_all(FILE *stream, char *type,
+                                list_t *model_list, list_t *define_list)
+{
+    int rc = 0;
+
+    return rc;
+}
+
 
 /* output a dataset */
 int suns_dataset_output(char *fmt, suns_dataset_t *data, FILE *stream)
@@ -186,23 +208,44 @@ int suns_device_output(char *fmt, suns_device_t *device, FILE *stream)
 void suns_dp_fprint(FILE *stream, suns_dp_t *dp)
 {
     fprintf(stream, "    %-32s { ", dp->name);
-    if (dp->offset > 0)
+    if (dp->offset > -1)
         fprintf(stream, "%3d ", dp->offset);
     suns_type_pair_fprint(stream, dp->type_pair);
     
     list_node_t *c;
     if (dp->attributes) {
+        fprintf(stream, " ");
         list_for_each(dp->attributes, c) {
-            suns_attribute_t *a = c->data;
-            fprintf(stream, " %s", a->name);
-            if (a->value) {
-                fprintf(stream, "=\"%s\"", a->value);
-            }
+            suns_attribute_fprintf(stream, c->data, 0);
         }
     }
     fprintf(stream, " }\n");
 }
 
+
+void suns_attribute_fprintf(FILE *stream, suns_attribute_t *a, int offset)
+{
+
+    fprintf(stream, "%s", a->name);
+    if (a->list) {
+        list_node_t *c;
+        fprintf(stream, "={ ");
+        /* typographical offset for pretty printing */
+        int i;
+        for(i = 0; i < offset; i++) {
+            fprintf(stream, " ");
+        }
+        list_for_each(a->list, c) {
+            suns_attribute_fprintf(stream, c->data, offset + 2);
+        }
+        fprintf(stream, "} ");
+    } else {
+        if (a->value)
+            fprintf(stream, "=\"%s\" ", a->value);
+        else
+            fprintf(stream, " ");
+    }
+}
 
 /**
  * Dump the provided data as a string of 16 bit unsigned hex values.
@@ -609,14 +652,22 @@ void suns_define_block_fprint(FILE *stream, suns_define_block_t *block)
     list_for_each(block->list, c) {
         suns_define_fprint(stream, c->data);
     }
-    fprintf(stream, "  }\n");
+    fprintf(stream, " }\n");
 }
 
 
 void suns_define_fprint(FILE *stream, suns_define_t *define)
 {
-    fprintf(stream, "    %-32s { %2d \"%s\" }\n",
-            define->name, define->value, define->string);
+    fprintf(stream, "    %-32s { ", define->name);
+    if (define->attributes) {
+        list_node_t *c;
+        list_for_each(define->attributes, c) {
+            suns_attribute_fprintf(stream, c->data, 0);
+        }
+    } else {
+        fprintf(stream, "%2d \"%s\"", define->value, define->string);
+    }
+    fprintf(stream, " }\n");
 }
 
 
@@ -710,9 +761,10 @@ int suns_dataset_text_fprintf(FILE *stream, suns_dataset_t *data)
         if (((v->tp.type == SUNS_ENUM16) ||
              (v->tp.type == SUNS_ENUM32)) &&
             (v->tp.name != NULL)) {
-            suns_define_block_t *b = 
-                suns_search_define_blocks(data->did->model->defines,
+            suns_define_block_t *b;
+            b = suns_search_define_blocks(data->did->model->defines,
                                           v->tp.name);
+                
             if (b) {
                 int value;
                 if (v->tp.type == SUNS_ENUM16)
@@ -1077,7 +1129,8 @@ int suns_device_xml_fprintf(FILE *stream, suns_device_t *device)
 
 
 
-int suns_model_xml_export_all(FILE *stream, char *type, list_t *list)
+int suns_model_xml_export_all(FILE *stream, char *type,
+                              list_t *list, list_t *define_list)
 {
     list_node_t *c;
 

@@ -6,7 +6,7 @@
  *
  * bison (yacc) grammer file for the sunspec model description language.
  *
- * Copyright (c) 2011, John D. Blair <jdb@moship.net>
+ * Copyright (c) 2011-2012, John D. Blair <jdb@moship.net>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -335,6 +335,27 @@ attribute: NAME EQUAL STRING
     $$->name = strdup($1);
     $$->value = strdup($3);
 }
+         | NAME EQUAL UINT
+{
+    $$ = malloc(sizeof(suns_attribute_t));
+    $$->name = strdup($1);
+    $$->value = malloc(32);
+    snprintf($$->value, 32, "%lld", $3);
+}
+         | NAME EQUAL INT
+{
+    $$ = malloc(sizeof(suns_attribute_t));
+    $$->name = strdup($1);
+    $$->value = malloc(32);
+    snprintf($$->value, 32, "%lld", $3);
+}
+         | NAME EQUAL OBRACE attributes EBRACE /* nested attributes */
+{
+    $$ = malloc(sizeof(suns_attribute_t));
+    $$->name = strdup($1);
+    $$->list = $4;
+}
+
 
 
 /* any string representation of a suns_value_t
@@ -518,24 +539,31 @@ define_block: DEFINETOK NAME OBRACE defines EBRACE
 
 define: NAME OBRACE INT STRING EBRACE
 {
-    $$ = malloc(sizeof(suns_define_t));
+    $$ = suns_define_new();
     $$->name = $1;
     $$->value = $3;
     $$->string = $4;
 } 
       | NAME OBRACE UINT STRING EBRACE
 {
-    $$ = malloc(sizeof(suns_define_t));
+    $$ = suns_define_new();
     $$->name = $1;
     $$->value = $3;
     $$->string = $4;
 }
       | NAME OBRACE STRING EBRACE
 {
-    $$ = malloc(sizeof(suns_define_t));
+    $$ = suns_define_new();
     $$->name = $1;
     $$->value = 0;
     $$->string = $3;
+}
+      | NAME OBRACE attributes EBRACE
+{
+    $$ = suns_define_new();
+    $$->name = $1;
+    $$->value = 0;
+    $$->attributes = $3;
 }
 
 defines: /* empty */

@@ -49,6 +49,7 @@
 #include <time.h>
 
 #include "suns_model.h"
+#include "suns_parser.h"
 #include "trx/debug.h"
 #include "trx/macros.h"
 #include "trx/string.h"
@@ -111,7 +112,8 @@ suns_dp_t *suns_dp_new(void)
         return NULL;
     }
     memset(dp, 0, sizeof(suns_dp_t));
-
+    dp->offset = -1;  /* 0 is a valid offset */
+    
     return dp;
 }
 
@@ -1402,14 +1404,7 @@ void suns_model_fill_offsets(suns_model_t *m)
     list_for_each(m->dp_blocks, d) {
         suns_dp_block_t *dp_block = d->data;
         int dp_block_offset = 0;
-
-#if 0
-        if (! dp_block->repeating)
-             offset = 3;    /* skip the header, did and len fields */
-        else
-#endif
-            offset = 1;
-
+        
         list_for_each(dp_block->dp_list, c) {
             suns_dp_t *dp = c->data;
 
@@ -1456,14 +1451,8 @@ void suns_model_fill_offsets(suns_model_t *m)
 
         m->len += dp_block_offset;
     }
-    
-    /* fill in len field */
-    m->len = offset;
-#if 0    
-    if (m->len < 1) {
-        m->len = offset - 3;  /* offset starts numbering at 1 */
-    }
-#endif 
+
+    debug_i(m->len);
 }
 
 
@@ -1542,11 +1531,45 @@ suns_define_block_t *suns_search_define_blocks(list_t *list, char *name)
 
     list_for_each(list, c) {
         suns_define_block_t *block = c->data;
+        debug_s(block->name);
         if (strcmp(block->name, name) == 0)
             return block;
     }
 
+    /* if we didn't hit the define we're looking for then
+       search the global define list */
+    list_t *global = suns_get_define_list();
+    list_for_each(global, c) {
+        suns_define_block_t *block = c->data;
+        debug_s(block->name);
+        if (strcmp(block->name, name) == 0)
+            return block;
+    }    
+
     return NULL;
+}
+
+
+suns_define_t *suns_define_new(void)
+{
+    suns_define_t *d = malloc(sizeof(suns_define_t));
+    if (d == NULL)
+        return NULL;
+
+    memset(d, 0, sizeof(suns_define_t));
+    /* created in attributes symbol in yacc: */
+    /* d->attributes = list_new(); */
+
+    return d;
+}
+
+
+void suns_define_free(suns_define_t *d)
+{
+    assert(d != NULL);
+
+    list_free(d->attributes, free);
+    free(d);
 }
 
 

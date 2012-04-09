@@ -111,39 +111,7 @@ model suns {
     TotVArhImpQ4PhB   { acc32.TotVArh_SF u=VArh lname="M_Import_VARh_Q4B" }
     TotVArhImpQ4PhC   { acc32.TotVArh_SF u=VArh lname="M_Import_VARh_Q4C" }
     TotVArh_SF        { sunssf                                            }
-    Evt               { bitfield32.Evt_BF          req                    }
-  }
-
-  define Evt_BF {
-    M_EVENT_Power_failure       { 2 "Loss of power or phase" }
-    M_EVENT_Under_Voltage       { 3 "Voltage below threshold (Phase Loss)" }
-    M_EVENT_Low_PF              { 4 "Power Factor below threshold" }
-    M_EVENT_Over_Current        { 5 "Current Input over threshold" }
-    M_EVENT_Over_Voltage        { 6 "Voltage Input over threshold" }
-    M_EVENT_Missing_Sensor      { 7 "Sensor not connected" }
-    M_EVENT_Reserved1           { 8 "Reserved for future" }
-    M_EVENT_Reserved2           { 9 "Reserved for future" }
-    M_EVENT_Reserved3           { 10 "Reserved for future" }
-    M_EVENT_Reserved4           { 11 "Reserved for future" }
-    M_EVENT_Reserved5           { 12 "Reserved for future" }
-    M_EVENT_Reserved6           { 13 "Reserved for future" }
-    M_EVENT_Reserved7           { 14 "Reserved for future" }
-    M_EVENT_Reserved8           { 15 "Reserved for future" }
-    M_EVENT_OEM01               { 16 "OEM 1" }
-    M_EVENT_OEM02               { 17 "OEM 2" }
-    M_EVENT_OEM03               { 18 "OEM 3" }
-    M_EVENT_OEM04               { 19 "OEM 4" }
-    M_EVENT_OEM05               { 20 "OEM 5" }
-    M_EVENT_OEM06               { 21 "OEM 6" }
-    M_EVENT_OEM07               { 22 "OEM 7" }
-    M_EVENT_OEM08               { 23 "OEM 8" }
-    M_EVENT_OEM09               { 24 "OEM 9" }
-    M_EVENT_OEM10               { 25 "OEM 10" }
-    M_EVENT_OEM11               { 26 "OEM 11" }
-    M_EVENT_OEM12               { 27 "OEM 12" }
-    M_EVENT_OEM13               { 28 "OEM 13" }
-    M_EVENT_OEM14               { 29 "OEM 14" }
-    M_EVENT_OEM15               { 30 "OEM 15" }
+    Evt               { bitfield32.MeterEvt_BF req                        }
   }
 }
 
@@ -219,25 +187,38 @@ model suns {
     TotVArhImpQ4phA { acc32   u=VArh }
     TotVArhImpQ4phB { acc32   u=VArh }
     TotVArhImpQ4phC { acc32   u=VArh }
-    Evt             { bitfield32.Evt_BF req }
-  }
-    
-  define Evt_BF {
-    M_EVENT_Power_failure       { 0x00000004 "Loss of power or phase" }
-    M_EVENT_Under_Voltage       { 0x00000008 "Voltage below threshold (Phase Loss)" }
-    M_EVENT_Low_PF              { 0x00000010 "Power Factor below threshold" }
-    M_EVENT_Over_Current        { 0x00000020 "Current Input over threshold" }
-    M_EVENT_Over_Voltage        { 0x00000040 "Voltage Input over threshold" }
-    M_EVENT_Missing_Sensor      { 0x00000080 "Sensor not connected" }
-    M_EVENT_Reserved1           { 0x00000100 "Reserved for future" }
-    M_EVENT_Reserved2           { 0x00000100 "Reserved for future" }
-    M_EVENT_Reserved3           { 0x00000100 "Reserved for future" }
-    M_EVENT_Reserved4           { 0x00000100 "Reserved for future" }
-    M_EVENT_Reserved5           { 0x00000100 "Reserved for future" }
-    M_EVENT_Reserved6           { 0x00000100 "Reserved for future" }
-    M_EVENT_Reserved7           { 0x00000100 "Reserved for future" }
-    M_EVENT_Reserved8           { 0x00000100 "Reserved for future" }
-    M_EVENT_OEM1-15             { 0x7FFF0000 "Reserved for OEMs" }
+    Evt             { bitfield32.MeterEvt_BF req }
   }
 }
 
+define MeterEvt_BF {
+  M_EVENT_Power_failure       { 2 "Loss of power or phase" }
+  M_EVENT_Under_Voltage       { 3 "Voltage below threshold (Phase Loss)" }
+  M_EVENT_Low_PF              { 4 "Power Factor below threshold" }
+  M_EVENT_Over_Current        { 5 "Current Input over threshold" }
+  M_EVENT_Over_Voltage        { 6 "Voltage Input over threshold" }
+  M_EVENT_Missing_Sensor      { 7 "Sensor not connected" }
+  M_EVENT_Reserved1           { 8 "Reserved for future" }
+  M_EVENT_Reserved2           { 9 "Reserved for future" }
+  M_EVENT_Reserved3           { 10 "Reserved for future" }
+  M_EVENT_Reserved4           { 11 "Reserved for future" }
+  M_EVENT_Reserved5           { 12 "Reserved for future" }
+  M_EVENT_Reserved6           { 13 "Reserved for future" }
+  M_EVENT_Reserved7           { 14 "Reserved for future" }
+  M_EVENT_Reserved8           { 15 "Reserved for future" }
+  M_EVENT_OEM01               { 16 "OEM 1" }
+  M_EVENT_OEM02               { 17 "OEM 2" }
+  M_EVENT_OEM03               { 18 "OEM 3" }
+  M_EVENT_OEM04               { 19 "OEM 4" }
+  M_EVENT_OEM05               { 20 "OEM 5" }
+  M_EVENT_OEM06               { 21 "OEM 6" }
+  M_EVENT_OEM07               { 22 "OEM 7" }
+  M_EVENT_OEM08               { 23 "OEM 8" }
+  M_EVENT_OEM09               { 24 "OEM 9" }
+  M_EVENT_OEM10               { 25 "OEM 10" }
+  M_EVENT_OEM11               { 26 "OEM 11" }
+  M_EVENT_OEM12               { 27 "OEM 12" }
+  M_EVENT_OEM13               { 28 "OEM 13" }
+  M_EVENT_OEM14               { 29 "OEM 14" }
+  M_EVENT_OEM15               { 30 "OEM 15" }
+}

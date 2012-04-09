@@ -97,6 +97,13 @@ list_t *suns_get_data_block_list(void)
 }
 
 
+/* accessor for global define_block_list */
+list_t *suns_get_define_list(void)
+{
+    return _sps.define_list;
+}
+
+
 /* initialize the sunspec parser
    b/c we use the original bison interface we rely on globals
    and we're not re-entrant. */

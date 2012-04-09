@@ -51,7 +51,8 @@ SRC=suns_parser.c suns_model.c suns_app.c suns_output.c \
 OBJ=$(SRC:.c=.o)
 BINFILES=suns unit_tests
 
-UNIT_TESTS_SRC=suns_unit_tests.c suns_model.c suns_output.c
+UNIT_TESTS_SRC=suns_unit_tests.c suns_model.c suns_output.c suns_parser.c \
+	$(BISON_OUT) $(FLEX_OUT)
 UNIT_TESTS_OBJ=$(UNIT_TESTS_SRC:.c=.o)
 
 TEST_SERVER_SRC=test_server.c
@@ -90,7 +91,7 @@ include $(SRC:.c=.d)
 # when possible the implicit rule for generating *.o files is used
 
 unit_tests: $(UNIT_TESTS_OBJ)
-	$(CC) $(CFLAGS) $(UNIT_TESTS_OBJ) $(LDFLAGS) $(LIBTRX) -o unit_tests
+	$(CC) $(CFLAGS) $(UNIT_TESTS_OBJ) $(LDFLAGS) $(LIBEZXML) $(LIBTRX) -o unit_tests
 
 suns: $(OBJ) $(LIBTRX) $(LIBEZXML)
 	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LIBEZXML) $(LIBTRX) -o suns
