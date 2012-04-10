@@ -743,6 +743,8 @@ int main(int argc, char **argv)
     if (! app.override_model_searchpath)
         suns_app_model_search_path(&app, app.model_searchpath);
 
+    
+
     /* check if we've parsed any models */
     if ((list_count(sps->model_list) <= 0) &&
         (list_count(sps->data_block_list) <= 0) &&

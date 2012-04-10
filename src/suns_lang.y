@@ -96,8 +96,8 @@
     struct suns_define_block *define_block;
     struct suns_define *define;
     struct suns_dp_block *datapoints_block;
-    struct suns_attribute *attribute;
     struct suns_data_block *data_block;
+    struct suns_attribute *attribute;
 }
 
 %token <number_u> UINT
@@ -141,14 +141,15 @@ blocks: /* empty */
       | blocks data_block
 {    
     /* add the data block to the global list */
+    debug_s($2->name);
     list_node_add(sps->data_block_list, list_node_new($2));
 }
       | blocks define_block
 {
     /* add the define block to the global list */
     list_node_add(sps->define_list, list_node_new($2));
+    debug_s($2->name);
 }
-
 
 
 did: DIDTOK UINT STRING
@@ -361,12 +362,14 @@ attribute: NAME EQUAL STRING
     $$ = malloc(sizeof(suns_attribute_t));
     $$->name = malloc(32);
     snprintf($$->name, 32, "%lld", $1);
+    $$->value = NULL;
 }
          | INT
 {
     $$ = malloc(sizeof(suns_attribute_t));
     $$->name = malloc(32);
     snprintf($$->name, 32, "%lld", $1);
+    $$->value = NULL;
 }
 
 
@@ -427,11 +430,9 @@ suns_value: UINT
         suns_value_set_bitfield32($$, $3);
         break;
     case SUNS_INT64:
-        debug("HERE");
         suns_value_set_int64($$, $3);
         break;
     case SUNS_UINT64:
-        debug("HERE");
         suns_value_set_uint64($$, $3);
         break;
     case SUNS_FLOAT64:
@@ -476,11 +477,9 @@ suns_value: UINT
         suns_value_set_bitfield32($$, $3);
         break;
     case SUNS_INT64:
-        debug("HERE");
         suns_value_set_int64($$, $3);
         break;
     case SUNS_UINT64:
-        debug("HERE");
         suns_value_set_uint64($$, $3);
         break;
     case SUNS_FLOAT64:
@@ -535,10 +534,10 @@ register_list: /* empty */
 
 data_block: DATATOK NAME OBRACE register_list EBRACE
 {
-    suns_data_block_t *d = malloc(sizeof(suns_data_block_t));
+    $$ = malloc(sizeof(suns_data_block_t));
 
-    d->name = strdup($2);
-    d->data = $4;
+    $$->name = strdup($2);
+    $$->data = $4;
 }
 
 

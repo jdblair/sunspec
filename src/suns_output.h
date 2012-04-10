@@ -133,7 +133,8 @@ int suns_dataset_xml_fprintf(FILE *stream, suns_dataset_t *data);
 void suns_model_xml_strings(FILE *stream,
                             suns_model_did_t *did,
                             list_t *dp_block_list);
-int suns_device_xml_fprintf(FILE *stream, suns_device_t *device);
+int suns_device_xml_fprintf(FILE *stream,
+                            suns_device_t *device);
 
 int suns_snprintf_value(char *str, size_t size,
                         suns_value_t *v, suns_value_output_vector_t *fmt);

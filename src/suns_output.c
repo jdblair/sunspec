@@ -121,13 +121,22 @@ int suns_model_export_all(FILE *stream, char *type,
 
     debug("export format %s is not defined", type);
 
+    /* models */
     list_for_each(model_list, c) {
         if (suns_model_export(stream, type, c->data) < 0)
             return -1;
     }
 
+    /* defines */
     list_for_each(define_list, c) {
         suns_define_block_fprint(stream, c->data);
+    }
+
+    debug("outputing data_blocks");
+
+    /* data blocks */
+    list_for_each(suns_get_define_list(), c) {
+        suns_data_block_fprintf(stream, c->data);
     }
 
     return 0;

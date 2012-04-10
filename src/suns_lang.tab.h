@@ -147,8 +147,8 @@ typedef union YYSTYPE
     struct suns_define_block *define_block;
     struct suns_define *define;
     struct suns_dp_block *datapoints_block;
-    struct suns_attribute *attribute;
     struct suns_data_block *data_block;
+    struct suns_attribute *attribute;
 
 
 

@@ -239,8 +239,8 @@ typedef union YYSTYPE
     struct suns_define_block *define_block;
     struct suns_define *define;
     struct suns_dp_block *datapoints_block;
-    struct suns_attribute *attribute;
     struct suns_data_block *data_block;
+    struct suns_attribute *attribute;
 
 
 
@@ -565,12 +565,12 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,   133,   133,   135,   136,   141,   146,   154,   162,   167,
-     172,   180,   183,   187,   195,   199,   203,   209,   217,   230,
-     234,   240,   247,   255,   266,   283,   300,   313,   316,   321,
-     327,   333,   339,   346,   353,   359,   365,   376,   382,   388,
-     401,   450,   499,   510,   520,   523,   536,   545,   553,   560,
-     567,   574,   583,   586
+       0,   133,   133,   135,   136,   141,   147,   155,   163,   168,
+     173,   181,   184,   188,   196,   200,   204,   210,   218,   231,
+     235,   241,   248,   256,   267,   284,   301,   314,   317,   322,
+     328,   334,   340,   347,   354,   360,   367,   379,   385,   391,
+     404,   451,   498,   509,   519,   522,   535,   544,   552,   559,
+     566,   573,   582,   585
 };
 #endif
 
@@ -1547,6 +1547,7 @@ yyreduce:
 #line 142 "suns_lang.y"
     {    
     /* add the data block to the global list */
+    debug_s((yyvsp[(2) - (2)].data_block)->name);
     list_node_add(sps->data_block_list, list_node_new((yyvsp[(2) - (2)].data_block)));
 }
     break;
@@ -1554,17 +1555,18 @@ yyreduce:
   case 6:
 
 /* Line 1455 of yacc.c  */
-#line 147 "suns_lang.y"
+#line 148 "suns_lang.y"
     {
     /* add the define block to the global list */
     list_node_add(sps->define_list, list_node_new((yyvsp[(2) - (2)].define_block)));
+    debug_s((yyvsp[(2) - (2)].define_block)->name);
 }
     break;
 
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 155 "suns_lang.y"
+#line 156 "suns_lang.y"
     {
     (yyval.did) = malloc(sizeof(suns_model_did_t));
     (yyval.did)->did = (yyvsp[(2) - (3)].number_u);
@@ -1575,7 +1577,7 @@ yyreduce:
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 163 "suns_lang.y"
+#line 164 "suns_lang.y"
     {
     (yyval.number_u) = (yyvsp[(2) - (2)].number_u);
 }
@@ -1584,7 +1586,7 @@ yyreduce:
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 168 "suns_lang.y"
+#line 169 "suns_lang.y"
     {
     (yyval.string) = (yyvsp[(2) - (2)].string);
 }
@@ -1593,7 +1595,7 @@ yyreduce:
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 173 "suns_lang.y"
+#line 174 "suns_lang.y"
     {
     /* model_blocks are the same struct as model_elmts */
     (yyval.model) = (yyvsp[(4) - (5)].model);
@@ -1604,7 +1606,7 @@ yyreduce:
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 180 "suns_lang.y"
+#line 181 "suns_lang.y"
     {
     (yyval.model) = suns_model_new();
 }
@@ -1613,7 +1615,7 @@ yyreduce:
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 184 "suns_lang.y"
+#line 185 "suns_lang.y"
     {
     list_node_add((yyval.model)->dp_blocks, list_node_new((yyvsp[(2) - (2)].datapoints_block)));
 }
@@ -1622,7 +1624,7 @@ yyreduce:
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 188 "suns_lang.y"
+#line 189 "suns_lang.y"
     {
     (yyvsp[(2) - (2)].did)->model = (yyval.model);
     /* add the did to the global did_list */
@@ -1635,7 +1637,7 @@ yyreduce:
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 196 "suns_lang.y"
+#line 197 "suns_lang.y"
     {
     (yyval.model)->len = (yyvsp[(2) - (2)].number_u);
 }
@@ -1644,7 +1646,7 @@ yyreduce:
   case 15:
 
 /* Line 1455 of yacc.c  */
-#line 200 "suns_lang.y"
+#line 201 "suns_lang.y"
     {
     (yyval.model)->name = (yyvsp[(2) - (2)].string);
 }
@@ -1653,7 +1655,7 @@ yyreduce:
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 204 "suns_lang.y"
+#line 205 "suns_lang.y"
     {
     list_node_add((yyval.model)->defines, list_node_new((yyvsp[(2) - (2)].define_block)));
 }
@@ -1662,7 +1664,7 @@ yyreduce:
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 210 "suns_lang.y"
+#line 211 "suns_lang.y"
     {
     /* FIXME: write suns_dp_block_new() */
     (yyval.datapoints_block) = malloc(sizeof(suns_dp_block_t));
@@ -1675,7 +1677,7 @@ yyreduce:
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 218 "suns_lang.y"
+#line 219 "suns_lang.y"
     {
     (yyval.datapoints_block) = malloc(sizeof(suns_dp_block_t));
     /* FIXME: abstract this operation so we're not doing
@@ -1691,7 +1693,7 @@ yyreduce:
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 230 "suns_lang.y"
+#line 231 "suns_lang.y"
     {
     /* create a new empty list */
     (yyval.list) = list_new();
@@ -1701,7 +1703,7 @@ yyreduce:
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 235 "suns_lang.y"
+#line 236 "suns_lang.y"
     {
     /* add the data point to the list */
     list_node_add((yyval.list), list_node_new((yyvsp[(2) - (2)].dp)));
@@ -1711,7 +1713,7 @@ yyreduce:
   case 21:
 
 /* Line 1455 of yacc.c  */
-#line 241 "suns_lang.y"
+#line 242 "suns_lang.y"
     {
     (yyval.dp)->name = strdup((yyvsp[(1) - (6)].string));
     (yyval.dp)->offset = (yyvsp[(3) - (6)].number_u);
@@ -1723,7 +1725,7 @@ yyreduce:
   case 22:
 
 /* Line 1455 of yacc.c  */
-#line 248 "suns_lang.y"
+#line 249 "suns_lang.y"
     {
     (yyval.dp)->name = strdup((yyvsp[(1) - (5)].string));
     (yyval.dp)->offset = 0;
@@ -1735,7 +1737,7 @@ yyreduce:
   case 23:
 
 /* Line 1455 of yacc.c  */
-#line 256 "suns_lang.y"
+#line 257 "suns_lang.y"
     {
     /* type with name subscript */
     (yyval.type_pair) = malloc(sizeof(suns_type_pair_t)); 
@@ -1751,7 +1753,7 @@ yyreduce:
   case 24:
 
 /* Line 1455 of yacc.c  */
-#line 267 "suns_lang.y"
+#line 268 "suns_lang.y"
     {
     /* type with int subscript - could be string or numeric type */
     (yyval.type_pair) = malloc(sizeof(suns_type_pair_t)); 
@@ -1773,7 +1775,7 @@ yyreduce:
   case 25:
 
 /* Line 1455 of yacc.c  */
-#line 284 "suns_lang.y"
+#line 285 "suns_lang.y"
     {
     /* type with uint subscript - could be string or numeric type */
     (yyval.type_pair) = malloc(sizeof(suns_type_pair_t)); 
@@ -1795,7 +1797,7 @@ yyreduce:
   case 26:
 
 /* Line 1455 of yacc.c  */
-#line 301 "suns_lang.y"
+#line 302 "suns_lang.y"
     {
     /* simple type with no subscript */
     (yyval.type_pair) = malloc(sizeof(suns_type_pair_t));
@@ -1811,7 +1813,7 @@ yyreduce:
   case 27:
 
 /* Line 1455 of yacc.c  */
-#line 313 "suns_lang.y"
+#line 314 "suns_lang.y"
     {
     (yyval.list) = list_new();
 }
@@ -1820,7 +1822,7 @@ yyreduce:
   case 28:
 
 /* Line 1455 of yacc.c  */
-#line 317 "suns_lang.y"
+#line 318 "suns_lang.y"
     {
     list_node_add((yyval.list), list_node_new((yyvsp[(2) - (2)].attribute)));
 }
@@ -1829,7 +1831,7 @@ yyreduce:
   case 29:
 
 /* Line 1455 of yacc.c  */
-#line 322 "suns_lang.y"
+#line 323 "suns_lang.y"
     {
     (yyval.attribute) = malloc(sizeof(suns_attribute_t));
     (yyval.attribute)->name = strdup((yyvsp[(1) - (3)].string));
@@ -1840,7 +1842,7 @@ yyreduce:
   case 30:
 
 /* Line 1455 of yacc.c  */
-#line 328 "suns_lang.y"
+#line 329 "suns_lang.y"
     {
     (yyval.attribute) = malloc(sizeof(suns_attribute_t));
     (yyval.attribute)->name = strdup((yyvsp[(1) - (1)].string));
@@ -1851,7 +1853,7 @@ yyreduce:
   case 31:
 
 /* Line 1455 of yacc.c  */
-#line 334 "suns_lang.y"
+#line 335 "suns_lang.y"
     {
     (yyval.attribute) = malloc(sizeof(suns_attribute_t));
     (yyval.attribute)->name = strdup((yyvsp[(1) - (3)].string));
@@ -1862,7 +1864,7 @@ yyreduce:
   case 32:
 
 /* Line 1455 of yacc.c  */
-#line 340 "suns_lang.y"
+#line 341 "suns_lang.y"
     {
     (yyval.attribute) = malloc(sizeof(suns_attribute_t));
     (yyval.attribute)->name = strdup((yyvsp[(1) - (3)].string));
@@ -1874,7 +1876,7 @@ yyreduce:
   case 33:
 
 /* Line 1455 of yacc.c  */
-#line 347 "suns_lang.y"
+#line 348 "suns_lang.y"
     {
     (yyval.attribute) = malloc(sizeof(suns_attribute_t));
     (yyval.attribute)->name = strdup((yyvsp[(1) - (3)].string));
@@ -1886,7 +1888,7 @@ yyreduce:
   case 34:
 
 /* Line 1455 of yacc.c  */
-#line 354 "suns_lang.y"
+#line 355 "suns_lang.y"
     {
     (yyval.attribute) = malloc(sizeof(suns_attribute_t));
     (yyval.attribute)->name = strdup((yyvsp[(1) - (5)].string));
@@ -1897,29 +1899,31 @@ yyreduce:
   case 35:
 
 /* Line 1455 of yacc.c  */
-#line 360 "suns_lang.y"
+#line 361 "suns_lang.y"
     {
     (yyval.attribute) = malloc(sizeof(suns_attribute_t));
     (yyval.attribute)->name = malloc(32);
     snprintf((yyval.attribute)->name, 32, "%lld", (yyvsp[(1) - (1)].number_u));
+    (yyval.attribute)->value = NULL;
 }
     break;
 
   case 36:
 
 /* Line 1455 of yacc.c  */
-#line 366 "suns_lang.y"
+#line 368 "suns_lang.y"
     {
     (yyval.attribute) = malloc(sizeof(suns_attribute_t));
     (yyval.attribute)->name = malloc(32);
     snprintf((yyval.attribute)->name, 32, "%lld", (yyvsp[(1) - (1)].number_i));
+    (yyval.attribute)->value = NULL;
 }
     break;
 
   case 37:
 
 /* Line 1455 of yacc.c  */
-#line 377 "suns_lang.y"
+#line 380 "suns_lang.y"
     {
     /* debug("UINT %llu", $1); */
     (yyval.value) = suns_value_new();
@@ -1930,7 +1934,7 @@ yyreduce:
   case 38:
 
 /* Line 1455 of yacc.c  */
-#line 383 "suns_lang.y"
+#line 386 "suns_lang.y"
     {
     /* debug("INT %lld", $1); */
     (yyval.value) = suns_value_new();
@@ -1941,7 +1945,7 @@ yyreduce:
   case 39:
 
 /* Line 1455 of yacc.c  */
-#line 389 "suns_lang.y"
+#line 392 "suns_lang.y"
     {
     /* debug("FLOAT %f", $1); */
     (yyval.value) = suns_value_new();
@@ -1952,7 +1956,7 @@ yyreduce:
   case 40:
 
 /* Line 1455 of yacc.c  */
-#line 402 "suns_lang.y"
+#line 405 "suns_lang.y"
     {
     (yyval.value) = suns_value_new();
     switch ((yyvsp[(1) - (3)].type_pair)->type) {
@@ -1981,11 +1985,9 @@ yyreduce:
         suns_value_set_bitfield32((yyval.value), (yyvsp[(3) - (3)].number_i));
         break;
     case SUNS_INT64:
-        debug("HERE");
         suns_value_set_int64((yyval.value), (yyvsp[(3) - (3)].number_i));
         break;
     case SUNS_UINT64:
-        debug("HERE");
         suns_value_set_uint64((yyval.value), (yyvsp[(3) - (3)].number_i));
         break;
     case SUNS_FLOAT64:
@@ -2006,7 +2008,7 @@ yyreduce:
   case 41:
 
 /* Line 1455 of yacc.c  */
-#line 451 "suns_lang.y"
+#line 452 "suns_lang.y"
     {
     (yyval.value) = suns_value_new();
     switch ((yyvsp[(1) - (3)].type_pair)->type) {
@@ -2035,11 +2037,9 @@ yyreduce:
         suns_value_set_bitfield32((yyval.value), (yyvsp[(3) - (3)].number_u));
         break;
     case SUNS_INT64:
-        debug("HERE");
         suns_value_set_int64((yyval.value), (yyvsp[(3) - (3)].number_u));
         break;
     case SUNS_UINT64:
-        debug("HERE");
         suns_value_set_uint64((yyval.value), (yyvsp[(3) - (3)].number_u));
         break;
     case SUNS_FLOAT64:
@@ -2060,7 +2060,7 @@ yyreduce:
   case 42:
 
 /* Line 1455 of yacc.c  */
-#line 500 "suns_lang.y"
+#line 499 "suns_lang.y"
     {
     (yyval.value) = suns_value_new();
     switch ((yyvsp[(1) - (3)].type_pair)->type) {
@@ -2076,7 +2076,7 @@ yyreduce:
   case 43:
 
 /* Line 1455 of yacc.c  */
-#line 511 "suns_lang.y"
+#line 510 "suns_lang.y"
     {
     (yyval.value) = suns_value_new();
     if ((yyvsp[(1) - (3)].type_pair)->type != SUNS_STRING)
@@ -2088,7 +2088,7 @@ yyreduce:
   case 44:
 
 /* Line 1455 of yacc.c  */
-#line 520 "suns_lang.y"
+#line 519 "suns_lang.y"
     {
     (yyval.buffer) = buffer_new(BUFFER_SIZE);
 }
@@ -2097,7 +2097,7 @@ yyreduce:
   case 45:
 
 /* Line 1455 of yacc.c  */
-#line 524 "suns_lang.y"
+#line 523 "suns_lang.y"
     {
     /* debug("suns_value type = %s(%d)",
        suns_type_string($2->tp.type), $2->tp.type); */
@@ -2113,19 +2113,19 @@ yyreduce:
   case 46:
 
 /* Line 1455 of yacc.c  */
-#line 537 "suns_lang.y"
+#line 536 "suns_lang.y"
     {
-    suns_data_block_t *d = malloc(sizeof(suns_data_block_t));
+    (yyval.data_block) = malloc(sizeof(suns_data_block_t));
 
-    d->name = strdup((yyvsp[(2) - (5)].string));
-    d->data = (yyvsp[(4) - (5)].buffer);
+    (yyval.data_block)->name = strdup((yyvsp[(2) - (5)].string));
+    (yyval.data_block)->data = (yyvsp[(4) - (5)].buffer);
 }
     break;
 
   case 47:
 
 /* Line 1455 of yacc.c  */
-#line 546 "suns_lang.y"
+#line 545 "suns_lang.y"
     {
     (yyval.define_block) = malloc(sizeof(suns_define_block_t));
     (yyval.define_block)->name = (yyvsp[(2) - (5)].string);
@@ -2136,7 +2136,7 @@ yyreduce:
   case 48:
 
 /* Line 1455 of yacc.c  */
-#line 554 "suns_lang.y"
+#line 553 "suns_lang.y"
     {
     (yyval.define) = suns_define_new();
     (yyval.define)->name = (yyvsp[(1) - (5)].string);
@@ -2148,7 +2148,7 @@ yyreduce:
   case 49:
 
 /* Line 1455 of yacc.c  */
-#line 561 "suns_lang.y"
+#line 560 "suns_lang.y"
     {
     (yyval.define) = suns_define_new();
     (yyval.define)->name = (yyvsp[(1) - (5)].string);
@@ -2160,7 +2160,7 @@ yyreduce:
   case 50:
 
 /* Line 1455 of yacc.c  */
-#line 568 "suns_lang.y"
+#line 567 "suns_lang.y"
     {
     (yyval.define) = suns_define_new();
     (yyval.define)->name = (yyvsp[(1) - (4)].string);
@@ -2172,7 +2172,7 @@ yyreduce:
   case 51:
 
 /* Line 1455 of yacc.c  */
-#line 575 "suns_lang.y"
+#line 574 "suns_lang.y"
     {
     (yyval.define) = suns_define_new();
     (yyval.define)->name = (yyvsp[(1) - (4)].string);
@@ -2184,7 +2184,7 @@ yyreduce:
   case 52:
 
 /* Line 1455 of yacc.c  */
-#line 583 "suns_lang.y"
+#line 582 "suns_lang.y"
     {
     (yyval.list) = list_new();
 }
@@ -2193,7 +2193,7 @@ yyreduce:
   case 53:
 
 /* Line 1455 of yacc.c  */
-#line 587 "suns_lang.y"
+#line 586 "suns_lang.y"
     {
     list_node_add((yyval.list), list_node_new((yyvsp[(2) - (2)].define)));
 }
@@ -2414,6 +2414,6 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 594 "suns_lang.y"
+#line 593 "suns_lang.y"
 
 
