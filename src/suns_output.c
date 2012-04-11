@@ -1067,7 +1067,7 @@ int suns_dataset_xml_fprintf(FILE *stream, suns_dataset_t *data)
             debug("no scale factor for %s", v->name);
         
         if (v->repeating)
-            fprintf(stream, " x=\"%d\"", v->index + 1);
+            fprintf(stream, " x=\"%d\"", v->index);
         fprintf(stream, ">%s</p>\n", value);
     }
     fprintf(stream, "   </m>\n");
