@@ -82,7 +82,7 @@ list_node_t *list_node_new(void *data);
 void list_free(list_t *list, list_free_data_f free_data);
 void list_free_nodes(list_t *list, list_free_data_f free_data);
 void list_node_free(list_t *list, list_node_t *node);
-int list_node_del(list_t *list, list_node_t *goner);
+list_node_t * list_node_del(list_t *list, list_node_t *goner);
 int list_node_insert_after(list_t *list, list_node_t *where, list_node_t *new);
 int list_node_insert_before(list_t *list, list_node_t *where, list_node_t *new);
 void list_reverse(list_t *list);
@@ -97,6 +97,7 @@ list_node_t * list_reverse_iter(list_t *list,
 list_node_t ** list_map_to_array(list_t *list);
 int list_map_from_array(list_t *list, list_node_t **array);
 int list_quicksort(list_t *list, list_node_compare_f compare);
+int list_insertion_sort(list_t *list, list_node_compare_f compare);
 
 #ifdef LIST_SHUFFLE
 void list_shuffle(list_t *list, int (*myrand)(void));
@@ -104,5 +105,8 @@ void list_shuffle(list_t *list, int (*myrand)(void));
 
 list_node_t *list_get_node_number(list_t *list, unsigned int n);
 list_t *list_split_new(list_t *list);
+
+void list_node_insert_sorted(list_t *list, list_node_t *new,
+                             list_node_compare_f compare);
 
 #endif /* _LIST_H_ */

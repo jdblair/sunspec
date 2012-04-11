@@ -1,68 +1,66 @@
-<sunSpecData v="1">
- <d t="2012-04-11T06:11:09Z">
-   <m id="1" x="1">
-    <p id="Mn">Veris Industries</p>
-    <p id="Md">E51C2</p>
-    <p id="Opt">None</p>
-    <p id="Vr">2.044</p>
-    <p id="SN">4E33EAA6</p>
-    <p id="DA">1</p>
-   </m>
-   <m id="202" x="2">
-    <p id="A" sf="-1">319</p>
-    <p id="AphA" sf="-1">216</p>
-    <p id="AphB" sf="-1">102</p>
-    <p id="PhV" sf="-1">1228</p>
-    <p id="PhVphA" sf="-1">1236</p>
-    <p id="PhVphB" sf="-1">1220</p>
-    <p id="PPV" sf="-1">2456</p>
-    <p id="PhVphAB" sf="-1">2456</p>
-    <p id="Hz" sf="-2">6002</p>
-    <p id="W" sf="1">-375</p>
-    <p id="WphA" sf="1">-265</p>
-    <p id="WphB" sf="1">-110</p>
-    <p id="VA" sf="1">377</p>
-    <p id="VAphA" sf="1">266</p>
-    <p id="VAphB" sf="1">112</p>
-    <p id="VAR" sf="1">11</p>
-    <p id="VARphA" sf="1">-4</p>
-    <p id="VARphB" sf="1">16</p>
-    <p id="PF" sf="-4">-9994</p>
-    <p id="PFphA" sf="-4">-9998</p>
-    <p id="PFphB" sf="-4">-9898</p>
-    <p id="TotWhExp" sf="2">29582</p>
-    <p id="TotWhExpPhA" sf="2">3200</p>
-    <p id="TotWhExpPhB" sf="2">26382</p>
-    <p id="TotWhExpPhC" sf="2">0</p>
-    <p id="TotWhImp" sf="2">0</p>
-    <p id="TotWhImpPhA" sf="2">0</p>
-    <p id="TotWhImpPhAB" sf="2">0</p>
-    <p id="TotWhImpPhAC" sf="2">0</p>
-    <p id="TotVAhExp" sf="2">30355</p>
-    <p id="TotVAhExpPhA" sf="2">3745</p>
-    <p id="TotVAhExpPhB" sf="2">26949</p>
-    <p id="TotVAhExpPhC" sf="2">0</p>
-    <p id="TotVAhImp" sf="2">0</p>
-    <p id="TotVAhImpPhA" sf="2">0</p>
-    <p id="TotVAhImpPhB" sf="2">0</p>
-    <p id="TotVAhImpPhC" sf="2">0</p>
-    <p id="TotVArhImpQ1" sf="2">0</p>
-    <p id="TotVArhImpQ1PhA" sf="2">0</p>
-    <p id="TotVArhImpQ1PhB" sf="2">0</p>
-    <p id="TotVArhImpQ1PhC" sf="2">0</p>
-    <p id="TotVArhImpQ2" sf="2">2901</p>
-    <p id="TotVArhImpQ2PhA" sf="2">607</p>
-    <p id="TotVArhImpQ2PhB" sf="2">2294</p>
-    <p id="TotVArhImpQ2PhC" sf="2">0</p>
-    <p id="TotVArhImpQ3" sf="2">3379</p>
-    <p id="TotVArhImpQ3PhA" sf="2">771</p>
-    <p id="TotVArhImpQ3PhB" sf="2">2608</p>
-    <p id="TotVArhImpQ3PhC" sf="2">0</p>
-    <p id="TotVArhImpQ4" sf="2">0</p>
-    <p id="TotVArhImpQ4PhA" sf="2">0</p>
-    <p id="TotVArhImpQ4PhB" sf="2">0</p>
-    <p id="TotVArhImpQ4PhC" sf="2">0</p>
-    <p id="Evt">0</p>
-   </m>
- </d>
-</sunSpecData>
+Timestamp: 2012-04-11T08:31:24-0700
+
+data model: common(1)
+     Manufacturer                  Amalgamated Industries
+     Model                         Composite SuperDevice
+     Options                                Mark 2 <&'>
+     Version                                   3.14.159
+     Serial Number                           9876543210
+     Device Address                                  99
+
+data model: common(1)
+     Manufacturer                      Veris Industries
+     Model                                        E51C2
+     Options                                       None
+     Version                                      2.029
+     Serial Number                             4C248CD1
+     Device Address                                  11
+
+data model: delta-connect three phase (abc) meter(204)
+     AC Current                                   826.1 A
+     AC Current A                                 276.2 A
+     AC Current B                                 274.9 A
+     AC Current C                                 275.0 A
+     AC Voltage LL                                487.9 V
+     AC Voltage AB                                488.1 V
+     AC Voltage BC                                488.6 V
+     AC Voltage CA                                487.0 V
+     AC Frequency                                 60.05 Hz
+     AC Power                                    232400 W
+     AC Apparent Power                           232600 VA
+     AC Reactive Power                            10200 var
+     Power Factor                                0.9990 PFPct
+     Energy Exported                       163208777400 Wh
+     Phase A Energy Exported                        700 Wh
+     Phase B Energy Exported                      13800 Wh
+     Phase C Energy Exported                       5500 Wh
+     Energy Imported                           33317300 Wh
+     Phase A Energy Imported                   10389200 Wh
+     Phase B Energy Imported                   11243000 Wh
+     Phase C Energy Imported                   11685000 Wh
+     Apparent Energy Exported                     28000 VAh
+     Phase A Apparent Energy Exported                 900 VAh
+     Phase B Apparent Energy Exported               15300 VAh
+     Phase C Apparent Energy Exported               15100 VAh
+     Apparent Energy Imported              356515638200 VAh
+     Phase A Apparent Energy Imported            10420200 VAh
+     Phase B Apparent Energy Imported            11247100 VAh
+     Phase C Apparent Energy Imported            11727500 VAh
+     Q1: Reactive Energy Imported          420908582200 varh
+     Q1 Phase A: Reactive Energy Imported              796100 varh
+     Q1 Phase B: Reactive Energy Imported                5300 varh
+     Q1 Phase C: Reactive Energy Imported              985600 varh
+     Q2: Reactive Energy Imported                   700 varh
+     Q2 Phase A: Reactive Energy Imported                 000 varh
+     Q2 Phase B: Reactive Energy Imported                 600 varh
+     Q2 Phase C: Reactive Energy Imported                 000 varh
+     Q3: Reactive Energy Exported                 19800 varh
+     Q3 Phase A: Reactive Energy Exported                 300 varh
+     Q3 Phase B: Reactive Energy Exported                5700 varh
+     Q3 Phase C: Reactive Energy Exported               13700 varh
+     Q4: Reactive Energy Exported                262200 varh
+     Q4 Phase A: Reactive Energy Imported                1000 varh
+     Q4 Phase B: Reactive Energy Imported              259000 varh
+     Q4 Phase C: Reactive Energy Imported                2100 varh
+     Meter Event Flags                       0x000000ff
+

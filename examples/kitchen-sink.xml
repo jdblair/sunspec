@@ -1,0 +1,143 @@
+<sunSpecData v="1">
+ <d t="2012-04-11T15:16:24Z">
+   <m id="1" x="1">
+    <p id="Mn">Amalgamated Industries</p>
+    <p id="Md">Composite SuperDevice</p>
+    <p id="Opt">Mark 2 &lt;&amp;&apos;&gt;</p>
+    <p id="Vr">3.14.159</p>
+    <p id="SN">9876543210</p>
+    <p id="DA">99</p>
+   </m>
+   <m id="101" x="2">
+    <p id="A" sf="-1">900</p>
+    <p id="AphA" sf="-1">900</p>
+    <p id="PhVphA" sf="-1">1200</p>
+    <p id="W" sf="-1">23402</p>
+    <p id="Hz" sf="-2">6002</p>
+    <p id="WH">32831049</p>
+    <p id="DCA" sf="-1">728</p>
+    <p id="DCV">302</p>
+    <p id="DCW">21985</p>
+    <p id="TmpCab">31</p>
+    <p id="St">4</p>
+    <p id="StVnd">0</p>
+    <p id="Evt1">65535</p>
+    <p id="Evt2">65535</p>
+    <p id="EvtVnd1">0</p>
+    <p id="EvtVnd2">0</p>
+    <p id="EvtVnd3">0</p>
+    <p id="EvtVnd4">0</p>
+   </m>
+   <m id="103" x="3">
+    <p id="A" sf="-1">900</p>
+    <p id="AphA" sf="-1">300</p>
+    <p id="AphB" sf="-1">290</p>
+    <p id="AphC" sf="-1">302</p>
+    <p id="PPVphAB" sf="-1">2080</p>
+    <p id="PPVphBC" sf="-1">2080</p>
+    <p id="PPVphCA" sf="-1">2080</p>
+    <p id="PhVphA" sf="-1">1200</p>
+    <p id="PhVphB" sf="-1">1200</p>
+    <p id="PhVphC" sf="-1">1200</p>
+    <p id="W" sf="-1">23402</p>
+    <p id="Hz" sf="-2">6002</p>
+    <p id="WH">32831049</p>
+    <p id="DCA" sf="-1">728</p>
+    <p id="DCV">302</p>
+    <p id="DCW">23248</p>
+    <p id="TmpCab">31</p>
+    <p id="St">4</p>
+    <p id="StVnd">0</p>
+    <p id="Evt1">0</p>
+    <p id="Evt2">0</p>
+    <p id="EvtVnd1">0</p>
+    <p id="EvtVnd2">0</p>
+    <p id="EvtVnd3">0</p>
+    <p id="EvtVnd4">0</p>
+   </m>
+   <m id="113" x="4">
+    <p id="A">90.000000</p>
+    <p id="AphA">30.000000</p>
+    <p id="AphB">29.000000</p>
+    <p id="AphC">30.200001</p>
+    <p id="PPVphAB">208.000000</p>
+    <p id="PPVphBC">208.000000</p>
+    <p id="PPVphCA">208.000000</p>
+    <p id="PhVphA">120.000000</p>
+    <p id="PhVphB">120.000000</p>
+    <p id="PhVphC">120.000000</p>
+    <p id="W">2340.199951</p>
+    <p id="Hz">60.020000</p>
+    <p id="VA">0.000000</p>
+    <p id="VAr">0.000000</p>
+    <p id="PF">0.000000</p>
+    <p id="WH">32831048.000000</p>
+    <p id="DCA">72.800003</p>
+    <p id="DCV">302.000000</p>
+    <p id="DCW">21985.000000</p>
+    <p id="TmpCab">31.000000</p>
+    <p id="TmpSnk">0.000000</p>
+    <p id="TmpTrns">0.000000</p>
+    <p id="TmpOt">0.000000</p>
+    <p id="St">4</p>
+    <p id="StVnd">0</p>
+    <p id="Evt1">0</p>
+    <p id="Evt2">0</p>
+    <p id="EvtVnd1">0</p>
+    <p id="EvtVnd2">0</p>
+    <p id="EvtVnd3">0</p>
+    <p id="EvtVnd4">0</p>
+   </m>
+   <m id="301" x="5">
+    <p id="E_BaseMet_AirTemperature">18</p>
+    <p id="E_BaseMet_RelativeHumidity">222</p>
+    <p id="E_BaseMet_BarometricPressure">17</p>
+    <p id="E_BaseMet_WindSpeed">234</p>
+    <p id="E_BaseMet_WindDirection">10</p>
+    <p id="E_BaseMet_Rain">0</p>
+   </m>
+   <m id="307" x="6">
+    <p id="TmpAmb" sf="-1">18</p>
+    <p id="RH">222</p>
+    <p id="Pres">17</p>
+    <p id="WndSpd">234</p>
+    <p id="WndDir">10</p>
+    <p id="Rain">0</p>
+    <p id="Snw">0</p>
+    <p id="PPT">0</p>
+    <p id="ElecFld">0</p>
+    <p id="SurWet">0</p>
+    <p id="SoilWet">0</p>
+   </m>
+   <m id="303" x="7">
+    <p id="TmpBOM" sf="-1" x="2">20</p>
+    <p id="TmpBOM" sf="-1" x="3">18</p>
+    <p id="TmpBOM" sf="-1" x="4">19</p>
+    <p id="TmpBOM" sf="-1" x="5">21</p>
+   </m>
+   <m id="304" x="8">
+    <p id="InclX" sf="-2" x="2">920</p>
+    <p id="InclX" sf="-2" x="3">930</p>
+   </m>
+   <m id="401" x="9">
+    <p id="DCA_Max" sf="-2">5423</p>
+    <p id="N">2</p>
+    <p id="Evt">0</p>
+    <p id="EvtVnd">0</p>
+    <p id="DCA" sf="-2">5295</p>
+    <p id="DCAH">29832</p>
+    <p id="DCV" sf="-2">31423</p>
+    <p id="DCTmp">22</p>
+    <p id="InID" x="2">0</p>
+    <p id="InEvt" x="2">1</p>
+    <p id="InEvtVnd" x="2">4</p>
+    <p id="InDCA" sf="-2" x="2">2623</p>
+    <p id="InDCAH" x="2">20948</p>
+    <p id="InID" x="3">1</p>
+    <p id="InEvt" x="3">2</p>
+    <p id="InEvtVnd" x="3">11</p>
+    <p id="InDCA" sf="-2" x="3">3723</p>
+    <p id="InDCAH" x="3">34948</p>
+   </m>
+ </d>
+</sunSpecData>

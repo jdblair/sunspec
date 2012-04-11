@@ -36,7 +36,7 @@
 SRC=buffer.c debug.c list.c string.c date.c
 OBJ=$(SRC:.c=.o)
 #CFLAGS=-fPIC -g -c -Wall -DDEBUG
-CFLAGS=-g -Wall -DDEBUG
+CFLAGS=-g -Wall -DDEBUG -DLIST_SHUFFLE
 
 all: libtrx.a
 
@@ -52,8 +52,11 @@ libtrx.so: $(OBJ)
 unit_tests: libtrx.a unit_tests.o
 	$(CC) $(CFLAGS) unit_tests.o libtrx.a -lm -o unit_tests
 
+list_unit_tests: libtrx.a list_unit_tests.o
+	$(CC) $(CFLAGS) list_unit_tests.o libtrx.a -lm -o list_unit_tests
+
 clean:
-	rm -f *.d *.o libtrx.a
+	rm -f *.d *.o libtrx.a unit_tests list_unit_tests
 
 distclean:
 	rm -f *~ *.o *.d

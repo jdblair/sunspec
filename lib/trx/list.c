@@ -110,18 +110,15 @@ void list_free(list_t *list, list_free_data_f free_data) {
 
 
 /* free all list nodes, but leave the list structure intact (but empty)
-   use free_data() to free each node's data  */
+   use free_data() to free each node's data unless free_data is NULL */
 void list_free_nodes(list_t *list, list_free_data_f free_data)
 {
     list_node_t *current = list->head;
 
-    if (! free_data) {
-        free_data = free;
-    }
-    
     while (current) {
         list_node_t *next = current->next;
-        free_data(current->data);
+        if (free_data)
+            free_data(current->data);
         free(current);
         current = next;
     }
@@ -134,8 +131,9 @@ void list_free_nodes(list_t *list, list_free_data_f free_data)
 
 
 /* remove the specified node from the list
-   returns the number of nodes in the list */
-int list_node_del(list_t *list, list_node_t *goner)
+   returns the list_node_t that was removed from the list
+   this will still need to be freed */
+list_node_t * list_node_del(list_t *list, list_node_t *goner)
 {
     assert(list != NULL);
     assert(goner != NULL);
@@ -150,10 +148,12 @@ int list_node_del(list_t *list, list_node_t *goner)
     } else {
           goner->next->prev = goner->prev;
     }
-    list_node_free(list, goner);
     list->count--;
 
-    return list->count;
+    goner->next = NULL;
+    goner->prev = NULL;
+
+    return goner;
 }
 
 /* insert a node after the specified node
@@ -199,7 +199,6 @@ int list_node_insert_before(list_t *list, list_node_t *where, list_node_t *new)
 {
     assert(list != NULL);
     assert(new != NULL);
-
     list_node_t *prev;
 
     if (list->head == where) {
@@ -471,6 +470,69 @@ list_t *list_split_new(list_t *list)
 
     return new;
 }
+
+
+/* insert a new node into the list into the appropriate location,
+   based on the compare() function */
+void list_node_insert_sorted(list_t *list, list_node_t *new,
+                             list_node_compare_f compare)
+{
+    list_node_t *c;
+
+    /* if the list is empty simply add the new node */
+    if (list->head == NULL) {
+        list_node_add(list, new);
+        return;
+    }
+
+    c = list_head(list);
+    
+    while (c->next) {
+        debug_i(compare(c, new));
+        if (compare(c, new) > 0) {
+            list_node_insert_before(list, c, new);
+            return;
+        }
+        c = c->next;
+    }
+    
+    /* if we're here we're comparing the last item in the list */
+    if (compare(c, new) > 0) {
+        list_node_insert_before(list, c, new);
+    } else {
+        /* add to the end of the list */
+        list_node_insert_after(list, c, new);
+    }
+}
+
+
+int list_insertion_sort(list_t *list, list_node_compare_f compare)
+{
+    list_t tmplist;
+    list_node_t *c;
+
+    /* bail now for empty list */
+    if (list->head == NULL)
+        return 0;
+
+    /* make a copy of the list_t */
+    tmplist = *list;
+    /* zero out the original list */
+    list->head = NULL;
+    list->tail = NULL;
+    list->current = NULL;
+    list->count = 0;
+
+    list_node_t *p;
+    while (tmplist.head) {
+        p = c->prev;
+        c = list_node_del(&tmplist, tmplist.head);
+        list_node_insert_sorted(list, c, compare);
+    }
+
+    return list_count(list);
+}
+
 
 
 #if 0

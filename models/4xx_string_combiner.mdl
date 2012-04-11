@@ -130,6 +130,41 @@ data string_combiner_test {
 }
 
 
+
+#
+# string_combiner
+#
+model suns {
+  name "string_combiner"
+  did 403 "string_combiner"
+  # common datapoints
+  datapoints {
+    DCA_SF                  { sunssf req }
+    DCAH_SF                 { sunssf }
+    DCV_SF                  { sunssf }
+    DCA_Max                 { uint16.DCA_SF u=A req }
+    N                       { uint16 label="Number of Inputs" req }
+    Evt                     { bitfield32 label="Combiner Event Flags" req }
+    EvtVnd                  { bitfield32 label="Combiner Vendor Event Flags" }
+    DCA                     { int16.DCA_SF u=A label="DC Current" req }
+    DCAH                    { uint32.DCAH_SF u=Ah label="DC Amp Hours"}
+    DCV                     { uint16.DCV_SF u=V label="DC Voltage" }
+    DCTmp                   { uint16 u=C label="Temperature" }
+    InDCA_SF                { sunssf }
+    InDCAhr_SF              { sunssf }
+  }  
+  # per-string datapoints
+  datapoints repeating {
+    InID                    { uint16 label="Input ID" req }
+    InEvt                   { bitfield32 label="Input Event Flags" req }
+    InEvtVnd                { bitfield32 label="Input Vendor Event Flags" }
+    InDCA                   { int16.DCA_SF u=A label="Input DC Current" req }
+    InDCAH                  { uint32.DCAH_SF u=Ah label="Input DC Amp Hours" }
+  }
+}
+
+
+
 #
 # string_combiner
 #
@@ -151,6 +186,8 @@ model suns {
     DCAH                    { uint32 u=Ah }
     DCV                     { uint16 u=V }
     Tmp                     { uint16 u=C }
+    InDCA_SF                { sunssf }
+    InDCAhr_SF              { sunssf }
     DCW                     { int16  u=W }
     DCPR                    { uint16 u=perc }
     DCWh                    { uint32 u=Wh }

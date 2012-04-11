@@ -868,9 +868,9 @@ int suns_device_add_dataset(suns_device_t *device, suns_dataset_t *data)
     } dp_elmt_map_t;
 
     dp_elmt_map_t elmt_map[] = {
-        { "C_Manufacturer", &(device->manufacturer) },
-        { "C_Model",        &(device->model) },
-        { "C_SerialNumber", &(device->serial_number) },
+        { "Mn", &(device->manufacturer) },
+        { "Md",        &(device->model) },
+        { "SN", &(device->serial_number) },
         { NULL,             NULL  }
     };
 
