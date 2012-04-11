@@ -43,16 +43,16 @@ model suns {
   did 301 "base meteorological"
   datapoints {
     E_BaseMet_AirTemperature      { int32 u=C        }
-    E_BaseMet_RelativeHumidity    { int32 u=perc  }
+    E_BaseMet_RelativeHumidity    { int32 u=Pct  }
     E_BaseMet_BarometricPressure  { int32 u=hPa      }
-    E_BaseMet_WindSpeed           { int32 u=ms       }
+    E_BaseMet_WindSpeed           { int32 u=mps      }
     E_BaseMet_WindDirection       { int32 u=deg      }
     E_BaseMet_Rain                { int32 u=in       } # yes, inches!
     E_BaseMet_Snow                { int32 u=in       } # yes, inches!
     E_BaseMet_PPTType             { int32            }
     E_BaseMet_ElectricalField     { int32 u=Vm       }
     E_BaseMet_SurfaceWetness      { int32 u=kO       }
-    E_BaseMet_SoilMoisture        { int32 u=perc  }
+    E_BaseMet_SoilMoisture        { int32 u=Pct  }
   }
 }
 
@@ -83,16 +83,16 @@ model suns {
   did 307 "meteorological v1.1"
   datapoints {
     TmpAmb         { int16.-1  u=C       }
-    RH             { int16     u=perc   }
+    RH             { int16     u=Pct   }
     Pres           { int16     u=HPa       }
-    WndSpd         { int16     u=ms        }
+    WndSpd         { int16     u=mps        }
     WndDir         { int16     u=deg       }
     Rain           { int16     u=mm        }
     Snw            { int16     u=mm        }
     PPT            { int16                 }
     ElecFld        { int16     u=Vm        }
     SurWet         { int16     u=kO        }
-    SoilWet        { int16     u=perc   }
+    SoilWet        { int16     u=Pct   }
   }
 }
 

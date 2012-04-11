@@ -78,7 +78,7 @@ model suns {
         VRef_SF         { sunssf access=rw req }
         VRefOfs         { int16.VRefOfs_SF u=V access=rw req }
         VRefOfs_SF      { sunssf access=rw req }
-        WGra            { int16.WGra_SF u=perc access=rw }
+        WGra            { int16.WGra_SF u=Pct access=rw }
         WGra_SF         { sunssf access=rw }
         PFSign          { enum16.PFSign_enum access=rw }
         PFLeadMin       { int16.PFMin_SF u=cosT access=rw }
@@ -86,7 +86,7 @@ model suns {
         PFMin_SF        { sunssf access=rw }
         VArAct          { enum16.VArAct_enum access=rw }
         ClcTotVA        { enum16.ClcTotVA_enum access=rw }
-        MaxRmpRte       { uint16.MaxRmpRte_SF u=perc access=rw }
+        MaxRmpRte       { uint16.MaxRmpRte_SF u=Pct access=rw }
         MaxRmpRte_SF    { sunssf access=rw }
         ECPNomHz        { uint16.ECPNomHz_SF u=Hz access=rw }
         ECPNomHz_SF     { sunssf access=rw }
@@ -178,7 +178,7 @@ model suns {
         Conn                { enum16.Conn_enum access=rw req }
         Conn_WinTms         { uint16 access=rw u=Tms }
         Conn_RvrtTms        { uint16 access=rw u=Tms }
-        WMaxLimPct          { uint16.WMaxLimPct_SF access=rw u=perc req }
+        WMaxLimPct          { uint16.WMaxLimPct_SF access=rw u=Pct req }
         WMaxLimPct_SF       { sunssf req }
         WMaxLimPct_WinTms   { uint16 access=rw u=Tms }
         WMaxLimPct_RvrtTms  { uint16 access=rw u=Tms }
@@ -189,10 +189,10 @@ model suns {
         OutPFSet_WinTms     { uint16 u=Tms access=rw }
         OutPFSet_RvrtTms    { uint16 u=Tms access=rw }
         VArLim_Mode         { enum16.VArLim_Mode_enum req access=rw }
-        VArWMaxPct          { uint16 u=perc access=rw }
+        VArWMaxPct          { uint16 u=Pct access=rw }
         VArWMaxPct_SF       { sunssf access=rw }
-        VArMaxPct           { uint16 u=perc access=rw }
-        VArAvalPct          { uint16 u=perc access=rw }
+        VArMaxPct           { uint16 u=Pct access=rw }
+        VArAvalPct          { uint16 u=Pct access=rw }
         VArPct_SF           { sunssf access=rw }
         VArPct_WinTms       { uint16 u=Tms access=rw }
         VArPct_RvrtTms      { uint16 u=Tms access=rw }
