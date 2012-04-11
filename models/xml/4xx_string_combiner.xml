@@ -116,8 +116,94 @@
   </model>
   <strings id="402" locale="en">
   </strings>
-  <model id="404" len="37">
-    <block len="24">
+  <model id="403" len="24">
+    <block len="16">
+      <point id="DCA_SF" offset="0" type="sunssf" mandatory="true" />
+      <point id="DCAH_SF" offset="1" type="sunssf" />
+      <point id="DCV_SF" offset="2" type="sunssf" />
+      <point id="DCA_Max" offset="3" type="uint16" sf="DCA_SF" units="A" mandatory="true" />
+      <point id="N" offset="4" type="uint16" mandatory="true" />
+      <point id="Evt" offset="5" type="bitfield32" mandatory="true" />
+      <point id="EvtVnd" offset="7" type="bitfield32" />
+      <point id="DCA" offset="9" type="int16" sf="DCA_SF" units="A" mandatory="true" />
+      <point id="DCAH" offset="10" type="uint32" sf="DCAH_SF" units="Ah" />
+      <point id="DCV" offset="12" type="uint16" sf="DCV_SF" units="V" />
+      <point id="DCTmp" offset="13" type="uint16" units="C" />
+      <point id="InDCA_SF" offset="14" type="sunssf" />
+      <point id="InDCAhr_SF" offset="15" type="sunssf" />
+    </block>
+    <block type="repeating" len="8">
+      <point id="InID" offset="0" type="uint16" mandatory="true" />
+      <point id="InEvt" offset="1" type="bitfield32" mandatory="true" />
+      <point id="InEvtVnd" offset="3" type="bitfield32" />
+      <point id="InDCA" offset="5" type="int16" sf="DCA_SF" units="A" mandatory="true" />
+      <point id="InDCAH" offset="6" type="uint32" sf="DCAH_SF" units="Ah" />
+    </block>
+  </model>
+  <strings id="403" locale="en">
+    <point id="N">
+      <label>Number of Inputs</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Evt">
+      <label>Combiner Event Flags</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="EvtVnd">
+      <label>Combiner Vendor Event Flags</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="DCA">
+      <label>DC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="DCAH">
+      <label>DC Amp Hours</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="DCV">
+      <label>DC Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="DCTmp">
+      <label>Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InID">
+      <label>Input ID</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InEvt">
+      <label>Input Event Flags</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InEvtVnd">
+      <label>Input Vendor Event Flags</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InDCA">
+      <label>Input DC Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InDCAH">
+      <label>Input DC Amp Hours</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+  <model id="404" len="39">
+    <block len="26">
       <point id="DCA_SF" offset="0" type="sunssf" mandatory="true" />
       <point id="DCAH_SF" offset="1" type="sunssf" />
       <point id="DCV_SF" offset="2" type="sunssf" />
@@ -131,13 +217,15 @@
       <point id="DCAH" offset="12" type="uint32" units="Ah" />
       <point id="DCV" offset="14" type="uint16" units="V" />
       <point id="Tmp" offset="15" type="uint16" units="C" />
-      <point id="DCW" offset="16" type="int16" units="W" />
-      <point id="DCPR" offset="17" type="uint16" units="perc" />
-      <point id="DCWh" offset="18" type="uint32" units="Wh" />
-      <point id="InDCA_SF" offset="20" type="sunssf" />
-      <point id="InDCAH_SF" offset="21" type="sunssf" />
-      <point id="InDCV_SF" offset="22" type="sunssf" />
-      <point id="InDCW_SF" offset="23" type="sunssf" />
+      <point id="InDCA_SF" offset="16" type="sunssf" />
+      <point id="InDCAhr_SF" offset="17" type="sunssf" />
+      <point id="DCW" offset="18" type="int16" units="W" />
+      <point id="DCPR" offset="19" type="uint16" units="perc" />
+      <point id="DCWh" offset="20" type="uint32" units="Wh" />
+      <point id="InDCA_SF" offset="22" type="sunssf" />
+      <point id="InDCAH_SF" offset="23" type="sunssf" />
+      <point id="InDCV_SF" offset="24" type="sunssf" />
+      <point id="InDCW_SF" offset="25" type="sunssf" />
     </block>
     <block type="repeating" len="13">
       <point id="InID" offset="0" type="uint16" mandatory="true" />
