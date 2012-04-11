@@ -1,0 +1,68 @@
+<sunSpecData v="1">
+ <d t="2012-04-11T06:11:09Z">
+   <m id="1" x="1">
+    <p id="Mn">Veris Industries</p>
+    <p id="Md">E51C2</p>
+    <p id="Opt">None</p>
+    <p id="Vr">2.044</p>
+    <p id="SN">4E33EAA6</p>
+    <p id="DA">1</p>
+   </m>
+   <m id="202" x="2">
+    <p id="A" sf="-1">319</p>
+    <p id="AphA" sf="-1">216</p>
+    <p id="AphB" sf="-1">102</p>
+    <p id="PhV" sf="-1">1228</p>
+    <p id="PhVphA" sf="-1">1236</p>
+    <p id="PhVphB" sf="-1">1220</p>
+    <p id="PPV" sf="-1">2456</p>
+    <p id="PhVphAB" sf="-1">2456</p>
+    <p id="Hz" sf="-2">6002</p>
+    <p id="W" sf="1">-375</p>
+    <p id="WphA" sf="1">-265</p>
+    <p id="WphB" sf="1">-110</p>
+    <p id="VA" sf="1">377</p>
+    <p id="VAphA" sf="1">266</p>
+    <p id="VAphB" sf="1">112</p>
+    <p id="VAR" sf="1">11</p>
+    <p id="VARphA" sf="1">-4</p>
+    <p id="VARphB" sf="1">16</p>
+    <p id="PF" sf="-4">-9994</p>
+    <p id="PFphA" sf="-4">-9998</p>
+    <p id="PFphB" sf="-4">-9898</p>
+    <p id="TotWhExp" sf="2">29582</p>
+    <p id="TotWhExpPhA" sf="2">3200</p>
+    <p id="TotWhExpPhB" sf="2">26382</p>
+    <p id="TotWhExpPhC" sf="2">0</p>
+    <p id="TotWhImp" sf="2">0</p>
+    <p id="TotWhImpPhA" sf="2">0</p>
+    <p id="TotWhImpPhAB" sf="2">0</p>
+    <p id="TotWhImpPhAC" sf="2">0</p>
+    <p id="TotVAhExp" sf="2">30355</p>
+    <p id="TotVAhExpPhA" sf="2">3745</p>
+    <p id="TotVAhExpPhB" sf="2">26949</p>
+    <p id="TotVAhExpPhC" sf="2">0</p>
+    <p id="TotVAhImp" sf="2">0</p>
+    <p id="TotVAhImpPhA" sf="2">0</p>
+    <p id="TotVAhImpPhB" sf="2">0</p>
+    <p id="TotVAhImpPhC" sf="2">0</p>
+    <p id="TotVArhImpQ1" sf="2">0</p>
+    <p id="TotVArhImpQ1PhA" sf="2">0</p>
+    <p id="TotVArhImpQ1PhB" sf="2">0</p>
+    <p id="TotVArhImpQ1PhC" sf="2">0</p>
+    <p id="TotVArhImpQ2" sf="2">2901</p>
+    <p id="TotVArhImpQ2PhA" sf="2">607</p>
+    <p id="TotVArhImpQ2PhB" sf="2">2294</p>
+    <p id="TotVArhImpQ2PhC" sf="2">0</p>
+    <p id="TotVArhImpQ3" sf="2">3379</p>
+    <p id="TotVArhImpQ3PhA" sf="2">771</p>
+    <p id="TotVArhImpQ3PhB" sf="2">2608</p>
+    <p id="TotVArhImpQ3PhC" sf="2">0</p>
+    <p id="TotVArhImpQ4" sf="2">0</p>
+    <p id="TotVArhImpQ4PhA" sf="2">0</p>
+    <p id="TotVArhImpQ4PhB" sf="2">0</p>
+    <p id="TotVArhImpQ4PhC" sf="2">0</p>
+    <p id="Evt">0</p>
+   </m>
+ </d>
+</sunSpecData>

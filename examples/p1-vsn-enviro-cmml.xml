@@ -1,0 +1,25 @@
+<sunSpecData v="1">
+ <d t="2012-04-11T06:10:56Z">
+   <m id="1" x="1">
+    <p id="Mn">Power-One</p>
+    <p id="Md">VSN-ENVIRO-CMML</p>
+    <p id="Opt">0</p>
+    <p id="Vr">1.2 Build 001</p>
+    <p id="SN">?</p>
+    <p id="DA">60</p>
+   </m>
+   <m id="307" x="2">
+    <p id="TmpAmb" sf="-1">112</p>
+    <p id="WndSpd">0</p>
+    <p id="WndDir">112</p>
+   </m>
+   <m id="302" x="3">
+    <p id="GHI" x="1">0</p>
+    <p id="POAI" x="1">0</p>
+   </m>
+   <m id="303" x="4">
+    <p id="TmpBOM" sf="-1" x="1">-400</p>
+    <p id="TmpBOM" sf="-1" x="2">-400</p>
+   </m>
+ </d>
+</sunSpecData>
