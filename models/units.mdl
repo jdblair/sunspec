@@ -33,27 +33,28 @@ define units {
     A	{ "amps" }
     Ah	{ "amp hours" }
     C	{ "degrees c" }
-    cosT	{ "cos(theta)" }
     Hz	{ "hertz" }
-    PFPct	{ "powerfactor (percent)" }
-    s	{ "seconds (time)" }
-    s1970	{ "seconds since 1970 (unixtime)" }
-    s2000	{ "seconds since 2000" }
+    Pct	{ "percent" }
     V	{ "volts" }
     VA	{ "volt amps" }
     VAh	{ "volt amp hours" }
-    var	{ "volt amps reactive" }
-    varh	{ "volt amp reactive hours" }
     Vm	{ "volts per meter" }
     W	{ "watts" }
     Wh	{ "watt hours" }
     Wm2	{ "watts per square meter" }
+    cosT	{ "cos(theta)" }
     deg	{ "degrees (direction or angle)" }
+    gpsDt { "gps date" }
+    gpsTm { "gps time" }
     hPa	{ "hectopascals" }
     in	{ "inches (only used in deprecated model)" }
     kO	{ "kilo ohms" }
     m	{ "meters" }
     mm	{ "milimeters" }
-    ms	{ "meters per second" }
-    Pct	{ "percent" }
+    mps	{ "meters per second" }
+    s	{ "seconds (time)" }
+    s1970	{ "seconds since 1970 (unixtime)" }
+    s2000	{ "seconds since 2000" }
+    var	{ "volt amps reactive" }
+    varh	{ "volt amp reactive hours" }
 }
