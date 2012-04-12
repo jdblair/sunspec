@@ -56,6 +56,91 @@
     </define>
   </model>
   <strings id="501" locale="en">
+    <point id="Stat">
+      <label>Module Status Code</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="StatVend">
+      <label>Module Vendor Status Code</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Evt">
+      <label>Module Event Flags</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="EvtVend">
+      <label>Vendor Module Event Flags</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Ctl">
+      <label>Module Control</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="CtlVend">
+      <label>Vendor Module Control</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="CtlVal">
+      <label>Module Control Value</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Tms">
+      <label>Timestamp</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutA">
+      <label>Output Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutV">
+      <label>Output Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutWh">
+      <label>Output Energy</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutPwr">
+      <label>Output Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Tmp">
+      <label>Module Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InA">
+      <label>Input Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InV">
+      <label>Input Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InWh">
+      <label>Input Energy</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InPwr">
+      <label>Input Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
   </strings>
   <model id="502" len="28">
     <block len="28">
@@ -73,12 +158,12 @@
       <point id="Tms" offset="15" type="uint32" units="Tms" />
       <point id="OutA" offset="17" type="int16" sf="A_SF" units="A" />
       <point id="OutV" offset="18" type="int16" sf="V_SF" units="V" />
-      <point id="OutWh" offset="19" type="uint32" sf="Wh_SF" units="Wh" />
+      <point id="OutWh" offset="19" type="acc32" sf="Wh_SF" units="Wh" />
       <point id="OutPw" offset="21" type="int16" sf="Pwr_SF" units="W" />
       <point id="Tmp" offset="22" type="int16" units="C" />
       <point id="InA" offset="23" type="int16" sf="A_SF" units="A" />
       <point id="InV" offset="24" type="int16" sf="V_SF" units="V" />
-      <point id="InWh" offset="25" type="uint32" sf="Wh_SF" units="Wh" />
+      <point id="InWh" offset="25" type="acc32" sf="Wh_SF" units="Wh" />
       <point id="InPwr" offset="27" type="int16" sf="Pwr_SF" units="W" />
     </block>
     <define name="Stat">
@@ -118,5 +203,90 @@
     </define>
   </model>
   <strings id="502" locale="en">
+    <point id="Stat">
+      <label>Module Status Code</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="StatVend">
+      <label>Vendor Module Status Code</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Evt">
+      <label>Module Event Flags</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="EvtVend">
+      <label>Vendor Module Event Flags</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Ctl">
+      <label>Module Control</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="CtlVend">
+      <label>Vendor Module Control</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="CtlVal">
+      <label>Module Control Value</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Tms">
+      <label>Timestamp</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutA">
+      <label>Output Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutV">
+      <label>Output Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutWh">
+      <label>Output Energy</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutPw">
+      <label>Output Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Tmp">
+      <label>Module Temperature</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InA">
+      <label>Input Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InV">
+      <label>Input Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InWh">
+      <label>Input Energy</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InPwr">
+      <label>Input Power</label>
+      <description></description>
+      <notes></notes>
+    </point>
   </strings>
 </sunSpecModels>

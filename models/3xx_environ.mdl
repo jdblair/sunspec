@@ -82,17 +82,17 @@ model suns {
   name "met_v1.1"
   did 307 "meteorological v1.1"
   datapoints {
-    TmpAmb         { int16.-1  u=C       }
-    RH             { int16     u=Pct   }
-    Pres           { int16     u=HPa       }
-    WndSpd         { int16     u=mps        }
-    WndDir         { int16     u=deg       }
-    Rain           { int16     u=mm        }
-    Snw            { int16     u=mm        }
-    PPT            { int16                 }
-    ElecFld        { int16     u=Vm        }
-    SurWet         { int16     u=kO        }
-    SoilWet        { int16     u=Pct   }
+    TmpAmb         { int16.-1  label="Ambient Temperature" u=C }
+    RH             { int16     label="Relative Humidity" u=Pct }
+    Pres           { int16     label="Barometric Pressure" u=HPa }
+    WndSpd         { int16     label="Wind Speed" u=mps }
+    WndDir         { int16     label="Wind Direction" u=deg }
+    Rain           { int16     label="Rainfall" u=mm }
+    Snw            { int16     label="Snow Depth" u=mm }
+    PPT            { int16     label="Precipitation Type" }
+    ElecFld        { int16     label="Electric Field" u=Vm }
+    SurWet         { int16     label="Surface Wetness" u=kO }
+    SoilWet        { int16     label="Soil Wetness" u=Pct }
   }
 }
 

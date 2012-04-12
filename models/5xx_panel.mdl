@@ -37,23 +37,23 @@
 model suns {
   did 501 "panel_module_float"
   datapoints {
-    Stat                { enum16.Stat_enum req }
-    StatVend            { enum16 }
-    Evt                 { bitfield32.Evt_bf req }
-    EvtVend             { bitfield32 }
-    Ctl                 { enum16 }
-    CtlVend             { enum32 }
-    CtlVal              { int32 }
-    Tms                 { uint32  u=Tms1970 }
-    OutA                { float32 u=A }
-    OutV                { float32 u=V }
-    OutWh               { float32 u=Wh }
-    OutPwr              { float32 u=W }
-    Tmp                 { float32 u=C }
-    InA                 { float32 u=A }
-    InV                 { float32 u=V }
-    InWh                { float32 u=Wh }
-    InPwr               { float32 u=W }
+    Stat                { enum16.Stat_enum req label="Module Status Code" }
+    StatVend            { enum16 label="Module Vendor Status Code" }
+    Evt                 { bitfield32.Evt_bf req label="Module Event Flags" }
+    EvtVend             { bitfield32 label="Vendor Module Event Flags" }
+    Ctl                 { enum16 access=rw label="Module Control" }
+    CtlVend             { enum32 access=rw label="Vendor Module Control" }
+    CtlVal              { int32 access=rw label="Module Control Value" }
+    Tms                 { uint32  u=Tms1970 label="Timestamp" }
+    OutA                { float32 u=A label="Output Current" }
+    OutV                { float32 u=V label="Output Voltage" }
+    OutWh               { float32 u=Wh label="Output Energy" }
+    OutPwr              { float32 u=W label="Output Power" }
+    Tmp                 { float32 u=C label="Module Temperature" }
+    InA                 { float32 u=A label="Input Current" }
+    InV                 { float32 u=V label="Input Voltage" }
+    InWh                { float32 u=Wh label="Input Energy" }
+    InPwr               { float32 u=W label="Input Power" }
   }
 
   define Stat_enum {
@@ -104,23 +104,23 @@ model suns {
     V_SF               { sunssf }
     Pwr_SF             { sunssf }
     Wh_SF              { sunssf }
-    Stat               { enum16 req }
-    StatVend           { enum16 }
-    Evt                { bitfield32 req }
-    EvtVend            { bitfield32 }
-    Ctl                { enum16 }
-    CtlVend            { enum32 }
-    CtlVal             { int32 }
-    Tms                { uint32 u=Tms }
-    OutA               { int16.A_SF u=A }
-    OutV               { int16.V_SF u=V }
-    OutWh              { uint32.Wh_SF u=Wh }
-    OutPw              { int16.Pwr_SF u=W }
-    Tmp                { int16 u=C }
-    InA                { int16.A_SF u=A }
-    InV                { int16.V_SF u=V }
-    InWh               { uint32.Wh_SF u=Wh }
-    InPwr              { int16.Pwr_SF u=W }
+    Stat               { enum16 req label="Module Status Code" }
+    StatVend           { enum16 label="Vendor Module Status Code" }
+    Evt                { bitfield32 req label="Module Event Flags" }
+    EvtVend            { bitfield32 label="Vendor Module Event Flags" }
+    Ctl                { enum16 label="Module Control" }
+    CtlVend            { enum32 label="Vendor Module Control" }
+    CtlVal             { int32 label="Module Control Value" }
+    Tms                { uint32 u=Tms label="Timestamp" }
+    OutA               { int16.A_SF u=A label="Output Current" }
+    OutV               { int16.V_SF u=V label="Output Voltage" }
+    OutWh              { acc32.Wh_SF u=Wh label="Output Energy" }
+    OutPw              { int16.Pwr_SF u=W label="Output Power" }
+    Tmp                { int16 u=C label="Module Temperature" }
+    InA                { int16.A_SF u=A label="Input Current" }
+    InV                { int16.V_SF u=V label="Input Voltage" }
+    InWh               { acc32.Wh_SF u=Wh label="Input Energy" }
+    InPwr              { int16.Pwr_SF u=W label="Input Power" }
   }
       
   define Stat {

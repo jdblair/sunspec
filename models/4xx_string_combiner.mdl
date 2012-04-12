@@ -41,12 +41,12 @@ model suns {
     DCA_SF                  { sunssf req }
     DCAH_SF                 { sunssf }
     DCV_SF                  { sunssf }
-    DCA_Max                 { uint16.DCA_SF u=A req }
+    DCA_Max                 { uint16.DCA_SF u=A req label="Max DC Current Rating" }
     N                       { uint16 label="Number of Inputs" req }
-    Evt                     { bitfield32 label="Combiner Event Flags" req }
-    EvtVnd                  { bitfield32 label="Combiner Vendor Event Flags" }
-    DCA                     { int16.DCA_SF u=A label="DC Current" req }
-    DCAH                    { uint32.DCAH_SF u=Ah label="DC Amp Hours"}
+    Evt                     { bitfield32 label="Event Flags" req }
+    EvtVnd                  { bitfield32 label="Vendor Event Flags" }
+    DCA                     { int16.DCA_SF u=A label="Combined DC Current" req }
+    DCAH                    { uint32.DCAH_SF u=Ah label="DC Amp Hours" }
     DCV                     { uint16.DCV_SF u=V label="DC Voltage" }
     DCTmp                   { uint16 u=C label="Temperature" }
   }  
@@ -69,34 +69,34 @@ model suns {
   did 402 "advanced_string_combiner"
   # common datapoints
   datapoints {
-    DCA_SF                  { sunssf }
+    DCA_SF                  { sunssf req }
     DCAH_SF                 { sunssf }
     DCV_SF                  { sunssf }
     DCW_SF                  { sunssf }
-    DCWh_SF                 { sunssf }
-    DCAMax                  { uint16 u=A }
-    N                       { uint16 }
-    Evt                     { bitfield32 }
-    EvtVnd                  { bitfield32 }
-    DCA                     { int16  u=A }
-    DCAH                    { uint32 u=Ah }
-    DCV                     { uint16 u=V }
-    Tmp                     { uint16 u=C }
-    DCW                     { int16  u=W }
-    DC_PR                   { uint16 u=perc }
-    DC_Energy               { uint32 u=Wh }
+    DCWh_SF                 { sunssf req }
+    DCAMax                  { uint16 u=A label="Max DC Current Rating" }
+    N                       { uint16 label="Number of Inputs" }
+    Evt                     { bitfield32 req label="Event Flags" }
+    EvtVnd                  { bitfield32 label="Vendor Events" }
+    DCA                     { int16  req u=A label="Combined DC Current" }
+    DCAH                    { uint32 u=Ah label="DC Amp Hours" }
+    DCV                     { uint16 u=V label="DC Volts" }
+    Tmp                     { uint16 u=C label="Ambient Temperature" }
+    DCW                     { int16  u=W label="DC Power" }
+    DC_PR                   { uint16 u=perc label="Performance Ratio" }
+    DC_Energy               { acc32 req u=Wh label="Accumulated Energy" }
   }  
   # per-string datapoints
   datapoints repeating {
-    InID                    { uint16 }
-    InEvt                   { bitfield32 }
-    EvtVnd                  { bitfield32 }
-    InDCA                   { int16.DCA_SF u=A }
-    InDCAH                  { uint32.DCAH_SF u=Ah  }
-    InDCV                   { uint16.DCV_SF u=V      }
-    InDCW                   { int16.DCWh_SF  u=W      }
-    INDCWh                  { uint32 u=Wh }
-    InDCPR                  { uint16 u=perc }
+    InID                    { uint16 req label="Input ID" }
+    InEvt                   { bitfield32 req label="Input Event Flags" }
+    EvtVnd                  { bitfield32 label="Input Vendor Event Flags" }
+    InDCA                   { int16.DCA_SF u=A req label="Input Current" }
+    InDCAH                  { uint32.DCAH_SF u=Ah label="Input Amp Hours" }
+    InDCV                   { uint16.DCV_SF u=V label="Input Voltage" }
+    InDCW                   { int16.DCWh_SF u=W label="Input Power" }
+    INDCWh                  { acc32 u=Wh label="Input Accumulated Energy" }
+    InDCPR                  { uint16 u=perc label="Input Performance Ratio" }
   }
 }
 
@@ -142,7 +142,7 @@ model suns {
     DCA_SF                  { sunssf req }
     DCAH_SF                 { sunssf }
     DCV_SF                  { sunssf }
-    DCA_Max                 { uint16.DCA_SF u=A req }
+    DCA_Max                 { uint16.DCA_SF u=A req label="Max Rated Current" }
     N                       { uint16 label="Number of Inputs" req }
     Evt                     { bitfield32 label="Combiner Event Flags" req }
     EvtVnd                  { bitfield32 label="Combiner Vendor Event Flags" }
@@ -178,19 +178,19 @@ model suns {
     DCV_SF                  { sunssf }
     DCW_SF                  { sunssf }
     DCWh_SF                 { sunssf }
-    DCAMax                  { uint16 u=A req }
-    N                       { uint16 req }
-    Evt                     { bitfield32 req }
-    EvtVnd                  { bitfield32 }
-    DCA                     { int16  u=A req }
-    DCAH                    { uint32 u=Ah }
-    DCV                     { uint16 u=V }
-    Tmp                     { uint16 u=C }
+    DCAMax                  { uint16 u=A req label="Max Rated Current" }
+    N                       { uint16 req label="Number of Inputs" }
+    Evt                     { bitfield32 req label="Event Flags" }
+    EvtVnd                  { bitfield32 label="Vendor Event Flags" }
+    DCA                     { int16  u=A req label="Combined Current" }
+    DCAH                    { uint32 u=Ah label="Combined Amp Hours" }
+    DCV                     { uint16 u=V label="Combined Voltage" }
+    Tmp                     { uint16 u=C label="Ambient Temperature" }
     InDCA_SF                { sunssf }
     InDCAhr_SF              { sunssf }
-    DCW                     { int16  u=W }
-    DCPR                    { uint16 u=perc }
-    DCWh                    { uint32 u=Wh }
+    DCW                     { int16  u=W label="Combined Power" }
+    DCPR                    { uint16 u=perc label="Performance Ratio" }
+    DCWh                    { acc32 u=Wh label="Accumulated Energy" }
     InDCA_SF                { sunssf }
     InDCAH_SF               { sunssf }
     InDCV_SF                { sunssf }
@@ -198,15 +198,15 @@ model suns {
   }  
   # per-string datapoints
   datapoints repeating {
-    InID                    { uint16 req }
-    InEvt                   { bitfield32 req }
-    EvtVnd                  { bitfield32 }
-    InDCA                   { int16.InDCA_SF u=A req }
-    InDCAH                  { uint32.InDCAH_SF u=Ah  }
-    InDCV                   { uint16.InDCV_SF u=V      }
-    InDCW                   { int16.InDCW_SF  u=W      }
-    INDCWh                  { uint32.InDCWh_SF u=Wh }
-    InDCPR                  { uint16 u=perc }
+    InID                    { uint16 req label="Input ID" }
+    InEvt                   { bitfield32 req label="Input Event Flags" }
+    EvtVnd                  { bitfield32 label="Input Vendor Event Flags" }
+    InDCA                   { int16.InDCA_SF u=A req label="Input Current" }
+    InDCAH                  { uint32.InDCAH_SF u=Ah label="Input Amp Hours" }
+    InDCV                   { uint16.InDCV_SF u=V label="Input Voltage" }
+    InDCW                   { int16.InDCW_SF  u=W label="Input Power" }
+    INDCWh                  { uint32.InDCWh_SF u=Wh label="Input Accumulted Energy" }
+    InDCPR                  { uint16 u=perc label="Input Performance Ratio" }
   }
 }
 

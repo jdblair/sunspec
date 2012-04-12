@@ -39,7 +39,7 @@
       <point id="VRef_SF" offset="12" type="sunssf" mandatory="true" />
       <point id="VRefOfs" offset="13" type="int16" sf="VRefOfs_SF" units="V" mandatory="true" />
       <point id="VRefOfs_SF" offset="14" type="sunssf" mandatory="true" />
-      <point id="WGra" offset="15" type="int16" sf="WGra_SF" units="perc" />
+      <point id="WGra" offset="15" type="int16" sf="WGra_SF" units="Pct" />
       <point id="WGra_SF" offset="16" type="sunssf" />
       <point id="PFSign" offset="17" type="enum16" define="PFSign_enum" />
       <point id="PFLeadMin" offset="18" type="int16" sf="PFMin_SF" units="cosT" />
@@ -47,7 +47,7 @@
       <point id="PFMin_SF" offset="20" type="sunssf" />
       <point id="VArAct" offset="21" type="enum16" define="VArAct_enum" />
       <point id="ClcTotVA" offset="22" type="enum16" define="ClcTotVA_enum" />
-      <point id="MaxRmpRte" offset="23" type="uint16" sf="MaxRmpRte_SF" units="perc" />
+      <point id="MaxRmpRte" offset="23" type="uint16" sf="MaxRmpRte_SF" units="Pct" />
       <point id="MaxRmpRte_SF" offset="24" type="sunssf" />
       <point id="ECPNomHz" offset="25" type="uint16" sf="ECPNomHz_SF" units="Hz" />
       <point id="ECPNomHz_SF" offset="26" type="sunssf" />
@@ -121,7 +121,7 @@
       <point id="Conn" offset="1" type="enum16" define="Conn_enum" mandatory="true" />
       <point id="Conn_WinTms" offset="2" type="uint16" units="Tms" />
       <point id="Conn_RvrtTms" offset="3" type="uint16" units="Tms" />
-      <point id="WMaxLimPct" offset="4" type="uint16" sf="WMaxLimPct_SF" units="perc" mandatory="true" />
+      <point id="WMaxLimPct" offset="4" type="uint16" sf="WMaxLimPct_SF" units="Pct" mandatory="true" />
       <point id="WMaxLimPct_SF" offset="5" type="sunssf" mandatory="true" />
       <point id="WMaxLimPct_WinTms" offset="6" type="uint16" units="Tms" />
       <point id="WMaxLimPct_RvrtTms" offset="7" type="uint16" units="Tms" />
@@ -132,10 +132,10 @@
       <point id="OutPFSet_WinTms" offset="12" type="uint16" units="Tms" />
       <point id="OutPFSet_RvrtTms" offset="13" type="uint16" units="Tms" />
       <point id="VArLim_Mode" offset="14" type="enum16" define="VArLim_Mode_enum" mandatory="true" />
-      <point id="VArWMaxPct" offset="15" type="uint16" units="perc" />
+      <point id="VArWMaxPct" offset="15" type="uint16" units="Pct" />
       <point id="VArWMaxPct_SF" offset="16" type="sunssf" />
-      <point id="VArMaxPct" offset="17" type="uint16" units="perc" />
-      <point id="VArAvalPct" offset="18" type="uint16" units="perc" />
+      <point id="VArMaxPct" offset="17" type="uint16" units="Pct" />
+      <point id="VArAvalPct" offset="18" type="uint16" units="Pct" />
       <point id="VArPct_SF" offset="19" type="sunssf" />
       <point id="VArPct_WinTms" offset="20" type="uint16" units="Tms" />
       <point id="VArPct_RvrtTms" offset="21" type="uint16" units="Tms" />
