@@ -1,0 +1,76 @@
+<sunSpecModels v="1">
+  <model id="9999" len="98">
+    <block len="85">
+      <point id="t_uint16" offset="0" type="uint16" />
+      <point id="t_int16" offset="1" type="int16" />
+      <point id="t_uint32" offset="2" type="uint32" />
+      <point id="t_int32" offset="4" type="int32" />
+      <point id="t_uint16_ni" offset="6" type="uint16" />
+      <point id="t_int16_ni" offset="7" type="int16" />
+      <point id="t_uint32_ni" offset="8" type="uint32" />
+      <point id="t_int32_ni" offset="10" type="int32" />
+      <point id="t_float32" offset="12" type="float32" />
+      <point id="t_string_16" offset="14" type="string" len="8" />
+      <point id="t_string_08" offset="22" type="string" len="4" />
+      <point id="t_string_32" offset="26" type="string" len="16" />
+      <point id="t_acc16" offset="42" type="acc16" />
+      <point id="t_acc16_2" offset="43" type="acc16" />
+      <point id="t_acc32" offset="44" type="acc32" />
+      <point id="t_acc32_2" offset="46" type="acc32" />
+      <point id="t_bitfield16" offset="48" type="bitfield16" define="t_bitfield16_bf" />
+      <point id="t_bitfield32" offset="49" type="bitfield32" />
+      <point id="t_uint16_rw" offset="51" type="uint16" />
+      <point id="t_int64_max" offset="52" type="int64" />
+      <point id="t_int64_min" offset="56" type="int64" />
+      <point id="t_int64_ni" offset="60" type="int64" />
+      <point id="t_uint64" offset="64" type="uint64" />
+      <point id="t_uint64_ni" offset="68" type="uint64" />
+      <point id="t_acc64" offset="72" type="acc64" />
+      <point id="t_acc64_max" offset="76" type="acc64" />
+      <point id="t_uint16_s1" offset="80" type="uint16" sf="55" />
+      <point id="t_int32_s2" offset="81" type="uint32" sf="-5" />
+      <point id="t_sf_a" offset="83" type="sunssf" />
+      <point id="t_sf_b" offset="84" type="sunssf" />
+    </block>
+    <block type="repeating" len="13">
+      <point id="t_string_repeat" offset="0" type="string" len="4" />
+      <point id="t_enum16" offset="4" type="enum16" define="t_enum16_enum" />
+      <point id="t_enum32" offset="5" type="enum32" define="t_enum32_enum" />
+      <point id="t_uint64_scaled" offset="7" type="uint64" sf="t_sf_a" />
+      <point id="t_int32" offset="11" type="int32" sf="t_sf_b" />
+    </block>
+    <define name="t_enum16_enum">
+      <symbol id="TEST_ZERO" value="0" />
+      <symbol id="TEST_ONE" value="1" />
+      <symbol id="TEST_TWO" value="2" />
+      <symbol id="TEST_THREE" value="3" />
+      <symbol id="TEST_FOUR" value="4" />
+      <symbol id="TEST_FIVE" value="5" />
+      <symbol id="TEST_SIX" value="6" />
+      <symbol id="TEST_SEVEN" value="7" />
+      <symbol id="TEST_EIGHT" value="8" />
+    </define>
+    <define name="t_enum32_enum">
+      <symbol id="TEST_BIG_1" value="65536" />
+      <symbol id="TEST_BIG_2" value="65537" />
+      <symbol id="TEST_BIG_3" value="65538" />
+      <symbol id="TEST_BIG_4" value="65539" />
+      <symbol id="TEST_BIG_5" value="65540" />
+      <symbol id="TEST_BIG_6" value="65541" />
+      <symbol id="TEST_BIG_7" value="65542" />
+      <symbol id="TEST_BIG_8" value="65543" />
+    </define>
+    <define name="t_bitfield16_bf">
+      <symbol id="TEST_BIT_01" value="1" />
+      <symbol id="TEST_BIT_02" value="2" />
+      <symbol id="TEST_BIT_03" value="3" />
+      <symbol id="TEST_BIT_04" value="4" />
+      <symbol id="TEST_BIT_05" value="5" />
+      <symbol id="TEST_BIT_06" value="6" />
+      <symbol id="TEST_BIT_07" value="7" />
+      <symbol id="TEST_BIT_08" value="8" />
+    </define>
+  </model>
+  <strings id="9999" locale="en">
+  </strings>
+</sunSpecModels>
