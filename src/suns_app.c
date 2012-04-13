@@ -551,7 +551,7 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
     int dataset_index = 1;  /* start numbering at 1 */
 
     /* places to look for the sunspec signature */
-    int search_registers[] = { 1, 40001, 50001, 0x40001, -1 };
+    int search_registers[] = { 40001, 1, 50001, 0x40001, -1 };
     int base_register = -1;
 
     /* look for sunspec signature */
@@ -854,13 +854,13 @@ int suns_app_read_registers(suns_app_t *app,
     while (reg_offset < len) {
         int read_len = min((len - reg_offset), app->max_modbus_read);
         
-        debug("start = %d, read_len = %d, (len - reg_offset) = %d", start, read_len, (len - reg_offset));
+        debug("start = %d, read_len = %d, (len - reg_offset) = %d", start + 1 + reg_offset, read_len, (len - reg_offset));
 
         int retries;
         rc = -1;
         for (retries = 0; retries < app->retries && rc < 0; retries++) { 
-            debug("read register %d, try %d", start + 1, retries);
-            rc = modbus_read_registers(app->mb_ctx, start,
+            debug("read register %d, try %d", start + 1 + reg_offset, retries);
+            rc = modbus_read_registers(app->mb_ctx, start + reg_offset,
                                        read_len, regs + reg_offset);
         }
 
@@ -869,7 +869,7 @@ int suns_app_read_registers(suns_app_t *app,
                   rc, modbus_strerror(errno));
             error("modbus_read_registers() failed: register %d, "
                   "length %d on address %d",
-                  start, read_len, app->addr);
+                  start + 1 + reg_offset , read_len, app->addr);
             return -1;
         }
 
