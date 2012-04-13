@@ -40,76 +40,76 @@ model suns {
   did 203 "wye-connect three phase (abcn) meter"
   did 204 "delta-connect three phase (abc) meter"
   datapoints {
-    A                 { int16.A_SF     u=A    req label="AC Current"    }
-    AphA              { int16.A_SF     u=A    req label="AC Current A"  }
-    AphB              { int16.A_SF     u=A    req={ 202 203 204 } label="AC Current B"  }
-    AphC              { int16.A_SF     u=A    req label="AC Current C"  }
+    A                 { int16.A_SF     u=A    req label="Current"    }
+    AphA              { int16.A_SF     u=A    req label="Current A"  }
+    AphB              { int16.A_SF     u=A    req={ 202 203 204 } label="Current B"  }
+    AphC              { int16.A_SF     u=A    req label="Current C"  }
     A_SF              { sunssf                                        }
-    PhV               { int16.V_SF     u=V    req label="AC Voltage LN" }
-    PhVphA            { int16.V_SF     u=V    req={ 201 202 203 } label="AC Voltage AN" }
-    PhVphB            { int16.V_SF     u=V    req={ 202 203 } label="AC Voltage BN" }
-    PhVphC            { int16.V_SF     u=V    req={ 203 } label="AC Voltage CN" }
-    PPV               { int16.V_SF     u=V    req label="AC Voltage LL" }
-    PhVphAB           { int16.V_SF     u=V    req={ 202 203 204 } label="AC Voltage AB" }
-    PhVphBC           { int16.V_SF     u=V    req={ 203 204 } label="AC Voltage BC" }
-    PhVphCA           { int16.V_SF     u=V    req={ 203 204 } label="AC Voltage CA" }
+    PhV               { int16.V_SF     u=V    req label="Voltage LN" }
+    PhVphA            { int16.V_SF     u=V    req={ 201 202 203 } label="Voltage AN" }
+    PhVphB            { int16.V_SF     u=V    req={ 202 203 } label="Voltage BN" }
+    PhVphC            { int16.V_SF     u=V    req={ 203 } label="Voltage CN" }
+    PPV               { int16.V_SF     u=V    req label="Voltage LL" }
+    PhVphAB           { int16.V_SF     u=V    req={ 202 203 204 } label="Voltage AB" }
+    PhVphBC           { int16.V_SF     u=V    req={ 203 204 } label="Voltage BC" }
+    PhVphCA           { int16.V_SF     u=V    req={ 203 204 } label="Voltage CA" }
     V_SF              { sunssf                req }
-    Hz                { int16.Hz_SF    u=Hz   req label="AC Frequency" }
+    Hz                { int16.Hz_SF    u=Hz   req label="Frequency" }
     Hz_SF             { sunssf                                        }
-    W                 { int16.W_SF     u=W    req label="AC Power" }
-    WphA              { int16.W_SF     u=W    label="Phase A AC Power" }
-    WphB              { int16.W_SF     u=W    label="Phase B AC Power" }
-    WphC              { int16.W_SF     u=W    label="Phase C AC Power" }
+    W                 { int16.W_SF     u=W    req label="Power" }
+    WphA              { int16.W_SF     u=W    label="Power A" }
+    WphB              { int16.W_SF     u=W    label="Power B" }
+    WphC              { int16.W_SF     u=W    label="Power C" }
     W_SF              { sunssf req }
-    VA                { int16.VA_SF    u=VA   label="AC Apparent Power" }
-    VAphA             { int16.VA_SF    u=VA   label="Phase A AC Apparent Power" }
-    VAphB             { int16.VA_SF    u=VA   label="Phase B AC Apparent Power" }
-    VAphC             { int16.VA_SF    u=VA   label="Phase C AC Apparent Power" }
+    VA                { int16.VA_SF    u=VA   label="Apparent Power" }
+    VAphA             { int16.VA_SF    u=VA   label="Apparent Power A" }
+    VAphB             { int16.VA_SF    u=VA   label="Apparent Power B" }
+    VAphC             { int16.VA_SF    u=VA   label="Apparent Power C" }
     VA_SF             { sunssf                                        }
-    VAR               { int16.VAR_SF   u=var  label="AC Reactive Power" }
-    VARphA            { int16.VAR_SF   u=var  label="Phase A AC Reactive Power" }
-    VARphB            { int16.VAR_SF   u=var  label="Phase B AC Reactive Power" }
-    VARphC            { int16.VAR_SF   u=var  label="Phase C AC Reactive Power" }
+    VAR               { int16.VAR_SF   u=var  label="Reactive Power" }
+    VARphA            { int16.VAR_SF   u=var  label="Reactive Power A" }
+    VARphB            { int16.VAR_SF   u=var  label="Reactive Power B" }
+    VARphC            { int16.VAR_SF   u=var  label="Reactive Power C" }
     VAR_SF            { sunssf                                        }
     PF                { int16.PF_SF    u=PFPct label="Power Factor" }
-    PFphA             { int16.PF_SF    u=PFPct label="Phase A Power Factor" }
-    PFphB             { int16.PF_SF    u=PFPct label="Phase B Power Factor" }
-    PFphC             { int16.PF_SF    u=PFPct label="Phase C Power Factor" }
+    PFphA             { int16.PF_SF    u=PFPct label="Power Factor A" }
+    PFphB             { int16.PF_SF    u=PFPct label="Power Factor B" }
+    PFphC             { int16.PF_SF    u=PFPct label="Power Factor C" }
     PF_SF             { sunssf                                        }
     TotWhExp          { acc32.TotWh_SF u=Wh   req label="Energy Exported" }
-    TotWhExpPhA       { acc32.TotWh_SF u=Wh   label="Phase A Energy Exported" }
-    TotWhExpPhB       { acc32.TotWh_SF u=Wh   label="Phase B Energy Exported" }
-    TotWhExpPhC       { acc32.TotWh_SF u=Wh   label="Phase C Energy Exported" }
+    TotWhExpPhA       { acc32.TotWh_SF u=Wh   label="Energy Exported A" }
+    TotWhExpPhB       { acc32.TotWh_SF u=Wh   label="Energy Exported B" }
+    TotWhExpPhC       { acc32.TotWh_SF u=Wh   label="Energy Exported C" }
     TotWhImp          { acc32.TotWh_SF u=Wh   req label="Energy Imported" }
-    TotWhImpPhA       { acc32.TotWh_SF u=Wh   label="Phase A Energy Imported" }
-    TotWhImpPhAB      { acc32.TotWh_SF u=Wh   label="Phase B Energy Imported" }
-    TotWhImpPhAC      { acc32.TotWh_SF u=Wh   label="Phase C Energy Imported" }
+    TotWhImpPhA       { acc32.TotWh_SF u=Wh   label="Energy Imported A" }
+    TotWhImpPhAB      { acc32.TotWh_SF u=Wh   label="Energy Imported B" }
+    TotWhImpPhAC      { acc32.TotWh_SF u=Wh   label="Energy Imported C" }
     TotWh_SF          { sunssf                req                         }
     TotVAhExp         { acc32.TotVAh_SF   u=VAh label="Apparent Energy Exported" }
-    TotVAhExpPhA      { acc32.TotVAh_SF   u=VAh label="Phase A Apparent Energy Exported" }
-    TotVAhExpPhB      { acc32.TotVAh_SF   u=VAh label="Phase B Apparent Energy Exported" }
-    TotVAhExpPhC      { acc32.TotVAh_SF   u=VAh label="Phase C Apparent Energy Exported" }
+    TotVAhExpPhA      { acc32.TotVAh_SF   u=VAh label="Apparent Energy Exported A" }
+    TotVAhExpPhB      { acc32.TotVAh_SF   u=VAh label="Apparent Energy Exported B" }
+    TotVAhExpPhC      { acc32.TotVAh_SF   u=VAh label="Apparent Energy Exported C" }
     TotVAhImp         { acc32.TotVAh_SF   u=VAh label="Apparent Energy Imported" }
-    TotVAhImpPhA      { acc32.TotVAh_SF   u=VAh label="Phase A Apparent Energy Imported" }
-    TotVAhImpPhB      { acc32.TotVAh_SF   u=VAh label="Phase B Apparent Energy Imported" }
-    TotVAhImpPhC      { acc32.TotVAh_SF   u=VAh label="Phase C Apparent Energy Imported" }
+    TotVAhImpPhA      { acc32.TotVAh_SF   u=VAh label="Apparent Energy Imported A" }
+    TotVAhImpPhB      { acc32.TotVAh_SF   u=VAh label="Apparent Energy Imported B" }
+    TotVAhImpPhC      { acc32.TotVAh_SF   u=VAh label="Apparent Energy Imported C" }
     TotVAh_SF         { sunssf                                            }
-    TotVArhImpQ1      { acc32.TotVArh_SF u=varh label="Q1: Reactive Energy Imported"  }
-    TotVArhImpQ1PhA   { acc32.TotVArh_SF u=varh label="Q1 Phase A: Reactive Energy Imported" }
-    TotVArhImpQ1PhB   { acc32.TotVArh_SF u=varh label="Q1 Phase B: Reactive Energy Imported" }
-    TotVArhImpQ1PhC   { acc32.TotVArh_SF u=varh label="Q1 Phase C: Reactive Energy Imported" }
-    TotVArhImpQ2      { acc32.TotVArh_SF u=varh label="Q2: Reactive Energy Imported"  }
-    TotVArhImpQ2PhA   { acc32.TotVArh_SF u=varh label="Q2 Phase A: Reactive Energy Imported" }
-    TotVArhImpQ2PhB   { acc32.TotVArh_SF u=varh label="Q2 Phase B: Reactive Energy Imported" }
-    TotVArhImpQ2PhC   { acc32.TotVArh_SF u=varh label="Q2 Phase C: Reactive Energy Imported" }
-    TotVArhImpQ3      { acc32.TotVArh_SF u=varh label="Q3: Reactive Energy Exported"  }
-    TotVArhImpQ3PhA   { acc32.TotVArh_SF u=varh label="Q3 Phase A: Reactive Energy Exported" }
-    TotVArhImpQ3PhB   { acc32.TotVArh_SF u=varh label="Q3 Phase B: Reactive Energy Exported" }
-    TotVArhImpQ3PhC   { acc32.TotVArh_SF u=varh label="Q3 Phase C: Reactive Energy Exported" }
-    TotVArhImpQ4      { acc32.TotVArh_SF u=varh label="Q4: Reactive Energy Exported"  }
-    TotVArhImpQ4PhA   { acc32.TotVArh_SF u=varh label="Q4 Phase A: Reactive Energy Imported" }
-    TotVArhImpQ4PhB   { acc32.TotVArh_SF u=varh label="Q4 Phase B: Reactive Energy Imported" }
-    TotVArhImpQ4PhC   { acc32.TotVArh_SF u=varh label="Q4 Phase C: Reactive Energy Imported" }
+    TotVArhImpQ1      { acc32.TotVArh_SF u=varh label="Q1 Reactive Energy Imported"  }
+    TotVArhImpQ1PhA   { acc32.TotVArh_SF u=varh label="Q1 Reactive Energy Imported A" }
+    TotVArhImpQ1PhB   { acc32.TotVArh_SF u=varh label="Q1 Reactive Energy Imported B" }
+    TotVArhImpQ1PhC   { acc32.TotVArh_SF u=varh label="Q1 Reactive Energy Imported C" }
+    TotVArhImpQ2      { acc32.TotVArh_SF u=varh label="Q2 Reactive Energy Imported"  }
+    TotVArhImpQ2PhA   { acc32.TotVArh_SF u=varh label="Q2 Reactive Energy Imported A" }
+    TotVArhImpQ2PhB   { acc32.TotVArh_SF u=varh label="Q2 Reactive Energy Imported B" }
+    TotVArhImpQ2PhC   { acc32.TotVArh_SF u=varh label="Q2 Reactive Energy Imported C" }
+    TotVArhImpQ3      { acc32.TotVArh_SF u=varh label="Q3 Reactive Energy Exported"  }
+    TotVArhImpQ3PhA   { acc32.TotVArh_SF u=varh label="Q3 Reactive Energy Exported A" }
+    TotVArhImpQ3PhB   { acc32.TotVArh_SF u=varh label="Q3 Reactive Energy Exported B" }
+    TotVArhImpQ3PhC   { acc32.TotVArh_SF u=varh label="Q3 Reactive Energy Exported C" }
+    TotVArhImpQ4      { acc32.TotVArh_SF u=varh label="Q4 Reactive Energy Imported"  }
+    TotVArhImpQ4PhA   { acc32.TotVArh_SF u=varh label="Q4 Reactive Energy Imported A" }
+    TotVArhImpQ4PhB   { acc32.TotVArh_SF u=varh label="Q4 Reactive Energy Imported B" }
+    TotVArhImpQ4PhC   { acc32.TotVArh_SF u=varh label="Q4 Reactive Energy Imported C" }
     TotVArh_SF        { sunssf                                            }
     Evt               { bitfield32.MeterEvt_BF req label="Meter Event Flags" }
   }

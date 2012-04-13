@@ -83,7 +83,7 @@ model suns {
     DCV                     { uint16 u=V label="DC Volts" }
     Tmp                     { uint16 u=C label="Ambient Temperature" }
     DCW                     { int16  u=W label="DC Power" }
-    DC_PR                   { uint16 u=perc label="Performance Ratio" }
+    DC_PR                   { uint16 u=Pct label="Performance Ratio" }
     DC_Energy               { acc32 req u=Wh label="Accumulated Energy" }
   }  
   # per-string datapoints
@@ -96,7 +96,7 @@ model suns {
     InDCV                   { uint16.DCV_SF u=V label="Input Voltage" }
     InDCW                   { int16.DCWh_SF u=W label="Input Power" }
     INDCWh                  { acc32 u=Wh label="Input Accumulated Energy" }
-    InDCPR                  { uint16 u=perc label="Input Performance Ratio" }
+    InDCPR                  { uint16 u=Pct label="Input Performance Ratio" }
   }
 }
 
@@ -189,7 +189,7 @@ model suns {
     InDCA_SF                { sunssf }
     InDCAhr_SF              { sunssf }
     DCW                     { int16  u=W label="Combined Power" }
-    DCPR                    { uint16 u=perc label="Performance Ratio" }
+    DCPR                    { uint16 u=Pct label="Performance Ratio" }
     DCWh                    { acc32 u=Wh label="Accumulated Energy" }
     InDCA_SF                { sunssf }
     InDCAH_SF               { sunssf }
@@ -205,8 +205,8 @@ model suns {
     InDCAH                  { uint32.InDCAH_SF u=Ah label="Input Amp Hours" }
     InDCV                   { uint16.InDCV_SF u=V label="Input Voltage" }
     InDCW                   { int16.InDCW_SF  u=W label="Input Power" }
-    INDCWh                  { uint32.InDCWh_SF u=Wh label="Input Accumulted Energy" }
-    InDCPR                  { uint16 u=perc label="Input Performance Ratio" }
+    INDCWh                  { uint32.InDCWh_SF u=Wh label="Input Accumulated Energy" }
+    InDCPR                  { uint16 u=Pct label="Input Performance Ratio" }
   }
 }
 

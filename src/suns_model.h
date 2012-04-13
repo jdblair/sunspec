@@ -268,6 +268,21 @@ typedef struct suns_attribute {
 } suns_attribute_t;
 
 
+typedef enum suns_audit_type_t {
+    SUNS_AUDIT_NOTICE,
+    SUNS_AUDIT_WARN,
+    SUNS_AUDIT_ERR,
+} suns_audit_type_t;
+
+
+typedef struct suns_audit {
+    suns_audit_type_t type;
+    char *name;
+    char *msg;
+} suns_audit_t;
+
+
+
 char * suns_type_string(suns_type_t type);
 suns_type_pair_t *suns_type_pair_new(void);
 suns_dp_block_t *suns_dp_block_new(void);

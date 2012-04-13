@@ -196,6 +196,11 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
                 error("must provide decimal max modbus read length");
                 option_error = 1;
             }
+            if (app->max_modbus_read > 125) {
+                warning("read length cannot be greater than 125 registers",
+                        app->max_modbus_read);
+                app->max_modbus_read = 125;
+            }
             break;
 
         case 'T':
@@ -265,6 +270,7 @@ void suns_app_help(int argc, char *argv[])
     printf("      -s: run as a test server\n");
     printf("      -I: logger id (for sunspec logger xml output)\n");
     printf("      -N: logger id namespace (for sunspec logger xml output, defaults to 'mac')\n");
+    printf("      -l: limit number of registers requested in a single read (max is 125)\n");
     printf("      -v: verbose level (up to -vvvv for most verbose)\n");
     printf("\n");
 }

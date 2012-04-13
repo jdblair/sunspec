@@ -47,7 +47,7 @@ model suns {
     PPVphAB         {  uint16.V_SF u=V label="AC Voltage AB" }
     PPVphBC         {  uint16.V_SF u=V label="AC Voltage BC" }
     PPVphCA         {  uint16.V_SF u=V label="AC Voltage CA" }
-    PhVphA          {  uint16.V_SF u=V label="AC Voltage AN" req= }
+    PhVphA          {  uint16.V_SF u=V label="AC Voltage AN" req }
     PhVphB          {  uint16.V_SF u=V label="AC Voltage BN" req={ 102 103 } }
     PhVphC          {  uint16.V_SF u=V label="AC Voltage CN" req={ 103 } }
     V_SF            {  sunssf req }

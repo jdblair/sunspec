@@ -30,28 +30,33 @@
 # SUCH DAMAGE.
 
 #
+# tracking version 0.7
+#
+
+
+#
 # inverter nameplate ratings
 #
 model suns {
     name "inverter nameplate"
     did 120 "inverter_nameplate"
     datapoints {
-        WRtg            { uint16.WRtg_SF req }
+       WRtg            { uint16.WRtg_SF req label="Continous Power Rating" }
         WRtg_SF         { sunssf req }
-        VARtg           { uint16 req }
+        VARtg           { uint16 req label="Continuous Apparent Power Rating" }
         VARtg_SF        { sunssf req }
-        VArPosRtg       { uint16.VArRtg_SF req }
-        VArNegRtg       { uint16.VArRtg_SF req }
+        VArPosRtg       { uint16.VArRtg_SF req label="Continuous Positive VAR Rating" }
+        VArNegRtg       { uint16.VArRtg_SF req label="Continuous Negative VAR Rating" }
         VArRtg_SF       { sunssf req }
-        ARtg            { uint16 req }
-        ARtg_SF         { sunssf req }
-        PFLeadRtg       { int16.PFRtgSF req }
-        PFLagRtg        { int16.PFRtg_SF req }
+        Artg            { uint16 req label="Max AC Current Rating" }
+        Artg_SF         { sunssf req }
+        PFLeadRtg       { int16.PFRtgSF req label="Min Leading PF Rating" }
+        PFLagRtg        { int16.PFRtg_SF req label="Min Lagging PF Rating" }
         PFRtg_SF        { sunssf req }
         WHRtg_SF        { sunssf }
-        MaxChgRte       { uint16.MaxChgRte_SF }
+        MaxChgRte       { uint16.MaxChgRte_SF label="Max Charge Rate" }
         MaxChgRte_SF    { int16 }
-        MaxDisChgRte    { uint16.MaxDisChgRte_SF }
+        MaxDisChgRte    { uint16.MaxDisChgRte_SF label="Min Charge Rate" }
         MaxDisChgRte_SF { int16 }
     }
 }
@@ -63,34 +68,33 @@ model suns {
     name "inverter_basic_settings"
     did 121 "inverter_basic_settings"
     datapoints {
-        WMax            { uint16.WMax_SF u=W access=rw req }
-        WMax_SF         { sunssf access=rw access=rw req }
-        WRef            { uint16.WMax_SF u=W access=rw }
-        VMax            { uint16.VMinMax_SF u=V access=rw }
-        VMin            { uint16.VMinMax_SF u=V access=rw }
-        VMinMax_SF      { sunssf access=rw }
-        VAMax           { uint16.VAMax_SF u=VA access=rw }
-        VAMax_SF        { sunssf access=rw }
-        VArPosMax       { uint16.VArMax_SF u=VAr access=rw }
-        VArNegMax       { uint16.VArMax_SF u=VAr access=rw }
+        WMax            { uint16.WMax_SF u=W access=rw req label="Max Power Output Setting" }
+        WMax_SF         { sunssf req }
+        WRef            { uint16.WMax_SF u=W access=rw label="Reference Active Power" }
+        VMax            { uint16.VMinMax_SF u=V access=rw label="Max Voltage Setting" }
+        VMin            { uint16.VMinMax_SF u=V access=rw label="Min Voltage Setting" }
+        VMinMax_SF      { sunssf }
+        VAMax           { uint16.VAMax_SF u=VA access=rw label="Max Apparent Power" }
+        VAMax_SF        { sunssf }
+        VArPosMax       { uint16.VArMax_SF u=VAr access=rw label="Max Positive Reactive Power" }
+        VArNegMax       { uint16.VArMax_SF u=VAr access=rw label="Max Negative Reactive Power" }
         VArMax_SF       { sunssf access=rw u=VAr }
-        VRef            { uint16.VRef_SF u=V access=rw req }
-        VRef_SF         { sunssf access=rw req }
-        VRefOfs         { int16.VRefOfs_SF u=V access=rw req }
+        VRef            { uint16 u=V access=rw req label="Voltage at PCC" }
+        VRefOfs         { int16.VRefOfs_SF u=V access=rw req label="Voltage Offset from PCC" }
         VRefOfs_SF      { sunssf access=rw req }
-        WGra            { int16.WGra_SF u=Pct access=rw }
-        WGra_SF         { sunssf access=rw }
-        PFSign          { enum16.PFSign_enum access=rw }
-        PFLeadMin       { int16.PFMin_SF u=cosT access=rw }
-        PFLagMin        { int16.PFMin_SF u=cosT access=rw }
-        PFMin_SF        { sunssf access=rw }
-        VArAct          { enum16.VArAct_enum access=rw }
-        ClcTotVA        { enum16.ClcTotVA_enum access=rw }
-        MaxRmpRte       { uint16.MaxRmpRte_SF u=Pct access=rw }
-        MaxRmpRte_SF    { sunssf access=rw }
-        ECPNomHz        { uint16.ECPNomHz_SF u=Hz access=rw }
-        ECPNomHz_SF     { sunssf access=rw }
-        Connected_Phase { enum16.Connected_Phase_enum access=rw }
+        WGra            { int16.WGra_SF u=Pct access=rw label="Default Active Power Ramp" }
+        WGra_SF         { sunssf }
+        PFSign          { enum16.PFSign_enum access=rw label="Poewr Factor Sign Convention" }
+        PFLeadMin       { int16.PFMin_SF u=cosT access=rw label="Minimum Leading Power Factor" }
+        PFLagMin        { int16.PFMin_SF u=cosT access=rw label="Minimum Lagging Power Factor" }
+        PFMin_SF        { sunssf }
+        VArAct          { enum16.VArAct_enum access=rw label="VAR Charge/Dischage Action" }
+        ClcTotVA        { enum16.ClcTotVA_enum access=rw label="Apparent Power Calculation Method" }
+        MaxRmpRte       { uint16.MaxRmpRte_SF u=Pct access=rw label="Maximum Ramp Rate (% Max Nominal Rate)"}
+        MaxRmpRte_SF    { sunssf }
+        ECPNomHz        { uint16.ECPNomHz_SF u=Hz access=rw label="Nominal ECP Frequency" }
+        ECPNomHz_SF     { sunssf }
+        Connected_Phase { enum16.Connected_Phase_enum access=rw label="Connected Phase" }
     }
 
     define PFSign_enum {
@@ -114,6 +118,11 @@ model suns {
         PhC { 3 "phase C" }
     }
 }
+
+
+###
+###  updated this far to version 0.7
+###
 
 
 #
