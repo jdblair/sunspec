@@ -44,10 +44,10 @@ model suns {
     AphB            {  uint16.A_SF u=A label="AC Current B" req={ 102 103 } }
     AphC            {  uint16.A_SF u=A label="AC Current C" req={ 103 } }
     A_SF            {  sunssf req }
-    PPVphAB         {  uint16.V_SF u=V label="AC Voltage AB" req={ 103 } }
-    PPVphBC         {  uint16.V_SF u=V label="AC Voltage BC" req={ 103 } }
-    PPVphCA         {  uint16.V_SF u=V label="AC Voltage CA" req={ 103 } }
-    PhVphA          {  uint16.V_SF u=V label="AC Voltage AN" req={ 101 } }
+    PPVphAB         {  uint16.V_SF u=V label="AC Voltage AB" }
+    PPVphBC         {  uint16.V_SF u=V label="AC Voltage BC" }
+    PPVphCA         {  uint16.V_SF u=V label="AC Voltage CA" }
+    PhVphA          {  uint16.V_SF u=V label="AC Voltage AN" req= }
     PhVphB          {  uint16.V_SF u=V label="AC Voltage BN" req={ 102 103 } }
     PhVphC          {  uint16.V_SF u=V label="AC Voltage CN" req={ 103 } }
     V_SF            {  sunssf req }
@@ -57,11 +57,11 @@ model suns {
     Hz_SF           {  sunssf req }
     VA              {  int16.VA_SF u=VA label="AC Apparent Power" }
     VA_SF           {  sunssf }
-    VAr             {  int16.VAr_SF u=VAr label="AC Reactive Power" }
+    VAr             {  int16.VAr_SF u=var label="AC Reactive Power" }
     VAr_SF          {  sunssf }
-    PF              {  int16.PF_SF u=PF label="AC Power Factor" }
+    PF              {  int16.PF_SF u=Pct label="AC Power Factor" }
     PF_SF           {  sunssf }
-    WH              {  uint32.WH_SF u=Wh label="AC Energy" req }
+    WH              {  acc32.WH_SF u=Wh label="AC Energy" req }
     WH_SF           {  sunssf req }
     DCA             {  uint16.DCA_SF u=A label="DC Current" }
     DCA_SF          {  sunssf }
@@ -156,12 +156,12 @@ data inverter_mod101_test {
     0         # I_Temp_SF
     4         # I_Status
     0         # I_Status_Vendor
-    bitfield32:0x0000FFFF # I_Event_1
-    bitfield32:65535 # I_Event_2
-    bitfield32:0 # I_Event_1_Vendor
-    bitfield32:0 # I_Event_2_Vendor
-    bitfield32:0 # I_Event_3_Vendor
-    bitfield32:0 # I_Event_4_Vendor
+    uint32:0x0000FFFF # I_Event_1
+    uint32:65535 # I_Event_2
+    uint32:0 # I_Event_1_Vendor
+    uint32:0 # I_Event_2_Vendor
+    uint32:0 # I_Event_3_Vendor
+    uint32:0 # I_Event_4_Vendor
 }
 
 data inverter_mod103_test {
@@ -226,17 +226,17 @@ model suns {
     AphA          {  float32 u=A label="AC Current A" req }
     AphB          {  float32 u=A label="AC Current B" req={ 112 113 } }
     AphC          {  float32 u=A label="AC Current C" req={ 113 } }
-    PPVphAB       {  float32 u=V label="AC Voltage AB" req={ 113 } }
-    PPVphBC       {  float32 u=V label="AC Voltage BC" req={ 113 } }
-    PPVphCA       {  float32 u=V label="AC Voltage CA" req={ 113 } }
+    PPVphAB       {  float32 u=V label="AC Voltage AB" }
+    PPVphBC       {  float32 u=V label="AC Voltage BC" }
+    PPVphCA       {  float32 u=V label="AC Voltage CA" }
     PhVphA        {  float32 u=V label="AC Voltage AN" req }
     PhVphB        {  float32 u=V label="AC Voltage BN" req={ 112 113 } }
     PhVphC        {  float32 u=V label="AC Voltage CN" req={ 113 } }
     W             {  float32 u=W label="AC Power" req }
     Hz            {  float32 u=Hz label="AC Frequency" req }
     VA            {  float32 u=VA label="AC Apparent Power" }
-    VAr           {  float32 u=VAr label="AC Reactive Power" }
-    PF            {  float32 u=PF label="AC Power Factor" }
+    VAr           {  float32 u=var label="AC Reactive Power" }
+    PF            {  float32 u=Pct label="AC Power Factor" }
     WH            {  float32 u=Wh label="AC Energy" req }
     DCA           {  float32 u=A label="DC Current" }
     DCV           {  float32 u=V label="DC Voltage" }
@@ -315,10 +315,10 @@ data inverter_mod113_test {
     float32:0.0 # I_Temp_Other_f
     4         # I_Status
     0         # I_Status_Vendor
-    bitfield32:0x00 # I_Event_1
-    bitfield32:0x00 # I_Event_2
-    bitfield32:0x00 # I_Event_1_Vendor
-    bitfield32:0x00 # I_Event_2_Vendor
-    bitfield32:0x00 # I_Event_3_Vendor
-    bitfield32:0x00 # I_Event_4_Vendor
+    uint32:0x00 # I_Event_1
+    uint32:0x00 # I_Event_2
+    uint32:0x00 # I_Event_1_Vendor
+    uint32:0x00 # I_Event_2_Vendor
+    uint32:0x00 # I_Event_3_Vendor
+    uint32:0x00 # I_Event_4_Vendor
 }
