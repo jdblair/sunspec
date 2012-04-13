@@ -850,7 +850,7 @@ int suns_app_read_registers(suns_app_t *app,
 {
     int rc = 0;
     int reg_offset = 0;
-    
+
     while (reg_offset < len) {
         int read_len = min((len - reg_offset), app->max_modbus_read);
         
@@ -859,7 +859,9 @@ int suns_app_read_registers(suns_app_t *app,
         int retries;
         rc = -1;
         for (retries = 0; retries < app->retries && rc < 0; retries++) { 
-            debug("read register %d, try %d", start + 1 + reg_offset, retries);
+            if (verbose_level > 1)
+                fprintf(stderr, "    read register %d, length %d, retry %d\n",
+                        start + 1 + reg_offset, read_len, retries);
             rc = modbus_read_registers(app->mb_ctx, start + reg_offset,
                                        read_len, regs + reg_offset);
         }
