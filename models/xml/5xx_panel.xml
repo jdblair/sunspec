@@ -5,9 +5,9 @@
       <point id="StatVend" offset="1" type="enum16" />
       <point id="Evt" offset="2" type="bitfield32" define="Evt_bf" mandatory="true" />
       <point id="EvtVend" offset="4" type="bitfield32" />
-      <point id="Ctl" offset="6" type="enum16" />
-      <point id="CtlVend" offset="7" type="enum32" />
-      <point id="CtlVal" offset="9" type="int32" />
+      <point id="Ctl" offset="6" type="enum16" access="rw" />
+      <point id="CtlVend" offset="7" type="enum32" access="rw" />
+      <point id="CtlVal" offset="9" type="int32" access="rw" />
       <point id="Tms" offset="11" type="uint32" units="Tms1970" />
       <point id="OutA" offset="13" type="float32" units="A" />
       <point id="OutV" offset="15" type="float32" units="V" />
@@ -152,9 +152,9 @@
       <point id="StatVend" offset="5" type="enum16" />
       <point id="Evt" offset="6" type="bitfield32" mandatory="true" />
       <point id="EvtVend" offset="8" type="bitfield32" />
-      <point id="Ctl" offset="10" type="enum16" />
-      <point id="CtlVend" offset="11" type="enum32" />
-      <point id="CtlVal" offset="13" type="int32" />
+      <point id="Ctl" offset="10" type="enum16" access="rw" />
+      <point id="CtlVend" offset="11" type="enum32" access="rw" />
+      <point id="CtlVal" offset="13" type="int32" access="rw" />
       <point id="Tms" offset="15" type="uint32" units="Tms" />
       <point id="OutA" offset="17" type="int16" sf="A_SF" units="A" />
       <point id="OutV" offset="18" type="int16" sf="V_SF" units="V" />

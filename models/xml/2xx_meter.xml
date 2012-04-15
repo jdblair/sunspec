@@ -108,127 +108,127 @@
   </model>
   <strings id="201" locale="en">
     <point id="A">
-      <label>AC Current</label>
+      <label>Current</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="AphA">
-      <label>AC Current A</label>
+      <label>Current A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="AphB">
-      <label>AC Current B</label>
+      <label>Current B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="AphC">
-      <label>AC Current C</label>
+      <label>Current C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhV">
-      <label>AC Voltage LN</label>
+      <label>Voltage LN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphA">
-      <label>AC Voltage AN</label>
+      <label>Voltage AN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphB">
-      <label>AC Voltage BN</label>
+      <label>Voltage BN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphC">
-      <label>AC Voltage CN</label>
+      <label>Voltage CN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PPV">
-      <label>AC Voltage LL</label>
+      <label>Voltage LL</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphAB">
-      <label>AC Voltage AB</label>
+      <label>Voltage AB</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphBC">
-      <label>AC Voltage BC</label>
+      <label>Voltage BC</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphCA">
-      <label>AC Voltage CA</label>
+      <label>Voltage CA</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="Hz">
-      <label>AC Frequency</label>
+      <label>Frequency</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="W">
-      <label>AC Power</label>
+      <label>Power</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="WphA">
-      <label>Phase A AC Power</label>
+      <label>Power A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="WphB">
-      <label>Phase B AC Power</label>
+      <label>Power B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="WphC">
-      <label>Phase C AC Power</label>
+      <label>Power C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VA">
-      <label>AC Apparent Power</label>
+      <label>Apparent Power</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAphA">
-      <label>Phase A AC Apparent Power</label>
+      <label>Apparent Power A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAphB">
-      <label>Phase B AC Apparent Power</label>
+      <label>Apparent Power B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAphC">
-      <label>Phase C AC Apparent Power</label>
+      <label>Apparent Power C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAR">
-      <label>AC Reactive Power</label>
+      <label>Reactive Power</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VARphA">
-      <label>Phase A AC Reactive Power</label>
+      <label>Reactive Power A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VARphB">
-      <label>Phase B AC Reactive Power</label>
+      <label>Reactive Power B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VARphC">
-      <label>Phase C AC Reactive Power</label>
+      <label>Reactive Power C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -238,17 +238,17 @@
       <notes></notes>
     </point>
     <point id="PFphA">
-      <label>Phase A Power Factor</label>
+      <label>Power Factor A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PFphB">
-      <label>Phase B Power Factor</label>
+      <label>Power Factor B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PFphC">
-      <label>Phase C Power Factor</label>
+      <label>Power Factor C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -258,17 +258,17 @@
       <notes></notes>
     </point>
     <point id="TotWhExpPhA">
-      <label>Phase A Energy Exported</label>
+      <label>Energy Exported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhExpPhB">
-      <label>Phase B Energy Exported</label>
+      <label>Energy Exported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhExpPhC">
-      <label>Phase C Energy Exported</label>
+      <label>Energy Exported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -278,17 +278,17 @@
       <notes></notes>
     </point>
     <point id="TotWhImpPhA">
-      <label>Phase A Energy Imported</label>
+      <label>Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhImpPhAB">
-      <label>Phase B Energy Imported</label>
+      <label>Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhImpPhAC">
-      <label>Phase C Energy Imported</label>
+      <label>Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -298,17 +298,17 @@
       <notes></notes>
     </point>
     <point id="TotVAhExpPhA">
-      <label>Phase A Apparent Energy Exported</label>
+      <label>Apparent Energy Exported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhExpPhB">
-      <label>Phase B Apparent Energy Exported</label>
+      <label>Apparent Energy Exported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhExpPhC">
-      <label>Phase C Apparent Energy Exported</label>
+      <label>Apparent Energy Exported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -318,97 +318,97 @@
       <notes></notes>
     </point>
     <point id="TotVAhImpPhA">
-      <label>Phase A Apparent Energy Imported</label>
+      <label>Apparent Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhImpPhB">
-      <label>Phase B Apparent Energy Imported</label>
+      <label>Apparent Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhImpPhC">
-      <label>Phase C Apparent Energy Imported</label>
+      <label>Apparent Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1">
-      <label>Q1: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1PhA">
-      <label>Q1 Phase A: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1PhB">
-      <label>Q1 Phase B: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1PhC">
-      <label>Q1 Phase C: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2">
-      <label>Q2: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2PhA">
-      <label>Q2 Phase A: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2PhB">
-      <label>Q2 Phase B: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2PhC">
-      <label>Q2 Phase C: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3">
-      <label>Q3: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3PhA">
-      <label>Q3 Phase A: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3PhB">
-      <label>Q3 Phase B: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3PhC">
-      <label>Q3 Phase C: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4">
-      <label>Q4: Reactive Energy Exported</label>
+      <label>Q4 Reactive Energy Imported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4PhA">
-      <label>Q4 Phase A: Reactive Energy Imported</label>
+      <label>Q4 Reactive Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4PhB">
-      <label>Q4 Phase B: Reactive Energy Imported</label>
+      <label>Q4 Reactive Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4PhC">
-      <label>Q4 Phase C: Reactive Energy Imported</label>
+      <label>Q4 Reactive Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -527,127 +527,127 @@
   </model>
   <strings id="202" locale="en">
     <point id="A">
-      <label>AC Current</label>
+      <label>Current</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="AphA">
-      <label>AC Current A</label>
+      <label>Current A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="AphB">
-      <label>AC Current B</label>
+      <label>Current B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="AphC">
-      <label>AC Current C</label>
+      <label>Current C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhV">
-      <label>AC Voltage LN</label>
+      <label>Voltage LN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphA">
-      <label>AC Voltage AN</label>
+      <label>Voltage AN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphB">
-      <label>AC Voltage BN</label>
+      <label>Voltage BN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphC">
-      <label>AC Voltage CN</label>
+      <label>Voltage CN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PPV">
-      <label>AC Voltage LL</label>
+      <label>Voltage LL</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphAB">
-      <label>AC Voltage AB</label>
+      <label>Voltage AB</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphBC">
-      <label>AC Voltage BC</label>
+      <label>Voltage BC</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphCA">
-      <label>AC Voltage CA</label>
+      <label>Voltage CA</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="Hz">
-      <label>AC Frequency</label>
+      <label>Frequency</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="W">
-      <label>AC Power</label>
+      <label>Power</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="WphA">
-      <label>Phase A AC Power</label>
+      <label>Power A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="WphB">
-      <label>Phase B AC Power</label>
+      <label>Power B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="WphC">
-      <label>Phase C AC Power</label>
+      <label>Power C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VA">
-      <label>AC Apparent Power</label>
+      <label>Apparent Power</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAphA">
-      <label>Phase A AC Apparent Power</label>
+      <label>Apparent Power A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAphB">
-      <label>Phase B AC Apparent Power</label>
+      <label>Apparent Power B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAphC">
-      <label>Phase C AC Apparent Power</label>
+      <label>Apparent Power C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAR">
-      <label>AC Reactive Power</label>
+      <label>Reactive Power</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VARphA">
-      <label>Phase A AC Reactive Power</label>
+      <label>Reactive Power A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VARphB">
-      <label>Phase B AC Reactive Power</label>
+      <label>Reactive Power B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VARphC">
-      <label>Phase C AC Reactive Power</label>
+      <label>Reactive Power C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -657,17 +657,17 @@
       <notes></notes>
     </point>
     <point id="PFphA">
-      <label>Phase A Power Factor</label>
+      <label>Power Factor A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PFphB">
-      <label>Phase B Power Factor</label>
+      <label>Power Factor B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PFphC">
-      <label>Phase C Power Factor</label>
+      <label>Power Factor C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -677,17 +677,17 @@
       <notes></notes>
     </point>
     <point id="TotWhExpPhA">
-      <label>Phase A Energy Exported</label>
+      <label>Energy Exported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhExpPhB">
-      <label>Phase B Energy Exported</label>
+      <label>Energy Exported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhExpPhC">
-      <label>Phase C Energy Exported</label>
+      <label>Energy Exported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -697,17 +697,17 @@
       <notes></notes>
     </point>
     <point id="TotWhImpPhA">
-      <label>Phase A Energy Imported</label>
+      <label>Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhImpPhAB">
-      <label>Phase B Energy Imported</label>
+      <label>Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhImpPhAC">
-      <label>Phase C Energy Imported</label>
+      <label>Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -717,17 +717,17 @@
       <notes></notes>
     </point>
     <point id="TotVAhExpPhA">
-      <label>Phase A Apparent Energy Exported</label>
+      <label>Apparent Energy Exported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhExpPhB">
-      <label>Phase B Apparent Energy Exported</label>
+      <label>Apparent Energy Exported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhExpPhC">
-      <label>Phase C Apparent Energy Exported</label>
+      <label>Apparent Energy Exported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -737,97 +737,97 @@
       <notes></notes>
     </point>
     <point id="TotVAhImpPhA">
-      <label>Phase A Apparent Energy Imported</label>
+      <label>Apparent Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhImpPhB">
-      <label>Phase B Apparent Energy Imported</label>
+      <label>Apparent Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhImpPhC">
-      <label>Phase C Apparent Energy Imported</label>
+      <label>Apparent Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1">
-      <label>Q1: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1PhA">
-      <label>Q1 Phase A: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1PhB">
-      <label>Q1 Phase B: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1PhC">
-      <label>Q1 Phase C: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2">
-      <label>Q2: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2PhA">
-      <label>Q2 Phase A: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2PhB">
-      <label>Q2 Phase B: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2PhC">
-      <label>Q2 Phase C: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3">
-      <label>Q3: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3PhA">
-      <label>Q3 Phase A: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3PhB">
-      <label>Q3 Phase B: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3PhC">
-      <label>Q3 Phase C: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4">
-      <label>Q4: Reactive Energy Exported</label>
+      <label>Q4 Reactive Energy Imported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4PhA">
-      <label>Q4 Phase A: Reactive Energy Imported</label>
+      <label>Q4 Reactive Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4PhB">
-      <label>Q4 Phase B: Reactive Energy Imported</label>
+      <label>Q4 Reactive Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4PhC">
-      <label>Q4 Phase C: Reactive Energy Imported</label>
+      <label>Q4 Reactive Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -946,127 +946,127 @@
   </model>
   <strings id="203" locale="en">
     <point id="A">
-      <label>AC Current</label>
+      <label>Current</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="AphA">
-      <label>AC Current A</label>
+      <label>Current A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="AphB">
-      <label>AC Current B</label>
+      <label>Current B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="AphC">
-      <label>AC Current C</label>
+      <label>Current C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhV">
-      <label>AC Voltage LN</label>
+      <label>Voltage LN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphA">
-      <label>AC Voltage AN</label>
+      <label>Voltage AN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphB">
-      <label>AC Voltage BN</label>
+      <label>Voltage BN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphC">
-      <label>AC Voltage CN</label>
+      <label>Voltage CN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PPV">
-      <label>AC Voltage LL</label>
+      <label>Voltage LL</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphAB">
-      <label>AC Voltage AB</label>
+      <label>Voltage AB</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphBC">
-      <label>AC Voltage BC</label>
+      <label>Voltage BC</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphCA">
-      <label>AC Voltage CA</label>
+      <label>Voltage CA</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="Hz">
-      <label>AC Frequency</label>
+      <label>Frequency</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="W">
-      <label>AC Power</label>
+      <label>Power</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="WphA">
-      <label>Phase A AC Power</label>
+      <label>Power A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="WphB">
-      <label>Phase B AC Power</label>
+      <label>Power B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="WphC">
-      <label>Phase C AC Power</label>
+      <label>Power C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VA">
-      <label>AC Apparent Power</label>
+      <label>Apparent Power</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAphA">
-      <label>Phase A AC Apparent Power</label>
+      <label>Apparent Power A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAphB">
-      <label>Phase B AC Apparent Power</label>
+      <label>Apparent Power B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAphC">
-      <label>Phase C AC Apparent Power</label>
+      <label>Apparent Power C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAR">
-      <label>AC Reactive Power</label>
+      <label>Reactive Power</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VARphA">
-      <label>Phase A AC Reactive Power</label>
+      <label>Reactive Power A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VARphB">
-      <label>Phase B AC Reactive Power</label>
+      <label>Reactive Power B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VARphC">
-      <label>Phase C AC Reactive Power</label>
+      <label>Reactive Power C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -1076,17 +1076,17 @@
       <notes></notes>
     </point>
     <point id="PFphA">
-      <label>Phase A Power Factor</label>
+      <label>Power Factor A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PFphB">
-      <label>Phase B Power Factor</label>
+      <label>Power Factor B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PFphC">
-      <label>Phase C Power Factor</label>
+      <label>Power Factor C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -1096,17 +1096,17 @@
       <notes></notes>
     </point>
     <point id="TotWhExpPhA">
-      <label>Phase A Energy Exported</label>
+      <label>Energy Exported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhExpPhB">
-      <label>Phase B Energy Exported</label>
+      <label>Energy Exported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhExpPhC">
-      <label>Phase C Energy Exported</label>
+      <label>Energy Exported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -1116,17 +1116,17 @@
       <notes></notes>
     </point>
     <point id="TotWhImpPhA">
-      <label>Phase A Energy Imported</label>
+      <label>Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhImpPhAB">
-      <label>Phase B Energy Imported</label>
+      <label>Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhImpPhAC">
-      <label>Phase C Energy Imported</label>
+      <label>Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -1136,17 +1136,17 @@
       <notes></notes>
     </point>
     <point id="TotVAhExpPhA">
-      <label>Phase A Apparent Energy Exported</label>
+      <label>Apparent Energy Exported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhExpPhB">
-      <label>Phase B Apparent Energy Exported</label>
+      <label>Apparent Energy Exported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhExpPhC">
-      <label>Phase C Apparent Energy Exported</label>
+      <label>Apparent Energy Exported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -1156,97 +1156,97 @@
       <notes></notes>
     </point>
     <point id="TotVAhImpPhA">
-      <label>Phase A Apparent Energy Imported</label>
+      <label>Apparent Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhImpPhB">
-      <label>Phase B Apparent Energy Imported</label>
+      <label>Apparent Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhImpPhC">
-      <label>Phase C Apparent Energy Imported</label>
+      <label>Apparent Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1">
-      <label>Q1: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1PhA">
-      <label>Q1 Phase A: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1PhB">
-      <label>Q1 Phase B: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1PhC">
-      <label>Q1 Phase C: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2">
-      <label>Q2: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2PhA">
-      <label>Q2 Phase A: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2PhB">
-      <label>Q2 Phase B: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2PhC">
-      <label>Q2 Phase C: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3">
-      <label>Q3: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3PhA">
-      <label>Q3 Phase A: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3PhB">
-      <label>Q3 Phase B: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3PhC">
-      <label>Q3 Phase C: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4">
-      <label>Q4: Reactive Energy Exported</label>
+      <label>Q4 Reactive Energy Imported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4PhA">
-      <label>Q4 Phase A: Reactive Energy Imported</label>
+      <label>Q4 Reactive Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4PhB">
-      <label>Q4 Phase B: Reactive Energy Imported</label>
+      <label>Q4 Reactive Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4PhC">
-      <label>Q4 Phase C: Reactive Energy Imported</label>
+      <label>Q4 Reactive Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -1365,127 +1365,127 @@
   </model>
   <strings id="204" locale="en">
     <point id="A">
-      <label>AC Current</label>
+      <label>Current</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="AphA">
-      <label>AC Current A</label>
+      <label>Current A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="AphB">
-      <label>AC Current B</label>
+      <label>Current B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="AphC">
-      <label>AC Current C</label>
+      <label>Current C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhV">
-      <label>AC Voltage LN</label>
+      <label>Voltage LN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphA">
-      <label>AC Voltage AN</label>
+      <label>Voltage AN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphB">
-      <label>AC Voltage BN</label>
+      <label>Voltage BN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphC">
-      <label>AC Voltage CN</label>
+      <label>Voltage CN</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PPV">
-      <label>AC Voltage LL</label>
+      <label>Voltage LL</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphAB">
-      <label>AC Voltage AB</label>
+      <label>Voltage AB</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphBC">
-      <label>AC Voltage BC</label>
+      <label>Voltage BC</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PhVphCA">
-      <label>AC Voltage CA</label>
+      <label>Voltage CA</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="Hz">
-      <label>AC Frequency</label>
+      <label>Frequency</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="W">
-      <label>AC Power</label>
+      <label>Power</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="WphA">
-      <label>Phase A AC Power</label>
+      <label>Power A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="WphB">
-      <label>Phase B AC Power</label>
+      <label>Power B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="WphC">
-      <label>Phase C AC Power</label>
+      <label>Power C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VA">
-      <label>AC Apparent Power</label>
+      <label>Apparent Power</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAphA">
-      <label>Phase A AC Apparent Power</label>
+      <label>Apparent Power A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAphB">
-      <label>Phase B AC Apparent Power</label>
+      <label>Apparent Power B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAphC">
-      <label>Phase C AC Apparent Power</label>
+      <label>Apparent Power C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VAR">
-      <label>AC Reactive Power</label>
+      <label>Reactive Power</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VARphA">
-      <label>Phase A AC Reactive Power</label>
+      <label>Reactive Power A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VARphB">
-      <label>Phase B AC Reactive Power</label>
+      <label>Reactive Power B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="VARphC">
-      <label>Phase C AC Reactive Power</label>
+      <label>Reactive Power C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -1495,17 +1495,17 @@
       <notes></notes>
     </point>
     <point id="PFphA">
-      <label>Phase A Power Factor</label>
+      <label>Power Factor A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PFphB">
-      <label>Phase B Power Factor</label>
+      <label>Power Factor B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="PFphC">
-      <label>Phase C Power Factor</label>
+      <label>Power Factor C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -1515,17 +1515,17 @@
       <notes></notes>
     </point>
     <point id="TotWhExpPhA">
-      <label>Phase A Energy Exported</label>
+      <label>Energy Exported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhExpPhB">
-      <label>Phase B Energy Exported</label>
+      <label>Energy Exported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhExpPhC">
-      <label>Phase C Energy Exported</label>
+      <label>Energy Exported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -1535,17 +1535,17 @@
       <notes></notes>
     </point>
     <point id="TotWhImpPhA">
-      <label>Phase A Energy Imported</label>
+      <label>Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhImpPhAB">
-      <label>Phase B Energy Imported</label>
+      <label>Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotWhImpPhAC">
-      <label>Phase C Energy Imported</label>
+      <label>Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -1555,17 +1555,17 @@
       <notes></notes>
     </point>
     <point id="TotVAhExpPhA">
-      <label>Phase A Apparent Energy Exported</label>
+      <label>Apparent Energy Exported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhExpPhB">
-      <label>Phase B Apparent Energy Exported</label>
+      <label>Apparent Energy Exported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhExpPhC">
-      <label>Phase C Apparent Energy Exported</label>
+      <label>Apparent Energy Exported C</label>
       <description></description>
       <notes></notes>
     </point>
@@ -1575,97 +1575,97 @@
       <notes></notes>
     </point>
     <point id="TotVAhImpPhA">
-      <label>Phase A Apparent Energy Imported</label>
+      <label>Apparent Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhImpPhB">
-      <label>Phase B Apparent Energy Imported</label>
+      <label>Apparent Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVAhImpPhC">
-      <label>Phase C Apparent Energy Imported</label>
+      <label>Apparent Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1">
-      <label>Q1: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1PhA">
-      <label>Q1 Phase A: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1PhB">
-      <label>Q1 Phase B: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ1PhC">
-      <label>Q1 Phase C: Reactive Energy Imported</label>
+      <label>Q1 Reactive Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2">
-      <label>Q2: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2PhA">
-      <label>Q2 Phase A: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2PhB">
-      <label>Q2 Phase B: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ2PhC">
-      <label>Q2 Phase C: Reactive Energy Imported</label>
+      <label>Q2 Reactive Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3">
-      <label>Q3: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3PhA">
-      <label>Q3 Phase A: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3PhB">
-      <label>Q3 Phase B: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ3PhC">
-      <label>Q3 Phase C: Reactive Energy Exported</label>
+      <label>Q3 Reactive Energy Exported C</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4">
-      <label>Q4: Reactive Energy Exported</label>
+      <label>Q4 Reactive Energy Imported</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4PhA">
-      <label>Q4 Phase A: Reactive Energy Imported</label>
+      <label>Q4 Reactive Energy Imported A</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4PhB">
-      <label>Q4 Phase B: Reactive Energy Imported</label>
+      <label>Q4 Reactive Energy Imported B</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="TotVArhImpQ4PhC">
-      <label>Q4 Phase C: Reactive Energy Imported</label>
+      <label>Q4 Reactive Energy Imported C</label>
       <description></description>
       <notes></notes>
     </point>

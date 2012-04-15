@@ -19,11 +19,11 @@
       <point id="Hz_SF" offset="15" type="sunssf" mandatory="true" />
       <point id="VA" offset="16" type="int16" sf="VA_SF" units="VA" />
       <point id="VA_SF" offset="17" type="sunssf" />
-      <point id="VAr" offset="18" type="int16" sf="VAr_SF" units="VAr" />
+      <point id="VAr" offset="18" type="int16" sf="VAr_SF" units="var" />
       <point id="VAr_SF" offset="19" type="sunssf" />
-      <point id="PF" offset="20" type="int16" sf="PF_SF" units="PF" />
+      <point id="PF" offset="20" type="int16" sf="PF_SF" units="Pct" />
       <point id="PF_SF" offset="21" type="sunssf" />
-      <point id="WH" offset="22" type="uint32" sf="WH_SF" units="Wh" mandatory="true" />
+      <point id="WH" offset="22" type="acc32" sf="WH_SF" units="Wh" mandatory="true" />
       <point id="WH_SF" offset="24" type="sunssf" mandatory="true" />
       <point id="DCA" offset="25" type="uint16" sf="DCA_SF" units="A" />
       <point id="DCA_SF" offset="26" type="sunssf" />
@@ -241,7 +241,7 @@
       <point id="PPVphAB" offset="5" type="uint16" sf="V_SF" units="V" />
       <point id="PPVphBC" offset="6" type="uint16" sf="V_SF" units="V" />
       <point id="PPVphCA" offset="7" type="uint16" sf="V_SF" units="V" />
-      <point id="PhVphA" offset="8" type="uint16" sf="V_SF" units="V" />
+      <point id="PhVphA" offset="8" type="uint16" sf="V_SF" units="V" mandatory="true" />
       <point id="PhVphB" offset="9" type="uint16" sf="V_SF" units="V" mandatory="true" />
       <point id="PhVphC" offset="10" type="uint16" sf="V_SF" units="V" />
       <point id="V_SF" offset="11" type="sunssf" mandatory="true" />
@@ -251,11 +251,11 @@
       <point id="Hz_SF" offset="15" type="sunssf" mandatory="true" />
       <point id="VA" offset="16" type="int16" sf="VA_SF" units="VA" />
       <point id="VA_SF" offset="17" type="sunssf" />
-      <point id="VAr" offset="18" type="int16" sf="VAr_SF" units="VAr" />
+      <point id="VAr" offset="18" type="int16" sf="VAr_SF" units="var" />
       <point id="VAr_SF" offset="19" type="sunssf" />
-      <point id="PF" offset="20" type="int16" sf="PF_SF" units="PF" />
+      <point id="PF" offset="20" type="int16" sf="PF_SF" units="Pct" />
       <point id="PF_SF" offset="21" type="sunssf" />
-      <point id="WH" offset="22" type="uint32" sf="WH_SF" units="Wh" mandatory="true" />
+      <point id="WH" offset="22" type="acc32" sf="WH_SF" units="Wh" mandatory="true" />
       <point id="WH_SF" offset="24" type="sunssf" mandatory="true" />
       <point id="DCA" offset="25" type="uint16" sf="DCA_SF" units="A" />
       <point id="DCA_SF" offset="26" type="sunssf" />
@@ -470,10 +470,10 @@
       <point id="AphB" offset="2" type="uint16" sf="A_SF" units="A" mandatory="true" />
       <point id="AphC" offset="3" type="uint16" sf="A_SF" units="A" mandatory="true" />
       <point id="A_SF" offset="4" type="sunssf" mandatory="true" />
-      <point id="PPVphAB" offset="5" type="uint16" sf="V_SF" units="V" mandatory="true" />
-      <point id="PPVphBC" offset="6" type="uint16" sf="V_SF" units="V" mandatory="true" />
-      <point id="PPVphCA" offset="7" type="uint16" sf="V_SF" units="V" mandatory="true" />
-      <point id="PhVphA" offset="8" type="uint16" sf="V_SF" units="V" />
+      <point id="PPVphAB" offset="5" type="uint16" sf="V_SF" units="V" />
+      <point id="PPVphBC" offset="6" type="uint16" sf="V_SF" units="V" />
+      <point id="PPVphCA" offset="7" type="uint16" sf="V_SF" units="V" />
+      <point id="PhVphA" offset="8" type="uint16" sf="V_SF" units="V" mandatory="true" />
       <point id="PhVphB" offset="9" type="uint16" sf="V_SF" units="V" mandatory="true" />
       <point id="PhVphC" offset="10" type="uint16" sf="V_SF" units="V" mandatory="true" />
       <point id="V_SF" offset="11" type="sunssf" mandatory="true" />
@@ -483,11 +483,11 @@
       <point id="Hz_SF" offset="15" type="sunssf" mandatory="true" />
       <point id="VA" offset="16" type="int16" sf="VA_SF" units="VA" />
       <point id="VA_SF" offset="17" type="sunssf" />
-      <point id="VAr" offset="18" type="int16" sf="VAr_SF" units="VAr" />
+      <point id="VAr" offset="18" type="int16" sf="VAr_SF" units="var" />
       <point id="VAr_SF" offset="19" type="sunssf" />
-      <point id="PF" offset="20" type="int16" sf="PF_SF" units="PF" />
+      <point id="PF" offset="20" type="int16" sf="PF_SF" units="Pct" />
       <point id="PF_SF" offset="21" type="sunssf" />
-      <point id="WH" offset="22" type="uint32" sf="WH_SF" units="Wh" mandatory="true" />
+      <point id="WH" offset="22" type="acc32" sf="WH_SF" units="Wh" mandatory="true" />
       <point id="WH_SF" offset="24" type="sunssf" mandatory="true" />
       <point id="DCA" offset="25" type="uint16" sf="DCA_SF" units="A" />
       <point id="DCA_SF" offset="26" type="sunssf" />
@@ -710,8 +710,8 @@
       <point id="W" offset="20" type="float32" units="W" mandatory="true" />
       <point id="Hz" offset="22" type="float32" units="Hz" mandatory="true" />
       <point id="VA" offset="24" type="float32" units="VA" />
-      <point id="VAr" offset="26" type="float32" units="VAr" />
-      <point id="PF" offset="28" type="float32" units="PF" />
+      <point id="VAr" offset="26" type="float32" units="var" />
+      <point id="PF" offset="28" type="float32" units="Pct" />
       <point id="WH" offset="30" type="float32" units="Wh" mandatory="true" />
       <point id="DCA" offset="32" type="float32" units="A" />
       <point id="DCV" offset="34" type="float32" units="V" />
@@ -930,8 +930,8 @@
       <point id="W" offset="20" type="float32" units="W" mandatory="true" />
       <point id="Hz" offset="22" type="float32" units="Hz" mandatory="true" />
       <point id="VA" offset="24" type="float32" units="VA" />
-      <point id="VAr" offset="26" type="float32" units="VAr" />
-      <point id="PF" offset="28" type="float32" units="PF" />
+      <point id="VAr" offset="26" type="float32" units="var" />
+      <point id="PF" offset="28" type="float32" units="Pct" />
       <point id="WH" offset="30" type="float32" units="Wh" mandatory="true" />
       <point id="DCA" offset="32" type="float32" units="A" />
       <point id="DCV" offset="34" type="float32" units="V" />
@@ -1141,17 +1141,17 @@
       <point id="AphA" offset="2" type="float32" units="A" mandatory="true" />
       <point id="AphB" offset="4" type="float32" units="A" mandatory="true" />
       <point id="AphC" offset="6" type="float32" units="A" mandatory="true" />
-      <point id="PPVphAB" offset="8" type="float32" units="V" mandatory="true" />
-      <point id="PPVphBC" offset="10" type="float32" units="V" mandatory="true" />
-      <point id="PPVphCA" offset="12" type="float32" units="V" mandatory="true" />
+      <point id="PPVphAB" offset="8" type="float32" units="V" />
+      <point id="PPVphBC" offset="10" type="float32" units="V" />
+      <point id="PPVphCA" offset="12" type="float32" units="V" />
       <point id="PhVphA" offset="14" type="float32" units="V" mandatory="true" />
       <point id="PhVphB" offset="16" type="float32" units="V" mandatory="true" />
       <point id="PhVphC" offset="18" type="float32" units="V" mandatory="true" />
       <point id="W" offset="20" type="float32" units="W" mandatory="true" />
       <point id="Hz" offset="22" type="float32" units="Hz" mandatory="true" />
       <point id="VA" offset="24" type="float32" units="VA" />
-      <point id="VAr" offset="26" type="float32" units="VAr" />
-      <point id="PF" offset="28" type="float32" units="PF" />
+      <point id="VAr" offset="26" type="float32" units="var" />
+      <point id="PF" offset="28" type="float32" units="Pct" />
       <point id="WH" offset="30" type="float32" units="Wh" mandatory="true" />
       <point id="DCA" offset="32" type="float32" units="A" />
       <point id="DCV" offset="34" type="float32" units="V" />

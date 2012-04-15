@@ -6,7 +6,7 @@
       <point id="Opt" offset="32" type="string" len="8" />
       <point id="Vr" offset="40" type="string" len="8" />
       <point id="SN" offset="48" type="string" len="16" mandatory="true" />
-      <point id="DA" offset="64" type="uint16" />
+      <point id="DA" offset="64" type="uint16" access="rw" />
     </block>
   </model>
   <strings id="1" locale="en">

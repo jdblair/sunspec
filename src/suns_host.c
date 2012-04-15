@@ -64,7 +64,7 @@ static suns_host_code_map_t host_status_code_string_map[] = {
     { CODE_UNDEF,                  NULL },
 };
 
-
+/*
 static suns_host_code_map_t host_status_code_http_map[] = {
     { CODE_OK,                     HTTP_STATUS_200 },
     { CODE_ACCESS_DENIED,          HTTP_STATUS_403 },
@@ -79,7 +79,7 @@ static suns_host_code_map_t host_status_code_http_map[] = {
     { CODE_UNKNOWN_LOGGER,         HTTP_STATUS_400 },
     { CODE_UNDEF,                  NULL },
 };
-
+*/
 
 
 char *suns_host_status_string(suns_host_status_t status)

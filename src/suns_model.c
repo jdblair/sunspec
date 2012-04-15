@@ -1352,10 +1352,12 @@ suns_dataset_t *suns_decode_data(list_t *did_list,
     if (m->base_len != m->len) {
         /* check for repeating portion of the model */
         if ((did_len - m->base_len) % (m->len - m->base_len) != 0) {
-            warning("repeating portion of the model (%d) is not a multiple"
-                    "of the expected repeating portion (%d)",
+            warning("repeating portion of the model (%d) is not a multiple "
+                    "of the expected repeating portion (%d).  %d extra "
+                    "registers have been ignored.",
                     did_len - m->base_len,
-                    m->len - m->base_len);
+                    m->len - m->base_len,
+                    (did_len - m->base_len) % (m->len - m->base_len));
             /* FIXME: need to mark a flag if we're going
                to generate a report */
         }
@@ -1363,8 +1365,9 @@ suns_dataset_t *suns_decode_data(list_t *did_list,
         /* check that the length is what we expect */
         if (m->len != did_len) {
             warning("length value in data block (%d) does "
-                    "not match data model spec length (%d).",
-                    did_len, m->len);
+                    "not match data model spec length (%d). "
+                    "%d extra registers have been ignored.",
+                    did_len, m->len, did_len - m->len);
             /* FIXME: need to mark a flag if we're going
                to generate a report */
         }
@@ -1508,7 +1511,7 @@ int suns_decode_dp_block(suns_dp_block_t *dp_block,
                 v->units = suns_find_attribute(dp, "u");
                 v->label = suns_find_attribute(dp, "label");
 
-                debug("v->tp.type = %s", suns_type_string(v->tp.type));
+                /* debug("v->tp.type = %s", suns_type_string(v->tp.type)); */
                 list_node_add(value_list, list_node_new(v));
                 byte_offset += size;
 		
@@ -1684,8 +1687,20 @@ int suns_resolve_scale_factors(suns_dataset_t *dataset)
                     return -1;
                 }
 
-                /* stash scale factor in the suns_value_t */
-                v->tp.sf = suns_value_get_sunssf(found);
+                /* check if the scale factor is implemented */
+                if (found->meta == SUNS_VALUE_NOT_IMPLEMENTED) {
+                    if (v->meta != SUNS_VALUE_NOT_IMPLEMENTED) {
+                        warning("implemented datapoint %s references the "
+                                "not-implemented scale factor %s",
+                                v->name, found->name);
+                    }
+                    /* put zero in the scale factor so we
+                       produce a meaningful result */
+                    v->tp.sf = 0;
+                } else {
+                    /* stash scale factor in the suns_value_t */
+                    v->tp.sf = suns_value_get_sunssf(found);
+                }
             }
         }
     }

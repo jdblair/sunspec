@@ -59,7 +59,7 @@
 #include "suns_parser.h"
 #include "suns_lang.tab.h"
 #include "suns_host.h"
-/* #include "suns_host_parser.h" */
+#include "suns_host_parser.h"
 
 
 void suns_app_init(suns_app_t *app)
@@ -651,8 +651,8 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
                 (last_dp_block->repeating &&
                  (((len - did->model->base_len) %
                    (did->model->len - did->model->base_len)) != 0))) {
-                error("data model length %d does not match expected length %d",
-                      len, did->model->len);
+                error("data model length %d does not match expected length (base length %d + multiple of repeating block length %d)",
+                      len, did->model->len, (did->model->len - did->model->base_len));
             }
         }
 

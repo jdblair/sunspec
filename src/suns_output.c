@@ -359,16 +359,6 @@ void suns_type_pair_fprint(FILE *stream, suns_type_pair_t *tp)
 }
 
 
-/*
- *  WARNING! there may be some loss of precision in scale factor
- *  conversions since these cause values to be converted to doubles
- *  before being displayed.
- * 
- *  FIXME: I should write a decimal string output function, which
- *  would keep the int values as integers and move the decimal
- *  point around symbolically.
- */
-
 
 static int value_output_null(char *buf, size_t len, suns_value_t *v)
 {
@@ -1063,8 +1053,10 @@ int suns_dataset_xml_fprintf(FILE *stream, suns_dataset_t *data)
         fprintf(stream, "    <p id=\"%s\"", v->name);
         if (v->tp.sf != 0)
             fprintf(stream, " sf=\"%d\"", v->tp.sf);
+        /*
         else
             debug("no scale factor for %s", v->name);
+        */
         
         if (v->repeating)
             fprintf(stream, " x=\"%d\"", v->index);
@@ -1308,6 +1300,10 @@ void suns_model_xml_dp_fprintf(FILE *stream,
                     fprintf(stream, " mandatory=\"true\"");
                 }
             }
+
+            /* access */
+            if (strcmp(a->name, "access") == 0)
+                fprintf(stream, " access=\"%s\"", a->value);
         }
     }
 
@@ -1394,12 +1390,14 @@ int _suns_snprintf_int_sf_e(char *buf,
     if (e != 0) {
         buf[buf_char++] = 'e';
        
-        buf_char += snprintf(buf + numlen + 2, len - numlen - 3, "%d", e);
-        if (buf_char += snprintf(buf + numlen + 2, len - numlen - 3, "%d", e)
-            > len - numlen - 3) {
-            debug("len %d is to small", len);
+        int offset = snprintf(buf + numlen + 2, len - numlen - 3, "%d", e);
+        if (offset > len - numlen - 3) {
+            debug("len %d is to small (only have %d space)",
+                  len,
+                  len - numlen - 3);
             return -1;
         }
+        buf_char += offset;
     }
 
     return buf_char;
@@ -1423,6 +1421,12 @@ int suns_snprintf_int_sf(char *buf,
     int numlen;
     char tmpbuf[BUFFER_SIZE];
 
+    /* short circuit x == 0 (ignore exponent) */
+    if (x == 0) {
+        strncpy(buf, "0", len);
+        return 0;
+    }
+
     numlen = snprintf(tmpbuf, BUFFER_SIZE, "%lld", x);
     if (numlen > BUFFER_SIZE) {
         /* tmpbuf is too small */
@@ -1441,6 +1445,12 @@ int suns_snprintf_uint_sf(char *buf,
 {
     int numlen;
     char tmpbuf[BUFFER_SIZE];
+
+    /* short circuit x == 0 (ignore exponent) */
+    if (x == 0) {
+        strncpy(buf, "0", len);
+        return 0;
+    }
 
     numlen = snprintf(tmpbuf, BUFFER_SIZE, "%llu", x);
     if (numlen > BUFFER_SIZE) {

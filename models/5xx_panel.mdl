@@ -108,9 +108,9 @@ model suns {
     StatVend           { enum16 label="Vendor Module Status Code" }
     Evt                { bitfield32 req label="Module Event Flags" }
     EvtVend            { bitfield32 label="Vendor Module Event Flags" }
-    Ctl                { enum16 label="Module Control" }
-    CtlVend            { enum32 label="Vendor Module Control" }
-    CtlVal             { int32 label="Module Control Value" }
+    Ctl                { enum16 access="rw" label="Module Control" }
+    CtlVend            { enum32 access="rw" label="Vendor Module Control" }
+    CtlVal             { int32 access="rw" label="Module Control Value" }
     Tms                { uint32 u=Tms label="Timestamp" }
     OutA               { int16.A_SF u=A label="Output Current" }
     OutV               { int16.V_SF u=V label="Output Voltage" }
