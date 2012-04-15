@@ -1,3 +1,4 @@
+
 int suns_output_sqlite_open(char *path, sqlite3 **db, const char **err);
 int suns_output_sqlite_close(sqlite3 *db, const char **err);
 int suns_output_sqlite_model_list(sqlite3 *db,

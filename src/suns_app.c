@@ -59,7 +59,7 @@
 #include "suns_parser.h"
 #include "suns_lang.tab.h"
 #include "suns_host.h"
-#include "suns_host_parser.h"
+/* #include "suns_host_parser.h" */
 
 
 void suns_app_init(suns_app_t *app)
@@ -197,7 +197,7 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
                 option_error = 1;
             }
             if (app->max_modbus_read > 125) {
-                warning("read length cannot be greater than 125 registers",
+                warning("read length cannot be greater than %d registers",
                         app->max_modbus_read);
                 app->max_modbus_read = 125;
             }
@@ -290,14 +290,6 @@ int suns_app_logger_host(suns_app_t *app)
 
     fwrite(result_xml, 1, strlen(result_xml), stdout);
     free(result_xml);
-
-    /*
-    list_node_t *c;
-    list_for_each(devices, c) {
-        suns_device_output(app->output_fmt, c->data, stdout);
-        }
-    */
-
 
     debug("rc = %d", rc);
 
