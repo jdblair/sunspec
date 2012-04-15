@@ -27,6 +27,37 @@ Updates
               to eliminate approximation errors caused by computing
               sunspec scale factors using IEEE 754 floating point numbers.
 
+2012-Apr-15:  Summarizing a large number of changes that have been made
+              since February
+
+              Fix a bug with the -l option, which allows reading sets
+              of registers
+
+              Add some verbose detail when performing multiple reads
+              to retrieve all the data in a model (accessed with
+              verbose level 2, -vv)
+
+              Fix mistakes in the 404 string model (discovered when
+              trying to verify the Ecogard string combiner)
+
+              Generate appropriate warnings when expected model
+              lengths do not match the provided model length
+
+              Generate warnings when an implemented data point
+              references an unimplemented scale factor (also
+              substitutes zero for the scale factor to try and do the
+              right thing).
+
+              Remove an un-intended build dependency on sqlite.h
+
+              Assorted other corrections of errors and omissions in
+              models having to do with labels, short names and units.
+
+              There is also a lot of new work to implement a SunSpec
+              host (available with the -H flag), a sqlite data store, and
+              a simple tool for accessing the data store.  This work is
+              not yet stable.
+
 
 Dependencies
 ------------
