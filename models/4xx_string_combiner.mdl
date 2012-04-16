@@ -148,8 +148,8 @@ model suns {
     EvtVnd                  { bitfield32 label="Combiner Vendor Event Flags" }
     DCA                     { int16.DCA_SF u=A label="DC Current" req }
     DCAhr                   { acc32.DCAH_SF u=Ah label="DC Amp Hours"}
-    DCV                     { uint16.DCV_SF u=V label="DC Voltage" }
-    DCTmp                   { uint16 u=C label="Temperature" }
+    DCV                     { int16.DCV_SF u=V label="DC Voltage" }
+    Tmp                     { uint16 u=C label="Temperature" }
     InDCA_SF                { sunssf }
     InDCAhr_SF              { sunssf }
   }  
@@ -158,7 +158,7 @@ model suns {
     InID                    { uint16 label="Input ID" req }
     InEvt                   { bitfield32 label="Input Event Flags" req }
     InEvtVnd                { bitfield32 label="Input Vendor Event Flags" }
-    InDCA                   { int16.DCA_SF u=A label="Input DC Current" req }
+    InDCA                   { uint16.DCA_SF u=A label="Input DC Current" req }
     InDCAhr                 { acc32.DCAH_SF u=Ah label="Input DC Amp Hours" }
   }
 }
