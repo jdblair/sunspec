@@ -140,14 +140,14 @@ model suns {
   # common datapoints
   datapoints {
     DCA_SF                  { sunssf req }
-    DCAH_SF                 { sunssf }
+    DCAhr_SF                { sunssf }
     DCV_SF                  { sunssf }
-    DCA_Max                 { uint16.DCA_SF u=A req label="Max Rated Current" }
+    DCAMax                  { uint16.DCA_SF u=A req label="Max Rated Current" }
     N                       { uint16 label="Number of Inputs" req }
     Evt                     { bitfield32 label="Combiner Event Flags" req }
     EvtVnd                  { bitfield32 label="Combiner Vendor Event Flags" }
     DCA                     { int16.DCA_SF u=A label="DC Current" req }
-    DCAH                    { uint32.DCAH_SF u=Ah label="DC Amp Hours"}
+    DCAhr                   { acc32.DCAH_SF u=Ah label="DC Amp Hours"}
     DCV                     { uint16.DCV_SF u=V label="DC Voltage" }
     DCTmp                   { uint16 u=C label="Temperature" }
     InDCA_SF                { sunssf }
@@ -159,7 +159,7 @@ model suns {
     InEvt                   { bitfield32 label="Input Event Flags" req }
     InEvtVnd                { bitfield32 label="Input Vendor Event Flags" }
     InDCA                   { int16.DCA_SF u=A label="Input DC Current" req }
-    InDCAH                  { uint32.DCAH_SF u=Ah label="Input DC Amp Hours" }
+    InDCAhr                 { acc32.DCAH_SF u=Ah label="Input DC Amp Hours" }
   }
 }
 
@@ -183,7 +183,7 @@ model suns {
     Evt                     { bitfield32 req label="Event Flags" }
     EvtVnd                  { bitfield32 label="Vendor Event Flags" }
     DCA                     { int16.DCA_SF u=A req label="Combined Current" }
-    DCAhr                   { uint32.DCAhr_SF u=Ah label="Combined Amp Hours" }
+    DCAhr                   { acc32.DCAhr_SF u=Ah label="Combined Amp Hours" }
     DCV                     { uint16.DCV_SF u=V label="Combined Voltage" }
     Tmp                     { uint16 u=C label="Ambient Temperature" }
     DCW                     { int16.DCW_SF u=W label="Combined Power" }
@@ -200,10 +200,10 @@ model suns {
     InEvt                   { bitfield32 req label="Input Event Flags" }
     InEvtVnd                { bitfield32 label="Input Vendor Event Flags" }
     InDCA                   { int16.InDCA_SF u=A req label="Input Current" }
-    InDCAhr                 { uint32.InDCAH_SF u=Ah label="Input Amp Hours" }
+    InDCAhr                 { acc32.InDCAH_SF u=Ah label="Input Amp Hours" }
     InDCV                   { uint16.InDCV_SF u=V label="Input Voltage" }
     InDCW                   { int16.InDCW_SF u=W label="Input Power" }
-    INDCWh                  { uint32.InDCWh_SF u=Wh label="Input Accumulated Energy" }
+    INDCWh                  { acc32.InDCWh_SF u=Wh label="Input Accumulated Energy" }
     InDCPR                  { uint16 u=Pct label="Input Performance Ratio" }
     InN                     { uint16 label="Number of Modules" }
   }
