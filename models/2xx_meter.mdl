@@ -71,10 +71,10 @@ model suns {
     VARphB            { int16.VAR_SF   u=var  label="Reactive Power B" }
     VARphC            { int16.VAR_SF   u=var  label="Reactive Power C" }
     VAR_SF            { sunssf                                        }
-    PF                { int16.PF_SF    u=PFPct label="Power Factor" }
-    PFphA             { int16.PF_SF    u=PFPct label="Power Factor A" }
-    PFphB             { int16.PF_SF    u=PFPct label="Power Factor B" }
-    PFphC             { int16.PF_SF    u=PFPct label="Power Factor C" }
+    PF                { int16.PF_SF    u=Pct label="Power Factor" }
+    PFphA             { int16.PF_SF    u=Pct label="Power Factor A" }
+    PFphB             { int16.PF_SF    u=Pct label="Power Factor B" }
+    PFphC             { int16.PF_SF    u=Pct label="Power Factor C" }
     PF_SF             { sunssf                                        }
     TotWhExp          { acc32.TotWh_SF u=Wh   req label="Energy Exported" }
     TotWhExpPhA       { acc32.TotWh_SF u=Wh   label="Energy Exported A" }

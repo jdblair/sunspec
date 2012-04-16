@@ -32,10 +32,10 @@
       <point id="VARphB" offset="28" type="int16" sf="VAR_SF" units="var" />
       <point id="VARphC" offset="29" type="int16" sf="VAR_SF" units="var" />
       <point id="VAR_SF" offset="30" type="sunssf" />
-      <point id="PF" offset="31" type="int16" sf="PF_SF" units="PFPct" />
-      <point id="PFphA" offset="32" type="int16" sf="PF_SF" units="PFPct" />
-      <point id="PFphB" offset="33" type="int16" sf="PF_SF" units="PFPct" />
-      <point id="PFphC" offset="34" type="int16" sf="PF_SF" units="PFPct" />
+      <point id="PF" offset="31" type="int16" sf="PF_SF" units="Pct" />
+      <point id="PFphA" offset="32" type="int16" sf="PF_SF" units="Pct" />
+      <point id="PFphB" offset="33" type="int16" sf="PF_SF" units="Pct" />
+      <point id="PFphC" offset="34" type="int16" sf="PF_SF" units="Pct" />
       <point id="PF_SF" offset="35" type="sunssf" />
       <point id="TotWhExp" offset="36" type="acc32" sf="TotWh_SF" units="Wh" mandatory="true" />
       <point id="TotWhExpPhA" offset="38" type="acc32" sf="TotWh_SF" units="Wh" />
@@ -451,10 +451,10 @@
       <point id="VARphB" offset="28" type="int16" sf="VAR_SF" units="var" />
       <point id="VARphC" offset="29" type="int16" sf="VAR_SF" units="var" />
       <point id="VAR_SF" offset="30" type="sunssf" />
-      <point id="PF" offset="31" type="int16" sf="PF_SF" units="PFPct" />
-      <point id="PFphA" offset="32" type="int16" sf="PF_SF" units="PFPct" />
-      <point id="PFphB" offset="33" type="int16" sf="PF_SF" units="PFPct" />
-      <point id="PFphC" offset="34" type="int16" sf="PF_SF" units="PFPct" />
+      <point id="PF" offset="31" type="int16" sf="PF_SF" units="Pct" />
+      <point id="PFphA" offset="32" type="int16" sf="PF_SF" units="Pct" />
+      <point id="PFphB" offset="33" type="int16" sf="PF_SF" units="Pct" />
+      <point id="PFphC" offset="34" type="int16" sf="PF_SF" units="Pct" />
       <point id="PF_SF" offset="35" type="sunssf" />
       <point id="TotWhExp" offset="36" type="acc32" sf="TotWh_SF" units="Wh" mandatory="true" />
       <point id="TotWhExpPhA" offset="38" type="acc32" sf="TotWh_SF" units="Wh" />
@@ -870,10 +870,10 @@
       <point id="VARphB" offset="28" type="int16" sf="VAR_SF" units="var" />
       <point id="VARphC" offset="29" type="int16" sf="VAR_SF" units="var" />
       <point id="VAR_SF" offset="30" type="sunssf" />
-      <point id="PF" offset="31" type="int16" sf="PF_SF" units="PFPct" />
-      <point id="PFphA" offset="32" type="int16" sf="PF_SF" units="PFPct" />
-      <point id="PFphB" offset="33" type="int16" sf="PF_SF" units="PFPct" />
-      <point id="PFphC" offset="34" type="int16" sf="PF_SF" units="PFPct" />
+      <point id="PF" offset="31" type="int16" sf="PF_SF" units="Pct" />
+      <point id="PFphA" offset="32" type="int16" sf="PF_SF" units="Pct" />
+      <point id="PFphB" offset="33" type="int16" sf="PF_SF" units="Pct" />
+      <point id="PFphC" offset="34" type="int16" sf="PF_SF" units="Pct" />
       <point id="PF_SF" offset="35" type="sunssf" />
       <point id="TotWhExp" offset="36" type="acc32" sf="TotWh_SF" units="Wh" mandatory="true" />
       <point id="TotWhExpPhA" offset="38" type="acc32" sf="TotWh_SF" units="Wh" />
@@ -1289,10 +1289,10 @@
       <point id="VARphB" offset="28" type="int16" sf="VAR_SF" units="var" />
       <point id="VARphC" offset="29" type="int16" sf="VAR_SF" units="var" />
       <point id="VAR_SF" offset="30" type="sunssf" />
-      <point id="PF" offset="31" type="int16" sf="PF_SF" units="PFPct" />
-      <point id="PFphA" offset="32" type="int16" sf="PF_SF" units="PFPct" />
-      <point id="PFphB" offset="33" type="int16" sf="PF_SF" units="PFPct" />
-      <point id="PFphC" offset="34" type="int16" sf="PF_SF" units="PFPct" />
+      <point id="PF" offset="31" type="int16" sf="PF_SF" units="Pct" />
+      <point id="PFphA" offset="32" type="int16" sf="PF_SF" units="Pct" />
+      <point id="PFphB" offset="33" type="int16" sf="PF_SF" units="Pct" />
+      <point id="PFphC" offset="34" type="int16" sf="PF_SF" units="Pct" />
       <point id="PF_SF" offset="35" type="sunssf" />
       <point id="TotWhExp" offset="36" type="acc32" sf="TotWh_SF" units="Wh" mandatory="true" />
       <point id="TotWhExpPhA" offset="38" type="acc32" sf="TotWh_SF" units="Wh" />
