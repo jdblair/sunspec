@@ -186,12 +186,13 @@ model suns {
     DCAhr                   { acc32.DCAhr_SF u=Ah label="Combined Amp Hours" }
     DCV                     { uint16.DCV_SF u=V label="Combined Voltage" }
     Tmp                     { uint16 u=C label="Ambient Temperature" }
-    DCW                     { int16.DCW_SF u=W label="Combined Power" }
+    DCW                     { uint16.DCW_SF u=W label="Combined Power" }
     DCPR                    { uint16 u=Pct label="Performance Ratio" }
     DCWh                    { acc32.DCWh_SF u=Wh label="Accumulated Energy" }
     InDCA_SF                { sunssf }
     InDCAhr_SF              { sunssf }
     InDCV_SF                { sunssf }
+    InDCW_SF                { sunssf }
     InDCWh_SF               { sunssf }
   }  
   # per-string datapoints
