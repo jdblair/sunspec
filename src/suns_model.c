@@ -803,6 +803,39 @@ int suns_value_is_numeric(suns_value_t *v)
 }
 
 
+/* returns 1 if the value is an accumulator type */
+int suns_value_is_acc(suns_value_t *v)
+{
+    return ((v->tp.type == SUNS_ACC16) ||
+            (v->tp.type == SUNS_ACC32) ||
+            (v->tp.type == SUNS_ACC64));
+}
+
+
+/* returns 1 if *v is an accumulator type and equal to zero */
+int suns_value_acc_is_zero(suns_value_t *v)
+{
+    switch (v->tp.type) {
+    case SUNS_ACC16:
+        return (suns_value_get_acc16(v) == 0);
+
+    case SUNS_ACC32:
+        return (suns_value_get_acc32(v) == 0);
+
+    case SUNS_ACC64:
+        return (suns_value_get_acc64(v) == 0);
+        
+    default:
+        /* fall through to below */
+        break;
+
+    }
+
+    debug("*v is not an accumulator type");
+    return 0;
+}
+
+
 suns_dataset_t *suns_dataset_new(void)
 {
     suns_dataset_t *d;
@@ -1689,7 +1722,8 @@ int suns_resolve_scale_factors(suns_dataset_t *dataset)
 
                 /* check if the scale factor is implemented */
                 if (found->meta == SUNS_VALUE_NOT_IMPLEMENTED) {
-                    if (v->meta != SUNS_VALUE_NOT_IMPLEMENTED) {
+                    if ((v->meta != SUNS_VALUE_NOT_IMPLEMENTED) &&
+                        (! suns_value_acc_is_zero(v)) ) {
                         warning("implemented datapoint %s references the "
                                 "not-implemented scale factor %s",
                                 v->name, found->name);
