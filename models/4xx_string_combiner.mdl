@@ -158,8 +158,8 @@ model suns {
     InID                    { uint16 label="Input ID" req }
     InEvt                   { bitfield32 label="Input Event Flags" req }
     InEvtVnd                { bitfield32 label="Input Vendor Event Flags" }
-    InDCA                   { uint16.DCA_SF u=A label="Input DC Current" req }
-    InDCAhr                 { acc32.DCAhr_SF u=Ah label="Input DC Amp Hours" }
+    InDCA                   { uint16.InDCA_SF u=A label="Input DC Current" req }
+    InDCAhr                 { acc32.InDCAhr_SF u=Ah label="Input DC Amp Hours" }
   }
 }
 

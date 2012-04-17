@@ -241,8 +241,8 @@
       <point id="InID" offset="0" type="uint16" mandatory="true" />
       <point id="InEvt" offset="1" type="bitfield32" mandatory="true" />
       <point id="InEvtVnd" offset="3" type="bitfield32" />
-      <point id="InDCA" offset="5" type="uint16" sf="DCA_SF" units="A" mandatory="true" />
-      <point id="InDCAhr" offset="6" type="acc32" sf="DCAhr_SF" units="Ah" />
+      <point id="InDCA" offset="5" type="uint16" sf="InDCA_SF" units="A" mandatory="true" />
+      <point id="InDCAhr" offset="6" type="acc32" sf="InDCAhr_SF" units="Ah" />
     </block>
   </model>
   <strings id="403" locale="en">
