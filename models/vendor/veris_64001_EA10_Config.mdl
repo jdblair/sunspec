@@ -1,0 +1,42 @@
+model suns {
+    name "Veris Status and Configuration"
+    did 64001 "Veris Status and Configuration"
+    datapoints {
+        Cmd     { enum16 label="Command Code" access="rw" }
+        HWRev   { uint16 label="Hardware Revision" }        
+        RSFWRev { uint16 label="RS FW Revision" }
+        OSFWRev { uint16 label="OS FW Revision" }
+        ProdRev { string.4 label="Product Revision" }
+        Boots   { uint16 label="Boot Count" }
+        Switch  { bitfield16 label="DIP Switches" }
+        Sensors { uint16 label="Num Detected Sensors" }
+        Talking { uint16 label="Num Communicating Sensors" }
+        Status  { bitfield16 label="System Status" }
+        Config  { bitfield16 label="System Configuration" }
+        LEDblink{ uint16 label="LED Blink Threshold" u=Pct }
+        LEDon   { uint16 label="LED On Threshold" u=Pct }
+        Reserved{ uint16 }
+        Loc     { string.32 label="Location String" }
+        S1ID    { enum16 label="Sensor 1 Unit ID" }
+        S1Addr  { uint16 label="Sensor 1 Address" }
+        S1OSVer { uint16 label="Sensor 1 OS Version" }
+        S1Ver   { string.4 label="Sensor 1 Product Version" }
+        S1Serial{ string.10 label="Sensor 1 Serial Num" }
+        S2ID    { enum16 label="Sensor 2 Unit ID" }
+        S2Addr  { uint16 label="Sensor 2 Address" }
+        S2OSVer { uint16 label="Sensor 2 OS Version" }
+        S2Ver   { string.4 label="Sensor 2 Product Version" }
+        S2Serial{ string.10 label="Sensor 2 Serial Num" }
+        S3ID    { enum16 label="Sensor 3 Unit ID" }
+        S3Addr  { uint16 label="Sensor 3 Address" }
+        S3OSVer { uint16 label="Sensor 3 OS Version" }
+        S3Ver   { string.4 label="Sensor 3 Product Version" }
+        S3Serial{ string.10 label="Sensor 3 Serial Num" }
+        S4ID    { enum16 label="Sensor 4 Unit ID" }
+        S4Addr  { uint16 label="Sensor 4 Address" }
+        S4OSVer { uint16 label="Sensor 4 OS Version" }
+        S4Ver   { string.4 label="Sensor 4 Product Version" }
+        S4Serial{ string.10 label="Sensor 4 Serial Num" }
+    }
+}
+    

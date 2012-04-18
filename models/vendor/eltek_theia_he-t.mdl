@@ -1,0 +1,133 @@
+
+#
+# common model
+#
+model suns {
+  name "common"
+  did 001 "common"
+  datapoints {
+    C_Manufacturer             { string.32 }
+    C_Model                    { string.32 }
+    C_Options         	       { string.16 }
+    C_Version                  { string.16 }
+    C_SerialNumber             { string.32 }
+    C_DeviceAddress            { uint16    }
+  }
+}
+
+#
+# inverter model
+#
+model suns {
+  name "inverter"
+  did 101 "single-phase inverter"
+  datapoints {
+    I_AC_Current               {  uint16.I_AC_Current_SF u=amps }
+    I_AC_CurrentA              {  uint16.I_AC_Current_SF u=amps }
+    I_AC_CurrentB              {  uint16.I_AC_Current_SF u=amps }
+    I_AC_CurrentC              {  uint16.I_AC_Current_SF u=amps }
+    I_AC_Current_SF            {  sunssf }
+    I_AC_VoltageAB             {  uint16.I_AC_Voltage_SF u=volts }
+    I_AC_VoltageBC             {  uint16.I_AC_Voltage_SF u=volts }
+    I_AC_VoltageCA             {  uint16.I_AC_Voltage_SF u=volts }
+    I_AC_VoltageAN             {  uint16.I_AC_Voltage_SF u=volts }
+    I_AC_VoltageBN             {  uint16.I_AC_Voltage_SF u=volts }
+    I_AC_VoltageCN             {  uint16.I_AC_Voltage_SF u=volts }
+    I_AC_Voltage_SF            {  sunssf }
+    I_AC_Power                 {  int16.I_AC_Power_SF u=watts }
+    I_AC_Power_SF              {  sunssf }
+    I_AC_Frequency             {  uint16.I_AC_Frequency_SF u=hertz }
+    I_AC_Frequency_SF          {  sunssf }
+    I_AC_VA                    {  int16.I_AC_VA_SF u=volt_amps }
+    I_AC_VA_SF                 {  sunssf }
+    I_AC_VAR                   {  int16.I_AC_VAR_SF u=volt_amps_reactive }
+    I_AC_VAR_SF                {  sunssf }
+    I_AC_PF                    {  int16.I_AC_PF_SF u=powerfactor }
+    I_AC_PF_SF                 {  sunssf }
+    I_AC_Energy_WH             {  uint32.I_AC_Energy_WH_SF u=watthours }
+    I_AC_Energy_WH_SF          {  sunssf }
+    I_DC_Current               {  uint16.I_DC_Current_SF u=amps }
+    I_DC_Current_SF            {  sunssf }
+    I_DC_Voltage               {  uint16.I_DC_Voltage_SF u=volts }
+    I_DC_Voltage_SF            {  sunssf }
+    I_DC_Power                 {  int16.I_DC_Power_SF u=watts }
+    I_DC_Power_SF              {  sunssf }
+    I_Temp_Cab                 {  int16.I_Temp_SF u=degrees_c }
+    I_Temp_Sink                {  int16.I_Temp_SF u=degrees_c }
+    I_Temp_Trans               {  int16.I_Temp_SF u=degrees_c }
+    I_Temp_Other               {  int16.I_Temp_SF u=degrees_c }
+    I_Temp_SF                  {  sunssf }
+    I_Status                   {  enum16.I_Status_Enum }
+    I_Status_Vendor            {  enum16.I_StatusVendor_Enum }
+    I_Event_1                  {  bitfield32.I_Event_1_BF }
+    I_Event_2                  {  bitfield32 }
+    I_Event_1_Vendor           {  bitfield32 }
+    I_Event_2_Vendor           {  bitfield32 }
+    I_Event_3_Vendor           {  bitfield32 }
+    I_Event_4_Vendor           {  bitfield32 }
+  }
+
+  define I_Status_Enum {
+    C_STATUS_NORMAL            { 0 "Operating normally" }
+    I_STATUS_OFF               { 1 "Off" }
+    I_STATUS_SLEEPING          { 2 "Sleeping (auto-shutdown)" }
+    I_STATUS_STARTING          { 3 "Starting up" }
+    I_STATUS_MPPT              { 4 "Tracking power point" }
+    I_STATUS_THROTTLED         { 5 "Forced power reduction" }
+    I_STATUS_SHUTTING_DOWN     { 6 "Shutting down" }
+    I_STATUS_FAULT             { 7 "One or more faults exist" }
+    I_STATUS_STANDBY           { 8 "Standby (service on unit)" }
+    C_STATUS_ERROR             { 65534 "Generic failure" }
+    C_STATUS_UNK               { 65535 "Status unknown" }
+  }
+
+  define I_StatusVendor_Enum {
+    STATUS_INV_OFF              { 0 "Inverter off" }
+    STATUS_SLEEPING             { 1 "Sleeping" }
+    STATUS_STARTUP              { 2 "Starting up" }
+    STATUS_RUNNING              { 3 "Running, normal mode" }
+    STATUS_DERATING             { 4 "Derating" }
+    STATUS_SHUTTING_DOWN        { 5 "Shutting down" }
+    STATUS_SHUTDOWN             { 6 "Shutdown" }
+    STATUS_SERVICE_MODE         { 7 "Service on equipment" }
+  }
+
+  define I_Event_1_BF {
+#  define T_bitfield16_BF {
+    I_EVENT_GROUND_FAULT       { 0x00000001 "Ground fault" }
+    I_EVENT_DC_OVER_VOLT       { 0x00000002 "DC over voltage" }
+    I_EVENT_AC_DISCONNECT      { 0x00000004 "AC disconnect open" }
+    I_EVENT_DC_DISCONNECT      { 0x00000008 "DC disconnect open" }
+    I_EVENT_GRID_DISCONNECT    { 0x00000010 "Grid shutdown" }
+    I_EVENT_CABINET_OPEN       { 0x00000020 "Cabinet open" }
+    I_EVENT_MANUAL_SHUTDOWN    { 0x00000040 "Manual shutdown" }
+    I_EVENT_OVER_TEMP          { 0x00000080 "Over temperature" }
+    I_EVENT_OVER_FREQUENCY     { 0x00000100 "Frequency above limit" }
+    I_EVENT_UNDER_FREQUENCY    { 0x00000200 "Frequency under limit" }
+    I_EVENT_AC_OVER_VOLT       { 0x00000400 "AC Voltage above limit" }
+    I_EVENT_AC_UNDER_VOLT      { 0x00000800 "AC Voltage under limit" }
+    I_EVENT_BLOWN_STRING_FUSE  { 0x00001000 "Blown String fuse on input" }
+    I_EVENT_UNDER_TEMP         { 0x00002000 "Under temperature" }
+    I_EVENT_MEMORY_LOSS        { 0x00004000 "Generic Memory or Communication error (internal)" }
+    I_EVENT_HW_TEST_FAILURE    { 0x00008000 "Hardware test failure" }
+  }
+}
+
+
+#
+# inverter model
+#
+model suns {
+  name "eltek"
+  did 64101 "Eltek Inverter Extension"
+  datapoints {
+    Eltek_Country_Code    {  uint16 }
+    Eltek_Feeding_Phase   {  uint16 }
+    Eltek_APD_Method      {  uint16 }
+    Eltek_APD_Power_Ref   {  uint16 }
+    Eltek_RPS_Method      {  uint16 }
+    Eltek_RPS_Q_Ref       {  uint16 }
+    Eltek_RPS_CosPhi_Ref  {  int16 }
+  }
+}
+

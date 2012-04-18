@@ -1,0 +1,128 @@
+<sunSpecModels v="1">
+  <model id="64111" len="23">
+    <block len="23">
+      <point id="Port" offset="0" type="uint16" mandatory="true" />
+      <point id="V_SF" offset="1" type="sunssf" mandatory="true" />
+      <point id="A_SF" offset="2" type="sunssf" mandatory="true" />
+      <point id="P_SF" offset="3" type="sunssf" mandatory="true" />
+      <point id="AH_SF" offset="4" type="sunssf" mandatory="true" />
+      <point id="KWH_SF" offset="5" type="sunssf" mandatory="true" />
+      <point id="BattV" offset="6" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="ArrayV" offset="7" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="OutputA" offset="8" type="uint16" sf="A_SF" units="A" mandatory="true" />
+      <point id="InputA" offset="9" type="uint16" sf="P_SF" units="A" mandatory="true" />
+      <point id="ChargerSt" offset="10" type="enum16" define="ChargerSt_Enum" mandatory="true" />
+      <point id="OutputW" offset="11" type="uint16" sf="P_SF" units="W" mandatory="true" />
+      <point id="TodayMinBatV" offset="12" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="TodayMaxBatV" offset="13" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="VOCV" offset="14" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="TodayMaxVOC" offset="15" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="TodaykWhOutput" offset="16" type="uint16" sf="KWH_SF" units="kWh" mandatory="true" />
+      <point id="TodayAHOutput" offset="17" type="uint16" sf="AH_SF" units="AH" mandatory="true" />
+      <point id="LifeTimeKWHOut" offset="18" type="uint16" sf="P_SF" units="kWh" mandatory="true" />
+      <point id="LifeTimeAHOut" offset="19" type="uint16" sf="KWH_SF" units="kAH" mandatory="true" />
+      <point id="LifeTimeMaxOut" offset="20" type="uint16" sf="P_SF" units="W" mandatory="true" />
+      <point id="LifeTimeMaxBatt" offset="21" type="uint16" sf="V_SF" units="V" mandatory="true" />
+      <point id="LifeTimeMaxVOC" offset="22" type="uint16" sf="V_SF" units="V" mandatory="true" />
+    </block>
+    <define name="ChargerSt_Enum">
+      <symbol id="Off" value="0" />
+      <symbol id="Float" value="1" />
+      <symbol id="Bulk" value="2" />
+      <symbol id="Absorb" value="3" />
+      <symbol id="EQ" value="4" />
+    </define>
+  </model>
+  <strings id="64111" locale="en">
+    <point id="Port">
+      <label>Port Number</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="BattV">
+      <label>Battery Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="ArrayV">
+      <label>Array Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutputA">
+      <label>Output Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InputA">
+      <label>Array Current</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="ChargerSt">
+      <label>Operating State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutputW">
+      <label>Output Wattage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="TodayMinBatV">
+      <label>Todays Minimum Battery Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="TodayMaxBatV">
+      <label>Todays Maximum Battery Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="VOCV">
+      <label>VOC</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="TodayMaxVOC">
+      <label>Todays Maximum VOC</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="TodaykWhOutput">
+      <label>Todays kWh</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="TodayAHOutput">
+      <label>Todays AH</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="LifeTimeKWHOut">
+      <label>Lifetime kWh</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="LifeTimeAHOut">
+      <label>Lifetime kAH</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="LifeTimeMaxOut">
+      <label>Lifetime Maximum Output Wattage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="LifeTimeMaxBatt">
+      <label>Lifetime Maximum Battery Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="LifeTimeMaxVOC">
+      <label>Lifetime Maximum VOC Voltage</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+</sunSpecModels>

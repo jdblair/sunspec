@@ -1,0 +1,117 @@
+<sunSpecModels v="1">
+  <model id="1" len="65">
+    <block len="65">
+      <point id="C_Manufacturer" offset="0" type="string" len="16" />
+      <point id="C_Model" offset="16" type="string" len="16" />
+      <point id="C_Options" offset="32" type="string" len="8" />
+      <point id="C_Version" offset="40" type="string" len="8" />
+      <point id="C_SerialNumber" offset="48" type="string" len="16" />
+      <point id="C_DeviceAddress" offset="64" type="uint16" />
+    </block>
+  </model>
+  <strings id="1" locale="en">
+  </strings>
+  <model id="101" len="50">
+    <block len="50">
+      <point id="I_AC_Current" offset="0" type="uint16" sf="I_AC_Current_SF" units="amps" />
+      <point id="I_AC_CurrentA" offset="1" type="uint16" sf="I_AC_Current_SF" units="amps" />
+      <point id="I_AC_CurrentB" offset="2" type="uint16" sf="I_AC_Current_SF" units="amps" />
+      <point id="I_AC_CurrentC" offset="3" type="uint16" sf="I_AC_Current_SF" units="amps" />
+      <point id="I_AC_Current_SF" offset="4" type="sunssf" />
+      <point id="I_AC_VoltageAB" offset="5" type="uint16" sf="I_AC_Voltage_SF" units="volts" />
+      <point id="I_AC_VoltageBC" offset="6" type="uint16" sf="I_AC_Voltage_SF" units="volts" />
+      <point id="I_AC_VoltageCA" offset="7" type="uint16" sf="I_AC_Voltage_SF" units="volts" />
+      <point id="I_AC_VoltageAN" offset="8" type="uint16" sf="I_AC_Voltage_SF" units="volts" />
+      <point id="I_AC_VoltageBN" offset="9" type="uint16" sf="I_AC_Voltage_SF" units="volts" />
+      <point id="I_AC_VoltageCN" offset="10" type="uint16" sf="I_AC_Voltage_SF" units="volts" />
+      <point id="I_AC_Voltage_SF" offset="11" type="sunssf" />
+      <point id="I_AC_Power" offset="12" type="int16" sf="I_AC_Power_SF" units="watts" />
+      <point id="I_AC_Power_SF" offset="13" type="sunssf" />
+      <point id="I_AC_Frequency" offset="14" type="uint16" sf="I_AC_Frequency_SF" units="hertz" />
+      <point id="I_AC_Frequency_SF" offset="15" type="sunssf" />
+      <point id="I_AC_VA" offset="16" type="int16" sf="I_AC_VA_SF" units="volt_amps" />
+      <point id="I_AC_VA_SF" offset="17" type="sunssf" />
+      <point id="I_AC_VAR" offset="18" type="int16" sf="I_AC_VAR_SF" units="volt_amps_reactive" />
+      <point id="I_AC_VAR_SF" offset="19" type="sunssf" />
+      <point id="I_AC_PF" offset="20" type="int16" sf="I_AC_PF_SF" units="powerfactor" />
+      <point id="I_AC_PF_SF" offset="21" type="sunssf" />
+      <point id="I_AC_Energy_WH" offset="22" type="uint32" sf="I_AC_Energy_WH_SF" units="watthours" />
+      <point id="I_AC_Energy_WH_SF" offset="24" type="sunssf" />
+      <point id="I_DC_Current" offset="25" type="uint16" sf="I_DC_Current_SF" units="amps" />
+      <point id="I_DC_Current_SF" offset="26" type="sunssf" />
+      <point id="I_DC_Voltage" offset="27" type="uint16" sf="I_DC_Voltage_SF" units="volts" />
+      <point id="I_DC_Voltage_SF" offset="28" type="sunssf" />
+      <point id="I_DC_Power" offset="29" type="int16" sf="I_DC_Power_SF" units="watts" />
+      <point id="I_DC_Power_SF" offset="30" type="sunssf" />
+      <point id="I_Temp_Cab" offset="31" type="int16" sf="I_Temp_SF" units="degrees_c" />
+      <point id="I_Temp_Sink" offset="32" type="int16" sf="I_Temp_SF" units="degrees_c" />
+      <point id="I_Temp_Trans" offset="33" type="int16" sf="I_Temp_SF" units="degrees_c" />
+      <point id="I_Temp_Other" offset="34" type="int16" sf="I_Temp_SF" units="degrees_c" />
+      <point id="I_Temp_SF" offset="35" type="sunssf" />
+      <point id="I_Status" offset="36" type="enum16" define="I_Status_Enum" />
+      <point id="I_Status_Vendor" offset="37" type="enum16" define="I_StatusVendor_Enum" />
+      <point id="I_Event_1" offset="38" type="bitfield32" define="I_Event_1_BF" />
+      <point id="I_Event_2" offset="40" type="bitfield32" />
+      <point id="I_Event_1_Vendor" offset="42" type="bitfield32" />
+      <point id="I_Event_2_Vendor" offset="44" type="bitfield32" />
+      <point id="I_Event_3_Vendor" offset="46" type="bitfield32" />
+      <point id="I_Event_4_Vendor" offset="48" type="bitfield32" />
+    </block>
+    <define name="I_Status_Enum">
+      <symbol id="C_STATUS_NORMAL" value="0" />
+      <symbol id="I_STATUS_OFF" value="1" />
+      <symbol id="I_STATUS_SLEEPING" value="2" />
+      <symbol id="I_STATUS_STARTING" value="3" />
+      <symbol id="I_STATUS_MPPT" value="4" />
+      <symbol id="I_STATUS_THROTTLED" value="5" />
+      <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
+      <symbol id="I_STATUS_FAULT" value="7" />
+      <symbol id="I_STATUS_STANDBY" value="8" />
+      <symbol id="C_STATUS_ERROR" value="65534" />
+      <symbol id="C_STATUS_UNK" value="65535" />
+    </define>
+    <define name="I_StatusVendor_Enum">
+      <symbol id="STATUS_INV_OFF" value="0" />
+      <symbol id="STATUS_SLEEPING" value="1" />
+      <symbol id="STATUS_STARTUP" value="2" />
+      <symbol id="STATUS_RUNNING" value="3" />
+      <symbol id="STATUS_DERATING" value="4" />
+      <symbol id="STATUS_SHUTTING_DOWN" value="5" />
+      <symbol id="STATUS_SHUTDOWN" value="6" />
+      <symbol id="STATUS_SERVICE_MODE" value="7" />
+    </define>
+    <define name="I_Event_1_BF">
+      <symbol id="I_EVENT_GROUND_FAULT" value="1" />
+      <symbol id="I_EVENT_DC_OVER_VOLT" value="2" />
+      <symbol id="I_EVENT_AC_DISCONNECT" value="4" />
+      <symbol id="I_EVENT_DC_DISCONNECT" value="8" />
+      <symbol id="I_EVENT_GRID_DISCONNECT" value="16" />
+      <symbol id="I_EVENT_CABINET_OPEN" value="32" />
+      <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="64" />
+      <symbol id="I_EVENT_OVER_TEMP" value="128" />
+      <symbol id="I_EVENT_OVER_FREQUENCY" value="256" />
+      <symbol id="I_EVENT_UNDER_FREQUENCY" value="512" />
+      <symbol id="I_EVENT_AC_OVER_VOLT" value="1024" />
+      <symbol id="I_EVENT_AC_UNDER_VOLT" value="2048" />
+      <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="4096" />
+      <symbol id="I_EVENT_UNDER_TEMP" value="8192" />
+      <symbol id="I_EVENT_MEMORY_LOSS" value="16384" />
+      <symbol id="I_EVENT_HW_TEST_FAILURE" value="32768" />
+    </define>
+  </model>
+  <strings id="101" locale="en">
+  </strings>
+  <model id="64101" len="7">
+    <block len="7">
+      <point id="Eltek_Country_Code" offset="0" type="uint16" />
+      <point id="Eltek_Feeding_Phase" offset="1" type="uint16" />
+      <point id="Eltek_APD_Method" offset="2" type="uint16" />
+      <point id="Eltek_APD_Power_Ref" offset="3" type="uint16" />
+      <point id="Eltek_RPS_Method" offset="4" type="uint16" />
+      <point id="Eltek_RPS_Q_Ref" offset="5" type="uint16" />
+      <point id="Eltek_RPS_CosPhi_Ref" offset="6" type="int16" />
+    </block>
+  </model>
+  <strings id="64101" locale="en">
+  </strings>
+</sunSpecModels>
