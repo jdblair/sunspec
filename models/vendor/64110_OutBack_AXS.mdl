@@ -52,11 +52,11 @@ model suns {
 #    TCPIP_Netmask     {  ipaddr label="TCPIP Netmask" req }
 #    DNS1_address      {  ipaddr label="TCPIP DNS1" req } 
 #    DNS2_address      {  ipaddr label="TCPIP DNS2" req } 
-    TCPIP_address     {  uint16 label="TCPIP Address" req }
-    Gateway_address   {  uint16 label="TCPIP Gateway" req }
-    TCPIP_Netmask     {  uint16 label="TCPIP Netmask" req }
-    DNS1_address      {  uint16 label="TCPIP DNS1" req } 
-    DNS2_address      {  uint16 label="TCPIP DNS2" req } 
+    TCPIP_address     {  uint32 label="TCPIP Address" req }
+    Gateway_address   {  uint32 label="TCPIP Gateway" req }
+    TCPIP_Netmask     {  uint32 label="TCPIP Netmask" req }
+    DNS1_address      {  uint32 label="TCPIP DNS1" req } 
+    DNS2_address      {  uint32 label="TCPIP DNS2" req } 
     Modbus_port       {  uint16 label="ModBus Port" req } 
     SMTP_server_nm    {  string.40 label="SMTP Server Name" req } 
     SMTP_account_nm   {  string.32 label="SMTP Account Name" req } 
