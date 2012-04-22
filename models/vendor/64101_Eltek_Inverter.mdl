@@ -1,0 +1,16 @@
+#
+# inverter model
+#
+model suns {
+  name "eltek"
+  did 64101 "Eltek Inverter Extension"
+  datapoints {
+    Eltek_Country_Code    {  uint16 }
+    Eltek_Feeding_Phase   {  uint16 }
+    Eltek_APD_Method      {  uint16 }
+    Eltek_APD_Power_Ref   {  uint16 }
+    Eltek_RPS_Method      {  uint16 }
+    Eltek_RPS_Q_Ref       {  uint16 }
+    Eltek_RPS_CosPhi_Ref  {  int16 }
+  }
+}

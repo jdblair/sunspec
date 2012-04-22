@@ -154,9 +154,7 @@ blocks: /* empty */
 
 did: DIDTOK UINT STRING
 {
-    $$ = malloc(sizeof(suns_model_did_t));
-    $$->did = $2;
-    $$->name = $3;
+    $$ = suns_model_did_new($3, $2);
 }
 
 
@@ -209,15 +207,14 @@ model_elmts: /* empty */
 
 datapoints_block: DPTOK OBRACE suns_dp_list EBRACE
 {
-    /* FIXME: write suns_dp_block_new() */
-    $$ = malloc(sizeof(suns_dp_block_t));
+    $$ = suns_dp_block_new();
     $$->feature = NULL;
     $$->repeating = 0;
     $$->dp_list = $3;
 }
                 | DPTOK NAME OBRACE suns_dp_list EBRACE
 {
-    $$ = malloc(sizeof(suns_dp_block_t));
+    $$ = suns_dp_block_new();
     /* FIXME: abstract this operation so we're not doing
        strcmp() here in the parser */
     if (strcmp($2, "repeating") == 0) {
@@ -240,6 +237,7 @@ suns_dp_list: /* empty */
 
 suns_dp: NAME OBRACE UINT suns_type attributes EBRACE
 {
+    $$ = suns_dp_new();
     $$->name = strdup($1);
     $$->offset = $3;
     $$->type_pair = $4;
@@ -247,6 +245,7 @@ suns_dp: NAME OBRACE UINT suns_type attributes EBRACE
 }
        | NAME OBRACE suns_type attributes EBRACE
 {
+    $$ = suns_dp_new();
     $$->name = strdup($1);
     $$->offset = 0;
     $$->type_pair = $3;
@@ -256,7 +255,7 @@ suns_dp: NAME OBRACE UINT suns_type attributes EBRACE
 suns_type: NAME DOT NAME
 {
     /* type with name subscript */
-    $$ = malloc(sizeof(suns_type_pair_t)); 
+    $$ = suns_type_pair_new();
     $$->type = suns_type_from_name($1);
     if ($$->type == SUNS_UNDEF) {
         yyerror("invalid suns type");
@@ -267,7 +266,7 @@ suns_type: NAME DOT NAME
          | NAME DOT INT
 {
     /* type with int subscript - could be string or numeric type */
-    $$ = malloc(sizeof(suns_type_pair_t)); 
+    $$ = suns_type_pair_new();
     $$->type = suns_type_from_name($1);
     if ($$->type == SUNS_UNDEF) {
         yyerror("invalid suns type");
@@ -284,7 +283,7 @@ suns_type: NAME DOT NAME
          | NAME DOT UINT
 {
     /* type with uint subscript - could be string or numeric type */
-    $$ = malloc(sizeof(suns_type_pair_t)); 
+    $$ = suns_type_pair_new();
     $$->type = suns_type_from_name($1);
     if ($$->type == SUNS_UNDEF) {
         yyerror("invalid suns type");
@@ -301,7 +300,7 @@ suns_type: NAME DOT NAME
          | NAME
 {
     /* simple type with no subscript */
-    $$ = malloc(sizeof(suns_type_pair_t));
+    $$ = suns_type_pair_new();
     $$->type = suns_type_from_name($1);
     if ($$->type == SUNS_UNDEF) {
         yyerror("invalid suns type");
@@ -321,52 +320,55 @@ attributes: /* empty */
 
 attribute: NAME EQUAL STRING
 {
-    $$ = malloc(sizeof(suns_attribute_t));
+    $$ = suns_attribute_new();
     $$->name = strdup($1);
     $$->value = strdup($3);
+    $$->list = NULL;
 }
          | NAME
 {
-    $$ = malloc(sizeof(suns_attribute_t));
+    $$ = suns_attribute_new();
     $$->name = strdup($1);
     $$->value = NULL;
 }
          | NAME EQUAL NAME
 {
-    $$ = malloc(sizeof(suns_attribute_t));
+    $$ = suns_attribute_new();
     $$->name = strdup($1);
     $$->value = strdup($3);
 }
          | NAME EQUAL UINT
 {
-    $$ = malloc(sizeof(suns_attribute_t));
+    $$ = suns_attribute_new();
     $$->name = strdup($1);
     $$->value = malloc(32);
     snprintf($$->value, 32, "%lld", $3);
 }
          | NAME EQUAL INT
 {
-    $$ = malloc(sizeof(suns_attribute_t));
+    $$ = suns_attribute_new();
     $$->name = strdup($1);
     $$->value = malloc(32);
     snprintf($$->value, 32, "%lld", $3);
 }
          | NAME EQUAL OBRACE attributes EBRACE /* nested attributes */
 {
-    $$ = malloc(sizeof(suns_attribute_t));
+    $$ = suns_attribute_new();
     $$->name = strdup($1);
     $$->list = $4;
 }
          | UINT
 {
-    $$ = malloc(sizeof(suns_attribute_t));
+    $$ = suns_attribute_new();
+    /* malloc() b/c we need a buffer to snprintf() the integer into */
     $$->name = malloc(32);
     snprintf($$->name, 32, "%lld", $1);
     $$->value = NULL;
 }
          | INT
 {
-    $$ = malloc(sizeof(suns_attribute_t));
+    $$ = suns_attribute_new();
+    /* malloc() b/c we need a buffer to snprintf() the integer into */
     $$->name = malloc(32);
     snprintf($$->name, 32, "%lld", $1);
     $$->value = NULL;
@@ -534,8 +536,7 @@ register_list: /* empty */
 
 data_block: DATATOK NAME OBRACE register_list EBRACE
 {
-    $$ = malloc(sizeof(suns_data_block_t));
-
+    $$ = suns_data_block_new();
     $$->name = strdup($2);
     $$->data = $4;
 }
@@ -543,7 +544,7 @@ data_block: DATATOK NAME OBRACE register_list EBRACE
 
 define_block: DEFINETOK NAME OBRACE defines EBRACE
 {
-    $$ = malloc(sizeof(suns_define_block_t));
+    $$ = suns_define_block_new();
     $$->name = $2;
     $$->list = $4;
 }

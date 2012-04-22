@@ -74,8 +74,7 @@ suns_model_t *suns_model_new(void)
 
 
 suns_model_did_t * suns_model_did_new(char *name,
-                                      uint16_t id,
-                                      suns_model_t *model)
+                                      uint16_t id)
 {
     suns_model_did_t *did = malloc(sizeof(suns_model_did_t));
     if (did == NULL) {
@@ -84,8 +83,7 @@ suns_model_did_t * suns_model_did_new(char *name,
     }
     did->name = name;
     did->did = id;
-    did->model = model;
-
+    
     return did;
 }
 
@@ -142,6 +140,7 @@ char * suns_type_string(suns_type_t type)
         "sunssf",
         "string",
         "pad",
+        "ipaddr",
         "undef",
         NULL
     };
@@ -204,6 +203,7 @@ suns_type_t suns_type_from_name(char *name)
         { "sunssf",     SUNS_SF },
         { "string",     SUNS_STRING },
         { "pad",        SUNS_PAD },
+        { "ipaddr",     SUNS_IPADDR },
         { "undef",      SUNS_UNDEF },
         { NULL,         -1 },
     };
@@ -244,6 +244,29 @@ suns_type_pair_t *suns_type_pair_new(void)
 }
 
 
+suns_attribute_t *suns_attribute_new(void)
+{
+    suns_attribute_t *a = malloc(sizeof(suns_attribute_t));
+    memset(a, 0, sizeof(suns_attribute_t));
+    return a;
+}
+
+
+void suns_attribute_list_free(list_t *l)
+{
+    list_free(l, suns_attribute_free);
+}
+
+
+void suns_attribute_free(void *p)
+{
+    suns_attribute_t *a = p;
+    if (a->list)
+        suns_attribute_list_free(a->list);
+
+    free(a);
+}
+
 void suns_model_free(suns_model_t *model)
 {
     list_free(model->dp_blocks, (list_free_data_f) suns_model_dp_block_free);
@@ -265,6 +288,8 @@ suns_data_t *suns_data_new(void)
         error("malloc() returned NULL");
         return NULL;
     }
+
+    memset(block, 0, sizeof(suns_data_t));
 
     block->data = buffer_new(BUFFER_SIZE);
     
@@ -289,7 +314,7 @@ suns_data_block_t * suns_data_block_new(void)
     if (new == NULL)
         return NULL;
 
-    new->data = buffer_new(BIG_BUFFER_SIZE);
+    memset(new, 0, sizeof(suns_data_block_t));
 
     return new;
 }
@@ -300,6 +325,30 @@ void suns_data_block_free(suns_data_block_t *block)
     buffer_free(block->data);
     free(block);
 }
+
+
+suns_define_block_t * suns_define_block_new(void)
+{
+    suns_define_block_t *new;
+
+    new = malloc(sizeof(suns_define_block_t));
+    if (new == NULL)
+        return NULL;
+
+    memset(new, 0, sizeof(suns_define_block_t));
+
+    new->list = NULL;
+
+    return new;
+}
+
+
+void suns_define_block_free(suns_define_block_t *block)
+{
+    list_free(block->list, free);
+    free(block);
+}
+
     
 
 /* return the size in bytes of a specified suns_type_t */
@@ -326,6 +375,7 @@ int suns_type_size(suns_type_t type)
         2, /* SUNS_SF */
         0, /* SUNS_STRING */
         2, /* SUNS_PAD */
+        4, /* SUNS_IPADDR */
         0, /* SUNS_UNDEF */
     };
 
@@ -378,6 +428,7 @@ int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len)
     case SUNS_ACC32:
     case SUNS_ENUM32:
     case SUNS_BITFIELD32:
+    case SUNS_IPADDR:
         if (len < 4) {
             debug("not enough space for 32 bit conversion "
                   "(type = %s,  len = %d)", suns_type_string(v->tp.type), len);
@@ -409,7 +460,7 @@ int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len)
         /* buf[v->tp.len - 1] = '\0';  */          /* make sure the string is
                                                           always NULL terminated */
         break;
-    
+
     default:
         /* this means we hit an unsupported datatype or SUNS_UNDEF */
         debug("unsupported datatype %s", suns_type_string(v->tp.type));
@@ -472,7 +523,9 @@ suns_value_meta_t suns_check_not_implemented(suns_type_pair_t *tp,
         (tp->type == SUNS_INT64   && v->value.i64 == (int64_t) 0x8000000000000000) ||
         (tp->type == SUNS_UINT64  && v->value.u64 == (uint64_t) 0xFFFFFFFFFFFFFFFF) ||
         (tp->type == SUNS_FLOAT32 && isnan(v->value.f32)) ||
-        (tp->type == SUNS_FLOAT64 && isnan(v->value.f64))) {
+        (tp->type == SUNS_FLOAT64 && isnan(v->value.f64)) /* ||
+        (tp->type == SUNS_IPADDR  && v->value.u32 == 0) */
+        ) {
         v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
     } else {
         /* mark the value as valid */
@@ -506,6 +559,7 @@ int suns_buf_to_value(unsigned char *buf,
     case SUNS_ACC32:
     case SUNS_ENUM32:
     case SUNS_BITFIELD32:
+    case SUNS_IPADDR:
         v->value.u32 = be32toh(*((uint32_t *)buf));
         break;
 	
@@ -589,6 +643,7 @@ int suns_string_to_value(const char *string,
     } else {
         char base[BUFFER_SIZE];
         int exp;
+        unsigned int octet[4];  /* used in SUNS_IPADDR */
 
         if (tp->type != SUNS_STRING &&
             string_decompose_decimal(string, base, BUFFER_SIZE, &exp) < 0)
@@ -669,6 +724,16 @@ int suns_string_to_value(const char *string,
             strncpy(v->value.s, string, tp->len);
             
             break;
+
+        case SUNS_IPADDR:
+            if (sscanf(string, "%u.%u.%u.%u",
+                       &(octet[0]), &(octet[1]), &(octet[2]), &(octet[3]))
+                == 4) {
+                v->value.u32 = ((octet[0] << 24) &
+                                (octet[1] << 16) &
+                                (octet[2] <<  8) &
+                                (octet[3] <<  0));
+            }
             
         default:
             /* this means we hit an unsupported datatype or SUNS_UNDEF */
@@ -1313,6 +1378,23 @@ char * suns_value_get_string(suns_value_t *v)
     assert(v->tp.type == SUNS_STRING);
 
     return v->value.s;
+}
+
+void suns_value_set_ipaddr(suns_value_t *v, uint32_t ipaddr)
+{
+    assert(v != NULL);
+    
+    v->value.u32 = ipaddr;
+    v->tp.type = SUNS_IPADDR;
+    v->meta = SUNS_VALUE_OK;
+}
+
+uint32_t suns_value_get_ipaddr(suns_value_t *v)
+{
+    assert(v != NULL);
+    assert(v->tp.type == SUNS_IPADDR);
+
+    return v->value.u32;
 }
 
 

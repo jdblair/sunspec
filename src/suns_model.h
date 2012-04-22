@@ -81,6 +81,7 @@ typedef enum suns_type {
     SUNS_SF,
     SUNS_STRING,
     SUNS_PAD,
+    SUNS_IPADDR,
     SUNS_UNDEF,  /* must always be last item */
 } suns_type_t;
 
@@ -296,6 +297,11 @@ int suns_data_add_reg(suns_data_t *block, uint16_t reg);
 int suns_data_check_size(suns_data_t *block,
 			       size_t needed_size);
 void suns_data_free(suns_data_t *block);
+suns_data_block_t * suns_data_block_new(void);
+void suns_data_block_free(suns_data_block_t *block);
+suns_define_block_t * suns_define_block_new(void);
+void suns_define_block_free(suns_define_block_t *block);
+
 int suns_type_size(suns_type_t type);
 int suns_type_pair_size(suns_type_pair_t *tp);
 int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len);
@@ -305,6 +311,11 @@ suns_value_meta_t suns_check_not_implemented(suns_type_pair_t *tp,
 int suns_buf_to_value(unsigned char *buf,
                       suns_type_pair_t *tp,
                       suns_value_t *v);
+
+int suns_value_is_numeric(suns_value_t *v);
+int suns_value_is_acc(suns_value_t *v);
+int suns_value_acc_is_zero(suns_value_t *v);
+
 suns_dataset_t *suns_dataset_new(void);
 void suns_dataset_free(suns_dataset_t *d);
 
@@ -315,8 +326,7 @@ int suns_device_add_dataset(suns_device_t *d, suns_dataset_t *data);
 /* suns_value_t stuff */
 suns_model_t *suns_model_new(void);
 suns_model_did_t *suns_model_did_new(char *name,
-                                     uint16_t id,
-                                     suns_model_t *model);
+                                     uint16_t id);
 int suns_string_to_value(const char *string,
                          suns_value_t *v,
                          suns_type_pair_t *tp);
@@ -362,6 +372,12 @@ void suns_value_set_acc32(suns_value_t *v, uint32_t u32);
 uint32_t suns_value_get_acc32(suns_value_t *v);
 void suns_value_set_acc64(suns_value_t *v, uint64_t u64);
 uint64_t suns_value_get_acc64(suns_value_t *v);
+void suns_value_set_ipaddr(suns_value_t *v, uint32_t ipaddr);
+uint32_t suns_value_get_ipaddr(suns_value_t *v);
+suns_attribute_t *suns_attribute_new(void);
+void suns_attribute_list_free(list_t *l);
+void suns_attribute_free(void *a);
+
 
 suns_model_did_t *suns_find_did(list_t *did_list, uint16_t did);
 suns_dataset_t *suns_decode_data(list_t *did_list,

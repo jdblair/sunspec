@@ -127,16 +127,9 @@ int suns_model_export_all(FILE *stream, char *type,
             return -1;
     }
 
-    /* defines */
+    /* global defines */
     list_for_each(define_list, c) {
         suns_define_block_fprint(stream, c->data);
-    }
-
-    debug("outputing data_blocks");
-
-    /* data blocks */
-    list_for_each(suns_get_define_list(), c) {
-        suns_data_block_fprintf(stream, c->data);
     }
 
     return 0;
@@ -470,6 +463,15 @@ static int value_output_uint64_sf(char *buf, size_t len, suns_value_t *v)
     return suns_snprintf_uint_sf(buf, len, v->value.u64, v->tp.sf, 16);
 }
 
+static int value_output_ipaddr(char *buf, size_t len, suns_value_t *v)
+{
+    return snprintf(buf, len, "%u.%u.%u.%u",
+                    (v->value.u32 & 0xFF000000) >> 24,
+                    (v->value.u32 & 0x00FF0000) >> 16,
+                    (v->value.u32 & 0x0000FF00) >>  8,
+                    (v->value.u32 & 0x000000FF) >>  0);
+}
+
 
 /* convert a value to a string using the supplied
    suns_value_output_vector_t vector table */
@@ -541,6 +543,9 @@ int suns_snprintf_value(char *str, size_t size,
     case SUNS_ACC64:
         return fmt->acc64(str, size, v);
 
+    case SUNS_IPADDR:
+        return fmt->ipaddr(str, size, v);
+
     default:
         len += snprintf(str + len, size - len,
                         " unknown type %2d", v->tp.type);
@@ -576,6 +581,7 @@ suns_value_output_vector_t suns_output_value_base_fmt = {
     .sunssf     =  value_output_int16,
     .string     =  value_output_string,
     .meta       =  value_output_meta,
+    .ipaddr     =  value_output_ipaddr,
 };
 
 
@@ -709,14 +715,22 @@ int suns_snprintf_value_sf_text(char *str, size_t size,
 void suns_data_fprintf(FILE *stream, suns_data_t *data)
 {
     fprintf(stream, "%d (%d): ", data->offset, buffer_len(data->data));
-    buffer_dump(data->data);
+    if (data->data)
+        dump_buffer(stream, (unsigned char *)buffer_data(data->data),
+                    buffer_len(data->data));
+    else
+        fprintf(stream, "(NULL)");
 }
 
 
 void suns_data_block_fprintf(FILE *stream, suns_data_block_t *block)
 {
     fprintf(stream, "data_block: %s\n", block->name);
-    buffer_dump(block->data);
+    if (block->data)
+        dump_buffer(stream, (unsigned char *)buffer_data(block->data),
+                    buffer_len(block->data));
+    else
+        fprintf(stream, "(NULL)");
 }
    
 
@@ -1036,8 +1050,14 @@ int suns_dataset_xml_fprintf(FILE *stream, suns_dataset_t *data)
     char value[BUFFER_SIZE];
     
     fprintf(stream, "   <m id=\"%d\"", data->did->did);
+    /*
+     *
+     * x must indicate the instance number of a model
+     * when there is more than one of a given model
+     *
     if (data->index != 0)
         fprintf(stream, " x=\"%d\"", data->index);
+    */
     fprintf(stream, ">\n");
 
     list_for_each(data->values, c) {

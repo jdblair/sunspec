@@ -123,7 +123,7 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
         case 'i':
             app->hostname = optarg;
             break;
-            
+              
         case 'P':
             if (sscanf(optarg, "%d", &(app->tcp_port)) != 1) {
                 error("unknown port number format: %s, "
@@ -219,6 +219,7 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
             break;
 
         case 'M':
+            app->override_model_searchpath = 1;
             suns_app_model_search_dir(app, optarg);
             break;
 
@@ -281,7 +282,8 @@ int suns_app_logger_host(suns_app_t *app)
     list_t *devices = list_new();
     suns_host_result_t *result = suns_host_result_new();
     char *result_xml;
-    int rc = 0;
+   int rc = 0;
+    list_node_t *c;
 
     rc = suns_host_parse_logger_xml(stdin, devices, result);
     debug("rc = %d", rc);
@@ -290,6 +292,10 @@ int suns_app_logger_host(suns_app_t *app)
 
     fwrite(result_xml, 1, strlen(result_xml), stdout);
     free(result_xml);
+
+    list_for_each(devices, c) {
+        suns_device_output(app->output_fmt, c->data, stdout);
+    }
 
     debug("rc = %d", rc);
 

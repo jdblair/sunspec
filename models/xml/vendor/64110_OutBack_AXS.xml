@@ -1,6 +1,6 @@
 <sunSpecModels v="1">
-  <model id="64110" len="277">
-    <block len="277">
+  <model id="64110" len="282">
+    <block len="282">
       <point id="MajorFWRev" offset="0" type="uint16" mandatory="true" />
       <point id="MidFWRev" offset="1" type="uint16" mandatory="true" />
       <point id="MinorFWRev" offset="2" type="uint16" mandatory="true" />
@@ -8,46 +8,46 @@
       <point id="MAC_Address" offset="4" type="string" len="7" mandatory="true" />
       <point id="WritePassword" offset="11" type="string" len="8" mandatory="true" />
       <point id="EnableDHCP" offset="19" type="enum16" define="Enable_Enum" mandatory="true" />
-      <point id="TCPIP_address" offset="20" type="uint16" mandatory="true" />
-      <point id="Gateway_address" offset="21" type="uint16" mandatory="true" />
-      <point id="TCPIP_Netmask" offset="22" type="uint16" mandatory="true" />
-      <point id="DNS1_address" offset="23" type="uint16" mandatory="true" />
-      <point id="DNS2_address" offset="24" type="uint16" mandatory="true" />
-      <point id="Modbus_port" offset="25" type="uint16" mandatory="true" />
-      <point id="SMTP_server_nm" offset="26" type="string" len="20" mandatory="true" />
-      <point id="SMTP_account_nm" offset="46" type="string" len="16" mandatory="true" />
-      <point id="SMTP_enable_SSL" offset="62" type="enum16" define="Mode_Enum" mandatory="true" />
-      <point id="SMTP_password" offset="63" type="string" len="8" mandatory="true" />
-      <point id="SMTP_user_nm" offset="71" type="string" len="20" mandatory="true" />
-      <point id="Stat_email_int" offset="91" type="uint16" mandatory="true" />
-      <point id="Stat_start_HR" offset="92" type="uint16" mandatory="true" />
-      <point id="Stat_email_sub" offset="93" type="string" len="25" mandatory="true" />
-      <point id="Stat_email_addr1" offset="118" type="string" len="20" mandatory="true" />
-      <point id="Stat_email_addr2" offset="138" type="string" len="20" mandatory="true" />
-      <point id="Alarm_email_en" offset="158" type="enum16" define="Mode_Enum" mandatory="true" />
-      <point id="Alarm_email_sub" offset="159" type="string" len="25" mandatory="true" />
-      <point id="Alarm_email_addr1" offset="184" type="string" len="20" mandatory="true" />
-      <point id="Alarm_email_addr2" offset="204" type="string" len="20" mandatory="true" />
-      <point id="FTP_password" offset="224" type="string" len="8" mandatory="true" />
-      <point id="TELNET_password" offset="232" type="string" len="8" mandatory="true" />
-      <point id="Log_write_int" offset="240" type="uint16" units="Secs" mandatory="true" />
-      <point id="Log_retain" offset="241" type="uint16" units="Days" mandatory="true" />
-      <point id="Log_mode" offset="242" type="enum16" define="Log_Enum" mandatory="true" />
-      <point id="NTP_server_nm" offset="243" type="string" len="20" mandatory="true" />
-      <point id="NTP_enable" offset="263" type="enum16" define="Mode_Enum" mandatory="true" />
-      <point id="TimeZone" offset="264" type="int16" units="Hours" mandatory="true" />
-      <point id="Date_year" offset="265" type="uint16" mandatory="true" />
-      <point id="Date_month" offset="266" type="uint16" mandatory="true" />
-      <point id="Date_Day" offset="267" type="uint16" mandatory="true" />
-      <point id="Time_hour" offset="268" type="uint16" mandatory="true" />
-      <point id="Time_minute" offset="269" type="uint16" mandatory="true" />
-      <point id="Time_second" offset="270" type="uint16" mandatory="true" />
-      <point id="Battery_temp" offset="271" type="int16" sf="Temp_CF" units="C" mandatory="true" />
-      <point id="Ambient_temp" offset="272" type="int16" sf="Temp_SF" units="C" mandatory="true" />
-      <point id="Temp_SF" offset="273" type="sunssf" mandatory="true" />
-      <point id="AXS_Error" offset="274" type="bitfield16" mandatory="true" />
-      <point id="AXS_Status" offset="275" type="bitfield16" mandatory="true" />
-      <point id="AXS_Spare" offset="276" type="uint16" mandatory="true" />
+      <point id="TCPIP_address" offset="20" type="uint32" mandatory="true" />
+      <point id="Gateway_address" offset="22" type="uint32" mandatory="true" />
+      <point id="TCPIP_Netmask" offset="24" type="uint32" mandatory="true" />
+      <point id="DNS1_address" offset="26" type="uint32" mandatory="true" />
+      <point id="DNS2_address" offset="28" type="uint32" mandatory="true" />
+      <point id="Modbus_port" offset="30" type="uint16" mandatory="true" />
+      <point id="SMTP_server_nm" offset="31" type="string" len="20" mandatory="true" />
+      <point id="SMTP_account_nm" offset="51" type="string" len="16" mandatory="true" />
+      <point id="SMTP_enable_SSL" offset="67" type="enum16" define="Mode_Enum" mandatory="true" />
+      <point id="SMTP_password" offset="68" type="string" len="8" mandatory="true" />
+      <point id="SMTP_user_nm" offset="76" type="string" len="20" mandatory="true" />
+      <point id="Stat_email_int" offset="96" type="uint16" mandatory="true" />
+      <point id="Stat_start_HR" offset="97" type="uint16" mandatory="true" />
+      <point id="Stat_email_sub" offset="98" type="string" len="25" mandatory="true" />
+      <point id="Stat_email_addr1" offset="123" type="string" len="20" mandatory="true" />
+      <point id="Stat_email_addr2" offset="143" type="string" len="20" mandatory="true" />
+      <point id="Alarm_email_en" offset="163" type="enum16" define="Mode_Enum" mandatory="true" />
+      <point id="Alarm_email_sub" offset="164" type="string" len="25" mandatory="true" />
+      <point id="Alarm_email_addr1" offset="189" type="string" len="20" mandatory="true" />
+      <point id="Alarm_email_addr2" offset="209" type="string" len="20" mandatory="true" />
+      <point id="FTP_password" offset="229" type="string" len="8" mandatory="true" />
+      <point id="TELNET_password" offset="237" type="string" len="8" mandatory="true" />
+      <point id="Log_write_int" offset="245" type="uint16" units="Secs" mandatory="true" />
+      <point id="Log_retain" offset="246" type="uint16" units="Days" mandatory="true" />
+      <point id="Log_mode" offset="247" type="enum16" define="Log_Enum" mandatory="true" />
+      <point id="NTP_server_nm" offset="248" type="string" len="20" mandatory="true" />
+      <point id="NTP_enable" offset="268" type="enum16" define="Mode_Enum" mandatory="true" />
+      <point id="TimeZone" offset="269" type="int16" units="Hours" mandatory="true" />
+      <point id="Date_year" offset="270" type="uint16" mandatory="true" />
+      <point id="Date_month" offset="271" type="uint16" mandatory="true" />
+      <point id="Date_Day" offset="272" type="uint16" mandatory="true" />
+      <point id="Time_hour" offset="273" type="uint16" mandatory="true" />
+      <point id="Time_minute" offset="274" type="uint16" mandatory="true" />
+      <point id="Time_second" offset="275" type="uint16" mandatory="true" />
+      <point id="Battery_temp" offset="276" type="int16" sf="Temp_CF" units="C" mandatory="true" />
+      <point id="Ambient_temp" offset="277" type="int16" sf="Temp_SF" units="C" mandatory="true" />
+      <point id="Temp_SF" offset="278" type="sunssf" mandatory="true" />
+      <point id="AXS_Error" offset="279" type="bitfield16" mandatory="true" />
+      <point id="AXS_Status" offset="280" type="bitfield16" mandatory="true" />
+      <point id="AXS_Spare" offset="281" type="uint16" mandatory="true" />
     </block>
     <define name="Mode_Enum">
       <symbol id="ASX_DISABLED" value="0" />

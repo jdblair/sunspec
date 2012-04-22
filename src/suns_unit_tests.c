@@ -686,6 +686,20 @@ int unit_test_value_to_buf(const char **name)
         debug("string failed");
     }
     
+    /* ipaddr */
+    total++;
+    unsigned char ipaddr_buf[] = { 192, 168, 0, 1 };
+    suns_value_set_ipaddr(v, 0xC0A80001);
+    suns_value_to_buf(v, buf, SMALL_BUFFER_SIZE);
+	debug_dump_buffer((unsigned char *)&(v->value.u32), 4);
+    debug_dump_buffer(buf, 4);
+    if (compare_buf(ipaddr_buf, buf, 4) == 0) {
+        debug("ipaddr passed");
+        pass++;
+    } else {
+        debug("ipaddr failed");
+    }
+
     debug("pass = %d, total = %d", pass, total);
 
     return pass - total;
@@ -997,6 +1011,18 @@ int unit_test_buf_to_value(const char **name)
 
     debug("pass = %d, total = %d", pass, total);
 
+    /* ipaddr */
+    total++;
+    unsigned char ipaddr_buf[] = { 192, 168, 101, 10 };
+    tp.type = SUNS_IPADDR;
+    suns_buf_to_value(ipaddr_buf, &tp, v);
+    if (suns_value_get_uint32(v) == 0xC0A8650A) {
+        debug("ipaddr passed");
+        pass++;
+    } else {
+        debug("ipaddr failed");
+    }
+
     return pass - total;
 }
 
@@ -1139,6 +1165,17 @@ int unit_test_snprintf_suns_value_t(const char **name)
         debug("string test failed (buf = \"%s\")", buf);
     }
 
+    /* ipaddr */
+    total++;
+    suns_value_set_ipaddr(v, 0xC0A80001);
+    suns_snprintf_value_text(buf, BUFFER_SIZE, v);
+    if (strcmp(buf, "192.168.0.1") == 0) {
+        debug("ipaddr test passed (buf = %s)", buf);
+        pass++;
+    } else {
+        debug("ipaddr test failed (buf = %s)", buf);
+    }
+
     /* other meta values */
     total++;
     v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
@@ -1169,7 +1206,6 @@ int unit_test_snprintf_suns_value_t(const char **name)
     } else {
         debug("SUNS_VALUE_UNDEF test failed (buf = \"%s\")", buf);
     }
-    
 
     return pass - total;
 }
@@ -1275,6 +1311,7 @@ int unit_test_suns_type_size(const char **name)
         { 4,     SUNS_BITFIELD32 },
         { 2,     SUNS_SF },
         { 0,     SUNS_STRING },
+        { 4,     SUNS_IPADDR },
         { 0,     SUNS_UNDEF },
         { -1,         -1 },
     };

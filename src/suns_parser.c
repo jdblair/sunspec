@@ -188,7 +188,8 @@ int suns_parse_xml_model_file(const char *file)
                   ezxml_attr(model, "id"));
             continue;
         }
-        suns_model_did_t *did = suns_model_did_new(m->name, did_int, m);
+        suns_model_did_t *did = suns_model_did_new(m->name, did_int);
+        did->model = m;
         list_node_add(m->did_list, list_node_new(did));
         list_node_add(sps->did_list, list_node_new(did));
 
