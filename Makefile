@@ -46,6 +46,9 @@ $(DISTFILE):
 
 dist: $(DISTFILE)
 
+install:
+	make -C src install
+
 clean:
 	rm -f $(DISTFILE)
 	make -C src clean
