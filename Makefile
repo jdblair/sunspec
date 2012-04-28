@@ -44,7 +44,10 @@ $(DISTFILE):
 	@echo "exporting from git to create $(DISTFILE)"
 	git archive --format=tar --prefix sunspec-$(VERSION)/ v$(VERSION) | gzip - > $(DISTFILE)
 
-dist: $(DISTFILE)
+$(DISTFILE).md5: $(DISTFILE)
+	md5sum $(DISTFILE) > $(DISTFILE).md5
+
+dist: $(DISTFILE) $(DISTFILE).md5
 
 install:
 	make -C src install
