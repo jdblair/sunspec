@@ -52,3 +52,8 @@ $(LIBEZXML):
 clean:
 	make -C trx clean
 	make -C ezxml clean
+
+distclean:
+	make -C trx distclean
+	# ezxml doesn't have "distclean"
+	make -C ezxml clean

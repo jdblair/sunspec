@@ -142,8 +142,6 @@ clean:
 
 distclean:
 	rm -f *~ *.o *.d $(BINFILES)
-	make -C trx distclean
-	make -C ezxml distclean
 
 # this little bit of magic generates the *.d dependency files
 # see section "4.14 Generating Prerequisites Automatically"

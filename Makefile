@@ -58,6 +58,8 @@ clean:
 	make -C lib clean
 
 distclean:
-	find . -name \*~ | xargs rm -v
 	make -C src distclean
+	make -C lib distclean
+	rm -f $(DISTFILE) $(DISTFILE).md5
+	find . -name \*~ | xargs rm -v
 
