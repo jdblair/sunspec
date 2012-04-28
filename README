@@ -68,7 +68,11 @@ Updates
               Add vendor blocks contributed by Outback Power, Veris Industries
                 and Eltek.
 
-              Calling this release 1.0.0 - the first numbered release.
+              Calling this release 1.0.1 - the first numbered release.
+
+              There was a short lived 1.0.0 release, but I've cleaned up
+              the source code tree of some extraneous files and bumped the
+              version number to avoid confusion.
 
 
 Dependencies

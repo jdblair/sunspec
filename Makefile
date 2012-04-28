@@ -42,7 +42,7 @@ all:
 
 $(DISTFILE):
 	@echo "exporting from git to create $(DISTFILE)"
-	git archive --format=tar --prefix sunspec/ HEAD | gzip - > $(DISTFILE)
+	git archive --format=tar --prefix sunspec-$(VERSION)/ HEAD | gzip - > $(DISTFILE)
 
 dist: $(DISTFILE)
 
