@@ -58,6 +58,18 @@ Updates
               a simple tool for accessing the data store.  This work is
               not yet stable.
 
+2012-Apr-27:  Incorporating bugs discovered and some features requested
+              during the April Plugfest:
+
+              Clean up improper use of malloc() in suns_lang.y
+              Fix the -M option so the tool does not search for model files
+                installed on the system if one uses the -M flag.
+              Add the proposed "ipaddr" type.
+              Add vendor blocks contributed by Outback Power, Veris Industries
+                and Eltek.
+
+              Calling this release 1.0.0 - the first numbered release.
+
 
 Dependencies
 ------------
