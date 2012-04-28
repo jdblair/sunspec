@@ -47,16 +47,16 @@ model suns {
     MAC_Address       {  string.14 label="MAC Address" req }
     WritePassword     {  string.16 label="Write Password" req } 
     EnableDHCP        {  enum16.Enable_Enum label="Enable DHCP" req }
-#    TCPIP_address     {  ipaddr label="TCPIP Address" req }
-#    Gateway_address   {  ipaddr label="TCPIP Gateway" req }
-#    TCPIP_Netmask     {  ipaddr label="TCPIP Netmask" req }
-#    DNS1_address      {  ipaddr label="TCPIP DNS1" req } 
-#    DNS2_address      {  ipaddr label="TCPIP DNS2" req } 
-    TCPIP_address     {  uint32 label="TCPIP Address" req }
-    Gateway_address   {  uint32 label="TCPIP Gateway" req }
-    TCPIP_Netmask     {  uint32 label="TCPIP Netmask" req }
-    DNS1_address      {  uint32 label="TCPIP DNS1" req } 
-    DNS2_address      {  uint32 label="TCPIP DNS2" req } 
+    TCPIP_address     {  ipaddr label="TCPIP Address" req }
+    Gateway_address   {  ipaddr label="TCPIP Gateway" req }
+    TCPIP_Netmask     {  ipaddr label="TCPIP Netmask" req }
+    DNS1_address      {  ipaddr label="TCPIP DNS1" req } 
+    DNS2_address      {  ipaddr label="TCPIP DNS2" req } 
+#    TCPIP_address     {  uint32 label="TCPIP Address" req }
+#    Gateway_address   {  uint32 label="TCPIP Gateway" req }
+#    TCPIP_Netmask     {  uint32 label="TCPIP Netmask" req }
+#    DNS1_address      {  uint32 label="TCPIP DNS1" req } 
+#    DNS2_address      {  uint32 label="TCPIP DNS2" req } 
     Modbus_port       {  uint16 label="ModBus Port" req } 
     SMTP_server_nm    {  string.40 label="SMTP Server Name" req } 
     SMTP_account_nm   {  string.32 label="SMTP Account Name" req } 
@@ -74,12 +74,12 @@ model suns {
     Alarm_email_addr2 {  string.40 label="Alarm Email to Address 2" req }
     FTP_password      {  string.16 label="FTP Password" req }
     TELNET_password   {  string.16 label="Telnet Password" req }
-    Log_write_int     {  uint16 u=Secs label="SD-Card Datalog Write Interval" req }
-    Log_retain        {  uint16 u=Days label="SD-Card Datalog Retain" req }
+    Log_write_int     {  uint16 u=Tms label="SD-Card Datalog Write Interval" req }
+    Log_retain        {  uint16 u=Tmd label="SD-Card Datalog Retain" req }
     Log_mode          {  enum16.Log_Enum label="SD-Card Datalog Mode" req }  
     NTP_server_nm     {  string.40 label="NTP Timer Server Name" req } 
     NTP_enable        {  enum16.Mode_Enum label="Enable Network Time" req }
-    TimeZone          {  int16 u=Hours label="Time Zone" req }
+    TimeZone          {  int16 u=Tmh label="Time Zone" req }
     Date_year         {  uint16 label="Year" req }
     Date_month        {  uint16 label="Month" req }
     Date_Day          {  uint16 label="Day" req }

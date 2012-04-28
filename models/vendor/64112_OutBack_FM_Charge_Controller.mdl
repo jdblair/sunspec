@@ -47,20 +47,20 @@ model suns {
     P_SF                          {  sunssf req }
     AH_SF                         {  sunssf req }
     KWH_SF                        {  sunssf req }
-    CC_Config_fault               {  bitfield16 u=b label="Faults" req }
+    CC_Config_fault               {  bitfield16 label="Faults" req }
     CC_Config_absorb_V            {  uint16.V_SF u=V label="Absorb" req }
-    CC_Config_absorb_Hr           {  uint16.H_SF u=Hours label="Absorb Time" req }
+    CC_Config_absorb_Hr           {  uint16.H_SF u=Tmh label="Absorb Time" req }
     CC_Config_absorb_End_A        {  uint16.V_SF u=A label="Absorb End" req }
     CC_Config_rebulk_V            {  uint16.V_SF u=V label="Rebulk" req }
     CC_Config_float_V             {  uint16.V_SF u=V label="Float" req }
     CC_Config_max_Chg_A           {  uint16.V_SF u=A label="Maximum Charge" req }
     CC_Config_equalize_V          {  uint16.V_SF u=V label="Equalize" req }
-    CC_Config_equalize_Hr         {  uint16 u=Hours label="Equalize Time" req }
-    CC_Config_auto_equalize       {  uint16 u=Days label="Auto Equalize Interval" req }
+    CC_Config_equalize_Hr         {  uint16 u=Tmh label="Equalize Time" req }
+    CC_Config_auto_equalize       {  uint16 u=Tmd label="Auto Equalize Interval" req }
     CC_Config_MPPT_mode           {  enum16.MPPT_mode_Enum label="MPPT mode" req }
     CC_Config_sweep_width         {  enum16.Sweep_Width_Enum label="Sweep Width" req }
     CC_Config_sweep_max           {  enum16.Sweep_Max_Enum label="Sweep Maximum" req }
-    CC_Config_U_Pick_Duty_cyc     {  uint16.V_SF u="%" label="U-Pick PWM Duty Cycle" req }
+    CC_Config_U_Pick_Duty_cyc     {  uint16.V_SF u=Pct label="U-Pick PWM Duty Cycle" req }
     CC_Config_grid_tie            {  enum16.Grid_Tie_Enum label="Grid Tie Mode" req }
     CC_Config_temp_comp           {  enum16.Temp_comp_Enum label="Temp Comp Mode" req }
     CC_Config_temp_comp_llimt     {  uint16.V_SF u=V label="Temp Comp Lower Limit" req }
@@ -68,37 +68,37 @@ model suns {
     CC_Config_auto_restart        {  enum16.Auto_restart_Enum label="Auto Restart Mode" req }
     CC_Config_wakeup_VOC          {  uint16.V_SF u=V label="Wakeup VOC Change" req }
     CC_Config_snooze_mode_A       {  uint16.V_SF u=A label="Snooze Mode" req }
-    CC_Config_wakeup_interval     {  uint16 u=Mins label="Wakeup Interval" req }
+    CC_Config_wakeup_interval     {  uint16 u=Tms label="Wakeup Interval" req }
     CC_Config_AUX_mode            {  enum16.AUX_mode_Enum label="AUX Output Mode" req }
     CC_Config_AUX_control         {  enum16.AUX_control_Enum label="AUX Output Control" req }
     CC_Config_AUX_state           {  enum16.AUX_state_Enum label="AUX Output State" req }
     CC_Config_AUX_polarity        {  enum16.AUX_polarity_Enum label="AUX Output Polarity" req }
     CC_Config_AUX_L_Batt_disc     {  uint16.V_SF u=V label="AUX Low Battery Disconnect" req }
     CC_Config_AUX_L_Batt_rcon     {  uint16.V_SF u=V label="AUX Low Battery Reconnect" req }
-    CC_Config_AUX_L_Batt_dly      {  uint16 u=Secs label="AUX Low Battery Disconnect Delay" req }
+    CC_Config_AUX_L_Batt_dly      {  uint16 u=Tms label="AUX Low Battery Disconnect Delay" req }
     CC_Config_AUX_Vent_fan_V      {  uint16.V_SF u=V label="AUX Vent Fan" req }
     CC_Config_AUX_PV_triggerV     {  uint16.V_SF u=V label="AUX PV Trigger" req }
-    CC_Config_AUX_PV_trg_h_tm     {  uint16 u=Sec label="AUX PV Trigger Hold Time" req }
+    CC_Config_AUX_PV_trg_h_tm     {  uint16 u=Tms label="AUX PV Trigger Hold Time" req }
     CC_Config_AUX_Nlite_ThrsV     {  uint16.V_SF u=V label="AUX Night Light Threshold" req }
-    CC_Config_AUX_Nlite_On_tm     {  uint16.H_SF u=Hours label="AUX Night Light On Time" req }
-    CC_Config_AUX_Nlite_On_hist   {  uint16 u=Secs label="AUX Night Light On Hysterisis" req }
-    CC_Config_AUX_Nlite_Off_hist  {  uint16 u=Secs label="AUX Night Light Off Hysterisis" req }
+    CC_Config_AUX_Nlite_On_tm     {  uint16.H_SF u=Tmh label="AUX Night Light On Time" req }
+    CC_Config_AUX_Nlite_On_hist   {  uint16 u=Tms label="AUX Night Light On Hysterisis" req }
+    CC_Config_AUX_Nlite_Off_hist  {  uint16 u=Tms label="AUX Night Light Off Hysterisis" req }
     CC_Config_AUX_Error_batt_V    {  uint16.V_SF u=V label="AUX Error Output Low Battery" req }
-    CC_Config_AUX_Divert_h_time   {  uint16.V_SF u=Secs label="AUX Divert Hold Time" req }
-    CC_Config_AUX_Divert_dly_time {  uint16 u=Secs label="AUX Divert Delay Time" req }
+    CC_Config_AUX_Divert_h_time   {  uint16.V_SF u=Tms label="AUX Divert Hold Time" req }
+    CC_Config_AUX_Divert_dly_time {  uint16 u=Tms label="AUX Divert Delay Time" req }
     CC_Config_AUX_Divert_Rel_V    {  uint16.V_SF u=V label="AUX Divert Relative" req }
     CC_Config_AUX_Divert_Hyst_V   {  uint16.V_SF u=V label="AUX Divert Hysterisis" req }
     CC_Config_MajorFWRev          {  uint16 label="FM CC Major Firmware Number" req }
     CC_Config_MidFWRev            {  uint16 label="FM CC Mid Firmware Number" req }
     CC_Config_MinorFWRev          {  uint16 label="FM CC Minor Firmware Number" req }
-    CC_Config_DataLog_Day_offset  {  uint16 u=Days label="Set Data Log Day Offset" req } 
-    CC_Config_DataLog_Cur_Day_off {  uint16 u=Days label="Current Data Log Day Offset" req }
+    CC_Config_DataLog_Day_offset  {  uint16 u=Tmd label="Set Data Log Day Offset" req } 
+    CC_Config_DataLog_Cur_Day_off {  uint16 u=Tmd label="Current Data Log Day Offset" req }
     CC_Config_DataLog_Daily_AH    {  uint16 u=Ah label="Data Log Daily" req }
     CC_Config_DataLog_Daily_KWH   {  uint16.KWH_SF u=kWh label="Data Log Daily" req } 
     CC_Config_DataLog_Max_Out_A   {  uint16.V_SF u=A label="Data Log Daily Maximum Output" req }
     CC_Config_DataLog_Max_Out_W   {  uint16.V_SF u=W label="Data Log Daily Maximum Output" req } 
-    CC_Config_DataLog_Absorb_T    {  uint16 u=Mins label="Data Log Daily Absorb Time" req } 
-    CC_Config_DataLog_Float_T     {  uint16 u=Mins label="Data Log Daily Float Time" req } 
+    CC_Config_DataLog_Absorb_T    {  uint16 u=Tms label="Data Log Daily Absorb Time" req } 
+    CC_Config_DataLog_Float_T     {  uint16 u=Tms label="Data Log Daily Float Time" req } 
     CC_Config_DataLog_Min_Batt_V  {  uint16.V_SF u=V label="Data Log Daily Minimum Battery" req }
     CC_Config_DataLog_Max_Batt_V  {  uint16.V_SF u=V label="Data Log Daily Maximum Battery" req }
     CC_Config_DataLog_Max_Input_V {  uint16.V_SF u=V label="Data Log Daily Maximum Input" req }
