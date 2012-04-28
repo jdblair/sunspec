@@ -32,7 +32,9 @@
 # SUCH DAMAGE.
 #
 
-DISTFILE=sunspec.tar.gz
+VERSION=$(shell cat VERSION)
+
+DISTFILE=suns-$(VERSION).tar.gz
 
 all:
 	make -C src all
