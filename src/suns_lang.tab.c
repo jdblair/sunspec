@@ -479,7 +479,7 @@ union yyalloc
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  20
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  53
+#define YYNRULES  54
 /* YYNRULES -- Number of states.  */
 #define YYNSTATES  92
 
@@ -531,46 +531,46 @@ static const yytype_uint8 yytranslate[] =
 static const yytype_uint8 yyprhs[] =
 {
        0,     0,     3,     5,     6,     9,    12,    15,    19,    22,
-      25,    31,    32,    35,    38,    41,    44,    47,    52,    58,
-      59,    62,    69,    75,    79,    83,    87,    89,    90,    93,
-      97,    99,   103,   107,   111,   117,   119,   121,   123,   125,
-     127,   131,   135,   139,   143,   144,   147,   153,   159,   165,
-     171,   176,   181,   182
+      25,    28,    34,    35,    38,    41,    44,    47,    50,    55,
+      61,    62,    65,    72,    78,    82,    86,    90,    92,    93,
+      96,   100,   102,   106,   110,   114,   120,   122,   124,   126,
+     128,   130,   134,   138,   142,   146,   147,   150,   156,   162,
+     168,   174,   179,   184,   185
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
       43,     0,    -1,    44,    -1,    -1,    44,    48,    -1,    44,
-      58,    -1,    44,    59,    -1,    15,    24,    27,    -1,    17,
-      24,    -1,    14,    27,    -1,    13,    28,     3,    49,     4,
-      -1,    -1,    49,    50,    -1,    49,    45,    -1,    49,    46,
-      -1,    49,    47,    -1,    49,    59,    -1,    16,     3,    51,
-       4,    -1,    16,    28,     3,    51,     4,    -1,    -1,    51,
-      52,    -1,    28,     3,    24,    53,    54,     4,    -1,    28,
-       3,    53,    54,     4,    -1,    28,    11,    28,    -1,    28,
-      11,    25,    -1,    28,    11,    24,    -1,    28,    -1,    -1,
-      54,    55,    -1,    28,    12,    27,    -1,    28,    -1,    28,
-      12,    28,    -1,    28,    12,    24,    -1,    28,    12,    25,
-      -1,    28,    12,     3,    54,     4,    -1,    24,    -1,    25,
-      -1,    24,    -1,    25,    -1,    26,    -1,    53,     8,    25,
-      -1,    53,     8,    24,    -1,    53,     8,    26,    -1,    53,
-       8,    27,    -1,    -1,    57,    56,    -1,    22,    28,     3,
-      57,     4,    -1,    20,    28,     3,    61,     4,    -1,    28,
-       3,    25,    27,     4,    -1,    28,     3,    24,    27,     4,
-      -1,    28,     3,    27,     4,    -1,    28,     3,    54,     4,
-      -1,    -1,    61,    60,    -1
+      58,    -1,    44,    59,    -1,    15,    24,    27,    -1,    15,
+      24,    -1,    17,    24,    -1,    14,    27,    -1,    13,    28,
+       3,    49,     4,    -1,    -1,    49,    50,    -1,    49,    45,
+      -1,    49,    46,    -1,    49,    47,    -1,    49,    59,    -1,
+      16,     3,    51,     4,    -1,    16,    28,     3,    51,     4,
+      -1,    -1,    51,    52,    -1,    28,     3,    24,    53,    54,
+       4,    -1,    28,     3,    53,    54,     4,    -1,    28,    11,
+      28,    -1,    28,    11,    25,    -1,    28,    11,    24,    -1,
+      28,    -1,    -1,    54,    55,    -1,    28,    12,    27,    -1,
+      28,    -1,    28,    12,    28,    -1,    28,    12,    24,    -1,
+      28,    12,    25,    -1,    28,    12,     3,    54,     4,    -1,
+      24,    -1,    25,    -1,    24,    -1,    25,    -1,    26,    -1,
+      53,     8,    25,    -1,    53,     8,    24,    -1,    53,     8,
+      26,    -1,    53,     8,    27,    -1,    -1,    57,    56,    -1,
+      22,    28,     3,    57,     4,    -1,    20,    28,     3,    61,
+       4,    -1,    28,     3,    25,    27,     4,    -1,    28,     3,
+      24,    27,     4,    -1,    28,     3,    27,     4,    -1,    28,
+       3,    54,     4,    -1,    -1,    61,    60,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
        0,   133,   133,   135,   136,   141,   147,   155,   161,   166,
-     171,   179,   182,   186,   194,   198,   202,   208,   215,   228,
-     232,   238,   246,   255,   266,   283,   300,   313,   316,   321,
-     328,   334,   340,   347,   354,   360,   368,   381,   387,   393,
-     406,   453,   500,   511,   521,   524,   537,   545,   553,   560,
-     567,   574,   583,   586
+     171,   176,   184,   187,   191,   204,   208,   212,   218,   225,
+     238,   242,   248,   256,   265,   276,   293,   310,   323,   326,
+     331,   338,   344,   350,   357,   364,   370,   378,   391,   397,
+     403,   416,   463,   510,   521,   531,   534,   547,   555,   563,
+     570,   577,   584,   593,   596
 };
 #endif
 
@@ -609,23 +609,23 @@ static const yytype_uint16 yytoknum[] =
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    42,    43,    44,    44,    44,    44,    45,    46,    47,
-      48,    49,    49,    49,    49,    49,    49,    50,    50,    51,
-      51,    52,    52,    53,    53,    53,    53,    54,    54,    55,
-      55,    55,    55,    55,    55,    55,    55,    56,    56,    56,
-      56,    56,    56,    56,    57,    57,    58,    59,    60,    60,
-      60,    60,    61,    61
+       0,    42,    43,    44,    44,    44,    44,    45,    45,    46,
+      47,    48,    49,    49,    49,    49,    49,    49,    50,    50,
+      51,    51,    52,    52,    53,    53,    53,    53,    54,    54,
+      55,    55,    55,    55,    55,    55,    55,    55,    56,    56,
+      56,    56,    56,    56,    56,    57,    57,    58,    59,    60,
+      60,    60,    60,    61,    61
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
        0,     2,     1,     0,     2,     2,     2,     3,     2,     2,
-       5,     0,     2,     2,     2,     2,     2,     4,     5,     0,
-       2,     6,     5,     3,     3,     3,     1,     0,     2,     3,
-       1,     3,     3,     3,     5,     1,     1,     1,     1,     1,
-       3,     3,     3,     3,     0,     2,     5,     5,     5,     5,
-       4,     4,     0,     2
+       2,     5,     0,     2,     2,     2,     2,     2,     4,     5,
+       0,     2,     6,     5,     3,     3,     3,     1,     0,     2,
+       3,     1,     3,     3,     3,     5,     1,     1,     1,     1,
+       1,     3,     3,     3,     3,     0,     2,     5,     5,     5,
+       5,     4,     4,     0,     2
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -634,15 +634,15 @@ static const yytype_uint8 yyr2[] =
 static const yytype_uint8 yydefact[] =
 {
        3,     0,     2,     1,     0,     0,     0,     4,     5,     6,
-       0,     0,     0,    11,    52,    44,     0,     0,     0,    10,
-       0,     0,     0,     0,    13,    14,    15,    12,    16,    47,
-       0,    53,    46,    37,    38,    39,    26,     0,    45,     9,
-       0,    19,     0,     8,    27,     0,     0,     7,     0,    19,
-       0,     0,     0,     0,    25,    24,    23,    41,    40,    42,
-      43,    17,     0,    20,     0,     0,     0,    50,    51,    35,
-      36,    30,    28,     0,    18,    49,    48,     0,     0,    27,
-      27,    32,    33,    29,    31,    27,     0,     0,     0,    22,
-      34,    21
+       0,     0,     0,    12,    53,    45,     0,     0,     0,    11,
+       0,     0,     0,     0,    14,    15,    16,    13,    17,    48,
+       0,    54,    47,    38,    39,    40,    27,     0,    46,    10,
+       8,    20,     0,     9,    28,     0,     0,     7,     0,    20,
+       0,     0,     0,     0,    26,    25,    24,    42,    41,    43,
+      44,    18,     0,    21,     0,     0,     0,    51,    52,    36,
+      37,    31,    29,     0,    19,    50,    49,     0,     0,    28,
+      28,    33,    34,    30,    32,    28,     0,     0,     0,    23,
+      35,    22
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -1568,7 +1568,9 @@ yyreduce:
 /* Line 1455 of yacc.c  */
 #line 156 "suns_lang.y"
     {
-    (yyval.did) = suns_model_did_new((yyvsp[(3) - (3)].string), (yyvsp[(2) - (3)].number_u));
+    (yyval.did) = suns_model_did_new((yyvsp[(2) - (3)].number_u));
+    (yyval.did)->name = (yyvsp[(3) - (3)].string);
+    
 }
     break;
 
@@ -1577,7 +1579,7 @@ yyreduce:
 /* Line 1455 of yacc.c  */
 #line 162 "suns_lang.y"
     {
-    (yyval.number_u) = (yyvsp[(2) - (2)].number_u);
+    (yyval.did) = suns_model_did_new((yyvsp[(2) - (2)].number_u));
 }
     break;
 
@@ -1586,7 +1588,7 @@ yyreduce:
 /* Line 1455 of yacc.c  */
 #line 167 "suns_lang.y"
     {
-    (yyval.string) = (yyvsp[(2) - (2)].string);
+    (yyval.number_u) = (yyvsp[(2) - (2)].number_u);
 }
     break;
 
@@ -1595,74 +1597,88 @@ yyreduce:
 /* Line 1455 of yacc.c  */
 #line 172 "suns_lang.y"
     {
-    /* model_blocks are the same struct as model_elmts */
-    (yyval.model) = (yyvsp[(4) - (5)].model);
-    (yyval.model)->type = (yyvsp[(2) - (5)].string);
+    (yyval.string) = (yyvsp[(2) - (2)].string);
 }
     break;
 
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 179 "suns_lang.y"
+#line 177 "suns_lang.y"
     {
-    (yyval.model) = suns_model_new();
+    /* model_blocks are the same struct as model_elmts */
+    (yyval.model) = (yyvsp[(4) - (5)].model);
+    (yyval.model)->type = (yyvsp[(2) - (5)].string);
 }
     break;
 
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 183 "suns_lang.y"
+#line 184 "suns_lang.y"
     {
-    list_node_add((yyval.model)->dp_blocks, list_node_new((yyvsp[(2) - (2)].datapoints_block)));
+    (yyval.model) = suns_model_new();
 }
     break;
 
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 187 "suns_lang.y"
+#line 188 "suns_lang.y"
     {
-    (yyvsp[(2) - (2)].did)->model = (yyval.model);
-    /* add the did to the global did_list */
-    list_node_add(sps->did_list, list_node_new((yyvsp[(2) - (2)].did)));
-    /* add the did to the list in the model */
-    list_node_add((yyval.model)->did_list, list_node_new((yyvsp[(2) - (2)].did)));
+    list_node_add((yyval.model)->dp_blocks, list_node_new((yyvsp[(2) - (2)].datapoints_block)));
 }
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 195 "suns_lang.y"
+#line 192 "suns_lang.y"
     {
-    (yyval.model)->len = (yyvsp[(2) - (2)].number_u);
+    (yyvsp[(2) - (2)].did)->model = (yyval.model);
+    /* add the did to the global did_list */
+    list_node_add(sps->did_list, list_node_new((yyvsp[(2) - (2)].did)));
+    /* add the did to the list in the model */
+    list_node_add((yyval.model)->did_list, list_node_new((yyvsp[(2) - (2)].did)));
+    /* use model name if the did has no name assigned to it */
+    /* this will be NULL if the name is defined after the did,
+       or there is no name token */
+    if ((yyvsp[(2) - (2)].did)->name == NULL)
+        (yyvsp[(2) - (2)].did)->name = (yyval.model)->name;
 }
     break;
 
   case 15:
 
 /* Line 1455 of yacc.c  */
-#line 199 "suns_lang.y"
+#line 205 "suns_lang.y"
     {
-    (yyval.model)->name = (yyvsp[(2) - (2)].string);
+    (yyval.model)->len = (yyvsp[(2) - (2)].number_u);
 }
     break;
 
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 203 "suns_lang.y"
+#line 209 "suns_lang.y"
     {
-    list_node_add((yyval.model)->defines, list_node_new((yyvsp[(2) - (2)].define_block)));
+    (yyval.model)->name = (yyvsp[(2) - (2)].string);
 }
     break;
 
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 209 "suns_lang.y"
+#line 213 "suns_lang.y"
+    {
+    list_node_add((yyval.model)->defines, list_node_new((yyvsp[(2) - (2)].define_block)));
+}
+    break;
+
+  case 18:
+
+/* Line 1455 of yacc.c  */
+#line 219 "suns_lang.y"
     {
     (yyval.datapoints_block) = suns_dp_block_new();
     (yyval.datapoints_block)->feature = NULL;
@@ -1671,10 +1687,10 @@ yyreduce:
 }
     break;
 
-  case 18:
+  case 19:
 
 /* Line 1455 of yacc.c  */
-#line 216 "suns_lang.y"
+#line 226 "suns_lang.y"
     {
     (yyval.datapoints_block) = suns_dp_block_new();
     /* FIXME: abstract this operation so we're not doing
@@ -1687,30 +1703,30 @@ yyreduce:
 }
     break;
 
-  case 19:
+  case 20:
 
 /* Line 1455 of yacc.c  */
-#line 228 "suns_lang.y"
+#line 238 "suns_lang.y"
     {
     /* create a new empty list */
     (yyval.list) = list_new();
 }
     break;
 
-  case 20:
+  case 21:
 
 /* Line 1455 of yacc.c  */
-#line 233 "suns_lang.y"
+#line 243 "suns_lang.y"
     {
     /* add the data point to the list */
     list_node_add((yyval.list), list_node_new((yyvsp[(2) - (2)].dp)));
 }
     break;
 
-  case 21:
+  case 22:
 
 /* Line 1455 of yacc.c  */
-#line 239 "suns_lang.y"
+#line 249 "suns_lang.y"
     {
     (yyval.dp) = suns_dp_new();
     (yyval.dp)->name = strdup((yyvsp[(1) - (6)].string));
@@ -1720,10 +1736,10 @@ yyreduce:
 }
     break;
 
-  case 22:
+  case 23:
 
 /* Line 1455 of yacc.c  */
-#line 247 "suns_lang.y"
+#line 257 "suns_lang.y"
     {
     (yyval.dp) = suns_dp_new();
     (yyval.dp)->name = strdup((yyvsp[(1) - (5)].string));
@@ -1733,10 +1749,10 @@ yyreduce:
 }
     break;
 
-  case 23:
+  case 24:
 
 /* Line 1455 of yacc.c  */
-#line 256 "suns_lang.y"
+#line 266 "suns_lang.y"
     {
     /* type with name subscript */
     (yyval.type_pair) = suns_type_pair_new();
@@ -1749,10 +1765,10 @@ yyreduce:
 }
     break;
 
-  case 24:
+  case 25:
 
 /* Line 1455 of yacc.c  */
-#line 267 "suns_lang.y"
+#line 277 "suns_lang.y"
     {
     /* type with int subscript - could be string or numeric type */
     (yyval.type_pair) = suns_type_pair_new();
@@ -1771,10 +1787,10 @@ yyreduce:
 }
     break;
 
-  case 25:
+  case 26:
 
 /* Line 1455 of yacc.c  */
-#line 284 "suns_lang.y"
+#line 294 "suns_lang.y"
     {
     /* type with uint subscript - could be string or numeric type */
     (yyval.type_pair) = suns_type_pair_new();
@@ -1793,10 +1809,10 @@ yyreduce:
 }
     break;
 
-  case 26:
+  case 27:
 
 /* Line 1455 of yacc.c  */
-#line 301 "suns_lang.y"
+#line 311 "suns_lang.y"
     {
     /* simple type with no subscript */
     (yyval.type_pair) = suns_type_pair_new();
@@ -1809,28 +1825,28 @@ yyreduce:
 }
     break;
 
-  case 27:
-
-/* Line 1455 of yacc.c  */
-#line 313 "suns_lang.y"
-    {
-    (yyval.list) = list_new();
-}
-    break;
-
   case 28:
 
 /* Line 1455 of yacc.c  */
-#line 317 "suns_lang.y"
+#line 323 "suns_lang.y"
     {
-    list_node_add((yyval.list), list_node_new((yyvsp[(2) - (2)].attribute)));
+    (yyval.list) = list_new();
 }
     break;
 
   case 29:
 
 /* Line 1455 of yacc.c  */
-#line 322 "suns_lang.y"
+#line 327 "suns_lang.y"
+    {
+    list_node_add((yyval.list), list_node_new((yyvsp[(2) - (2)].attribute)));
+}
+    break;
+
+  case 30:
+
+/* Line 1455 of yacc.c  */
+#line 332 "suns_lang.y"
     {
     (yyval.attribute) = suns_attribute_new();
     (yyval.attribute)->name = strdup((yyvsp[(1) - (3)].string));
@@ -1839,10 +1855,10 @@ yyreduce:
 }
     break;
 
-  case 30:
+  case 31:
 
 /* Line 1455 of yacc.c  */
-#line 329 "suns_lang.y"
+#line 339 "suns_lang.y"
     {
     (yyval.attribute) = suns_attribute_new();
     (yyval.attribute)->name = strdup((yyvsp[(1) - (1)].string));
@@ -1850,10 +1866,10 @@ yyreduce:
 }
     break;
 
-  case 31:
+  case 32:
 
 /* Line 1455 of yacc.c  */
-#line 335 "suns_lang.y"
+#line 345 "suns_lang.y"
     {
     (yyval.attribute) = suns_attribute_new();
     (yyval.attribute)->name = strdup((yyvsp[(1) - (3)].string));
@@ -1861,10 +1877,10 @@ yyreduce:
 }
     break;
 
-  case 32:
+  case 33:
 
 /* Line 1455 of yacc.c  */
-#line 341 "suns_lang.y"
+#line 351 "suns_lang.y"
     {
     (yyval.attribute) = suns_attribute_new();
     (yyval.attribute)->name = strdup((yyvsp[(1) - (3)].string));
@@ -1873,10 +1889,10 @@ yyreduce:
 }
     break;
 
-  case 33:
+  case 34:
 
 /* Line 1455 of yacc.c  */
-#line 348 "suns_lang.y"
+#line 358 "suns_lang.y"
     {
     (yyval.attribute) = suns_attribute_new();
     (yyval.attribute)->name = strdup((yyvsp[(1) - (3)].string));
@@ -1885,10 +1901,10 @@ yyreduce:
 }
     break;
 
-  case 34:
+  case 35:
 
 /* Line 1455 of yacc.c  */
-#line 355 "suns_lang.y"
+#line 365 "suns_lang.y"
     {
     (yyval.attribute) = suns_attribute_new();
     (yyval.attribute)->name = strdup((yyvsp[(1) - (5)].string));
@@ -1896,10 +1912,10 @@ yyreduce:
 }
     break;
 
-  case 35:
+  case 36:
 
 /* Line 1455 of yacc.c  */
-#line 361 "suns_lang.y"
+#line 371 "suns_lang.y"
     {
     (yyval.attribute) = suns_attribute_new();
     /* malloc() b/c we need a buffer to snprintf() the integer into */
@@ -1909,10 +1925,10 @@ yyreduce:
 }
     break;
 
-  case 36:
+  case 37:
 
 /* Line 1455 of yacc.c  */
-#line 369 "suns_lang.y"
+#line 379 "suns_lang.y"
     {
     (yyval.attribute) = suns_attribute_new();
     /* malloc() b/c we need a buffer to snprintf() the integer into */
@@ -1922,10 +1938,10 @@ yyreduce:
 }
     break;
 
-  case 37:
+  case 38:
 
 /* Line 1455 of yacc.c  */
-#line 382 "suns_lang.y"
+#line 392 "suns_lang.y"
     {
     /* debug("UINT %llu", $1); */
     (yyval.value) = suns_value_new();
@@ -1933,10 +1949,10 @@ yyreduce:
 }
     break;
 
-  case 38:
+  case 39:
 
 /* Line 1455 of yacc.c  */
-#line 388 "suns_lang.y"
+#line 398 "suns_lang.y"
     {
     /* debug("INT %lld", $1); */
     (yyval.value) = suns_value_new();
@@ -1944,10 +1960,10 @@ yyreduce:
 }
     break;
 
-  case 39:
+  case 40:
 
 /* Line 1455 of yacc.c  */
-#line 394 "suns_lang.y"
+#line 404 "suns_lang.y"
     {
     /* debug("FLOAT %f", $1); */
     (yyval.value) = suns_value_new();
@@ -1955,10 +1971,10 @@ yyreduce:
 }
     break;
 
-  case 40:
+  case 41:
 
 /* Line 1455 of yacc.c  */
-#line 407 "suns_lang.y"
+#line 417 "suns_lang.y"
     {
     (yyval.value) = suns_value_new();
     switch ((yyvsp[(1) - (3)].type_pair)->type) {
@@ -2007,10 +2023,10 @@ yyreduce:
 }
     break;
 
-  case 41:
+  case 42:
 
 /* Line 1455 of yacc.c  */
-#line 454 "suns_lang.y"
+#line 464 "suns_lang.y"
     {
     (yyval.value) = suns_value_new();
     switch ((yyvsp[(1) - (3)].type_pair)->type) {
@@ -2059,10 +2075,10 @@ yyreduce:
 }
     break;
 
-  case 42:
+  case 43:
 
 /* Line 1455 of yacc.c  */
-#line 501 "suns_lang.y"
+#line 511 "suns_lang.y"
     {
     (yyval.value) = suns_value_new();
     switch ((yyvsp[(1) - (3)].type_pair)->type) {
@@ -2075,10 +2091,10 @@ yyreduce:
 }
     break;
 
-  case 43:
+  case 44:
 
 /* Line 1455 of yacc.c  */
-#line 512 "suns_lang.y"
+#line 522 "suns_lang.y"
     {
     (yyval.value) = suns_value_new();
     if ((yyvsp[(1) - (3)].type_pair)->type != SUNS_STRING)
@@ -2087,19 +2103,19 @@ yyreduce:
 }
     break;
 
-  case 44:
+  case 45:
 
 /* Line 1455 of yacc.c  */
-#line 521 "suns_lang.y"
+#line 531 "suns_lang.y"
     {
     (yyval.buffer) = buffer_new(BUFFER_SIZE);
 }
     break;
 
-  case 45:
+  case 46:
 
 /* Line 1455 of yacc.c  */
-#line 525 "suns_lang.y"
+#line 535 "suns_lang.y"
     {
     /* debug("suns_value type = %s(%d)",
        suns_type_string($2->tp.type), $2->tp.type); */
@@ -2112,10 +2128,10 @@ yyreduce:
 }
     break;
 
-  case 46:
+  case 47:
 
 /* Line 1455 of yacc.c  */
-#line 538 "suns_lang.y"
+#line 548 "suns_lang.y"
     {
     (yyval.data_block) = suns_data_block_new();
     (yyval.data_block)->name = strdup((yyvsp[(2) - (5)].string));
@@ -2123,10 +2139,10 @@ yyreduce:
 }
     break;
 
-  case 47:
+  case 48:
 
 /* Line 1455 of yacc.c  */
-#line 546 "suns_lang.y"
+#line 556 "suns_lang.y"
     {
     (yyval.define_block) = suns_define_block_new();
     (yyval.define_block)->name = (yyvsp[(2) - (5)].string);
@@ -2134,10 +2150,10 @@ yyreduce:
 }
     break;
 
-  case 48:
+  case 49:
 
 /* Line 1455 of yacc.c  */
-#line 554 "suns_lang.y"
+#line 564 "suns_lang.y"
     {
     (yyval.define) = suns_define_new();
     (yyval.define)->name = (yyvsp[(1) - (5)].string);
@@ -2146,10 +2162,10 @@ yyreduce:
 }
     break;
 
-  case 49:
+  case 50:
 
 /* Line 1455 of yacc.c  */
-#line 561 "suns_lang.y"
+#line 571 "suns_lang.y"
     {
     (yyval.define) = suns_define_new();
     (yyval.define)->name = (yyvsp[(1) - (5)].string);
@@ -2158,10 +2174,10 @@ yyreduce:
 }
     break;
 
-  case 50:
+  case 51:
 
 /* Line 1455 of yacc.c  */
-#line 568 "suns_lang.y"
+#line 578 "suns_lang.y"
     {
     (yyval.define) = suns_define_new();
     (yyval.define)->name = (yyvsp[(1) - (4)].string);
@@ -2170,10 +2186,10 @@ yyreduce:
 }
     break;
 
-  case 51:
+  case 52:
 
 /* Line 1455 of yacc.c  */
-#line 575 "suns_lang.y"
+#line 585 "suns_lang.y"
     {
     (yyval.define) = suns_define_new();
     (yyval.define)->name = (yyvsp[(1) - (4)].string);
@@ -2182,19 +2198,19 @@ yyreduce:
 }
     break;
 
-  case 52:
+  case 53:
 
 /* Line 1455 of yacc.c  */
-#line 583 "suns_lang.y"
+#line 593 "suns_lang.y"
     {
     (yyval.list) = list_new();
 }
     break;
 
-  case 53:
+  case 54:
 
 /* Line 1455 of yacc.c  */
-#line 587 "suns_lang.y"
+#line 597 "suns_lang.y"
     {
     list_node_add((yyval.list), list_node_new((yyvsp[(2) - (2)].define)));
 }
@@ -2203,7 +2219,7 @@ yyreduce:
 
 
 /* Line 1455 of yacc.c  */
-#line 2207 "suns_lang.tab.c"
+#line 2223 "suns_lang.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -2415,6 +2431,6 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 594 "suns_lang.y"
+#line 604 "suns_lang.y"
 
 

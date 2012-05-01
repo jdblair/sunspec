@@ -62,26 +62,24 @@ suns_model_t *suns_model_new(void)
         debug("malloc() failed");
         return NULL;
     }
+    
+    memset(m, 0, sizeof(suns_model_t));
 
     m->defines = list_new();
     m->did_list = list_new();
     m->dp_blocks = list_new();
-    m->len = 0;
-    m->base_len = 0;
 
     return m;
 }
 
 
-suns_model_did_t * suns_model_did_new(char *name,
-                                      uint16_t id)
+suns_model_did_t * suns_model_did_new(uint16_t id)
 {
     suns_model_did_t *did = malloc(sizeof(suns_model_did_t));
     if (did == NULL) {
         error("memory error: can't malloc(sizeof(suns_model_did_t))");
         return NULL;
     }
-    did->name = name;
     did->did = id;
     
     return did;
@@ -851,20 +849,27 @@ int suns_value_set_name(suns_value_t *v, char *name)
 }
 
 
+/* returns 1 if the type is a numeric type */
+int suns_type_is_numeric(suns_type_t t)
+{
+    /* note that a scale factor is not considered a numeric type! */
+    return ((t == SUNS_INT16) ||
+            (t == SUNS_UINT16) ||
+            (t == SUNS_ACC16) ||
+            (t == SUNS_INT32) ||
+            (t == SUNS_FLOAT32) ||
+            (t == SUNS_ACC32) ||
+            (t == SUNS_INT64) ||
+            (t == SUNS_UINT64) ||
+            (t == SUNS_FLOAT64) ||
+            (t == SUNS_ACC64));    
+}
+
 
 /* returns 1 if the value is a numeric type */
 int suns_value_is_numeric(suns_value_t *v)
 {
-    /* note that a scale factor is not considered a numeric type! */
-    return ((v->tp.type == SUNS_INT16) ||
-            (v->tp.type == SUNS_UINT16) ||
-            (v->tp.type == SUNS_ACC16) ||
-            (v->tp.type == SUNS_INT32) ||
-            (v->tp.type == SUNS_FLOAT32) ||
-            (v->tp.type == SUNS_ACC32) ||
-            (v->tp.type == SUNS_INT64) ||
-            (v->tp.type == SUNS_UINT64) ||
-            (v->tp.type == SUNS_FLOAT64));
+    return (suns_type_is_numeric(v->tp.type));
 }
 
 
@@ -1747,7 +1752,16 @@ suns_dp_t *suns_search_dp_block_for_dp_by_name(suns_dp_block_t *dp_block,
 }
 
 
-suns_dp_t *suns_search_model_for_dp_by_name(suns_model_t *m, char *name)
+/**
+ * search a model for a suns_dp_t by name.
+ *
+ * \param *m model to search
+ * \param *name name to search for
+ * \param **dp_block_ref set to the suns_dp_block_t the suns_dp_t was found in
+ */
+suns_dp_t *suns_search_model_for_dp_by_name(suns_model_t *m,
+                                            char *name,
+                                            suns_dp_block_t **dp_block_ref)
 {
     list_node_t *c;
     suns_dp_t *dp;
@@ -1756,11 +1770,13 @@ suns_dp_t *suns_search_model_for_dp_by_name(suns_model_t *m, char *name)
         suns_dp_block_t *dp_block = c->data;
         if ((dp = suns_search_dp_block_for_dp_by_name(dp_block, name))
             != NULL) {
+            *dp_block_ref = dp_block;
             return dp;
         }
     }
-
+    
     /* datapoint not found */
+    *dp_block_ref = NULL;
     return NULL;
 }
 
@@ -1843,3 +1859,117 @@ char * suns_find_attribute(suns_dp_t *dp, char *name)
 }
 
 
+/**
+ * create a concatenated string of all did numbers in a model
+ *
+ */
+int suns_did_number_string(suns_model_t *m, char *buf, size_t len)
+{
+    list_node_t *c;
+    int offset = 0;
+    int first = 1;
+
+    list_for_each(m->did_list, c) {
+        suns_model_did_t *did = c->data;
+        if (first) {
+            offset += snprintf(buf + offset, len - offset, "%d", did->did);
+            first = 0;
+        } else {
+            offset += snprintf(buf + offset, len - offset, " %d", did->did);
+        }
+
+        if (offset >= len)
+            break;
+    }
+
+    debug_s(buf);
+
+    return offset;
+}
+
+
+/**
+ * checks scale factor references in a suns_model_t for consistency
+ * returns 0 on success, 1 if there are any invalid scale factor references
+ */
+int suns_check_scale_factors(suns_model_t *m)
+{
+    int rc = 0;
+    list_node_t *c, *d;
+
+    char did_string[BUFFER_SIZE];
+    suns_did_number_string(m, did_string, BUFFER_SIZE);
+
+    verbose(1, "checking %s (%s)", m->name, did_string);
+
+    list_for_each(m->dp_blocks, c) {
+        suns_dp_block_t *block = c->data;
+        list_for_each(block->dp_list, d) {
+            suns_dp_block_t *dp_block_ref;
+            suns_dp_t *dp = d->data;
+            suns_dp_t *sf;
+            /* check if we've found a scale factor that has the
+               name field set.  we want to skip datapoints that
+               have fixed scale factors. */
+            if (suns_type_is_numeric(dp->type_pair->type) &&
+                dp->type_pair->name) {
+                debug("checking %s", dp->name);
+                sf = suns_search_model_for_dp_by_name(m,
+                                                      dp->type_pair->name,
+                                                      &dp_block_ref);
+                if (sf) {
+                    /* check that a datapoint in the non-repeating
+                       section does not reference a scale factor in
+                       the repeating section. */
+                    if ((! block->repeating) &&
+                        (dp_block_ref->repeating)) {
+                        error("datapoint %s, which is in the non-repeating "
+                              "block, references a scale factor in the "
+                              "repeating block", dp->name);
+                        rc = -1;
+                    }
+                } else {
+                    error("datapoint %s in model \"%s\" references "
+                          "non-existent scale factor %s",
+                          dp->name, m->name, dp->type_pair->name);
+                    rc = -1;
+                }
+            }
+        }
+    }
+
+    return rc;
+}
+
+
+/**
+ * check a model for internal consistency and missing attributes
+ *
+ */
+int suns_model_check_consistency(suns_model_t *m)
+{
+    int rc = 0;
+
+    /* check that all scale references refer to actual datapoints */
+    rc = suns_check_scale_factors(m);
+
+    if (m->name == NULL) {
+        error("model containing did %d is missing the name string",
+              ((suns_model_did_t*)(m->did_list->head->data))->did);
+        rc = -1;
+    }
+
+    list_node_t *c;
+    list_for_each(m->did_list, c) {
+        suns_model_did_t *did = c->data;
+        if (did->name == NULL) {
+            if (m->name)
+                error("did %d in model \"%s\" is missing the name string",
+                      did->did, m->name);
+            else
+                error("did %d is missing the name string", did->did);
+        }
+    }
+
+    return rc;
+}

@@ -39,7 +39,7 @@
 #
 model suns {
     name "inverter nameplate"
-    did 120 "inverter_nameplate"
+    did 120 "inverter nameplate"
     datapoints {
        WRtg            { uint16.WRtg_SF req label="Continous Power Rating" }
         WRtg_SF         { sunssf req }
@@ -50,7 +50,7 @@ model suns {
         VArRtg_SF       { sunssf req }
         Artg            { uint16 req label="Max AC Current Rating" }
         Artg_SF         { sunssf req }
-        PFLeadRtg       { int16.PFRtgSF req label="Min Leading PF Rating" }
+        PFLeadRtg       { int16.PFRtg_SF req label="Min Leading PF Rating" }
         PFLagRtg        { int16.PFRtg_SF req label="Min Lagging PF Rating" }
         PFRtg_SF        { sunssf req }
         WHRtg_SF        { sunssf }
@@ -65,8 +65,8 @@ model suns {
 # Inverter Control Basic Settings
 #
 model suns {
-    name "inverter_basic_settings"
-    did 121 "inverter_basic_settings"
+    name "inverter basic settings"
+    did 121 "inverter basic settings"
     datapoints {
         WMax            { uint16.WMax_SF u=W access=rw req label="Max Power Output Setting" }
         WMax_SF         { sunssf req }
@@ -129,8 +129,8 @@ model suns {
 # Measurements Status
 #
 model suns {
-    name "measurements_status"
-    did 122 "inverter_basic_settings"
+    name "measurements status"
+    did 122
     datapoints {
         PVConn                  { enum16.ConnAvail_enum }
         StorConn                { enum16.ConnAvail_enum }
@@ -180,8 +180,8 @@ model suns {
 # Immediate Inverter Controls
 #
 model suns {
-    name "Immediate_Inverter_Controls"
-    did 123 "Immediate_Inverter_Controls"
+    name "Immediate Inverter Controls"
+    did 123
     datapoints {
         Mod                 { bitfield16.ImmCtl_bf access=rw req }
         Conn                { enum16.Conn_enum access=rw req }
@@ -233,8 +233,8 @@ model suns {
 # Static Volt-Var
 #
 model suns {
-    name "Static_Volt_Var"
-    did 8007 "Static_Volt_Var"
+    name "Static Volt Var"
+    did 8007
     datapoints {
         VV_NCurves          { uint16 }
         VV_NPoints          { uint16 }

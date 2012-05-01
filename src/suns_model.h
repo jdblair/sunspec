@@ -49,8 +49,8 @@
 #include "trx/buffer.h"
 
 
-#define SUNS_ID_HIGH 0x5375
-#define SUNS_ID_LOW  0x6e53
+#define SUNS_ID_HIGH 0x5375   /* Su */
+#define SUNS_ID_LOW  0x6e53   /* nS */
 
 
 /* define floating point types */
@@ -312,6 +312,7 @@ int suns_buf_to_value(unsigned char *buf,
                       suns_type_pair_t *tp,
                       suns_value_t *v);
 
+int suns_type_is_numeric(suns_type_t t);
 int suns_value_is_numeric(suns_value_t *v);
 int suns_value_is_acc(suns_value_t *v);
 int suns_value_acc_is_zero(suns_value_t *v);
@@ -325,8 +326,7 @@ int suns_device_add_dataset(suns_device_t *d, suns_dataset_t *data);
 
 /* suns_value_t stuff */
 suns_model_t *suns_model_new(void);
-suns_model_did_t *suns_model_did_new(char *name,
-                                     uint16_t id);
+suns_model_did_t *suns_model_did_new(uint16_t id);
 int suns_string_to_value(const char *string,
                          suns_value_t *v,
                          suns_type_pair_t *tp);
@@ -401,7 +401,9 @@ suns_define_t *suns_search_bitfield_defines_i(list_t *list,
 
 suns_dp_t *suns_search_dp_block_for_dp_by_name(suns_dp_block_t *dp_block,
                                                char *name);
-suns_dp_t *suns_search_model_for_dp_by_name(suns_model_t *model, char *name);
+suns_dp_t *suns_search_model_for_dp_by_name(suns_model_t *m,
+                                            char *name,
+                                            suns_dp_block_t **dp_block_ref);
 suns_value_t *suns_search_value_list(list_t *list, char *name);
 int suns_resolve_scale_factors(suns_dataset_t *dataset);
 char * suns_find_attribute(suns_dp_t *dp, char *name);
@@ -409,5 +411,8 @@ void suns_model_xml_define_block_fprintf(FILE *stream,
                                          suns_define_block_t *block);
 void suns_model_xml_define_fprintf(FILE *stream,
                                    suns_define_t *define);
+int suns_did_number_string(suns_model_t *m, char *buf, size_t len);
+int suns_check_scale_factors(suns_model_t *m);
+int suns_model_check_consistency(suns_model_t *m);
 
 #endif /* _SUNS_MODEL_H_ */

@@ -35,7 +35,8 @@
 # Panel Module (Floating Point)
 #
 model suns {
-  did 501 "panel_module_float"
+  name "panel module float"
+  did 501
   datapoints {
     Stat                { enum16.Stat_enum req label="Module Status Code" }
     StatVend            { enum16 label="Module Vendor Status Code" }
@@ -98,7 +99,8 @@ model suns {
 # Panel Module (Integer)
 #
 model suns {
-  did 502 "panel_module_integer"
+  name "panel module integer"
+  did 502
   datapoints {
     A_SF               { sunssf }
     V_SF               { sunssf }

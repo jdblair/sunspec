@@ -39,8 +39,8 @@
 # DEPRECATED!  Only shown here for historical reasons
 #
 model suns {
-  name "met"
-  did 301 "base meteorological"
+  name "base meterological"
+  did 301
   datapoints {
     E_BaseMet_AirTemperature      { int32 u=C        }
     E_BaseMet_RelativeHumidity    { int32 u=Pct  }
@@ -79,8 +79,8 @@ model suns {
 # version 1.1 base meteorological model
 #
 model suns {
-  name "met_v1.1"
-  did 307 "meteorological v1.1"
+  name "meteorological v1.1"
+  did 307
   datapoints {
     TmpAmb         { int16.-1  label="Ambient Temperature" u=C }
     RH             { int16     label="Relative Humidity" u=Pct }
@@ -117,8 +117,8 @@ data suns_met307_test {
 # irradiance model
 #
 model suns {
-  name "met_irr"
-  did 302 "irradiance"
+  name "irradiance"
+  did 302
   datapoints repeating {
     GHI   { uint16 u=Wm2 label="Global Horizontal Irradiance" u=Wm2 }
     POAI  { uint16 u=Wm2 label="Plane of Array Irradiance" u=Wm2 }
@@ -132,8 +132,8 @@ model suns {
 # back of module temperature
 #
 model suns {
-  name "met_bom"
-  did 303 "back of module temperature"
+  name "back of module temperature"
+  did 303
   datapoints repeating {
     TmpBOM { int16.-1 u=C req label="Back of Module Temperature" }
   }
@@ -153,8 +153,8 @@ data suns_met303_test {
 # inclinometer
 #
 model suns {
-  name "met_incl"
-  did 304 "inclinometer"
+  name "inclinometer"
+  did 304
   datapoints repeating {
     InclX                 { int32.-2 u=deg label="X Axis Tilt" req }
     InclY                 { int32.-2 u=deg label="Y Axis Tilt" }
@@ -180,7 +180,7 @@ data suns_met304_test {
 #
 model suns {
   name "location"
-  did 305 "location"
+  did 305
   datapoints {
     Tm                     { string.10 label="Time (UTC)" u=gpsTm }
     Date                   { string.08 label="Date (UTC)" u=gpsDt }
@@ -197,7 +197,7 @@ model suns {
 #
 model suns {
     name "reference point"
-    did 306 "reference point"
+    did 306
     datapoints {
         GHI                 { uint16 label="Global Horizontal Irradiance" u=Wm2 }
         A                   { int32  label="Current" u=A }
@@ -212,7 +212,7 @@ model suns {
 #
 model suns {
     name "mini weather map"
-    did 308 "mini weather map"
+    did 308
     datapoints {
         GHI             { uint16 label="Global Horizontal Irradiance" u=Wm2 }
         TmpBOM          { int16 label="Back of Module Temperature" u=C }

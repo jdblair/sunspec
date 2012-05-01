@@ -217,7 +217,7 @@ data inverter_mod103_test {
 # floating point inverter model
 #
 model suns {
-  name "inverter_f"
+  name "inverter (float)"
   did 111 "single-phase inverter (float)"
   did 112 "split-phase inverter (float)"
   did 113 "three-phase inverter (float)"

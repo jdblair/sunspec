@@ -597,6 +597,8 @@ void suns_model_fprintf(FILE *stream, suns_model_t *model)
     list_node_t *c;
 
     fprintf(stream, "model suns {\n");
+    if (model->name)
+        fprintf(stream, "  name \"%s\"\n", model->name);
     if (model->did_list) {
         list_for_each(model->did_list, c) {
             suns_model_did_t *did = c->data;

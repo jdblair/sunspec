@@ -87,6 +87,7 @@ typedef struct suns_app {
     int retries;          /* number of retries for modbus reads */
     int override_model_searchpath;  /* don't load from search path */
     char *model_searchpath;  /* search path for model files */
+    int check_only;       /* check models then exit */
 } suns_app_t;
 
 

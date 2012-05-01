@@ -34,7 +34,7 @@
 #
 model suns {
   name "common"
-  did 001 "common"
+  did 001
   datapoints {
     Mn             { string.32 req label="Manufacturer" }
     Md             { string.32 req label="Model" }
@@ -61,7 +61,8 @@ data common_model_test {
 # Basic Aggregator Model
 #
 model suns {
-  did 002 "basic_aggregator"
+  name "basic aggregator"
+  did 002
   datapoints {
     AID                           { uint16 req }  
     N                             { uint16 req }

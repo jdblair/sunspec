@@ -34,8 +34,8 @@
 # string_combiner
 #
 model suns {
-  name "string_combiner"
-  did 401 "string_combiner"
+  name "string combiner"
+  did 401
   # common datapoints
   datapoints {
     DCA_SF                  { sunssf req }
@@ -65,12 +65,12 @@ model suns {
 # string_combiner (deprecated)
 #
 model suns {
-  name "advanced_string_combiner"
-  did 402 "advanced_string_combiner"
+  name "advanced string combiner"
+  did 402
   # common datapoints
   datapoints {
     DCA_SF                  { sunssf req }
-    DCAhr_SF                 { sunssf }
+    DCAhr_SF                { sunssf }
     DCV_SF                  { sunssf }
     DCW_SF                  { sunssf }
     DCWh_SF                 { sunssf req }
@@ -79,7 +79,7 @@ model suns {
     Evt                     { bitfield32 req label="Event Flags" }
     EvtVnd                  { bitfield32 label="Vendor Events" }
     DCA                     { int16  req u=A label="Combined DC Current" }
-    DCAhr                    { uint32 u=Ah label="DC Amp Hours" }
+    DCAhr                   { uint32 u=Ah label="DC Amp Hours" }
     DCV                     { uint16 u=V label="DC Volts" }
     Tmp                     { uint16 u=C label="Ambient Temperature" }
     DCW                     { int16  u=W label="DC Power" }
@@ -92,7 +92,7 @@ model suns {
     InEvt                   { bitfield32 req label="Input Event Flags" }
     EvtVnd                  { bitfield32 label="Input Vendor Event Flags" }
     InDCA                   { int16.DCA_SF u=A req label="Input Current" }
-    InDCAhr                  { uint32.DCAhr_SF u=Ah label="Input Amp Hours" }
+    InDCAhr                 { uint32.DCAhr_SF u=Ah label="Input Amp Hours" }
     InDCV                   { uint16.DCV_SF u=V label="Input Voltage" }
     InDCW                   { int16.DCWh_SF u=W label="Input Power" }
     INDCWh                  { acc32 u=Wh label="Input Accumulated Energy" }
@@ -135,8 +135,8 @@ data string_combiner_test {
 # string_combiner
 #
 model suns {
-  name "string_combiner"
-  did 403 "string_combiner"
+  name "string combiner"
+  did 403
   # common datapoints
   datapoints {
     DCA_SF                  { sunssf req }
@@ -169,8 +169,8 @@ model suns {
 # string_combiner
 #
 model suns {
-  name "advanced_string_combiner"
-  did 404 "advanced_string_combiner"
+  name "advanced string combiner"
+  did 404
   # common datapoints
   datapoints {
     DCA_SF                  { sunssf req }

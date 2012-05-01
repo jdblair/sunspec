@@ -82,6 +82,7 @@ void suns_app_init(suns_app_t *app)
     app->max_modbus_read = 125;  /* max defined in the modbus spec */
     app->retries = 2;
     app->override_model_searchpath = 0;
+    app->check_only = 0;
 
     /* override model_searchpath with SUNS_MODELPATH_ENV if it is set */
     if ((app->model_searchpath = getenv(SUNS_MODELPATH_ENV)) == NULL)
@@ -103,7 +104,7 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
 
     /* FIXME: add long options */
 
-    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:l:X:T:r:M:hH"))
+    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:l:X:T:r:M:hHc"))
            != -1) {
         switch (opt) {
         case 't':
@@ -232,6 +233,10 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
             app->logger_host = 1;
             break;
 
+        case 'c':
+            app->check_only = 1;
+            break;
+
         default:
             suns_app_help(argc, argv);
             exit(EXIT_SUCCESS);
@@ -255,8 +260,8 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
 void suns_app_help(int argc, char *argv[])
 {
     printf("Usage: %s: \n", argv[0]);
-    printf("      -o: output mode for data (text, csv, sql)\n");
-    printf("      -x: export model description (slang, csv, sql)\n");
+    printf("      -o: output mode for data (text, xml)\n");
+    printf("      -x: export model description (slang, xml)\n");
     printf("      -t: transport type: tcp or rtu (default: tcp)\n");
     printf("      -a: modbus slave address (default: 1)\n");
     printf("      -i: ip address to use for modbus tcp "
@@ -272,6 +277,7 @@ void suns_app_help(int argc, char *argv[])
     printf("      -I: logger id (for sunspec logger xml output)\n");
     printf("      -N: logger id namespace (for sunspec logger xml output, defaults to 'mac')\n");
     printf("      -l: limit number of registers requested in a single read (max is 125)\n");
+    printf("      -c: check models for internal consistency then exit\n");
     printf("      -v: verbose level (up to -vvvv for most verbose)\n");
     printf("\n");
 }
@@ -758,6 +764,18 @@ int main(int argc, char **argv)
         error("use -D, -m or the SUNS_MODELPATH environment variable.");
         error("model searchpath: %s", app.model_searchpath);
         exit(EXIT_FAILURE);
+    }
+    
+    int check_rc = 0;
+    /* check models for scale factor consistency */
+    list_for_each(sps->model_list, c) {
+        if (suns_model_check_consistency(c->data) < 0)
+            check_rc = 1;
+    }
+    if (app.check_only) {
+        if (check_rc == 0)
+            verbose(1, "model checks PASS");
+        exit(check_rc);
     }
 
     /* fill in offset data in any parsed model files */

@@ -154,9 +154,14 @@ blocks: /* empty */
 
 did: DIDTOK UINT STRING
 {
-    $$ = suns_model_did_new($3, $2);
+    $$ = suns_model_did_new($2);
+    $$->name = $3;
+    
 }
-
+      | DIDTOK UINT
+{
+    $$ = suns_model_did_new($2);
+}
 
 len: LENTOK UINT
 {
@@ -190,6 +195,11 @@ model_elmts: /* empty */
     list_node_add(sps->did_list, list_node_new($2));
     /* add the did to the list in the model */
     list_node_add($$->did_list, list_node_new($2));
+    /* use model name if the did has no name assigned to it */
+    /* this will be NULL if the name is defined after the did,
+       or there is no name token */
+    if ($2->name == NULL)
+        $2->name = $$->name;
 }
            | model_elmts len
 {

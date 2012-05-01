@@ -301,7 +301,8 @@ int suns_host_parse_datapoint(ezxml_t p,
     suns_parse_xml_attr(p, point_attr);
 
     /* look up the datapoint name in the model */
-    dp = suns_search_model_for_dp_by_name(model, v->name);
+    suns_dp_block_t *dp_block_ref;
+    dp = suns_search_model_for_dp_by_name(model, v->name, &dp_block_ref);
 
     if (dp == NULL) {
         dr_fail->status = STATUS_FAILURE;

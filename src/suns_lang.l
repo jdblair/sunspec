@@ -101,13 +101,13 @@ data              { return DATATOK; }
 \}                { return EBRACE; }
 \(                { return OPAREN; }
 \)                { return EPAREN; }
-#[^\n]*\n         /* ignore comments */;
+#[^\r\n]*\r?\n    /* ignore comments */;
 \:                { return COLON; }
 =                 { return EQUAL; }
 \;                { return SEMICOLON; }
 \.                { return DOT; }
 <<EOF>>           { return EOF; }
-\n                { line_no++; }
+\r?\n             { line_no++; }
 [ \t]+            /* ignore whitespace */;
 %%
 
