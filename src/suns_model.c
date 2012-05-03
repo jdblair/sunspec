@@ -459,6 +459,11 @@ int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len)
                                                           always NULL terminated */
         break;
 
+    case SUNS_PAD:
+        /* pad registers are always 0xFFFF */
+        *((uint16_t *) buf) = 0xFFFF;
+        break;
+
     default:
         /* this means we hit an unsupported datatype or SUNS_UNDEF */
         debug("unsupported datatype %s", suns_type_string(v->tp.type));
@@ -586,6 +591,11 @@ int suns_buf_to_value(unsigned char *buf,
         /* copy out of the buffer */
         strncpy(v->value.s, (char *) buf, tp->len);
 
+        break;
+
+    case SUNS_PAD:
+        /* skip pad registers */
+        debug("skipping pad register");
         break;
     
     default:
