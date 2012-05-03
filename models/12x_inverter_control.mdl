@@ -41,7 +41,7 @@ model suns {
     name "inverter nameplate"
     did 120 "inverter nameplate"
     datapoints {
-       WRtg            { uint16.WRtg_SF req label="Continous Power Rating" }
+        WRtg            { uint16.WRtg_SF req label="Continous Power Rating" }
         WRtg_SF         { sunssf req }
         VARtg           { uint16 req label="Continuous Apparent Power Rating" }
         VARtg_SF        { sunssf req }
@@ -70,7 +70,6 @@ model suns {
     datapoints {
         WMax            { uint16.WMax_SF u=W access=rw req label="Max Power Output Setting" }
         WMax_SF         { sunssf req }
-        WRef            { uint16.WMax_SF u=W access=rw label="Reference Active Power" }
         VMax            { uint16.VMinMax_SF u=V access=rw label="Max Voltage Setting" }
         VMin            { uint16.VMinMax_SF u=V access=rw label="Min Voltage Setting" }
         VMinMax_SF      { sunssf }
@@ -94,7 +93,8 @@ model suns {
         MaxRmpRte_SF    { sunssf }
         ECPNomHz        { uint16.ECPNomHz_SF u=Hz access=rw label="Nominal ECP Frequency" }
         ECPNomHz_SF     { sunssf }
-        Connected_Phase { enum16.Connected_Phase_enum access=rw label="Connected Phase" }
+        ConnPh          { enum16.ConnPh_enum access=rw label="Connected Phase" }
+        Rsrvd           { pad }
     }
 
     define PFSign_enum {
@@ -112,17 +112,12 @@ model suns {
         arithmetic { 2 "arithmetic calculation" }
     }
  
-    define Connected_Phase_enum {
+    define ConnPh_enum {
         PhA { 1 "phase A" }
         PhB { 2 "phase B" }
         PhC { 3 "phase C" }
     }
 }
-
-
-###
-###  updated this far to version 0.7
-###
 
 
 #
@@ -143,11 +138,12 @@ model suns {
         ActVArhQ4               { acc64 u=VArh }
         VArAval                 { uint16.VArAval_SF u=VAr }
         VArAval_SF              { sunssf }
-        StaSetLimMsk            { bitfield32.StaSetLimMsk_bf }
+        StSetLimMsk             { bitfield32.StaSetLimMsk_bf }
+        StActCtl                { bitfield32.StActCtl_bf }
         TmSrc                   { string.16 }
         CurrTime                { uint32 u=Tms2000 }
+        Rsrvd                   { pad }
     }
-
 
     define ConnAvail_enum {
         NA                      { 0 "not available" }
@@ -173,6 +169,21 @@ model suns {
         PFLeadMin               { 6 "" }
         PFLagMin                { 7 "" }
     }
+
+    define StactCtl_bf {
+        FixedW                  {  1 "" }
+        FixedVAR                {  2 "" }
+        FixedPF                 {  3 "" }
+        VoltVAr                 {  4 "" }
+        FreqWattParam           {  5 "" }
+        FreqWattCurve           {  6 "" }
+        DynReactiveCurrent      {  7 "" }
+        LVRT                    {  8 "" }
+        HVRT                    {  9 "" }
+        WattPF                  { 10 "" }
+        VoltWatt                { 11 "" }
+        Scheduled               { 12 "" }
+    }
 }
 
         
@@ -197,7 +208,8 @@ model suns {
         OutPFSet_SF         { sunssf req access=rw }
         OutPFSet_WinTms     { uint16 u=Tms access=rw }
         OutPFSet_RvrtTms    { uint16 u=Tms access=rw }
-        VArLim_Mode         { enum16.VArLim_Mode_enum req access=rw }
+        OutPFSet_RmpTms     { uint16 u=Tms access=rw }
+        VArLim_Mod          { enum16.VArLim_Mode_enum req access=rw }
         VArWMaxPct          { uint16 u=Pct access=rw }
         VArWMaxPct_SF       { sunssf access=rw }
         VArMaxPct           { uint16 u=Pct access=rw }
@@ -225,6 +237,11 @@ model suns {
         VARAVAL             { 3 "limit as percentage of VArAval" }
     }
 }
+
+
+###
+### reviewed to here with version 0.8 of the PICS
+###
 
 
 
