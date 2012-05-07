@@ -1,0 +1,831 @@
+<sunSpecModels v="1">
+
+  <!-- 10: Communication Interface Header -->
+  <model id="10" len="4">
+    <block len="4">
+      <point id="St" offset="0" type="enum16" mandatory="true" >
+        <symbol id="DOWN" value="0" />
+        <symbol id="UP" value="1" />
+        <symbol id="FAULT" value="2" />
+      </point>
+      <point id="Ctl" offset="1" type="uint16" access="rw" />
+      <point id="Typ" offset="2" type="enum16" >
+        <symbol id="UNKNOWN" value="0" />
+        <symbol id="INTERNAL" value="1" />
+        <symbol id="TWISTED_PAIR" value="2" />
+        <symbol id="FIBER" value="3" />
+        <symbol id="WIRELESS" value="4" />
+      </point>
+      <point id="Rsrvd" offset="3" type="pad" />
+    </block>
+  </model>
+  <strings id="10" locale="en">
+    <model>
+      <label>Communication Interface Header</label>
+      <description></description>
+      <notes></notes>
+    </model>
+    <point id="St">
+      <label>Interface Status</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Ctl">
+      <label>Interface Control</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Typ">
+      <label>Physical Access Type</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+
+  <!-- 11: ethernet link layer -->
+  <model id="11" len="10">
+    <block len="10">
+      <point id="Spd" offset="0" type="uint16" mandatory="true" units="Mbps" />
+      <point id="CfgSt" offset="1" type="bitfield16" mandatory="true" >
+        <symbol id="LINK" value="0" />
+        <symbol id="FULL_DUPLEX" value="1" />
+        <symbol id="AUTO_NEG1" value="2" />
+        <symbol id="AUTO_NEG2" value="3" />
+        <symbol id="AUTO_NEG3" value="4" />
+        <symbol id="RESET_REQUIRED" value="5" />
+        <symbol id="HW_FAULT" value="6" />
+      </point>
+      <point id="St" offset="2" type="enum16" mandatory="true" >
+        <symbol id="UNKNOWN" value="0" />
+        <symbol id="INTERNAL" value="1" />
+        <symbol id="TWISTED_PAIR" value="2" />
+        <symbol id="FIBER" value="3" />
+        <symbol id="WIRELESS" value="4" />
+      </point>
+      <point id="MAC" offset="3" type="uint16" />
+      <point id="Nam" offset="4" type="string" len="4" access="rw" />
+      <point id="Ctl" offset="8" type="bitfield16" access="rw" >
+        <symbol id="AUTO" value="0" />
+        <symbol id="FULL_DUPLEX" value="1" />
+      </point>
+      <point id="FrcSpd" offset="9" type="uint16" access="rw" units="Mbps" />
+    </block>
+  </model>
+  <strings id="11" locale="en">
+    <model>
+      <label>ethernet link layer</label>
+      <description></description>
+      <notes></notes>
+    </model>
+    <point id="Spd">
+      <label>Ethernet Link Speed</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="CfgSt">
+      <label>Interface Status Flags</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="St">
+      <label>Physical Access Type</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="MAC">
+      <label>IEEE MAC address</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Nam">
+      <label>Interface Name</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Ctl">
+      <label>Control Flags</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="FrcSpd">
+      <label>Force Speed</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+
+  <!-- 12: IPv4 protocol -->
+  <model id="12" len="98">
+    <block len="98">
+      <point id="Nam" offset="0" type="string" len="4" access="rw" />
+      <point id="CfgSt" offset="4" type="enum16" mandatory="true" >
+        <symbol id="NOT_CONFIGURED" value="0" />
+        <symbol id="VALID_SETTING" value="1" />
+        <symbol id="VALID_HW" value="2" />
+      </point>
+      <point id="ChgSt" offset="5" type="bitfield16" mandatory="true" >
+        <symbol id="PENDING" value="0" />
+      </point>
+      <point id="Cap" offset="6" type="bitfield16" mandatory="true" >
+        <symbol id="DHCP" value="0" />
+        <symbol id="BOOTP" value="1" />
+        <symbol id="ZEROCONF" value="2" />
+        <symbol id="DNS" value="3" />
+        <symbol id="CFG_SETTABLE" value="4" />
+        <symbol id="HW_CONFIG" value="5" />
+        <symbol id="NTP_CLIENT" value="6" />
+        <symbol id="RESET_REQUIRED" value="7" />
+      </point>
+      <point id="Cfg" offset="7" type="enum16" mandatory="true" access="rw" >
+        <symbol id="STATIC" value="0" />
+        <symbol id="DHCP" value="1" />
+        <symbol id="BOOTP" value="2" />
+        <symbol id="ZEROCONF" value="3" />
+      </point>
+      <point id="Ctl" offset="8" type="enum16" mandatory="true" access="rw" >
+        <symbol id="ENABLE_DNS" value="0" />
+        <symbol id="ENABLE_NTP" value="1" />
+      </point>
+      <point id="Addr" offset="9" type="string" len="8" mandatory="true" access="rw" />
+      <point id="Msk" offset="17" type="string" len="8" mandatory="true" access="rw" />
+      <point id="Gw" offset="25" type="string" len="8" access="rw" />
+      <point id="DNS1" offset="33" type="string" len="8" access="rw" />
+      <point id="DNS2" offset="41" type="string" len="8" access="rw" />
+      <point id="NTP1" offset="49" type="string" len="12" access="rw" />
+      <point id="NTP2" offset="61" type="string" len="12" access="rw" />
+      <point id="DomNam" offset="73" type="string" len="12" access="rw" />
+      <point id="HostNam" offset="85" type="string" len="12" access="rw" />
+      <point id="Rsrvd" offset="97" type="pad" />
+    </block>
+  </model>
+  <strings id="12" locale="en">
+    <model>
+      <label>IPv4 protocol</label>
+      <description></description>
+      <notes></notes>
+    </model>
+    <point id="Nam">
+      <label>Interface Name</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="CfgSt">
+      <label>Config State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="ChgSt">
+      <label>Change Status</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Cap">
+      <label>Config Capability</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Cfg">
+      <label>IPv4 Config Method</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Ctl">
+      <label>Config Control</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Addr">
+      <label>Address</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Msk">
+      <label>Netmask</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Gw">
+      <label>Gateway</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="DNS1">
+      <label>DNS Server 1</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="DNS2">
+      <label>DNS Server 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="NTP1">
+      <label>NTP Server 1</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="NTP2">
+      <label>NTP Server 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="DomNam">
+      <label>Domain Name</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="HostNam">
+      <label>Host Name</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+
+  <!-- 13: IPv6 protocol -->
+  <model id="13" len="174">
+    <block len="174">
+      <point id="Nam" offset="0" type="string" len="4" access="rw" />
+      <point id="CfgSt" offset="4" type="enum16" mandatory="true" >
+        <symbol id="NOT_CONFIGURED" value="0" />
+        <symbol id="VALID_SETTING" value="1" />
+        <symbol id="VALID_HW" value="2" />
+      </point>
+      <point id="ChgSt" offset="5" type="bitfield16" mandatory="true" >
+        <symbol id="PENDING" value="0" />
+      </point>
+      <point id="Cap" offset="6" type="bitfield16" mandatory="true" >
+        <symbol id="DHCP" value="0" />
+        <symbol id="BOOTP" value="1" />
+        <symbol id="ZEROCONF" value="2" />
+        <symbol id="DNS" value="3" />
+        <symbol id="CFG_SETTABLE" value="4" />
+        <symbol id="HW_CONFIG" value="5" />
+        <symbol id="NTP_CLIENT" value="6" />
+        <symbol id="RESET_REQUIRED" value="7" />
+      </point>
+      <point id="Cfg" offset="7" type="enum16" mandatory="true" access="rw" >
+        <symbol id="STATIC" value="0" />
+        <symbol id="DHCP" value="1" />
+        <symbol id="BOOTP" value="2" />
+        <symbol id="ZEROCONF" value="3" />
+      </point>
+      <point id="Ctl" offset="8" type="enum16" mandatory="true" access="rw" >
+        <symbol id="ENABLE_DNS" value="0" />
+        <symbol id="ENABLE_NTP" value="1" />
+      </point>
+      <point id="Addr" offset="9" type="string" len="20" mandatory="true" access="rw" />
+      <point id="CIDR" offset="29" type="string" len="20" access="rw" />
+      <point id="Gw" offset="49" type="string" len="20" access="rw" />
+      <point id="DNS1" offset="69" type="string" len="20" access="rw" />
+      <point id="DNS2" offset="89" type="string" len="20" access="rw" />
+      <point id="NTP1" offset="109" type="string" len="20" access="rw" />
+      <point id="NTP2" offset="129" type="string" len="20" access="rw" />
+      <point id="DomNam" offset="149" type="string" len="12" access="rw" />
+      <point id="HostNam" offset="161" type="string" len="12" access="rw" />
+      <point id="Rsrvd" offset="173" type="pad" />
+    </block>
+  </model>
+  <strings id="13" locale="en">
+    <model>
+      <label>IPv6 protocol</label>
+      <description></description>
+      <notes></notes>
+    </model>
+    <point id="Nam">
+      <label>Interface Name</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="CfgSt">
+      <label>Config State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="ChgSt">
+      <label>Change Status</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Cap">
+      <label>Config Capability</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Cfg">
+      <label>IPv6 Config Method</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Ctl">
+      <label>Config Control</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Addr">
+      <label>Address</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="CIDR">
+      <label>CIDR Number</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Gw">
+      <label>Gateway</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="DNS1">
+      <label>DNS Server 1</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="DNS2">
+      <label>DNS Server 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="NTP1">
+      <label>NTP Server 1</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="NTP2">
+      <label>NTP Server 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="DomNam">
+      <label>Domain Name</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="HostNam">
+      <label>Host Name</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+
+  <!-- 14: Proxy Server -->
+  <model id="14" len="52">
+    <block len="52">
+      <point id="Nam" offset="0" type="string" len="4" access="rw" />
+      <point id="Cap" offset="4" type="bitfield16" mandatory="true" access="rw" >
+        <symbol id="NO_PROXY" value="0" />
+        <symbol id="IPV4_PROXY" value="1" />
+        <symbol id="IPV6_PROXY" value="2" />
+      </point>
+      <point id="Cfg" offset="5" type="enum16" mandatory="true" access="rw" />
+      <point id="Typ" offset="6" type="bitfield16" mandatory="true" access="rw" />
+      <point id="Addr" offset="7" type="string" len="20" mandatory="true" access="rw" />
+      <point id="Port" offset="27" type="uint16" mandatory="true" access="rw" />
+      <point id="User" offset="28" type="string" len="12" access="rw" />
+      <point id="Pw" offset="40" type="string" len="12" access="rw" />
+    </block>
+  </model>
+  <strings id="14" locale="en">
+    <model>
+      <label>Proxy Server</label>
+      <description></description>
+      <notes></notes>
+    </model>
+    <point id="Nam">
+      <label>Interface Name</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Cap">
+      <label>Config Capability</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Cfg">
+      <label>Config State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Typ">
+      <label>Proxy Server Type</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Addr">
+      <label>Address</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Port">
+      <label>Port</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="User">
+      <label>Username</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Pw">
+      <label>Password</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+
+  <!-- 15: Proxy Server -->
+  <model id="15" len="24">
+    <block len="24">
+      <point id="Clr" offset="0" type="uint16" access="rw" />
+      <point id="InCnt" offset="1" type="acc32" />
+      <point id="InUcCnt" offset="3" type="acc32" />
+      <point id="InNUcCnt" offset="5" type="acc32" />
+      <point id="InDscCnt" offset="7" type="acc32" />
+      <point id="InErrCnt" offset="9" type="acc32" />
+      <point id="InUnkCnt" offset="11" type="acc32" />
+      <point id="OutCnt" offset="13" type="acc32" />
+      <point id="OutUcCnt" offset="15" type="acc32" />
+      <point id="OutNUcCnt" offset="17" type="acc32" />
+      <point id="OutDscCnt" offset="19" type="acc32" />
+      <point id="OutErrCnt" offset="21" type="acc32" />
+      <point id="Rsrvd" offset="23" type="pad" />
+    </block>
+  </model>
+  <strings id="15" locale="en">
+    <model>
+      <label>Proxy Server</label>
+      <description></description>
+      <notes></notes>
+    </model>
+    <point id="Clr">
+      <label>Write 1 to clear counters</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InCnt">
+      <label>Total octets received</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InUcCnt">
+      <label>Unicast packets received</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InNUcCnt">
+      <label>Non-unicast packets received</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InDscCnt">
+      <label>Discarded inbound packets</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InErrCnt">
+      <label>Inbound error packets</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="InUnkCnt">
+      <label>Inbound unknown protocol packets</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutCnt">
+      <label>Total octets transmitted</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutUcCnt">
+      <label>Unicast packets transmitted</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutNUcCnt">
+      <label>Non-unicast packets transmitted</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutDscCnt">
+      <label>Discarded inbound packets</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="OutErrCnt">
+      <label>Outbound error packets</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+
+  <!-- 17: Simple IP Network -->
+  <model id="17" len="54">
+    <block len="54">
+      <point id="Nam" offset="0" type="string" len="4" access="rw" />
+      <point id="CfgSt" offset="4" type="enum16" mandatory="true" >
+        <symbol id="NOT_CONFIGURED" value="0" />
+        <symbol id="VALID_SETTING" value="1" />
+        <symbol id="VALID_HW" value="2" />
+      </point>
+      <point id="ChgSt" offset="5" type="bitfield16" mandatory="true" />
+      <point id="Cap" offset="6" type="bitfield16" mandatory="true" />
+      <point id="Cfg" offset="7" type="enum16" mandatory="true" access="rw" />
+      <point id="Ctl" offset="8" type="enum16" mandatory="true" access="rw" >
+        <symbol id="ENABLE_DNS" value="0" />
+        <symbol id="ENABLE_NTP" value="1" />
+      </point>
+      <point id="Addr" offset="9" type="string" len="8" mandatory="true" access="rw" />
+      <point id="Msk" offset="17" type="string" len="8" mandatory="true" access="rw" />
+      <point id="Gw" offset="25" type="string" len="8" access="rw" />
+      <point id="DNS1" offset="33" type="string" len="8" access="rw" />
+      <point id="DNS2" offset="41" type="string" len="8" access="rw" />
+      <point id="MAC" offset="49" type="uint64" access="rw" />
+      <point id="LnkCtl" offset="53" type="bitfield16" access="rw" >
+        <symbol id="AUTONEGOTIATE" value="0" />
+        <symbol id="FULL_DUPLEX" value="1" />
+        <symbol id="FORCE_10MB" value="2" />
+        <symbol id="FORCE_100MB" value="3" />
+        <symbol id="FORCE_1GB" value="3" />
+      </point>
+    </block>
+  </model>
+  <strings id="17" locale="en">
+    <model>
+      <label>Simple IP Network</label>
+      <description></description>
+      <notes></notes>
+    </model>
+    <point id="Nam">
+      <label>Interface Name</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="CfgSt">
+      <label>Config State</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="ChgSt">
+      <label>Change Status</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Cap">
+      <label>Config Capability</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Cfg">
+      <label>IPv4 Config Method</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Ctl">
+      <label>Config Control</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Addr">
+      <label>Address</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Msk">
+      <label>Netmask</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Gw">
+      <label>Gateway</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="DNS1">
+      <label>DNS Server 1</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="DNS2">
+      <label>DNS Server 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="MAC">
+      <label>DNS Server 2</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="LnkCtl">
+      <label>Control Flags</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+
+  <!-- 17: Serial Interface -->
+  <model id="17" len="12">
+    <block len="12">
+      <point id="Nam" offset="0" type="string" len="4" access="rw" />
+      <point id="Rte" offset="4" type="uint32" mandatory="true" access="rw" units="bps" />
+      <point id="Bits" offset="6" type="uint16" mandatory="true" access="rw" />
+      <point id="Pty" offset="7" type="enum16" mandatory="true" access="rw" >
+        <symbol id="NONE" value="0" />
+        <symbol id="ODD" value="1" />
+        <symbol id="EVEN" value="2" />
+      </point>
+      <point id="Dup" offset="8" type="enum16" access="rw" >
+        <symbol id="FULL" value="0" />
+        <symbol id="HALF" value="1" />
+      </point>
+      <point id="Flw" offset="9" type="enum16" access="rw" >
+        <symbol id="NONE" value="0" />
+        <symbol id="HW" value="1" />
+        <symbol id="XONXOFF" value="2" />
+      </point>
+      <point id="Typ" offset="10" type="enum16" >
+        <symbol id="UNKNOWN" value="0" />
+        <symbol id="RS232" value="1" />
+        <symbol id="RS485" value="2" />
+      </point>
+      <point id="Pcol" offset="11" type="enum16" >
+        <symbol id="UNKNOWN" value="0" />
+        <symbol id="MODBUS" value="1" />
+        <symbol id="VENDOR" value="2" />
+      </point>
+    </block>
+  </model>
+  <strings id="17" locale="en">
+    <model>
+      <label>Serial Interface</label>
+      <description></description>
+      <notes></notes>
+    </model>
+    <point id="Nam">
+      <label>Interface Name</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Rte">
+      <label>Speed in bp/s</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Bits">
+      <label>data bits per character</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Pty">
+      <label>parity</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Dup">
+      <label>duplex</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Flw">
+      <label>flow control</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Typ">
+      <label>interface type</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Pcol">
+      <label>protocol</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+
+  <!-- 18: Cellular Link -->
+  <model id="18" len="22">
+    <block len="22">
+      <point id="Nam" offset="0" type="string" len="4" access="rw" />
+      <point id="IMEI" offset="4" type="uint32" access="rw" />
+      <point id="APN" offset="6" type="string" len="4" access="rw" />
+      <point id="Num" offset="10" type="string" len="6" access="rw" />
+      <point id="Pin" offset="16" type="string" len="6" access="rw" />
+    </block>
+  </model>
+  <strings id="18" locale="en">
+    <model>
+      <label>Cellular Link</label>
+      <description></description>
+      <notes></notes>
+    </model>
+    <point id="Nam">
+      <label>Interface Name</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="IMEI">
+      <label>IMEI number</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="APN">
+      <label>APN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Num">
+      <label>phone number</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Pin">
+      <label>PIN</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+
+  <!-- 19: PPP Link -->
+  <model id="19" len="30">
+    <block len="30">
+      <point id="Nam" offset="0" type="string" len="4" access="rw" />
+      <point id="Rte" offset="4" type="uint32" mandatory="true" access="rw" units="bps" />
+      <point id="Bits" offset="6" type="uint16" mandatory="true" access="rw" />
+      <point id="Pty" offset="7" type="enum16" mandatory="true" access="rw" >
+        <symbol id="NONE" value="0" />
+        <symbol id="ODD" value="1" />
+        <symbol id="EVEN" value="2" />
+      </point>
+      <point id="Dup" offset="8" type="enum16" access="rw" >
+        <symbol id="FULL" value="0" />
+        <symbol id="HALF" value="1" />
+      </point>
+      <point id="Flw" offset="9" type="enum16" access="rw" >
+        <symbol id="NONE" value="0" />
+        <symbol id="HW" value="1" />
+        <symbol id="XONXOFF" value="2" />
+      </point>
+      <point id="Auth" offset="10" type="enum16" >
+        <symbol id="NONE" value="0" />
+        <symbol id="PAP" value="1" />
+        <symbol id="CHAP" value="2" />
+      </point>
+      <point id="UsrNam" offset="11" type="string" len="12" />
+      <point id="Pw" offset="23" type="string" len="6" />
+      <point id="Rsrvd" offset="29" type="pad" />
+    </block>
+  </model>
+  <strings id="19" locale="en">
+    <model>
+      <label>PPP Link</label>
+      <description></description>
+      <notes></notes>
+    </model>
+    <point id="Nam">
+      <label>Interface Name</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Rte">
+      <label>Speed in bp/s</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Bits">
+      <label>data bits per character</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Pty">
+      <label>parity</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Dup">
+      <label>duplex</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Flw">
+      <label>flow control</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Auth">
+      <label>authentication type</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="UsrNam">
+      <label>username</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Pw">
+      <label>password</label>
+      <description></description>
+      <notes></notes>
+    </point>
+  </strings>
+</sunSpecModels>

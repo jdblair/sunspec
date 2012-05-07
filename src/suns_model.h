@@ -81,9 +81,20 @@ typedef enum suns_type {
     SUNS_SF,
     SUNS_STRING,
     SUNS_PAD,
-    SUNS_IPADDR,
+    SUNS_IPV4,
+    SUNS_IPV6,
     SUNS_UNDEF,  /* must always be last item */
 } suns_type_t;
+
+
+/* define blocks are used to store enum & bitfield human readable names
+   its defined up here in the header file b/c it is needed in suns_type_pair_t
+*/
+typedef struct suns_define_block {
+    char *name;
+    char *type;
+    list_t *list;
+} suns_define_block_t;
 
 
 typedef struct suns_type_pair {
@@ -94,6 +105,7 @@ typedef struct suns_type_pair {
     size_t len;        /* string length */
     int sf;            /* fixed scale factor */
                        /* also used to store scale factors from logger xml */
+    suns_define_block_t *define;  /* pointer to a define block */
 } suns_type_pair_t;
 
 
@@ -153,17 +165,6 @@ typedef struct suns_value_decimal {
     signed int u;
     int p;            /* power of 10 */
 } suns_value_decimal_t;
-
-
-/* define blocks are used to store auxiliary information about data models
-   - enum & bitfield human readable names
-   - test data blocks
-*/
-typedef struct suns_define_block {
-    char *name;
-    char *type;
-    list_t *list;
-} suns_define_block_t;
 
 
 typedef struct suns_define {
@@ -316,6 +317,7 @@ int suns_type_is_numeric(suns_type_t t);
 int suns_value_is_numeric(suns_value_t *v);
 int suns_value_is_acc(suns_value_t *v);
 int suns_value_acc_is_zero(suns_value_t *v);
+int suns_type_is_symbolic(suns_type_t t);
 
 suns_dataset_t *suns_dataset_new(void);
 void suns_dataset_free(suns_dataset_t *d);
@@ -372,8 +374,8 @@ void suns_value_set_acc32(suns_value_t *v, uint32_t u32);
 uint32_t suns_value_get_acc32(suns_value_t *v);
 void suns_value_set_acc64(suns_value_t *v, uint64_t u64);
 uint64_t suns_value_get_acc64(suns_value_t *v);
-void suns_value_set_ipaddr(suns_value_t *v, uint32_t ipaddr);
-uint32_t suns_value_get_ipaddr(suns_value_t *v);
+void suns_value_set_ipv4(suns_value_t *v, uint32_t ipv4);
+uint32_t suns_value_get_ipv4(suns_value_t *v);
 suns_attribute_t *suns_attribute_new(void);
 void suns_attribute_list_free(list_t *l);
 void suns_attribute_free(void *a);
@@ -414,5 +416,6 @@ void suns_model_xml_define_fprintf(FILE *stream,
 int suns_did_number_string(suns_model_t *m, char *buf, size_t len);
 int suns_check_scale_factors(suns_model_t *m);
 int suns_model_check_consistency(suns_model_t *m);
+void suns_model_resolve_defines(suns_model_t *m);
 
 #endif /* _SUNS_MODEL_H_ */

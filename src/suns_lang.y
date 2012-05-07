@@ -92,7 +92,6 @@
     struct suns_data *data;
     struct suns_value *value;
     struct suns_model_did *did;
-    struct named_list *named_list;
     struct suns_define_block *define_block;
     struct suns_define *define;
     struct suns_dp_block *datapoints_block;
@@ -157,8 +156,8 @@ did: DIDTOK UINT STRING
     $$ = suns_model_did_new($2);
     $$->name = $3;
     
-}
-      | DIDTOK UINT
+} 
+| DIDTOK UINT
 {
     $$ = suns_model_did_new($2);
 }
@@ -178,6 +177,11 @@ model_block: MODELTOK NAME OBRACE model_elmts EBRACE
     /* model_blocks are the same struct as model_elmts */
     $$ = $4;
     $$->type = $2;
+
+    /* resolve defines */
+    suns_model_resolve_defines($$);
+    /* this is also run again in suns_app.c if explicitly requested */
+    suns_model_check_consistency($$);
 }
 
 model_elmts: /* empty */
@@ -351,6 +355,7 @@ attribute: NAME EQUAL STRING
 {
     $$ = suns_attribute_new();
     $$->name = strdup($1);
+    /* malloc() b/c we need a buffer to snprintf() the integer into */
     $$->value = malloc(32);
     snprintf($$->value, 32, "%lld", $3);
 }
@@ -358,6 +363,7 @@ attribute: NAME EQUAL STRING
 {
     $$ = suns_attribute_new();
     $$->name = strdup($1);
+    /* malloc() b/c we need a buffer to snprintf() the integer into */
     $$->value = malloc(32);
     snprintf($$->value, 32, "%lld", $3);
 }

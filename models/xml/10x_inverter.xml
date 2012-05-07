@@ -1,4 +1,6 @@
 <sunSpecModels v="1">
+
+  <!-- 101: inverter -->
   <model id="101" len="50">
     <block len="50">
       <point id="A" offset="0" type="uint16" sf="A_SF" units="A" mandatory="true" />
@@ -36,45 +38,48 @@
       <point id="TmpTrns" offset="33" type="int16" sf="Tmp_SF" units="C" />
       <point id="TmpOt" offset="34" type="int16" sf="Tmp_SF" units="C" />
       <point id="Tmp_SF" offset="35" type="sunssf" mandatory="true" />
-      <point id="St" offset="36" type="enum16" define="InverterSt_Enum" mandatory="true" />
+      <point id="St" offset="36" type="enum16" mandatory="true" >
+        <symbol id="I_STATUS_OFF" value="1" />
+        <symbol id="I_STATUS_SLEEPING" value="2" />
+        <symbol id="I_STATUS_STARTING" value="3" />
+        <symbol id="I_STATUS_MPPT" value="4" />
+        <symbol id="I_STATUS_THROTTLED" value="5" />
+        <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
+        <symbol id="I_STATUS_FAULT" value="7" />
+        <symbol id="I_STATUS_STANDBY" value="8" />
+      </point>
       <point id="StVnd" offset="37" type="enum16" />
-      <point id="Evt1" offset="38" type="bitfield32" define="InverterEvt_BF" mandatory="true" />
+      <point id="Evt1" offset="38" type="bitfield32" mandatory="true" >
+        <symbol id="I_EVENT_GROUND_FAULT" value="0" />
+        <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
+        <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
+        <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
+        <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
+        <symbol id="I_EVENT_CABINET_OPEN" value="5" />
+        <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
+        <symbol id="I_EVENT_OVER_TEMP" value="7" />
+        <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
+        <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
+        <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
+        <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
+        <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
+        <symbol id="I_EVENT_UNDER_TEMP" value="13" />
+        <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
+        <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
+      </point>
       <point id="Evt2" offset="40" type="bitfield32" mandatory="true" />
       <point id="EvtVnd1" offset="42" type="bitfield32" />
       <point id="EvtVnd2" offset="44" type="bitfield32" />
       <point id="EvtVnd3" offset="46" type="bitfield32" />
       <point id="EvtVnd4" offset="48" type="bitfield32" />
     </block>
-    <define name="InverterSt_Enum">
-      <symbol id="I_STATUS_OFF" value="1" />
-      <symbol id="I_STATUS_SLEEPING" value="2" />
-      <symbol id="I_STATUS_STARTING" value="3" />
-      <symbol id="I_STATUS_MPPT" value="4" />
-      <symbol id="I_STATUS_THROTTLED" value="5" />
-      <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
-      <symbol id="I_STATUS_FAULT" value="7" />
-      <symbol id="I_STATUS_STANDBY" value="8" />
-    </define>
-    <define name="InverterEvt_BF">
-      <symbol id="I_EVENT_GROUND_FAULT" value="0" />
-      <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
-      <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
-      <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
-      <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
-      <symbol id="I_EVENT_CABINET_OPEN" value="5" />
-      <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
-      <symbol id="I_EVENT_OVER_TEMP" value="7" />
-      <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
-      <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
-      <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
-      <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
-      <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
-      <symbol id="I_EVENT_UNDER_TEMP" value="13" />
-      <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
-      <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
-    </define>
   </model>
   <strings id="101" locale="en">
+    <model>
+      <label>single-phase inverter</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="A">
       <label>AC Current</label>
       <description></description>
@@ -231,6 +236,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 102: inverter -->
   <model id="102" len="50">
     <block len="50">
       <point id="A" offset="0" type="uint16" sf="A_SF" units="A" mandatory="true" />
@@ -268,45 +275,48 @@
       <point id="TmpTrns" offset="33" type="int16" sf="Tmp_SF" units="C" />
       <point id="TmpOt" offset="34" type="int16" sf="Tmp_SF" units="C" />
       <point id="Tmp_SF" offset="35" type="sunssf" mandatory="true" />
-      <point id="St" offset="36" type="enum16" define="InverterSt_Enum" mandatory="true" />
+      <point id="St" offset="36" type="enum16" mandatory="true" >
+        <symbol id="I_STATUS_OFF" value="1" />
+        <symbol id="I_STATUS_SLEEPING" value="2" />
+        <symbol id="I_STATUS_STARTING" value="3" />
+        <symbol id="I_STATUS_MPPT" value="4" />
+        <symbol id="I_STATUS_THROTTLED" value="5" />
+        <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
+        <symbol id="I_STATUS_FAULT" value="7" />
+        <symbol id="I_STATUS_STANDBY" value="8" />
+      </point>
       <point id="StVnd" offset="37" type="enum16" />
-      <point id="Evt1" offset="38" type="bitfield32" define="InverterEvt_BF" mandatory="true" />
+      <point id="Evt1" offset="38" type="bitfield32" mandatory="true" >
+        <symbol id="I_EVENT_GROUND_FAULT" value="0" />
+        <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
+        <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
+        <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
+        <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
+        <symbol id="I_EVENT_CABINET_OPEN" value="5" />
+        <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
+        <symbol id="I_EVENT_OVER_TEMP" value="7" />
+        <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
+        <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
+        <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
+        <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
+        <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
+        <symbol id="I_EVENT_UNDER_TEMP" value="13" />
+        <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
+        <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
+      </point>
       <point id="Evt2" offset="40" type="bitfield32" mandatory="true" />
       <point id="EvtVnd1" offset="42" type="bitfield32" />
       <point id="EvtVnd2" offset="44" type="bitfield32" />
       <point id="EvtVnd3" offset="46" type="bitfield32" />
       <point id="EvtVnd4" offset="48" type="bitfield32" />
     </block>
-    <define name="InverterSt_Enum">
-      <symbol id="I_STATUS_OFF" value="1" />
-      <symbol id="I_STATUS_SLEEPING" value="2" />
-      <symbol id="I_STATUS_STARTING" value="3" />
-      <symbol id="I_STATUS_MPPT" value="4" />
-      <symbol id="I_STATUS_THROTTLED" value="5" />
-      <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
-      <symbol id="I_STATUS_FAULT" value="7" />
-      <symbol id="I_STATUS_STANDBY" value="8" />
-    </define>
-    <define name="InverterEvt_BF">
-      <symbol id="I_EVENT_GROUND_FAULT" value="0" />
-      <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
-      <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
-      <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
-      <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
-      <symbol id="I_EVENT_CABINET_OPEN" value="5" />
-      <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
-      <symbol id="I_EVENT_OVER_TEMP" value="7" />
-      <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
-      <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
-      <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
-      <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
-      <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
-      <symbol id="I_EVENT_UNDER_TEMP" value="13" />
-      <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
-      <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
-    </define>
   </model>
   <strings id="102" locale="en">
+    <model>
+      <label>split-phase inverter</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="A">
       <label>AC Current</label>
       <description></description>
@@ -463,6 +473,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 103: inverter -->
   <model id="103" len="50">
     <block len="50">
       <point id="A" offset="0" type="uint16" sf="A_SF" units="A" mandatory="true" />
@@ -500,45 +512,48 @@
       <point id="TmpTrns" offset="33" type="int16" sf="Tmp_SF" units="C" />
       <point id="TmpOt" offset="34" type="int16" sf="Tmp_SF" units="C" />
       <point id="Tmp_SF" offset="35" type="sunssf" mandatory="true" />
-      <point id="St" offset="36" type="enum16" define="InverterSt_Enum" mandatory="true" />
+      <point id="St" offset="36" type="enum16" mandatory="true" >
+        <symbol id="I_STATUS_OFF" value="1" />
+        <symbol id="I_STATUS_SLEEPING" value="2" />
+        <symbol id="I_STATUS_STARTING" value="3" />
+        <symbol id="I_STATUS_MPPT" value="4" />
+        <symbol id="I_STATUS_THROTTLED" value="5" />
+        <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
+        <symbol id="I_STATUS_FAULT" value="7" />
+        <symbol id="I_STATUS_STANDBY" value="8" />
+      </point>
       <point id="StVnd" offset="37" type="enum16" />
-      <point id="Evt1" offset="38" type="bitfield32" define="InverterEvt_BF" mandatory="true" />
+      <point id="Evt1" offset="38" type="bitfield32" mandatory="true" >
+        <symbol id="I_EVENT_GROUND_FAULT" value="0" />
+        <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
+        <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
+        <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
+        <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
+        <symbol id="I_EVENT_CABINET_OPEN" value="5" />
+        <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
+        <symbol id="I_EVENT_OVER_TEMP" value="7" />
+        <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
+        <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
+        <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
+        <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
+        <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
+        <symbol id="I_EVENT_UNDER_TEMP" value="13" />
+        <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
+        <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
+      </point>
       <point id="Evt2" offset="40" type="bitfield32" mandatory="true" />
       <point id="EvtVnd1" offset="42" type="bitfield32" />
       <point id="EvtVnd2" offset="44" type="bitfield32" />
       <point id="EvtVnd3" offset="46" type="bitfield32" />
       <point id="EvtVnd4" offset="48" type="bitfield32" />
     </block>
-    <define name="InverterSt_Enum">
-      <symbol id="I_STATUS_OFF" value="1" />
-      <symbol id="I_STATUS_SLEEPING" value="2" />
-      <symbol id="I_STATUS_STARTING" value="3" />
-      <symbol id="I_STATUS_MPPT" value="4" />
-      <symbol id="I_STATUS_THROTTLED" value="5" />
-      <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
-      <symbol id="I_STATUS_FAULT" value="7" />
-      <symbol id="I_STATUS_STANDBY" value="8" />
-    </define>
-    <define name="InverterEvt_BF">
-      <symbol id="I_EVENT_GROUND_FAULT" value="0" />
-      <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
-      <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
-      <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
-      <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
-      <symbol id="I_EVENT_CABINET_OPEN" value="5" />
-      <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
-      <symbol id="I_EVENT_OVER_TEMP" value="7" />
-      <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
-      <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
-      <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
-      <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
-      <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
-      <symbol id="I_EVENT_UNDER_TEMP" value="13" />
-      <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
-      <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
-    </define>
   </model>
   <strings id="103" locale="en">
+    <model>
+      <label>three-phase inverter</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="A">
       <label>AC Current</label>
       <description></description>
@@ -695,6 +710,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 111: inverter (float) -->
   <model id="111" len="60">
     <block len="60">
       <point id="A" offset="0" type="float32" units="A" mandatory="true" />
@@ -720,45 +737,48 @@
       <point id="TmpSnk" offset="40" type="float32" units="C" />
       <point id="TmpTrns" offset="42" type="float32" units="C" />
       <point id="TmpOt" offset="44" type="float32" units="C" />
-      <point id="St" offset="46" type="enum16" define="InverterSt_Enum" mandatory="true" />
+      <point id="St" offset="46" type="enum16" mandatory="true" >
+        <symbol id="I_STATUS_OFF" value="1" />
+        <symbol id="I_STATUS_SLEEPING" value="2" />
+        <symbol id="I_STATUS_STARTING" value="3" />
+        <symbol id="I_STATUS_MPPT" value="4" />
+        <symbol id="I_STATUS_THROTTLED" value="5" />
+        <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
+        <symbol id="I_STATUS_FAULT" value="7" />
+        <symbol id="I_STATUS_STANDBY" value="8" />
+      </point>
       <point id="StVnd" offset="47" type="enum16" />
-      <point id="Evt1" offset="48" type="bitfield32" define="InverterEvt_BF" mandatory="true" />
+      <point id="Evt1" offset="48" type="bitfield32" mandatory="true" >
+        <symbol id="I_EVENT_GROUND_FAULT" value="0" />
+        <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
+        <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
+        <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
+        <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
+        <symbol id="I_EVENT_CABINET_OPEN" value="5" />
+        <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
+        <symbol id="I_EVENT_OVER_TEMP" value="7" />
+        <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
+        <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
+        <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
+        <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
+        <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
+        <symbol id="I_EVENT_UNDER_TEMP" value="13" />
+        <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
+        <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
+      </point>
       <point id="Evt2" offset="50" type="bitfield32" mandatory="true" />
       <point id="EvtVnd1" offset="52" type="bitfield32" />
       <point id="EvtVnd2" offset="54" type="bitfield32" />
       <point id="EvtVnd3" offset="56" type="bitfield32" />
       <point id="EvtVnd4" offset="58" type="bitfield32" />
     </block>
-    <define name="InverterSt_Enum">
-      <symbol id="I_STATUS_OFF" value="1" />
-      <symbol id="I_STATUS_SLEEPING" value="2" />
-      <symbol id="I_STATUS_STARTING" value="3" />
-      <symbol id="I_STATUS_MPPT" value="4" />
-      <symbol id="I_STATUS_THROTTLED" value="5" />
-      <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
-      <symbol id="I_STATUS_FAULT" value="7" />
-      <symbol id="I_STATUS_STANDBY" value="8" />
-    </define>
-    <define name="InverterEvt_BF">
-      <symbol id="I_EVENT_GROUND_FAULT" value="0" />
-      <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
-      <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
-      <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
-      <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
-      <symbol id="I_EVENT_CABINET_OPEN" value="5" />
-      <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
-      <symbol id="I_EVENT_OVER_TEMP" value="7" />
-      <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
-      <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
-      <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
-      <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
-      <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
-      <symbol id="I_EVENT_UNDER_TEMP" value="13" />
-      <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
-      <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
-    </define>
   </model>
   <strings id="111" locale="en">
+    <model>
+      <label>single-phase inverter (float)</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="A">
       <label>AC Current</label>
       <description></description>
@@ -915,6 +935,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 112: inverter (float) -->
   <model id="112" len="60">
     <block len="60">
       <point id="A" offset="0" type="float32" units="A" mandatory="true" />
@@ -940,45 +962,48 @@
       <point id="TmpSnk" offset="40" type="float32" units="C" />
       <point id="TmpTrns" offset="42" type="float32" units="C" />
       <point id="TmpOt" offset="44" type="float32" units="C" />
-      <point id="St" offset="46" type="enum16" define="InverterSt_Enum" mandatory="true" />
+      <point id="St" offset="46" type="enum16" mandatory="true" >
+        <symbol id="I_STATUS_OFF" value="1" />
+        <symbol id="I_STATUS_SLEEPING" value="2" />
+        <symbol id="I_STATUS_STARTING" value="3" />
+        <symbol id="I_STATUS_MPPT" value="4" />
+        <symbol id="I_STATUS_THROTTLED" value="5" />
+        <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
+        <symbol id="I_STATUS_FAULT" value="7" />
+        <symbol id="I_STATUS_STANDBY" value="8" />
+      </point>
       <point id="StVnd" offset="47" type="enum16" />
-      <point id="Evt1" offset="48" type="bitfield32" define="InverterEvt_BF" mandatory="true" />
+      <point id="Evt1" offset="48" type="bitfield32" mandatory="true" >
+        <symbol id="I_EVENT_GROUND_FAULT" value="0" />
+        <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
+        <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
+        <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
+        <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
+        <symbol id="I_EVENT_CABINET_OPEN" value="5" />
+        <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
+        <symbol id="I_EVENT_OVER_TEMP" value="7" />
+        <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
+        <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
+        <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
+        <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
+        <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
+        <symbol id="I_EVENT_UNDER_TEMP" value="13" />
+        <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
+        <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
+      </point>
       <point id="Evt2" offset="50" type="bitfield32" mandatory="true" />
       <point id="EvtVnd1" offset="52" type="bitfield32" />
       <point id="EvtVnd2" offset="54" type="bitfield32" />
       <point id="EvtVnd3" offset="56" type="bitfield32" />
       <point id="EvtVnd4" offset="58" type="bitfield32" />
     </block>
-    <define name="InverterSt_Enum">
-      <symbol id="I_STATUS_OFF" value="1" />
-      <symbol id="I_STATUS_SLEEPING" value="2" />
-      <symbol id="I_STATUS_STARTING" value="3" />
-      <symbol id="I_STATUS_MPPT" value="4" />
-      <symbol id="I_STATUS_THROTTLED" value="5" />
-      <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
-      <symbol id="I_STATUS_FAULT" value="7" />
-      <symbol id="I_STATUS_STANDBY" value="8" />
-    </define>
-    <define name="InverterEvt_BF">
-      <symbol id="I_EVENT_GROUND_FAULT" value="0" />
-      <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
-      <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
-      <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
-      <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
-      <symbol id="I_EVENT_CABINET_OPEN" value="5" />
-      <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
-      <symbol id="I_EVENT_OVER_TEMP" value="7" />
-      <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
-      <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
-      <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
-      <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
-      <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
-      <symbol id="I_EVENT_UNDER_TEMP" value="13" />
-      <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
-      <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
-    </define>
   </model>
   <strings id="112" locale="en">
+    <model>
+      <label>split-phase inverter (float)</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="A">
       <label>AC Current</label>
       <description></description>
@@ -1135,6 +1160,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 113: inverter (float) -->
   <model id="113" len="60">
     <block len="60">
       <point id="A" offset="0" type="float32" units="A" mandatory="true" />
@@ -1160,45 +1187,48 @@
       <point id="TmpSnk" offset="40" type="float32" units="C" />
       <point id="TmpTrns" offset="42" type="float32" units="C" />
       <point id="TmpOt" offset="44" type="float32" units="C" />
-      <point id="St" offset="46" type="enum16" define="InverterSt_Enum" mandatory="true" />
+      <point id="St" offset="46" type="enum16" mandatory="true" >
+        <symbol id="I_STATUS_OFF" value="1" />
+        <symbol id="I_STATUS_SLEEPING" value="2" />
+        <symbol id="I_STATUS_STARTING" value="3" />
+        <symbol id="I_STATUS_MPPT" value="4" />
+        <symbol id="I_STATUS_THROTTLED" value="5" />
+        <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
+        <symbol id="I_STATUS_FAULT" value="7" />
+        <symbol id="I_STATUS_STANDBY" value="8" />
+      </point>
       <point id="StVnd" offset="47" type="enum16" />
-      <point id="Evt1" offset="48" type="bitfield32" define="InverterEvt_BF" mandatory="true" />
+      <point id="Evt1" offset="48" type="bitfield32" mandatory="true" >
+        <symbol id="I_EVENT_GROUND_FAULT" value="0" />
+        <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
+        <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
+        <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
+        <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
+        <symbol id="I_EVENT_CABINET_OPEN" value="5" />
+        <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
+        <symbol id="I_EVENT_OVER_TEMP" value="7" />
+        <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
+        <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
+        <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
+        <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
+        <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
+        <symbol id="I_EVENT_UNDER_TEMP" value="13" />
+        <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
+        <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
+      </point>
       <point id="Evt2" offset="50" type="bitfield32" mandatory="true" />
       <point id="EvtVnd1" offset="52" type="bitfield32" />
       <point id="EvtVnd2" offset="54" type="bitfield32" />
       <point id="EvtVnd3" offset="56" type="bitfield32" />
       <point id="EvtVnd4" offset="58" type="bitfield32" />
     </block>
-    <define name="InverterSt_Enum">
-      <symbol id="I_STATUS_OFF" value="1" />
-      <symbol id="I_STATUS_SLEEPING" value="2" />
-      <symbol id="I_STATUS_STARTING" value="3" />
-      <symbol id="I_STATUS_MPPT" value="4" />
-      <symbol id="I_STATUS_THROTTLED" value="5" />
-      <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
-      <symbol id="I_STATUS_FAULT" value="7" />
-      <symbol id="I_STATUS_STANDBY" value="8" />
-    </define>
-    <define name="InverterEvt_BF">
-      <symbol id="I_EVENT_GROUND_FAULT" value="0" />
-      <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
-      <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
-      <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
-      <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
-      <symbol id="I_EVENT_CABINET_OPEN" value="5" />
-      <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
-      <symbol id="I_EVENT_OVER_TEMP" value="7" />
-      <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
-      <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
-      <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
-      <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
-      <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
-      <symbol id="I_EVENT_UNDER_TEMP" value="13" />
-      <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
-      <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
-    </define>
   </model>
   <strings id="113" locale="en">
+    <model>
+      <label>three-phase inverter (float)</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="A">
       <label>AC Current</label>
       <description></description>

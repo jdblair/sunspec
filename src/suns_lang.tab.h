@@ -143,7 +143,6 @@ typedef union YYSTYPE
     struct suns_data *data;
     struct suns_value *value;
     struct suns_model_did *did;
-    struct named_list *named_list;
     struct suns_define_block *define_block;
     struct suns_define *define;
     struct suns_dp_block *datapoints_block;
@@ -153,7 +152,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 157 "suns_lang.tab.h"
+#line 156 "suns_lang.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

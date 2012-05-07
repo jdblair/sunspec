@@ -1,4 +1,6 @@
 <sunSpecModels v="1">
+
+  <!-- 201: ac_meter -->
   <model id="201" len="105">
     <block len="105">
       <point id="A" offset="0" type="int16" sf="A_SF" units="A" mandatory="true" />
@@ -72,41 +74,45 @@
       <point id="TotVArhImpQ4PhB" offset="98" type="acc32" sf="TotVArh_SF" units="varh" />
       <point id="TotVArhImpQ4PhC" offset="100" type="acc32" sf="TotVArh_SF" units="varh" />
       <point id="TotVArh_SF" offset="102" type="sunssf" />
-      <point id="Evt" offset="103" type="bitfield32" define="MeterEvt_BF" mandatory="true" />
+      <point id="Evt" offset="103" type="bitfield32" mandatory="true" >
+        <symbol id="M_EVENT_Power_failure" value="2" />
+        <symbol id="M_EVENT_Under_Voltage" value="3" />
+        <symbol id="M_EVENT_Low_PF" value="4" />
+        <symbol id="M_EVENT_Over_Current" value="5" />
+        <symbol id="M_EVENT_Over_Voltage" value="6" />
+        <symbol id="M_EVENT_Missing_Sensor" value="7" />
+        <symbol id="M_EVENT_Reserved1" value="8" />
+        <symbol id="M_EVENT_Reserved2" value="9" />
+        <symbol id="M_EVENT_Reserved3" value="10" />
+        <symbol id="M_EVENT_Reserved4" value="11" />
+        <symbol id="M_EVENT_Reserved5" value="12" />
+        <symbol id="M_EVENT_Reserved6" value="13" />
+        <symbol id="M_EVENT_Reserved7" value="14" />
+        <symbol id="M_EVENT_Reserved8" value="15" />
+        <symbol id="M_EVENT_OEM01" value="16" />
+        <symbol id="M_EVENT_OEM02" value="17" />
+        <symbol id="M_EVENT_OEM03" value="18" />
+        <symbol id="M_EVENT_OEM04" value="19" />
+        <symbol id="M_EVENT_OEM05" value="20" />
+        <symbol id="M_EVENT_OEM06" value="21" />
+        <symbol id="M_EVENT_OEM07" value="22" />
+        <symbol id="M_EVENT_OEM08" value="23" />
+        <symbol id="M_EVENT_OEM09" value="24" />
+        <symbol id="M_EVENT_OEM10" value="25" />
+        <symbol id="M_EVENT_OEM11" value="26" />
+        <symbol id="M_EVENT_OEM12" value="27" />
+        <symbol id="M_EVENT_OEM13" value="28" />
+        <symbol id="M_EVENT_OEM14" value="29" />
+        <symbol id="M_EVENT_OEM15" value="30" />
+      </point>
     </block>
-    <define name="MeterEvt_BF">
-      <symbol id="M_EVENT_Power_failure" value="2" />
-      <symbol id="M_EVENT_Under_Voltage" value="3" />
-      <symbol id="M_EVENT_Low_PF" value="4" />
-      <symbol id="M_EVENT_Over_Current" value="5" />
-      <symbol id="M_EVENT_Over_Voltage" value="6" />
-      <symbol id="M_EVENT_Missing_Sensor" value="7" />
-      <symbol id="M_EVENT_Reserved1" value="8" />
-      <symbol id="M_EVENT_Reserved2" value="9" />
-      <symbol id="M_EVENT_Reserved3" value="10" />
-      <symbol id="M_EVENT_Reserved4" value="11" />
-      <symbol id="M_EVENT_Reserved5" value="12" />
-      <symbol id="M_EVENT_Reserved6" value="13" />
-      <symbol id="M_EVENT_Reserved7" value="14" />
-      <symbol id="M_EVENT_Reserved8" value="15" />
-      <symbol id="M_EVENT_OEM01" value="16" />
-      <symbol id="M_EVENT_OEM02" value="17" />
-      <symbol id="M_EVENT_OEM03" value="18" />
-      <symbol id="M_EVENT_OEM04" value="19" />
-      <symbol id="M_EVENT_OEM05" value="20" />
-      <symbol id="M_EVENT_OEM06" value="21" />
-      <symbol id="M_EVENT_OEM07" value="22" />
-      <symbol id="M_EVENT_OEM08" value="23" />
-      <symbol id="M_EVENT_OEM09" value="24" />
-      <symbol id="M_EVENT_OEM10" value="25" />
-      <symbol id="M_EVENT_OEM11" value="26" />
-      <symbol id="M_EVENT_OEM12" value="27" />
-      <symbol id="M_EVENT_OEM13" value="28" />
-      <symbol id="M_EVENT_OEM14" value="29" />
-      <symbol id="M_EVENT_OEM15" value="30" />
-    </define>
   </model>
   <strings id="201" locale="en">
+    <model>
+      <label>single phase (AN or AB) meter</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="A">
       <label>Current</label>
       <description></description>
@@ -418,6 +424,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 202: ac_meter -->
   <model id="202" len="105">
     <block len="105">
       <point id="A" offset="0" type="int16" sf="A_SF" units="A" mandatory="true" />
@@ -491,41 +499,45 @@
       <point id="TotVArhImpQ4PhB" offset="98" type="acc32" sf="TotVArh_SF" units="varh" />
       <point id="TotVArhImpQ4PhC" offset="100" type="acc32" sf="TotVArh_SF" units="varh" />
       <point id="TotVArh_SF" offset="102" type="sunssf" />
-      <point id="Evt" offset="103" type="bitfield32" define="MeterEvt_BF" mandatory="true" />
+      <point id="Evt" offset="103" type="bitfield32" mandatory="true" >
+        <symbol id="M_EVENT_Power_failure" value="2" />
+        <symbol id="M_EVENT_Under_Voltage" value="3" />
+        <symbol id="M_EVENT_Low_PF" value="4" />
+        <symbol id="M_EVENT_Over_Current" value="5" />
+        <symbol id="M_EVENT_Over_Voltage" value="6" />
+        <symbol id="M_EVENT_Missing_Sensor" value="7" />
+        <symbol id="M_EVENT_Reserved1" value="8" />
+        <symbol id="M_EVENT_Reserved2" value="9" />
+        <symbol id="M_EVENT_Reserved3" value="10" />
+        <symbol id="M_EVENT_Reserved4" value="11" />
+        <symbol id="M_EVENT_Reserved5" value="12" />
+        <symbol id="M_EVENT_Reserved6" value="13" />
+        <symbol id="M_EVENT_Reserved7" value="14" />
+        <symbol id="M_EVENT_Reserved8" value="15" />
+        <symbol id="M_EVENT_OEM01" value="16" />
+        <symbol id="M_EVENT_OEM02" value="17" />
+        <symbol id="M_EVENT_OEM03" value="18" />
+        <symbol id="M_EVENT_OEM04" value="19" />
+        <symbol id="M_EVENT_OEM05" value="20" />
+        <symbol id="M_EVENT_OEM06" value="21" />
+        <symbol id="M_EVENT_OEM07" value="22" />
+        <symbol id="M_EVENT_OEM08" value="23" />
+        <symbol id="M_EVENT_OEM09" value="24" />
+        <symbol id="M_EVENT_OEM10" value="25" />
+        <symbol id="M_EVENT_OEM11" value="26" />
+        <symbol id="M_EVENT_OEM12" value="27" />
+        <symbol id="M_EVENT_OEM13" value="28" />
+        <symbol id="M_EVENT_OEM14" value="29" />
+        <symbol id="M_EVENT_OEM15" value="30" />
+      </point>
     </block>
-    <define name="MeterEvt_BF">
-      <symbol id="M_EVENT_Power_failure" value="2" />
-      <symbol id="M_EVENT_Under_Voltage" value="3" />
-      <symbol id="M_EVENT_Low_PF" value="4" />
-      <symbol id="M_EVENT_Over_Current" value="5" />
-      <symbol id="M_EVENT_Over_Voltage" value="6" />
-      <symbol id="M_EVENT_Missing_Sensor" value="7" />
-      <symbol id="M_EVENT_Reserved1" value="8" />
-      <symbol id="M_EVENT_Reserved2" value="9" />
-      <symbol id="M_EVENT_Reserved3" value="10" />
-      <symbol id="M_EVENT_Reserved4" value="11" />
-      <symbol id="M_EVENT_Reserved5" value="12" />
-      <symbol id="M_EVENT_Reserved6" value="13" />
-      <symbol id="M_EVENT_Reserved7" value="14" />
-      <symbol id="M_EVENT_Reserved8" value="15" />
-      <symbol id="M_EVENT_OEM01" value="16" />
-      <symbol id="M_EVENT_OEM02" value="17" />
-      <symbol id="M_EVENT_OEM03" value="18" />
-      <symbol id="M_EVENT_OEM04" value="19" />
-      <symbol id="M_EVENT_OEM05" value="20" />
-      <symbol id="M_EVENT_OEM06" value="21" />
-      <symbol id="M_EVENT_OEM07" value="22" />
-      <symbol id="M_EVENT_OEM08" value="23" />
-      <symbol id="M_EVENT_OEM09" value="24" />
-      <symbol id="M_EVENT_OEM10" value="25" />
-      <symbol id="M_EVENT_OEM11" value="26" />
-      <symbol id="M_EVENT_OEM12" value="27" />
-      <symbol id="M_EVENT_OEM13" value="28" />
-      <symbol id="M_EVENT_OEM14" value="29" />
-      <symbol id="M_EVENT_OEM15" value="30" />
-    </define>
   </model>
   <strings id="202" locale="en">
+    <model>
+      <label>split single phase (ABN) meter</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="A">
       <label>Current</label>
       <description></description>
@@ -837,6 +849,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 203: ac_meter -->
   <model id="203" len="105">
     <block len="105">
       <point id="A" offset="0" type="int16" sf="A_SF" units="A" mandatory="true" />
@@ -910,41 +924,45 @@
       <point id="TotVArhImpQ4PhB" offset="98" type="acc32" sf="TotVArh_SF" units="varh" />
       <point id="TotVArhImpQ4PhC" offset="100" type="acc32" sf="TotVArh_SF" units="varh" />
       <point id="TotVArh_SF" offset="102" type="sunssf" />
-      <point id="Evt" offset="103" type="bitfield32" define="MeterEvt_BF" mandatory="true" />
+      <point id="Evt" offset="103" type="bitfield32" mandatory="true" >
+        <symbol id="M_EVENT_Power_failure" value="2" />
+        <symbol id="M_EVENT_Under_Voltage" value="3" />
+        <symbol id="M_EVENT_Low_PF" value="4" />
+        <symbol id="M_EVENT_Over_Current" value="5" />
+        <symbol id="M_EVENT_Over_Voltage" value="6" />
+        <symbol id="M_EVENT_Missing_Sensor" value="7" />
+        <symbol id="M_EVENT_Reserved1" value="8" />
+        <symbol id="M_EVENT_Reserved2" value="9" />
+        <symbol id="M_EVENT_Reserved3" value="10" />
+        <symbol id="M_EVENT_Reserved4" value="11" />
+        <symbol id="M_EVENT_Reserved5" value="12" />
+        <symbol id="M_EVENT_Reserved6" value="13" />
+        <symbol id="M_EVENT_Reserved7" value="14" />
+        <symbol id="M_EVENT_Reserved8" value="15" />
+        <symbol id="M_EVENT_OEM01" value="16" />
+        <symbol id="M_EVENT_OEM02" value="17" />
+        <symbol id="M_EVENT_OEM03" value="18" />
+        <symbol id="M_EVENT_OEM04" value="19" />
+        <symbol id="M_EVENT_OEM05" value="20" />
+        <symbol id="M_EVENT_OEM06" value="21" />
+        <symbol id="M_EVENT_OEM07" value="22" />
+        <symbol id="M_EVENT_OEM08" value="23" />
+        <symbol id="M_EVENT_OEM09" value="24" />
+        <symbol id="M_EVENT_OEM10" value="25" />
+        <symbol id="M_EVENT_OEM11" value="26" />
+        <symbol id="M_EVENT_OEM12" value="27" />
+        <symbol id="M_EVENT_OEM13" value="28" />
+        <symbol id="M_EVENT_OEM14" value="29" />
+        <symbol id="M_EVENT_OEM15" value="30" />
+      </point>
     </block>
-    <define name="MeterEvt_BF">
-      <symbol id="M_EVENT_Power_failure" value="2" />
-      <symbol id="M_EVENT_Under_Voltage" value="3" />
-      <symbol id="M_EVENT_Low_PF" value="4" />
-      <symbol id="M_EVENT_Over_Current" value="5" />
-      <symbol id="M_EVENT_Over_Voltage" value="6" />
-      <symbol id="M_EVENT_Missing_Sensor" value="7" />
-      <symbol id="M_EVENT_Reserved1" value="8" />
-      <symbol id="M_EVENT_Reserved2" value="9" />
-      <symbol id="M_EVENT_Reserved3" value="10" />
-      <symbol id="M_EVENT_Reserved4" value="11" />
-      <symbol id="M_EVENT_Reserved5" value="12" />
-      <symbol id="M_EVENT_Reserved6" value="13" />
-      <symbol id="M_EVENT_Reserved7" value="14" />
-      <symbol id="M_EVENT_Reserved8" value="15" />
-      <symbol id="M_EVENT_OEM01" value="16" />
-      <symbol id="M_EVENT_OEM02" value="17" />
-      <symbol id="M_EVENT_OEM03" value="18" />
-      <symbol id="M_EVENT_OEM04" value="19" />
-      <symbol id="M_EVENT_OEM05" value="20" />
-      <symbol id="M_EVENT_OEM06" value="21" />
-      <symbol id="M_EVENT_OEM07" value="22" />
-      <symbol id="M_EVENT_OEM08" value="23" />
-      <symbol id="M_EVENT_OEM09" value="24" />
-      <symbol id="M_EVENT_OEM10" value="25" />
-      <symbol id="M_EVENT_OEM11" value="26" />
-      <symbol id="M_EVENT_OEM12" value="27" />
-      <symbol id="M_EVENT_OEM13" value="28" />
-      <symbol id="M_EVENT_OEM14" value="29" />
-      <symbol id="M_EVENT_OEM15" value="30" />
-    </define>
   </model>
   <strings id="203" locale="en">
+    <model>
+      <label>wye-connect three phase (abcn) meter</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="A">
       <label>Current</label>
       <description></description>
@@ -1256,6 +1274,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 204: ac_meter -->
   <model id="204" len="105">
     <block len="105">
       <point id="A" offset="0" type="int16" sf="A_SF" units="A" mandatory="true" />
@@ -1329,41 +1349,45 @@
       <point id="TotVArhImpQ4PhB" offset="98" type="acc32" sf="TotVArh_SF" units="varh" />
       <point id="TotVArhImpQ4PhC" offset="100" type="acc32" sf="TotVArh_SF" units="varh" />
       <point id="TotVArh_SF" offset="102" type="sunssf" />
-      <point id="Evt" offset="103" type="bitfield32" define="MeterEvt_BF" mandatory="true" />
+      <point id="Evt" offset="103" type="bitfield32" mandatory="true" >
+        <symbol id="M_EVENT_Power_failure" value="2" />
+        <symbol id="M_EVENT_Under_Voltage" value="3" />
+        <symbol id="M_EVENT_Low_PF" value="4" />
+        <symbol id="M_EVENT_Over_Current" value="5" />
+        <symbol id="M_EVENT_Over_Voltage" value="6" />
+        <symbol id="M_EVENT_Missing_Sensor" value="7" />
+        <symbol id="M_EVENT_Reserved1" value="8" />
+        <symbol id="M_EVENT_Reserved2" value="9" />
+        <symbol id="M_EVENT_Reserved3" value="10" />
+        <symbol id="M_EVENT_Reserved4" value="11" />
+        <symbol id="M_EVENT_Reserved5" value="12" />
+        <symbol id="M_EVENT_Reserved6" value="13" />
+        <symbol id="M_EVENT_Reserved7" value="14" />
+        <symbol id="M_EVENT_Reserved8" value="15" />
+        <symbol id="M_EVENT_OEM01" value="16" />
+        <symbol id="M_EVENT_OEM02" value="17" />
+        <symbol id="M_EVENT_OEM03" value="18" />
+        <symbol id="M_EVENT_OEM04" value="19" />
+        <symbol id="M_EVENT_OEM05" value="20" />
+        <symbol id="M_EVENT_OEM06" value="21" />
+        <symbol id="M_EVENT_OEM07" value="22" />
+        <symbol id="M_EVENT_OEM08" value="23" />
+        <symbol id="M_EVENT_OEM09" value="24" />
+        <symbol id="M_EVENT_OEM10" value="25" />
+        <symbol id="M_EVENT_OEM11" value="26" />
+        <symbol id="M_EVENT_OEM12" value="27" />
+        <symbol id="M_EVENT_OEM13" value="28" />
+        <symbol id="M_EVENT_OEM14" value="29" />
+        <symbol id="M_EVENT_OEM15" value="30" />
+      </point>
     </block>
-    <define name="MeterEvt_BF">
-      <symbol id="M_EVENT_Power_failure" value="2" />
-      <symbol id="M_EVENT_Under_Voltage" value="3" />
-      <symbol id="M_EVENT_Low_PF" value="4" />
-      <symbol id="M_EVENT_Over_Current" value="5" />
-      <symbol id="M_EVENT_Over_Voltage" value="6" />
-      <symbol id="M_EVENT_Missing_Sensor" value="7" />
-      <symbol id="M_EVENT_Reserved1" value="8" />
-      <symbol id="M_EVENT_Reserved2" value="9" />
-      <symbol id="M_EVENT_Reserved3" value="10" />
-      <symbol id="M_EVENT_Reserved4" value="11" />
-      <symbol id="M_EVENT_Reserved5" value="12" />
-      <symbol id="M_EVENT_Reserved6" value="13" />
-      <symbol id="M_EVENT_Reserved7" value="14" />
-      <symbol id="M_EVENT_Reserved8" value="15" />
-      <symbol id="M_EVENT_OEM01" value="16" />
-      <symbol id="M_EVENT_OEM02" value="17" />
-      <symbol id="M_EVENT_OEM03" value="18" />
-      <symbol id="M_EVENT_OEM04" value="19" />
-      <symbol id="M_EVENT_OEM05" value="20" />
-      <symbol id="M_EVENT_OEM06" value="21" />
-      <symbol id="M_EVENT_OEM07" value="22" />
-      <symbol id="M_EVENT_OEM08" value="23" />
-      <symbol id="M_EVENT_OEM09" value="24" />
-      <symbol id="M_EVENT_OEM10" value="25" />
-      <symbol id="M_EVENT_OEM11" value="26" />
-      <symbol id="M_EVENT_OEM12" value="27" />
-      <symbol id="M_EVENT_OEM13" value="28" />
-      <symbol id="M_EVENT_OEM14" value="29" />
-      <symbol id="M_EVENT_OEM15" value="30" />
-    </define>
   </model>
   <strings id="204" locale="en">
+    <model>
+      <label>delta-connect three phase (abc) meter</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="A">
       <label>Current</label>
       <description></description>
@@ -1675,6 +1699,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 211: ac_meter_f -->
   <model id="211" len="124">
     <block len="124">
       <point id="A" offset="0" type="float32" units="A" mandatory="true" />
@@ -1738,42 +1764,48 @@
       <point id="TotVArhImpQ4phA" offset="116" type="acc32" units="varh" />
       <point id="TotVArhImpQ4phB" offset="118" type="acc32" units="varh" />
       <point id="TotVArhImpQ4phC" offset="120" type="acc32" units="varh" />
-      <point id="Evt" offset="122" type="bitfield32" define="MeterEvt_BF" mandatory="true" />
+      <point id="Evt" offset="122" type="bitfield32" mandatory="true" >
+        <symbol id="M_EVENT_Power_failure" value="2" />
+        <symbol id="M_EVENT_Under_Voltage" value="3" />
+        <symbol id="M_EVENT_Low_PF" value="4" />
+        <symbol id="M_EVENT_Over_Current" value="5" />
+        <symbol id="M_EVENT_Over_Voltage" value="6" />
+        <symbol id="M_EVENT_Missing_Sensor" value="7" />
+        <symbol id="M_EVENT_Reserved1" value="8" />
+        <symbol id="M_EVENT_Reserved2" value="9" />
+        <symbol id="M_EVENT_Reserved3" value="10" />
+        <symbol id="M_EVENT_Reserved4" value="11" />
+        <symbol id="M_EVENT_Reserved5" value="12" />
+        <symbol id="M_EVENT_Reserved6" value="13" />
+        <symbol id="M_EVENT_Reserved7" value="14" />
+        <symbol id="M_EVENT_Reserved8" value="15" />
+        <symbol id="M_EVENT_OEM01" value="16" />
+        <symbol id="M_EVENT_OEM02" value="17" />
+        <symbol id="M_EVENT_OEM03" value="18" />
+        <symbol id="M_EVENT_OEM04" value="19" />
+        <symbol id="M_EVENT_OEM05" value="20" />
+        <symbol id="M_EVENT_OEM06" value="21" />
+        <symbol id="M_EVENT_OEM07" value="22" />
+        <symbol id="M_EVENT_OEM08" value="23" />
+        <symbol id="M_EVENT_OEM09" value="24" />
+        <symbol id="M_EVENT_OEM10" value="25" />
+        <symbol id="M_EVENT_OEM11" value="26" />
+        <symbol id="M_EVENT_OEM12" value="27" />
+        <symbol id="M_EVENT_OEM13" value="28" />
+        <symbol id="M_EVENT_OEM14" value="29" />
+        <symbol id="M_EVENT_OEM15" value="30" />
+      </point>
     </block>
-    <define name="MeterEvt_BF">
-      <symbol id="M_EVENT_Power_failure" value="2" />
-      <symbol id="M_EVENT_Under_Voltage" value="3" />
-      <symbol id="M_EVENT_Low_PF" value="4" />
-      <symbol id="M_EVENT_Over_Current" value="5" />
-      <symbol id="M_EVENT_Over_Voltage" value="6" />
-      <symbol id="M_EVENT_Missing_Sensor" value="7" />
-      <symbol id="M_EVENT_Reserved1" value="8" />
-      <symbol id="M_EVENT_Reserved2" value="9" />
-      <symbol id="M_EVENT_Reserved3" value="10" />
-      <symbol id="M_EVENT_Reserved4" value="11" />
-      <symbol id="M_EVENT_Reserved5" value="12" />
-      <symbol id="M_EVENT_Reserved6" value="13" />
-      <symbol id="M_EVENT_Reserved7" value="14" />
-      <symbol id="M_EVENT_Reserved8" value="15" />
-      <symbol id="M_EVENT_OEM01" value="16" />
-      <symbol id="M_EVENT_OEM02" value="17" />
-      <symbol id="M_EVENT_OEM03" value="18" />
-      <symbol id="M_EVENT_OEM04" value="19" />
-      <symbol id="M_EVENT_OEM05" value="20" />
-      <symbol id="M_EVENT_OEM06" value="21" />
-      <symbol id="M_EVENT_OEM07" value="22" />
-      <symbol id="M_EVENT_OEM08" value="23" />
-      <symbol id="M_EVENT_OEM09" value="24" />
-      <symbol id="M_EVENT_OEM10" value="25" />
-      <symbol id="M_EVENT_OEM11" value="26" />
-      <symbol id="M_EVENT_OEM12" value="27" />
-      <symbol id="M_EVENT_OEM13" value="28" />
-      <symbol id="M_EVENT_OEM14" value="29" />
-      <symbol id="M_EVENT_OEM15" value="30" />
-    </define>
   </model>
   <strings id="211" locale="en">
+    <model>
+      <label>single phase (AN or AB) meter</label>
+      <description></description>
+      <notes></notes>
+    </model>
   </strings>
+
+  <!-- 212: ac_meter_f -->
   <model id="212" len="124">
     <block len="124">
       <point id="A" offset="0" type="float32" units="A" mandatory="true" />
@@ -1837,42 +1869,48 @@
       <point id="TotVArhImpQ4phA" offset="116" type="acc32" units="varh" />
       <point id="TotVArhImpQ4phB" offset="118" type="acc32" units="varh" />
       <point id="TotVArhImpQ4phC" offset="120" type="acc32" units="varh" />
-      <point id="Evt" offset="122" type="bitfield32" define="MeterEvt_BF" mandatory="true" />
+      <point id="Evt" offset="122" type="bitfield32" mandatory="true" >
+        <symbol id="M_EVENT_Power_failure" value="2" />
+        <symbol id="M_EVENT_Under_Voltage" value="3" />
+        <symbol id="M_EVENT_Low_PF" value="4" />
+        <symbol id="M_EVENT_Over_Current" value="5" />
+        <symbol id="M_EVENT_Over_Voltage" value="6" />
+        <symbol id="M_EVENT_Missing_Sensor" value="7" />
+        <symbol id="M_EVENT_Reserved1" value="8" />
+        <symbol id="M_EVENT_Reserved2" value="9" />
+        <symbol id="M_EVENT_Reserved3" value="10" />
+        <symbol id="M_EVENT_Reserved4" value="11" />
+        <symbol id="M_EVENT_Reserved5" value="12" />
+        <symbol id="M_EVENT_Reserved6" value="13" />
+        <symbol id="M_EVENT_Reserved7" value="14" />
+        <symbol id="M_EVENT_Reserved8" value="15" />
+        <symbol id="M_EVENT_OEM01" value="16" />
+        <symbol id="M_EVENT_OEM02" value="17" />
+        <symbol id="M_EVENT_OEM03" value="18" />
+        <symbol id="M_EVENT_OEM04" value="19" />
+        <symbol id="M_EVENT_OEM05" value="20" />
+        <symbol id="M_EVENT_OEM06" value="21" />
+        <symbol id="M_EVENT_OEM07" value="22" />
+        <symbol id="M_EVENT_OEM08" value="23" />
+        <symbol id="M_EVENT_OEM09" value="24" />
+        <symbol id="M_EVENT_OEM10" value="25" />
+        <symbol id="M_EVENT_OEM11" value="26" />
+        <symbol id="M_EVENT_OEM12" value="27" />
+        <symbol id="M_EVENT_OEM13" value="28" />
+        <symbol id="M_EVENT_OEM14" value="29" />
+        <symbol id="M_EVENT_OEM15" value="30" />
+      </point>
     </block>
-    <define name="MeterEvt_BF">
-      <symbol id="M_EVENT_Power_failure" value="2" />
-      <symbol id="M_EVENT_Under_Voltage" value="3" />
-      <symbol id="M_EVENT_Low_PF" value="4" />
-      <symbol id="M_EVENT_Over_Current" value="5" />
-      <symbol id="M_EVENT_Over_Voltage" value="6" />
-      <symbol id="M_EVENT_Missing_Sensor" value="7" />
-      <symbol id="M_EVENT_Reserved1" value="8" />
-      <symbol id="M_EVENT_Reserved2" value="9" />
-      <symbol id="M_EVENT_Reserved3" value="10" />
-      <symbol id="M_EVENT_Reserved4" value="11" />
-      <symbol id="M_EVENT_Reserved5" value="12" />
-      <symbol id="M_EVENT_Reserved6" value="13" />
-      <symbol id="M_EVENT_Reserved7" value="14" />
-      <symbol id="M_EVENT_Reserved8" value="15" />
-      <symbol id="M_EVENT_OEM01" value="16" />
-      <symbol id="M_EVENT_OEM02" value="17" />
-      <symbol id="M_EVENT_OEM03" value="18" />
-      <symbol id="M_EVENT_OEM04" value="19" />
-      <symbol id="M_EVENT_OEM05" value="20" />
-      <symbol id="M_EVENT_OEM06" value="21" />
-      <symbol id="M_EVENT_OEM07" value="22" />
-      <symbol id="M_EVENT_OEM08" value="23" />
-      <symbol id="M_EVENT_OEM09" value="24" />
-      <symbol id="M_EVENT_OEM10" value="25" />
-      <symbol id="M_EVENT_OEM11" value="26" />
-      <symbol id="M_EVENT_OEM12" value="27" />
-      <symbol id="M_EVENT_OEM13" value="28" />
-      <symbol id="M_EVENT_OEM14" value="29" />
-      <symbol id="M_EVENT_OEM15" value="30" />
-    </define>
   </model>
   <strings id="212" locale="en">
+    <model>
+      <label>split single phase (ABN) meter</label>
+      <description></description>
+      <notes></notes>
+    </model>
   </strings>
+
+  <!-- 213: ac_meter_f -->
   <model id="213" len="124">
     <block len="124">
       <point id="A" offset="0" type="float32" units="A" mandatory="true" />
@@ -1936,42 +1974,48 @@
       <point id="TotVArhImpQ4phA" offset="116" type="acc32" units="varh" />
       <point id="TotVArhImpQ4phB" offset="118" type="acc32" units="varh" />
       <point id="TotVArhImpQ4phC" offset="120" type="acc32" units="varh" />
-      <point id="Evt" offset="122" type="bitfield32" define="MeterEvt_BF" mandatory="true" />
+      <point id="Evt" offset="122" type="bitfield32" mandatory="true" >
+        <symbol id="M_EVENT_Power_failure" value="2" />
+        <symbol id="M_EVENT_Under_Voltage" value="3" />
+        <symbol id="M_EVENT_Low_PF" value="4" />
+        <symbol id="M_EVENT_Over_Current" value="5" />
+        <symbol id="M_EVENT_Over_Voltage" value="6" />
+        <symbol id="M_EVENT_Missing_Sensor" value="7" />
+        <symbol id="M_EVENT_Reserved1" value="8" />
+        <symbol id="M_EVENT_Reserved2" value="9" />
+        <symbol id="M_EVENT_Reserved3" value="10" />
+        <symbol id="M_EVENT_Reserved4" value="11" />
+        <symbol id="M_EVENT_Reserved5" value="12" />
+        <symbol id="M_EVENT_Reserved6" value="13" />
+        <symbol id="M_EVENT_Reserved7" value="14" />
+        <symbol id="M_EVENT_Reserved8" value="15" />
+        <symbol id="M_EVENT_OEM01" value="16" />
+        <symbol id="M_EVENT_OEM02" value="17" />
+        <symbol id="M_EVENT_OEM03" value="18" />
+        <symbol id="M_EVENT_OEM04" value="19" />
+        <symbol id="M_EVENT_OEM05" value="20" />
+        <symbol id="M_EVENT_OEM06" value="21" />
+        <symbol id="M_EVENT_OEM07" value="22" />
+        <symbol id="M_EVENT_OEM08" value="23" />
+        <symbol id="M_EVENT_OEM09" value="24" />
+        <symbol id="M_EVENT_OEM10" value="25" />
+        <symbol id="M_EVENT_OEM11" value="26" />
+        <symbol id="M_EVENT_OEM12" value="27" />
+        <symbol id="M_EVENT_OEM13" value="28" />
+        <symbol id="M_EVENT_OEM14" value="29" />
+        <symbol id="M_EVENT_OEM15" value="30" />
+      </point>
     </block>
-    <define name="MeterEvt_BF">
-      <symbol id="M_EVENT_Power_failure" value="2" />
-      <symbol id="M_EVENT_Under_Voltage" value="3" />
-      <symbol id="M_EVENT_Low_PF" value="4" />
-      <symbol id="M_EVENT_Over_Current" value="5" />
-      <symbol id="M_EVENT_Over_Voltage" value="6" />
-      <symbol id="M_EVENT_Missing_Sensor" value="7" />
-      <symbol id="M_EVENT_Reserved1" value="8" />
-      <symbol id="M_EVENT_Reserved2" value="9" />
-      <symbol id="M_EVENT_Reserved3" value="10" />
-      <symbol id="M_EVENT_Reserved4" value="11" />
-      <symbol id="M_EVENT_Reserved5" value="12" />
-      <symbol id="M_EVENT_Reserved6" value="13" />
-      <symbol id="M_EVENT_Reserved7" value="14" />
-      <symbol id="M_EVENT_Reserved8" value="15" />
-      <symbol id="M_EVENT_OEM01" value="16" />
-      <symbol id="M_EVENT_OEM02" value="17" />
-      <symbol id="M_EVENT_OEM03" value="18" />
-      <symbol id="M_EVENT_OEM04" value="19" />
-      <symbol id="M_EVENT_OEM05" value="20" />
-      <symbol id="M_EVENT_OEM06" value="21" />
-      <symbol id="M_EVENT_OEM07" value="22" />
-      <symbol id="M_EVENT_OEM08" value="23" />
-      <symbol id="M_EVENT_OEM09" value="24" />
-      <symbol id="M_EVENT_OEM10" value="25" />
-      <symbol id="M_EVENT_OEM11" value="26" />
-      <symbol id="M_EVENT_OEM12" value="27" />
-      <symbol id="M_EVENT_OEM13" value="28" />
-      <symbol id="M_EVENT_OEM14" value="29" />
-      <symbol id="M_EVENT_OEM15" value="30" />
-    </define>
   </model>
   <strings id="213" locale="en">
+    <model>
+      <label>wye-connect three phase (abcn) meter</label>
+      <description></description>
+      <notes></notes>
+    </model>
   </strings>
+
+  <!-- 214: ac_meter_f -->
   <model id="214" len="124">
     <block len="124">
       <point id="A" offset="0" type="float32" units="A" mandatory="true" />
@@ -2035,40 +2079,44 @@
       <point id="TotVArhImpQ4phA" offset="116" type="acc32" units="varh" />
       <point id="TotVArhImpQ4phB" offset="118" type="acc32" units="varh" />
       <point id="TotVArhImpQ4phC" offset="120" type="acc32" units="varh" />
-      <point id="Evt" offset="122" type="bitfield32" define="MeterEvt_BF" mandatory="true" />
+      <point id="Evt" offset="122" type="bitfield32" mandatory="true" >
+        <symbol id="M_EVENT_Power_failure" value="2" />
+        <symbol id="M_EVENT_Under_Voltage" value="3" />
+        <symbol id="M_EVENT_Low_PF" value="4" />
+        <symbol id="M_EVENT_Over_Current" value="5" />
+        <symbol id="M_EVENT_Over_Voltage" value="6" />
+        <symbol id="M_EVENT_Missing_Sensor" value="7" />
+        <symbol id="M_EVENT_Reserved1" value="8" />
+        <symbol id="M_EVENT_Reserved2" value="9" />
+        <symbol id="M_EVENT_Reserved3" value="10" />
+        <symbol id="M_EVENT_Reserved4" value="11" />
+        <symbol id="M_EVENT_Reserved5" value="12" />
+        <symbol id="M_EVENT_Reserved6" value="13" />
+        <symbol id="M_EVENT_Reserved7" value="14" />
+        <symbol id="M_EVENT_Reserved8" value="15" />
+        <symbol id="M_EVENT_OEM01" value="16" />
+        <symbol id="M_EVENT_OEM02" value="17" />
+        <symbol id="M_EVENT_OEM03" value="18" />
+        <symbol id="M_EVENT_OEM04" value="19" />
+        <symbol id="M_EVENT_OEM05" value="20" />
+        <symbol id="M_EVENT_OEM06" value="21" />
+        <symbol id="M_EVENT_OEM07" value="22" />
+        <symbol id="M_EVENT_OEM08" value="23" />
+        <symbol id="M_EVENT_OEM09" value="24" />
+        <symbol id="M_EVENT_OEM10" value="25" />
+        <symbol id="M_EVENT_OEM11" value="26" />
+        <symbol id="M_EVENT_OEM12" value="27" />
+        <symbol id="M_EVENT_OEM13" value="28" />
+        <symbol id="M_EVENT_OEM14" value="29" />
+        <symbol id="M_EVENT_OEM15" value="30" />
+      </point>
     </block>
-    <define name="MeterEvt_BF">
-      <symbol id="M_EVENT_Power_failure" value="2" />
-      <symbol id="M_EVENT_Under_Voltage" value="3" />
-      <symbol id="M_EVENT_Low_PF" value="4" />
-      <symbol id="M_EVENT_Over_Current" value="5" />
-      <symbol id="M_EVENT_Over_Voltage" value="6" />
-      <symbol id="M_EVENT_Missing_Sensor" value="7" />
-      <symbol id="M_EVENT_Reserved1" value="8" />
-      <symbol id="M_EVENT_Reserved2" value="9" />
-      <symbol id="M_EVENT_Reserved3" value="10" />
-      <symbol id="M_EVENT_Reserved4" value="11" />
-      <symbol id="M_EVENT_Reserved5" value="12" />
-      <symbol id="M_EVENT_Reserved6" value="13" />
-      <symbol id="M_EVENT_Reserved7" value="14" />
-      <symbol id="M_EVENT_Reserved8" value="15" />
-      <symbol id="M_EVENT_OEM01" value="16" />
-      <symbol id="M_EVENT_OEM02" value="17" />
-      <symbol id="M_EVENT_OEM03" value="18" />
-      <symbol id="M_EVENT_OEM04" value="19" />
-      <symbol id="M_EVENT_OEM05" value="20" />
-      <symbol id="M_EVENT_OEM06" value="21" />
-      <symbol id="M_EVENT_OEM07" value="22" />
-      <symbol id="M_EVENT_OEM08" value="23" />
-      <symbol id="M_EVENT_OEM09" value="24" />
-      <symbol id="M_EVENT_OEM10" value="25" />
-      <symbol id="M_EVENT_OEM11" value="26" />
-      <symbol id="M_EVENT_OEM12" value="27" />
-      <symbol id="M_EVENT_OEM13" value="28" />
-      <symbol id="M_EVENT_OEM14" value="29" />
-      <symbol id="M_EVENT_OEM15" value="30" />
-    </define>
   </model>
   <strings id="214" locale="en">
+    <model>
+      <label>delta-connect three phase (abc) meter</label>
+      <description></description>
+      <notes></notes>
+    </model>
   </strings>
 </sunSpecModels>

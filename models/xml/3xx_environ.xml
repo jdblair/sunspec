@@ -1,4 +1,6 @@
 <sunSpecModels v="1">
+
+  <!-- 301: base meterological -->
   <model id="301" len="22">
     <block len="22">
       <point id="E_BaseMet_AirTemperature" offset="0" type="int32" units="C" />
@@ -15,7 +17,14 @@
     </block>
   </model>
   <strings id="301" locale="en">
+    <model>
+      <label>base meterological</label>
+      <description></description>
+      <notes></notes>
+    </model>
   </strings>
+
+  <!-- 307: meteorological v1.1 -->
   <model id="307" len="11">
     <block len="11">
       <point id="TmpAmb" offset="0" type="int16" sf="-1" units="C" />
@@ -32,6 +41,11 @@
     </block>
   </model>
   <strings id="307" locale="en">
+    <model>
+      <label>meteorological v1.1</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="TmpAmb">
       <label>Ambient Temperature</label>
       <description></description>
@@ -88,6 +102,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 302: irradiance -->
   <model id="302" len="5">
     <block type="repeating" len="5">
       <point id="GHI" offset="0" type="uint16" units="Wm2" units="Wm2" />
@@ -98,6 +114,11 @@
     </block>
   </model>
   <strings id="302" locale="en">
+    <model>
+      <label>irradiance</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="GHI">
       <label>Global Horizontal Irradiance</label>
       <description></description>
@@ -124,18 +145,27 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 303: back of module temperature -->
   <model id="303" len="1">
     <block type="repeating" len="1">
       <point id="TmpBOM" offset="0" type="int16" sf="-1" units="C" mandatory="true" />
     </block>
   </model>
   <strings id="303" locale="en">
+    <model>
+      <label>back of module temperature</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="TmpBOM">
       <label>Back of Module Temperature</label>
       <description></description>
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 304: inclinometer -->
   <model id="304" len="6">
     <block type="repeating" len="6">
       <point id="InclX" offset="0" type="int32" sf="-2" units="deg" mandatory="true" />
@@ -144,6 +174,11 @@
     </block>
   </model>
   <strings id="304" locale="en">
+    <model>
+      <label>inclinometer</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="InclX">
       <label>X Axis Tilt</label>
       <description></description>
@@ -160,6 +195,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 305: location -->
   <model id="305" len="35">
     <block len="35">
       <point id="Tm" offset="0" type="string" len="5" units="gpsTm" />
@@ -171,6 +208,11 @@
     </block>
   </model>
   <strings id="305" locale="en">
+    <model>
+      <label>location</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="Tm">
       <label>Time (UTC)</label>
       <description></description>
@@ -202,6 +244,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 306: reference point -->
   <model id="306" len="7">
     <block len="7">
       <point id="GHI" offset="0" type="uint16" units="Wm2" />
@@ -211,6 +255,11 @@
     </block>
   </model>
   <strings id="306" locale="en">
+    <model>
+      <label>reference point</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="GHI">
       <label>Global Horizontal Irradiance</label>
       <description></description>
@@ -232,6 +281,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 308: mini weather map -->
   <model id="308" len="4">
     <block len="4">
       <point id="GHI" offset="0" type="uint16" units="Wm2" />
@@ -241,6 +292,11 @@
     </block>
   </model>
   <strings id="308" locale="en">
+    <model>
+      <label>mini weather map</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="GHI">
       <label>Global Horizontal Irradiance</label>
       <description></description>

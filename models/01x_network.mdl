@@ -1,0 +1,436 @@
+# -*- tab-width: 2; indent-tabs-mode: nil -*-
+# 
+# Copyright (c) 2011-2012, John D. Blair <jdb@moship.net>
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 
+# * Redistributions of source code must retain the above copyright
+#   notice, this list of conditions and the following disclaimer.
+# 
+# * Redistributions in binary form must reproduce the above copyright
+#   notice, this list of conditions and the following disclaimer in the
+#   documentation and/or other materials provided with the distribution.
+# 
+# * Neither the name of John D. Blair nor his lackeys may be used
+#   to endorse or promote products derived from this software
+#   without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+# FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
+# JOHN D. BLAIR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+# USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+# OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+
+#
+# communication interface header
+#
+model suns {
+  name "Communication Interface Header"
+  did 10
+  datapoints {
+    St              { enum16.St_enum req label="Interface Status" }
+    Ctl             { uint16 access=rw label="Interface Control" }
+    Typ             { enum16.Typ_enum label="Physical Access Type" }
+    Rsrvd           { pad }
+  }
+
+  define St_enum {
+    DOWN            { 0 "down"  }
+    UP              { 1 "up"    }
+    FAULT           { 2 "fault" }
+  }
+
+  define Typ_enum {
+    UNKNOWN         { 0 "unknown" }
+    INTERNAL        { 1 "internal" }
+    TWISTED_PAIR    { 2 "twisted pair" }
+    FIBER           { 3 "fiber" }
+    WIRELESS        { 4 "wireless" }
+  }
+}
+
+
+#
+# Ethernet Link Layer
+#
+model suns {
+  name "ethernet link layer"
+  did 011
+  datapoints {
+    Spd             { uint16 req label="Ethernet Link Speed" u=Mbps }
+    CfgSt           { bitfield16.CfgSt_bf req label="Interface Status Flags" }
+    St              { enum16.Typ_enum req label="Physical Access Type" }
+    MAC             { uint16 label="IEEE MAC address" }
+    Nam             { string.8 access=rw label="Interface Name" }
+    Ctl             { bitfield16.Ctl_bf access=rw label="Control Flags" }
+    FrcSpd          { uint16  access=rw label="Force Speed" u=Mbps }
+  }
+
+  define CfgSt_bf {
+    LINK            { 0 "link status" }
+    FULL_DUPLEX     { 1 "full duplex" }
+    # PICS writes 2-4 for auto negotiation- what do they mean?
+    AUTO_NEG1       { 2 "auto negotiation 1" }
+    AUTO_NEG2       { 3 "auto negotiation 2" }
+    AUTO_NEG3       { 4 "auto negotiation 3" }
+    RESET_REQUIRED  { 5 "setting requires reset" }
+    HW_FAULT        { 6 "hardware fault" }
+  }
+
+  define Typ_enum {
+    UNKNOWN         { 0 "unknown" }
+    INTERNAL        { 1 "internal" }
+    TWISTED_PAIR    { 2 "twisted pair" }
+    FIBER           { 3 "fiber" }
+    WIRELESS        { 4 "wireless" }
+  }
+
+  define St_enum {
+    UNKNOWN         { 0 "unknown" }
+    ENABLED         { 1 "enabled and ready" }
+    DISABLED        { 2 "disabled" }
+    TESTING         { 3 "testing" }
+  }
+
+  define Ctl_bf {
+    AUTO            { 0 "auto-negotiate" }
+    FULL_DUPLEX     { 1 "force full duplex" }
+  }    
+}
+
+
+#
+# IPv4
+#
+model suns {
+  name "IPv4 protocol"
+  did 012
+  datapoints {
+    Nam             { string.8 access=rw label="Interface Name" }
+    CfgSt           { enum16.CfgSt_enum req label="Config State" }
+    ChgSt           { bitfield16.ChgSt_bf req label="Change Status" }
+    Cap             { bitfield16.Cap_bf req label="Config Capability" }
+    Cfg             { enum16.Cfg_enum req access=rw label="IPv4 Config Method" }
+    Ctl             { enum16.Ctl_bf req access=rw label="Config Control" }
+    Addr            { string.16 req access=rw label="Address" }
+    Msk             { string.16 req access=rw label="Netmask" }
+    Gw              { string.16 access=rw label="Gateway" }
+    DNS1            { string.16 access=rw label="DNS Server 1" }
+    DNS2            { string.16 access=rw label="DNS Server 2" }
+    NTP1            { string.24 access=rw label="NTP Server 1" }
+    NTP2            { string.24 access=rw label="NTP Server 2" }
+    DomNam          { string.24 access=rw label="Domain Name" }
+    HostNam         { string.24 access=rw label="Host Name" }
+    Rsrvd           { pad }
+  }
+
+  define CfgSt_enum {
+    NOT_CONFIGURED  { 0 "not configured" }
+    VALID_SETTING   { 1 "valid config from BOOTP, DHCP or NV memory" }
+    VALID_HW        { 2 "valid config from hardware settings" }
+  }
+
+  define ChgSt_bf {
+    PENDING         { 0 "config change pending" }
+  }
+
+  define Cap_bf {
+    DHCP            { 0 "DHCP client" }
+    BOOTP           { 1 "BOOTP client" }
+    ZEROCONF        { 2 "Zeroconf" }
+    DNS             { 3 "DNS client" }
+    CFG_SETTABLE    { 4 "config settable" }
+    HW_CONFIG       { 5 "hardware configurable" }
+    NTP_CLIENT      { 6 "ntp client" }
+    RESET_REQUIRED  { 7 "configuration change requires reset" }
+  }
+
+  define Cfg_enum {
+    STATIC          { 0 "Static IP" }
+    DHCP            { 1 "use DHCP" }
+    BOOTP           { 2 "use BOOTP" }
+    ZEROCONF        { 3 "use zeroconf" }
+  }
+
+  define Ctl_bf {
+    ENABLE_DNS      { 0 "Enable DNS" }
+    ENABLE_NTP      { 1 "Enable NTP" }
+  }
+}
+
+
+#
+# IPv6
+#
+model suns {
+  name "IPv6 protocol"
+  did 013
+
+  datapoints {
+    Nam             { string.8 access=rw label="Interface Name" }
+    CfgSt           { enum16.CfgSt_enum req label="Config State" }
+    ChgSt           { bitfield16.ChgSt_bf req label="Change Status" }
+    Cap             { bitfield16.Cap_bf req label="Config Capability" }
+    Cfg             { enum16.Cfg_enum req access=rw label="IPv6 Config Method" }
+    Ctl             { enum16.Ctl_bf req access=rw label="Config Control" }
+    Addr            { string.40 req access=rw label="Address" }
+    CIDR            { string.40 access=rw label="CIDR Number" }
+    Gw              { string.40 access=rw label="Gateway" }
+    DNS1            { string.40 access=rw label="DNS Server 1" }
+    DNS2            { string.40 access=rw label="DNS Server 2" }
+    NTP1            { string.40 access=rw label="NTP Server 1" }
+    NTP2            { string.40 access=rw label="NTP Server 2" }
+    DomNam          { string.24 access=rw label="Domain Name" }
+    HostNam         { string.24 access=rw label="Host Name" }
+    Rsrvd           { pad }
+  }
+
+  define CfgSt_enum {
+    NOT_CONFIGURED  { 0 "not configured" }
+    VALID_SETTING   { 1 "valid config from BOOTP, DHCP or NV memory" }
+    VALID_HW        { 2 "valid config from hardware settings" }
+  }
+
+  define ChgSt_bf {
+    PENDING         { 0 "config change pending" }
+  }
+
+  define Cap_bf {
+    DHCP            { 0 "DHCP client" }
+    BOOTP           { 1 "BOOTP client" }
+    ZEROCONF        { 2 "Zeroconf" }
+    DNS             { 3 "DNS client" }
+    CFG_SETTABLE    { 4 "config settable" }
+    HW_CONFIG       { 5 "hardware configurable" }
+    NTP_CLIENT      { 6 "ntp client" }
+    RESET_REQUIRED  { 7 "configuration change requires reset" }
+  }
+
+  define Cfg_enum {
+    STATIC          { 0 "Static IP" }
+    DHCP            { 1 "use DHCP" }
+    BOOTP           { 2 "use BOOTP" }
+    ZEROCONF        { 3 "use zeroconf" }
+  }
+
+  define Ctl_bf {
+    ENABLE_DNS      { 0 "Enable DNS" }
+    ENABLE_NTP      { 1 "Enable NTP" }
+  }
+}
+
+
+#
+# Proxy Server
+#
+model suns {
+  name "Proxy Server"
+  did 014
+
+  datapoints {
+    Nam             { string.8 access=rw label="Interface Name" }
+    Cap             { bitfield16.Cap_bf req access=rw label="Config Capability" }
+    Cfg             { enum16.CfgSt_enum req access=rw label="Config State" }
+    Typ             { bitfield16.Typ_bf req access=rw label="Proxy Server Type" }
+    Addr            { string.40 req access=rw label="Address" }
+    Port            { uint16  req access=rw label="Port" }
+    User            { string.24 access=rw label="Username" }
+    Pw              { string.24 access=rw label="Password" }
+  }
+
+  define Cap_bf {
+    NO_PROXY        { 0 "no proxy support" }
+    IPV4_PROXY      { 1 "IPv4 proxy" }
+    IPV6_PROXY      { 2 "IPv4 proxy" }
+  }
+
+  define Cfg_enum {
+    NONE            { 0 "no proxy" }
+    HTTP            { 1 "http proxy" }
+  }
+}
+
+
+#
+# Traffic Counters
+#
+model suns {
+  name "Proxy Server"
+  did 015
+
+  datapoints {
+    Clr             { uint16 access=rw label="Write 1 to clear counters" }
+    InCnt           { acc32 label="Total octets received" }
+    InUcCnt         { acc32 label="Unicast packets received" }
+    InNUcCnt        { acc32 label="Non-unicast packets received" }
+    InDscCnt        { acc32 label="Discarded inbound packets" }
+    InErrCnt        { acc32 label="Inbound error packets" }
+    InUnkCnt        { acc32 label="Inbound unknown protocol packets" }
+    OutCnt          { acc32 label="Total octets transmitted" }
+    OutUcCnt        { acc32 label="Unicast packets transmitted" }
+    OutNUcCnt       { acc32 label="Non-unicast packets transmitted" }
+    OutDscCnt       { acc32 label="Discarded inbound packets" }
+    OutErrCnt       { acc32 label="Outbound error packets" }
+    Rsrvd           { pad }
+  }
+}
+
+#
+# Simple Network
+#
+model suns {
+  name "Simple IP Network"
+  did 017
+  datapoints {
+    Nam             { string.8 access=rw label="Interface Name" }
+    CfgSt           { enum16.CfgSt_enum req label="Config State" }
+    ChgSt           { bitfield16.ChgSt_bf req label="Change Status" }
+    Cap             { bitfield16.Cap_bf req label="Config Capability" }
+    Cfg             { enum16.Cfg_enum req access=rw label="IPv4 Config Method" }
+    Ctl             { enum16.Ctl_bf req access=rw label="Config Control" }
+    Addr            { string.16 req access=rw label="Address" }
+    Msk             { string.16 req access=rw label="Netmask" }
+    Gw              { string.16 access=rw label="Gateway" }
+    DNS1            { string.16 access=rw label="DNS Server 1" }
+    DNS2            { string.16 access=rw label="DNS Server 2" }
+    MAC             { uint64 access=rw label="DNS Server 2" }
+    LnkCtl          { bitfield16.LnkCtl_bf access=rw label="Control Flags" }
+  }
+
+  define CfgSt_enum {
+    NOT_CONFIGURED  { 0 "not configured" }
+    VALID_SETTING   { 1 "valid config from BOOTP, DHCP or NV memory" }
+    VALID_HW        { 2 "valid config from hardware settings" }
+  }
+
+  define LnkCtl_bf {
+    AUTONEGOTIATE   { 0 "autonegotiate enabled" }
+    FULL_DUPLEX     { 1 "force full duplex" }
+    FORCE_10MB      { 2 "force 10 Mb/s" }
+    FORCE_100MB     { 3 "force 100 Mb/s" } 
+    FORCE_1GB       { 3 "force 1 Gb/s" }
+  }
+
+  define Ctl_bf {
+    ENABLE_DNS      { 0 "Enable DNS" }
+    ENABLE_NTP      { 1 "Enable NTP" }
+  }
+}
+
+
+
+#
+# Serial Interface
+#
+model suns {
+  name "Serial Interface"
+  did 017
+  datapoints {
+    Nam             { string.8 access=rw label="Interface Name" }
+    Rte             { uint32 req access=rw label="Speed in bp/s" u=bps }
+    Bits            { uint16 req access=rw label="data bits per character" }
+    Pty             { enum16.Pty_enum req access=rw label="parity" }
+    Dup             { enum16.Dup_enum access=rw label="duplex" }
+    Flw             { enum16.Flw_enum access=rw label="flow control" }
+    Typ             { enum16.Typ_enum label="interface type" }
+    Pcol            { enum16.Pcol_enum label="protocol" }
+  }
+
+  define Pty_enum {
+    NONE          { 0 "none" }
+    ODD           { 1 "odd" }
+    EVEN          { 2 "even" }
+  }
+
+  define Dup_enum {
+    FULL          { 0 "full" }
+    HALF          { 1 "half" }
+  }
+
+  define Flw_enum {
+    NONE          { 0 "none" }
+    HW            { 1 "hardware" }
+    XONXOFF       { 2 "software (xon/xoff)" }
+  }
+
+  define Typ_enum {
+    UNKNOWN       { 0 "unknown" }
+    RS232         { 1 "rs232" }
+    RS485         { 2 "rs485" }
+  }
+
+  define Pcol_enum {
+    UNKNOWN       { 0 "unknown" }
+    MODBUS        { 1 "Modbus" }
+    VENDOR        { 2 "vendor specific" }
+  }
+}
+
+
+#
+# Cellular Link
+#
+model suns {
+  name "Cellular Link"
+  did 018
+  datapoints {
+    Nam             { string.8 access=rw label="Interface Name" }
+    IMEI            { uint32 access=rw label="IMEI number" }
+    APN             { string.8 access=rw label="APN" }
+    Num             { string.12 access=rw label="phone number" }
+    Pin             { string.12 access=rw label="PIN" }
+  }
+}
+
+
+#
+# PPP Link
+#
+model suns {
+  name "PPP Link"
+  did 019
+  datapoints {
+    Nam             { string.8 access=rw label="Interface Name" }
+    Rte             { uint32 req access=rw label="Speed in bp/s" u=bps }
+    Bits            { uint16 req access=rw label="data bits per character" }
+    Pty             { enum16.Pty_enum req access=rw label="parity" }
+    Dup             { enum16.Dup_enum access=rw label="duplex" }
+    Flw             { enum16.Flw_enum access=rw label="flow control" }
+    Auth            { enum16.Auth_enum label="authentication type" }
+    UsrNam          { string.24 label="username" }
+    Pw              { string.12 label="password" }
+    Rsrvd           { pad }
+  }
+
+  define Pty_enum {
+    NONE          { 0 "none" }
+    ODD           { 1 "odd" }
+    EVEN          { 2 "even" }
+  }
+
+  define Dup_enum {
+    FULL          { 0 "full" }
+    HALF          { 1 "half" }
+  }
+
+  define Flw_enum {
+    NONE          { 0 "none" }
+    HW            { 1 "hardware" }
+    XONXOFF       { 2 "software (xon/xoff)" }
+  }
+
+  define Auth_enum {
+    NONE          { 0 "none" }
+    PAP           { 1 "PAP" }
+    CHAP          { 2 "CHAP" }
+  }
+}

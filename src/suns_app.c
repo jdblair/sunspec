@@ -768,11 +768,11 @@ int main(int argc, char **argv)
     
     int check_rc = 0;
     /* check models for scale factor consistency */
-    list_for_each(sps->model_list, c) {
-        if (suns_model_check_consistency(c->data) < 0)
-            check_rc = 1;
-    }
     if (app.check_only) {
+        list_for_each(sps->model_list, c) {
+            if (suns_model_check_consistency(c->data) < 0)
+                check_rc = 1;
+        }
         if (check_rc == 0)
             verbose(1, "model checks PASS");
         exit(check_rc);

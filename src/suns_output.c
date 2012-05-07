@@ -463,13 +463,19 @@ static int value_output_uint64_sf(char *buf, size_t len, suns_value_t *v)
     return suns_snprintf_uint_sf(buf, len, v->value.u64, v->tp.sf, 16);
 }
 
-static int value_output_ipaddr(char *buf, size_t len, suns_value_t *v)
+static int value_output_ipv4(char *buf, size_t len, suns_value_t *v)
 {
     return snprintf(buf, len, "%u.%u.%u.%u",
                     (v->value.u32 & 0xFF000000) >> 24,
                     (v->value.u32 & 0x00FF0000) >> 16,
                     (v->value.u32 & 0x0000FF00) >>  8,
                     (v->value.u32 & 0x000000FF) >>  0);
+}
+
+static int value_output_ipv6(char *buf, size_t len, suns_value_t *v)
+{
+    debug("finish ipv6 support");
+    return snprintf(buf, len, "no IPv6 output function");
 }
 
 
@@ -543,8 +549,11 @@ int suns_snprintf_value(char *str, size_t size,
     case SUNS_ACC64:
         return fmt->acc64(str, size, v);
 
-    case SUNS_IPADDR:
-        return fmt->ipaddr(str, size, v);
+    case SUNS_IPV4:
+        return fmt->ipv4(str, size, v);
+
+    case SUNS_IPV6:
+        return fmt->ipv6(str, size, v);
 
     default:
         len += snprintf(str + len, size - len,
@@ -581,7 +590,8 @@ suns_value_output_vector_t suns_output_value_base_fmt = {
     .sunssf     =  value_output_int16,
     .string     =  value_output_string,
     .meta       =  value_output_meta,
-    .ipaddr     =  value_output_ipaddr,
+    .ipv4       =  value_output_ipv4,
+    .ipv6       =  value_output_ipv6,
 };
 
 
@@ -1180,17 +1190,21 @@ void suns_model_xml_fprintf(FILE *stream, suns_model_t *model)
     list_for_each(model->did_list, c) {
 
         suns_model_did_t *did = c->data;
+        fprintf(stream, "\n  <!-- %d: %s -->\n", did->did, model->name);
         fprintf(stream, "  <model id=\"%d\" len=\"%d\">\n",
                 did->did, model->len);
-        
+
+
         list_node_t *d;
         list_for_each(model->dp_blocks, d) {
             suns_model_xml_dp_block_fprintf(stream, d->data, did->did);
         }
 
+        /*
         list_for_each(model->defines, d) {
             suns_model_xml_define_block_fprintf(stream, d->data);
         }
+        */
 
         fprintf(stream, "  </model>\n");
 
@@ -1207,7 +1221,14 @@ void suns_model_xml_strings(FILE *stream,
 {
     list_node_t *c;
 
+    /* FIXME: need to make sure all these strings are escaped */
+    
     fprintf(stream, "  <strings id=\"%d\" locale=\"en\">\n", did->did);
+    fprintf(stream, "    <model>\n");
+    fprintf(stream, "      <label>%s</label>\n", did->name);
+    fprintf(stream, "      <description></description>\n");    
+    fprintf(stream, "      <notes></notes>\n");
+    fprintf(stream, "    </model>\n");
     list_for_each(dp_block_list, c) {
         suns_dp_block_t *dp_block = c->data;
         list_node_t *d;
@@ -1219,7 +1240,25 @@ void suns_model_xml_strings(FILE *stream,
                 fprintf(stream, "      <label>%s</label>\n", label);
                 fprintf(stream, "      <description></description>\n");    
                 fprintf(stream, "      <notes></notes>\n");
-                fprintf(stream, "    </point>\n");
+                
+                /* check for symbols */
+                if (dp->type_pair->define != NULL) {
+                    /* chould check if its the correct define block here,
+                       but let's just trust we've cached it correctly
+                       in the parser */
+                    list_node_t *e;
+                    list_for_each(dp->type_pair->define->list, e) {
+                        suns_define_t *def = e->data;
+                        fprintf(stream, "      <symbol id=\"%s\">\n",
+                                def->name);
+                        fprintf(stream, "        <label>%s</label>\n",
+                                def->string);
+                        fprintf(stream, "        <description></description>\n");
+                        fprintf(stream, "        <notes></notes>\n");
+                        fprintf(stream, "      </symbol>\n");
+                    }
+                    fprintf(stream, "    </point>\n");
+                }
             }
         }
     }
@@ -1282,17 +1321,11 @@ void suns_model_xml_dp_fprintf(FILE *stream,
         /* the name string is overloaded-
            it can be a scale factor reference, or a reference to
            the definitions for an enum or bitfield
-           in the xml we are more explicit */
-        if ((dp->type_pair->type == SUNS_ENUM16) ||
-            (dp->type_pair->type == SUNS_ENUM32) ||
-            (dp->type_pair->type == SUNS_BITFIELD16) ||
-            (dp->type_pair->type == SUNS_BITFIELD32)) {
-            fprintf(stream, " define=\"%s\"", dp->type_pair->name);
-        } else {
+           only output the sf attribute if it really is a scale factor */
+        if (! suns_type_is_symbolic(dp->type_pair->type)) {
             fprintf(stream, " sf=\"%s\"", dp->type_pair->name);
         }
     }
-    
 
     /* output additional point attributes by searching the attribute list */
     if (dp->attributes) {
@@ -1329,7 +1362,19 @@ void suns_model_xml_dp_fprintf(FILE *stream,
         }
     }
 
-    fprintf(stream, " />\n");
+    /* is there a symbol define to output? */
+    if (dp->type_pair->define != NULL) {
+        fprintf(stream, " >\n");
+        list_node_t *c;
+        list_for_each(dp->type_pair->define->list, c) {
+            suns_define_t *define = c->data;
+            fprintf(stream, "        <symbol id=\"%s\" value=\"%d\" />\n",
+                    define->name, define->value);
+        }
+        fprintf(stream, "      </point>\n");
+    } else {
+        fprintf(stream, " />\n");
+    }
 }
 
 

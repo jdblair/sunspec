@@ -35,6 +35,7 @@ define units {
     Ah	{ "amp hours" }
     C	{ "degrees c" }
     Hz	{ "hertz" }
+    Mbps { "megabits/second" }
     Pct	{ "percent" }
     V	{ "volts" }
     VA	{ "volt amps" }

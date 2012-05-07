@@ -68,7 +68,7 @@ model suns {
     AID                           { uint16 req }  
     N                             { uint16 req }
     UN                            { uint16 req }
-    St                            { enum16.St_enum req }
+    St                            { enum16 req }
     StVnd                         { enum16 }
     Evt                           { bitfield32.Evt_bf req }
     EvtVnd                        { bitfield32 }

@@ -686,18 +686,18 @@ int unit_test_value_to_buf(const char **name)
         debug("string failed");
     }
     
-    /* ipaddr */
+    /* ipv4 */
     total++;
-    unsigned char ipaddr_buf[] = { 192, 168, 0, 1 };
-    suns_value_set_ipaddr(v, 0xC0A80001);
+    unsigned char ipv4_buf[] = { 192, 168, 0, 1 };
+    suns_value_set_ipv4(v, 0xC0A80001);
     suns_value_to_buf(v, buf, SMALL_BUFFER_SIZE);
 	debug_dump_buffer((unsigned char *)&(v->value.u32), 4);
     debug_dump_buffer(buf, 4);
-    if (compare_buf(ipaddr_buf, buf, 4) == 0) {
-        debug("ipaddr passed");
+    if (compare_buf(ipv4_buf, buf, 4) == 0) {
+        debug("ipv4 passed");
         pass++;
     } else {
-        debug("ipaddr failed");
+        debug("ipv4 failed");
     }
 
     debug("pass = %d, total = %d", pass, total);
@@ -1011,16 +1011,16 @@ int unit_test_buf_to_value(const char **name)
 
     debug("pass = %d, total = %d", pass, total);
 
-    /* ipaddr */
+    /* ipv4 */
     total++;
-    unsigned char ipaddr_buf[] = { 192, 168, 101, 10 };
-    tp.type = SUNS_IPADDR;
-    suns_buf_to_value(ipaddr_buf, &tp, v);
+    unsigned char ipv4_buf[] = { 192, 168, 101, 10 };
+    tp.type = SUNS_IPV4;
+    suns_buf_to_value(ipv4_buf, &tp, v);
     if (suns_value_get_uint32(v) == 0xC0A8650A) {
-        debug("ipaddr passed");
+        debug("ipv4 passed");
         pass++;
     } else {
-        debug("ipaddr failed");
+        debug("ipv4 failed");
     }
 
     return pass - total;
@@ -1165,15 +1165,15 @@ int unit_test_snprintf_suns_value_t(const char **name)
         debug("string test failed (buf = \"%s\")", buf);
     }
 
-    /* ipaddr */
+    /* ipv4 */
     total++;
-    suns_value_set_ipaddr(v, 0xC0A80001);
+    suns_value_set_ipv4(v, 0xC0A80001);
     suns_snprintf_value_text(buf, BUFFER_SIZE, v);
     if (strcmp(buf, "192.168.0.1") == 0) {
-        debug("ipaddr test passed (buf = %s)", buf);
+        debug("ipv4 test passed (buf = %s)", buf);
         pass++;
     } else {
-        debug("ipaddr test failed (buf = %s)", buf);
+        debug("ipv4 test failed (buf = %s)", buf);
     }
 
     /* other meta values */
@@ -1311,7 +1311,8 @@ int unit_test_suns_type_size(const char **name)
         { 4,     SUNS_BITFIELD32 },
         { 2,     SUNS_SF },
         { 0,     SUNS_STRING },
-        { 4,     SUNS_IPADDR },
+        { 4,     SUNS_IPV4 },
+        { 8,     SUNS_IPV6 },
         { 0,     SUNS_UNDEF },
         { -1,         -1 },
     };

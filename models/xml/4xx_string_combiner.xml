@@ -1,4 +1,6 @@
 <sunSpecModels v="1">
+
+  <!-- 401: string combiner -->
   <model id="401" len="22">
     <block len="14">
       <point id="DCA_SF" offset="0" type="sunssf" mandatory="true" />
@@ -22,6 +24,11 @@
     </block>
   </model>
   <strings id="401" locale="en">
+    <model>
+      <label>string combiner</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="DCA_Max">
       <label>Max DC Current Rating</label>
       <description></description>
@@ -88,6 +95,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 402: advanced string combiner -->
   <model id="402" len="33">
     <block len="20">
       <point id="DCA_SF" offset="0" type="sunssf" mandatory="true" />
@@ -120,6 +129,11 @@
     </block>
   </model>
   <strings id="402" locale="en">
+    <model>
+      <label>advanced string combiner</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="DCAMax">
       <label>Max DC Current Rating</label>
       <description></description>
@@ -221,6 +235,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 403: string combiner -->
   <model id="403" len="24">
     <block len="16">
       <point id="DCA_SF" offset="0" type="sunssf" mandatory="true" />
@@ -246,6 +262,11 @@
     </block>
   </model>
   <strings id="403" locale="en">
+    <model>
+      <label>string combiner</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="DCAMax">
       <label>Max Rated Current</label>
       <description></description>
@@ -312,6 +333,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 404: advanced string combiner -->
   <model id="404" len="39">
     <block len="25">
       <point id="DCA_SF" offset="0" type="sunssf" mandatory="true" />
@@ -350,6 +373,11 @@
     </block>
   </model>
   <strings id="404" locale="en">
+    <model>
+      <label>advanced string combiner</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="DCAMax">
       <label>Max Rated Current</label>
       <description></description>

@@ -1,9 +1,44 @@
 <sunSpecModels v="1">
+
+  <!-- 501: panel module float -->
   <model id="501" len="31">
     <block len="31">
-      <point id="Stat" offset="0" type="enum16" define="Stat_enum" mandatory="true" />
+      <point id="Stat" offset="0" type="enum16" mandatory="true" >
+        <symbol id="P_STATUS_OFF" value="1" />
+        <symbol id="P_STATUS_SLEEPING" value="2" />
+        <symbol id="P_STATUS_STARTING" value="3" />
+        <symbol id="P_STATUS_MPPT" value="4" />
+        <symbol id="P_STATUS_THROTTLED" value="5" />
+        <symbol id="P_STATUS_SHUTTING_DOWN" value="6" />
+        <symbol id="P_STATUS_FAULT" value="7" />
+        <symbol id="P_STATUS_STANDBY" value="8" />
+        <symbol id="P_STATUS_TEST" value="9" />
+        <symbol id="P_STATUS_OTHER" value="10" />
+      </point>
       <point id="StatVend" offset="1" type="enum16" />
-      <point id="Evt" offset="2" type="bitfield32" define="Evt_bf" mandatory="true" />
+      <point id="Evt" offset="2" type="bitfield32" mandatory="true" >
+        <symbol id="P_EVENT_GROUND_FAULT" value="1" />
+        <symbol id="P_EVENT_INPUT_OVER_VOLTAGE" value="2" />
+        <symbol id="RESERVED" value="3" />
+        <symbol id="P_EVENT_DC_DISCONNECT" value="4" />
+        <symbol id="RESERVED" value="5" />
+        <symbol id="RESERVED" value="6" />
+        <symbol id="P_EVENT_MANUAL_SHUTDOWN" value="7" />
+        <symbol id="P_EVENT_OVER_TEMPERATURE" value="8" />
+        <symbol id="RESERVED" value="9" />
+        <symbol id="RESERVED" value="10" />
+        <symbol id="RESERVED" value="11" />
+        <symbol id="RESERVED" value="12" />
+        <symbol id="P_EVENT_BLOWN_FUSE" value="13" />
+        <symbol id="P_EVENT_UNDER_TEMPERATURE" value="14" />
+        <symbol id="P_EVENT_MEMORY_LOSS" value="15" />
+        <symbol id="P_EVENT_ARC_DETECTION" value="16" />
+        <symbol id="P_EVENT_THEFT_DETECTION" value="17" />
+        <symbol id="P_EVENT_OUTPUT_OVER_CURRENT" value="18" />
+        <symbol id="P_EVENT_OUTPUT_OVER_VOLTAGE" value="19" />
+        <symbol id="P_EVENT_OUTPUT_UNDER_VOLTAGE" value="20" />
+        <symbol id="P_EVENT_TEST_FAILED" value="21" />
+      </point>
       <point id="EvtVend" offset="4" type="bitfield32" />
       <point id="Ctl" offset="6" type="enum16" access="rw" />
       <point id="CtlVend" offset="7" type="enum32" access="rw" />
@@ -19,43 +54,13 @@
       <point id="InWh" offset="27" type="float32" units="Wh" />
       <point id="InPwr" offset="29" type="float32" units="W" />
     </block>
-    <define name="Stat_enum">
-      <symbol id="P_STATUS_OFF" value="1" />
-      <symbol id="P_STATUS_SLEEPING" value="2" />
-      <symbol id="P_STATUS_STARTING" value="3" />
-      <symbol id="P_STATUS_MPPT" value="4" />
-      <symbol id="P_STATUS_THROTTLED" value="5" />
-      <symbol id="P_STATUS_SHUTTING_DOWN" value="6" />
-      <symbol id="P_STATUS_FAULT" value="7" />
-      <symbol id="P_STATUS_STANDBY" value="8" />
-      <symbol id="P_STATUS_TEST" value="9" />
-      <symbol id="P_STATUS_OTHER" value="10" />
-    </define>
-    <define name="Evt_bf">
-      <symbol id="P_EVENT_GROUND_FAULT" value="1" />
-      <symbol id="P_EVENT_INPUT_OVER_VOLTAGE" value="2" />
-      <symbol id="RESERVED" value="3" />
-      <symbol id="P_EVENT_DC_DISCONNECT" value="4" />
-      <symbol id="RESERVED" value="5" />
-      <symbol id="RESERVED" value="6" />
-      <symbol id="P_EVENT_MANUAL_SHUTDOWN" value="7" />
-      <symbol id="P_EVENT_OVER_TEMPERATURE" value="8" />
-      <symbol id="RESERVED" value="9" />
-      <symbol id="RESERVED" value="10" />
-      <symbol id="RESERVED" value="11" />
-      <symbol id="RESERVED" value="12" />
-      <symbol id="P_EVENT_BLOWN_FUSE" value="13" />
-      <symbol id="P_EVENT_UNDER_TEMPERATURE" value="14" />
-      <symbol id="P_EVENT_MEMORY_LOSS" value="15" />
-      <symbol id="P_EVENT_ARC_DETECTION" value="16" />
-      <symbol id="P_EVENT_THEFT_DETECTION" value="17" />
-      <symbol id="P_EVENT_OUTPUT_OVER_CURRENT" value="18" />
-      <symbol id="P_EVENT_OUTPUT_OVER_VOLTAGE" value="19" />
-      <symbol id="P_EVENT_OUTPUT_UNDER_VOLTAGE" value="20" />
-      <symbol id="P_EVENT_TEST_FAILED" value="21" />
-    </define>
   </model>
   <strings id="501" locale="en">
+    <model>
+      <label>panel module float</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="Stat">
       <label>Module Status Code</label>
       <description></description>
@@ -142,6 +147,8 @@
       <notes></notes>
     </point>
   </strings>
+
+  <!-- 502: panel module integer -->
   <model id="502" len="28">
     <block len="28">
       <point id="A_SF" offset="0" type="sunssf" />
@@ -166,43 +173,13 @@
       <point id="InWh" offset="25" type="acc32" sf="Wh_SF" units="Wh" />
       <point id="InPwr" offset="27" type="int16" sf="Pwr_SF" units="W" />
     </block>
-    <define name="Stat">
-      <symbol id="P_STATUS_OFF" value="1" />
-      <symbol id="P_STATUS_SLEEPING" value="2" />
-      <symbol id="P_STATUS_STARTING" value="3" />
-      <symbol id="P_STATUS_MPPT" value="4" />
-      <symbol id="P_STATUS_THROTTLED" value="5" />
-      <symbol id="P_STATUS_SHUTTING_DOWN" value="6" />
-      <symbol id="P_STATUS_FAULT" value="7" />
-      <symbol id="P_STATUS_STANDBY" value="8" />
-      <symbol id="P_STATUS_TEST" value="9" />
-      <symbol id="P_STATUS_OTHER" value="10" />
-    </define>
-    <define name="Evt">
-      <symbol id="P_EVENT_GROUND_FAULT" value="1" />
-      <symbol id="P_EVENT_INPUT_OVER_VOLTAGE" value="2" />
-      <symbol id="RESERVED" value="3" />
-      <symbol id="P_EVENT_DC_DISCONNECT" value="4" />
-      <symbol id="RESERVED" value="5" />
-      <symbol id="RESERVED" value="6" />
-      <symbol id="P_EVENT_MANUAL_SHUTDOWN" value="7" />
-      <symbol id="P_EVENT_OVER_TEMPERATURE" value="8" />
-      <symbol id="RESERVED" value="9" />
-      <symbol id="RESERVED" value="10" />
-      <symbol id="RESERVED" value="11" />
-      <symbol id="RESERVED" value="12" />
-      <symbol id="P_EVENT_BLOWN_FUSE" value="13" />
-      <symbol id="P_EVENT_UNDER_TEMPERATURE" value="14" />
-      <symbol id="P_EVENT_MEMORY_LOSS" value="15" />
-      <symbol id="P_EVENT_ARC_DETECTION" value="16" />
-      <symbol id="P_EVENT_THEFT_DETECTION" value="17" />
-      <symbol id="P_EVENT_OUTPUT_OVER_CURRENT" value="18" />
-      <symbol id="P_EVENT_OUTPUT_OVER_VOLTAGE" value="19" />
-      <symbol id="P_EVENT_OUTPUT_UNDER_VOLTAGE" value="20" />
-      <symbol id="P_EVENT_TEST_FAILED" value="21" />
-    </define>
   </model>
   <strings id="502" locale="en">
+    <model>
+      <label>panel module integer</label>
+      <description></description>
+      <notes></notes>
+    </model>
     <point id="Stat">
       <label>Module Status Code</label>
       <description></description>

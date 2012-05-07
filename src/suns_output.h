@@ -71,7 +71,8 @@ typedef struct suns_value_output_vector {
     suns_value_snprintf_f sunssf;
     suns_value_snprintf_f string;
     suns_value_snprintf_f meta;
-    suns_value_snprintf_f ipaddr;
+    suns_value_snprintf_f ipv4;
+    suns_value_snprintf_f ipv6;
 } suns_value_output_vector_t;
     
 typedef int (*suns_model_list_fprintf_f)(FILE *stream,

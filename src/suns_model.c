@@ -80,6 +80,8 @@ suns_model_did_t * suns_model_did_new(uint16_t id)
         error("memory error: can't malloc(sizeof(suns_model_did_t))");
         return NULL;
     }
+
+    memset(did, 0, sizeof(suns_model_did_t));    
     did->did = id;
     
     return did;
@@ -138,7 +140,8 @@ char * suns_type_string(suns_type_t type)
         "sunssf",
         "string",
         "pad",
-        "ipaddr",
+        "ipv4",
+        "ipv6",
         "undef",
         NULL
     };
@@ -201,7 +204,8 @@ suns_type_t suns_type_from_name(char *name)
         { "sunssf",     SUNS_SF },
         { "string",     SUNS_STRING },
         { "pad",        SUNS_PAD },
-        { "ipaddr",     SUNS_IPADDR },
+        { "ipv4",       SUNS_IPV4 },
+        { "ipv6",       SUNS_IPV6 },
         { "undef",      SUNS_UNDEF },
         { NULL,         -1 },
     };
@@ -373,7 +377,8 @@ int suns_type_size(suns_type_t type)
         2, /* SUNS_SF */
         0, /* SUNS_STRING */
         2, /* SUNS_PAD */
-        4, /* SUNS_IPADDR */
+        4, /* SUNS_IPV4 */
+        8, /* SUNS_IPV6 */
         0, /* SUNS_UNDEF */
     };
 
@@ -426,7 +431,7 @@ int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len)
     case SUNS_ACC32:
     case SUNS_ENUM32:
     case SUNS_BITFIELD32:
-    case SUNS_IPADDR:
+    case SUNS_IPV4:
         if (len < 4) {
             debug("not enough space for 32 bit conversion "
                   "(type = %s,  len = %d)", suns_type_string(v->tp.type), len);
@@ -434,7 +439,6 @@ int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len)
         /* we can safely treat all these values as uint for this purpose */
         *((uint32_t *) buf) = htobe32(v->value.u32);
         break;
-
     case SUNS_INT64:
     case SUNS_UINT64:
     case SUNS_FLOAT64:
@@ -445,6 +449,12 @@ int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len)
         }
         /* we can safely treat all these values as uint for this purpose */
         *((uint64_t *) buf) = htobe64(v->value.u64);
+        break;
+
+        /* 128 bit datatypes */
+    case SUNS_IPV6:
+        /* FIXME */
+        debug("ipv6 support not finished");
         break;
 
         /* strings */
@@ -526,8 +536,8 @@ suns_value_meta_t suns_check_not_implemented(suns_type_pair_t *tp,
         (tp->type == SUNS_INT64   && v->value.i64 == (int64_t) 0x8000000000000000) ||
         (tp->type == SUNS_UINT64  && v->value.u64 == (uint64_t) 0xFFFFFFFFFFFFFFFF) ||
         (tp->type == SUNS_FLOAT32 && isnan(v->value.f32)) ||
-        (tp->type == SUNS_FLOAT64 && isnan(v->value.f64)) /* ||
-        (tp->type == SUNS_IPADDR  && v->value.u32 == 0) */
+        (tp->type == SUNS_FLOAT64 && isnan(v->value.f64)) ||
+        (tp->type == SUNS_IPV4  && v->value.u32 == 0)
         ) {
         v->meta = SUNS_VALUE_NOT_IMPLEMENTED;
     } else {
@@ -562,7 +572,7 @@ int suns_buf_to_value(unsigned char *buf,
     case SUNS_ACC32:
     case SUNS_ENUM32:
     case SUNS_BITFIELD32:
-    case SUNS_IPADDR:
+    case SUNS_IPV4:
         v->value.u32 = be32toh(*((uint32_t *)buf));
         break;
 	
@@ -572,6 +582,12 @@ int suns_buf_to_value(unsigned char *buf,
     case SUNS_FLOAT64:
     case SUNS_ACC64:
         v->value.u64 = be64toh(*((uint64_t *)buf));
+        break;
+
+        /* 128 bit datatypes */
+    case SUNS_IPV6:
+        /* FIXME */
+        debug("ipv6 support not finished");
         break;
 
         /* strings */
@@ -651,7 +667,7 @@ int suns_string_to_value(const char *string,
     } else {
         char base[BUFFER_SIZE];
         int exp;
-        unsigned int octet[4];  /* used in SUNS_IPADDR */
+        unsigned int octet[4];  /* used in SUNS_IPV4 */
 
         if (tp->type != SUNS_STRING &&
             string_decompose_decimal(string, base, BUFFER_SIZE, &exp) < 0)
@@ -733,7 +749,7 @@ int suns_string_to_value(const char *string,
             
             break;
 
-        case SUNS_IPADDR:
+        case SUNS_IPV4:
             if (sscanf(string, "%u.%u.%u.%u",
                        &(octet[0]), &(octet[1]), &(octet[2]), &(octet[3]))
                 == 4) {
@@ -742,6 +758,12 @@ int suns_string_to_value(const char *string,
                                 (octet[2] <<  8) &
                                 (octet[3] <<  0));
             }
+            break;
+
+        case SUNS_IPV6:
+            /* FIXME */
+            debug("ipv6 support not finished");
+            break;
             
         default:
             /* this means we hit an unsupported datatype or SUNS_UNDEF */
@@ -780,7 +802,7 @@ suns_value_t *suns_value_new(void)
         return NULL;
     }
 
-    suns_value_init(v);
+    suns_value_init(v);  /* zeros out memory for us */
 
     return v;
 }
@@ -847,6 +869,7 @@ int suns_value_set_name(suns_value_t *v, char *name)
                 error("can't malloc() space for v->name_with_index");
                 return -1;
             }
+            memset(v->name_with_index, 0, BUFFER_SIZE);
         }
         
         return snprintf(v->name_with_index, BUFFER_SIZE, "%s,%02d",
@@ -916,6 +939,19 @@ int suns_value_acc_is_zero(suns_value_t *v)
 }
 
 
+/**
+ * returns 1 if the type is an enum or bitfield, meaning
+ * that it can have symbols defined for it
+ */
+int suns_type_is_symbolic(suns_type_t t)
+{
+    return ((t == SUNS_ENUM16) ||
+            (t == SUNS_ENUM32) ||
+            (t == SUNS_BITFIELD16) ||
+            (t == SUNS_BITFIELD32));
+}
+
+
 suns_dataset_t *suns_dataset_new(void)
 {
     suns_dataset_t *d;
@@ -951,6 +987,10 @@ suns_device_t *suns_device_new(void)
 {
     suns_device_t *d = malloc(sizeof(suns_device_t));
 
+    if (d == NULL) {
+        debug("malloc() failed");
+        return NULL;
+    }
     memset(d, 0, sizeof(suns_device_t));
     d->datasets = list_new();
 
@@ -1395,19 +1435,19 @@ char * suns_value_get_string(suns_value_t *v)
     return v->value.s;
 }
 
-void suns_value_set_ipaddr(suns_value_t *v, uint32_t ipaddr)
+void suns_value_set_ipv4(suns_value_t *v, uint32_t ipv4)
 {
     assert(v != NULL);
     
-    v->value.u32 = ipaddr;
-    v->tp.type = SUNS_IPADDR;
+    v->value.u32 = ipv4;
+    v->tp.type = SUNS_IPV4;
     v->meta = SUNS_VALUE_OK;
 }
 
-uint32_t suns_value_get_ipaddr(suns_value_t *v)
+uint32_t suns_value_get_ipv4(suns_value_t *v)
 {
     assert(v != NULL);
-    assert(v->tp.type == SUNS_IPADDR);
+    assert(v->tp.type == SUNS_IPV4);
 
     return v->value.u32;
 }
@@ -1817,7 +1857,7 @@ int suns_resolve_scale_factors(suns_dataset_t *dataset)
 
     list_for_each(dataset->values, c) {
         v = c->data;
-        if (v->tp.name) {
+        if (v->tp.name && suns_type_is_numeric(v->tp.type)) {
             found = suns_search_value_list(dataset->values, v->tp.name);
             if (found) {
                 /* referenced value must be a sunssf type! */
@@ -1982,4 +2022,46 @@ int suns_model_check_consistency(suns_model_t *m)
     }
 
     return rc;
+}
+
+
+/**
+ * resolve all define pointers in the model
+ */
+void suns_model_resolve_defines(suns_model_t *m)
+{
+    list_node_t *c, *d;
+
+    debug("HERE");
+
+    list_for_each(m->dp_blocks, c) {
+        suns_dp_block_t *block = c->data;
+        list_for_each(block->dp_list, d) {
+            suns_dp_t *dp = d->data;
+            debug("point: %s, type: %s", dp->name,
+                  suns_type_string(dp->type_pair->type));
+            if (suns_type_is_symbolic(dp->type_pair->type)) {
+                if (dp->type_pair->name) {
+                    debug("searching for define: %s", dp->type_pair->name);
+                    /* fill in define
+                       dp->type_pair->define is set to NULL
+                       if here is no define */
+                    dp->type_pair->define =
+                        suns_search_define_blocks(m->defines,
+                                                  dp->type_pair->name);
+                } else {
+                    /* only complain about missing defines with -vvv
+
+                       since there are a lots of spare bitfields and enums
+                       with no definitions this keeps the output tidier
+                       for doing comformance reports */
+                    if (verbose_level > 2) {
+                        warning("No define for %s point %s in model \"%s\"",
+                                suns_type_string(dp->type_pair->type),
+                                dp->name, m->name);
+                    }
+                }
+            }
+        }
+    }
 }
