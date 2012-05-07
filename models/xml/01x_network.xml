@@ -29,16 +29,55 @@
       <label>Interface Status</label>
       <description></description>
       <notes></notes>
+      <symbol id="DOWN">
+        <label>down</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="UP">
+        <label>up</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="FAULT">
+        <label>fault</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Ctl">
       <label>Interface Control</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Typ">
       <label>Physical Access Type</label>
       <description></description>
       <notes></notes>
+      <symbol id="UNKNOWN">
+        <label>unknown</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="INTERNAL">
+        <label>internal</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="TWISTED_PAIR">
+        <label>twisted pair</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="FIBER">
+        <label>fiber</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="WIRELESS">
+        <label>wireless</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
   </strings>
 
@@ -81,37 +120,103 @@
       <label>Ethernet Link Speed</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="CfgSt">
       <label>Interface Status Flags</label>
       <description></description>
       <notes></notes>
+      <symbol id="LINK">
+        <label>link status</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="FULL_DUPLEX">
+        <label>full duplex</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="AUTO_NEG1">
+        <label>auto negotiation 1</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="AUTO_NEG2">
+        <label>auto negotiation 2</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="AUTO_NEG3">
+        <label>auto negotiation 3</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="RESET_REQUIRED">
+        <label>setting requires reset</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="HW_FAULT">
+        <label>hardware fault</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="St">
       <label>Physical Access Type</label>
       <description></description>
       <notes></notes>
+      <symbol id="UNKNOWN">
+        <label>unknown</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="INTERNAL">
+        <label>internal</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="TWISTED_PAIR">
+        <label>twisted pair</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="FIBER">
+        <label>fiber</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="WIRELESS">
+        <label>wireless</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="MAC">
       <label>IEEE MAC address</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Nam">
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Ctl">
       <label>Control Flags</label>
       <description></description>
       <notes></notes>
+      <symbol id="AUTO">
+        <label>auto-negotiate</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="FULL_DUPLEX">
+        <label>force full duplex</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="FrcSpd">
       <label>Force Speed</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 12: IPv4 protocol -->
@@ -168,77 +273,157 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="CfgSt">
       <label>Config State</label>
       <description></description>
       <notes></notes>
+      <symbol id="NOT_CONFIGURED">
+        <label>not configured</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="VALID_SETTING">
+        <label>valid config from BOOTP, DHCP or NV memory</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="VALID_HW">
+        <label>valid config from hardware settings</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="ChgSt">
       <label>Change Status</label>
       <description></description>
       <notes></notes>
+      <symbol id="PENDING">
+        <label>config change pending</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Cap">
       <label>Config Capability</label>
       <description></description>
       <notes></notes>
+      <symbol id="DHCP">
+        <label>DHCP client</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="BOOTP">
+        <label>BOOTP client</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="ZEROCONF">
+        <label>Zeroconf</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="DNS">
+        <label>DNS client</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="CFG_SETTABLE">
+        <label>config settable</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="HW_CONFIG">
+        <label>hardware configurable</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="NTP_CLIENT">
+        <label>ntp client</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="RESET_REQUIRED">
+        <label>configuration change requires reset</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Cfg">
       <label>IPv4 Config Method</label>
       <description></description>
       <notes></notes>
+      <symbol id="STATIC">
+        <label>Static IP</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="DHCP">
+        <label>use DHCP</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="BOOTP">
+        <label>use BOOTP</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="ZEROCONF">
+        <label>use zeroconf</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Ctl">
       <label>Config Control</label>
       <description></description>
       <notes></notes>
+      <symbol id="ENABLE_DNS">
+        <label>Enable DNS</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="ENABLE_NTP">
+        <label>Enable NTP</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Addr">
       <label>Address</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Msk">
       <label>Netmask</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Gw">
       <label>Gateway</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="DNS1">
       <label>DNS Server 1</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="DNS2">
       <label>DNS Server 2</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="NTP1">
       <label>NTP Server 1</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="NTP2">
       <label>NTP Server 2</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="DomNam">
       <label>Domain Name</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="HostNam">
       <label>Host Name</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 13: IPv6 protocol -->
@@ -295,77 +480,157 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="CfgSt">
       <label>Config State</label>
       <description></description>
       <notes></notes>
+      <symbol id="NOT_CONFIGURED">
+        <label>not configured</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="VALID_SETTING">
+        <label>valid config from BOOTP, DHCP or NV memory</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="VALID_HW">
+        <label>valid config from hardware settings</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="ChgSt">
       <label>Change Status</label>
       <description></description>
       <notes></notes>
+      <symbol id="PENDING">
+        <label>config change pending</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Cap">
       <label>Config Capability</label>
       <description></description>
       <notes></notes>
+      <symbol id="DHCP">
+        <label>DHCP client</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="BOOTP">
+        <label>BOOTP client</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="ZEROCONF">
+        <label>Zeroconf</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="DNS">
+        <label>DNS client</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="CFG_SETTABLE">
+        <label>config settable</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="HW_CONFIG">
+        <label>hardware configurable</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="NTP_CLIENT">
+        <label>ntp client</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="RESET_REQUIRED">
+        <label>configuration change requires reset</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Cfg">
       <label>IPv6 Config Method</label>
       <description></description>
       <notes></notes>
+      <symbol id="STATIC">
+        <label>Static IP</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="DHCP">
+        <label>use DHCP</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="BOOTP">
+        <label>use BOOTP</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="ZEROCONF">
+        <label>use zeroconf</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Ctl">
       <label>Config Control</label>
       <description></description>
       <notes></notes>
+      <symbol id="ENABLE_DNS">
+        <label>Enable DNS</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="ENABLE_NTP">
+        <label>Enable NTP</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Addr">
       <label>Address</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="CIDR">
       <label>CIDR Number</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Gw">
       <label>Gateway</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="DNS1">
       <label>DNS Server 1</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="DNS2">
       <label>DNS Server 2</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="NTP1">
       <label>NTP Server 1</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="NTP2">
       <label>NTP Server 2</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="DomNam">
       <label>Domain Name</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="HostNam">
       <label>Host Name</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 14: Proxy Server -->
@@ -395,42 +660,50 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Cap">
       <label>Config Capability</label>
       <description></description>
       <notes></notes>
+      <symbol id="NO_PROXY">
+        <label>no proxy support</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="IPV4_PROXY">
+        <label>IPv4 proxy</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="IPV6_PROXY">
+        <label>IPv4 proxy</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Cfg">
       <label>Config State</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Typ">
       <label>Proxy Server Type</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Addr">
       <label>Address</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Port">
       <label>Port</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="User">
       <label>Username</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Pw">
       <label>Password</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 15: Proxy Server -->
@@ -461,62 +734,50 @@
       <label>Write 1 to clear counters</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="InCnt">
       <label>Total octets received</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="InUcCnt">
       <label>Unicast packets received</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="InNUcCnt">
       <label>Non-unicast packets received</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="InDscCnt">
       <label>Discarded inbound packets</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="InErrCnt">
       <label>Inbound error packets</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="InUnkCnt">
       <label>Inbound unknown protocol packets</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="OutCnt">
       <label>Total octets transmitted</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="OutUcCnt">
       <label>Unicast packets transmitted</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="OutNUcCnt">
       <label>Non-unicast packets transmitted</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="OutDscCnt">
       <label>Discarded inbound packets</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="OutErrCnt">
       <label>Outbound error packets</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 17: Simple IP Network -->
@@ -560,66 +821,106 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="CfgSt">
       <label>Config State</label>
       <description></description>
       <notes></notes>
+      <symbol id="NOT_CONFIGURED">
+        <label>not configured</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="VALID_SETTING">
+        <label>valid config from BOOTP, DHCP or NV memory</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="VALID_HW">
+        <label>valid config from hardware settings</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="ChgSt">
       <label>Change Status</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Cap">
       <label>Config Capability</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Cfg">
       <label>IPv4 Config Method</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Ctl">
       <label>Config Control</label>
       <description></description>
       <notes></notes>
+      <symbol id="ENABLE_DNS">
+        <label>Enable DNS</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="ENABLE_NTP">
+        <label>Enable NTP</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Addr">
       <label>Address</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Msk">
       <label>Netmask</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Gw">
       <label>Gateway</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="DNS1">
       <label>DNS Server 1</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="DNS2">
       <label>DNS Server 2</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="MAC">
       <label>DNS Server 2</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="LnkCtl">
       <label>Control Flags</label>
       <description></description>
       <notes></notes>
+      <symbol id="AUTONEGOTIATE">
+        <label>autonegotiate enabled</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="FULL_DUPLEX">
+        <label>force full duplex</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="FORCE_10MB">
+        <label>force 10 Mb/s</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="FORCE_100MB">
+        <label>force 100 Mb/s</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="FORCE_1GB">
+        <label>force 1 Gb/s</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
   </strings>
 
@@ -665,41 +966,108 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Rte">
       <label>Speed in bp/s</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Bits">
       <label>data bits per character</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Pty">
       <label>parity</label>
       <description></description>
       <notes></notes>
+      <symbol id="NONE">
+        <label>none</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="ODD">
+        <label>odd</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="EVEN">
+        <label>even</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Dup">
       <label>duplex</label>
       <description></description>
       <notes></notes>
+      <symbol id="FULL">
+        <label>full</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="HALF">
+        <label>half</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Flw">
       <label>flow control</label>
       <description></description>
       <notes></notes>
+      <symbol id="NONE">
+        <label>none</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="HW">
+        <label>hardware</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="XONXOFF">
+        <label>software (xon/xoff)</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Typ">
       <label>interface type</label>
       <description></description>
       <notes></notes>
+      <symbol id="UNKNOWN">
+        <label>unknown</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="RS232">
+        <label>rs232</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="RS485">
+        <label>rs485</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Pcol">
       <label>protocol</label>
       <description></description>
       <notes></notes>
+      <symbol id="UNKNOWN">
+        <label>unknown</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="MODBUS">
+        <label>Modbus</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="VENDOR">
+        <label>vendor specific</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
   </strings>
 
@@ -723,27 +1091,22 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="IMEI">
       <label>IMEI number</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="APN">
       <label>APN</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Num">
       <label>phone number</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Pin">
       <label>PIN</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 19: PPP Link -->
@@ -786,46 +1149,96 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Rte">
       <label>Speed in bp/s</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Bits">
       <label>data bits per character</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Pty">
       <label>parity</label>
       <description></description>
       <notes></notes>
+      <symbol id="NONE">
+        <label>none</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="ODD">
+        <label>odd</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="EVEN">
+        <label>even</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Dup">
       <label>duplex</label>
       <description></description>
       <notes></notes>
+      <symbol id="FULL">
+        <label>full</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="HALF">
+        <label>half</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Flw">
       <label>flow control</label>
       <description></description>
       <notes></notes>
+      <symbol id="NONE">
+        <label>none</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="HW">
+        <label>hardware</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="XONXOFF">
+        <label>software (xon/xoff)</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="Auth">
       <label>authentication type</label>
       <description></description>
       <notes></notes>
+      <symbol id="NONE">
+        <label>none</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="PAP">
+        <label>PAP</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="CHAP">
+        <label>CHAP</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="UsrNam">
       <label>username</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Pw">
       <label>password</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 </sunSpecModels>

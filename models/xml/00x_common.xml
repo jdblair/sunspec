@@ -21,32 +21,26 @@
       <label>Manufacturer</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Md">
       <label>Model</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Opt">
       <label>Options</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Vr">
       <label>Version</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="SN">
       <label>Serial Number</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="DA">
       <label>Device Address</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 2: basic aggregator -->

@@ -50,57 +50,46 @@
       <label>Ambient Temperature</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="RH">
       <label>Relative Humidity</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Pres">
       <label>Barometric Pressure</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="WndSpd">
       <label>Wind Speed</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="WndDir">
       <label>Wind Direction</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Rain">
       <label>Rainfall</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Snw">
       <label>Snow Depth</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="PPT">
       <label>Precipitation Type</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="ElecFld">
       <label>Electric Field</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="SurWet">
       <label>Surface Wetness</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="SoilWet">
       <label>Soil Wetness</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 302: irradiance -->
@@ -123,27 +112,22 @@
       <label>Global Horizontal Irradiance</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="POAI">
       <label>Plane of Array Irradiance</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="DFI">
       <label>Diffuse Irradiance</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="DNI">
       <label>Direct Irradiance</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="OTI">
       <label>Other Irradiance</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 303: back of module temperature -->
@@ -162,7 +146,6 @@
       <label>Back of Module Temperature</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 304: inclinometer -->
@@ -183,17 +166,14 @@
       <label>X Axis Tilt</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="InclY">
       <label>Y Axis Tilt</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="InclZ">
       <label>Z Axis Tilt</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 305: location -->
@@ -217,32 +197,26 @@
       <label>Time (UTC)</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Date">
       <label>Date (UTC)</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Loc">
       <label>location</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Lat">
       <label>Latitude</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Long">
       <label>Longitude</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Alt">
       <label>Altitude</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 306: reference point -->
@@ -264,22 +238,18 @@
       <label>Global Horizontal Irradiance</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="A">
       <label>Current</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="V">
       <label>Voltage</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Tmp">
       <label>Temperature</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 308: mini weather map -->
@@ -301,21 +271,17 @@
       <label>Global Horizontal Irradiance</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="TmpBOM">
       <label>Back of Module Temperature</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="TmpAmb">
       <label>Ambient Temperature</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="WndSpd">
       <label>Wind Speed</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 </sunSpecModels>

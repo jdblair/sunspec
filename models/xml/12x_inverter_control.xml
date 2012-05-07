@@ -32,47 +32,38 @@
       <label>Continous Power Rating</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="VARtg">
       <label>Continuous Apparent Power Rating</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="VArPosRtg">
       <label>Continuous Positive VAR Rating</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="VArNegRtg">
       <label>Continuous Negative VAR Rating</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="Artg">
       <label>Max AC Current Rating</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="PFLeadRtg">
       <label>Min Leading PF Rating</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="PFLagRtg">
       <label>Min Lagging PF Rating</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="MaxChgRte">
       <label>Max Charge Rate</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="MaxDisChgRte">
       <label>Min Charge Rate</label>
       <description></description>
       <notes></notes>
-    </point>
   </strings>
 
   <!-- 121: inverter basic settings -->
@@ -130,86 +121,118 @@
       <label>Max Power Output Setting</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="VMax">
       <label>Max Voltage Setting</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="VMin">
       <label>Min Voltage Setting</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="VAMax">
       <label>Max Apparent Power</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="VArPosMax">
       <label>Max Positive Reactive Power</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="VArNegMax">
       <label>Max Negative Reactive Power</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="VRef">
       <label>Voltage at PCC</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="VRefOfs">
       <label>Voltage Offset from PCC</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="WGra">
       <label>Default Active Power Ramp</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="PFSign">
       <label>Poewr Factor Sign Convention</label>
       <description></description>
       <notes></notes>
+      <symbol id="I_IEC">
+        <label>IEC sign convention</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="I_IEEE">
+        <label>IEEE sign convention</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="PFLeadMin">
       <label>Minimum Leading Power Factor</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="PFLagMin">
       <label>Minimum Lagging Power Factor</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="VArAct">
       <label>VAR Charge/Dischage Action</label>
       <description></description>
       <notes></notes>
+      <symbol id="switch">
+        <label>switch VAr characterization</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="maintain">
+        <label>maintain VAr characterization</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="ClcTotVA">
       <label>Apparent Power Calculation Method</label>
       <description></description>
       <notes></notes>
+      <symbol id="vector">
+        <label>vector calculation</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="arithmetic">
+        <label>arithmetic calculation</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
     <point id="MaxRmpRte">
       <label>Maximum Ramp Rate (% Max Nominal Rate)</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="ECPNomHz">
       <label>Nominal ECP Frequency</label>
       <description></description>
       <notes></notes>
-    </point>
     <point id="ConnPh">
       <label>Connected Phase</label>
       <description></description>
       <notes></notes>
+      <symbol id="PhA">
+        <label>phase A</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="PhB">
+        <label>phase B</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
+      <symbol id="PhC">
+        <label>phase C</label>
+        <description></description>
+        <notes></notes>
+      </symbol>
     </point>
   </strings>
 
