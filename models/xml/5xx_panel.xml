@@ -4,40 +4,40 @@
   <model id="501" len="31">
     <block len="31">
       <point id="Stat" offset="0" type="enum16" mandatory="true" >
-        <symbol id="P_STATUS_OFF" value="1" />
-        <symbol id="P_STATUS_SLEEPING" value="2" />
-        <symbol id="P_STATUS_STARTING" value="3" />
-        <symbol id="P_STATUS_MPPT" value="4" />
-        <symbol id="P_STATUS_THROTTLED" value="5" />
-        <symbol id="P_STATUS_SHUTTING_DOWN" value="6" />
-        <symbol id="P_STATUS_FAULT" value="7" />
-        <symbol id="P_STATUS_STANDBY" value="8" />
-        <symbol id="P_STATUS_TEST" value="9" />
-        <symbol id="P_STATUS_OTHER" value="10" />
+        <symbol id="P_STATUS_OFF">1</symbol>
+        <symbol id="P_STATUS_SLEEPING">2</symbol>
+        <symbol id="P_STATUS_STARTING">3</symbol>
+        <symbol id="P_STATUS_MPPT">4</symbol>
+        <symbol id="P_STATUS_THROTTLED">5</symbol>
+        <symbol id="P_STATUS_SHUTTING_DOWN">6</symbol>
+        <symbol id="P_STATUS_FAULT">7</symbol>
+        <symbol id="P_STATUS_STANDBY">8</symbol>
+        <symbol id="P_STATUS_TEST">9</symbol>
+        <symbol id="P_STATUS_OTHER">10</symbol>
       </point>
       <point id="StatVend" offset="1" type="enum16" />
       <point id="Evt" offset="2" type="bitfield32" mandatory="true" >
-        <symbol id="P_EVENT_GROUND_FAULT" value="1" />
-        <symbol id="P_EVENT_INPUT_OVER_VOLTAGE" value="2" />
-        <symbol id="RESERVED" value="3" />
-        <symbol id="P_EVENT_DC_DISCONNECT" value="4" />
-        <symbol id="RESERVED" value="5" />
-        <symbol id="RESERVED" value="6" />
-        <symbol id="P_EVENT_MANUAL_SHUTDOWN" value="7" />
-        <symbol id="P_EVENT_OVER_TEMPERATURE" value="8" />
-        <symbol id="RESERVED" value="9" />
-        <symbol id="RESERVED" value="10" />
-        <symbol id="RESERVED" value="11" />
-        <symbol id="RESERVED" value="12" />
-        <symbol id="P_EVENT_BLOWN_FUSE" value="13" />
-        <symbol id="P_EVENT_UNDER_TEMPERATURE" value="14" />
-        <symbol id="P_EVENT_MEMORY_LOSS" value="15" />
-        <symbol id="P_EVENT_ARC_DETECTION" value="16" />
-        <symbol id="P_EVENT_THEFT_DETECTION" value="17" />
-        <symbol id="P_EVENT_OUTPUT_OVER_CURRENT" value="18" />
-        <symbol id="P_EVENT_OUTPUT_OVER_VOLTAGE" value="19" />
-        <symbol id="P_EVENT_OUTPUT_UNDER_VOLTAGE" value="20" />
-        <symbol id="P_EVENT_TEST_FAILED" value="21" />
+        <symbol id="P_EVENT_GROUND_FAULT">1</symbol>
+        <symbol id="P_EVENT_INPUT_OVER_VOLTAGE">2</symbol>
+        <symbol id="RESERVED">3</symbol>
+        <symbol id="P_EVENT_DC_DISCONNECT">4</symbol>
+        <symbol id="RESERVED">5</symbol>
+        <symbol id="RESERVED">6</symbol>
+        <symbol id="P_EVENT_MANUAL_SHUTDOWN">7</symbol>
+        <symbol id="P_EVENT_OVER_TEMPERATURE">8</symbol>
+        <symbol id="RESERVED">9</symbol>
+        <symbol id="RESERVED">10</symbol>
+        <symbol id="RESERVED">11</symbol>
+        <symbol id="RESERVED">12</symbol>
+        <symbol id="P_EVENT_BLOWN_FUSE">13</symbol>
+        <symbol id="P_EVENT_UNDER_TEMPERATURE">14</symbol>
+        <symbol id="P_EVENT_MEMORY_LOSS">15</symbol>
+        <symbol id="P_EVENT_ARC_DETECTION">16</symbol>
+        <symbol id="P_EVENT_THEFT_DETECTION">17</symbol>
+        <symbol id="P_EVENT_OUTPUT_OVER_CURRENT">18</symbol>
+        <symbol id="P_EVENT_OUTPUT_OVER_VOLTAGE">19</symbol>
+        <symbol id="P_EVENT_OUTPUT_UNDER_VOLTAGE">20</symbol>
+        <symbol id="P_EVENT_TEST_FAILED">21</symbol>
       </point>
       <point id="EvtVend" offset="4" type="bitfield32" />
       <point id="Ctl" offset="6" type="enum16" access="rw" />

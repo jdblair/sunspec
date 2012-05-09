@@ -85,28 +85,28 @@
       <point id="WGra" offset="13" type="int16" sf="WGra_SF" units="Pct" access="rw" />
       <point id="WGra_SF" offset="14" type="sunssf" />
       <point id="PFSign" offset="15" type="enum16" access="rw" >
-        <symbol id="I_IEC" value="1" />
-        <symbol id="I_IEEE" value="2" />
+        <symbol id="I_IEC">1</symbol>
+        <symbol id="I_IEEE">2</symbol>
       </point>
       <point id="PFLeadMin" offset="16" type="int16" sf="PFMin_SF" units="cosT" access="rw" />
       <point id="PFLagMin" offset="17" type="int16" sf="PFMin_SF" units="cosT" access="rw" />
       <point id="PFMin_SF" offset="18" type="sunssf" />
       <point id="VArAct" offset="19" type="enum16" access="rw" >
-        <symbol id="switch" value="1" />
-        <symbol id="maintain" value="2" />
+        <symbol id="switch">1</symbol>
+        <symbol id="maintain">2</symbol>
       </point>
       <point id="ClcTotVA" offset="20" type="enum16" access="rw" >
-        <symbol id="vector" value="1" />
-        <symbol id="arithmetic" value="2" />
+        <symbol id="vector">1</symbol>
+        <symbol id="arithmetic">2</symbol>
       </point>
       <point id="MaxRmpRte" offset="21" type="uint16" sf="MaxRmpRte_SF" units="Pct" access="rw" />
       <point id="MaxRmpRte_SF" offset="22" type="sunssf" />
       <point id="ECPNomHz" offset="23" type="uint16" sf="ECPNomHz_SF" units="Hz" access="rw" />
       <point id="ECPNomHz_SF" offset="24" type="sunssf" />
       <point id="ConnPh" offset="25" type="enum16" access="rw" >
-        <symbol id="PhA" value="1" />
-        <symbol id="PhB" value="2" />
-        <symbol id="PhC" value="3" />
+        <symbol id="PhA">1</symbol>
+        <symbol id="PhB">2</symbol>
+        <symbol id="PhC">3</symbol>
       </point>
       <point id="Rsrvd" offset="26" type="pad" />
     </block>
@@ -240,22 +240,22 @@
   <model id="122" len="44">
     <block len="44">
       <point id="PVConn" offset="0" type="enum16" >
-        <symbol id="NA" value="0" />
-        <symbol id="DISCONNECTED_UNAVAIL" value="1" />
-        <symbol id="DISCONNECTED_AVAIL" value="2" />
-        <symbol id="CONNECTED_UNAVAIL" value="3" />
-        <symbol id="CONNECTED_AVAIL" value="4" />
-        <symbol id="CONNECTED_ON" value="5" />
-        <symbol id="TEST_MODE" value="6" />
+        <symbol id="NA">0</symbol>
+        <symbol id="DISCONNECTED_UNAVAIL">1</symbol>
+        <symbol id="DISCONNECTED_AVAIL">2</symbol>
+        <symbol id="CONNECTED_UNAVAIL">3</symbol>
+        <symbol id="CONNECTED_AVAIL">4</symbol>
+        <symbol id="CONNECTED_ON">5</symbol>
+        <symbol id="TEST_MODE">6</symbol>
       </point>
       <point id="StorConn" offset="1" type="enum16" >
-        <symbol id="NA" value="0" />
-        <symbol id="DISCONNECTED_UNAVAIL" value="1" />
-        <symbol id="DISCONNECTED_AVAIL" value="2" />
-        <symbol id="CONNECTED_UNAVAIL" value="3" />
-        <symbol id="CONNECTED_AVAIL" value="4" />
-        <symbol id="CONNECTED_ON" value="5" />
-        <symbol id="TEST_MODE" value="6" />
+        <symbol id="NA">0</symbol>
+        <symbol id="DISCONNECTED_UNAVAIL">1</symbol>
+        <symbol id="DISCONNECTED_AVAIL">2</symbol>
+        <symbol id="CONNECTED_UNAVAIL">3</symbol>
+        <symbol id="CONNECTED_AVAIL">4</symbol>
+        <symbol id="CONNECTED_ON">5</symbol>
+        <symbol id="TEST_MODE">6</symbol>
       </point>
       <point id="ECPConn" offset="2" type="enum16" />
       <point id="ActWh" offset="3" type="acc64" units="Wh" />
@@ -267,13 +267,13 @@
       <point id="VArAval" offset="27" type="uint16" sf="VArAval_SF" units="VAr" />
       <point id="VArAval_SF" offset="28" type="sunssf" />
       <point id="StSetLimMsk" offset="29" type="bitfield32" >
-        <symbol id="WMax" value="1" />
-        <symbol id="VAMax" value="2" />
-        <symbol id="VArPosMax" value="3" />
-        <symbol id="VArNegMax" value="4" />
-        <symbol id="VArAval" value="5" />
-        <symbol id="PFLeadMin" value="6" />
-        <symbol id="PFLagMin" value="7" />
+        <symbol id="WMax">1</symbol>
+        <symbol id="VAMax">2</symbol>
+        <symbol id="VArPosMax">3</symbol>
+        <symbol id="VArNegMax">4</symbol>
+        <symbol id="VArAval">5</symbol>
+        <symbol id="PFLeadMin">6</symbol>
+        <symbol id="PFLagMin">7</symbol>
       </point>
       <point id="StActCtl" offset="31" type="bitfield32" />
       <point id="TmSrc" offset="33" type="string" len="8" />
@@ -294,8 +294,8 @@
     <block len="24">
       <point id="Mod" offset="0" type="bitfield16" access="rw" mandatory="true" />
       <point id="Conn" offset="1" type="enum16" access="rw" mandatory="true" >
-        <symbol id="DISCONNECT" value="0" />
-        <symbol id="CONNECT" value="1" />
+        <symbol id="DISCONNECT">0</symbol>
+        <symbol id="CONNECT">1</symbol>
       </point>
       <point id="Conn_WinTms" offset="2" type="uint16" access="rw" units="Tms" />
       <point id="Conn_RvrtTms" offset="3" type="uint16" access="rw" units="Tms" />
@@ -306,18 +306,18 @@
       <point id="WMaxLimPct_RmpTms" offset="8" type="uint16" sf="WMaxLimPct_SF" access="rw" units="Tms" />
       <point id="OutPFSet" offset="9" type="int16" sf="OutPFSet_SF" units="cosT" mandatory="true" access="rw" />
       <point id="PFExt" offset="10" type="enum16" access="rw" >
-        <symbol id="OVER" value="0" />
-        <symbol id="UNDER" value="1" />
+        <symbol id="OVER">0</symbol>
+        <symbol id="UNDER">1</symbol>
       </point>
       <point id="OutPFSet_SF" offset="11" type="sunssf" mandatory="true" access="rw" />
       <point id="OutPFSet_WinTms" offset="12" type="uint16" units="Tms" access="rw" />
       <point id="OutPFSet_RvrtTms" offset="13" type="uint16" units="Tms" access="rw" />
       <point id="OutPFSet_RmpTms" offset="14" type="uint16" units="Tms" access="rw" />
       <point id="VArLim_Mod" offset="15" type="enum16" mandatory="true" access="rw" >
-        <symbol id="NO_LIMIT" value="0" />
-        <symbol id="WMAX" value="1" />
-        <symbol id="VARMAX" value="2" />
-        <symbol id="VARAVAL" value="3" />
+        <symbol id="NO_LIMIT">0</symbol>
+        <symbol id="WMAX">1</symbol>
+        <symbol id="VARMAX">2</symbol>
+        <symbol id="VARAVAL">3</symbol>
       </point>
       <point id="VArWMaxPct" offset="16" type="uint16" units="Pct" access="rw" />
       <point id="VArWMaxPct_SF" offset="17" type="sunssf" access="rw" />

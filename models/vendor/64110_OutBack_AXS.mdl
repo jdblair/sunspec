@@ -81,7 +81,7 @@ model suns {
     Time_hour         {  uint16 label="Hour" req }
     Time_minute       {  uint16 label="Minute" req }
     Time_second       {  uint16 label="Second" req }
-    Battery_temp      {  int16.Temp_CF u=C label="Battery Temperature" req }
+    Battery_temp      {  int16.Temp_SF u=C label="Battery Temperature" req }
     Ambient_temp      {  int16.Temp_SF u=C label="Ambient Temperature" req }
     Temp_SF           {  sunssf req }
     AXS_Error         {  bitfield16 label="AXS Error" req }

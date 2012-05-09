@@ -39,33 +39,33 @@
       <point id="TmpOt" offset="34" type="int16" sf="Tmp_SF" units="C" />
       <point id="Tmp_SF" offset="35" type="sunssf" mandatory="true" />
       <point id="St" offset="36" type="enum16" mandatory="true" >
-        <symbol id="I_STATUS_OFF" value="1" />
-        <symbol id="I_STATUS_SLEEPING" value="2" />
-        <symbol id="I_STATUS_STARTING" value="3" />
-        <symbol id="I_STATUS_MPPT" value="4" />
-        <symbol id="I_STATUS_THROTTLED" value="5" />
-        <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
-        <symbol id="I_STATUS_FAULT" value="7" />
-        <symbol id="I_STATUS_STANDBY" value="8" />
+        <symbol id="I_STATUS_OFF">1</symbol>
+        <symbol id="I_STATUS_SLEEPING">2</symbol>
+        <symbol id="I_STATUS_STARTING">3</symbol>
+        <symbol id="I_STATUS_MPPT">4</symbol>
+        <symbol id="I_STATUS_THROTTLED">5</symbol>
+        <symbol id="I_STATUS_SHUTTING_DOWN">6</symbol>
+        <symbol id="I_STATUS_FAULT">7</symbol>
+        <symbol id="I_STATUS_STANDBY">8</symbol>
       </point>
       <point id="StVnd" offset="37" type="enum16" />
       <point id="Evt1" offset="38" type="bitfield32" mandatory="true" >
-        <symbol id="I_EVENT_GROUND_FAULT" value="0" />
-        <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
-        <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
-        <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
-        <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
-        <symbol id="I_EVENT_CABINET_OPEN" value="5" />
-        <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
-        <symbol id="I_EVENT_OVER_TEMP" value="7" />
-        <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
-        <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
-        <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
-        <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
-        <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
-        <symbol id="I_EVENT_UNDER_TEMP" value="13" />
-        <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
-        <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
+        <symbol id="I_EVENT_GROUND_FAULT">0</symbol>
+        <symbol id="I_EVENT_DC_OVER_VOLT">1</symbol>
+        <symbol id="I_EVENT_AC_DISCONNECT">2</symbol>
+        <symbol id="I_EVENT_DC_DISCONNECT">3</symbol>
+        <symbol id="I_EVENT_GRID_DISCONNECT">4</symbol>
+        <symbol id="I_EVENT_CABINET_OPEN">5</symbol>
+        <symbol id="I_EVENT_MANUAL_SHUTDOWN">6</symbol>
+        <symbol id="I_EVENT_OVER_TEMP">7</symbol>
+        <symbol id="I_EVENT_OVER_FREQUENCY">8</symbol>
+        <symbol id="I_EVENT_UNDER_FREQUENCY">9</symbol>
+        <symbol id="I_EVENT_AC_OVER_VOLT">10</symbol>
+        <symbol id="I_EVENT_AC_UNDER_VOLT">11</symbol>
+        <symbol id="I_EVENT_BLOWN_STRING_FUSE">12</symbol>
+        <symbol id="I_EVENT_UNDER_TEMP">13</symbol>
+        <symbol id="I_EVENT_MEMORY_LOSS">14</symbol>
+        <symbol id="I_EVENT_HW_TEST_FAILURE">15</symbol>
       </point>
       <point id="Evt2" offset="40" type="bitfield32" mandatory="true" />
       <point id="EvtVnd1" offset="42" type="bitfield32" />
@@ -367,33 +367,33 @@
       <point id="TmpOt" offset="34" type="int16" sf="Tmp_SF" units="C" />
       <point id="Tmp_SF" offset="35" type="sunssf" mandatory="true" />
       <point id="St" offset="36" type="enum16" mandatory="true" >
-        <symbol id="I_STATUS_OFF" value="1" />
-        <symbol id="I_STATUS_SLEEPING" value="2" />
-        <symbol id="I_STATUS_STARTING" value="3" />
-        <symbol id="I_STATUS_MPPT" value="4" />
-        <symbol id="I_STATUS_THROTTLED" value="5" />
-        <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
-        <symbol id="I_STATUS_FAULT" value="7" />
-        <symbol id="I_STATUS_STANDBY" value="8" />
+        <symbol id="I_STATUS_OFF">1</symbol>
+        <symbol id="I_STATUS_SLEEPING">2</symbol>
+        <symbol id="I_STATUS_STARTING">3</symbol>
+        <symbol id="I_STATUS_MPPT">4</symbol>
+        <symbol id="I_STATUS_THROTTLED">5</symbol>
+        <symbol id="I_STATUS_SHUTTING_DOWN">6</symbol>
+        <symbol id="I_STATUS_FAULT">7</symbol>
+        <symbol id="I_STATUS_STANDBY">8</symbol>
       </point>
       <point id="StVnd" offset="37" type="enum16" />
       <point id="Evt1" offset="38" type="bitfield32" mandatory="true" >
-        <symbol id="I_EVENT_GROUND_FAULT" value="0" />
-        <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
-        <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
-        <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
-        <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
-        <symbol id="I_EVENT_CABINET_OPEN" value="5" />
-        <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
-        <symbol id="I_EVENT_OVER_TEMP" value="7" />
-        <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
-        <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
-        <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
-        <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
-        <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
-        <symbol id="I_EVENT_UNDER_TEMP" value="13" />
-        <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
-        <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
+        <symbol id="I_EVENT_GROUND_FAULT">0</symbol>
+        <symbol id="I_EVENT_DC_OVER_VOLT">1</symbol>
+        <symbol id="I_EVENT_AC_DISCONNECT">2</symbol>
+        <symbol id="I_EVENT_DC_DISCONNECT">3</symbol>
+        <symbol id="I_EVENT_GRID_DISCONNECT">4</symbol>
+        <symbol id="I_EVENT_CABINET_OPEN">5</symbol>
+        <symbol id="I_EVENT_MANUAL_SHUTDOWN">6</symbol>
+        <symbol id="I_EVENT_OVER_TEMP">7</symbol>
+        <symbol id="I_EVENT_OVER_FREQUENCY">8</symbol>
+        <symbol id="I_EVENT_UNDER_FREQUENCY">9</symbol>
+        <symbol id="I_EVENT_AC_OVER_VOLT">10</symbol>
+        <symbol id="I_EVENT_AC_UNDER_VOLT">11</symbol>
+        <symbol id="I_EVENT_BLOWN_STRING_FUSE">12</symbol>
+        <symbol id="I_EVENT_UNDER_TEMP">13</symbol>
+        <symbol id="I_EVENT_MEMORY_LOSS">14</symbol>
+        <symbol id="I_EVENT_HW_TEST_FAILURE">15</symbol>
       </point>
       <point id="Evt2" offset="40" type="bitfield32" mandatory="true" />
       <point id="EvtVnd1" offset="42" type="bitfield32" />
@@ -695,33 +695,33 @@
       <point id="TmpOt" offset="34" type="int16" sf="Tmp_SF" units="C" />
       <point id="Tmp_SF" offset="35" type="sunssf" mandatory="true" />
       <point id="St" offset="36" type="enum16" mandatory="true" >
-        <symbol id="I_STATUS_OFF" value="1" />
-        <symbol id="I_STATUS_SLEEPING" value="2" />
-        <symbol id="I_STATUS_STARTING" value="3" />
-        <symbol id="I_STATUS_MPPT" value="4" />
-        <symbol id="I_STATUS_THROTTLED" value="5" />
-        <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
-        <symbol id="I_STATUS_FAULT" value="7" />
-        <symbol id="I_STATUS_STANDBY" value="8" />
+        <symbol id="I_STATUS_OFF">1</symbol>
+        <symbol id="I_STATUS_SLEEPING">2</symbol>
+        <symbol id="I_STATUS_STARTING">3</symbol>
+        <symbol id="I_STATUS_MPPT">4</symbol>
+        <symbol id="I_STATUS_THROTTLED">5</symbol>
+        <symbol id="I_STATUS_SHUTTING_DOWN">6</symbol>
+        <symbol id="I_STATUS_FAULT">7</symbol>
+        <symbol id="I_STATUS_STANDBY">8</symbol>
       </point>
       <point id="StVnd" offset="37" type="enum16" />
       <point id="Evt1" offset="38" type="bitfield32" mandatory="true" >
-        <symbol id="I_EVENT_GROUND_FAULT" value="0" />
-        <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
-        <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
-        <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
-        <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
-        <symbol id="I_EVENT_CABINET_OPEN" value="5" />
-        <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
-        <symbol id="I_EVENT_OVER_TEMP" value="7" />
-        <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
-        <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
-        <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
-        <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
-        <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
-        <symbol id="I_EVENT_UNDER_TEMP" value="13" />
-        <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
-        <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
+        <symbol id="I_EVENT_GROUND_FAULT">0</symbol>
+        <symbol id="I_EVENT_DC_OVER_VOLT">1</symbol>
+        <symbol id="I_EVENT_AC_DISCONNECT">2</symbol>
+        <symbol id="I_EVENT_DC_DISCONNECT">3</symbol>
+        <symbol id="I_EVENT_GRID_DISCONNECT">4</symbol>
+        <symbol id="I_EVENT_CABINET_OPEN">5</symbol>
+        <symbol id="I_EVENT_MANUAL_SHUTDOWN">6</symbol>
+        <symbol id="I_EVENT_OVER_TEMP">7</symbol>
+        <symbol id="I_EVENT_OVER_FREQUENCY">8</symbol>
+        <symbol id="I_EVENT_UNDER_FREQUENCY">9</symbol>
+        <symbol id="I_EVENT_AC_OVER_VOLT">10</symbol>
+        <symbol id="I_EVENT_AC_UNDER_VOLT">11</symbol>
+        <symbol id="I_EVENT_BLOWN_STRING_FUSE">12</symbol>
+        <symbol id="I_EVENT_UNDER_TEMP">13</symbol>
+        <symbol id="I_EVENT_MEMORY_LOSS">14</symbol>
+        <symbol id="I_EVENT_HW_TEST_FAILURE">15</symbol>
       </point>
       <point id="Evt2" offset="40" type="bitfield32" mandatory="true" />
       <point id="EvtVnd1" offset="42" type="bitfield32" />
@@ -1011,33 +1011,33 @@
       <point id="TmpTrns" offset="42" type="float32" units="C" />
       <point id="TmpOt" offset="44" type="float32" units="C" />
       <point id="St" offset="46" type="enum16" mandatory="true" >
-        <symbol id="I_STATUS_OFF" value="1" />
-        <symbol id="I_STATUS_SLEEPING" value="2" />
-        <symbol id="I_STATUS_STARTING" value="3" />
-        <symbol id="I_STATUS_MPPT" value="4" />
-        <symbol id="I_STATUS_THROTTLED" value="5" />
-        <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
-        <symbol id="I_STATUS_FAULT" value="7" />
-        <symbol id="I_STATUS_STANDBY" value="8" />
+        <symbol id="I_STATUS_OFF">1</symbol>
+        <symbol id="I_STATUS_SLEEPING">2</symbol>
+        <symbol id="I_STATUS_STARTING">3</symbol>
+        <symbol id="I_STATUS_MPPT">4</symbol>
+        <symbol id="I_STATUS_THROTTLED">5</symbol>
+        <symbol id="I_STATUS_SHUTTING_DOWN">6</symbol>
+        <symbol id="I_STATUS_FAULT">7</symbol>
+        <symbol id="I_STATUS_STANDBY">8</symbol>
       </point>
       <point id="StVnd" offset="47" type="enum16" />
       <point id="Evt1" offset="48" type="bitfield32" mandatory="true" >
-        <symbol id="I_EVENT_GROUND_FAULT" value="0" />
-        <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
-        <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
-        <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
-        <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
-        <symbol id="I_EVENT_CABINET_OPEN" value="5" />
-        <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
-        <symbol id="I_EVENT_OVER_TEMP" value="7" />
-        <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
-        <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
-        <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
-        <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
-        <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
-        <symbol id="I_EVENT_UNDER_TEMP" value="13" />
-        <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
-        <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
+        <symbol id="I_EVENT_GROUND_FAULT">0</symbol>
+        <symbol id="I_EVENT_DC_OVER_VOLT">1</symbol>
+        <symbol id="I_EVENT_AC_DISCONNECT">2</symbol>
+        <symbol id="I_EVENT_DC_DISCONNECT">3</symbol>
+        <symbol id="I_EVENT_GRID_DISCONNECT">4</symbol>
+        <symbol id="I_EVENT_CABINET_OPEN">5</symbol>
+        <symbol id="I_EVENT_MANUAL_SHUTDOWN">6</symbol>
+        <symbol id="I_EVENT_OVER_TEMP">7</symbol>
+        <symbol id="I_EVENT_OVER_FREQUENCY">8</symbol>
+        <symbol id="I_EVENT_UNDER_FREQUENCY">9</symbol>
+        <symbol id="I_EVENT_AC_OVER_VOLT">10</symbol>
+        <symbol id="I_EVENT_AC_UNDER_VOLT">11</symbol>
+        <symbol id="I_EVENT_BLOWN_STRING_FUSE">12</symbol>
+        <symbol id="I_EVENT_UNDER_TEMP">13</symbol>
+        <symbol id="I_EVENT_MEMORY_LOSS">14</symbol>
+        <symbol id="I_EVENT_HW_TEST_FAILURE">15</symbol>
       </point>
       <point id="Evt2" offset="50" type="bitfield32" mandatory="true" />
       <point id="EvtVnd1" offset="52" type="bitfield32" />
@@ -1327,33 +1327,33 @@
       <point id="TmpTrns" offset="42" type="float32" units="C" />
       <point id="TmpOt" offset="44" type="float32" units="C" />
       <point id="St" offset="46" type="enum16" mandatory="true" >
-        <symbol id="I_STATUS_OFF" value="1" />
-        <symbol id="I_STATUS_SLEEPING" value="2" />
-        <symbol id="I_STATUS_STARTING" value="3" />
-        <symbol id="I_STATUS_MPPT" value="4" />
-        <symbol id="I_STATUS_THROTTLED" value="5" />
-        <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
-        <symbol id="I_STATUS_FAULT" value="7" />
-        <symbol id="I_STATUS_STANDBY" value="8" />
+        <symbol id="I_STATUS_OFF">1</symbol>
+        <symbol id="I_STATUS_SLEEPING">2</symbol>
+        <symbol id="I_STATUS_STARTING">3</symbol>
+        <symbol id="I_STATUS_MPPT">4</symbol>
+        <symbol id="I_STATUS_THROTTLED">5</symbol>
+        <symbol id="I_STATUS_SHUTTING_DOWN">6</symbol>
+        <symbol id="I_STATUS_FAULT">7</symbol>
+        <symbol id="I_STATUS_STANDBY">8</symbol>
       </point>
       <point id="StVnd" offset="47" type="enum16" />
       <point id="Evt1" offset="48" type="bitfield32" mandatory="true" >
-        <symbol id="I_EVENT_GROUND_FAULT" value="0" />
-        <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
-        <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
-        <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
-        <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
-        <symbol id="I_EVENT_CABINET_OPEN" value="5" />
-        <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
-        <symbol id="I_EVENT_OVER_TEMP" value="7" />
-        <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
-        <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
-        <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
-        <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
-        <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
-        <symbol id="I_EVENT_UNDER_TEMP" value="13" />
-        <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
-        <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
+        <symbol id="I_EVENT_GROUND_FAULT">0</symbol>
+        <symbol id="I_EVENT_DC_OVER_VOLT">1</symbol>
+        <symbol id="I_EVENT_AC_DISCONNECT">2</symbol>
+        <symbol id="I_EVENT_DC_DISCONNECT">3</symbol>
+        <symbol id="I_EVENT_GRID_DISCONNECT">4</symbol>
+        <symbol id="I_EVENT_CABINET_OPEN">5</symbol>
+        <symbol id="I_EVENT_MANUAL_SHUTDOWN">6</symbol>
+        <symbol id="I_EVENT_OVER_TEMP">7</symbol>
+        <symbol id="I_EVENT_OVER_FREQUENCY">8</symbol>
+        <symbol id="I_EVENT_UNDER_FREQUENCY">9</symbol>
+        <symbol id="I_EVENT_AC_OVER_VOLT">10</symbol>
+        <symbol id="I_EVENT_AC_UNDER_VOLT">11</symbol>
+        <symbol id="I_EVENT_BLOWN_STRING_FUSE">12</symbol>
+        <symbol id="I_EVENT_UNDER_TEMP">13</symbol>
+        <symbol id="I_EVENT_MEMORY_LOSS">14</symbol>
+        <symbol id="I_EVENT_HW_TEST_FAILURE">15</symbol>
       </point>
       <point id="Evt2" offset="50" type="bitfield32" mandatory="true" />
       <point id="EvtVnd1" offset="52" type="bitfield32" />
@@ -1643,33 +1643,33 @@
       <point id="TmpTrns" offset="42" type="float32" units="C" />
       <point id="TmpOt" offset="44" type="float32" units="C" />
       <point id="St" offset="46" type="enum16" mandatory="true" >
-        <symbol id="I_STATUS_OFF" value="1" />
-        <symbol id="I_STATUS_SLEEPING" value="2" />
-        <symbol id="I_STATUS_STARTING" value="3" />
-        <symbol id="I_STATUS_MPPT" value="4" />
-        <symbol id="I_STATUS_THROTTLED" value="5" />
-        <symbol id="I_STATUS_SHUTTING_DOWN" value="6" />
-        <symbol id="I_STATUS_FAULT" value="7" />
-        <symbol id="I_STATUS_STANDBY" value="8" />
+        <symbol id="I_STATUS_OFF">1</symbol>
+        <symbol id="I_STATUS_SLEEPING">2</symbol>
+        <symbol id="I_STATUS_STARTING">3</symbol>
+        <symbol id="I_STATUS_MPPT">4</symbol>
+        <symbol id="I_STATUS_THROTTLED">5</symbol>
+        <symbol id="I_STATUS_SHUTTING_DOWN">6</symbol>
+        <symbol id="I_STATUS_FAULT">7</symbol>
+        <symbol id="I_STATUS_STANDBY">8</symbol>
       </point>
       <point id="StVnd" offset="47" type="enum16" />
       <point id="Evt1" offset="48" type="bitfield32" mandatory="true" >
-        <symbol id="I_EVENT_GROUND_FAULT" value="0" />
-        <symbol id="I_EVENT_DC_OVER_VOLT" value="1" />
-        <symbol id="I_EVENT_AC_DISCONNECT" value="2" />
-        <symbol id="I_EVENT_DC_DISCONNECT" value="3" />
-        <symbol id="I_EVENT_GRID_DISCONNECT" value="4" />
-        <symbol id="I_EVENT_CABINET_OPEN" value="5" />
-        <symbol id="I_EVENT_MANUAL_SHUTDOWN" value="6" />
-        <symbol id="I_EVENT_OVER_TEMP" value="7" />
-        <symbol id="I_EVENT_OVER_FREQUENCY" value="8" />
-        <symbol id="I_EVENT_UNDER_FREQUENCY" value="9" />
-        <symbol id="I_EVENT_AC_OVER_VOLT" value="10" />
-        <symbol id="I_EVENT_AC_UNDER_VOLT" value="11" />
-        <symbol id="I_EVENT_BLOWN_STRING_FUSE" value="12" />
-        <symbol id="I_EVENT_UNDER_TEMP" value="13" />
-        <symbol id="I_EVENT_MEMORY_LOSS" value="14" />
-        <symbol id="I_EVENT_HW_TEST_FAILURE" value="15" />
+        <symbol id="I_EVENT_GROUND_FAULT">0</symbol>
+        <symbol id="I_EVENT_DC_OVER_VOLT">1</symbol>
+        <symbol id="I_EVENT_AC_DISCONNECT">2</symbol>
+        <symbol id="I_EVENT_DC_DISCONNECT">3</symbol>
+        <symbol id="I_EVENT_GRID_DISCONNECT">4</symbol>
+        <symbol id="I_EVENT_CABINET_OPEN">5</symbol>
+        <symbol id="I_EVENT_MANUAL_SHUTDOWN">6</symbol>
+        <symbol id="I_EVENT_OVER_TEMP">7</symbol>
+        <symbol id="I_EVENT_OVER_FREQUENCY">8</symbol>
+        <symbol id="I_EVENT_UNDER_FREQUENCY">9</symbol>
+        <symbol id="I_EVENT_AC_OVER_VOLT">10</symbol>
+        <symbol id="I_EVENT_AC_UNDER_VOLT">11</symbol>
+        <symbol id="I_EVENT_BLOWN_STRING_FUSE">12</symbol>
+        <symbol id="I_EVENT_UNDER_TEMP">13</symbol>
+        <symbol id="I_EVENT_MEMORY_LOSS">14</symbol>
+        <symbol id="I_EVENT_HW_TEST_FAILURE">15</symbol>
       </point>
       <point id="Evt2" offset="50" type="bitfield32" mandatory="true" />
       <point id="EvtVnd1" offset="52" type="bitfield32" />

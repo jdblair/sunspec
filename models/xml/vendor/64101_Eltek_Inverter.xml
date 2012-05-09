@@ -1,4 +1,6 @@
 <sunSpecModels v="1">
+
+  <!-- 64101: eltek -->
   <model id="64101" len="7">
     <block len="7">
       <point id="Eltek_Country_Code" offset="0" type="uint16" />
@@ -11,5 +13,10 @@
     </block>
   </model>
   <strings id="64101" locale="en">
+    <model>
+      <label>Eltek Inverter Extension</label>
+      <description></description>
+      <notes></notes>
+    </model>
   </strings>
 </sunSpecModels>

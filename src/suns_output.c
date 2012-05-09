@@ -1299,7 +1299,7 @@ void suns_model_xml_define_block_fprintf(FILE *stream,
 void suns_model_xml_define_fprintf(FILE *stream,
                                    suns_define_t *define)
 {
-    fprintf(stream, "      <symbol id=\"%s\" value=\"%d\" />\n",
+    fprintf(stream, "      <symbol id=\"%s\">%d</symbol>\n",
             define->name, define->value);
 }
 
@@ -1368,7 +1368,7 @@ void suns_model_xml_dp_fprintf(FILE *stream,
         list_node_t *c;
         list_for_each(dp->type_pair->define->list, c) {
             suns_define_t *define = c->data;
-            fprintf(stream, "        <symbol id=\"%s\" value=\"%d\" />\n",
+            fprintf(stream, "        <symbol id=\"%s\">%d</symbol>\n",
                     define->name, define->value);
         }
         fprintf(stream, "      </point>\n");

@@ -4,17 +4,17 @@
   <model id="10" len="4">
     <block len="4">
       <point id="St" offset="0" type="enum16" mandatory="true" >
-        <symbol id="DOWN" value="0" />
-        <symbol id="UP" value="1" />
-        <symbol id="FAULT" value="2" />
+        <symbol id="DOWN">0</symbol>
+        <symbol id="UP">1</symbol>
+        <symbol id="FAULT">2</symbol>
       </point>
       <point id="Ctl" offset="1" type="uint16" access="rw" />
       <point id="Typ" offset="2" type="enum16" >
-        <symbol id="UNKNOWN" value="0" />
-        <symbol id="INTERNAL" value="1" />
-        <symbol id="TWISTED_PAIR" value="2" />
-        <symbol id="FIBER" value="3" />
-        <symbol id="WIRELESS" value="4" />
+        <symbol id="UNKNOWN">0</symbol>
+        <symbol id="INTERNAL">1</symbol>
+        <symbol id="TWISTED_PAIR">2</symbol>
+        <symbol id="FIBER">3</symbol>
+        <symbol id="WIRELESS">4</symbol>
       </point>
       <point id="Rsrvd" offset="3" type="pad" />
     </block>
@@ -86,26 +86,26 @@
     <block len="10">
       <point id="Spd" offset="0" type="uint16" mandatory="true" units="Mbps" />
       <point id="CfgSt" offset="1" type="bitfield16" mandatory="true" >
-        <symbol id="LINK" value="0" />
-        <symbol id="FULL_DUPLEX" value="1" />
-        <symbol id="AUTO_NEG1" value="2" />
-        <symbol id="AUTO_NEG2" value="3" />
-        <symbol id="AUTO_NEG3" value="4" />
-        <symbol id="RESET_REQUIRED" value="5" />
-        <symbol id="HW_FAULT" value="6" />
+        <symbol id="LINK">0</symbol>
+        <symbol id="FULL_DUPLEX">1</symbol>
+        <symbol id="AUTO_NEG1">2</symbol>
+        <symbol id="AUTO_NEG2">3</symbol>
+        <symbol id="AUTO_NEG3">4</symbol>
+        <symbol id="RESET_REQUIRED">5</symbol>
+        <symbol id="HW_FAULT">6</symbol>
       </point>
       <point id="St" offset="2" type="enum16" mandatory="true" >
-        <symbol id="UNKNOWN" value="0" />
-        <symbol id="INTERNAL" value="1" />
-        <symbol id="TWISTED_PAIR" value="2" />
-        <symbol id="FIBER" value="3" />
-        <symbol id="WIRELESS" value="4" />
+        <symbol id="UNKNOWN">0</symbol>
+        <symbol id="INTERNAL">1</symbol>
+        <symbol id="TWISTED_PAIR">2</symbol>
+        <symbol id="FIBER">3</symbol>
+        <symbol id="WIRELESS">4</symbol>
       </point>
       <point id="MAC" offset="3" type="uint16" />
       <point id="Nam" offset="4" type="string" len="4" access="rw" />
       <point id="Ctl" offset="8" type="bitfield16" access="rw" >
-        <symbol id="AUTO" value="0" />
-        <symbol id="FULL_DUPLEX" value="1" />
+        <symbol id="AUTO">0</symbol>
+        <symbol id="FULL_DUPLEX">1</symbol>
       </point>
       <point id="FrcSpd" offset="9" type="uint16" access="rw" units="Mbps" />
     </block>
@@ -224,32 +224,32 @@
     <block len="98">
       <point id="Nam" offset="0" type="string" len="4" access="rw" />
       <point id="CfgSt" offset="4" type="enum16" mandatory="true" >
-        <symbol id="NOT_CONFIGURED" value="0" />
-        <symbol id="VALID_SETTING" value="1" />
-        <symbol id="VALID_HW" value="2" />
+        <symbol id="NOT_CONFIGURED">0</symbol>
+        <symbol id="VALID_SETTING">1</symbol>
+        <symbol id="VALID_HW">2</symbol>
       </point>
       <point id="ChgSt" offset="5" type="bitfield16" mandatory="true" >
-        <symbol id="PENDING" value="0" />
+        <symbol id="PENDING">0</symbol>
       </point>
       <point id="Cap" offset="6" type="bitfield16" mandatory="true" >
-        <symbol id="DHCP" value="0" />
-        <symbol id="BOOTP" value="1" />
-        <symbol id="ZEROCONF" value="2" />
-        <symbol id="DNS" value="3" />
-        <symbol id="CFG_SETTABLE" value="4" />
-        <symbol id="HW_CONFIG" value="5" />
-        <symbol id="NTP_CLIENT" value="6" />
-        <symbol id="RESET_REQUIRED" value="7" />
+        <symbol id="DHCP">0</symbol>
+        <symbol id="BOOTP">1</symbol>
+        <symbol id="ZEROCONF">2</symbol>
+        <symbol id="DNS">3</symbol>
+        <symbol id="CFG_SETTABLE">4</symbol>
+        <symbol id="HW_CONFIG">5</symbol>
+        <symbol id="NTP_CLIENT">6</symbol>
+        <symbol id="RESET_REQUIRED">7</symbol>
       </point>
       <point id="Cfg" offset="7" type="enum16" mandatory="true" access="rw" >
-        <symbol id="STATIC" value="0" />
-        <symbol id="DHCP" value="1" />
-        <symbol id="BOOTP" value="2" />
-        <symbol id="ZEROCONF" value="3" />
+        <symbol id="STATIC">0</symbol>
+        <symbol id="DHCP">1</symbol>
+        <symbol id="BOOTP">2</symbol>
+        <symbol id="ZEROCONF">3</symbol>
       </point>
       <point id="Ctl" offset="8" type="enum16" mandatory="true" access="rw" >
-        <symbol id="ENABLE_DNS" value="0" />
-        <symbol id="ENABLE_NTP" value="1" />
+        <symbol id="ENABLE_DNS">0</symbol>
+        <symbol id="ENABLE_NTP">1</symbol>
       </point>
       <point id="Addr" offset="9" type="string" len="8" mandatory="true" access="rw" />
       <point id="Msk" offset="17" type="string" len="8" mandatory="true" access="rw" />
@@ -431,32 +431,32 @@
     <block len="174">
       <point id="Nam" offset="0" type="string" len="4" access="rw" />
       <point id="CfgSt" offset="4" type="enum16" mandatory="true" >
-        <symbol id="NOT_CONFIGURED" value="0" />
-        <symbol id="VALID_SETTING" value="1" />
-        <symbol id="VALID_HW" value="2" />
+        <symbol id="NOT_CONFIGURED">0</symbol>
+        <symbol id="VALID_SETTING">1</symbol>
+        <symbol id="VALID_HW">2</symbol>
       </point>
       <point id="ChgSt" offset="5" type="bitfield16" mandatory="true" >
-        <symbol id="PENDING" value="0" />
+        <symbol id="PENDING">0</symbol>
       </point>
       <point id="Cap" offset="6" type="bitfield16" mandatory="true" >
-        <symbol id="DHCP" value="0" />
-        <symbol id="BOOTP" value="1" />
-        <symbol id="ZEROCONF" value="2" />
-        <symbol id="DNS" value="3" />
-        <symbol id="CFG_SETTABLE" value="4" />
-        <symbol id="HW_CONFIG" value="5" />
-        <symbol id="NTP_CLIENT" value="6" />
-        <symbol id="RESET_REQUIRED" value="7" />
+        <symbol id="DHCP">0</symbol>
+        <symbol id="BOOTP">1</symbol>
+        <symbol id="ZEROCONF">2</symbol>
+        <symbol id="DNS">3</symbol>
+        <symbol id="CFG_SETTABLE">4</symbol>
+        <symbol id="HW_CONFIG">5</symbol>
+        <symbol id="NTP_CLIENT">6</symbol>
+        <symbol id="RESET_REQUIRED">7</symbol>
       </point>
       <point id="Cfg" offset="7" type="enum16" mandatory="true" access="rw" >
-        <symbol id="STATIC" value="0" />
-        <symbol id="DHCP" value="1" />
-        <symbol id="BOOTP" value="2" />
-        <symbol id="ZEROCONF" value="3" />
+        <symbol id="STATIC">0</symbol>
+        <symbol id="DHCP">1</symbol>
+        <symbol id="BOOTP">2</symbol>
+        <symbol id="ZEROCONF">3</symbol>
       </point>
       <point id="Ctl" offset="8" type="enum16" mandatory="true" access="rw" >
-        <symbol id="ENABLE_DNS" value="0" />
-        <symbol id="ENABLE_NTP" value="1" />
+        <symbol id="ENABLE_DNS">0</symbol>
+        <symbol id="ENABLE_NTP">1</symbol>
       </point>
       <point id="Addr" offset="9" type="string" len="20" mandatory="true" access="rw" />
       <point id="CIDR" offset="29" type="string" len="20" access="rw" />
@@ -638,9 +638,9 @@
     <block len="52">
       <point id="Nam" offset="0" type="string" len="4" access="rw" />
       <point id="Cap" offset="4" type="bitfield16" mandatory="true" access="rw" >
-        <symbol id="NO_PROXY" value="0" />
-        <symbol id="IPV4_PROXY" value="1" />
-        <symbol id="IPV6_PROXY" value="2" />
+        <symbol id="NO_PROXY">0</symbol>
+        <symbol id="IPV4_PROXY">1</symbol>
+        <symbol id="IPV6_PROXY">2</symbol>
       </point>
       <point id="Cfg" offset="5" type="enum16" mandatory="true" access="rw" />
       <point id="Typ" offset="6" type="bitfield16" mandatory="true" access="rw" />
@@ -785,16 +785,16 @@
     <block len="54">
       <point id="Nam" offset="0" type="string" len="4" access="rw" />
       <point id="CfgSt" offset="4" type="enum16" mandatory="true" >
-        <symbol id="NOT_CONFIGURED" value="0" />
-        <symbol id="VALID_SETTING" value="1" />
-        <symbol id="VALID_HW" value="2" />
+        <symbol id="NOT_CONFIGURED">0</symbol>
+        <symbol id="VALID_SETTING">1</symbol>
+        <symbol id="VALID_HW">2</symbol>
       </point>
       <point id="ChgSt" offset="5" type="bitfield16" mandatory="true" />
       <point id="Cap" offset="6" type="bitfield16" mandatory="true" />
       <point id="Cfg" offset="7" type="enum16" mandatory="true" access="rw" />
       <point id="Ctl" offset="8" type="enum16" mandatory="true" access="rw" >
-        <symbol id="ENABLE_DNS" value="0" />
-        <symbol id="ENABLE_NTP" value="1" />
+        <symbol id="ENABLE_DNS">0</symbol>
+        <symbol id="ENABLE_NTP">1</symbol>
       </point>
       <point id="Addr" offset="9" type="string" len="8" mandatory="true" access="rw" />
       <point id="Msk" offset="17" type="string" len="8" mandatory="true" access="rw" />
@@ -803,11 +803,11 @@
       <point id="DNS2" offset="41" type="string" len="8" access="rw" />
       <point id="MAC" offset="49" type="uint64" access="rw" />
       <point id="LnkCtl" offset="53" type="bitfield16" access="rw" >
-        <symbol id="AUTONEGOTIATE" value="0" />
-        <symbol id="FULL_DUPLEX" value="1" />
-        <symbol id="FORCE_10MB" value="2" />
-        <symbol id="FORCE_100MB" value="3" />
-        <symbol id="FORCE_1GB" value="3" />
+        <symbol id="AUTONEGOTIATE">0</symbol>
+        <symbol id="FULL_DUPLEX">1</symbol>
+        <symbol id="FORCE_10MB">2</symbol>
+        <symbol id="FORCE_100MB">3</symbol>
+        <symbol id="FORCE_1GB">3</symbol>
       </point>
     </block>
   </model>
@@ -931,28 +931,28 @@
       <point id="Rte" offset="4" type="uint32" mandatory="true" access="rw" units="bps" />
       <point id="Bits" offset="6" type="uint16" mandatory="true" access="rw" />
       <point id="Pty" offset="7" type="enum16" mandatory="true" access="rw" >
-        <symbol id="NONE" value="0" />
-        <symbol id="ODD" value="1" />
-        <symbol id="EVEN" value="2" />
+        <symbol id="NONE">0</symbol>
+        <symbol id="ODD">1</symbol>
+        <symbol id="EVEN">2</symbol>
       </point>
       <point id="Dup" offset="8" type="enum16" access="rw" >
-        <symbol id="FULL" value="0" />
-        <symbol id="HALF" value="1" />
+        <symbol id="FULL">0</symbol>
+        <symbol id="HALF">1</symbol>
       </point>
       <point id="Flw" offset="9" type="enum16" access="rw" >
-        <symbol id="NONE" value="0" />
-        <symbol id="HW" value="1" />
-        <symbol id="XONXOFF" value="2" />
+        <symbol id="NONE">0</symbol>
+        <symbol id="HW">1</symbol>
+        <symbol id="XONXOFF">2</symbol>
       </point>
       <point id="Typ" offset="10" type="enum16" >
-        <symbol id="UNKNOWN" value="0" />
-        <symbol id="RS232" value="1" />
-        <symbol id="RS485" value="2" />
+        <symbol id="UNKNOWN">0</symbol>
+        <symbol id="RS232">1</symbol>
+        <symbol id="RS485">2</symbol>
       </point>
       <point id="Pcol" offset="11" type="enum16" >
-        <symbol id="UNKNOWN" value="0" />
-        <symbol id="MODBUS" value="1" />
-        <symbol id="VENDOR" value="2" />
+        <symbol id="UNKNOWN">0</symbol>
+        <symbol id="MODBUS">1</symbol>
+        <symbol id="VENDOR">2</symbol>
       </point>
     </block>
   </model>
@@ -1116,23 +1116,23 @@
       <point id="Rte" offset="4" type="uint32" mandatory="true" access="rw" units="bps" />
       <point id="Bits" offset="6" type="uint16" mandatory="true" access="rw" />
       <point id="Pty" offset="7" type="enum16" mandatory="true" access="rw" >
-        <symbol id="NONE" value="0" />
-        <symbol id="ODD" value="1" />
-        <symbol id="EVEN" value="2" />
+        <symbol id="NONE">0</symbol>
+        <symbol id="ODD">1</symbol>
+        <symbol id="EVEN">2</symbol>
       </point>
       <point id="Dup" offset="8" type="enum16" access="rw" >
-        <symbol id="FULL" value="0" />
-        <symbol id="HALF" value="1" />
+        <symbol id="FULL">0</symbol>
+        <symbol id="HALF">1</symbol>
       </point>
       <point id="Flw" offset="9" type="enum16" access="rw" >
-        <symbol id="NONE" value="0" />
-        <symbol id="HW" value="1" />
-        <symbol id="XONXOFF" value="2" />
+        <symbol id="NONE">0</symbol>
+        <symbol id="HW">1</symbol>
+        <symbol id="XONXOFF">2</symbol>
       </point>
       <point id="Auth" offset="10" type="enum16" >
-        <symbol id="NONE" value="0" />
-        <symbol id="PAP" value="1" />
-        <symbol id="CHAP" value="2" />
+        <symbol id="NONE">0</symbol>
+        <symbol id="PAP">1</symbol>
+        <symbol id="CHAP">2</symbol>
       </point>
       <point id="UsrNam" offset="11" type="string" len="12" />
       <point id="Pw" offset="23" type="string" len="6" />
