@@ -101,11 +101,11 @@ SUCH DAMAGE.
   </xs:complexType>
 
   <xs:complexType name="StringsModelDefinition">
-    <xs:all>
+    <xs:sequence>
       <xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:element name="notes" type="xs:string" minOccurs="0" maxOccurs="1" />
-    </xs:all>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="StringsPointDefinition">
@@ -119,11 +119,11 @@ SUCH DAMAGE.
   </xs:complexType>
 
   <xs:complexType name="StringsSymbolDefinition">
-    <xs:all>
+    <xs:sequence>
       <xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:element name="notes" type="xs:string" minOccurs="0" maxOccurs="1" />
-    </xs:all>
+    </xs:sequence>
     <xs:attribute name="id" type="xs:string" use="required" />
   </xs:complexType>
 
