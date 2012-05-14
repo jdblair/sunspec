@@ -32,38 +32,47 @@
       <label>Continous Power Rating</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VARtg">
       <label>Continuous Apparent Power Rating</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VArPosRtg">
       <label>Continuous Positive VAR Rating</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VArNegRtg">
       <label>Continuous Negative VAR Rating</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Artg">
       <label>Max AC Current Rating</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PFLeadRtg">
       <label>Min Leading PF Rating</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PFLagRtg">
       <label>Min Lagging PF Rating</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="MaxChgRte">
       <label>Max Charge Rate</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="MaxDisChgRte">
       <label>Min Charge Rate</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 121: inverter basic settings -->
@@ -121,38 +130,47 @@
       <label>Max Power Output Setting</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VMax">
       <label>Max Voltage Setting</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VMin">
       <label>Min Voltage Setting</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VAMax">
       <label>Max Apparent Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VArPosMax">
       <label>Max Positive Reactive Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VArNegMax">
       <label>Max Negative Reactive Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VRef">
       <label>Voltage at PCC</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VRefOfs">
       <label>Voltage Offset from PCC</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="WGra">
       <label>Default Active Power Ramp</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PFSign">
       <label>Poewr Factor Sign Convention</label>
       <description></description>
@@ -172,10 +190,12 @@
       <label>Minimum Leading Power Factor</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PFLagMin">
       <label>Minimum Lagging Power Factor</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VArAct">
       <label>VAR Charge/Dischage Action</label>
       <description></description>
@@ -210,10 +230,12 @@
       <label>Maximum Ramp Rate (% Max Nominal Rate)</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="ECPNomHz">
       <label>Nominal ECP Frequency</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="ConnPh">
       <label>Connected Phase</label>
       <description></description>

@@ -121,11 +121,11 @@ model suns {
   name "irradiance"
   did 302
   datapoints repeating {
-    GHI   { uint16 u=Wm2 label="Global Horizontal Irradiance" u=Wm2 }
-    POAI  { uint16 u=Wm2 label="Plane of Array Irradiance" u=Wm2 }
-    DFI   { uint16 u=Wm2 label="Diffuse Irradiance" u=Wm2 }
-    DNI   { uint16 u=Wm2 label="Direct Irradiance" u=Wm2 }
-    OTI   { uint16 u=Wm2 label="Other Irradiance" u=Wm2 }
+    GHI   { uint16 u=Wm2 label="Global Horizontal Irradiance"=Wm2 }
+    POAI  { uint16 u=Wm2 label="Plane of Array Irradiance" }
+    DFI   { uint16 u=Wm2 label="Diffuse Irradiance" }
+    DNI   { uint16 u=Wm2 label="Direct Irradiance" }
+    OTI   { uint16 u=Wm2 label="Other Irradiance" }
   }
 }
 

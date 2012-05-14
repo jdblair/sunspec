@@ -34,7 +34,14 @@ SUNS=../../src/suns
 MDLFILES=$(shell (cd ..; ls *.mdl))
 XMLFILES=$(MDLFILES:.mdl=.xml)
 
+SCHEMA=../../lib/smil.xsd
+
 xml: $(XMLFILES)
+
+check: $(XMLFILES)
+	# dump stdout to /dev/null to avoid cluttering the output
+	# stuff we care about (errors and pass messages) are written to stderr
+	xmllint --schema $(SCHEMA) $^ > /dev/null
 
 %.xml: ../%.mdl
 	$(SUNS) -m $< -x xml > $@

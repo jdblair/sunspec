@@ -120,6 +120,7 @@
       <label>Module Vendor Status Code</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Evt">
       <label>Module Event Flags</label>
       <description></description>
@@ -234,58 +235,72 @@
       <label>Vendor Module Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Ctl">
       <label>Module Control</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="CtlVend">
       <label>Vendor Module Control</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="CtlVal">
       <label>Module Control Value</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Tms">
       <label>Timestamp</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutA">
       <label>Output Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutV">
       <label>Output Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutWh">
       <label>Output Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutPwr">
       <label>Output Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Tmp">
       <label>Module Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InA">
       <label>Input Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InV">
       <label>Input Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InWh">
       <label>Input Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InPwr">
       <label>Input Power</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 502: panel module integer -->
@@ -324,69 +339,86 @@
       <label>Module Status Code</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="StatVend">
       <label>Vendor Module Status Code</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Evt">
       <label>Module Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVend">
       <label>Vendor Module Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Ctl">
       <label>Module Control</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="CtlVend">
       <label>Vendor Module Control</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="CtlVal">
       <label>Module Control Value</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Tms">
       <label>Timestamp</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutA">
       <label>Output Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutV">
       <label>Output Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutWh">
       <label>Output Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutPw">
       <label>Output Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Tmp">
       <label>Module Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InA">
       <label>Input Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InV">
       <label>Input Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InWh">
       <label>Input Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InPwr">
       <label>Input Power</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 </sunSpecModels>

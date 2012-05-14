@@ -1257,8 +1257,8 @@ void suns_model_xml_strings(FILE *stream,
                         fprintf(stream, "        <notes></notes>\n");
                         fprintf(stream, "      </symbol>\n");
                     }
-                    fprintf(stream, "    </point>\n");
                 }
+                fprintf(stream, "    </point>\n");
             }
         }
     }

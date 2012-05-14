@@ -44,22 +44,27 @@
       <label>Port Number</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="BattV">
       <label>Battery Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="ArrayV">
       <label>Array Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutputA">
       <label>Output Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InputA">
       <label>Array Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="ChargerSt">
       <label>Operating State</label>
       <description></description>
@@ -94,49 +99,61 @@
       <label>Output Wattage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TodayMinBatV">
       <label>Todays Minimum Battery Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TodayMaxBatV">
       <label>Todays Maximum Battery Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VOCV">
       <label>VOC</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TodayMaxVOC">
       <label>Todays Maximum VOC</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TodaykWhOutput">
       <label>Todays kWh</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TodayAHOutput">
       <label>Todays AH</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="LifeTimeKWHOut">
       <label>Lifetime kWh</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="LifeTimeAHOut">
       <label>Lifetime kAH</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="LifeTimeMaxOut">
       <label>Lifetime Maximum Output Wattage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="LifeTimeMaxBatt">
       <label>Lifetime Maximum Battery Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="LifeTimeMaxVOC">
       <label>Lifetime Maximum VOC Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 </sunSpecModels>

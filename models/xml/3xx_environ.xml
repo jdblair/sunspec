@@ -50,238 +50,56 @@
       <label>Ambient Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="RH">
       <label>Relative Humidity</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Pres">
       <label>Barometric Pressure</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="WndSpd">
       <label>Wind Speed</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="WndDir">
       <label>Wind Direction</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Rain">
       <label>Rainfall</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Snw">
       <label>Snow Depth</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPT">
       <label>Precipitation Type</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="ElecFld">
       <label>Electric Field</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="SurWet">
       <label>Surface Wetness</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="SoilWet">
       <label>Soil Wetness</label>
       <description></description>
       <notes></notes>
-  </strings>
-
-  <!-- 302: irradiance -->
-  <model id="302" len="5">
-    <block type="repeating" len="5">
-      <point id="GHI" offset="0" type="uint16" units="Wm2" units="Wm2" />
-      <point id="POAI" offset="1" type="uint16" units="Wm2" units="Wm2" />
-      <point id="DFI" offset="2" type="uint16" units="Wm2" units="Wm2" />
-      <point id="DNI" offset="3" type="uint16" units="Wm2" units="Wm2" />
-      <point id="OTI" offset="4" type="uint16" units="Wm2" units="Wm2" />
-    </block>
-  </model>
-  <strings id="302" locale="en">
-    <model>
-      <label>irradiance</label>
-      <description></description>
-      <notes></notes>
-    </model>
-    <point id="GHI">
-      <label>Global Horizontal Irradiance</label>
-      <description></description>
-      <notes></notes>
-    <point id="POAI">
-      <label>Plane of Array Irradiance</label>
-      <description></description>
-      <notes></notes>
-    <point id="DFI">
-      <label>Diffuse Irradiance</label>
-      <description></description>
-      <notes></notes>
-    <point id="DNI">
-      <label>Direct Irradiance</label>
-      <description></description>
-      <notes></notes>
-    <point id="OTI">
-      <label>Other Irradiance</label>
-      <description></description>
-      <notes></notes>
-  </strings>
-
-  <!-- 303: back of module temperature -->
-  <model id="303" len="1">
-    <block type="repeating" len="1">
-      <point id="TmpBOM" offset="0" type="int16" sf="-1" units="C" mandatory="true" />
-    </block>
-  </model>
-  <strings id="303" locale="en">
-    <model>
-      <label>back of module temperature</label>
-      <description></description>
-      <notes></notes>
-    </model>
-    <point id="TmpBOM">
-      <label>Back of Module Temperature</label>
-      <description></description>
-      <notes></notes>
-  </strings>
-
-  <!-- 304: inclinometer -->
-  <model id="304" len="6">
-    <block type="repeating" len="6">
-      <point id="InclX" offset="0" type="int32" sf="-2" units="deg" mandatory="true" />
-      <point id="InclY" offset="2" type="int32" sf="-2" units="deg" />
-      <point id="InclZ" offset="4" type="int32" sf="-2" units="deg" />
-    </block>
-  </model>
-  <strings id="304" locale="en">
-    <model>
-      <label>inclinometer</label>
-      <description></description>
-      <notes></notes>
-    </model>
-    <point id="InclX">
-      <label>X Axis Tilt</label>
-      <description></description>
-      <notes></notes>
-    <point id="InclY">
-      <label>Y Axis Tilt</label>
-      <description></description>
-      <notes></notes>
-    <point id="InclZ">
-      <label>Z Axis Tilt</label>
-      <description></description>
-      <notes></notes>
-  </strings>
-
-  <!-- 305: location -->
-  <model id="305" len="35">
-    <block len="35">
-      <point id="Tm" offset="0" type="string" len="5" units="gpsTm" />
-      <point id="Date" offset="5" type="string" len="4" units="gpsDt" />
-      <point id="Loc" offset="9" type="string" len="20" />
-      <point id="Lat" offset="29" type="int32" sf="-7" units="deg" mandatory="true" />
-      <point id="Long" offset="31" type="int32" sf="-7" units="deg" mandatory="true" />
-      <point id="Alt" offset="33" type="int32" units="m" />
-    </block>
-  </model>
-  <strings id="305" locale="en">
-    <model>
-      <label>location</label>
-      <description></description>
-      <notes></notes>
-    </model>
-    <point id="Tm">
-      <label>Time (UTC)</label>
-      <description></description>
-      <notes></notes>
-    <point id="Date">
-      <label>Date (UTC)</label>
-      <description></description>
-      <notes></notes>
-    <point id="Loc">
-      <label>location</label>
-      <description></description>
-      <notes></notes>
-    <point id="Lat">
-      <label>Latitude</label>
-      <description></description>
-      <notes></notes>
-    <point id="Long">
-      <label>Longitude</label>
-      <description></description>
-      <notes></notes>
-    <point id="Alt">
-      <label>Altitude</label>
-      <description></description>
-      <notes></notes>
-  </strings>
-
-  <!-- 306: reference point -->
-  <model id="306" len="7">
-    <block len="7">
-      <point id="GHI" offset="0" type="uint16" units="Wm2" />
-      <point id="A" offset="1" type="int32" units="A" />
-      <point id="V" offset="3" type="int32" units="V" />
-      <point id="Tmp" offset="5" type="int32" units="C" />
-    </block>
-  </model>
-  <strings id="306" locale="en">
-    <model>
-      <label>reference point</label>
-      <description></description>
-      <notes></notes>
-    </model>
-    <point id="GHI">
-      <label>Global Horizontal Irradiance</label>
-      <description></description>
-      <notes></notes>
-    <point id="A">
-      <label>Current</label>
-      <description></description>
-      <notes></notes>
-    <point id="V">
-      <label>Voltage</label>
-      <description></description>
-      <notes></notes>
-    <point id="Tmp">
-      <label>Temperature</label>
-      <description></description>
-      <notes></notes>
-  </strings>
-
-  <!-- 308: mini weather map -->
-  <model id="308" len="4">
-    <block len="4">
-      <point id="GHI" offset="0" type="uint16" units="Wm2" />
-      <point id="TmpBOM" offset="1" type="int16" units="C" />
-      <point id="TmpAmb" offset="2" type="int16" units="C" />
-      <point id="WndSpd" offset="3" type="int16" units="mps" />
-    </block>
-  </model>
-  <strings id="308" locale="en">
-    <model>
-      <label>mini weather map</label>
-      <description></description>
-      <notes></notes>
-    </model>
-    <point id="GHI">
-      <label>Global Horizontal Irradiance</label>
-      <description></description>
-      <notes></notes>
-    <point id="TmpBOM">
-      <label>Back of Module Temperature</label>
-      <description></description>
-      <notes></notes>
-    <point id="TmpAmb">
-      <label>Ambient Temperature</label>
-      <description></description>
-      <notes></notes>
-    <point id="WndSpd">
-      <label>Wind Speed</label>
-      <description></description>
-      <notes></notes>
+    </point>
   </strings>
 </sunSpecModels>

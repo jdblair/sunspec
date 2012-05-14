@@ -33,54 +33,67 @@
       <label>Max DC Current Rating</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="N">
       <label>Number of Inputs</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Evt">
       <label>Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd">
       <label>Vendor Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCA">
       <label>Combined DC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCAhr">
       <label>DC Amp Hours</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCV">
       <label>DC Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCTmp">
       <label>Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InID">
       <label>Input ID</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InEvt">
       <label>Input Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InEvtVnd">
       <label>Input Vendor Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCA">
       <label>Input DC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCAhr">
       <label>Input DC Amp Hours</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 402: advanced string combiner -->
@@ -125,82 +138,102 @@
       <label>Max DC Current Rating</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="N">
       <label>Number of Inputs</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Evt">
       <label>Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd">
       <label>Vendor Events</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCA">
       <label>Combined DC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCAhr">
       <label>DC Amp Hours</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCV">
       <label>DC Volts</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Tmp">
       <label>Ambient Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCW">
       <label>DC Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DC_PR">
       <label>Performance Ratio</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DC_Energy">
       <label>Accumulated Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InID">
       <label>Input ID</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InEvt">
       <label>Input Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd">
       <label>Input Vendor Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCA">
       <label>Input Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCAhr">
       <label>Input Amp Hours</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCV">
       <label>Input Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCW">
       <label>Input Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="INDCWh">
       <label>Input Accumulated Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCPR">
       <label>Input Performance Ratio</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 403: string combiner -->
@@ -238,54 +271,67 @@
       <label>Max Rated Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="N">
       <label>Number of Inputs</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Evt">
       <label>Combiner Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd">
       <label>Combiner Vendor Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCA">
       <label>DC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCAhr">
       <label>DC Amp Hours</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCV">
       <label>DC Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Tmp">
       <label>Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InID">
       <label>Input ID</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InEvt">
       <label>Input Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InEvtVnd">
       <label>Input Vendor Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCA">
       <label>Input DC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCAhr">
       <label>Input DC Amp Hours</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 404: advanced string combiner -->
@@ -336,85 +382,106 @@
       <label>Max Rated Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="N">
       <label>Number of Inputs</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Evt">
       <label>Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd">
       <label>Vendor Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCA">
       <label>Combined Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCAhr">
       <label>Combined Amp Hours</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCV">
       <label>Combined Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Tmp">
       <label>Ambient Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCW">
       <label>Combined Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCPR">
       <label>Performance Ratio</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCWh">
       <label>Accumulated Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InID">
       <label>Input ID</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InEvt">
       <label>Input Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InEvtVnd">
       <label>Input Vendor Event Flags</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCA">
       <label>Input Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCAhr">
       <label>Input Amp Hours</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCV">
       <label>Input Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCW">
       <label>Input Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="INDCWh">
       <label>Input Accumulated Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDCPR">
       <label>Input Performance Ratio</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InN">
       <label>Number of Modules</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 </sunSpecModels>

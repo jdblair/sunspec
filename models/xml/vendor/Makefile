@@ -32,10 +32,17 @@
 SUNS=../../../src/suns
 VENDORDIR=../../vendor
 
+SCHEMA=../../../lib/smil.xsd
+
 MDLFILES=$(shell (cd $(VENDORDIR); ls *.mdl))
 XMLFILES=$(MDLFILES:.mdl=.xml)
 
 xml: $(XMLFILES)
+
+check: $(XMLFILES)
+	# dump stdout to /dev/null to avoid cluttering the output
+	# stuff we care about (errors and pass messages) are written to stderr
+	xmllint --schema $(SCHEMA) $^ > /dev/null
 
 %.xml: $(VENDORDIR)/%.mdl
 	$(SUNS) -m $< -x xml > $@

@@ -49,6 +49,7 @@
       <label>Interface Control</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Typ">
       <label>Physical Access Type</label>
       <description></description>
@@ -120,6 +121,7 @@
       <label>Ethernet Link Speed</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="CfgSt">
       <label>Interface Status Flags</label>
       <description></description>
@@ -194,10 +196,12 @@
       <label>IEEE MAC address</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Nam">
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Ctl">
       <label>Control Flags</label>
       <description></description>
@@ -217,6 +221,7 @@
       <label>Force Speed</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 12: IPv4 protocol -->
@@ -273,6 +278,7 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="CfgSt">
       <label>Config State</label>
       <description></description>
@@ -392,38 +398,47 @@
       <label>Address</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Msk">
       <label>Netmask</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Gw">
       <label>Gateway</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DNS1">
       <label>DNS Server 1</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DNS2">
       <label>DNS Server 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="NTP1">
       <label>NTP Server 1</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="NTP2">
       <label>NTP Server 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DomNam">
       <label>Domain Name</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="HostNam">
       <label>Host Name</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 13: IPv6 protocol -->
@@ -480,6 +495,7 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="CfgSt">
       <label>Config State</label>
       <description></description>
@@ -599,38 +615,47 @@
       <label>Address</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="CIDR">
       <label>CIDR Number</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Gw">
       <label>Gateway</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DNS1">
       <label>DNS Server 1</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DNS2">
       <label>DNS Server 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="NTP1">
       <label>NTP Server 1</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="NTP2">
       <label>NTP Server 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DomNam">
       <label>Domain Name</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="HostNam">
       <label>Host Name</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 14: Proxy Server -->
@@ -660,6 +685,7 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Cap">
       <label>Config Capability</label>
       <description></description>
@@ -684,26 +710,32 @@
       <label>Config State</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Typ">
       <label>Proxy Server Type</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Addr">
       <label>Address</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Port">
       <label>Port</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="User">
       <label>Username</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Pw">
       <label>Password</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 15: Proxy Server -->
@@ -734,50 +766,62 @@
       <label>Write 1 to clear counters</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InCnt">
       <label>Total octets received</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InUcCnt">
       <label>Unicast packets received</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InNUcCnt">
       <label>Non-unicast packets received</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InDscCnt">
       <label>Discarded inbound packets</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InErrCnt">
       <label>Inbound error packets</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="InUnkCnt">
       <label>Inbound unknown protocol packets</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutCnt">
       <label>Total octets transmitted</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutUcCnt">
       <label>Unicast packets transmitted</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutNUcCnt">
       <label>Non-unicast packets transmitted</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutDscCnt">
       <label>Discarded inbound packets</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="OutErrCnt">
       <label>Outbound error packets</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 17: Simple IP Network -->
@@ -821,6 +865,7 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="CfgSt">
       <label>Config State</label>
       <description></description>
@@ -845,14 +890,17 @@
       <label>Change Status</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Cap">
       <label>Config Capability</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Cfg">
       <label>IPv4 Config Method</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Ctl">
       <label>Config Control</label>
       <description></description>
@@ -872,26 +920,32 @@
       <label>Address</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Msk">
       <label>Netmask</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Gw">
       <label>Gateway</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DNS1">
       <label>DNS Server 1</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DNS2">
       <label>DNS Server 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="MAC">
       <label>DNS Server 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="LnkCtl">
       <label>Control Flags</label>
       <description></description>
@@ -966,14 +1020,17 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Rte">
       <label>Speed in bp/s</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Bits">
       <label>data bits per character</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Pty">
       <label>parity</label>
       <description></description>
@@ -1091,22 +1148,27 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="IMEI">
       <label>IMEI number</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="APN">
       <label>APN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Num">
       <label>phone number</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Pin">
       <label>PIN</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 19: PPP Link -->
@@ -1149,14 +1211,17 @@
       <label>Interface Name</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Rte">
       <label>Speed in bp/s</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Bits">
       <label>data bits per character</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Pty">
       <label>parity</label>
       <description></description>
@@ -1236,9 +1301,11 @@
       <label>username</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Pw">
       <label>password</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 </sunSpecModels>

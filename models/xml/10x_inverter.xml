@@ -84,94 +84,117 @@
       <label>AC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphA">
       <label>AC Current A</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphB">
       <label>AC Current B</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphC">
       <label>AC Current C</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphAB">
       <label>AC Voltage AB</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphBC">
       <label>AC Voltage BC</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphCA">
       <label>AC Voltage CA</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphA">
       <label>AC Voltage AN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphB">
       <label>AC Voltage BN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphC">
       <label>AC Voltage CN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="W">
       <label>AC Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Hz">
       <label>AC Frequency</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VA">
       <label>AC Apparent Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VAr">
       <label>AC Reactive Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PF">
       <label>AC Power Factor</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="WH">
       <label>AC Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCA">
       <label>DC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCV">
       <label>DC Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCW">
       <label>DC Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpCab">
       <label>Cabinet (Ambient) Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpSnk">
       <label>Heat Sink Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpTrns">
       <label>Transformer Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpOt">
       <label>Other Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="St">
       <label>Operating State</label>
       <description></description>
@@ -221,6 +244,7 @@
       <label>Vendor Operating State</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Evt1">
       <label>Event Bitfield</label>
       <description></description>
@@ -310,22 +334,27 @@
       <label>Event Bitfield 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd1">
       <label>Vendor Event Bitfield 1</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd2">
       <label>Vendor Event Bitfield 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd3">
       <label>Vendor Event Bitfield 3</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd4">
       <label>Vendor Event Bitfield 4</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 102: inverter -->
@@ -412,94 +441,117 @@
       <label>AC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphA">
       <label>AC Current A</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphB">
       <label>AC Current B</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphC">
       <label>AC Current C</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphAB">
       <label>AC Voltage AB</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphBC">
       <label>AC Voltage BC</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphCA">
       <label>AC Voltage CA</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphA">
       <label>AC Voltage AN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphB">
       <label>AC Voltage BN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphC">
       <label>AC Voltage CN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="W">
       <label>AC Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Hz">
       <label>AC Frequency</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VA">
       <label>AC Apparent Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VAr">
       <label>AC Reactive Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PF">
       <label>AC Power Factor</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="WH">
       <label>AC Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCA">
       <label>DC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCV">
       <label>DC Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCW">
       <label>DC Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpCab">
       <label>Cabinet (Ambient) Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpSnk">
       <label>Heat Sink Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpTrns">
       <label>Transformer Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpOt">
       <label>Other Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="St">
       <label>Operating State</label>
       <description></description>
@@ -549,6 +601,7 @@
       <label>Vendor Operating State</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Evt1">
       <label>Event Bitfield</label>
       <description></description>
@@ -638,22 +691,27 @@
       <label>Event Bitfield 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd1">
       <label>Vendor Event Bitfield 1</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd2">
       <label>Vendor Event Bitfield 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd3">
       <label>Vendor Event Bitfield 3</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd4">
       <label>Vendor Event Bitfield 4</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 103: inverter -->
@@ -740,94 +798,117 @@
       <label>AC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphA">
       <label>AC Current A</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphB">
       <label>AC Current B</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphC">
       <label>AC Current C</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphAB">
       <label>AC Voltage AB</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphBC">
       <label>AC Voltage BC</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphCA">
       <label>AC Voltage CA</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphA">
       <label>AC Voltage AN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphB">
       <label>AC Voltage BN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphC">
       <label>AC Voltage CN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="W">
       <label>AC Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Hz">
       <label>AC Frequency</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VA">
       <label>AC Apparent Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VAr">
       <label>AC Reactive Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PF">
       <label>AC Power Factor</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="WH">
       <label>AC Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCA">
       <label>DC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCV">
       <label>DC Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCW">
       <label>DC Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpCab">
       <label>Cabinet (Ambient) Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpSnk">
       <label>Heat Sink Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpTrns">
       <label>Transformer Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpOt">
       <label>Other Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="St">
       <label>Operating State</label>
       <description></description>
@@ -877,6 +958,7 @@
       <label>Vendor Operating State</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Evt1">
       <label>Event Bitfield</label>
       <description></description>
@@ -966,22 +1048,27 @@
       <label>Event Bitfield 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd1">
       <label>Vendor Event Bitfield 1</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd2">
       <label>Vendor Event Bitfield 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd3">
       <label>Vendor Event Bitfield 3</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd4">
       <label>Vendor Event Bitfield 4</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 111: inverter (float) -->
@@ -1056,94 +1143,117 @@
       <label>AC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphA">
       <label>AC Current A</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphB">
       <label>AC Current B</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphC">
       <label>AC Current C</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphAB">
       <label>AC Voltage AB</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphBC">
       <label>AC Voltage BC</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphCA">
       <label>AC Voltage CA</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphA">
       <label>AC Voltage AN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphB">
       <label>AC Voltage BN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphC">
       <label>AC Voltage CN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="W">
       <label>AC Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Hz">
       <label>AC Frequency</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VA">
       <label>AC Apparent Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VAr">
       <label>AC Reactive Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PF">
       <label>AC Power Factor</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="WH">
       <label>AC Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCA">
       <label>DC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCV">
       <label>DC Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCW">
       <label>DC Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpCab">
       <label>Cabinet Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpSnk">
       <label>Heat Sink Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpTrns">
       <label>Transformer Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpOt">
       <label>Other Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="St">
       <label>Operating State</label>
       <description></description>
@@ -1193,6 +1303,7 @@
       <label>Vendor Operating State</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Evt1">
       <label>Event Bitfield</label>
       <description></description>
@@ -1282,22 +1393,27 @@
       <label>Event Bitfield 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd1">
       <label>Vendor Event Bitfield 1</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd2">
       <label>Vendor Event Bitfield 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd3">
       <label>Vendor Event Bitfield 3</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd4">
       <label>Vendor Event Bitfield 4</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 112: inverter (float) -->
@@ -1372,94 +1488,117 @@
       <label>AC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphA">
       <label>AC Current A</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphB">
       <label>AC Current B</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphC">
       <label>AC Current C</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphAB">
       <label>AC Voltage AB</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphBC">
       <label>AC Voltage BC</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphCA">
       <label>AC Voltage CA</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphA">
       <label>AC Voltage AN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphB">
       <label>AC Voltage BN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphC">
       <label>AC Voltage CN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="W">
       <label>AC Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Hz">
       <label>AC Frequency</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VA">
       <label>AC Apparent Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VAr">
       <label>AC Reactive Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PF">
       <label>AC Power Factor</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="WH">
       <label>AC Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCA">
       <label>DC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCV">
       <label>DC Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCW">
       <label>DC Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpCab">
       <label>Cabinet Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpSnk">
       <label>Heat Sink Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpTrns">
       <label>Transformer Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpOt">
       <label>Other Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="St">
       <label>Operating State</label>
       <description></description>
@@ -1509,6 +1648,7 @@
       <label>Vendor Operating State</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Evt1">
       <label>Event Bitfield</label>
       <description></description>
@@ -1598,22 +1738,27 @@
       <label>Event Bitfield 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd1">
       <label>Vendor Event Bitfield 1</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd2">
       <label>Vendor Event Bitfield 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd3">
       <label>Vendor Event Bitfield 3</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd4">
       <label>Vendor Event Bitfield 4</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 
   <!-- 113: inverter (float) -->
@@ -1688,94 +1833,117 @@
       <label>AC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphA">
       <label>AC Current A</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphB">
       <label>AC Current B</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="AphC">
       <label>AC Current C</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphAB">
       <label>AC Voltage AB</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphBC">
       <label>AC Voltage BC</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PPVphCA">
       <label>AC Voltage CA</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphA">
       <label>AC Voltage AN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphB">
       <label>AC Voltage BN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PhVphC">
       <label>AC Voltage CN</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="W">
       <label>AC Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Hz">
       <label>AC Frequency</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VA">
       <label>AC Apparent Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="VAr">
       <label>AC Reactive Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="PF">
       <label>AC Power Factor</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="WH">
       <label>AC Energy</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCA">
       <label>DC Current</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCV">
       <label>DC Voltage</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="DCW">
       <label>DC Power</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpCab">
       <label>Cabinet Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpSnk">
       <label>Heat Sink Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpTrns">
       <label>Transformer Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="TmpOt">
       <label>Other Temperature</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="St">
       <label>Operating State</label>
       <description></description>
@@ -1825,6 +1993,7 @@
       <label>Vendor Operating State</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="Evt1">
       <label>Event Bitfield</label>
       <description></description>
@@ -1914,21 +2083,26 @@
       <label>Event Bitfield 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd1">
       <label>Vendor Event Bitfield 1</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd2">
       <label>Vendor Event Bitfield 2</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd3">
       <label>Vendor Event Bitfield 3</label>
       <description></description>
       <notes></notes>
+    </point>
     <point id="EvtVnd4">
       <label>Vendor Event Bitfield 4</label>
       <description></description>
       <notes></notes>
+    </point>
   </strings>
 </sunSpecModels>
