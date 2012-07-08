@@ -761,7 +761,7 @@ int main(int argc, char **argv)
         (list_count(sps->define_list) <= 0)) {
         error("No models or data defines were parsed.");
         error("Check your model search path or specify a model file explicitly.");
-        error("use -D, -m or the SUNS_MODELPATH environment variable.");
+        error("use -M, -m or the SUNS_MODELPATH environment variable.");
         error("model searchpath: %s", app.model_searchpath);
         exit(EXIT_FAILURE);
     }
@@ -946,13 +946,22 @@ int suns_app_model_search_dir_xml_filter(const struct dirent * dirp)
     
     debug("file: %s", filename);
     
+    /* check for *.smdx */
+    if (((filename[len - 1] == 'x') || (filename[len - 1] == 'X')) &&
+        ((filename[len - 2] == 'd') || (filename[len - 2] == 'D')) &&
+        ((filename[len - 3] == 'm') || (filename[len - 3] == 'M')) &&
+        ((filename[len - 4] == 's') || (filename[len - 4] == 'S')) &&
+        (filename[len - 5] == '.')) {
+        return 1;
+    }
+
     /* check for *.xml */
     if (((filename[len - 1] == 'l') || (filename[len - 1] == 'L')) &&
         ((filename[len - 2] == 'm') || (filename[len - 2] == 'M')) &&
         ((filename[len - 3] == 'x') || (filename[len - 3] == 'X')) &&
         (filename[len - 4] == '.')) {
         return 1;
-    } 
+    }
 
     debug("skipping %s", filename);
     return 0;

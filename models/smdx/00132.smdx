@@ -1,0 +1,233 @@
+<sunSpecModels v="1">
+  <!-- 132: Volt-Watt  -->
+  <model id="132" len="42">
+    <block len="10" type="fixed">
+      <point id="NCrv" offset="0" access="R" type="uint16" len="1" mandatory="true"  />
+      <point id="NPt" offset="1" access="R" type="uint16" len="1" mandatory="true"  />
+      <point id="ModEna" offset="2" access="RW" type="bitfield16" len="1" mandatory="true">
+        <symbol id="ENABLED">0</symbol>
+      </point>
+      <point id="ActCrv" offset="3" access="RW" type="uint16" len="1" mandatory="true"  />
+      <point id="WinTms" offset="4" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="RvrtTms" offset="5" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="RmpTms" offset="6" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="V_SF" offset="7" access="R" type="sunssf" len="1" mandatory="true"  />
+      <point id="W_SF" offset="8" access="R" type="sunssf" len="1" mandatory="true"  />
+      <point id="RmpIncDec_SF" offset="9" access="R" type="sunssf" len="1" mandatory="false"  />
+    </block>
+    <block len="32" type="repeating">
+      <point id="CrvNam" offset="0" access="RW" type="string" len="8" mandatory="false"  />
+      <point id="ActPt" offset="8" access="RW" type="uint16" len="1" mandatory="true"  />
+      <point id="RmpPt1Tms" offset="9" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="RmpDecTmm" offset="10" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="RmpIncDec_SF"/>
+      <point id="RmpIncTmm" offset="11" access="RW" type="uint16" len="1" mandatory="false" units="% WMax/min" sf="RmpIncDec_SF"/>
+      <point id="V1" offset="12" access="RW" type="uint16" len="1" mandatory="true" units="% VRef" sf="V_SF"/>
+      <point id="W1" offset="13" access="RW" type="int16" len="1" mandatory="true" units="% WMax" sf="W_SF"/>
+      <point id="V2" offset="14" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="W2" offset="15" access="RW" type="int16" len="1" mandatory="false" units="% WMax" sf="W_SF"/>
+      <point id="V3" offset="16" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="W3" offset="17" access="RW" type="int16" len="1" mandatory="false" units="% WMax" sf="W_SF"/>
+      <point id="V4" offset="18" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="W4" offset="19" access="RW" type="int16" len="1" mandatory="false" units="% WMax" sf="W_SF"/>
+      <point id="V5" offset="20" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="W5" offset="21" access="RW" type="int16" len="1" mandatory="false" units="% WMax" sf="W_SF"/>
+      <point id="V6" offset="22" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="W6" offset="23" access="RW" type="int16" len="1" mandatory="false" units="% WMax" sf="W_SF"/>
+      <point id="V7" offset="24" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="W7" offset="25" access="RW" type="int16" len="1" mandatory="false" units="% WMax" sf="W_SF"/>
+      <point id="V8" offset="26" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="W8" offset="27" access="RW" type="int16" len="1" mandatory="false" units="% WMax" sf="W_SF"/>
+      <point id="V9" offset="28" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="W9" offset="29" access="RW" type="int16" len="1" mandatory="false" units="% WMax" sf="W_SF"/>
+      <point id="V10" offset="30" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="W10" offset="31" access="RW" type="int16" len="1" mandatory="false" units="% WMax" sf="W_SF"/>
+    </block>
+  </model>
+  <strings id="132" locale="en">
+    <model>
+      <label>Volt-Watt</label>
+      <description>Volt-Watt </description>
+      <notes>Ref 3: 8.12.1.2</notes>
+    </model>
+    <point id="NCrv">
+      <label>NCrv</label>
+      <description>Number of curves supported (recommend min. 4).</description>
+      <notes> </notes>
+    </point>
+    <point id="NPt">
+      <label>NPt</label>
+      <description>Number of points in array (recommend min. 10).</description>
+      <notes> </notes>
+    </point>
+    <point id="ModEna">
+      <label>ModEna</label>
+      <description>Is Volt-Watt control active.</description>
+      <notes> </notes>
+    </point>
+    <point id="ActCrv">
+      <label>ActCrv</label>
+      <description>Index of active curve. 0=no active curve.</description>
+      <notes> </notes>
+    </point>
+    <point id="WinTms">
+      <label>WinTms</label>
+      <description>Time window for volt-watt change.</description>
+      <notes> </notes>
+    </point>
+    <point id="RvrtTms">
+      <label>RvrtTms</label>
+      <description>Timeout period for volt-watt curve selection.</description>
+      <notes> </notes>
+    </point>
+    <point id="RmpTms">
+      <label>RmpTms</label>
+      <description>Ramp time for moving from current mode to new mode.</description>
+      <notes> </notes>
+    </point>
+    <point id="V_SF">
+      <label>V_SF</label>
+      <description>Scale factor for percent I_VRef.</description>
+      <notes> </notes>
+    </point>
+    <point id="W_SF">
+      <label>W_SF</label>
+      <description>Scale factor for percent I_WMax.</description>
+      <notes> </notes>
+    </point>
+    <point id="RmpIncDec_SF">
+      <label>RmpIncDec_SF</label>
+      <description>Scale factor for increment and decrement ramps.</description>
+      <notes> </notes>
+    </point>
+    <point id="null">
+      <label>null</label>
+      <description>null</description>
+      <notes> </notes>
+    </point>
+    <point id="CrvNam">
+      <label>CrvNam</label>
+      <description>Optional description for curve.</description>
+      <notes> </notes>
+    </point>
+    <point id="ActPt">
+      <label>ActPt</label>
+      <description>Number of active points in array.</description>
+      <notes> </notes>
+    </point>
+    <point id="RmpPt1Tms">
+      <label>RmpPt1Tms</label>
+      <description>The time of the PT1 in seconds (time to accomplish a change of 95%).</description>
+      <notes> </notes>
+    </point>
+    <point id="RmpDecTmm">
+      <label>RmpDecTmm</label>
+      <description>The maximum rate at which the watt value may be reduced in response to changes in the voltage value.</description>
+      <notes> </notes>
+    </point>
+    <point id="RmpIncTmm">
+      <label>RmpIncTmm</label>
+      <description>The maximum rate at which the watt value may be increased in response to changes in the voltage value.</description>
+      <notes> </notes>
+    </point>
+    <point id="V1">
+      <label>V1</label>
+      <description>Point 1 Volts.</description>
+      <notes> </notes>
+    </point>
+    <point id="W1">
+      <label>W1</label>
+      <description>Point 1 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="V2">
+      <label>V2</label>
+      <description>Point 2 Volts.</description>
+      <notes> </notes>
+    </point>
+    <point id="W2">
+      <label>W2</label>
+      <description>Point 2 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="V3">
+      <label>V3</label>
+      <description>Point 3 Volts.</description>
+      <notes> </notes>
+    </point>
+    <point id="W3">
+      <label>W3</label>
+      <description>Point 3 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="V4">
+      <label>V4</label>
+      <description>Point 4 Volts.</description>
+      <notes> </notes>
+    </point>
+    <point id="W4">
+      <label>W4</label>
+      <description>Point 4 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="V5">
+      <label>V5</label>
+      <description>Point 5 Volts.</description>
+      <notes> </notes>
+    </point>
+    <point id="W5">
+      <label>W5</label>
+      <description>Point 5 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="V6">
+      <label>V6</label>
+      <description>Point 6 Volts.</description>
+      <notes> </notes>
+    </point>
+    <point id="W6">
+      <label>W6</label>
+      <description>Point 6 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="V7">
+      <label>V7</label>
+      <description>Point 7 Volts.</description>
+      <notes> </notes>
+    </point>
+    <point id="W7">
+      <label>W7</label>
+      <description>Point 7 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="V8">
+      <label>V8</label>
+      <description>Point 8 Volts.</description>
+      <notes> </notes>
+    </point>
+    <point id="W8">
+      <label>W8</label>
+      <description>Point 8 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="V9">
+      <label>V9</label>
+      <description>Point 9 Volts.</description>
+      <notes> </notes>
+    </point>
+    <point id="W9">
+      <label>W9</label>
+      <description>Point 9 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="V10">
+      <label>V10</label>
+      <description>Point 10 Volts.</description>
+      <notes> </notes>
+    </point>
+    <point id="W10">
+      <label>W10</label>
+      <description>Point 10 Watts.</description>
+      <notes> </notes>
+    </point>
+  </strings>
+</sunSpecModels>

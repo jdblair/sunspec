@@ -1,0 +1,148 @@
+<sunSpecModels v="1">
+  <!-- 120: Inverter Controls Nameplate Ratings  -->
+  <model id="120" len="22">
+    <block len="22" type="fixed">
+      <point id="DERTyp" offset="0" access="R" type="enum16" len="1" mandatory="true">
+        <symbol id="PV">4</symbol>
+      </point>
+      <point id="WRtg" offset="1" access="R" type="uint16" len="1" mandatory="true" units="W" sf="WRtg_SF"/>
+      <point id="WRtg_SF" offset="2" access="R" type="sunssf" len="1" mandatory="true"  />
+      <point id="VARtg" offset="3" access="R" type="uint16" len="1" mandatory="true" units="VA" sf="VARtg_SF"/>
+      <point id="VARtg_SF" offset="4" access="R" type="sunssf" len="1" mandatory="true"  />
+      <point id="VArPosRtg" offset="5" access="R" type="uint16" len="1" mandatory="true" units="var" sf="VArRtg_SF"/>
+      <point id="VArNegRtg" offset="6" access="R" type="uint16" len="1" mandatory="true" units="var" sf="VArRtg_SF"/>
+      <point id="VArRtg_SF" offset="7" access="R" type="sunssf" len="1" mandatory="true"  />
+      <point id="ARtg" offset="8" access="R" type="uint16" len="1" mandatory="true" units="A" sf="ARtg_SF"/>
+      <point id="ARtg_SF" offset="9" access="R" type="sunssf" len="1" mandatory="true"  />
+      <point id="PFLeadRtg" offset="10" access="R" type="int16" len="1" mandatory="true" units="cos()" sf="PFRtg_SF"/>
+      <point id="PFLagRtg" offset="11" access="R" type="int16" len="1" mandatory="true" units="cos()" sf="PFRtg_SF"/>
+      <point id="PFRtg_SF" offset="12" access="R" type="sunssf" len="1" mandatory="true"  />
+      <point id="WHRtg" offset="13" access="R" type="uint16" len="1" mandatory="false" units="Wh" sf="WHRtg_SF"/>
+      <point id="WHRtg_SF" offset="14" access="R" type="sunssf" len="1" mandatory="false"  />
+      <point id="AhrRtg" offset="15" access="R" type="uint16" len="1" mandatory="false" units="AH" sf="AhrRtg_SF"/>
+      <point id="AhrRtg_SF" offset="16" access="R" type="sunssf" len="1" mandatory="false"  />
+      <point id="MaxChaRte" offset="17" access="R" type="uint16" len="1" mandatory="false" units="W" sf="MaxChaRte_SF"/>
+      <point id="MaxChaRte_SF" offset="18" access="R" type="sunssf" len="1" mandatory="false"  />
+      <point id="MaxDisChaRte" offset="19" access="R" type="uint16" len="1" mandatory="false" units="W" sf="MaxDisChaRte_SF"/>
+      <point id="MaxDisChaRte_SF" offset="20" access="R" type="sunssf" len="1" mandatory="false"  />
+      <point id="Pad" offset="21" access="R" type="pad" len="1" mandatory="false"  />
+    </block>
+  </model>
+  <strings id="120" locale="en">
+    <model>
+      <label>Nameplate</label>
+      <description>Inverter Controls Nameplate Ratings </description>
+      <notes>Ref 3: 8.14.3.2, Ref 4: 17</notes>
+    </model>
+    <point id="DERTyp">
+      <label>DERTyp</label>
+      <description>Type of DER device. Default value is 4 to indicate PV device.</description>
+      <notes> </notes>
+    </point>
+    <point id="WRtg">
+      <label>WRtg</label>
+      <description>Continuous power output capability of the inverter.</description>
+      <notes> </notes>
+    </point>
+    <point id="WRtg_SF">
+      <label>WRtg_SF</label>
+      <description>Scale factor</description>
+      <notes> </notes>
+    </point>
+    <point id="VARtg">
+      <label>VARtg</label>
+      <description>Continuous Volt-Ampere capability of the inverter.</description>
+      <notes> </notes>
+    </point>
+    <point id="VARtg_SF">
+      <label>VARtg_SF</label>
+      <description>Scale factor</description>
+      <notes> </notes>
+    </point>
+    <point id="VArPosRtg">
+      <label>VArPosRtg</label>
+      <description>Continuous positive VAR capability of the inverter.</description>
+      <notes> </notes>
+    </point>
+    <point id="VArNegRtg">
+      <label>VArNegRtg</label>
+      <description>Continuous negative VAR capability of the inverter.</description>
+      <notes> </notes>
+    </point>
+    <point id="VArRtg_SF">
+      <label>VArRtg_SF</label>
+      <description>Scale factor</description>
+      <notes> </notes>
+    </point>
+    <point id="ARtg">
+      <label>ARtg</label>
+      <description>Maximum RMS AC current level capability of the inverter.</description>
+      <notes> </notes>
+    </point>
+    <point id="ARtg_SF">
+      <label>ARtg_SF</label>
+      <description>Scale factor</description>
+      <notes> </notes>
+    </point>
+    <point id="PFLeadRtg">
+      <label>PFLeadRtg</label>
+      <description>Minimum power factor capability of the inverter (leading/inductive).</description>
+      <notes> </notes>
+    </point>
+    <point id="PFLagRtg">
+      <label>PFLagRtg</label>
+      <description>Minimum power factor capability of the inverter (lagging/capacitive).</description>
+      <notes> </notes>
+    </point>
+    <point id="PFRtg_SF">
+      <label>PFRtg_SF</label>
+      <description>Scale factor</description>
+      <notes> </notes>
+    </point>
+    <point id="WHRtg">
+      <label>WHRtg</label>
+      <description>Nominal energy rating of storage device.</description>
+      <notes> </notes>
+    </point>
+    <point id="WHRtg_SF">
+      <label>WHRtg_SF</label>
+      <description>Scale factor</description>
+      <notes> </notes>
+    </point>
+    <point id="AhrRtg">
+      <label>AhrRtg</label>
+      <description>The useable capacity of the battery.  Maximum charge minus minimum charge from a technology capability perspective (Amp-hour capacity rating).</description>
+      <notes> </notes>
+    </point>
+    <point id="AhrRtg_SF">
+      <label>AhrRtg_SF</label>
+      <description>Scale factor for amp-hour rating.</description>
+      <notes> </notes>
+    </point>
+    <point id="MaxChaRte">
+      <label>MaxChaRte</label>
+      <description>Maximum rate of energy transfer into the storage device.</description>
+      <notes> </notes>
+    </point>
+    <point id="MaxChaRte_SF">
+      <label>MaxChaRte_SF</label>
+      <description>Scale factor</description>
+      <notes> </notes>
+    </point>
+    <point id="MaxDisChaRte">
+      <label>MaxDisChaRte</label>
+      <description>Maximum rate of energy transfer out of the storage device.</description>
+      <notes> </notes>
+    </point>
+    <point id="MaxDisChaRte_SF">
+      <label>MaxDisChaRte_SF</label>
+      <description>Scale factor</description>
+      <notes> </notes>
+    </point>
+    <point id="Pad">
+      <label>Pad</label>
+      <description>Pad register.</description>
+      <notes> </notes>
+    </point>
+  </strings>
+</sunSpecModels>

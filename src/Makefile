@@ -120,13 +120,8 @@ $(LIBTRX):
 $(LIBEZXML):
 	make -C ../lib ezxml
 
-MODELS=../models/0xx_common.mdl \
-	../models/10x_inverter.mdl \
-	../models/2xx_meter.mdl \
-	../models/3xx_environ.mdl \
-	../models/4xx_string_combiner.mdl \
-	../models/5xx_panel.mdl
-# ../models/12x_inverter_control.mdl
+MODELDIR=../models/smdx
+MODELS=$(shell for f in $(ls $(MODELDIR)); do echo $(MODELDIR)/$f; done)
 
 install: suns
 	$(INSTALL) -d $(PREFIX)/bin
