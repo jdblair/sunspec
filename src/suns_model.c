@@ -140,8 +140,8 @@ char * suns_type_string(suns_type_t type)
         "sunssf",
         "string",
         "pad",
-        "ipv4",
-        "ipv6",
+        "ipaddr",
+        "ipv6addr",
         "undef",
         NULL
     };
@@ -1534,10 +1534,18 @@ suns_dataset_t *suns_decode_data(list_t *did_list,
     } else {
         /* check that the length is what we expect */
         if (m->len != did_len) {
-            warning("length value in data block (%d) does "
-                    "not match data model spec length (%d). "
-                    "%d extra registers have been ignored.",
-                    did_len, m->len, did_len - m->len);
+            if (did_len < m->len) {
+                warning("length value (%d) in data block (%d) does "
+                        "not match data model spec length (%d). "
+                        "%d extra registers from the device have been ignored.",
+                        did_len, did->did, m->len, m->len - did_len);
+            } else {
+                warning("length value (%d) in data block (%d) does "
+                        "not match data model spec length (%d). "
+                        "%d extra registers have been ignored.",
+                        did_len, did->did, m->len, did_len - m->len);
+            }
+
             /* FIXME: need to mark a flag if we're going
                to generate a report */
         }

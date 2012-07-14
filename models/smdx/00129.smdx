@@ -2,57 +2,57 @@
   <!-- 129: LVRT   -->
   <model id="129" len="62">
     <block len="62" type="fixed">
-      <point id="NPt" offset="0" access="R" type="uint16" len="1" mandatory="true"  />
-      <point id="ModEna" offset="1" access="RW" type="bitfield16" len="1" mandatory="true">
+      <point id="NPt" offset="0" access="r" type="uint16" len="1" mandatory="true"  />
+      <point id="ModEna" offset="1" access="rw" type="bitfield16" len="1" mandatory="true">
         <symbol id="DISCONNECT">0</symbol>
         <symbol id="REMAIN">1</symbol>
       </point>
-      <point id="Tms_SF" offset="2" access="R" type="sunssf" len="1" mandatory="true"  />
-      <point id="V_SF" offset="3" access="R" type="sunssf" len="1" mandatory="true"  />
-      <point id="LVD_CrvNam" offset="4" access="RW" type="string" len="8" mandatory="false"  />
-      <point id="LVD_ActPt" offset="12" access="RW" type="uint16" len="1" mandatory="true"  />
-      <point id="LVD_Tms1" offset="13" access="RW" type="uint16" len="1" mandatory="true" units="Secs" sf="Tms_SF"/>
-      <point id="LVD_V1" offset="14" access="RW" type="uint16" len="1" mandatory="true" units="% VRef" sf="V_SF"/>
-      <point id="LVD_Tms2" offset="15" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVD_V2" offset="16" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVD_Tms3" offset="17" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVD_V3" offset="18" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVD_Tms4" offset="19" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVD_V4" offset="20" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVD_Tms5" offset="21" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVD_V5" offset="22" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVD_Tms6" offset="23" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVD_V6" offset="24" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVD_Tms7" offset="25" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVD_V7" offset="26" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVD_Tms8" offset="27" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVD_V8" offset="28" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVD_Tms9" offset="29" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVD_V9" offset="30" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVD_Tms10" offset="31" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVD_V10" offset="32" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVC_CrvNam" offset="33" access="RW" type="string" len="8" mandatory="false"  />
-      <point id="LVC_ActPt" offset="41" access="RW" type="uint16" len="1" mandatory="true"  />
-      <point id="LVC_Tms1" offset="42" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVC_V1" offset="43" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVC_Tms2" offset="44" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVC_V2" offset="45" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVC_Tms3" offset="46" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVC_V3" offset="47" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVC_Tms4" offset="48" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVC_V4" offset="49" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVC_Tms5" offset="50" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVC_V5" offset="51" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVC_Tms6" offset="52" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVC_V6" offset="53" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVC_Tms7" offset="54" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVC_V7" offset="55" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVC_Tms8" offset="56" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVC_V8" offset="57" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVC_Tms9" offset="58" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVC_V9" offset="59" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
-      <point id="LVC_Tms10" offset="60" access="RW" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
-      <point id="LVC_V10" offset="61" access="RW" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="Tms_SF" offset="2" access="r" type="sunssf" len="1" mandatory="true"  />
+      <point id="V_SF" offset="3" access="r" type="sunssf" len="1" mandatory="true"  />
+      <point id="LVD_CrvNam" offset="4" access="rw" type="string" len="8" mandatory="false"  />
+      <point id="LVD_ActPt" offset="12" access="rw" type="uint16" len="1" mandatory="true"  />
+      <point id="LVD_Tms1" offset="13" access="rw" type="uint16" len="1" mandatory="true" units="Secs" sf="Tms_SF"/>
+      <point id="LVD_V1" offset="14" access="rw" type="uint16" len="1" mandatory="true" units="% VRef" sf="V_SF"/>
+      <point id="LVD_Tms2" offset="15" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVD_V2" offset="16" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVD_Tms3" offset="17" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVD_V3" offset="18" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVD_Tms4" offset="19" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVD_V4" offset="20" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVD_Tms5" offset="21" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVD_V5" offset="22" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVD_Tms6" offset="23" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVD_V6" offset="24" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVD_Tms7" offset="25" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVD_V7" offset="26" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVD_Tms8" offset="27" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVD_V8" offset="28" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVD_Tms9" offset="29" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVD_V9" offset="30" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVD_Tms10" offset="31" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVD_V10" offset="32" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVC_CrvNam" offset="33" access="rw" type="string" len="8" mandatory="false"  />
+      <point id="LVC_ActPt" offset="41" access="rw" type="uint16" len="1" mandatory="true"  />
+      <point id="LVC_Tms1" offset="42" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVC_V1" offset="43" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVC_Tms2" offset="44" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVC_V2" offset="45" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVC_Tms3" offset="46" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVC_V3" offset="47" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVC_Tms4" offset="48" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVC_V4" offset="49" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVC_Tms5" offset="50" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVC_V5" offset="51" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVC_Tms6" offset="52" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVC_V6" offset="53" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVC_Tms7" offset="54" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVC_V7" offset="55" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVC_Tms8" offset="56" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVC_V8" offset="57" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVC_Tms9" offset="58" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVC_V9" offset="59" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
+      <point id="LVC_Tms10" offset="60" access="rw" type="uint16" len="1" mandatory="false" units="Secs" sf="Tms_SF"/>
+      <point id="LVC_V10" offset="61" access="rw" type="uint16" len="1" mandatory="false" units="% VRef" sf="V_SF"/>
     </block>
   </model>
   <strings id="129" locale="en">

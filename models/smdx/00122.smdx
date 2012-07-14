@@ -2,30 +2,30 @@
   <!-- 122: Inverter Controls Extended Measurements and Status  -->
   <model id="122" len="40">
     <block len="40" type="fixed">
-      <point id="PVConn" offset="0" access="R" type="bitfield16" len="1" mandatory="true">
+      <point id="PVConn" offset="0" access="r" type="bitfield16" len="1" mandatory="true">
         <symbol id="CONNECTED">0</symbol>
         <symbol id="AVAILABLE">1</symbol>
         <symbol id="OPERATING">2</symbol>
         <symbol id="TEST">3</symbol>
       </point>
-      <point id="StorConn" offset="1" access="R" type="bitfield16" len="1" mandatory="true">
+      <point id="StorConn" offset="1" access="r" type="bitfield16" len="1" mandatory="true">
         <symbol id="CONNECTED">0</symbol>
         <symbol id="AVAILABLE">1</symbol>
         <symbol id="OPERATING">2</symbol>
         <symbol id="TEST">3</symbol>
       </point>
-      <point id="ECPConn" offset="2" access="R" type="bitfield16" len="1" mandatory="true">
+      <point id="ECPConn" offset="2" access="r" type="bitfield16" len="1" mandatory="true">
         <symbol id="CONNECTED">0</symbol>
       </point>
-      <point id="ActWh" offset="3" access="R" type="acc64" len="4" mandatory="false" units="Wh" />
-      <point id="ActVAh" offset="7" access="R" type="acc64" len="4" mandatory="false" units="VAh" />
-      <point id="ActVArhQ1" offset="11" access="R" type="acc64" len="4" mandatory="false" units="varh" />
-      <point id="ActVArhQ2" offset="15" access="R" type="acc64" len="4" mandatory="false" units="varh" />
-      <point id="ActVArhQ3" offset="19" access="R" type="acc64" len="4" mandatory="false" units="varh" />
-      <point id="ActVArhQ4" offset="23" access="R" type="acc64" len="4" mandatory="false" units="varh" />
-      <point id="VArAval" offset="27" access="R" type="uint16" len="1" mandatory="false" units="var" sf="VArAval_SF"/>
-      <point id="VArAval_SF" offset="28" access="R" type="sunssf" len="1" mandatory="false"  />
-      <point id="StSetLimMsk" offset="29" access="RW" type="bitfield32" len="2" mandatory="false">
+      <point id="ActWh" offset="3" access="r" type="acc64" len="4" mandatory="false" units="Wh" />
+      <point id="ActVAh" offset="7" access="r" type="acc64" len="4" mandatory="false" units="VAh" />
+      <point id="ActVArhQ1" offset="11" access="r" type="acc64" len="4" mandatory="false" units="varh" />
+      <point id="ActVArhQ2" offset="15" access="r" type="acc64" len="4" mandatory="false" units="varh" />
+      <point id="ActVArhQ3" offset="19" access="r" type="acc64" len="4" mandatory="false" units="varh" />
+      <point id="ActVArhQ4" offset="23" access="r" type="acc64" len="4" mandatory="false" units="varh" />
+      <point id="VArAval" offset="27" access="r" type="uint16" len="1" mandatory="false" units="var" sf="VArAval_SF"/>
+      <point id="VArAval_SF" offset="28" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="StSetLimMsk" offset="29" access="rw" type="bitfield32" len="2" mandatory="false">
         <symbol id="WMax">0</symbol>
         <symbol id="VAMax">1</symbol>
         <symbol id="VArPosMax">2</symbol>
@@ -34,7 +34,7 @@
         <symbol id="PFLeadMin">5</symbol>
         <symbol id="PFLagMin">6</symbol>
       </point>
-      <point id="StActCtl" offset="31" access="R" type="bitfield32" len="2" mandatory="false">
+      <point id="StActCtl" offset="31" access="r" type="bitfield32" len="2" mandatory="false">
         <symbol id="FixedW">0</symbol>
         <symbol id="FixedVAR">1</symbol>
         <symbol id="FixedPF">2</symbol>
@@ -48,9 +48,9 @@
         <symbol id="Volt-Watt">10</symbol>
         <symbol id="Scheduled">12</symbol>
       </point>
-      <point id="TmSrc" offset="33" access="R" type="string" len="4" mandatory="false"  />
-      <point id="Tms" offset="37" access="RW" type="uint32" len="2" mandatory="false" units="Secs" />
-      <point id="VrtSt" offset="39" access="R" type="bitfield16" len="1" mandatory="false">
+      <point id="TmSrc" offset="33" access="r" type="string" len="4" mandatory="false"  />
+      <point id="Tms" offset="37" access="rw" type="uint32" len="2" mandatory="false" units="Secs" />
+      <point id="VrtSt" offset="39" access="r" type="bitfield16" len="1" mandatory="false">
         <symbol id="LVRT_ACTIVE">0</symbol>
         <symbol id="HVRT_ACTIVE">1</symbol>
       </point>

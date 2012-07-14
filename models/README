@@ -1,0 +1,5 @@
+The subdirectories contain the following:
+
+smdx:   All sunspec models in SMDX format.
+test:   Static test data for running the tool in test slave mode.
+vendor: Vendor contributed models.

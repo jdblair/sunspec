@@ -108,26 +108,31 @@ This document may be used, copied, and furnished to others, without restrictions
       <xs:enumeration value="int16"/>
       <xs:enumeration value="uint16"/>
       <xs:enumeration value="acc16"/>
-      <xs:enumeration value="pad"/>
-      <xs:enumeration value="acc16"/>
       <xs:enumeration value="int32"/>
       <xs:enumeration value="uint32"/>
-      <xs:enumeration value="acc32"/>
-      <xs:enumeration value="ipaddr"/>
-      <xs:enumeration value="int64"/>
-      <xs:enumeration value="acc64"/>
-      <xs:enumeration value="ipv6addr"/>
-      <xs:enumeration value="string"/>
       <xs:enumeration value="float32"/>
+      <xs:enumeration value="acc32"/>
+      <xs:enumeration value="int64"/>
+      <xs:enumeration value="uint64"/>
+      <xs:enumeration value="float64"/>
+      <xs:enumeration value="acc64"/>
+      <xs:enumeration value="enum16"/>
+      <xs:enumeration value="enum32"/>
+      <xs:enumeration value="bitfield16"/>
+      <xs:enumeration value="bitfield32"/>
       <xs:enumeration value="sunssf"/>
+      <xs:enumeration value="string"/>
+      <xs:enumeration value="pad"/>
+      <xs:enumeration value="ipaddr"/>
+      <xs:enumeration value="ipv6addr"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="PointAccessDefinition">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="R"/>
-      <xs:enumeration value="RW"/>
-      <xs:enumeration value="W"/>
+      <xs:enumeration value="r"/>
+      <xs:enumeration value="rw"/>
+      <xs:enumeration value="w"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

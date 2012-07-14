@@ -2,22 +2,22 @@
   <!-- 125: Pricing Signal   -->
   <model id="125" len="8">
     <block len="8" type="fixed">
-      <point id="ModEna" offset="0" access="RW" type="bitfield16" len="1" mandatory="true">
+      <point id="ModEna" offset="0" access="rw" type="bitfield16" len="1" mandatory="true">
         <symbol id="ENABLE">0</symbol>
       </point>
-      <point id="SigType" offset="1" access="RW" type="enum16" len="1" mandatory="false"  sf=" ">
+      <point id="SigType" offset="1" access="rw" type="enum16" len="1" mandatory="false"  sf=" ">
         <symbol id="UNKNOWN">0</symbol>
         <symbol id="ABSOLUTE">1</symbol>
         <symbol id="RELATIVE">2</symbol>
         <symbol id="MULTIPLIER">3</symbol>
         <symbol id="LEVEL">4</symbol>
       </point>
-      <point id="Sig" offset="2" access="RW" type="int16" len="1" mandatory="true"  sf="Sig_SF"/>
-      <point id="Sig_SF" offset="3" access="R" type="sunssf" len="1" mandatory="true"  sf=" "/>
-      <point id="WinTms" offset="4" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="RvtTms" offset="5" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="RmpTms" offset="6" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="Pad" offset="7" access="R" type="pad" len="1" mandatory="false"  />
+      <point id="Sig" offset="2" access="rw" type="int16" len="1" mandatory="true"  sf="Sig_SF"/>
+      <point id="Sig_SF" offset="3" access="r" type="sunssf" len="1" mandatory="true"  sf=" "/>
+      <point id="WinTms" offset="4" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="RvtTms" offset="5" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="RmpTms" offset="6" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="Pad" offset="7" access="r" type="pad" len="1" mandatory="false"  />
     </block>
   </model>
   <strings id="125" locale="en">

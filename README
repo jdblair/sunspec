@@ -74,6 +74,17 @@ Updates
               the source code tree of some extraneous files and bumped the
               version number to avoid confusion.
 
+2012-Jul-14:  Retire custom sunslang model format used as the primary model
+              representation up until now.  The xml format, now called
+              SMDX, is the primary form of all the model files.
+
+              The test tool has been adjusted to read the latest version
+              of SMDX and functions the same as it did reading the old
+              model files.
+
+              The old model format is still used to represent static
+              test data.  A library of test data can be found in
+              models/test.
 
 Dependencies
 ------------
@@ -148,29 +159,34 @@ any discovered SunSpec data models.  The model definition file contains
 both a description of the SunSpec data model as well as canned test
 data for running a "test slave" used to test the tool itself.
 
-All these examples assume you are running in the src/ directory:
+These examples assume you have installed the suns tool on your
+system by running "make install."  These means the model files
+do not need to be specified, as they will be read from
+/usr/local/lib/suns/models.
+
 
 Quickstart:
 
 * To read data from slave 10 through a modbus tcp server running on
   the standard port:
 
-  ./suns -m ../models/device.model -i modbus-host-or-ip -a 10
+  suns -i modbus-host-or-ip -a 10
 
 
 * To read data from a modbus rtu slave at address 10 using a USB RS485 adapter:
 
-  ./suns -m ../models/device.model -p /dev/ttyUSB0 -a 10
+  suns -p /dev/ttyUSB0 -a 10
 
 
 * To run a test modbus tcp server on port 1502:
 
-  ./suns -m ../models/device.model -P 1502 -s
+  suns -P 1502 -s
 
 
-* To read data from that test server:
+* To read data from that test server, reading a test model file:
 
-  ./suns -m ../models/device.model -P 1502
+  suns -P 1502 -m models/test/composite_superdevice.model
+
 
 
 To learn more about what is going on, specify additional verbosity by

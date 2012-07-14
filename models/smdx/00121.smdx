@@ -2,47 +2,47 @@
   <!-- 121: Inverter Controls Basic Settings  -->
   <model id="121" len="28">
     <block len="28" type="fixed">
-      <point id="WMax" offset="0" access="RW" type="uint16" len="1" mandatory="true" units="W" sf="VAMax_SF"/>
-      <point id="VAMax_SF" offset="1" access="R" type="sunssf" len="1" mandatory="true"  />
-      <point id="VMax" offset="2" access="RW" type="uint16" len="1" mandatory="false" units="V" sf="VMinMax_SF"/>
-      <point id="VMin" offset="3" access="RW" type="uint16" len="1" mandatory="false" units="V" sf="VMinMax_SF"/>
-      <point id="VMinMax_SF" offset="4" access="R" type="sunssf" len="1" mandatory="false"  />
-      <point id="VAMax" offset="5" access="RW" type="uint16" len="1" mandatory="false" units="VA" sf="VAMax_SF"/>
-      <point id="VAMax_SF" offset="6" access="R" type="sunssf" len="1" mandatory="false"  />
-      <point id="VArPosMax" offset="7" access="RW" type="uint16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
-      <point id="VArNegMax" offset="8" access="RW" type="uint16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
-      <point id="VARMax_SF" offset="9" access="R" type="sunssf" len="1" mandatory="false"  />
-      <point id="VRef" offset="10" access="RW" type="uint16" len="1" mandatory="true" units="V" sf="VAMax_SF"/>
-      <point id="VAMax_SF" offset="11" access="R" type="sunssf" len="1" mandatory="true"  />
-      <point id="VRefOfs" offset="12" access="RW" type="int16" len="1" mandatory="true" units="V" sf="VRefOfs_SF"/>
-      <point id="VRefOfs_SF" offset="13" access="R" type="sunssf" len="1" mandatory="true"  />
-      <point id="WGra" offset="14" access="RW" type="uint16" len="1" mandatory="false" units="% WMax/min" sf="WGra_SF"/>
-      <point id="WGra_SF" offset="15" access="R" type="sunssf" len="1" mandatory="false"  />
-      <point id="PFSign" offset="16" access="RW" type="enum16" len="1" mandatory="false" >
+      <point id="WMax" offset="0" access="rw" type="uint16" len="1" mandatory="true" units="W" sf="VAMax_SF"/>
+      <point id="VAMax_SF" offset="1" access="r" type="sunssf" len="1" mandatory="true"  />
+      <point id="VMax" offset="2" access="rw" type="uint16" len="1" mandatory="false" units="V" sf="VMinMax_SF"/>
+      <point id="VMin" offset="3" access="rw" type="uint16" len="1" mandatory="false" units="V" sf="VMinMax_SF"/>
+      <point id="VMinMax_SF" offset="4" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="VAMax" offset="5" access="rw" type="uint16" len="1" mandatory="false" units="VA" sf="VAMax_SF"/>
+      <point id="VAMax_SF" offset="6" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="VArPosMax" offset="7" access="rw" type="uint16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
+      <point id="VArNegMax" offset="8" access="rw" type="uint16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
+      <point id="VARMax_SF" offset="9" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="VRef" offset="10" access="rw" type="uint16" len="1" mandatory="true" units="V" sf="VAMax_SF"/>
+      <point id="VAMax_SF" offset="11" access="r" type="sunssf" len="1" mandatory="true"  />
+      <point id="VRefOfs" offset="12" access="rw" type="int16" len="1" mandatory="true" units="V" sf="VRefOfs_SF"/>
+      <point id="VRefOfs_SF" offset="13" access="r" type="sunssf" len="1" mandatory="true"  />
+      <point id="WGra" offset="14" access="rw" type="uint16" len="1" mandatory="false" units="% WMax/min" sf="WGra_SF"/>
+      <point id="WGra_SF" offset="15" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="PFSign" offset="16" access="rw" type="enum16" len="1" mandatory="false" >
         <symbol id="IEC">1</symbol>
         <symbol id="IEEE">2</symbol>
       </point>
-      <point id="PFLeadMin" offset="17" access="RW" type="int16" len="1" mandatory="false" units="cos()" sf="PFMin_SF"/>
-      <point id="PFLagMin" offset="18" access="RW" type="int16" len="1" mandatory="false" units="cos()" sf="PFMin_SF"/>
-      <point id="PFMin_SF" offset="19" access="R" type="sunssf" len="1" mandatory="false"  />
-      <point id="VArAct" offset="20" access="RW" type="enum16" len="1" mandatory="false"  >
+      <point id="PFLeadMin" offset="17" access="rw" type="int16" len="1" mandatory="false" units="cos()" sf="PFMin_SF"/>
+      <point id="PFLagMin" offset="18" access="rw" type="int16" len="1" mandatory="false" units="cos()" sf="PFMin_SF"/>
+      <point id="PFMin_SF" offset="19" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="VArAct" offset="20" access="rw" type="enum16" len="1" mandatory="false"  >
         <symbol id="SWITCH">1</symbol>
         <symbol id="MAINTAIN">2</symbol>
       </point>
-      <point id="ClcTotVA" offset="21" access="RW" type="enum16" len="1" mandatory="false">
+      <point id="ClcTotVA" offset="21" access="rw" type="enum16" len="1" mandatory="false">
         <symbol id="VECTOR">1</symbol>
         <symbol id="ARITHMETIC">2</symbol>
       </point>
-      <point id="MaxRmpRte" offset="22" access="RW" type="uint16" len="1" mandatory="false" units="% WGra" sf="MaxRmpRte_SF"/>
-      <point id="MaxRmpRte_SF" offset="23" access="R" type="sunssf" len="1" mandatory="false"  />
-      <point id="ECPNomHz" offset="24" access="RW" type="uint16" len="1" mandatory="false" units="Hz" sf="ECPNomHz_SF"/>
-      <point id="ECPNomHz_SF" offset="25" access="R" type="sunssf" len="1" mandatory="false"  />
-      <point id="ConnPh" offset="26" access="RW" type="enum16" len="1" mandatory="false">
+      <point id="MaxRmpRte" offset="22" access="rw" type="uint16" len="1" mandatory="false" units="% WGra" sf="MaxRmpRte_SF"/>
+      <point id="MaxRmpRte_SF" offset="23" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="ECPNomHz" offset="24" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="ECPNomHz_SF"/>
+      <point id="ECPNomHz_SF" offset="25" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="ConnPh" offset="26" access="rw" type="enum16" len="1" mandatory="false">
         <symbol id="A">1</symbol>
         <symbol id="B">2</symbol>
         <symbol id="C">3</symbol>
       </point>
-      <point id="Pad" offset="27" access="R" type="pad" len="1" mandatory="false"  />
+      <point id="Pad" offset="27" access="r" type="pad" len="1" mandatory="false"  />
     </block>
   </model>
   <strings id="121" locale="en">

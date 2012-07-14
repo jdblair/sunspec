@@ -1,0 +1,208 @@
+data common_model_test {
+  001
+  65 
+  string.32 : "Amalgamated Industries"        # c_manufacturer
+  string.32 : "Composite SuperDevice"         # c_model
+  string.16 : "Mark 2 <&'>"                   # c_options
+  string.16 : "3.14.159"                      # c_version
+  string.32 : "9876543210"                    # c_serialnumber
+  uint16    : 99                              # c_deviceaddress
+}
+
+data inverter_mod101_test {
+    101
+    50
+    900       # I_AC_Current
+    900       # I_AC_CurrentA
+    0xFFFF    # I_AC_CurrentB
+    0xFFFF    # I_AC_CurrentC
+    -1        # I_AC_Current_SF
+    0xFFFF    # I_AC_VoltageAB
+    0xFFFF    # I_AC_VoltageBC
+    0xFFFF    # I_AC_VoltageCA
+    1200      # I_AC_VoltageAN
+    0xFFFF    # I_AC_VoltageBN
+    0xFFFF    # I_AC_VoltageCN
+    -1        # I_AC_Voltage_SF
+    23402     # I_AC_Power
+    -1        # I_AC_Power_SF
+    6002      # I_AC_Frequency
+    -2        # I_AC_Frequency_SF
+    0x8000    # I_AC_VA
+    0         # I_AC_VA_SF
+    0x8000    # I_AC_VAR
+    0         # I_AC_VAR_SF
+    0x8000    # I_AC_PF
+    0         # I_AC_PF_SF
+    uint32:32831049  # I_AC_Energy_WH
+    0         # I_AC_Energy_WH_SF
+    728       # I_DC_Current
+    -1        # I_DC_Current_SF
+    302       # I_DC_Voltage
+    0         # I_DC_Voltage_SF
+    21985     # I_DC_Power
+    0         # I_DC_Power_SF
+    31        # I_Temp_Cab
+    0x8000    # I_Temp_Sink
+    0x8000    # I_Temp_Trans
+    0x8000    # I_Temp_Other
+    0         # I_Temp_SF
+    4         # I_Status
+    0         # I_Status_Vendor
+    uint32:0x0000FFFF # I_Event_1
+    uint32:65535 # I_Event_2
+    uint32:0 # I_Event_1_Vendor
+    uint32:0 # I_Event_2_Vendor
+    uint32:0 # I_Event_3_Vendor
+    uint32:0 # I_Event_4_Vendor
+}
+
+data inverter_mod103_test {
+  103
+  50
+  900       # I_AC_Current
+  300       # I_AC_CurrentA
+  290       # I_AC_CurrentB
+  302       # I_AC_CurrentC
+  -1        # I_AC_Current_SF
+  2080      # I_AC_VoltageAB
+  2080      # I_AC_VoltageBC
+  2080      # I_AC_VoltageCA
+  1200      # I_AC_VoltageAN
+  1200      # I_AC_VoltageBN
+  1200      # I_AC_VoltageCN
+  -1        # I_AC_Voltage_SF
+  23402     # I_AC_Power
+  -1         # I_AC_Power_SF
+  6002      # I_AC_Frequency
+  -2        # I_AC_Frequency_SF
+  0x8000    # I_AC_VA
+  0         # I_AC_VA_SF
+  0x8000    # I_AC_VAR
+  0         # I_AC_VAR_SF
+  0x8000    # I_AC_PF
+  0         # I_AC_PF_SF
+  uint32:32831049  # I_AC_Energy_WH
+  0         # I_AC_Energy_WH_SF
+  728       # I_DC_Current
+  -1        # I_DC_Current_SF
+  302       # I_DC_Voltage
+  0         # I_DC_Voltage_SF
+  219856    # I_DC_Power
+  0         # I_DC_Power_SF
+  31        # I_Temp_Cab
+  0x8000    # I_Temp_Sink
+  0x8000    # I_Temp_Trans
+  0x8000    # I_Temp_Other
+  0         # I_Temp_SF
+  4         # I_Status
+  0         # I_Status_Vendor
+  uint32:0  # I_Event_1
+  uint32:0  # I_Event_2
+  uint32:0  # I_Event_1_Vendor
+  uint32:0  # I_Event_2_Vendor
+  uint32:0  # I_Event_3_Vendor
+  uint32:0  # I_Event_4_Vendor
+}
+
+data inverter_mod113_test {
+    113
+    60
+    90.0      # I_AC_Current_f
+    30.0      # I_AC_CurrentA_f
+    29.0      # I_AC_CurrentB_f
+    30.2      # I_AC_CurrentC_f
+    208.0     # I_AC_VoltageAB_f
+    208.0     # I_AC_VoltageBC_f
+    208.0     # I_AC_VoltageCA_f
+    float32:120 # I_AC_VoltageAN_f
+    float32:120 # I_AC_VoltageBN_f
+    float32:120 # I_AC_VoltageCN_f
+    2340.2    # I_AC_Power_f
+    60.02     # I_AC_Frequency_f
+    float32:0 # I_AC_VA_f
+    float32:0 # I_AC_VAR_f
+    float32:0 # I_AC_PF_f
+    float32:32831049 # I_AC_Energy_WH_f
+    72.8      # I_DC_Current_f
+    302.0     # I_DC_Voltage_f
+    21985.0   # I_DC_Power_f
+    31.0      # I_Temp_Cab_f
+    float32:0.0 # I_Temp_Sink_f
+    float32:0.0 # I_Temp_Trans_f
+    float32:0.0 # I_Temp_Other_f
+    4         # I_Status
+    0         # I_Status_Vendor
+    uint32:0x00 # I_Event_1
+    uint32:0x00 # I_Event_2
+    uint32:0x00 # I_Event_1_Vendor
+    uint32:0x00 # I_Event_2_Vendor
+    uint32:0x00 # I_Event_3_Vendor
+    uint32:0x00 # I_Event_4_Vendor
+}
+
+data suns_met307_test {
+  307
+  11
+  uint16:18
+  uint16:222
+  uint16:17
+  uint16:234
+  uint16:10
+  uint16:0
+  uint16:0x80000000
+  uint16:0x80000000
+  uint16:0x80000000
+  uint16:0x80000000
+  uint16:0x80000000
+}
+
+
+data suns_met303_test {
+  303
+  4
+  int16:20
+  int16:18
+  int16:19
+  int16:21
+} 
+
+data suns_met304_test {
+  304
+  12
+  int32:920
+  int32:0x80000000
+  int32:0x80000000
+  int32:930
+  int32:0x80000000
+  int32:0x80000000
+}
+
+data string_combiner_test {
+  401
+  30
+  -2              #   SC_DC_Current_SF
+  0               #   SC_DC_Ahr_SF
+  -2              #   SC_DC_Voltage_SF
+  5423            #   SC_DC_Current_Max
+  2               #   SC_Num_Inputs
+  bitfield32:0x00 #   SC_Event
+  bitfield32:0x00 #   SC_Event_Vendor
+  5295            #   SC_DC_Current
+  uint32:29832    #   SC_DC_AmpHour
+  31423           #   SC_DC_Voltage
+  22              #   SC_Internal_Temp
+
+  0               #   SC_Input_ID
+  bitfield32:0x01 #   SC_Input_Event
+  bitfield32:0x04 #   SC_Input_Event_Vendor
+  2623            #   SC_Input_DC_Current
+  uint32:20948    #   SC_Input_DC_AmpHours
+
+  1               #   SC_Input_ID
+  bitfield32:0x02 #   SC_Input_Event
+  bitfield32:0x0B #   SC_Input_Event_Vendor
+  3723            #   SC_Input_DC_Current
+  uint32:34948    #   SC_Input_DC_AmpHours
+}
+

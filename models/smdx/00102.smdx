@@ -77,7 +77,6 @@
     <model>
       <label>Inverter (Split-Phase)</label>
       <description>Include this model for split phase inverter monitoring</description>
-      <description></description>
       <notes></notes>
     </model>
     <point id="A">

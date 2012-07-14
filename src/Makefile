@@ -121,15 +121,15 @@ $(LIBEZXML):
 	make -C ../lib ezxml
 
 MODELDIR=../models/smdx
-MODELS=$(shell for f in $(ls $(MODELDIR)); do echo $(MODELDIR)/$f; done)
+MODELS=$(shell ls $(MODELDIR)/*.smdx)
 
 install: suns
 	$(INSTALL) -d $(PREFIX)/bin
-	$(INSTALL) -o 755 suns $(PREFIX)/bin
+	$(INSTALL) -m 755 suns $(PREFIX)/bin
 	# make sure the old models are removed
 	rm -rf $(PREFIX)/lib/suns/models
 	$(INSTALL) -d $(PREFIX)/lib/suns/models
-	$(INSTALL) -o 644 $(MODELS) $(PREFIX)/lib/suns/models
+	$(INSTALL) -m 644 $(MODELS) $(PREFIX)/lib/suns/models
 
 clean:
 	rm -f	suns_lang.tab.c suns_lang.tab.h \

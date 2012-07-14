@@ -1222,11 +1222,17 @@ void suns_model_xml_strings(FILE *stream,
     list_node_t *c;
 
     /* FIXME: need to make sure all these strings are escaped */
+    /* the easiest way to do that would be to use ezxml to output the xml */
     
     fprintf(stream, "  <strings id=\"%d\" locale=\"en\">\n", did->did);
     fprintf(stream, "    <model>\n");
-    fprintf(stream, "      <label>%s</label>\n", did->name);
-    fprintf(stream, "      <description></description>\n");    
+    fprintf(stream, "      <label>%s</label>\n", did->model->name);
+    if (did->model->comment) {
+        fprintf(stream, "      <description>%s</description>\n",
+                did->model->comment);
+    } else {
+        fprintf(stream, "      <description></description>\n");
+    }        
     fprintf(stream, "      <notes></notes>\n");
     fprintf(stream, "    </model>\n");
     list_for_each(dp_block_list, c) {

@@ -70,6 +70,7 @@ int yywrap();
 
 void suns_parser_init(void);
 suns_dp_t * suns_model_find_dp_by_name(list_t *list, char *name);
+suns_dp_t *suns_dp_find_in_model(suns_model_t *m, char *name);
 int parser_getopt(int argc, char *argv[]);
 int suns_parse_model_file(const char *file);
 

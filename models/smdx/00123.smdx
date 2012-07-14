@@ -2,44 +2,44 @@
   <!-- 123: Immediate Inverter Controls  -->
   <model id="123" len="24">
     <block len="24" type="fixed">
-      <point id="ModEna" offset="0" access="RW" type="bitfield16" len="1" mandatory="true">
+      <point id="ModEna" offset="0" access="rw" type="bitfield16" len="1" mandatory="true">
         <symbol id="THROTTLE">0</symbol>
         <symbol id="PF">1</symbol>
         <symbol id="VAR">2</symbol>
       </point>
-      <point id="Conn" offset="1" access="RW" type="bitfield16" len="1" mandatory="true">
+      <point id="Conn" offset="1" access="rw" type="bitfield16" len="1" mandatory="true">
         <symbol id="CONNECT">0</symbol>
       </point>
-      <point id="Conn_WinTms" offset="2" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="Conn_RvrtTms" offset="3" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="WMaxLimPct" offset="4" access="RW" type="uint16" len="1" mandatory="true" units="% WMax" sf="WMaxLimPct_SF"/>
-      <point id="WMaxLimPct_SF" offset="5" access="R" type="sunssf" len="1" mandatory="true"  />
-      <point id="WMaxLimPct_WinTms" offset="6" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="WMaxLimPct_RvrtTms" offset="7" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="WMaxLimPct_RmpTms" offset="8" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="OutPFSet" offset="9" access="RW" type="int16" len="1" mandatory="true" units="cos()" sf="OutPFSet_SF"/>
-      <point id="PFExt" offset="10" access="RW" type="enum16" len="1" mandatory="false">
+      <point id="Conn_WinTms" offset="2" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="Conn_RvrtTms" offset="3" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="WMaxLimPct" offset="4" access="rw" type="uint16" len="1" mandatory="true" units="% WMax" sf="WMaxLimPct_SF"/>
+      <point id="WMaxLimPct_SF" offset="5" access="r" type="sunssf" len="1" mandatory="true"  />
+      <point id="WMaxLimPct_WinTms" offset="6" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="WMaxLimPct_RvrtTms" offset="7" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="WMaxLimPct_RmpTms" offset="8" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="OutPFSet" offset="9" access="rw" type="int16" len="1" mandatory="true" units="cos()" sf="OutPFSet_SF"/>
+      <point id="PFExt" offset="10" access="rw" type="enum16" len="1" mandatory="false">
         <symbol id="OVER">0</symbol>
         <symbol id="UNDER">1</symbol>
       </point>
-      <point id="OutPFSet_SF" offset="11" access="R" type="sunssf" len="1" mandatory="true"  />
-      <point id="OutPFSet_WinTms" offset="12" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="OutPFSet_RvrtTms" offset="13" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="OutPFSet_RmpTms" offset="14" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="VArLim_Mod" offset="15" access="RW" type="enum16" len="1" mandatory="true">
+      <point id="OutPFSet_SF" offset="11" access="r" type="sunssf" len="1" mandatory="true"  />
+      <point id="OutPFSet_WinTms" offset="12" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="OutPFSet_RvrtTms" offset="13" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="OutPFSet_RmpTms" offset="14" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="VArLim_Mod" offset="15" access="rw" type="enum16" len="1" mandatory="true">
         <symbol id="NONE">0</symbol>
         <symbol id="WMax">1</symbol>
         <symbol id="VArMax">2</symbol>
         <symbol id="VArAval">3</symbol>
       </point>
-      <point id="VArWMaxPct" offset="16" access="RW" type="uint16" len="1" mandatory="false" units="% WMax" sf="VArWMaxPct_SF"/>
-      <point id="VArWMaxPct_SF" offset="17" access="R" type="sunssf" len="1" mandatory="false"  />
-      <point id="VArMaxPct" offset="18" access="RW" type="uint16" len="1" mandatory="false" units="% VArMax" sf="VArPct_SF"/>
-      <point id="VArAvalPct" offset="19" access="RW" type="uint16" len="1" mandatory="false" units="% VArAval" sf="VArPct_SF"/>
-      <point id="VArPct_SF" offset="20" access="R" type="sunssf" len="1" mandatory="false"  />
-      <point id="VArPct_WinTms" offset="21" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="VArPct_RvrtTms" offset="22" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="VArPct_RmpTms" offset="23" access="RW" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="VArWMaxPct" offset="16" access="rw" type="uint16" len="1" mandatory="false" units="% WMax" sf="VArWMaxPct_SF"/>
+      <point id="VArWMaxPct_SF" offset="17" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="VArMaxPct" offset="18" access="rw" type="uint16" len="1" mandatory="false" units="% VArMax" sf="VArPct_SF"/>
+      <point id="VArAvalPct" offset="19" access="rw" type="uint16" len="1" mandatory="false" units="% VArAval" sf="VArPct_SF"/>
+      <point id="VArPct_SF" offset="20" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="VArPct_WinTms" offset="21" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="VArPct_RvrtTms" offset="22" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="VArPct_RmpTms" offset="23" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
     </block>
   </model>
   <strings id="123" locale="en">

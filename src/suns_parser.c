@@ -123,9 +123,25 @@ suns_dp_t * suns_model_find_dp_by_name(list_t *list, char *name)
 {
     list_node_t *c;
     list_for_each(list, c) {
-    suns_dp_t *dp = c->data;
-    if (strcmp(dp->name, name) == 0)
-        return dp;
+        suns_dp_t *dp = c->data;
+        if (strcmp(dp->name, name) == 0)
+            return dp;
+    }
+
+    /* not found */
+    return NULL;
+}
+
+
+/* linear search of a model's dp_block_list looking for *name */
+suns_dp_t *suns_dp_find_in_model(suns_model_t *m, char *name)
+{
+    list_node_t *c;
+    list_for_each(m->dp_blocks, c) {
+        suns_dp_block_t *block = c->data;
+        suns_dp_t *dp = suns_model_find_dp_by_name(block->dp_list, name);
+        if (dp)
+            return dp;
     }
 
     /* not found */
@@ -164,6 +180,149 @@ int suns_parse_model_file(const char *file)
 
 /*******************************************************/
 
+/**
+ * parse the <model> element and return a suns_model_did_t
+ * 
+ * in the xml representation there is a 1 to 1 mapping between
+ * did and model, so it is safe to return the suns_model_did_t
+ * to represent both the did and the model
+ */
+suns_model_did_t *suns_parse_xml_model_elmt(ezxml_t model)
+{
+    int did_int;
+    
+    /* parse model id (did) */
+    if (sscanf(ezxml_attr(model, "id"), "%d", (int*) &did_int) != 1) {
+        error("can't convert id \"%s\" to an integer",
+              ezxml_attr(model, "id"));
+        return NULL;
+    }
+
+    /* create a suns_model_did_t and hang it on the global list */
+    suns_model_did_t *did = suns_model_did_new(did_int);
+    did->model = suns_model_new();
+    did->model->type = "suns"; 
+    list_node_add(did->model->did_list, list_node_new(did));
+
+    /* now parse the blocks */
+    ezxml_t block;
+    for (block = ezxml_child(model, "block"); block; block = block->next) {
+        suns_dp_block_t *b = suns_ezxml_to_dp_block(block);
+        list_node_add(did->model->dp_blocks, list_node_new(b));
+    }
+
+    return did;
+}
+
+
+/**
+ * parse the <strings> element in a model file
+ *
+ * this returns the suns_model_t that the strings are part of.
+ * note that it does not allocate the suns_model_t; it must have already
+ * been created and attached to the global model list, presumably by
+ * suns_parse_xml_model_elmt().
+ */ 
+suns_model_did_t *suns_parse_xml_strings_elmt(ezxml_t strings,
+                                              list_t *did_list)
+{
+    int did_int;
+
+    /* parse id */
+    if (sscanf(ezxml_attr(strings, "id"), "%d", (int*) &did_int) != 1) {
+        error("can't convert id \"%s\" to an integer",
+              ezxml_attr(strings, "id"));
+        return NULL;
+    }
+
+    debug("parsing strings for model %d", did_int);
+    
+    /* only load "en" locale */
+    const char *locale = ezxml_attr(strings, "locale");
+    if (strcmp(locale, "en") != 0) {
+        debug("ignoring strings of locale %s", locale);
+        return NULL;
+    }
+
+    /* look up model */
+    suns_model_did_t *did = suns_find_did(did_list, did_int);
+    if (did == NULL) {
+        /* skip this strings block - we haven't
+           yet parsed the model it refers to */
+        return NULL;
+    }
+
+    /* parse model element */
+    ezxml_t model = ezxml_child(strings, "model");
+    if (model == NULL) {
+        /* model element is required */
+        error("no <model> element in <strings id=\"%d\">", did_int);
+        return NULL;
+    }
+
+    /* parse elements in <model> */
+    ezxml_t label = ezxml_child(model, "label");
+    ezxml_t desc = ezxml_child(model, "description");
+    /* ezxml_t notes = ezxml_child(model, "notes"); */
+    
+    /* ezxml_txt will return an empty string if the ezxml_t is null */
+    did->name = strdup(ezxml_txt(label));
+    did->model->name = strdup(ezxml_txt(label));
+    did->model->comment = strdup(ezxml_txt(desc));
+
+    /* parse point elements */
+    ezxml_t point;
+    for (point = ezxml_child(strings, "point");
+         point; point = point->next) {
+        char *name = strdup(ezxml_attr(point, "id"));
+        if (! name) {
+            error("no id attribute for strings.point element");
+            return NULL;
+        }
+        debug("parsing strings for point %s", name);
+
+        /* look up the suns_dp_t in the model */
+        suns_dp_t *dp = suns_dp_find_in_model(did->model, name);
+        if (dp == NULL) {
+            debug("can't find datapoint id %s", name);
+            continue;
+        }
+
+        /* make sure attributes list is created */
+        if (dp->attributes == NULL)
+            dp->attributes = list_new();
+
+        ezxml_t label = ezxml_child(point, "label");
+        ezxml_t desc = ezxml_child(point, "description");
+        ezxml_t notes = ezxml_child(point, "notes");
+
+        suns_attribute_t *a;    /* pointer is reused for all attributes */
+
+        if (label) {
+            a = suns_attribute_new();
+            a->name = "label";
+            a->value = strdup(ezxml_txt(label));
+            list_node_add(dp->attributes, list_node_new(a));
+        }
+            
+        if (desc) {
+            a = suns_attribute_new();
+            a->name = "description";
+            a->value = strdup(ezxml_txt(desc));
+            list_node_add(dp->attributes, list_node_new(a));
+        }
+
+        if (notes) {
+            a = suns_attribute_new();
+            a->name = "notes";
+            a->value = strdup(ezxml_txt(notes));
+            list_node_add(dp->attributes, list_node_new(a));
+        }
+    }
+
+    return did;
+}
+
 
 int suns_parse_xml_model_file(const char *file)
 {
@@ -177,85 +336,30 @@ int suns_parse_xml_model_file(const char *file)
         return -1;
     }
     
-    suns_model_did_t *did;
     for (model = ezxml_child(x, "model"); model; model = model->next) {
-        debug("model = %p", model);
-        suns_model_t *m = suns_model_new();
-        int did_int;
-        /* discard const; its ok. m->name should be a const char * */
-        m->name = (char *) ezxml_attr(model, "name");
-        m->type = "suns";
-        if (sscanf(ezxml_attr(model, "id"), "%d", (int*) &did_int) != 1) {
-            error("can't convert id \"%s\" to an integer",
-                  ezxml_attr(model, "id"));
-            continue;
+        suns_model_did_t *did = suns_parse_xml_model_elmt(model);
+        if (did) {
+            /* models and did are 1:1 in the xml format */
+            list_node_add(sps->did_list, list_node_new(did));
+            list_node_add(sps->model_list, list_node_new(did->model));
         }
-        did = suns_model_did_new(did_int);
-        did->model = m;
-        did->name = m->name;
-        list_node_add(m->did_list, list_node_new(did));
-        list_node_add(sps->did_list, list_node_new(did));
-
-        ezxml_t block;
-        for (block = ezxml_child(model, "block"); block; block = block->next) {
-            suns_dp_block_t *b = suns_ezxml_to_dp_block(block);
-            list_node_add(m->dp_blocks, list_node_new(b));
-        }
-
-        list_node_add(sps->model_list, list_node_new(m));
-        debug("parsed xml model for %s", m->name);
     }
 
-    /* for the first version of this let's assume we've already
-       loaded the model */
     ezxml_t strings;
     for (strings = ezxml_child(x, "strings");
          strings; strings = strings->next) {
-        int did_int;
-        if (sscanf(ezxml_attr(strings, "id"), "%d", (int*) &did_int) != 1) {
-            error("can't convert id \"%s\" to an integer",
-                  ezxml_attr(strings, "id"));
-            continue;
-        }
-        
-        /* only load "en" locale */
-        const char *locale = ezxml_attr(strings, "locale");
-        if (strcmp(locale, "en") != 0) {
-            debug("ignoring strings of locale %s", locale);
-            continue;
-        }
+        /* parse strings element */
+        suns_parse_xml_strings_elmt(strings, sps->did_list);
+    }
 
-        /* check if the last did we parsed above is not the one we're
-           looking for */
-        if (did->did != did_int) {
-            /* replace did with the one we need */
-            did = suns_find_did(sps->did_list, did_int);
-            if (did == NULL) {
-                /* skip this strings block - we haven't
-                   yet parsed the model it refers to */
-                continue;
-            }
-        }
-
-        /* parse out values */
-        for (model = ezxml_child(strings, "model");
-             model; model = model->next) {
-            ezxml_t label = ezxml_child(model, "label");
-            ezxml_t desc = ezxml_child(model, "description");
-            /* ezxml_t notes = ezxml_child(model, "notes"); */
-
-            /* ezxml_txt will return an empty string if the ezxml_t is null */
-            did->name = strdup(ezxml_txt(label));
-            did->model->name = strdup(ezxml_txt(label));
-            did->model->comment = strdup(ezxml_txt(desc));
-        }
-    }            
-            
+    /* free the ezxml structure */
+    ezxml_free(x);
+    
     return rc;
 }
 
 
-/* parse <point> */
+/* parse <model> element into a suns_dp_block_t */
 suns_dp_block_t *suns_ezxml_to_dp_block(ezxml_t b)
 {
     suns_dp_block_t *dp_block = suns_dp_block_new();
@@ -283,9 +387,13 @@ suns_dp_t *suns_ezxml_to_dp(ezxml_t p)
         return NULL;
     
     /* discard const; its ok, dp->name should be a const char * */
-    dp->name = (char *) ezxml_attr(p, "id");
+    dp->name = strdup(ezxml_attr(p, "id"));
     dp->type_pair = suns_type_pair_new();
     dp->type_pair->type = suns_type_from_name((char *) ezxml_attr(p, "type"));
+    if (dp->type_pair->type == SUNS_UNDEF) {
+        error("datapoint id=\"%s\" has invalid data type \"%s\"",
+              dp->name, ezxml_attr(p, "type"));
+    }
 
     /* parse out the string length */
     if (dp->type_pair->type == SUNS_STRING) {
@@ -303,17 +411,17 @@ suns_dp_t *suns_ezxml_to_dp(ezxml_t p)
         /* see if it is numeric */
         if (sscanf(sf, "%d", &(dp->type_pair->sf)) != 1) {
             /* its not numeric, treat it as a string */
-            dp->type_pair->name = sf;
+            dp->type_pair->name = strdup(sf);
         }
     }
 
-    char *u = (char *) ezxml_attr(p, "u");
+    char *u = (char *) ezxml_attr(p, "units");
     if (u) {
         if (! dp->attributes)
             dp->attributes = list_new();
         suns_attribute_t *a = malloc(sizeof(suns_attribute_t));
         a->name = "u";
-        a->value = u;
+        a->value = strdup(u);
         list_node_add(dp->attributes, list_node_new(a));
     }
 
