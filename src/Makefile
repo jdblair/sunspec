@@ -136,7 +136,7 @@ install: suns
 
 clean:
 	rm -f suns_lang.tab.c suns_lang.tab.h \
-		suns_lang.yy.c *.o *.d $(BINFILES) suns_version.h
+		suns_lang.yy.c *.o *.d $(BINFILES)
 
 distclean:
 	rm -f *~ *.o *.d $(BINFILES)
