@@ -82,7 +82,7 @@ CFLAGS+=-I ../lib
 LDFLAGS=-lm $(shell pkg-config --libs libmodbus) 
 
 
-all: $(BINFILES)
+all: suns_version.h $(BINFILES)
 
 include $(SRC:.c=.d)
 #include $(UNIT_TESTS_SRC:.c=.d)
@@ -113,6 +113,9 @@ suns_host_test: $(HOST_TEST_OBJ)
 suns_store: $(SUNS_STORE_OBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) -lsqlite3 $(SUNS_STORE_OBJ) $(LIBEZXML) $(LIBTRX) -o suns_store
 
+suns_version.h: ../VERSION
+	echo "#define SUNS_VERSION_NUMBER \"$(shell cat ../VERSION)\"" > $@
+
 
 $(LIBTRX):
 	make -C ../lib libtrx
@@ -132,8 +135,8 @@ install: suns
 	$(INSTALL) -m 644 $(MODELS) $(PREFIX)/lib/suns/models
 
 clean:
-	rm -f	suns_lang.tab.c suns_lang.tab.h \
-		suns_lang.yy.c *.o *.d $(BINFILES)
+	rm -f suns_lang.tab.c suns_lang.tab.h \
+		suns_lang.yy.c *.o *.d $(BINFILES) suns_version.h
 
 distclean:
 	rm -f *~ *.o *.d $(BINFILES)

@@ -1062,14 +1062,10 @@ int suns_dataset_xml_fprintf(FILE *stream, suns_dataset_t *data)
     char value[BUFFER_SIZE];
     
     fprintf(stream, "   <m id=\"%d\"", data->did->did);
-    /*
-     *
-     * x must indicate the instance number of a model
-     * when there is more than one of a given model
-     *
+    /* x is used to indicate the instance number of a model
+       when there is more than one of a given model */
     if (data->index != 0)
         fprintf(stream, " x=\"%d\"", data->index);
-    */
     fprintf(stream, ">\n");
 
     list_for_each(data->values, c) {

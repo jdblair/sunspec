@@ -204,7 +204,7 @@ suns_type_t suns_type_from_name(char *name)
         { "sunssf",     SUNS_SF },
         { "string",     SUNS_STRING },
         { "pad",        SUNS_PAD },
-        { "ipv4",       SUNS_IPV4 },
+        { "ipaddr",     SUNS_IPV4 },
         { "ipv6",       SUNS_IPV6 },
         { "undef",      SUNS_UNDEF },
         { NULL,         -1 },
@@ -1022,7 +1022,7 @@ int suns_device_add_dataset(suns_device_t *device, suns_dataset_t *data)
 
     dp_elmt_map_t elmt_map[] = {
         { "Mn", &(device->manufacturer) },
-        { "Md",        &(device->model) },
+        { "Md", &(device->model) },
         { "SN", &(device->serial_number) },
         { NULL,             NULL  }
     };
@@ -1046,8 +1046,14 @@ int suns_device_add_dataset(suns_device_t *device, suns_dataset_t *data)
             if (v)
                 *(elmt_map[i].ptr) = suns_value_get_string(v);
         }
- 
     }
+
+    /* search the dataset already to see if we've already added
+       a dataset of the current did so we can set the index value
+       correctly.  this is an n^2 search, but we should be ok since
+       devices should have a relatively small number of models.
+    */
+
 
     return rc;
 }
@@ -1534,15 +1540,35 @@ suns_dataset_t *suns_decode_data(list_t *did_list,
     } else {
         /* check that the length is what we expect */
         if (m->len != did_len) {
-            if (did_len < m->len) {
+            /*
+              The introduction of the "pad" value to some odd-numbered
+              models has made producing this warning considerably more
+              complex.  Here's the rule:
+
+              If the model's last value is of type pad then we should
+              not produce a warning if the device's model length is
+              1 less than what is defined.  Otherwise, we still
+              display a warning since the length shouldn't be different
+              in another case.
+              
+              We always still try to decode the data.
+            */
+            suns_dp_t *dp = suns_model_last_dp(m);
+            if ((did_len == (m->len - 1)) &&
+                (dp->type_pair->type == SUNS_PAD) ) {
+                warning("device does not use the trailing pad register "
+                        "for model %d.",
+                        did->did);
+            } else if (did_len < m->len) {
                 warning("length value (%d) in data block (%d) does "
                         "not match data model spec length (%d). "
-                        "%d extra registers from the device have been ignored.",
+                        "%d extra registers in the model have been ignored.",
                         did_len, did->did, m->len, m->len - did_len);
             } else {
                 warning("length value (%d) in data block (%d) does "
                         "not match data model spec length (%d). "
-                        "%d extra registers have been ignored.",
+                        "%d extra registers from the device "
+                        "have been ignored.",
                         did_len, did->did, m->len, did_len - m->len);
             }
 
@@ -1694,8 +1720,14 @@ int suns_decode_dp_block(suns_dp_block_t *dp_block,
                 byte_offset += size;
 		
             } else {
-                warning("%s offset %d is out-of-bounds",
-                        dp->name, dp->offset + (i * dp_block->len));
+                if (dp->type_pair->type != SUNS_PAD) {
+                    warning("%s offset %d defined in the model exceeds "
+                            "length of device data",
+                            dp->name, dp->offset + (i * dp_block->len));
+                } else {
+                    debug("ignoring missing pad register at offset %d",
+                          dp->offset + (i * dp_block->len));
+                }
                 debug("requested = %d, len = %d",
                       (dp->offset * 2) + suns_type_size(dp->type_pair->type),
                       len);
@@ -2072,4 +2104,100 @@ void suns_model_resolve_defines(suns_model_t *m)
             }
         }
     }
+}
+
+
+/**
+ * Return the last datapoint in a model
+ *
+ */
+suns_dp_t *suns_model_last_dp(suns_model_t *m)
+{
+    if (m == NULL) {
+        debug("m is a NULL pointer");
+        return NULL;
+    }
+
+    if (m->dp_blocks == NULL) {
+        debug("m->dp_blocks is a NULL pointer");
+        return NULL;
+    }
+
+    /* list_t provides us with list->tail, which is a pointer to the
+       last node in the list */
+    suns_dp_block_t *dp_block = m->dp_blocks->tail->data;
+    suns_dp_t *dp = dp_block->dp_list->tail->data;
+
+    return dp;
+}
+
+
+/**
+ * Given a new dataset's did, search the datasets attached to a
+ * suns_device_t to determine the index of a new dataset.
+ * This is used to compute the index value used to uniquely identify
+ * a model's dataset when models are repeated on a given device.
+ *
+ * This algorithm is a bit tricky b/c no index is set if a model
+ * is the only instance of a did on the device.  However, if more
+ * than one of a given model are on a device then we need to number
+ * them starting with 1.  Hence the side effect.
+ *
+ * This function must be called before the new did is added to
+ * the dataset, or it will be "discovered."
+ *
+ * side effects: sets the index of the first occurance of a dataset
+ *               to 1
+ */
+int suns_model_get_did_index(suns_device_t *device, uint16_t did)
+{
+    /* first check if there are no datasets in the device */
+    if (list_count(device->datasets) == 0) {
+        return 0;
+    }
+    /* check to see if the previously added value is the same as
+       the current model as a shortcut for setting the index value
+       when the same model repeats on a given device.  this will mean
+       we avoid n^2 runtime in the most common case */
+    if (device->datasets->tail) {
+        suns_dataset_t *last = device->datasets->tail->data;
+        if (last->did->did == did) {
+            /* this is tricky: a dataset only gets an index if
+               it is needed to uniquely identify it.  since indices start
+               at 1 we use 0 to mean no index.  this means if we've found
+               the 2nd instance of a model we need to set the index
+               on the first instance. */
+            if (last->index == 0) {
+                last->index = 1;
+                return 2;
+            } else {
+                return last->index + 1;
+            }
+        }
+    }
+
+    /* if we're here then the shortcut didn't work and we need to
+       search all datasets so far in the device */
+    list_node_t *c;
+    suns_dataset_t *found = NULL;
+    list_for_each (device->datasets, c) {
+        suns_dataset_t *dataset = c->data;
+        if (dataset->did->did == did)
+            found = dataset;
+    }
+    
+    /* again with the tricky: set the index of the last dataset
+       with the same did to 1 if it is the first instance of a did
+       we have just found again */
+    if (found) {
+        if (found->index == 0) {
+            found->index = 1;
+            return 2;
+        } else {
+            return found->index + 1;
+        }
+    }
+
+    /* we have found no previous instance of the did */
+    return 0;
 }

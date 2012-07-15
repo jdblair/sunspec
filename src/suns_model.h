@@ -417,5 +417,7 @@ int suns_did_number_string(suns_model_t *m, char *buf, size_t len);
 int suns_check_scale_factors(suns_model_t *m);
 int suns_model_check_consistency(suns_model_t *m);
 void suns_model_resolve_defines(suns_model_t *m);
+suns_dp_t *suns_model_last_dp(suns_model_t *m);
+int suns_model_get_did_index(suns_device_t *device, uint16_t did);
 
 #endif /* _SUNS_MODEL_H_ */

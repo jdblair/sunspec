@@ -60,6 +60,7 @@
 #include "suns_lang.tab.h"
 #include "suns_host.h"
 #include "suns_host_parser.h"
+#include "suns_version.h"
 
 
 void suns_app_init(suns_app_t *app)
@@ -104,7 +105,7 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
 
     /* FIXME: add long options */
 
-    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:l:X:T:r:M:hHc"))
+    while ((opt = getopt(argc, argv, "t:i:P:p:b:M:m:o:sx:va:I:l:X:T:r:M:hHcV"))
            != -1) {
         switch (opt) {
         case 't':
@@ -237,6 +238,11 @@ int suns_app_getopt(int argc, char *argv[], suns_app_t *app)
             app->check_only = 1;
             break;
 
+        case 'V':
+            printf(SUNS_VERSION_NUMBER "\n");
+            exit(EXIT_SUCCESS);
+            break;
+
         default:
             suns_app_help(argc, argv);
             exit(EXIT_SUCCESS);
@@ -279,6 +285,7 @@ void suns_app_help(int argc, char *argv[])
     printf("      -l: limit number of registers requested in a single read (max is 125)\n");
     printf("      -c: check models for internal consistency then exit\n");
     printf("      -v: verbose level (up to -vvvv for most verbose)\n");
+    printf("      -V: print current release number and exit\n");
     printf("\n");
 }
 
@@ -556,10 +563,6 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
     /* we need the parser state to gain access to the data model definitions */
     suns_parser_state_t *sps = suns_get_parser_state();    
 
-    /* datasets (aka models) are indexed in case more than one of the 
-       same kind occurs on a single device */
-    int dataset_index = 1;  /* start numbering at 1 */
-
     /* places to look for the sunspec signature */
     int search_registers[] = { 40001, 1, 50001, 0x40001, -1 };
     int base_register = -1;
@@ -696,8 +699,11 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
 
             /* add 2 to len to include did & len registers */
             data = suns_decode_data(sps->did_list, buf, (len + 2) * 2);
+
             /* assign index */
-            data->index = dataset_index;
+            /* suns_model_get_did_index() must be called before the
+               dataset is added to the device */
+            data->index = suns_model_get_did_index(device, data->did->did);
 
             /* add the dataset to the device */
             suns_device_add_dataset(device, data);
@@ -710,8 +716,6 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
         
         /* jump ahead to next data block */
         offset += len + 2;
-
-        dataset_index++;
     }
 
     return rc;
