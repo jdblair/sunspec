@@ -205,7 +205,7 @@ suns_type_t suns_type_from_name(char *name)
         { "string",     SUNS_STRING },
         { "pad",        SUNS_PAD },
         { "ipaddr",     SUNS_IPV4 },
-        { "ipv6",       SUNS_IPV6 },
+        { "ipv6addr",   SUNS_IPV6 },
         { "undef",      SUNS_UNDEF },
         { NULL,         -1 },
     };
