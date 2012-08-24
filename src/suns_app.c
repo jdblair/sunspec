@@ -287,6 +287,8 @@ void suns_app_help(int argc, char *argv[])
     printf("      -v: verbose level (up to -vvvv for most verbose)\n");
     printf("      -V: print current release number and exit\n");
     printf("\n");
+    printf("      NOTE: all register addresses use base address 1\n");
+    printf("\n");
 }
 
 
@@ -573,23 +575,33 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
         rc = -1;
         for (retries = 0; retries < app->retries && rc < 0; retries++) {
             /* libmodbus uses zero as the base address */
-            debug("read register %d, try %d", search_registers[i], retries);
+            debug("read register %d, try %d",
+                    search_registers[i], retries);
             rc = modbus_read_registers(app->mb_ctx, search_registers[i] - 1,
                                        2, regs);
+            /* don't retry for illegal address exception
+               this means we can talk to the slave, but the slave
+               said the address is invalid */
+            if ((rc < 0) && (errno == EMBXILADD)) {
+                verbose(1,"illegal address exception when "
+                        "reading register %d", search_registers[i]);
+                break;
+            }
         }
 
         if (rc < 0) {
             debug("modbus_read_registers() returned %d: %s",
                   rc, modbus_strerror(errno));
-            error("modbus_read_registers() failed: ");
-            error("register %d on address %d",
-                  search_registers[i], app->addr);
+            debug("modbus read of register %d at address %d failed: %s",
+                    search_registers[i], app->addr, modbus_strerror(errno));
         } else if ( (regs[0] == SUNS_ID_HIGH) &&
                     (regs[1] == SUNS_ID_LOW) ) {
             base_register = search_registers[i];
             verbose(1, "found sunspec signature at register %d",
                     base_register);
             break;
+        } else {
+            verbose(1, "no sunspec signature at register %d", base_register);
         }
     }
 
@@ -823,7 +835,9 @@ int main(int argc, char **argv)
     }
 
     /* initialize the modbus layer (same for server and client) */
-    suns_init_modbus(&app);
+    if (suns_init_modbus(&app) < 0) {
+        exit(EXIT_FAILURE);
+    }
 
     /* run server / slave */
     if (app.test_server) {

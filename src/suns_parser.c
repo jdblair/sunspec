@@ -279,7 +279,7 @@ suns_model_did_t *suns_parse_xml_strings_elmt(ezxml_t strings,
             error("no id attribute for strings.point element");
             return NULL;
         }
-        debug("parsing strings for point %s", name);
+        verbose(4, "parsing strings for point %s", name);
 
         /* look up the suns_dp_t in the model */
         suns_dp_t *dp = suns_dp_find_in_model(did->model, name);

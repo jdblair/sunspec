@@ -1662,7 +1662,7 @@ void suns_model_fill_offsets(suns_model_t *m)
         m->len += dp_block_offset;
     }
 
-    debug_i(m->len);
+    /* debug_i(m->len); */
 }
 
 
