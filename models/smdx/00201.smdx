@@ -5,13 +5,13 @@
       <point id="A" offset="0" type="int16" sf="A_SF" units="A" mandatory="true" />
       <point id="AphA" offset="1" type="int16" sf="A_SF" units="A" mandatory="true" />
       <point id="AphB" offset="2" type="int16" sf="A_SF" units="A" />
-      <point id="AphC" offset="3" type="int16" sf="A_SF" units="A" mandatory="true" />
-      <point id="A_SF" offset="4" type="sunssf" />
-      <point id="PhV" offset="5" type="int16" sf="V_SF" units="V" mandatory="true" />
-      <point id="PhVphA" offset="6" type="int16" sf="V_SF" units="V" mandatory="true" />
+      <point id="AphC" offset="3" type="int16" sf="A_SF" units="A" mandatory="false" />
+      <point id="A_SF" offset="4" type="sunssf" mandatory="true"/>
+      <point id="PhV" offset="5" type="int16" sf="V_SF" units="V" mandatory="false" />
+      <point id="PhVphA" offset="6" type="int16" sf="V_SF" units="V" mandatory="false" />
       <point id="PhVphB" offset="7" type="int16" sf="V_SF" units="V" />
       <point id="PhVphC" offset="8" type="int16" sf="V_SF" units="V" />
-      <point id="PPV" offset="9" type="int16" sf="V_SF" units="V" mandatory="true" />
+      <point id="PPV" offset="9" type="int16" sf="V_SF" units="V" mandatory="false" />
       <point id="PPVphAB" offset="10" type="int16" sf="V_SF" units="V" />
       <point id="PPVphBC" offset="11" type="int16" sf="V_SF" units="V" />
       <point id="PPVphCA" offset="12" type="int16" sf="V_SF" units="V" />
@@ -128,12 +128,12 @@
     <point id="PhV">
       <label>Voltage LN</label>
       <description>Line to Neutral AC Voltage (average of active phases)</description>
-      <notes></notes>
+      <notes>Conditional AN connection</notes>
     </point>
     <point id="PPVphAB">
       <label>Phase Voltage AB</label>
       <description>Phase Voltage AB</description>
-      <notes></notes>
+      <notes>Conditional AB connection</notes>
     </point>
     <point id="PPVphBC">
       <label>Phase Voltage BC</label>
@@ -153,7 +153,7 @@
     <point id="PhVphA">
       <label>Phase Voltage AN</label>
       <description>Phase Voltage AN</description>
-      <notes></notes>
+      <notes>Conditional AN connection</notes>
     </point>
     <point id="PhVphB">
       <label>Phase Voltage BN</label>

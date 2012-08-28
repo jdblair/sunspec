@@ -6,8 +6,8 @@
       <point id="AphA" offset="1" type="int16" sf="A_SF" units="A" mandatory="true" />
       <point id="AphB" offset="2" type="int16" sf="A_SF" units="A" mandatory="true" />
       <point id="AphC" offset="3" type="int16" sf="A_SF" units="A" mandatory="true" />
-      <point id="A_SF" offset="4" type="sunssf" />
-      <point id="PhV" offset="5" type="int16" sf="V_SF" units="V" mandatory="true" />
+      <point id="A_SF" offset="4" type="sunssf" mandatory="true"/>
+      <point id="PhV" offset="5" type="int16" sf="V_SF" units="V" mandatory="false" />
       <point id="PhVphA" offset="6" type="int16" sf="V_SF" units="V" />
       <point id="PhVphB" offset="7" type="int16" sf="V_SF" units="V" />
       <point id="PhVphC" offset="8" type="int16" sf="V_SF" units="V" />

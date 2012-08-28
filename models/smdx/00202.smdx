@@ -3,10 +3,10 @@
   <model id="202" len="105">
     <block len="105">
       <point id="A" offset="0" type="int16" sf="A_SF" units="A" mandatory="true" />
-      <point id="AphA" offset="1" type="int16" sf="A_SF" units="A" mandatory="true" />
+      <point id="AphA" offset="1" type="int16" sf="A_SF" units="A" mandatory="false" />
       <point id="AphB" offset="2" type="int16" sf="A_SF" units="A" mandatory="true" />
       <point id="AphC" offset="3" type="int16" sf="A_SF" units="A" mandatory="true" />
-      <point id="A_SF" offset="4" type="sunssf" />
+      <point id="A_SF" offset="4" type="sunssf" mandatory="true" />
       <point id="PhV" offset="5" type="int16" sf="V_SF" units="V" mandatory="true" />
       <point id="PhVphA" offset="6" type="int16" sf="V_SF" units="V" mandatory="true" />
       <point id="PhVphB" offset="7" type="int16" sf="V_SF" units="V" mandatory="true" />

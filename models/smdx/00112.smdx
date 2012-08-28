@@ -75,16 +75,16 @@
     <point id="AphA">
       <label>Amps PhaseA</label>
       <description>Phase A Current</description>
-      <notes></notes>
+      <notes>Connected Phase</notes>
     </point>
     <point id="AphB">
       <label>Amps PhaseB</label>
       <description>Phase B Current</description>
-      <notes></notes>
+      <notes>Connected Phase</notes>
     </point>
     <point id="AphC">
       <label>Amps PhaseC</label>
-      <description></description>
+      <description>Phase C Current</description>
       <notes></notes>
     </point>
     <point id="PPVphAB">
