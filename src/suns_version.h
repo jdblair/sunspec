@@ -1,1 +1,1 @@
-#define SUNS_VERSION_NUMBER "1.1.1"
+#define SUNS_VERSION_NUMBER "1.1.2"
