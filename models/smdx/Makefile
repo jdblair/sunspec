@@ -31,7 +31,7 @@
 
 SUNS=../../src/suns
 
-XMLFILES=$(shell (ls *.smdx))
+XMLFILES=$(shell (ls *.xml))
 
 SCHEMA=../../lib/smdx.xsd
 
