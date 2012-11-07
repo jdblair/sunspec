@@ -1,13 +1,12 @@
 <sunSpecModels v="1">
   <!-- 302: Irradiance Model -->
-  <model id="302" len="6">
-    <block len="6">
+  <model id="302" len="5">
+    <block len="5">
       <point id="GHI" offset="0" type="uint16" units="W/m2" mandatory="false"/>
       <point id="POAI" offset="1" type="uint16" units="W/m2" mandatory="false"/>
       <point id="DFI" offset="2" type="uint16" units="W/m2" mandatory="false"/>
       <point id="DNI" offset="3" type="uint16" units="W/m2" mandatory="false"/>
       <point id="OTI" offset="4" type="uint16" units="W/m2" mandatory="false"/>
-      <point id="Pad" offset="5" type="pad" mandatory="false"/>
     </block>
   </model>
   <strings id="302" locale="en">

@@ -1,0 +1,17 @@
+2012 October 2 : Torben Mueller, Weidmueller DE reported String Combiner event 10 "Combiner Cabinet Open" as missing from the SMDX/PICS.  Added back in for points Evt and InEvt.  Models affected: All String Combiner models 401,402,403,404.
+
+2012 October 2 : Bill Randle, AEI reported an incorrect entry for Inverter Control Scheduling.  StrTms has a type of uint16 that should be uint32.  Type and offests updated.  Models affected: IC 133.
+
+2012 October 2 : Bill Randle, AEI reported an incorrect symbol name in the Inverter Control Basic Settings.  A recent 61850 change for the PFSign symbols of EEI .vs. IEEE was not picked up in the SMDX.  Models affected: IC 121.
+
+2012 October 3 : Bill Randle, AEI reported incorrect register names in the Inverter Control Basic Settings.  Register 4 named VAMax_SF should be named WMax_SF. Register 14 name VAMax_SF should be VRef_SF   Models affected: IC 121.
+
+2012 October 23 : Flo Yee, Solectria renewables reported incorrect type of TmpAmb.  uint16 should be int16.   Models affected: E 308.
+
+2012 October 26: Bill Randle, AEI reported incorrect type for PF in the Watt-PF function.  PF should be a signed value (int16), not unsigned (unit16).  Models affected: IC 131 
+
+2012 November 1: Bob Fox, Loggerware reported use of the degree symbol problematic to denote °C.  It was agreed to use just "C" to denote degrees centrigrade in the units.  Models affected: E 303, 308
+
+2012 November 1: Bob Fox, Loggerware reported missing fixed scalefactors in environmental models.  Models affected: E 303, 304, 308
+
+2012 November 2: Bob Fox, Loggerware reported pad register not needed in E 302 model.  Removed pad.  Models affected E 302

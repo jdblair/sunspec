@@ -3,7 +3,7 @@
   <!-- 303: Back of Module Temperature Model -->
   <model id="303" len="2">
     <block type="repeating" len="1">
-      <point id="TmpBOM" offset="0" type="int16" units="°C" mandatory="true"/>
+      <point id="TmpBOM" offset="0" type="int16" units="C" sf="-1"  mandatory="true"/>
     </block>
   </model>
   <strings id="303" locale="en">

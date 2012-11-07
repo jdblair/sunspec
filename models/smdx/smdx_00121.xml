@@ -3,7 +3,7 @@
   <model id="121" len="28">
     <block len="28" type="fixed">
       <point id="WMax" offset="0" access="rw" type="uint16" len="1" mandatory="true" units="W" sf="VAMax_SF"/>
-      <point id="VAMax_SF" offset="1" access="r" type="sunssf" len="1" mandatory="true"  />
+      <point id="WMax_SF" offset="1" access="r" type="sunssf" len="1" mandatory="true"  />
       <point id="VMax" offset="2" access="rw" type="uint16" len="1" mandatory="false" units="V" sf="VMinMax_SF"/>
       <point id="VMin" offset="3" access="rw" type="uint16" len="1" mandatory="false" units="V" sf="VMinMax_SF"/>
       <point id="VMinMax_SF" offset="4" access="r" type="sunssf" len="1" mandatory="false"  />
@@ -12,15 +12,15 @@
       <point id="VArPosMax" offset="7" access="rw" type="uint16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
       <point id="VArNegMax" offset="8" access="rw" type="uint16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
       <point id="VARMax_SF" offset="9" access="r" type="sunssf" len="1" mandatory="false"  />
-      <point id="VRef" offset="10" access="rw" type="uint16" len="1" mandatory="true" units="V" sf="VAMax_SF"/>
-      <point id="VAMax_SF" offset="11" access="r" type="sunssf" len="1" mandatory="true"  />
+      <point id="VRef" offset="10" access="rw" type="uint16" len="1" mandatory="true" units="V" sf="VRef_SF"/>
+      <point id="VRef_SF" offset="11" access="r" type="sunssf" len="1" mandatory="true"  />
       <point id="VRefOfs" offset="12" access="rw" type="int16" len="1" mandatory="true" units="V" sf="VRefOfs_SF"/>
       <point id="VRefOfs_SF" offset="13" access="r" type="sunssf" len="1" mandatory="true"  />
       <point id="WGra" offset="14" access="rw" type="uint16" len="1" mandatory="false" units="% WMax/min" sf="WGra_SF"/>
       <point id="WGra_SF" offset="15" access="r" type="sunssf" len="1" mandatory="false"  />
       <point id="PFSign" offset="16" access="rw" type="enum16" len="1" mandatory="false" >
         <symbol id="IEC">1</symbol>
-        <symbol id="IEEE">2</symbol>
+        <symbol id="EEI">2</symbol>
       </point>
       <point id="PFLeadMin" offset="17" access="rw" type="int16" len="1" mandatory="false" units="cos()" sf="PFMin_SF"/>
       <point id="PFLagMin" offset="18" access="rw" type="int16" len="1" mandatory="false" units="cos()" sf="PFMin_SF"/>
@@ -56,8 +56,8 @@
       <description>Setting for maximum power output. Default to I_WRtg.</description>
       <notes> </notes>
     </point>
-    <point id="VAMax_SF">
-      <label>VAMax_SF</label>
+    <point id="WMax_SF">
+      <label>WMax_SF</label>
       <description>Scale factor for power settings.</description>
       <notes> </notes>
     </point>
@@ -106,8 +106,8 @@
       <description>Voltage at the PCC.</description>
       <notes> </notes>
     </point>
-    <point id="VAMax_SF">
-      <label>VAMax_SF</label>
+    <point id="VRef_SF">
+      <label>VRef_SF</label>
       <description>Scale factor for voltage at the PCC.</description>
       <notes> </notes>
     </point>
@@ -133,7 +133,7 @@
     </point>
     <point id="PFSign">
       <label>PFSign</label>
-      <description>Sign convention for Power Factor settings: IEC=1 IEEE=2.</description>
+      <description>Sign convention for Power Factor settings: IEC=1 EEI=2.</description>
       <notes> </notes>
     </point>
     <point id="PFLeadMin">

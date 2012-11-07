@@ -18,14 +18,15 @@
         <symbol id="DISCONNECTED">7</symbol>
         <symbol id="FUSE_FAULT">8</symbol>
         <symbol id="COMBINER_FUSE_FAULT">9</symbol>
-        <symbol id="TEMP">10</symbol>
-        <symbol id="GROUNDFAULT">11</symbol>
-        <symbol id="REVERSED_POLARITY">12</symbol>
-        <symbol id="INCOMPATIBLE">13</symbol>
-        <symbol id="COMM_ERROR">14</symbol>
-        <symbol id="INTERNAL_ERROR">15</symbol>
-        <symbol id="THEFT">16</symbol>
-        <symbol id="ARC_DETECTED">17</symbol>
+        <symbol id="COMBINER_CABINET_OPEN">10</symbol>
+        <symbol id="TEMP">11</symbol>
+        <symbol id="GROUNDFAULT">12</symbol>
+        <symbol id="REVERSED_POLARITY">13</symbol>
+        <symbol id="INCOMPATIBLE">14</symbol>
+        <symbol id="COMM_ERROR">15</symbol>
+        <symbol id="INTERNAL_ERROR">16</symbol>
+        <symbol id="THEFT">17</symbol>
+        <symbol id="ARC_DETECTED">18</symbol>
       </point>
       <point id="EvtVnd" offset="7" type="bitfield32" />
       <point id="DCA" offset="9" type="int16" sf="DCA_SF" units="A" mandatory="true" />
@@ -46,14 +47,15 @@
         <symbol id="DISCONNECTED">7</symbol>
         <symbol id="FUSE_FAULT">8</symbol>
         <symbol id="COMBINER_FUSE_FAULT">9</symbol>
-        <symbol id="TEMP">10</symbol>
-        <symbol id="GROUNDFAULT">11</symbol>
-        <symbol id="REVERSED_POLARITY">12</symbol>
-        <symbol id="INCOMPATIBLE">13</symbol>
-        <symbol id="COMM_ERROR">14</symbol>
-        <symbol id="INTERNAL_ERROR">15</symbol>
-        <symbol id="THEFT">16</symbol>
-        <symbol id="ARC_DETECTED">17</symbol>
+        <symbol id="COMBINER_CABINET_OPEN">10</symbol>
+        <symbol id="TEMP">11</symbol>
+        <symbol id="GROUNDFAULT">12</symbol>
+        <symbol id="REVERSED_POLARITY">13</symbol>
+        <symbol id="INCOMPATIBLE">14</symbol>
+        <symbol id="COMM_ERROR">15</symbol>
+        <symbol id="INTERNAL_ERROR">16</symbol>
+        <symbol id="THEFT">17</symbol>
+        <symbol id="ARC_DETECTED">18</symbol>
       </point>
       <point id="InEvtVnd" offset="3" type="bitfield32" />
       <point id="InDCA" offset="5" type="int16" sf="DCA_SF" units="A" mandatory="true" />

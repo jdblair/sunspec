@@ -33,7 +33,7 @@ SUNS=../../src/suns
 
 XMLFILES=$(shell (ls *.xml))
 
-SCHEMA=../../lib/smdx.xsd
+SCHEMA=smdx.xsd
 
 all: check
 
