@@ -63,3 +63,4 @@ distclean:
 	rm -f $(DISTFILE) $(DISTFILE).md5
 	find . -name \*~ | xargs rm -v
 
+foo
