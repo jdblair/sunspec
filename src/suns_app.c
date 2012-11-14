@@ -644,7 +644,7 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
         if ((regs[0] == 0xFFFF) ||
             (regs[1] == 0x0000)) {
             verbose(1, "found end marker at register %d and %d",
-                    base_register + offset - 1, base_register + offset);
+                    base_register + offset , base_register + offset + 1);
             rc = 0;
             break;
         }

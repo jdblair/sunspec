@@ -1,12 +1,13 @@
 data common_model_test {
   001
-  65 
+  66 
   string.32 : "Amalgamated Industries"        # c_manufacturer
   string.32 : "Composite SuperDevice"         # c_model
   string.16 : "Mark 2 <&'>"                   # c_options
   string.16 : "3.14.159"                      # c_version
   string.32 : "9876543210"                    # c_serialnumber
   uint16    : 99                              # c_deviceaddress
+  uint16    : 0xFFFF
 }
 
 data inverter_mod101_test {

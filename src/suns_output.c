@@ -549,6 +549,10 @@ int suns_snprintf_value(char *str, size_t size,
     case SUNS_ACC64:
         return fmt->acc64(str, size, v);
 
+	case SUNS_PAD:
+        str[0] = 0;
+        return 0;	
+
     case SUNS_IPV4:
         return fmt->ipv4(str, size, v);
 
@@ -1538,6 +1542,7 @@ int _suns_snprintf_int_sf(char *buf,
                           int maxdigits)
 {
     int numlen = strlen(base);
+    int numlen1 = numlen;
     int i;
     int buf_char = 0;
 
@@ -1560,25 +1565,39 @@ int _suns_snprintf_int_sf(char *buf,
         return _suns_snprintf_int_sf_e(buf, len, base, e);
     }
 
+
+
+
+
+
     if (e < 0) {
-        /* negative e means a fractional value */
-        int base_char = 0;
+		/* negative e means a fractional value */
+		int base_char = 0;
+
+		if(base[0] == '-')
+		{
+			buf[buf_char++] = '-';
+			base_char++;
+			numlen1--;
+		}      
 
         /* this section writes the digits to the left of the decimal point */
-        if (e + numlen > 0) {
+        if (e + numlen1 > 0) {
             /* there are digits to the left of the decimal point */
-            for (i = 0; i < e + numlen; i++) {
+            for (i = 0; i < e + numlen1; i++) {
                 buf[buf_char++] = base[base_char++];
             }
         } else {
             /* all the digits are to the right of the decimal point */
+            //buf[buf_char++] = '0';
+            
             buf[buf_char++] = '0';
         }
         
         buf[buf_char++] = '.';
 
         /* are there are zeros to the left of the digits? */
-        for (i = 0; i > e + numlen; i--) {
+        for (i = 0; i > e + numlen1; i--) {
             buf[buf_char++] = '0';
         }
         

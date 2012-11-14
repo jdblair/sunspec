@@ -39,7 +39,7 @@
       <point id="DCPR" offset="17" type="uint16" units="Pct" />
       <point id="DCWh" offset="18" type="uint32" sf="DCWh_SF" mandatory="true" units="Wh" />
     </block>
-    <block type="repeating" len="13">
+    <block type="repeating" len="14">
       <point id="InID" offset="0" type="uint16" mandatory="true" />
       <point id="InEvt" offset="1" type="bitfield32" mandatory="true">
         <symbol id="LOW_VOLTAGE">0</symbol>
@@ -69,6 +69,7 @@
       <point id="InDCW" offset="9" type="int16" sf="DCWh_SF" units="W" />
       <point id="InDCWh" offset="10" type="uint32" units="Wh" />
       <point id="InDCPR" offset="12" type="uint16" units="Pct" />
+      <point id="InN" offset="13" type="uint16"/>
     </block>
   </model>
   <strings id="402" locale="en">
