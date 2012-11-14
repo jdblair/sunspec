@@ -1,0 +1,396 @@
+found sunspec signature at register 40001
+found did = 1, len = 66
+    read register 40003, length 68, retry 0
+found did = 404, len = 445
+    read register 40071, length 125, retry 0
+    read register 40196, length 125, retry 0
+    read register 40321, length 125, retry 0
+    read register 40446, length 72, retry 0
+found did = 64020, len = 126
+    read register 40518, length 125, retry 0
+    read register 40643, length 3, retry 0
+found end marker at register 40646 and 40647
+Timestamp: 2012-11-14T11:34:40-0800
+
+data model: Common(1)
+     Manufacturer                                Mersen
+     Model                                       HMMC6A
+     Options                                         01
+     Version                                01.02.02.00
+     Serial Number                     0100000200000004
+     Device Address                                   2
+                                                       
+
+data model: String Combiner (Advanced)(404)
+     DCA_SF                                          -1
+     DCAhr_SF                                        -7
+     DCV_SF                                          -1
+     DCW_SF                                           2
+     DCWh_SF                                         -4
+     Rating                                       750.0 A
+     N                                               30
+     Event                                   0x00000980
+     Vendor Event                            0x00000007
+     Amps                                           0.1 A
+     Amp-hours                                0.0051331 Ah
+     Voltage                                       -2.3 V
+     Temp                                            29 C
+     Watts                                            0 W
+     PR                                 not implemented Pct
+     Watt-hours                                  0.0029 Wh
+     InDCA_SF                                        -3
+     InDCAhr_SF                                      -7
+     InDCV_SF                                        -1
+     InDCW_SF                                         0
+     InDCWh_SF                                       -5
+  01:ID                                               1
+  01:Event                                   0x00000900
+  01:Vendor Event                            0x00000000
+  01:Amps                                        -0.003 A
+  01:Amp-hours                                0.0004892 Ah
+  01:Voltage                                       -2.3 V
+  01:Watts                                            0 W
+  01:Watt-hours                                 0.00206 Wh
+  01:PR                                 not implemented Pct
+  01:N                                  not implemented
+  02:ID                                               2
+  02:Event                                   0x00000900
+  02:Vendor Event                            0x00000000
+  02:Amps                                         0.010 A
+  02:Amp-hours                                0.0005240 Ah
+  02:Voltage                                       -2.3 V
+  02:Watts                                            0 W
+  02:Watt-hours                                       0 Wh
+  02:PR                                 not implemented Pct
+  02:N                                  not implemented
+  03:ID                                               3
+  03:Event                                   0x00000900
+  03:Vendor Event                            0x00000000
+  03:Amps                                         0.003 A
+  03:Amp-hours                                0.0001403 Ah
+  03:Voltage                                       -2.3 V
+  03:Watts                                            0 W
+  03:Watt-hours                                 0.00005 Wh
+  03:PR                                 not implemented Pct
+  03:N                                  not implemented
+  04:ID                                               4
+  04:Event                                   0x00000900
+  04:Vendor Event                            0x00000000
+  04:Amps                                         0.004 A
+  04:Amp-hours                                0.0001784 Ah
+  04:Voltage                                       -2.3 V
+  04:Watts                                            0 W
+  04:Watt-hours                                       0 Wh
+  04:PR                                 not implemented Pct
+  04:N                                  not implemented
+  05:ID                                               5
+  05:Event                                   0x00000900
+  05:Vendor Event                            0x00000000
+  05:Amps                                         0.003 A
+  05:Amp-hours                                0.0001768 Ah
+  05:Voltage                                       -2.3 V
+  05:Watts                                            0 W
+  05:Watt-hours                                       0 Wh
+  05:PR                                 not implemented Pct
+  05:N                                  not implemented
+  06:ID                                               6
+  06:Event                                   0x00000900
+  06:Vendor Event                            0x00000000
+  06:Amps                                         0.004 A
+  06:Amp-hours                                0.0002050 Ah
+  06:Voltage                                       -2.3 V
+  06:Watts                                            0 W
+  06:Watt-hours                                       0 Wh
+  06:PR                                 not implemented Pct
+  06:N                                  not implemented
+  07:ID                                               7
+  07:Event                                   0x00000900
+  07:Vendor Event                            0x00000000
+  07:Amps                                         0.028 A
+  07:Amp-hours                                0.0009426 Ah
+  07:Voltage                                       -2.2 V
+  07:Watts                                            0 W
+  07:Watt-hours                                 0.00070 Wh
+  07:PR                                 not implemented Pct
+  07:N                                  not implemented
+  08:ID                                               8
+  08:Event                                   0x00000900
+  08:Vendor Event                            0x00000000
+  08:Amps                                        -0.012 A
+  08:Amp-hours                                0.0003616 Ah
+  08:Voltage                                       -2.2 V
+  08:Watts                                            0 W
+  08:Watt-hours                                 0.00002 Wh
+  08:PR                                 not implemented Pct
+  08:N                                  not implemented
+  09:ID                                               9
+  09:Event                                   0x00000900
+  09:Vendor Event                            0x00000000
+  09:Amps                                         0.001 A
+  09:Amp-hours                                0.0003049 Ah
+  09:Voltage                                       -2.2 V
+  09:Watts                                            0 W
+  09:Watt-hours                                       0 Wh
+  09:PR                                 not implemented Pct
+  09:N                                  not implemented
+  10:ID                                              10
+  10:Event                                   0x00000900
+  10:Vendor Event                            0x00000000
+  10:Amps                                         0.002 A
+  10:Amp-hours                                0.0002705 Ah
+  10:Voltage                                       -2.2 V
+  10:Watts                                            0 W
+  10:Watt-hours                                       0 Wh
+  10:PR                                 not implemented Pct
+  10:N                                  not implemented
+  11:ID                                              11
+  11:Event                                   0x00000900
+  11:Vendor Event                            0x00000000
+  11:Amps                                         0.022 A
+  11:Amp-hours                                0.0007876 Ah
+  11:Voltage                                       -2.2 V
+  11:Watts                                            0 W
+  11:Watt-hours                                       0 Wh
+  11:PR                                 not implemented Pct
+  11:N                                  not implemented
+  12:ID                                              12
+  12:Event                                   0x00000900
+  12:Vendor Event                            0x00000000
+  12:Amps                                         0.009 A
+  12:Amp-hours                                0.0007522 Ah
+  12:Voltage                                       -2.2 V
+  12:Watts                                            0 W
+  12:Watt-hours                                       0 Wh
+  12:PR                                 not implemented Pct
+  12:N                                  not implemented
+  13:ID                                 not implemented
+  13:Event                                   0x00000000
+  13:Vendor Event                            0x00000000
+  13:Amps                               not implemented A
+  13:Amp-hours                                        0 Ah
+  13:Voltage                            not implemented V
+  13:Watts                              not implemented W
+  13:Watt-hours                                       0 Wh
+  13:PR                                 not implemented Pct
+  13:N                                  not implemented
+  14:ID                                 not implemented
+  14:Event                                   0x00000000
+  14:Vendor Event                            0x00000000
+  14:Amps                               not implemented A
+  14:Amp-hours                                        0 Ah
+  14:Voltage                            not implemented V
+  14:Watts                              not implemented W
+  14:Watt-hours                                       0 Wh
+  14:PR                                 not implemented Pct
+  14:N                                  not implemented
+  15:ID                                 not implemented
+  15:Event                                   0x00000000
+  15:Vendor Event                            0x00000000
+  15:Amps                               not implemented A
+  15:Amp-hours                                        0 Ah
+  15:Voltage                            not implemented V
+  15:Watts                              not implemented W
+  15:Watt-hours                                       0 Wh
+  15:PR                                 not implemented Pct
+  15:N                                  not implemented
+  16:ID                                 not implemented
+  16:Event                                   0x00000000
+  16:Vendor Event                            0x00000000
+  16:Amps                               not implemented A
+  16:Amp-hours                                        0 Ah
+  16:Voltage                            not implemented V
+  16:Watts                              not implemented W
+  16:Watt-hours                                       0 Wh
+  16:PR                                 not implemented Pct
+  16:N                                  not implemented
+  17:ID                                 not implemented
+  17:Event                                   0x00000000
+  17:Vendor Event                            0x00000000
+  17:Amps                               not implemented A
+  17:Amp-hours                                        0 Ah
+  17:Voltage                            not implemented V
+  17:Watts                              not implemented W
+  17:Watt-hours                                       0 Wh
+  17:PR                                 not implemented Pct
+  17:N                                  not implemented
+  18:ID                                 not implemented
+  18:Event                                   0x00000000
+  18:Vendor Event                            0x00000000
+  18:Amps                               not implemented A
+  18:Amp-hours                                        0 Ah
+  18:Voltage                            not implemented V
+  18:Watts                              not implemented W
+  18:Watt-hours                                       0 Wh
+  18:PR                                 not implemented Pct
+  18:N                                  not implemented
+  19:ID                                 not implemented
+  19:Event                                   0x00000000
+  19:Vendor Event                            0x00000000
+  19:Amps                               not implemented A
+  19:Amp-hours                                        0 Ah
+  19:Voltage                            not implemented V
+  19:Watts                              not implemented W
+  19:Watt-hours                                       0 Wh
+  19:PR                                 not implemented Pct
+  19:N                                  not implemented
+  20:ID                                 not implemented
+  20:Event                                   0x00000000
+  20:Vendor Event                            0x00000000
+  20:Amps                               not implemented A
+  20:Amp-hours                                        0 Ah
+  20:Voltage                            not implemented V
+  20:Watts                              not implemented W
+  20:Watt-hours                                       0 Wh
+  20:PR                                 not implemented Pct
+  20:N                                  not implemented
+  21:ID                                 not implemented
+  21:Event                                   0x00000000
+  21:Vendor Event                            0x00000000
+  21:Amps                               not implemented A
+  21:Amp-hours                                        0 Ah
+  21:Voltage                            not implemented V
+  21:Watts                              not implemented W
+  21:Watt-hours                                       0 Wh
+  21:PR                                 not implemented Pct
+  21:N                                  not implemented
+  22:ID                                 not implemented
+  22:Event                                   0x00000000
+  22:Vendor Event                            0x00000000
+  22:Amps                               not implemented A
+  22:Amp-hours                                        0 Ah
+  22:Voltage                            not implemented V
+  22:Watts                              not implemented W
+  22:Watt-hours                                       0 Wh
+  22:PR                                 not implemented Pct
+  22:N                                  not implemented
+  23:ID                                 not implemented
+  23:Event                                   0x00000000
+  23:Vendor Event                            0x00000000
+  23:Amps                               not implemented A
+  23:Amp-hours                                        0 Ah
+  23:Voltage                            not implemented V
+  23:Watts                              not implemented W
+  23:Watt-hours                                       0 Wh
+  23:PR                                 not implemented Pct
+  23:N                                  not implemented
+  24:ID                                 not implemented
+  24:Event                                   0x00000000
+  24:Vendor Event                            0x00000000
+  24:Amps                               not implemented A
+  24:Amp-hours                                        0 Ah
+  24:Voltage                            not implemented V
+  24:Watts                              not implemented W
+  24:Watt-hours                                       0 Wh
+  24:PR                                 not implemented Pct
+  24:N                                  not implemented
+  25:ID                                 not implemented
+  25:Event                                   0x00000000
+  25:Vendor Event                            0x00000000
+  25:Amps                               not implemented A
+  25:Amp-hours                                        0 Ah
+  25:Voltage                            not implemented V
+  25:Watts                              not implemented W
+  25:Watt-hours                                       0 Wh
+  25:PR                                 not implemented Pct
+  25:N                                  not implemented
+  26:ID                                 not implemented
+  26:Event                                   0x00000000
+  26:Vendor Event                            0x00000000
+  26:Amps                               not implemented A
+  26:Amp-hours                                        0 Ah
+  26:Voltage                            not implemented V
+  26:Watts                              not implemented W
+  26:Watt-hours                                       0 Wh
+  26:PR                                 not implemented Pct
+  26:N                                  not implemented
+  27:ID                                 not implemented
+  27:Event                                   0x00000000
+  27:Vendor Event                            0x00000000
+  27:Amps                               not implemented A
+  27:Amp-hours                                        0 Ah
+  27:Voltage                            not implemented V
+  27:Watts                              not implemented W
+  27:Watt-hours                                       0 Wh
+  27:PR                                 not implemented Pct
+  27:N                                  not implemented
+  28:ID                                 not implemented
+  28:Event                                   0x00000000
+  28:Vendor Event                            0x00000000
+  28:Amps                               not implemented A
+  28:Amp-hours                                        0 Ah
+  28:Voltage                            not implemented V
+  28:Watts                              not implemented W
+  28:Watt-hours                                       0 Wh
+  28:PR                                 not implemented Pct
+  28:N                                  not implemented
+  29:ID                                 not implemented
+  29:Event                                   0x00000000
+  29:Vendor Event                            0x00000000
+  29:Amps                               not implemented A
+  29:Amp-hours                                        0 Ah
+  29:Voltage                            not implemented V
+  29:Watts                              not implemented W
+  29:Watt-hours                                       0 Wh
+  29:PR                                 not implemented Pct
+  29:N                                  not implemented
+  30:ID                                 not implemented
+  30:Event                                   0x00000000
+  30:Vendor Event                            0x00000000
+  30:Amps                               not implemented A
+  30:Amp-hours                                        0 Ah
+  30:Voltage                            not implemented V
+  30:Watts                              not implemented W
+  30:Watt-hours                                       0 Wh
+  30:PR                                 not implemented Pct
+  30:N                                  not implemented
+
+data model: Mersen GreenString(64020)
+     Aux 0 temperature                               27 C
+     Aux 1 temperature                               26 C
+     Aux 2 temperature                  not implemented C
+     Aux 3 temperature                  not implemented C
+     Aux 4 temperature                  not implemented C
+     Probe Temperature                               25 C
+     Main Temperature                                29 C
+     Voltage scale factor for the sensors                  -3
+     Current scale factor for the sensors                  -6
+     Frequency scale factor for the sensors                  -2
+     Sensor1 Voltage                    not implemented V
+     Sensor2 Voltage                    not implemented V
+     Sensor3 Voltage                    not implemented V
+     Sensor4 Voltage                    not implemented V
+     Sensor5 Voltage                             -0.452 V
+     Sensor6 Voltage                    not implemented V
+     Sensor7 Voltage                             -0.452 V
+     Sensor1 Current                          -0.000514 A
+     Sensor2 Current                          -0.000514 A
+     Sensor3 Current                          -0.000514 A
+     Sensor4 Current                          -0.000514 A
+     Sensor5 Current                    not implemented A
+     Sensor6 Current                    not implemented A
+     Sensor7 Current                    not implemented A
+     Sensor8 frequency                  not implemented Hz
+     Relay 1 state                                    0
+     Relay 2 state                                    0
+     Relay 3 state                                    0
+     Reset the accumulators                           0
+     Reset the system                                 0
+  01:Serial number                     0100000200000004
+  01:Firmware version                       02.02.02.00
+  01:Hardware version                                 2
+  02:Serial number                     0200000212300068
+  02:Firmware version                       02.02.02.02
+  02:Hardware version                                 2
+  03:Serial number                                     
+  03:Firmware version                                  
+  03:Hardware version                   not implemented
+  04:Serial number                                     
+  04:Firmware version                                  
+  04:Hardware version                   not implemented
+  05:Serial number                                     
+  05:Firmware version                                  
+  05:Hardware version                   not implemented
+  06:Serial number                     ????????????????
+  06:Firmware version                       03.02.02.02
+  06:Hardware version                               165
+

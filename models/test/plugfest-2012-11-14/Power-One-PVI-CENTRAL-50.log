@@ -1,0 +1,63 @@
+illegal address exception when reading register 40001
+found sunspec signature at register 1
+found did = 1, len = 66
+    read register 3, length 68, retry 0
+found did = 103, len = 50
+    read register 71, length 52, retry 0
+found end marker at register 123 and 124
+Timestamp: 2012-11-14T11:48:25-0800
+
+data model: Common(1)
+     Manufacturer                             Power-One
+     Model                               PVI-CENTRAL-50
+     Options                                           
+     Version                                           
+     Serial Number                     467841-3I67-1011
+     Device Address                                   1
+                                                       
+
+data model: Inverter (Three Phase)(103)
+     Amps                                         67.48 A
+     Amps PhaseA                                  67.86 A
+     Amps PhaseB                                  67.87 A
+     Amps PhaseC                                  68.11 A
+     A_SF                                            -2
+     Phase Voltage AB                   not implemented V
+     Phase Voltage BC                   not implemented V
+     Phase Voltage CA                   not implemented V
+     Phase Voltage AN                            206.85 V
+     Phase Voltage BN                            208.88 V
+     Phase Voltage CN                            209.40 V
+     V_SF                                            -2
+     Watts                                        24154 W
+     W_SF                                             0
+     Hz                                           59.98 Hz
+     Hz_SF                                           -2
+     VA                                 not implemented VA
+     VA_SF                                            0
+     VAr                                not implemented var
+     VAr_SF                                           0
+     PF                                 not implemented Pct
+     PF_SF                                            0
+     WattHours                                 29117000 Wh
+     WH_SF                                            2
+     DC Amps                                      65.16 A
+     DCA_SF                                          -2
+     DC Voltage                                   384.1 V
+     DCV_SF                                          -1
+     DC Watts                           not implemented W
+     DCW_SF                                           0
+     Cabinet Temperature                          29.28 C
+     Heat Sink Temperature                        40.45 C
+     Transformer Temperature                     -22.50 C
+     Other Temperature                            31.68 C
+     Tmp_SF                                          -2
+     Operating State                                  0
+     Vendor Operating State                           6
+     Event1                                  0x00000000
+     Event Bitfield 2                        0x00000000
+     Vendor Event Bitfield 1                 0x2d000000
+     Vendor Event Bitfield 2                 0x00000000
+     Vendor Event Bitfield 3                 0x00000000
+     Vendor Event Bitfield 4                 0x00000000
+
