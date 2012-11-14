@@ -124,7 +124,7 @@ $(LIBEZXML):
 	make -C ../lib ezxml
 
 MODELDIR=../models/smdx
-MODELS=$(shell ls $(MODELDIR)/*.smdx)
+MODELS=$(shell ls $(MODELDIR)/*.xml)
 
 install: suns
 	$(INSTALL) -d $(PREFIX)/bin
