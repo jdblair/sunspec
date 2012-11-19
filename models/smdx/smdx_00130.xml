@@ -80,7 +80,7 @@
     </point>
     <point id="V_SF">
       <label>V_SF</label>
-      <description>Scale factor for percent I_VRef.</description>
+      <description>Scale factor for percent VRef.</description>
       <notes> </notes>
     </point>
     <point id="HVD_CrvNam">

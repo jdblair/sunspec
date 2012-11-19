@@ -9,7 +9,7 @@
       <point id="WChaGra" offset="4" access="rw" type="uint16" len="1" mandatory="true" units="% WChaMax/sec" sf="WChaDisChaGra_SF"/>
       <point id="WDisChaGra" offset="5" access="rw" type="uint16" len="1" mandatory="true" units="% WChaMax/sec" sf="WChaDisChaGra_SF"/>
       <point id="WChaDisChaGra_SF" offset="6" access="r" type="sunssf" len="1" mandatory="true"  />
-      <point id="MinRsvPct" offset="7" access="rw" type="uint16" len="1" mandatory="false" units="% I_WChaMax" sf="MinRsvPct_SF"/>
+      <point id="MinRsvPct" offset="7" access="rw" type="uint16" len="1" mandatory="false" units="% WChaMax" sf="MinRsvPct_SF"/>
       <point id="MinRsvPct_SF" offset="8" access="r" type="sunssf" len="1" mandatory="false"  />
       <point id="ChaState" offset="9" access="r" type="uint16" len="1" mandatory="false" units="% AhrRtg" sf="ChaState_SF"/>
       <point id="ChaState_SF" offset="10" access="r" type="sunssf" len="1" mandatory="false"  />
@@ -70,12 +70,12 @@
     </point>
     <point id="WChaGra">
       <label>WChaGra</label>
-      <description>Setpoint for maximum charging rate. Default is I_MaxChaRte.</description>
+      <description>Setpoint for maximum charging rate. Default is MaxChaRte.</description>
       <notes> </notes>
     </point>
     <point id="WDisChaGra">
       <label>WDisChaGra</label>
-      <description>Setpoint for maximum discharge rate. Default is I_MaxDisChaRte.</description>
+      <description>Setpoint for maximum discharge rate. Default is MaxDisChaRte.</description>
       <notes> </notes>
     </point>
     <point id="WChaDisChaGra_SF">
@@ -105,7 +105,7 @@
     </point>
     <point id="StorAval">
       <label>StorAval</label>
-      <description>State of charge (I_ChaState) minus storage reserve (I_MinRsvPct) times capacity rating (I_AhrRtg).</description>
+      <description>State of charge (ChaState) minus storage reserve (MinRsvPct) times capacity rating (AhrRtg).</description>
       <notes> </notes>
     </point>
     <point id="StorAval_SF">

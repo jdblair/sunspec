@@ -142,7 +142,7 @@
     </point>
     <point id="VArWMaxPct">
       <label>VArWMaxPct</label>
-      <description>Reactive power in percent of I_WMax.</description>
+      <description>Reactive power in percent of WMax.</description>
       <notes> </notes>
     </point>
     <point id="VArWMaxPct_SF">
@@ -152,12 +152,12 @@
     </point>
     <point id="VArMaxPct">
       <label>VArMaxPct</label>
-      <description>Reactive power in percent of I_VArMax.</description>
+      <description>Reactive power in percent of VArMax.</description>
       <notes> </notes>
     </point>
     <point id="VArAvalPct">
       <label>VArAvalPct</label>
-      <description>Reactive power in percent of I_VArAval.</description>
+      <description>Reactive power in percent of VArAval.</description>
       <notes> </notes>
     </point>
     <point id="VArPct_SF">
