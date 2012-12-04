@@ -44,8 +44,8 @@
       <point id="TotWhExpPhC" offset="42" type="acc32" sf="TotWh_SF" units="Wh" />
       <point id="TotWhImp" offset="44" type="acc32" sf="TotWh_SF" units="Wh" mandatory="true" />
       <point id="TotWhImpPhA" offset="46" type="acc32" sf="TotWh_SF" units="Wh" />
-      <point id="TotWhImpPhAB" offset="48" type="acc32" sf="TotWh_SF" units="Wh" />
-      <point id="TotWhImpPhAC" offset="50" type="acc32" sf="TotWh_SF" units="Wh" />
+      <point id="TotWhImpPhB" offset="48" type="acc32" sf="TotWh_SF" units="Wh" />
+      <point id="TotWhImpPhC" offset="50" type="acc32" sf="TotWh_SF" units="Wh" />
       <point id="TotWh_SF" offset="52" type="sunssf" mandatory="true" />
       <point id="TotVAhExp" offset="53" type="acc32" sf="TotVAh_SF" units="VAh" />
       <point id="TotVAhExpPhA" offset="55" type="acc32" sf="TotVAh_SF" units="VAh" />
@@ -295,12 +295,12 @@
       <description></description>
       <notes></notes>
     </point>
-    <point id="TotWhImpPhAB">
+    <point id="TotWhImpPhB">
       <label>Total Watt-hours Imported phase B</label>
       <description></description>
       <notes></notes>
     </point>
-    <point id="TotWhImpPhAC">
+    <point id="TotWhImpPhC">
       <label>Total Watt-hours Imported phase C</label>
       <description></description>
       <notes></notes>

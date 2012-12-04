@@ -19,3 +19,6 @@
 2012 November 8: Bill Randle, AEI.  Updates to incorporate changes from SEP2.0 and IEC 61850-90-7, other errata. Models affected IC 120-134
 
 2012 Matthieue Laroche, Mersen.  Contributed new vendor extension model for Mersen string monitor.  Model affected V 64020.
+
+2012 December 4: Bob Fox, Loggerware reported typos in the meter models for the TotWhImp measurements.  These should be A, B, C.  Models affected M 201,202,203,204,211,212,213,214
+
