@@ -92,7 +92,7 @@
     <point id="ARtg">
       <label>ARtg</label>
       <description>Maximum RMS AC current level capability of the inverter.</description>
-      <notes> </notes>
+      <notes>Sum of all connected phases.  Current rating under nominal voltage under nominal power factor.</notes>
     </point>
     <point id="ARtg_SF">
       <label>ARtg_SF</label>

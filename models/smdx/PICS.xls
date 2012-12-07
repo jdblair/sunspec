@@ -10342,7 +10342,7 @@
    <Cell><Data ss:Type="String">A</Data></Cell>
    <Cell><Data ss:Type="String">ARtg_SF</Data></Cell>
    <Cell><Data ss:Type="String">Maximum RMS AC current level capability of the inverter.</Data></Cell>
-   <Cell><Data ss:Type="String"> </Data></Cell>
+   <Cell><Data ss:Type="String">Sum of all connected phases.  Current rating under nominal voltage under nominal power factor.</Data></Cell>
    <Cell><Data ss:Type="String">M</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
@@ -11363,7 +11363,7 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="19" ss:StyleID="Comment">
-    <Cell><Data ss:Type="String">// 122 Measurements_Status Fixed Block (40)</Data></Cell>
+    <Cell><Data ss:Type="String">// 122 Measurements_Status Fixed Block (42)</Data></Cell>
   </Row>
   <Row ss:Height="28" ss:StyleID="Fixed">
    <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -11532,7 +11532,37 @@
   </Row>
   <Row ss:Height="28" ss:StyleID="Fixed">
    <Cell><Data ss:Type="Number">32</Data></Cell>
+   <Cell><Data ss:Type="Number">32</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">WAval</Data></Cell>
+   <Cell><Data ss:Type="String">WAval</Data></Cell>
+   <Cell><Data ss:Type="String">uint16</Data></Cell>
+   <Cell><Data ss:Type="String">var</Data></Cell>
+   <Cell><Data ss:Type="String">WAval_SF</Data></Cell>
+   <Cell><Data ss:Type="String">Amount of Watts available.</Data></Cell>
+   <Cell><Data ss:Type="String"> </Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
    <Cell><Data ss:Type="Number">33</Data></Cell>
+   <Cell><Data ss:Type="Number">33</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">WAval_SF</Data></Cell>
+   <Cell><Data ss:Type="String">WAval_SF</Data></Cell>
+   <Cell><Data ss:Type="String">sunssf</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Scale factor for available Watts.</Data></Cell>
+   <Cell><Data ss:Type="String"> </Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
+   <Cell><Data ss:Type="Number">34</Data></Cell>
+   <Cell><Data ss:Type="Number">35</Data></Cell>
    <Cell><Data ss:Type="Number">2</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">StSetLimMsk</Data></Cell>
@@ -11546,8 +11576,8 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Fixed">
-   <Cell><Data ss:Type="Number">34</Data></Cell>
-   <Cell><Data ss:Type="Number">35</Data></Cell>
+   <Cell><Data ss:Type="Number">36</Data></Cell>
+   <Cell><Data ss:Type="Number">37</Data></Cell>
    <Cell><Data ss:Type="Number">2</Data></Cell>
    <Cell><Data ss:Type="String">R</Data></Cell>
    <Cell><Data ss:Type="String">StActCtl</Data></Cell>
@@ -11561,8 +11591,8 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Fixed">
-   <Cell><Data ss:Type="Number">36</Data></Cell>
-   <Cell><Data ss:Type="Number">39</Data></Cell>
+   <Cell><Data ss:Type="Number">38</Data></Cell>
+   <Cell><Data ss:Type="Number">41</Data></Cell>
    <Cell><Data ss:Type="Number">4</Data></Cell>
    <Cell><Data ss:Type="String">R</Data></Cell>
    <Cell><Data ss:Type="String">TmSrc</Data></Cell>
@@ -11576,8 +11606,8 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Fixed">
-   <Cell><Data ss:Type="Number">40</Data></Cell>
-   <Cell><Data ss:Type="Number">41</Data></Cell>
+   <Cell><Data ss:Type="Number">42</Data></Cell>
+   <Cell><Data ss:Type="Number">43</Data></Cell>
    <Cell><Data ss:Type="Number">2</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">Tms</Data></Cell>
@@ -11591,8 +11621,8 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Fixed">
-   <Cell><Data ss:Type="Number">42</Data></Cell>
-   <Cell><Data ss:Type="Number">42</Data></Cell>
+   <Cell><Data ss:Type="Number">44</Data></Cell>
+   <Cell><Data ss:Type="Number">44</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">R</Data></Cell>
    <Cell><Data ss:Type="String">VrtSt</Data></Cell>
@@ -13405,13 +13435,13 @@
    <Cell><Data ss:Type="String">uint16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">Variable # of 16 bit registers to follow : 12+N*34</Data></Cell>
+   <Cell><Data ss:Type="String">Variable # of 16 bit registers to follow : 10+N*34</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String">M</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="19" ss:StyleID="Comment">
-    <Cell><Data ss:Type="String">// 126 Static Volt-VAR Fixed Block (12)</Data></Cell>
+    <Cell><Data ss:Type="String">// 126 Static Volt-VAR Fixed Block (10)</Data></Cell>
   </Row>
   <Row ss:Height="28" ss:StyleID="Fixed">
    <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -13423,7 +13453,7 @@
    <Cell><Data ss:Type="String">uint16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">Number of curves supported (recommend min. 4).</Data></Cell>
+   <Cell><Data ss:Type="String">Number of curves supported (recommend 4).</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">M</Data></Cell>
    <Cell ss:Index="15"/>
@@ -13433,12 +13463,12 @@
    <Cell><Data ss:Type="Number">4</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">R</Data></Cell>
-   <Cell><Data ss:Type="String">NPts</Data></Cell>
-   <Cell><Data ss:Type="String">NPts</Data></Cell>
+   <Cell><Data ss:Type="String">NPt</Data></Cell>
+   <Cell><Data ss:Type="String">NPt</Data></Cell>
    <Cell><Data ss:Type="String">uint16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">Maximum number of points in array (recommend min. 10).</Data></Cell>
+   <Cell><Data ss:Type="String">Number of curve points supported (maximum of 10).</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">M</Data></Cell>
    <Cell ss:Index="15"/>
@@ -13538,36 +13568,6 @@
    <Cell><Data ss:Type="Number">11</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">R</Data></Cell>
-   <Cell><Data ss:Type="String">WPct_SF</Data></Cell>
-   <Cell><Data ss:Type="String">WPct_SF</Data></Cell>
-   <Cell><Data ss:Type="String">sunssf</Data></Cell>
-   <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">Scale factor for power output percent.</Data></Cell>
-   <Cell><Data ss:Type="String"> </Data></Cell>
-   <Cell><Data ss:Type="String">M</Data></Cell>
-   <Cell ss:Index="15"/>
-  </Row>
-  <Row ss:Height="28" ss:StyleID="Fixed">
-   <Cell><Data ss:Type="Number">12</Data></Cell>
-   <Cell><Data ss:Type="Number">12</Data></Cell>
-   <Cell><Data ss:Type="Number">1</Data></Cell>
-   <Cell><Data ss:Type="String">R</Data></Cell>
-   <Cell><Data ss:Type="String">VArPct_SF</Data></Cell>
-   <Cell><Data ss:Type="String">VArPct_SF</Data></Cell>
-   <Cell><Data ss:Type="String">sunssf</Data></Cell>
-   <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">Scale factor for reactive power percent.</Data></Cell>
-   <Cell><Data ss:Type="String"> </Data></Cell>
-   <Cell><Data ss:Type="String">O</Data></Cell>
-   <Cell ss:Index="15"/>
-  </Row>
-  <Row ss:Height="28" ss:StyleID="Fixed">
-   <Cell><Data ss:Type="Number">13</Data></Cell>
-   <Cell><Data ss:Type="Number">13</Data></Cell>
-   <Cell><Data ss:Type="Number">1</Data></Cell>
-   <Cell><Data ss:Type="String">R</Data></Cell>
    <Cell><Data ss:Type="String">RmpIncDec_SF</Data></Cell>
    <Cell><Data ss:Type="String">RmpIncDec_SF</Data></Cell>
    <Cell><Data ss:Type="String">sunssf</Data></Cell>
@@ -13579,8 +13579,8 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Fixed">
-   <Cell><Data ss:Type="Number">14</Data></Cell>
-   <Cell><Data ss:Type="Number">14</Data></Cell>
+   <Cell><Data ss:Type="Number">12</Data></Cell>
+   <Cell><Data ss:Type="Number">12</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">R</Data></Cell>
    <Cell><Data ss:Type="String">Pad</Data></Cell>
@@ -13597,8 +13597,8 @@
     <Cell><Data ss:Type="String">// 126 Static Volt-VAR Repeating Block (34)</Data></Cell>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">15</Data></Cell>
-   <Cell><Data ss:Type="Number">22</Data></Cell>
+   <Cell><Data ss:Type="Number">13</Data></Cell>
+   <Cell><Data ss:Type="Number">20</Data></Cell>
    <Cell><Data ss:Type="Number">8</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">CrvNam</Data></Cell>
@@ -13612,8 +13612,8 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">23</Data></Cell>
-   <Cell><Data ss:Type="Number">23</Data></Cell>
+   <Cell><Data ss:Type="Number">21</Data></Cell>
+   <Cell><Data ss:Type="Number">21</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">ActPt</Data></Cell>
@@ -13627,23 +13627,38 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">24</Data></Cell>
-   <Cell><Data ss:Type="Number">24</Data></Cell>
+   <Cell><Data ss:Type="Number">22</Data></Cell>
+   <Cell><Data ss:Type="Number">22</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">DeptRef</Data></Cell>
    <Cell><Data ss:Type="String">DeptRef</Data></Cell>
    <Cell><Data ss:Type="String">enum16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Meaning of dependent variable: 1=%WMax 2=%VArMax 3=%VArAval.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">M</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">25</Data></Cell>
-   <Cell><Data ss:Type="Number">25</Data></Cell>
+   <Cell><Data ss:Type="Number">23</Data></Cell>
+   <Cell><Data ss:Type="Number">23</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
+   <Cell><Data ss:Type="String">sunssf</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">scale factor for dependent variable.</Data></Cell>
+   <Cell><Data ss:Type="String"> </Data></Cell>
+   <Cell><Data ss:Type="String">M</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Repeating">
+   <Cell><Data ss:Type="Number">24</Data></Cell>
+   <Cell><Data ss:Type="Number">24</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">RmpTms</Data></Cell>
@@ -13657,8 +13672,8 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">26</Data></Cell>
-   <Cell><Data ss:Type="Number">26</Data></Cell>
+   <Cell><Data ss:Type="Number">25</Data></Cell>
+   <Cell><Data ss:Type="Number">25</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">RmpDecTmm</Data></Cell>
@@ -13666,14 +13681,14 @@
    <Cell><Data ss:Type="String">uint16</Data></Cell>
    <Cell><Data ss:Type="String">% ref value</Data></Cell>
    <Cell><Data ss:Type="String">RmpIncDec_SF</Data></Cell>
-   <Cell><Data ss:Type="String">The maximum rate at which the VAR value may be reduced in response to changes in the voltage value. %refVal is %WMax %VArMax or %VArAval depending on value of DeptRef.</Data></Cell>
+   <Cell><Data ss:Type="String">The maximum rate at which the VAR value may be reduced in response to changes in the voltage value. %refVal is %WMax %VArMax or %VArAval depending on value of VV_DeptRef.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">27</Data></Cell>
-   <Cell><Data ss:Type="Number">27</Data></Cell>
+   <Cell><Data ss:Type="Number">26</Data></Cell>
+   <Cell><Data ss:Type="Number">26</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">RmpIncTmm</Data></Cell>
@@ -13681,14 +13696,14 @@
    <Cell><Data ss:Type="String">uint16</Data></Cell>
    <Cell><Data ss:Type="String">% ref value</Data></Cell>
    <Cell><Data ss:Type="String">RmpIncDec_SF</Data></Cell>
-   <Cell><Data ss:Type="String">The maximum rate at which the VAR value may be increased in response to changes in the voltage value. %refVal is %WMax %VArMax or %VArAval depending on value of DeptRef.</Data></Cell>
+   <Cell><Data ss:Type="String">The maximum rate at which the VAR value may be increased in response to changes in the voltage value. %refVal is %WMax %VArMax or %VArAval depending on value of VV_DeptRef.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">28</Data></Cell>
-   <Cell><Data ss:Type="Number">28</Data></Cell>
+   <Cell><Data ss:Type="Number">27</Data></Cell>
+   <Cell><Data ss:Type="Number">27</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V1</Data></Cell>
@@ -13702,23 +13717,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">29</Data></Cell>
-   <Cell><Data ss:Type="Number">29</Data></Cell>
+   <Cell><Data ss:Type="Number">28</Data></Cell>
+   <Cell><Data ss:Type="Number">28</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">VAr1</Data></Cell>
    <Cell><Data ss:Type="String">VAr1</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">WPct_SF or VArPct_SF</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 1 VARs.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">M</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">30</Data></Cell>
-   <Cell><Data ss:Type="Number">30</Data></Cell>
+   <Cell><Data ss:Type="Number">29</Data></Cell>
+   <Cell><Data ss:Type="Number">29</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V2</Data></Cell>
@@ -13732,23 +13747,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">31</Data></Cell>
-   <Cell><Data ss:Type="Number">31</Data></Cell>
+   <Cell><Data ss:Type="Number">30</Data></Cell>
+   <Cell><Data ss:Type="Number">30</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">VAr2</Data></Cell>
    <Cell><Data ss:Type="String">VAr2</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">WPct_SF or VArPct_SF</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 2 VARs.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">32</Data></Cell>
-   <Cell><Data ss:Type="Number">32</Data></Cell>
+   <Cell><Data ss:Type="Number">31</Data></Cell>
+   <Cell><Data ss:Type="Number">31</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V3</Data></Cell>
@@ -13762,23 +13777,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">33</Data></Cell>
-   <Cell><Data ss:Type="Number">33</Data></Cell>
+   <Cell><Data ss:Type="Number">32</Data></Cell>
+   <Cell><Data ss:Type="Number">32</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">VAr3</Data></Cell>
    <Cell><Data ss:Type="String">VAr3</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
    <Cell><Data ss:Type="String">Various</Data></Cell>
-   <Cell><Data ss:Type="String">WPct_SF or VArPct_SF</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 3 VARs.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">34</Data></Cell>
-   <Cell><Data ss:Type="Number">34</Data></Cell>
+   <Cell><Data ss:Type="Number">33</Data></Cell>
+   <Cell><Data ss:Type="Number">33</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V4</Data></Cell>
@@ -13792,23 +13807,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">35</Data></Cell>
-   <Cell><Data ss:Type="Number">35</Data></Cell>
+   <Cell><Data ss:Type="Number">34</Data></Cell>
+   <Cell><Data ss:Type="Number">34</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">VAr4</Data></Cell>
    <Cell><Data ss:Type="String">VAr4</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">WPct_SF or VArPct_SF</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 4 VARs.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">36</Data></Cell>
-   <Cell><Data ss:Type="Number">36</Data></Cell>
+   <Cell><Data ss:Type="Number">35</Data></Cell>
+   <Cell><Data ss:Type="Number">35</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V5</Data></Cell>
@@ -13822,23 +13837,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">37</Data></Cell>
-   <Cell><Data ss:Type="Number">37</Data></Cell>
+   <Cell><Data ss:Type="Number">36</Data></Cell>
+   <Cell><Data ss:Type="Number">36</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">VAr5</Data></Cell>
    <Cell><Data ss:Type="String">VAr5</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">WPct_SF or VArPct_SF</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 5 VARs.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">38</Data></Cell>
-   <Cell><Data ss:Type="Number">38</Data></Cell>
+   <Cell><Data ss:Type="Number">37</Data></Cell>
+   <Cell><Data ss:Type="Number">37</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V6</Data></Cell>
@@ -13852,23 +13867,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">39</Data></Cell>
-   <Cell><Data ss:Type="Number">39</Data></Cell>
+   <Cell><Data ss:Type="Number">38</Data></Cell>
+   <Cell><Data ss:Type="Number">38</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">VAr6</Data></Cell>
    <Cell><Data ss:Type="String">VAr6</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">WPct_SF or VArPct_SF</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 6 VARs.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">40</Data></Cell>
-   <Cell><Data ss:Type="Number">40</Data></Cell>
+   <Cell><Data ss:Type="Number">39</Data></Cell>
+   <Cell><Data ss:Type="Number">39</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V7</Data></Cell>
@@ -13882,23 +13897,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">41</Data></Cell>
-   <Cell><Data ss:Type="Number">41</Data></Cell>
+   <Cell><Data ss:Type="Number">40</Data></Cell>
+   <Cell><Data ss:Type="Number">40</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">VAr7</Data></Cell>
    <Cell><Data ss:Type="String">VAr7</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">WPct_SF or VArPct_SF</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 7 VARs.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">42</Data></Cell>
-   <Cell><Data ss:Type="Number">42</Data></Cell>
+   <Cell><Data ss:Type="Number">41</Data></Cell>
+   <Cell><Data ss:Type="Number">41</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V8</Data></Cell>
@@ -13912,23 +13927,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">43</Data></Cell>
-   <Cell><Data ss:Type="Number">43</Data></Cell>
+   <Cell><Data ss:Type="Number">42</Data></Cell>
+   <Cell><Data ss:Type="Number">42</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">VAr8</Data></Cell>
    <Cell><Data ss:Type="String">VAr8</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">WPct_SF or VArPct_SF</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 8 VARs.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">44</Data></Cell>
-   <Cell><Data ss:Type="Number">44</Data></Cell>
+   <Cell><Data ss:Type="Number">43</Data></Cell>
+   <Cell><Data ss:Type="Number">43</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V9</Data></Cell>
@@ -13942,23 +13957,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">45</Data></Cell>
-   <Cell><Data ss:Type="Number">45</Data></Cell>
+   <Cell><Data ss:Type="Number">44</Data></Cell>
+   <Cell><Data ss:Type="Number">44</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">VAr9</Data></Cell>
    <Cell><Data ss:Type="String">VAr9</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">WPct_SF or VArPct_SF</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 9 VARs.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">46</Data></Cell>
-   <Cell><Data ss:Type="Number">46</Data></Cell>
+   <Cell><Data ss:Type="Number">45</Data></Cell>
+   <Cell><Data ss:Type="Number">45</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V10</Data></Cell>
@@ -13972,31 +13987,16 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">47</Data></Cell>
-   <Cell><Data ss:Type="Number">47</Data></Cell>
+   <Cell><Data ss:Type="Number">46</Data></Cell>
+   <Cell><Data ss:Type="Number">46</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">VAr10</Data></Cell>
    <Cell><Data ss:Type="String">VAr10</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">WPct_SF or VArPct_SF</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 10 VARs.</Data></Cell>
-   <Cell><Data ss:Type="String"> </Data></Cell>
-   <Cell><Data ss:Type="String">O</Data></Cell>
-   <Cell ss:Index="15"/>
-  </Row>
-  <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">48</Data></Cell>
-   <Cell><Data ss:Type="Number">48</Data></Cell>
-   <Cell><Data ss:Type="Number">1</Data></Cell>
-   <Cell><Data ss:Type="String">R</Data></Cell>
-   <Cell><Data ss:Type="String">Pad</Data></Cell>
-   <Cell><Data ss:Type="String">Pad</Data></Cell>
-   <Cell><Data ss:Type="String">pad</Data></Cell>
-   <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">Pad register.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
@@ -14015,14 +14015,6 @@
   </Row>
   <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
    <Cell ss:MergeAcross="2"><Data ss:Type="String">WMax</Data></Cell>
-   <Cell ss:MergeAcross="1"><Data ss:Type="String">0</Data></Cell>
-   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
-   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
-   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
-   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
-  </Row>
-  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
-   <Cell ss:MergeAcross="2"><Data ss:Type="String">VArMax</Data></Cell>
    <Cell ss:MergeAcross="1"><Data ss:Type="String">1</Data></Cell>
    <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
    <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
@@ -14030,8 +14022,16 @@
    <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
   </Row>
   <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
-   <Cell ss:MergeAcross="2"><Data ss:Type="String">VArAval</Data></Cell>
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">VArMax</Data></Cell>
    <Cell ss:MergeAcross="1"><Data ss:Type="String">2</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">VArAval</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">3</Data></Cell>
    <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
    <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
    <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
@@ -17136,7 +17136,7 @@
    <Cell><Data ss:Type="String">uint16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">Variable # of 16 bit registers to follow : 10+N*32</Data></Cell>
+   <Cell><Data ss:Type="String">Variable # of 16 bit registers to follow : 10+N*34</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String">M</Data></Cell>
    <Cell ss:Index="15"/>
@@ -17259,7 +17259,7 @@
    <Cell><Data ss:Type="String">sunssf</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">Scale factor for percent VRef.</Data></Cell>
+   <Cell><Data ss:Type="String">Scale factor for % VRef.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">M</Data></Cell>
    <Cell ss:Index="15"/>
@@ -17267,21 +17267,6 @@
   <Row ss:Height="28" ss:StyleID="Fixed">
    <Cell><Data ss:Type="Number">11</Data></Cell>
    <Cell><Data ss:Type="Number">11</Data></Cell>
-   <Cell><Data ss:Type="Number">1</Data></Cell>
-   <Cell><Data ss:Type="String">R</Data></Cell>
-   <Cell><Data ss:Type="String">W_SF</Data></Cell>
-   <Cell><Data ss:Type="String">W_SF</Data></Cell>
-   <Cell><Data ss:Type="String">sunssf</Data></Cell>
-   <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">Scale factor for percent WMax.</Data></Cell>
-   <Cell><Data ss:Type="String"> </Data></Cell>
-   <Cell><Data ss:Type="String">M</Data></Cell>
-   <Cell ss:Index="15"/>
-  </Row>
-  <Row ss:Height="28" ss:StyleID="Fixed">
-   <Cell><Data ss:Type="Number">12</Data></Cell>
-   <Cell><Data ss:Type="Number">12</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">R</Data></Cell>
    <Cell><Data ss:Type="String">RmpIncDec_SF</Data></Cell>
@@ -17294,8 +17279,23 @@
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
+   <Cell><Data ss:Type="Number">12</Data></Cell>
+   <Cell><Data ss:Type="Number">12</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">pad</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">pad</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">M</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
   <Row ss:Height="19" ss:StyleID="Comment">
-    <Cell><Data ss:Type="String">// 132 Volt-Watt Repeating Block (32)</Data></Cell>
+    <Cell><Data ss:Type="String">// 132 Volt-Watt Repeating Block (34)</Data></Cell>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
    <Cell><Data ss:Type="Number">13</Data></Cell>
@@ -17332,6 +17332,36 @@
    <Cell><Data ss:Type="Number">22</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef</Data></Cell>
+   <Cell><Data ss:Type="String">enum16</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Defines the meaning of the Watts DeptRef.  1=% WMax 2=% WAvail</Data></Cell>
+   <Cell><Data ss:Type="String"> </Data></Cell>
+   <Cell><Data ss:Type="String">M</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Repeating">
+   <Cell><Data ss:Type="Number">23</Data></Cell>
+   <Cell><Data ss:Type="Number">23</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">RW</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
+   <Cell><Data ss:Type="String">sunssf</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Scale Factor for % DeptRef</Data></Cell>
+   <Cell><Data ss:Type="String"> </Data></Cell>
+   <Cell><Data ss:Type="String">M</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Repeating">
+   <Cell><Data ss:Type="Number">24</Data></Cell>
+   <Cell><Data ss:Type="Number">24</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">RmpPt1Tms</Data></Cell>
    <Cell><Data ss:Type="String">RmpPt1Tms</Data></Cell>
    <Cell><Data ss:Type="String">uint16</Data></Cell>
@@ -17343,8 +17373,8 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">23</Data></Cell>
-   <Cell><Data ss:Type="Number">23</Data></Cell>
+   <Cell><Data ss:Type="Number">25</Data></Cell>
+   <Cell><Data ss:Type="Number">25</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">RmpDecTmm</Data></Cell>
@@ -17358,8 +17388,8 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">24</Data></Cell>
-   <Cell><Data ss:Type="Number">24</Data></Cell>
+   <Cell><Data ss:Type="Number">26</Data></Cell>
+   <Cell><Data ss:Type="Number">26</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">RmpIncTmm</Data></Cell>
@@ -17373,8 +17403,8 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">25</Data></Cell>
-   <Cell><Data ss:Type="Number">25</Data></Cell>
+   <Cell><Data ss:Type="Number">27</Data></Cell>
+   <Cell><Data ss:Type="Number">27</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V1</Data></Cell>
@@ -17388,23 +17418,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">26</Data></Cell>
-   <Cell><Data ss:Type="Number">26</Data></Cell>
+   <Cell><Data ss:Type="Number">28</Data></Cell>
+   <Cell><Data ss:Type="Number">28</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">W1</Data></Cell>
    <Cell><Data ss:Type="String">W1</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
-   <Cell><Data ss:Type="String">% WMax</Data></Cell>
-   <Cell><Data ss:Type="String">W_SF</Data></Cell>
+   <Cell><Data ss:Type="String">% VRef</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 1 Watts.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">M</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">27</Data></Cell>
-   <Cell><Data ss:Type="Number">27</Data></Cell>
+   <Cell><Data ss:Type="Number">29</Data></Cell>
+   <Cell><Data ss:Type="Number">29</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V2</Data></Cell>
@@ -17418,23 +17448,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">28</Data></Cell>
-   <Cell><Data ss:Type="Number">28</Data></Cell>
+   <Cell><Data ss:Type="Number">30</Data></Cell>
+   <Cell><Data ss:Type="Number">30</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">W2</Data></Cell>
    <Cell><Data ss:Type="String">W2</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
-   <Cell><Data ss:Type="String">% WMax</Data></Cell>
-   <Cell><Data ss:Type="String">W_SF</Data></Cell>
+   <Cell><Data ss:Type="String">% VRef</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 2 Watts.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">29</Data></Cell>
-   <Cell><Data ss:Type="Number">29</Data></Cell>
+   <Cell><Data ss:Type="Number">31</Data></Cell>
+   <Cell><Data ss:Type="Number">31</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V3</Data></Cell>
@@ -17448,23 +17478,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">30</Data></Cell>
-   <Cell><Data ss:Type="Number">30</Data></Cell>
+   <Cell><Data ss:Type="Number">32</Data></Cell>
+   <Cell><Data ss:Type="Number">32</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">W3</Data></Cell>
    <Cell><Data ss:Type="String">W3</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
-   <Cell><Data ss:Type="String">% WMax</Data></Cell>
-   <Cell><Data ss:Type="String">W_SF</Data></Cell>
+   <Cell><Data ss:Type="String">% VRef</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 3 Watts.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">31</Data></Cell>
-   <Cell><Data ss:Type="Number">31</Data></Cell>
+   <Cell><Data ss:Type="Number">33</Data></Cell>
+   <Cell><Data ss:Type="Number">33</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V4</Data></Cell>
@@ -17478,23 +17508,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">32</Data></Cell>
-   <Cell><Data ss:Type="Number">32</Data></Cell>
+   <Cell><Data ss:Type="Number">34</Data></Cell>
+   <Cell><Data ss:Type="Number">34</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">W4</Data></Cell>
    <Cell><Data ss:Type="String">W4</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
-   <Cell><Data ss:Type="String">% WMax</Data></Cell>
-   <Cell><Data ss:Type="String">W_SF</Data></Cell>
+   <Cell><Data ss:Type="String">% VRef</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 4 Watts.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">33</Data></Cell>
-   <Cell><Data ss:Type="Number">33</Data></Cell>
+   <Cell><Data ss:Type="Number">35</Data></Cell>
+   <Cell><Data ss:Type="Number">35</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V5</Data></Cell>
@@ -17508,23 +17538,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">34</Data></Cell>
-   <Cell><Data ss:Type="Number">34</Data></Cell>
+   <Cell><Data ss:Type="Number">36</Data></Cell>
+   <Cell><Data ss:Type="Number">36</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">W5</Data></Cell>
    <Cell><Data ss:Type="String">W5</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
-   <Cell><Data ss:Type="String">% WMax</Data></Cell>
-   <Cell><Data ss:Type="String">W_SF</Data></Cell>
+   <Cell><Data ss:Type="String">% VRef</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 5 Watts.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">35</Data></Cell>
-   <Cell><Data ss:Type="Number">35</Data></Cell>
+   <Cell><Data ss:Type="Number">37</Data></Cell>
+   <Cell><Data ss:Type="Number">37</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V6</Data></Cell>
@@ -17538,23 +17568,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">36</Data></Cell>
-   <Cell><Data ss:Type="Number">36</Data></Cell>
+   <Cell><Data ss:Type="Number">38</Data></Cell>
+   <Cell><Data ss:Type="Number">38</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">W6</Data></Cell>
    <Cell><Data ss:Type="String">W6</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
-   <Cell><Data ss:Type="String">% WMax</Data></Cell>
-   <Cell><Data ss:Type="String">W_SF</Data></Cell>
+   <Cell><Data ss:Type="String">% VRef</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 6 Watts.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">37</Data></Cell>
-   <Cell><Data ss:Type="Number">37</Data></Cell>
+   <Cell><Data ss:Type="Number">39</Data></Cell>
+   <Cell><Data ss:Type="Number">39</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V7</Data></Cell>
@@ -17568,23 +17598,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">38</Data></Cell>
-   <Cell><Data ss:Type="Number">38</Data></Cell>
+   <Cell><Data ss:Type="Number">40</Data></Cell>
+   <Cell><Data ss:Type="Number">40</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">W7</Data></Cell>
    <Cell><Data ss:Type="String">W7</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
-   <Cell><Data ss:Type="String">% WMax</Data></Cell>
-   <Cell><Data ss:Type="String">W_SF</Data></Cell>
+   <Cell><Data ss:Type="String">% VRef</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 7 Watts.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">39</Data></Cell>
-   <Cell><Data ss:Type="Number">39</Data></Cell>
+   <Cell><Data ss:Type="Number">41</Data></Cell>
+   <Cell><Data ss:Type="Number">41</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V8</Data></Cell>
@@ -17598,23 +17628,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">40</Data></Cell>
-   <Cell><Data ss:Type="Number">40</Data></Cell>
+   <Cell><Data ss:Type="Number">42</Data></Cell>
+   <Cell><Data ss:Type="Number">42</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">W8</Data></Cell>
    <Cell><Data ss:Type="String">W8</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
-   <Cell><Data ss:Type="String">% WMax</Data></Cell>
-   <Cell><Data ss:Type="String">W_SF</Data></Cell>
+   <Cell><Data ss:Type="String">% VRef</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 8 Watts.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">41</Data></Cell>
-   <Cell><Data ss:Type="Number">41</Data></Cell>
+   <Cell><Data ss:Type="Number">43</Data></Cell>
+   <Cell><Data ss:Type="Number">43</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V9</Data></Cell>
@@ -17628,23 +17658,23 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">42</Data></Cell>
-   <Cell><Data ss:Type="Number">42</Data></Cell>
+   <Cell><Data ss:Type="Number">44</Data></Cell>
+   <Cell><Data ss:Type="Number">44</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">W9</Data></Cell>
    <Cell><Data ss:Type="String">W9</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
-   <Cell><Data ss:Type="String">% WMax</Data></Cell>
-   <Cell><Data ss:Type="String">W_SF</Data></Cell>
+   <Cell><Data ss:Type="String">% VRef</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 9 Watts.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">43</Data></Cell>
-   <Cell><Data ss:Type="Number">43</Data></Cell>
+   <Cell><Data ss:Type="Number">45</Data></Cell>
+   <Cell><Data ss:Type="Number">45</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">V10</Data></Cell>
@@ -17658,19 +17688,47 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
-   <Cell><Data ss:Type="Number">44</Data></Cell>
-   <Cell><Data ss:Type="Number">44</Data></Cell>
+   <Cell><Data ss:Type="Number">46</Data></Cell>
+   <Cell><Data ss:Type="Number">46</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">RW</Data></Cell>
    <Cell><Data ss:Type="String">W10</Data></Cell>
    <Cell><Data ss:Type="String">W10</Data></Cell>
    <Cell><Data ss:Type="String">int16</Data></Cell>
-   <Cell><Data ss:Type="String">% WMax</Data></Cell>
-   <Cell><Data ss:Type="String">W_SF</Data></Cell>
+   <Cell><Data ss:Type="String">% VRef</Data></Cell>
+   <Cell><Data ss:Type="String">DeptRef_SF</Data></Cell>
    <Cell><Data ss:Type="String">Point 10 Watts.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="19" ss:StyleID="Comment">
+    <Cell><Data ss:Type="String">// DeptRef enumerated values</Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="17" ss:StyleID="Header">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">ID</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Value</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Label</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Description</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Notes</Data></Cell>
+   <Cell><Data ss:Type="String">PICS (Y/N)</Data></Cell>
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Comment</Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">%WMax</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">1</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">%WAval</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">2</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
   </Row>
   <Row ss:Height="19" ss:StyleID="Comment">
     <Cell><Data ss:Type="String">// ModEna bit identifiers</Data></Cell>
@@ -17800,7 +17858,7 @@
    <Cell><Data ss:Type="String">uint16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">Number of entries in schedule.</Data></Cell>
+   <Cell><Data ss:Type="String">Number of schedule entries supuported (maximum of 10).</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">M</Data></Cell>
    <Cell ss:Index="15"/>
@@ -17830,7 +17888,7 @@
    <Cell><Data ss:Type="String">bitfield32</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">"Bitfield of active schedules</Data></Cell>
+   <Cell><Data ss:Type="String">Bitfield of active schedules</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
@@ -17923,7 +17981,7 @@
    <Cell><Data ss:Type="String">enum16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">"The repetition frequency for time-based schedules: no repeat=0</Data></Cell>
+   <Cell><Data ss:Type="String">The repetition frequency for time-based schedules: no repeat=0</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
@@ -19099,7 +19157,7 @@
    <Cell><Data ss:Type="String">uint16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">Number of points in array.</Data></Cell>
+   <Cell><Data ss:Type="String">Number of curve points supported (maximum of 10).</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">M</Data></Cell>
    <Cell ss:Index="15"/>

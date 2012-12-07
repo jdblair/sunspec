@@ -22,3 +22,4 @@
 
 2012 December 4: Bob Fox, Loggerware reported typos in the meter models for the TotWhImp measurements.  These should be A, B, C.  Models affected M 201,202,203,204,211,212,213,214
 
+2012 December 6: Phillip Windisch, Fronius.  Change request was lost.  Readded the DeptRef and DeptRef_SF to the Volt-Watt curve to give more flexibilty to the meaning of DeptRef.  Models affected IC 126,132.

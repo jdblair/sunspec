@@ -127,7 +127,7 @@
     </point>
     <point id="NPts">
       <label>NPts</label>
-      <description>Number of entries in schedule.</description>
+      <description>Number of schedule entries supuported (maximum of 10).</description>
       <notes> </notes>
     </point>
     <point id="ModEna">
@@ -137,7 +137,7 @@
     </point>
     <point id="ActSchd">
       <label>ActSchd</label>
-      <description>"Bitfield of active schedules</description>
+      <description>Bitfield of active schedules</description>
       <notes> </notes>
     </point>
     <point id="Rsrvd">
@@ -167,7 +167,7 @@
     </point>
     <point id="SchdTyp">
       <label>SchdTyp</label>
-      <description>"The repetition frequency for time-based schedules: no repeat=0</description>
+      <description>The repetition frequency for time-based schedules: no repeat=0</description>
       <notes> </notes>
     </point>
     <point id="XTyp">
