@@ -32162,7 +32162,7 @@
    <Cell><Data ss:Type="String">uint16</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">Variable # of 16 bit registers to follow : 20+N*13</Data></Cell>
+   <Cell><Data ss:Type="String">Variable # of 16 bit registers to follow : 20+N*14</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String">M</Data></Cell>
    <Cell ss:Index="15"/>
@@ -32411,7 +32411,7 @@
    <Cell ss:Index="15"/>
   </Row>
   <Row ss:Height="19" ss:StyleID="Comment">
-    <Cell><Data ss:Type="String">// 402 String Combiner (Advanced) Repeating Block (13)</Data></Cell>
+    <Cell><Data ss:Type="String">// 402 String Combiner (Advanced) Repeating Block (14)</Data></Cell>
   </Row>
   <Row ss:Height="28" ss:StyleID="Repeating">
    <Cell><Data ss:Type="Number">23</Data></Cell>
@@ -32545,6 +32545,21 @@
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String">String Performance Ratio</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Repeating">
+   <Cell><Data ss:Type="Number">36</Data></Cell>
+   <Cell><Data ss:Type="Number">36</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">InN</Data></Cell>
+   <Cell><Data ss:Type="String">N</Data></Cell>
+   <Cell><Data ss:Type="String">uint16</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Number of modules in this input string</Data></Cell>
+   <Cell><Data ss:Type="String">Configured value</Data></Cell>
    <Cell><Data ss:Type="String">O</Data></Cell>
    <Cell ss:Index="15"/>
   </Row>
