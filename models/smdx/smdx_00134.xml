@@ -60,7 +60,7 @@
     </point>
     <point id="NPt">
       <label>NPt</label>
-      <description>Number of points in array.</description>
+      <description>Number of curve points supported (maximum of 10).</description>
       <notes> </notes>
     </point>
     <point id="ModEna">
@@ -80,7 +80,7 @@
     </point>
     <point id="WRef">
       <label>WRef</label>
-      <description>Reference active power (default = I_WMax).</description>
+      <description>Reference active power (default = WMax).</description>
       <notes> </notes>
     </point>
     <point id="WRefStrHz">
@@ -120,7 +120,7 @@
     </point>
     <point id="W_SF">
       <label>W_SF</label>
-      <description>Scale factor for percent I_PRef.</description>
+      <description>Scale factor for percent WRef.</description>
       <notes> </notes>
     </point>
     <point id="RmpIncDec_SF">

@@ -1,7 +1,7 @@
 <sunSpecModels v="1">
   <!-- 122: Inverter Controls Extended Measurements and Status  -->
   <model id="122" len="40">
-    <block len="40" type="fixed">
+    <block len="42" type="fixed">
       <point id="PVConn" offset="0" access="r" type="bitfield16" len="1" mandatory="true">
         <symbol id="CONNECTED">0</symbol>
         <symbol id="AVAILABLE">1</symbol>
@@ -25,7 +25,9 @@
       <point id="ActVArhQ4" offset="23" access="r" type="acc64" len="4" mandatory="false" units="varh" />
       <point id="VArAval" offset="27" access="r" type="uint16" len="1" mandatory="false" units="var" sf="VArAval_SF"/>
       <point id="VArAval_SF" offset="28" access="r" type="sunssf" len="1" mandatory="false"  />
-      <point id="StSetLimMsk" offset="29" access="rw" type="bitfield32" len="2" mandatory="false">
+      <point id="WAval" offset="29" access="r" type="uint16" len="1" mandatory="false" units="var" sf="WAval_SF"/>
+      <point id="WAval_SF" offset="30" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="StSetLimMsk" offset="31" access="rw" type="bitfield32" len="2" mandatory="false">
         <symbol id="WMax">0</symbol>
         <symbol id="VAMax">1</symbol>
         <symbol id="VArPosMax">2</symbol>
@@ -34,7 +36,7 @@
         <symbol id="PFLeadMin">5</symbol>
         <symbol id="PFLagMin">6</symbol>
       </point>
-      <point id="StActCtl" offset="31" access="r" type="bitfield32" len="2" mandatory="false">
+      <point id="StActCtl" offset="33" access="r" type="bitfield32" len="2" mandatory="false">
         <symbol id="FixedW">0</symbol>
         <symbol id="FixedVAR">1</symbol>
         <symbol id="FixedPF">2</symbol>
@@ -48,9 +50,9 @@
         <symbol id="Volt-Watt">10</symbol>
         <symbol id="Scheduled">12</symbol>
       </point>
-      <point id="TmSrc" offset="33" access="r" type="string" len="4" mandatory="false"  />
-      <point id="Tms" offset="37" access="rw" type="uint32" len="2" mandatory="false" units="Secs" />
-      <point id="VrtSt" offset="39" access="r" type="bitfield16" len="1" mandatory="false">
+      <point id="TmSrc" offset="35" access="r" type="string" len="4" mandatory="false"  />
+      <point id="Tms" offset="39" access="rw" type="uint32" len="2" mandatory="false" units="Secs" />
+      <point id="VrtSt" offset="41" access="r" type="bitfield16" len="1" mandatory="false">
         <symbol id="LVRT_ACTIVE">0</symbol>
         <symbol id="HVRT_ACTIVE">1</symbol>
       </point>
@@ -115,6 +117,16 @@
     <point id="VArAval_SF">
       <label>VArAval_SF</label>
       <description>Scale factor for available VARs.</description>
+      <notes> </notes>
+    </point>
+    <point id="WAval">
+      <label>WAval</label>
+      <description>Amount of Watts available.</description>
+      <notes> </notes>
+    </point>
+    <point id="WAval_SF">
+      <label>WAval_SF</label>
+      <description>Scale factor for available Watts.</description>
       <notes> </notes>
     </point>
     <point id="StSetLimMsk">

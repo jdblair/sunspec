@@ -81,7 +81,7 @@
     </point>
     <point id="HysBlkZnV">
       <label>HysBlkZnV</label>
-      <description>Hysteresis voltage used with I_TV_BlkZnV.</description>
+      <description>Hysteresis voltage used with BlkZnV.</description>
       <notes> </notes>
     </point>
     <point id="BlkZnTmms">

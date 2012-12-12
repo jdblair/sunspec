@@ -285,12 +285,12 @@
       <description></description>
       <notes></notes>
     </point>
-    <point id="TotWhImpPhAB">
+    <point id="TotWhImpPhB">
       <label>Total Watt-hours Imported phase B</label>
       <description></description>
       <notes></notes>
     </point>
-    <point id="TotWhImpPhAC">
+    <point id="TotWhImpPhC">
       <label>Total Watt-hours Imported phase C</label>
       <description></description>
       <notes></notes>

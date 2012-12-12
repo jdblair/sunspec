@@ -6,7 +6,7 @@
 
 2012 October 3 : Bill Randle, AEI reported incorrect register names in the Inverter Control Basic Settings.  Register 4 named VAMax_SF should be named WMax_SF. Register 14 name VAMax_SF should be VRef_SF   Models affected: IC 121.
 
-2012 October 23 : Flo Yee, Solectria renewables reported incorrect type of TmpAmb.  uint16 should be int16.   Models affected: E 308.
+2012 Octoboer 23 : Flo Yee, Solectria renewables reported incorrect type of TmpAmb.  uint16 should be int16.   Models affected: E 308.
 
 2012 October 26: Bill Randle, AEI reported incorrect type for PF in the Watt-PF function.  PF should be a signed value (int16), not unsigned (unit16).  Models affected: IC 131 
 
@@ -15,3 +15,11 @@
 2012 November 1: Bob Fox, Loggerware reported missing fixed scalefactors in environmental models.  Models affected: E 303, 304, 308
 
 2012 November 2: Bob Fox, Loggerware reported pad register not needed in E 302 model.  Removed pad.  Models affected E 302
+
+2012 November 8: Bill Randle, AEI.  Updates to incorporate changes from SEP2.0 and IEC 61850-90-7, other errata. Models affected IC 120-134
+
+2012 Matthieue Laroche, Mersen.  Contributed new vendor extension model for Mersen string monitor.  Model affected V 64020.
+
+2012 December 4: Bob Fox, Loggerware reported typos in the meter models for the TotWhImp measurements.  These should be A, B, C.  Models affected M 201,202,203,204,211,212,213,214
+
+2012 December 6: Phillip Windisch, Fronius.  Change request was lost.  Readded the DeptRef and DeptRef_SF to the Volt-Watt curve to give more flexibilty to the meaning of DeptRef.  Models affected IC 126,132.
