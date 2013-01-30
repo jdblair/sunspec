@@ -18,7 +18,7 @@ This document may be used, copied, and furnished to others, without restrictions
       <xs:sequence>
         <xs:group ref="modelgroup" minOccurs="0" maxOccurs="unbounded" />
       </xs:sequence>
-      <xs:attribute name="v" type="xs:string" default="1"/>
+      <xs:attribute name="v" type="xs:string" default="1" />
     </xs:complexType>
   </xs:element>
 
@@ -42,7 +42,7 @@ This document may be used, copied, and furnished to others, without restrictions
       <xs:element name="point" type="PointDefinition" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
     <xs:attribute name="len" type="xs:integer" />
-    <xs:attribute name="type" type="xs:string" />
+    <xs:attribute name="type" type="BlockTypeDefinition" default="fixed" />
   </xs:complexType>
 
   <xs:complexType name="PointDefinition">
@@ -55,7 +55,7 @@ This document may be used, copied, and furnished to others, without restrictions
     <xs:attribute name="type" type="PointTypeDefinition" />
     <xs:attribute name="sf" type="xs:string" />
     <xs:attribute name="units" type="xs:string" />
-    <xs:attribute name="access" type="PointAccessDefinition" />
+    <xs:attribute name="access" type="PointAccessDefinition" default="r" />
     <xs:attribute name="mandatory" type="xs:boolean" />
   </xs:complexType>
 
@@ -132,7 +132,14 @@ This document may be used, copied, and furnished to others, without restrictions
     <xs:restriction base="xs:string">
       <xs:enumeration value="r"/>
       <xs:enumeration value="rw"/>
-      <xs:enumeration value="w"/>
     </xs:restriction>
   </xs:simpleType>
+
+  <xs:simpleType name="BlockTypeDefinition">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="fixed"/>
+      <xs:enumeration value="repeating"/>
+    </xs:restriction>
+  </xs:simpleType>
+
 </xs:schema>
