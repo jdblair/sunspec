@@ -910,7 +910,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -1113,7 +1113,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -1622,7 +1622,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -1853,7 +1853,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -2181,7 +2181,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -2708,7 +2708,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -3235,7 +3235,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -3474,7 +3474,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -3752,7 +3752,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -4100,7 +4100,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -4475,7 +4475,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -4633,7 +4633,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -5002,7 +5002,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -5946,7 +5946,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -6890,7 +6890,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -7834,7 +7834,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -8598,7 +8598,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -9362,7 +9362,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -10126,7 +10126,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -10627,7 +10627,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -10702,12 +10702,12 @@
    <Cell><Data ss:Type="Number">4</Data></Cell>
    <Cell><Data ss:Type="Number">1</Data></Cell>
    <Cell><Data ss:Type="String">R</Data></Cell>
-   <Cell><Data ss:Type="String">VAMax_SF</Data></Cell>
-   <Cell><Data ss:Type="String">VAMax_SF</Data></Cell>
+   <Cell><Data ss:Type="String">WMax_SF</Data></Cell>
+   <Cell><Data ss:Type="String">WMax_SF</Data></Cell>
    <Cell><Data ss:Type="String">sunssf</Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
    <Cell><Data ss:Type="String"></Data></Cell>
-   <Cell><Data ss:Type="String">Scale factor for apparent power.</Data></Cell>
+   <Cell><Data ss:Type="String">Scale factor for real power.</Data></Cell>
    <Cell><Data ss:Type="String"> </Data></Cell>
    <Cell><Data ss:Type="String">M</Data></Cell>
    <Cell ss:Index="15"/>
@@ -11310,7 +11310,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -11975,7 +11975,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -12546,7 +12546,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -13113,7 +13113,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -13388,7 +13388,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -14085,7 +14085,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -14358,7 +14358,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -14699,7 +14699,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -15530,7 +15530,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -16361,7 +16361,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -17089,7 +17089,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -17778,7 +17778,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -19077,7 +19077,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -19778,7 +19778,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -21121,7 +21121,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -22528,7 +22528,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -23935,7 +23935,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -25342,7 +25342,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -26599,7 +26599,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -27856,7 +27856,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -29113,7 +29113,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -30370,7 +30370,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -30528,7 +30528,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -30626,7 +30626,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -30754,7 +30754,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -30927,7 +30927,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -31070,7 +31070,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -31318,7 +31318,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -31461,7 +31461,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -32115,7 +32115,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -32919,7 +32919,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -33603,7 +33603,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -34482,7 +34482,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -35092,7 +35092,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -35754,6 +35754,604 @@
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
+ <Worksheet ss:Name="T 601">
+  <Table ss:ExpandedColumnCount="17" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="110"/>
+   <Column ss:AutoFitWidth="0" ss:Width="150"/>
+   <Column ss:AutoFitWidth="0" ss:Width="90"/>
+   <Column ss:AutoFitWidth="0" ss:Width="90"/>
+   <Column ss:AutoFitWidth="0" ss:Width="155"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
+   <Column ss:AutoFitWidth="0" ss:Width="150"/>
+   <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
+  <Row ss:Height="19" ss:StyleID="Comment">
+    <Cell><Data ss:Type="String">// 601-Tracker Controller DRAFT 2 : Monitors and controls multiple trackers (Trackers may include GPS model 305 for location information)</Data></Cell>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Header">
+   <Cell><Data ss:Type="String">Start Offset</Data></Cell>
+   <Cell><Data ss:Type="String">End &#13;Offset</Data></Cell>
+   <Cell><Data ss:Type="String">Size</Data></Cell>
+   <Cell><Data ss:Type="String">R/W</Data></Cell>
+   <Cell><Data ss:Type="String">Name</Data></Cell>
+   <Cell><Data ss:Type="String">Label</Data></Cell>
+   <Cell><Data ss:Type="String">Type</Data></Cell>
+   <Cell><Data ss:Type="String">Units</Data></Cell>
+   <Cell><Data ss:Type="String">SF</Data></Cell>
+   <Cell><Data ss:Type="String">Description</Data></Cell>
+   <Cell><Data ss:Type="String">Notes</Data></Cell>
+   <Cell><Data ss:Type="String">M/O</Data></Cell>
+   <Cell><Data ss:Type="String">PICS (Y, N)</Data></Cell>
+   <Cell><Data ss:Type="String">Comment/Value</Data></Cell>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Model">
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">ID</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">unit16</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">A well-known value 601.  Uniquely identifies this as a SunSpec Tracker Controller DRAFT 2 Model</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">M</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Model">
+   <Cell><Data ss:Type="Number">2</Data></Cell>
+   <Cell><Data ss:Type="Number">2</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">L</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">uint16</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Variable # of 16 bit registers to follow : 26+N*22</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">M</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="19" ss:StyleID="Comment">
+    <Cell><Data ss:Type="String">// 601 Tracker Controller DRAFT 2 Fixed Block (26)</Data></Cell>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
+   <Cell><Data ss:Type="Number">3</Data></Cell>
+   <Cell><Data ss:Type="Number">10</Data></Cell>
+   <Cell><Data ss:Type="Number">8</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">Nam</Data></Cell>
+   <Cell><Data ss:Type="String">Controller</Data></Cell>
+   <Cell><Data ss:Type="String">string</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Descriptive name for this control unit</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
+   <Cell><Data ss:Type="Number">11</Data></Cell>
+   <Cell><Data ss:Type="Number">11</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">Typ</Data></Cell>
+   <Cell><Data ss:Type="String">Type</Data></Cell>
+   <Cell><Data ss:Type="String">enum16</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Type of tracker</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">M</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
+   <Cell><Data ss:Type="Number">12</Data></Cell>
+   <Cell><Data ss:Type="Number">16</Data></Cell>
+   <Cell><Data ss:Type="Number">5</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">DtLoc</Data></Cell>
+   <Cell><Data ss:Type="String">Date</Data></Cell>
+   <Cell><Data ss:Type="String">string</Data></Cell>
+   <Cell><Data ss:Type="String">YYYYMMDD</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Local date in YYYYMMDD format</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
+   <Cell><Data ss:Type="Number">17</Data></Cell>
+   <Cell><Data ss:Type="Number">19</Data></Cell>
+   <Cell><Data ss:Type="Number">3</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">TmLoc</Data></Cell>
+   <Cell><Data ss:Type="String">Time</Data></Cell>
+   <Cell><Data ss:Type="String">string</Data></Cell>
+   <Cell><Data ss:Type="String">hhmmss</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">24 hour local time stamp to second</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
+   <Cell><Data ss:Type="Number">20</Data></Cell>
+   <Cell><Data ss:Type="Number">20</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">Day</Data></Cell>
+   <Cell><Data ss:Type="String">Day</Data></Cell>
+   <Cell><Data ss:Type="String">uint16</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Number of the day in the year (1-366)</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
+   <Cell><Data ss:Type="Number">21</Data></Cell>
+   <Cell><Data ss:Type="Number">22</Data></Cell>
+   <Cell><Data ss:Type="Number">2</Data></Cell>
+   <Cell><Data ss:Type="String">RW</Data></Cell>
+   <Cell><Data ss:Type="String">GlblElCtl</Data></Cell>
+   <Cell><Data ss:Type="String">Manual Elevation</Data></Cell>
+   <Cell><Data ss:Type="String">int32</Data></Cell>
+   <Cell><Data ss:Type="String">Degrees</Data></Cell>
+   <Cell><Data ss:Type="String">Dgr_SF</Data></Cell>
+   <Cell><Data ss:Type="String">Global manual override target position of elevation in degreees from horizontal.  Unimplemented for single axis azimuth tracker type</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
+   <Cell><Data ss:Type="Number">23</Data></Cell>
+   <Cell><Data ss:Type="Number">24</Data></Cell>
+   <Cell><Data ss:Type="Number">2</Data></Cell>
+   <Cell><Data ss:Type="String">RW</Data></Cell>
+   <Cell><Data ss:Type="String">GlblAzCtl</Data></Cell>
+   <Cell><Data ss:Type="String">Manual Azimuth</Data></Cell>
+   <Cell><Data ss:Type="String">int32</Data></Cell>
+   <Cell><Data ss:Type="String">Degrees</Data></Cell>
+   <Cell><Data ss:Type="String">Dgr_SF</Data></Cell>
+   <Cell><Data ss:Type="String">Global manual override target position of azimuth in degrees from true north towards east.  Unimplemented for single axis azimuth tracker type</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
+   <Cell><Data ss:Type="Number">25</Data></Cell>
+   <Cell><Data ss:Type="Number">25</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">RW</Data></Cell>
+   <Cell><Data ss:Type="String">GlblCtl</Data></Cell>
+   <Cell><Data ss:Type="String">Mode</Data></Cell>
+   <Cell><Data ss:Type="String">enum16</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Global Control register operates on all trackers. Normal operation is automatic.  Operator can override the position by setting the ElCtl, AzCtl and enabling Manual operation. Entering calibration mode will revert to automatic operation after calibration is complete.</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
+   <Cell><Data ss:Type="Number">26</Data></Cell>
+   <Cell><Data ss:Type="Number">26</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">GlblAlm</Data></Cell>
+   <Cell><Data ss:Type="String">Alarm</Data></Cell>
+   <Cell><Data ss:Type="String">bitfield16</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Global tracker alarm conditions</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
+   <Cell><Data ss:Type="Number">27</Data></Cell>
+   <Cell><Data ss:Type="Number">27</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">Dgr_SF</Data></Cell>
+   <Cell><Data ss:Type="String">SF</Data></Cell>
+   <Cell><Data ss:Type="String">sunssf</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Scale Factor for targets and position measurements in degrees</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">M</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Fixed">
+   <Cell><Data ss:Type="Number">28</Data></Cell>
+   <Cell><Data ss:Type="Number">28</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">N</Data></Cell>
+   <Cell><Data ss:Type="String">Trackers</Data></Cell>
+   <Cell><Data ss:Type="String">uint16</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Number of trackers being controlled.  Size of repeating block.</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">M</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="19" ss:StyleID="Comment">
+    <Cell><Data ss:Type="String">// 601 Tracker Controller DRAFT 2 Repeating Block (22)</Data></Cell>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Repeating">
+   <Cell><Data ss:Type="Number">29</Data></Cell>
+   <Cell><Data ss:Type="Number">36</Data></Cell>
+   <Cell><Data ss:Type="Number">8</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">Id</Data></Cell>
+   <Cell><Data ss:Type="String">Tracker</Data></Cell>
+   <Cell><Data ss:Type="String">string</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Descriptive name for this tracker unit</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Repeating">
+   <Cell><Data ss:Type="Number">37</Data></Cell>
+   <Cell><Data ss:Type="Number">38</Data></Cell>
+   <Cell><Data ss:Type="Number">2</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">ElTrgt</Data></Cell>
+   <Cell><Data ss:Type="String">Target Elevation</Data></Cell>
+   <Cell><Data ss:Type="String">int32</Data></Cell>
+   <Cell><Data ss:Type="String">Degrees</Data></Cell>
+   <Cell><Data ss:Type="String">Dgr_SF</Data></Cell>
+   <Cell><Data ss:Type="String">Auto target elevation in degrees from horizontal.  Unimplemented for single axis azimuth tracker type</Data></Cell>
+   <Cell><Data ss:Type="String">Conformant implementations shall implement El or Az</Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Repeating">
+   <Cell><Data ss:Type="Number">39</Data></Cell>
+   <Cell><Data ss:Type="Number">40</Data></Cell>
+   <Cell><Data ss:Type="Number">2</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">AzTrgt</Data></Cell>
+   <Cell><Data ss:Type="String">Target Azimuth</Data></Cell>
+   <Cell><Data ss:Type="String">int32</Data></Cell>
+   <Cell><Data ss:Type="String">Degrees</Data></Cell>
+   <Cell><Data ss:Type="String">SF</Data></Cell>
+   <Cell><Data ss:Type="String">Auto target azimuth  in degrees from true north towards east.  Unimplemented for single axis horizontal tracker type</Data></Cell>
+   <Cell><Data ss:Type="String">Conformant implementations shall implement El or Az</Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Repeating">
+   <Cell><Data ss:Type="Number">41</Data></Cell>
+   <Cell><Data ss:Type="Number">42</Data></Cell>
+   <Cell><Data ss:Type="Number">2</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">ElPos</Data></Cell>
+   <Cell><Data ss:Type="String">Elevation</Data></Cell>
+   <Cell><Data ss:Type="String">int32</Data></Cell>
+   <Cell><Data ss:Type="String">Degrees</Data></Cell>
+   <Cell><Data ss:Type="String">Dgr_SF</Data></Cell>
+   <Cell><Data ss:Type="String">Actual elevation position  in degrees from horizontal.  Unimplemented for single axis azimuth tracker type</Data></Cell>
+   <Cell><Data ss:Type="String">Conformant implementations shall implement El or Az</Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Repeating">
+   <Cell><Data ss:Type="Number">43</Data></Cell>
+   <Cell><Data ss:Type="Number">44</Data></Cell>
+   <Cell><Data ss:Type="Number">2</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">AzPos</Data></Cell>
+   <Cell><Data ss:Type="String">Azimuth</Data></Cell>
+   <Cell><Data ss:Type="String">int32</Data></Cell>
+   <Cell><Data ss:Type="String">Degrees</Data></Cell>
+   <Cell><Data ss:Type="String">Dgr_SF</Data></Cell>
+   <Cell><Data ss:Type="String">Actual azimuth position  in degrees from true north towards east.  Unimplemented for single axis horizontal tracker type</Data></Cell>
+   <Cell><Data ss:Type="String">Conformant implementations shall implement El or Az</Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Repeating">
+   <Cell><Data ss:Type="Number">45</Data></Cell>
+   <Cell><Data ss:Type="Number">46</Data></Cell>
+   <Cell><Data ss:Type="Number">2</Data></Cell>
+   <Cell><Data ss:Type="String">RW</Data></Cell>
+   <Cell><Data ss:Type="String">ElCtl</Data></Cell>
+   <Cell><Data ss:Type="String">Manual Elevation</Data></Cell>
+   <Cell><Data ss:Type="String">int32</Data></Cell>
+   <Cell><Data ss:Type="String">Degrees</Data></Cell>
+   <Cell><Data ss:Type="String">Dgr_SF</Data></Cell>
+   <Cell><Data ss:Type="String">Manual override target position of elevation in degreees from horizontal.  Unimplemented for single axis azimuth tracker type</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Repeating">
+   <Cell><Data ss:Type="Number">47</Data></Cell>
+   <Cell><Data ss:Type="Number">48</Data></Cell>
+   <Cell><Data ss:Type="Number">2</Data></Cell>
+   <Cell><Data ss:Type="String">RW</Data></Cell>
+   <Cell><Data ss:Type="String">AzCtl</Data></Cell>
+   <Cell><Data ss:Type="String">Manual Azimuth</Data></Cell>
+   <Cell><Data ss:Type="String">int32</Data></Cell>
+   <Cell><Data ss:Type="String">Degrees</Data></Cell>
+   <Cell><Data ss:Type="String">Dgr_SF</Data></Cell>
+   <Cell><Data ss:Type="String">Manual override target position of azimuth in degrees from true north towards east.  Unimplemented for single axis azimuth tracker type</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Repeating">
+   <Cell><Data ss:Type="Number">49</Data></Cell>
+   <Cell><Data ss:Type="Number">49</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">RW</Data></Cell>
+   <Cell><Data ss:Type="String">Ctl</Data></Cell>
+   <Cell><Data ss:Type="String">Mode</Data></Cell>
+   <Cell><Data ss:Type="String">enum16</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Control register. Normal operation is automatic.  Operator can override the position by setting the ElCtl, AzCtl and enabling Manual operation. Entering calibration mode will revert to automatic operation after calibration is complete.</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="28" ss:StyleID="Repeating">
+   <Cell><Data ss:Type="Number">50</Data></Cell>
+   <Cell><Data ss:Type="Number">50</Data></Cell>
+   <Cell><Data ss:Type="Number">1</Data></Cell>
+   <Cell><Data ss:Type="String">R</Data></Cell>
+   <Cell><Data ss:Type="String">Alm</Data></Cell>
+   <Cell><Data ss:Type="String">Alarm</Data></Cell>
+   <Cell><Data ss:Type="String">bitfield16</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">Tracker alarm conditions</Data></Cell>
+   <Cell><Data ss:Type="String"></Data></Cell>
+   <Cell><Data ss:Type="String">O</Data></Cell>
+   <Cell ss:Index="15"/>
+  </Row>
+  <Row ss:Height="19" ss:StyleID="Comment">
+    <Cell><Data ss:Type="String">// Typ enumerated values</Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="17" ss:StyleID="Header">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">ID</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Value</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Label</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Description</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Notes</Data></Cell>
+   <Cell><Data ss:Type="String">PICS (Y/N)</Data></Cell>
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Comment</Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Unknown</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">0</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Unknown</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Not Set</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Fixed</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">1</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Fixed</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Documented orientation information</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Horizontal</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">2</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Horizontal</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Single Axis Horizontal</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Tilted</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">3</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Tilted</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Single Axis Tilted Horizontal</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Azimuth</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">4</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Azimuth</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Single Axis Azimuth</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Dual</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">5</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Dual</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Dual Axis</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Other</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">99</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Other</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Other type</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:Height="19" ss:StyleID="Comment">
+    <Cell><Data ss:Type="String">// Ctl enumerated values</Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="17" ss:StyleID="Header">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">ID</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Value</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Label</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Description</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Notes</Data></Cell>
+   <Cell><Data ss:Type="String">PICS (Y/N)</Data></Cell>
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Comment</Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Automatic</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">0</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Auto</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Follow programmed path</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Manual</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">1</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Manual</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Go to a fixed position</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Calibrate</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">2</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Calibrate</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Execute test mode</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:Height="19" ss:StyleID="Comment">
+    <Cell><Data ss:Type="String">// GlblCtl enumerated values</Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="17" ss:StyleID="Header">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">ID</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Value</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Label</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Description</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Notes</Data></Cell>
+   <Cell><Data ss:Type="String">PICS (Y/N)</Data></Cell>
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Comment</Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Automatic</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">0</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Auto</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Follow programmed path</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Manual</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">1</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Manual</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Go to a fixed position</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Enum">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Calibrate</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">2</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Calibrate</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Execute test mode</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:Height="19" ss:StyleID="Comment">
+    <Cell><Data ss:Type="String">// Alm bit identifiers</Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="17" ss:StyleID="Header">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">ID</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Bit</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Label</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Description</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Notes</Data></Cell>
+   <Cell><Data ss:Type="String">PICS (Y/N)</Data></Cell>
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Comment</Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Bitfield">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">SetPoint</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">0</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">SetPoint</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Tracker NOT at SetPoint</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Bitfield">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">ObsEl</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">1</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">ObsEl</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Tracker ELEVATION motor is obstructed</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Bitfield">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">ObsAz</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">2</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">ObsAz</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Tracker AZIMUTH motor is obstructed</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:Height="19" ss:StyleID="Comment">
+    <Cell><Data ss:Type="String">// GlblAlm bit identifiers</Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="17" ss:StyleID="Header">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">ID</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Bit</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Label</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Description</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">Notes</Data></Cell>
+   <Cell><Data ss:Type="String">PICS (Y/N)</Data></Cell>
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">Comment</Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Bitfield">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">SetPoint</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">0</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">SetPoint</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">One or more trackers are NOT at SetPoint</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Bitfield">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">ObsEl</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">1</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">ObsEl</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">One or more trackers ELEVATION motor is obstructed</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="Bitfield">
+   <Cell ss:MergeAcross="2"><Data ss:Type="String">ObsAz</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">2</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">ObsAz</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String">One or more trackers AZIMUTH motor is obstructed</Data></Cell>
+   <Cell ss:MergeAcross="1"><Data ss:Type="String"></Data></Cell>
+   <Cell ss:Index="15" ss:MergeAcross="2"><Data ss:Type="String"></Data></Cell>
+  </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Print>
+    <ValidPrinterInfo/>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>11</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
  <Worksheet ss:Name="V 64001">
   <Table ss:ExpandedColumnCount="17" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
@@ -35762,7 +36360,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -36370,7 +36968,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -36951,7 +37549,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -37139,7 +37737,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -38047,7 +38645,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
@@ -38527,7 +39125,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
    <Column ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:AutoFitWidth="0" ss:Width="250"/>
+   <Column ss:AutoFitWidth="0" ss:Width="350"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="300"/>
   <Row ss:Height="19" ss:StyleID="Comment">
