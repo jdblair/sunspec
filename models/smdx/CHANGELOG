@@ -23,3 +23,9 @@
 2012 December 4: Bob Fox, Loggerware reported typos in the meter models for the TotWhImp measurements.  These should be A, B, C.  Models affected M 201,202,203,204,211,212,213,214
 
 2012 December 6: Phillip Windisch, Fronius.  Change request was lost.  Readded the DeptRef and DeptRef_SF to the Volt-Watt curve to give more flexibilty to the meaning of DeptRef.  Models affected IC 126,132.
+
+2012 December 7: John Nunneley, SunSpec.  Transcription error in SC 402 missing InN.  Models affected SC 402.
+
+2013 February 5: Bob Fox, Loggerware.  Change request was lost.  Readded 2012 October 3 : Bill Randle, AEI reported incorrect register names in the Inverter Control Basic Settings.  Register 4 named VAMax_SF should be named WMax_SF. Models affected IC 121.
+
+2012 February 6: Andrew Murray, Array Technology. Contributed DRAFT 2 of Tracker Model.  Models affected T 601.

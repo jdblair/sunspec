@@ -3,7 +3,7 @@
   <model id="121" len="32">
     <block len="32" type="fixed">
       <point id="WMax" offset="0" access="rw" type="uint16" len="1" mandatory="true" units="W" sf="VAMax_SF"/>
-      <point id="VAMax_SF" offset="1" access="r" type="sunssf" len="1" mandatory="true"  />
+      <point id="WMax_SF" offset="1" access="r" type="sunssf" len="1" mandatory="true"  />
       <point id="VMax" offset="2" access="rw" type="uint16" len="1" mandatory="false" units="V" sf="VMinMax_SF"/>
       <point id="VMin" offset="3" access="rw" type="uint16" len="1" mandatory="false" units="V" sf="VMinMax_SF"/>
       <point id="VMinMax_SF" offset="4" access="r" type="sunssf" len="1" mandatory="false"  />
@@ -60,9 +60,9 @@
       <description>Setting for maximum power output. Default to WRtg.</description>
       <notes> </notes>
     </point>
-    <point id="VAMax_SF">
-      <label>VAMax_SF</label>
-      <description>Scale factor for power settings.</description>
+    <point id="WMax_SF">
+      <label>WMax_SF</label>
+      <description>Scale factor for real power.</description>
       <notes> </notes>
     </point>
     <point id="VMax">
