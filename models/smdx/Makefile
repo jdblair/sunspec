@@ -31,13 +31,13 @@
 
 SUNS=../../src/suns
 
-XMLFILES=$(shell (ls *.xml))
+SMDXFILES=$(shell (ls smdx*.xml))
 
 SCHEMA=smdx.xsd
 
 all: check
 
-check: $(XMLFILES)
+check: $(SMDXFILES)
 	@# dump stdout to /dev/null to avoid cluttering the output
 	@# stuff we care about (errors and pass messages) are written to stderr
 	@echo Using xmllint to validate all files...
