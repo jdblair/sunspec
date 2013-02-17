@@ -4,9 +4,10 @@ import hashlib
 import os.path
 # Set the path where the smdx files are here
 # linux path
+path = "/home/jkn/sunspec/models/smdx"
 # path = "~/sunspec/models/smdx"
 # jkn MAC path
-path = "/Users/jkn/Documents/SunSpec/SunSpec Interoperability Specifications/SMDX"
+# path = "/Users/jkn/Documents/SunSpec/SunSpec Interoperability Specifications/SMDX"
 
 # get a directory listing and iterate over the files
 list = dircache.listdir(path)
