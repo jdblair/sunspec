@@ -1,0 +1,52 @@
+data common_model {
+  #Common
+  #All SunSpec compliant devices must include this as the first model
+  #
+  1
+  65 
+  # block type=norm
+  # block length=66
+  string.32: "Amalgamated Industries" #Mn
+  string.32: "Advanced String Combiner" #Md
+  string.16: "standard" #Opt
+  string.16: "1.0.1" #Vr
+  string.32: "abcd1234zz3" #SN
+  uint16: 99 #DA
+}
+
+data model_test {
+  #String Combiner (Advanced)
+  #An advanced string combiner
+  #This model is SUPERSEDED by model 404
+  402
+  33
+  # block type=norm
+  # block length=20
+  sunssf: 0 #DCA_SF
+  sunssf: 0 #DCAhr_SF
+  sunssf: 0 #DCV_SF
+  sunssf: 0 #DCW_SF
+  sunssf: 0 #DCWh_SF
+  uint16: 0 #DCAMax
+  uint16: 0 #N
+  bitfield32: 2 #Evt
+  bitfield32: 0 #EvtVnd
+  int16: 0 #DCA
+  uint32: 0 #DCAhr
+  uint16: 0 #DCV
+  int16: 0 #Tmp
+  int16: 0 #DCW
+  uint16: 0 #DCPR
+  uint32: 0 #DCWh
+  # block type=repeating
+  # block length=13
+  uint16: 0 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #EvtVnd
+  int16: 0 #InDCA
+  uint32: 0 #InDCAhr
+  uint16: 0 #InDCV
+  int16: 0 #InDCW
+  uint32: 0 #InDCWh
+  uint16: 0 #InDCPR
+}

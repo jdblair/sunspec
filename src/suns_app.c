@@ -321,7 +321,7 @@ int suns_app_logger_host(suns_app_t *app)
 int suns_app_test_server(suns_app_t *app)
 {
     modbus_mapping_t *mapping;
-    int header_length;
+    /* int header_length; */
     int offset = 0;
     list_node_t *c;
     int socket;
@@ -329,7 +329,7 @@ int suns_app_test_server(suns_app_t *app)
     uint8_t *q;
     suns_parser_state_t *parser = suns_get_parser_state();
 
-    header_length = modbus_get_header_length(app->mb_ctx);
+    /* header_length = modbus_get_header_length(app->mb_ctx); */
 
     if (app->transport == SUNS_TCP) {
         q = malloc(MODBUS_TCP_MAX_ADU_LENGTH);

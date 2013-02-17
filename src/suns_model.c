@@ -419,7 +419,7 @@ int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len)
     case SUNS_SF:
         if (len < 2) {
             debug("not enough space for 16 bit conversion "
-                  "(type = %s,  len = %d)", suns_type_string(v->tp.type), len);
+                  "(type = %s,  len = %zd)", suns_type_string(v->tp.type), len);
         }
         /* we can safely treat all these values as uint for this purpose */
         *((uint16_t *) buf) = htobe16(v->value.u16);
@@ -434,7 +434,7 @@ int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len)
     case SUNS_IPV4:
         if (len < 4) {
             debug("not enough space for 32 bit conversion "
-                  "(type = %s,  len = %d)", suns_type_string(v->tp.type), len);
+                  "(type = %s,  len = %zd)", suns_type_string(v->tp.type), len);
         }
         /* we can safely treat all these values as uint for this purpose */
         *((uint32_t *) buf) = htobe32(v->value.u32);
@@ -445,7 +445,7 @@ int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len)
     case SUNS_ACC64:
         if (len < 4) {
             debug("not enough space for 64 bit conversion "
-                  "(type = %s,  len = %d)", suns_type_string(v->tp.type), len);
+                  "(type = %s,  len = %zd)", suns_type_string(v->tp.type), len);
         }
         /* we can safely treat all these values as uint for this purpose */
         *((uint64_t *) buf) = htobe64(v->value.u64);
@@ -460,7 +460,7 @@ int suns_value_to_buf(suns_value_t *v, unsigned char *buf, size_t len)
         /* strings */
     case SUNS_STRING:
         if (len < v->tp.len) {
-            debug("not enough space for string(%d) (type = %s,  len = %d)",
+            debug("not enough space for string(%zd) (type = %s,  len = %zd)",
                   v->tp.len, suns_type_string(v->tp.type), len);
         }
         strncpy((char *) buf, v->value.s, v->tp.len);  /* don't allow string to
@@ -1631,7 +1631,7 @@ void suns_model_fill_offsets(suns_model_t *m)
                 /* check if len is an odd number */
                 if ( ((dp->type_pair->len / 2.0) -
                       (dp->type_pair->len / 2)) > 0) {
-                    warning("datapoint %s is a string of odd length %d;"
+                    warning("datapoint %s is a string of odd length %zd;"
                             "rounding up to whole register",
                             dp->name, dp->type_pair->len);
                     dp_block_offset += (dp->type_pair->len / 2) + 1;
@@ -1728,7 +1728,7 @@ int suns_decode_dp_block(suns_dp_block_t *dp_block,
                     debug("ignoring missing pad register at offset %d",
                           dp->offset + (i * dp_block->len));
                 }
-                debug("requested = %d, len = %d",
+                debug("requested = %d, len = %zd",
                       (dp->offset * 2) + suns_type_size(dp->type_pair->type),
                       len);
                 return byte_offset;

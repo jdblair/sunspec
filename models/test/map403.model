@@ -1,0 +1,137 @@
+data common_model {
+  #Common
+  #All SunSpec compliant devices must include this as the first model
+  #
+  1
+  66 #66
+  # block type=norm
+  # block length=66
+  string.32: "Amalgamated Industries" #Mn
+  string.32: "Basic String Combiner" #Md
+  string.16: "standard" #Opt
+  string.16: "1.0.1" #Vr
+  string.32: "abcd1234zz2" #SN
+  uint16: 99 #DA
+  uint16: 0 #Pad
+}
+
+data model403_test {
+  #String Combiner (Current)
+  #A basic string combiner model
+  #This model supersedes model 401
+  403
+  144
+  # block type=norm
+  # block length=16
+  sunssf: -1 #DCA_SF
+  sunssf: -1 #DCAhr_SF
+  sunssf: -1 #DCV_SF
+  uint16: 200 #DCAMax
+  uint16: 16 #N
+  bitfield32: 1 #Evt
+  bitfield32: 0 #EvtVnd
+  int16: 999 #DCA
+  uint32: 202010334 #DCAhr
+  int16: 432 #DCV
+  int16: 27 #Tmp
+  sunssf: -1 #InDCA_SF
+  sunssf: -1 #InDCAhr_SF
+
+  # block type=repeating
+  # block length=8
+  uint16: 1 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 9 #InDCA
+  uint32: 123 #InDCAhr
+
+  uint16: 2 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 12 #InDCA
+  uint32: 23 #InDCAhr
+
+  uint16: 3 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 23 #InDCA
+  uint32: 30 #InDCAhr
+
+  uint16: 4 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 34 #InDCA
+  uint32: 40 #InDCAhr
+
+  uint16: 5 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 45 #InDCA
+  uint32: 50 #InDCAhr
+
+  uint16: 6 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 56 #InDCA
+  uint32: 60 #InDCAhr
+
+  uint16: 7 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 67 #InDCA
+  uint32: 70 #InDCAhr
+
+  uint16: 8 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 78 #InDCA
+  uint32: 80 #InDCAhr
+
+  uint16: 9 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 89 #InDCA
+  uint32: 90 #InDCAhr
+
+  uint16: 10 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 90 #InDCA
+  uint32: 100 #InDCAhr
+
+  uint16: 11 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 1 #InDCA
+  uint32: 110 #InDCAhr
+
+  uint16: 12 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 22 #InDCA
+  uint32: 120 #InDCAhr
+
+  uint16: 13 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 33 #InDCA
+  uint32: 130 #InDCAhr
+
+  uint16: 14 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 44 #InDCA
+  uint32: 140 #InDCAhr
+
+  uint16: 15 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 55 #InDCA
+  uint32: 150 #InDCAhr
+
+  uint16: 16 #InID
+  bitfield32: 0 #InEvt
+  bitfield32: 0 #InEvtVnd
+  int16: 66 #InDCA
+  uint32: 160 #InDCAhr
+}
