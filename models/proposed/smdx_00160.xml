@@ -1,7 +1,7 @@
 <sunSpecModels v="1">
 
   <!-- 160: Multiple MPPT Inverter Extension Model -->
-  <model id="160" len="18">
+  <model id="160" len="30">
     <block len="8">
       <point id="DCA_SF" offset="0" type="sunssf" />
       <point id="DCV_SF" offset="1" type="sunssf" />
@@ -35,14 +35,18 @@
       <point id="N" offset="6" type="sunssf" />
       <point id="Rsrvd" offset="7" type="pad" />
     </block>
-    <block type="repeating" len="10">
+    <block type="repeating" len="22">
       <point id="ID" offset="0" type="uint16" />
-      <point id="DCA" offset="1" type="uint16" />
-      <point id="DCV" offset="2" type="uint16" />
-      <point id="DCW" offset="3" type="uint16" />
-      <point id="DCWH" offset="4" type="acc32" />
-      <point id="Tmp" offset="6" type="int16" />
-      <point id="DCSt" offset="7" type="enum16" >
+      <point id="IDStr" offset="1" type="string" len="8" />
+      <point id="DCA" offset="9" type="uint16" />
+      <point id="DCV" offset="10" type="uint16" />
+      <point id="DCW" offset="11" type="uint16" />
+      <point id="DCWH" offset="12" type="acc32" />
+      <point id="Tms" offset="14" type="uint32" units="Secs" />
+      <point id="TmsPer" offset="16" type="uint32" units="Secs" />
+      <point id="Tmp" offset="18" type="int16" />
+
+      <point id="DCSt" offset="19" type="enum16" >
         <symbol id="OFF">1</symbol>
         <symbol id="SLEEPING">2</symbol>
         <symbol id="STARTING">3</symbol>
@@ -54,7 +58,7 @@
         <symbol id="TEST">9</symbol>
         <symbol id="RESERVED">10</symbol>
       </point>
-      <point id="DCEvt" offset="8" type="bitfield32" >
+      <point id="DCEvt" offset="20" type="bitfield32" >
         <symbol id="GROUND_FAULT">0</symbol>
         <symbol id="INPUT_OVER_VOLTAGE">1</symbol>
         <symbol id="RESERVED">2</symbol>
@@ -237,6 +241,11 @@
       <description></description>
       <notes></notes>
     </point>
+    <point id="IDStr">
+      <label>Input ID Sting</label>
+      <description></description>
+      <notes></notes>
+    </point>
     <point id="DCA">
       <label>DC Current</label>
       <description></description>
@@ -254,6 +263,16 @@
     </point>
     <point id="DCWH">
       <label>Lifetime Energy</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="Tms">
+      <label>Timestamp</label>
+      <description></description>
+      <notes></notes>
+    </point>
+    <point id="TmsPer">
+      <label>Timestamp Period</label>
       <description></description>
       <notes></notes>
     </point>
