@@ -32,10 +32,10 @@
         <symbol id="INPUT_UNDER_VOLTAGE">21</symbol>
         <symbol id="INPUT_OVER_CURRENT">22</symbol>
       </point>
-      <point id="N" offset="6" type="sunssf" />
-      <point id="Rsrvd" offset="7" type="pad" />
+      <point id="N" offset="6" type="uint16" />
+      <point id="TmsPer" offset="7" type="uint16" />
     </block>
-    <block type="repeating" len="22">
+    <block type="repeating" len="20">
       <point id="ID" offset="0" type="uint16" />
       <point id="IDStr" offset="1" type="string" len="8" />
       <point id="DCA" offset="9" type="uint16" />
@@ -43,10 +43,9 @@
       <point id="DCW" offset="11" type="uint16" />
       <point id="DCWH" offset="12" type="acc32" />
       <point id="Tms" offset="14" type="uint32" units="Secs" />
-      <point id="TmsPer" offset="16" type="uint32" units="Secs" />
-      <point id="Tmp" offset="18" type="int16" />
+      <point id="Tmp" offset="16" type="int16" />
 
-      <point id="DCSt" offset="19" type="enum16" >
+      <point id="DCSt" offset="17" type="enum16" >
         <symbol id="OFF">1</symbol>
         <symbol id="SLEEPING">2</symbol>
         <symbol id="STARTING">3</symbol>
@@ -58,7 +57,7 @@
         <symbol id="TEST">9</symbol>
         <symbol id="RESERVED">10</symbol>
       </point>
-      <point id="DCEvt" offset="20" type="bitfield32" >
+      <point id="DCEvt" offset="18" type="bitfield32" >
         <symbol id="GROUND_FAULT">0</symbol>
         <symbol id="INPUT_OVER_VOLTAGE">1</symbol>
         <symbol id="RESERVED">2</symbol>
