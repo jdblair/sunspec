@@ -1,6 +1,6 @@
 <sunSpecModels v="1">
   <!-- 122: Inverter Controls Extended Measurements and Status  -->
-  <model id="122" len="40">
+  <model id="122" len="42">
     <block len="42" type="fixed">
       <point id="PVConn" offset="0" access="r" type="bitfield16" len="1" mandatory="true">
         <symbol id="CONNECTED">0</symbol>
@@ -51,7 +51,7 @@
         <symbol id="Scheduled">12</symbol>
       </point>
       <point id="TmSrc" offset="35" access="r" type="string" len="4" mandatory="false"  />
-      <point id="Tms" offset="39" access="rw" type="uint32" len="2" mandatory="false" units="Secs" />
+      <point id="Tms" offset="39" access="r" type="uint32" len="2" mandatory="false" units="Secs" />
       <point id="VrtSt" offset="41" access="r" type="bitfield16" len="1" mandatory="false">
         <symbol id="LVRT_ACTIVE">0</symbol>
         <symbol id="HVRT_ACTIVE">1</symbol>

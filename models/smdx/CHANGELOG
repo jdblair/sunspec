@@ -28,4 +28,16 @@
 
 2013 February 5: Bob Fox, Loggerware.  Change request was lost.  Readded 2012 October 3 : Bill Randle, AEI reported incorrect register names in the Inverter Control Basic Settings.  Register 4 named VAMax_SF should be named WMax_SF. Models affected IC 121.
 
-2012 February 6: Andrew Murray, Array Technology. Contributed DRAFT 2 of Tracker Model.  Models affected T 601.
+2013 February 6: Andrew Murray, Array Technology. Contributed DRAFT 2 of Tracker Model.  Models affected T 601.
+
+2013 March, April: Bill Randle, AEI.  Contributed many corrections and improvements to the IC models.  Models affected all IC.
+
+2013 April 8: Bill Randle, AEI.  Contribute DRAFT frequency ride through and voltage ride through models.  Models affected IC 135-138
+
+2013 April 25: John Blair, Power-One, Contributed Test 1 of MPPT Model.  Models affected I 160.
+
+2013 April 29: Philipp Windisch, Fronius, Bill Randle AEI.  Contributed fixes to IC models.  Models affected all IC.
+
+2013 April 29: John Nunneley, SunSpec.  Corrected offsets in models.  Models affected C 1, NC 16, M 305
+
+2013 April 29: John Nunneley, SunSpec.  Contributed DRAFT secure read and write models.  Models affected SEC 3-4.

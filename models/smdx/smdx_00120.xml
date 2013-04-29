@@ -10,10 +10,10 @@
       <point id="WRtg_SF" offset="2" access="r" type="sunssf" len="1" mandatory="true"  />
       <point id="VARtg" offset="3" access="r" type="uint16" len="1" mandatory="true" units="VA" sf="VARtg_SF"/>
       <point id="VARtg_SF" offset="4" access="r" type="sunssf" len="1" mandatory="true"  />
-      <point id="VArRtgQ1" offset="5" access="r" type="uint16" len="1" mandatory="true" units="var" sf="VArRtg_SF"/>
-      <point id="VArRtgQ2" offset="6" access="r" type="uint16" len="1" mandatory="true" units="var" sf="VArRtg_SF"/>
-      <point id="VArRtgQ3" offset="7" access="r" type="uint16" len="1" mandatory="true" units="var" sf="VArRtg_SF"/>
-      <point id="VArRtgQ4" offset="8" access="r" type="uint16" len="1" mandatory="true" units="var" sf="VArRtg_SF"/>
+      <point id="VArRtgQ1" offset="5" access="r" type="int16" len="1" mandatory="true" units="var" sf="VArRtg_SF"/>
+      <point id="VArRtgQ2" offset="6" access="r" type="int16" len="1" mandatory="true" units="var" sf="VArRtg_SF"/>
+      <point id="VArRtgQ3" offset="7" access="r" type="int16" len="1" mandatory="true" units="var" sf="VArRtg_SF"/>
+      <point id="VArRtgQ4" offset="8" access="r" type="int16" len="1" mandatory="true" units="var" sf="VArRtg_SF"/>
       <point id="VArRtg_SF" offset="9" access="r" type="sunssf" len="1" mandatory="true"  />
       <point id="ARtg" offset="10" access="r" type="uint16" len="1" mandatory="true" units="A" sf="ARtg_SF"/>
       <point id="ARtg_SF" offset="11" access="r" type="sunssf" len="1" mandatory="true"  />
@@ -22,15 +22,18 @@
       <point id="PFRtgQ3" offset="14" access="r" type="int16" len="1" mandatory="true" units="cos()" sf="PFRtg_SF"/>
       <point id="PFRtgQ4" offset="15" access="r" type="int16" len="1" mandatory="true" units="cos()" sf="PFRtg_SF"/>
       <point id="PFRtg_SF" offset="16" access="r" type="sunssf" len="1" mandatory="true"  />
-      <point id="WHRtg" offset="17" access="r" type="uint16" len="1" mandatory="false" units="Wh" sf="WHRtg_SF"/>
-      <point id="WHRtg_SF" offset="18" access="r" type="sunssf" len="1" mandatory="false"  />
-      <point id="AhrRtg" offset="19" access="r" type="uint16" len="1" mandatory="false" units="AH" sf="AhrRtg_SF"/>
-      <point id="AhrRtg_SF" offset="20" access="r" type="sunssf" len="1" mandatory="false"  />
-      <point id="MaxChaRte" offset="21" access="r" type="uint16" len="1" mandatory="false" units="W" sf="MaxChaRte_SF"/>
-      <point id="MaxChaRte_SF" offset="22" access="r" type="sunssf" len="1" mandatory="false"  />
-      <point id="MaxDisChaRte" offset="23" access="r" type="uint16" len="1" mandatory="false" units="W" sf="MaxDisChaRte_SF"/>
-      <point id="MaxDisChaRte_SF" offset="24" access="r" type="sunssf" len="1" mandatory="false"  />
-      <point id="Pad" offset="25" access="r" type="pad" len="1" mandatory="false"  />
+      <point id="PFSignR" offset="17" access="r" type="enum16" len="1" mandatory="true" >
+        <symbol id="IEC">1</symbol>
+        <symbol id="EEI">2</symbol>
+      </point>
+      <point id="WHRtg" offset="18" access="r" type="uint16" len="1" mandatory="false" units="Wh" sf="WHRtg_SF"/>
+      <point id="WHRtg_SF" offset="19" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="AhrRtg" offset="20" access="r" type="uint16" len="1" mandatory="false" units="AH" sf="AhrRtg_SF"/>
+      <point id="AhrRtg_SF" offset="21" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="MaxChaRte" offset="22" access="r" type="uint16" len="1" mandatory="false" units="W" sf="MaxChaRte_SF"/>
+      <point id="MaxChaRte_SF" offset="23" access="r" type="sunssf" len="1" mandatory="false"  />
+      <point id="MaxDisChaRte" offset="24" access="r" type="uint16" len="1" mandatory="false" units="W" sf="MaxDisChaRte_SF"/>
+      <point id="MaxDisChaRte_SF" offset="25" access="r" type="sunssf" len="1" mandatory="false"  />
     </block>
   </model>
   <strings id="120" locale="en">
@@ -164,9 +167,9 @@
       <description>Scale factor</description>
       <notes> </notes>
     </point>
-    <point id="Pad">
-      <label>Pad</label>
-      <description>Pad register.</description>
+    <point id="PFSignR">
+      <label>PFSignR</label>
+      <description>Sign convention for Power Factor settings: IEC=1 EEI=2.</description>
       <notes> </notes>
     </point>
   </strings>
