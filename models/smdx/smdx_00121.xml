@@ -8,10 +8,10 @@
       <point id="VMax" offset="3" access="rw" type="uint16" len="1" mandatory="false" units="V" sf="VMinMax_SF"/>
       <point id="VMin" offset="4" access="rw" type="uint16" len="1" mandatory="false" units="V" sf="VMinMax_SF"/>
       <point id="VAMax" offset="5" access="rw" type="uint16" len="1" mandatory="false" units="VA" sf="VAMax_SF"/>
-      <point id="VArMaxQ1" offset="6" access="rw" type="uint16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
-      <point id="VArMaxQ2" offset="7" access="rw" type="uint16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
-      <point id="VArMaxQ3" offset="8" access="rw" type="uint16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
-      <point id="VArMaxQ4" offset="9" access="rw" type="uint16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
+      <point id="VArMaxQ1" offset="6" access="rw" type="int16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
+      <point id="VArMaxQ2" offset="7" access="rw" type="int16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
+      <point id="VArMaxQ3" offset="8" access="rw" type="int16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
+      <point id="VArMaxQ4" offset="9" access="rw" type="int16" len="1" mandatory="false" units="var" sf="VArMax_SF"/>
       <point id="WGra" offset="10" access="rw" type="uint16" len="1" mandatory="false" units="% WMax/min" sf="WGra_SF"/>
       <point id="PFSign" offset="11" access="rw" type="enum16" len="1" mandatory="false" >
         <symbol id="IEC">1</symbol>
