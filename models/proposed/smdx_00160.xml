@@ -235,13 +235,18 @@
       <description></description>
       <notes></notes>
     </point>
+    <point id="TmsPer">
+      <label>Timestamp Period</label>
+      <description></description>
+      <notes></notes>
+    </point>
     <point id="ID">
       <label>Input ID</label>
       <description></description>
       <notes></notes>
     </point>
     <point id="IDStr">
-      <label>Input ID Sting</label>
+      <label>Input ID String</label>
       <description></description>
       <notes></notes>
     </point>
@@ -267,11 +272,6 @@
     </point>
     <point id="Tms">
       <label>Timestamp</label>
-      <description></description>
-      <notes></notes>
-    </point>
-    <point id="TmsPer">
-      <label>Timestamp Period</label>
       <description></description>
       <notes></notes>
     </point>
