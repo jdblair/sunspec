@@ -1,50 +1,77 @@
 <sunSpecModels v="1">
   <!-- 134: Curve-Based Frequency-Watt  -->
-  <model id="134" len="48">
+  <model id="134" len="70">
     <block len="16" type="fixed">
-      <point id="NCrv" offset="0" access="r" type="uint16" len="1" mandatory="true"  />
-      <point id="NPt" offset="1" access="r" type="uint16" len="1" mandatory="true"  />
-      <point id="ModEna" offset="2" access="rw" type="bitfield16" len="1" mandatory="true"  />
-      <point id="ActCrv" offset="3" access="rw" type="uint16" len="1" mandatory="true"  />
-      <point id="SnptW" offset="4" access="rw" type="bitfield16" len="1" mandatory="true"  />
-      <point id="WRef" offset="5" access="rw" type="uint16" len="1" mandatory="false" units="W" sf="WMax_SF"/>
-      <point id="WRefStrHz" offset="6" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="HzStrStop_SF"/>
-      <point id="WRefStopHz" offset="7" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="HzStrStop_SF"/>
-      <point id="RmpRsUp" offset="8" access="rw" type="uint16" len="1" mandatory="false" units="% WMax/min" sf="RmpIncDec_SF"/>
-      <point id="WinTms" offset="9" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="RvrtTms" offset="10" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="RmpTms" offset="11" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="ActCrv" offset="0" access="rw" type="uint16" len="1" mandatory="true"  />
+      <point id="ModEna" offset="1" access="rw" type="bitfield16" len="1" mandatory="true">
+        <symbol id="ENABLED">0</symbol>
+      </point>
+      <point id="SnptW" offset="2" access="rw" type="bitfield16" len="1" mandatory="true"  />
+      <point id="WRef" offset="3" access="rw" type="uint16" len="1" mandatory="false" units="W" sf="WMax_SF"/>
+      <point id="WRefStrHz" offset="4" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="HzStrStop_SF"/>
+      <point id="WRefStopHz" offset="5" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="HzStrStop_SF"/>
+      <point id="RmpRsUp" offset="6" access="rw" type="uint16" len="1" mandatory="false" units="% WMax/min" sf="RmpIncDec_SF"/>
+      <point id="WinTms" offset="7" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="RvrtTms" offset="8" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="RmpTms" offset="9" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="NCrv" offset="10" access="r" type="uint16" len="1" mandatory="true"  />
+      <point id="NPt" offset="11" access="r" type="uint16" len="1" mandatory="true"  />
       <point id="Hz_SF" offset="12" access="r" type="sunssf" len="1" mandatory="true" units="SF" />
       <point id="W_SF" offset="13" access="r" type="sunssf" len="1" mandatory="true" units="SF" />
       <point id="RmpIncDec_SF" offset="14" access="r" type="sunssf" len="1" mandatory="false" units="SF" />
-      <point id="Rsrvd" offset="15" access="r" type="uint16" len="1" mandatory="false"  />
+      <point id="Pad" offset="15" access="r" type="pad" len="1" mandatory="false" />
     </block>
-    <block len="32" type="repeating">
-      <point id="CrvNam" offset="0" access="rw" type="string" len="8" mandatory="false"  />
-      <point id="ActPt" offset="8" access="rw" type="uint16" len="1" mandatory="true"  />
-      <point id="RmpPT1Tms" offset="9" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="RmpDecTmm" offset="10" access="rw" type="uint16" len="1" mandatory="false" units="% WMax/min" sf="RmpIncDec_SF"/>
-      <point id="RmpIncTmm" offset="11" access="rw" type="uint16" len="1" mandatory="false" units="% WMax/min" sf="RmpIncDec_SF"/>
-      <point id="Hz1" offset="12" access="rw" type="uint16" len="1" mandatory="true" units="Hz" sf="Hz_SF"/>
-      <point id="W1" offset="13" access="rw" type="int16" len="1" mandatory="true" units="% WRef" sf="W_SF"/>
-      <point id="Hz2" offset="14" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
-      <point id="W2" offset="15" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
-      <point id="Hz3" offset="16" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
-      <point id="W3" offset="17" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
-      <point id="Hz4" offset="18" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
-      <point id="W4" offset="19" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
-      <point id="Hz5" offset="20" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
-      <point id="W5" offset="21" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
-      <point id="Hz6" offset="22" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
-      <point id="W6" offset="23" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
-      <point id="Hz7" offset="24" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
-      <point id="W7" offset="25" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
-      <point id="Hz8" offset="26" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
-      <point id="W8" offset="27" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
-      <point id="Hz9" offset="28" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
-      <point id="W9" offset="29" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
-      <point id="Hz10" offset="30" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
-      <point id="W10" offset="31" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+    <block len="54" type="repeating">
+      <point id="ActPt" offset="0" access="rw" type="uint16" len="1" mandatory="true"  />
+      <point id="Hz1" offset="1" access="rw" type="uint16" len="1" mandatory="true" units="Hz" sf="Hz_SF"/>
+      <point id="W1" offset="2" access="rw" type="int16" len="1" mandatory="true" units="% WRef" sf="W_SF"/>
+      <point id="Hz2" offset="3" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W2" offset="4" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz3" offset="5" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W3" offset="6" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz4" offset="7" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W4" offset="8" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz5" offset="9" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W5" offset="10" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz6" offset="11" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W6" offset="12" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz7" offset="13" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W7" offset="14" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz8" offset="15" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W8" offset="16" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz9" offset="17" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W9" offset="18" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz10" offset="19" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W10" offset="20" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz11" offset="21" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W11" offset="22" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz12" offset="23" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W12" offset="24" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz13" offset="25" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W13" offset="26" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz14" offset="27" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W14" offset="28" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz15" offset="29" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W15" offset="30" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz16" offset="31" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W16" offset="32" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz17" offset="33" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W17" offset="34" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz18" offset="35" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W18" offset="36" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz19" offset="37" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W19" offset="38" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="Hz20" offset="39" access="rw" type="uint16" len="1" mandatory="false" units="Hz" sf="Hz_SF"/>
+      <point id="W20" offset="40" access="rw" type="int16" len="1" mandatory="false" units="% WRef" sf="W_SF"/>
+      <point id="CrvNam" offset="41" access="rw" type="string" len="8" mandatory="false"  />
+      <point id="RmpPT1Tms" offset="49" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="RmpDecTmm" offset="50" access="rw" type="uint16" len="1" mandatory="false" units="% WMax/min" sf="RmpIncDec_SF"/>
+      <point id="RmpIncTmm" offset="51" access="rw" type="uint16" len="1" mandatory="false" units="% WMax/min" sf="RmpIncDec_SF"/>
+      <point id="ReadOnly" offset="52" access="r" type="enum16" len="1" mandatory="true" >
+        <symbol id="READWRITE">0</symbol>
+        <symbol id="READONLY">1</symbol>
+      </point>
+      <point id="Pad" offset="53" access="r" type="pad" len="1" mandatory="false" />
     </block>
   </model>
   <strings id="134" locale="en">
@@ -128,8 +155,8 @@
       <description>Scale factor for increment and decrement ramps.</description>
       <notes> </notes>
     </point>
-    <point id="Rsrvd">
-      <label>Rsrvd</label>
+    <point id="Pad">
+      <label>Pad</label>
       <description>Pad register.</description>
       <notes> </notes>
     </point>
@@ -256,6 +283,111 @@
     <point id="W10">
       <label>W10</label>
       <description>Point 10 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="Hz11">
+      <label>Hz11</label>
+      <description>Point 11 Hertz.</description>
+      <notes> </notes>
+    </point>
+    <point id="W11">
+      <label>W11</label>
+      <description>Point 11 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="Hz12">
+      <label>Hz12</label>
+      <description>Point 12 Hertz.</description>
+      <notes> </notes>
+    </point>
+    <point id="W12">
+      <label>W12</label>
+      <description>Point 12 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="Hz13">
+      <label>Hz13</label>
+      <description>Point 13 Hertz.</description>
+      <notes> </notes>
+    </point>
+    <point id="W13">
+      <label>W13</label>
+      <description>Point 13 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="Hz14">
+      <label>Hz14</label>
+      <description>Point 14 Hertz.</description>
+      <notes> </notes>
+    </point>
+    <point id="W14">
+      <label>W14</label>
+      <description>Point 14 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="Hz15">
+      <label>Hz15</label>
+      <description>Point 15 Hertz.</description>
+      <notes> </notes>
+    </point>
+    <point id="W15">
+      <label>W15</label>
+      <description>Point 15 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="Hz16">
+      <label>Hz16</label>
+      <description>Point 16 Hertz.</description>
+      <notes> </notes>
+    </point>
+    <point id="W16">
+      <label>W16</label>
+      <description>Point 16 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="Hz17">
+      <label>Hz17</label>
+      <description>Point 17 Hertz.</description>
+      <notes> </notes>
+    </point>
+    <point id="W17">
+      <label>W17</label>
+      <description>Point 17 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="Hz18">
+      <label>Hz18</label>
+      <description>Point 18 Hertz.</description>
+      <notes> </notes>
+    </point>
+    <point id="W18">
+      <label>W18</label>
+      <description>Point 18 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="Hz19">
+      <label>Hz19</label>
+      <description>Point 19 Hertz.</description>
+      <notes> </notes>
+    </point>
+    <point id="W19">
+      <label>W19</label>
+      <description>Point 19 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="Hz20">
+      <label>Hz20</label>
+      <description>Point 20 Hertz.</description>
+      <notes> </notes>
+    </point>
+    <point id="W20">
+      <label>W20</label>
+      <description>Point 20 Watts.</description>
+      <notes> </notes>
+    </point>
+    <point id="ReadOnly">
+      <label>ReadOnly</label>
+      <description>Enumerated value indicates if curve is read-only or can be modified.</description>
       <notes> </notes>
     </point>
   </strings>

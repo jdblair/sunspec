@@ -13,10 +13,10 @@
         <symbol id="LEVEL">4</symbol>
       </point>
       <point id="Sig" offset="2" access="rw" type="int16" len="1" mandatory="true"  sf="Sig_SF"/>
-      <point id="Sig_SF" offset="3" access="r" type="sunssf" len="1" mandatory="true"  sf=" "/>
-      <point id="WinTms" offset="4" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="RvtTms" offset="5" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
-      <point id="RmpTms" offset="6" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="WinTms" offset="3" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="RvtTms" offset="4" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="RmpTms" offset="5" access="rw" type="uint16" len="1" mandatory="false" units="Secs" />
+      <point id="Sig_SF" offset="6" access="r" type="sunssf" len="1" mandatory="true"  sf=" "/>
       <point id="Pad" offset="7" access="r" type="pad" len="1" mandatory="false"  />
     </block>
   </model>

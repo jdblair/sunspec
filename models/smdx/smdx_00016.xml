@@ -7,24 +7,24 @@
         <symbol id="STATIC">0</symbol>
         <symbol id="DHCP">1</symbol>
       </point>
-      <point id="Ctl" offset="8" type="enum16" mandatory="true" access="rw" >
+      <point id="Ctl" offset="5" type="enum16" mandatory="true" access="rw" >
         <symbol id="ENABLE_DNS">0</symbol>
         <symbol id="ENABLE_NTP">1</symbol>
       </point>
-      <point id="Addr" offset="9" type="string" len="8" mandatory="true" access="rw" />
-      <point id="Msk" offset="17" type="string" len="8" mandatory="true" access="rw" />
-      <point id="Gw" offset="25" type="string" len="8" access="rw" />
-      <point id="DNS1" offset="33" type="string" len="8" access="rw" />
-      <point id="DNS2" offset="41" type="string" len="8" access="rw" />
-      <point id="MAC" offset="49" type="uint64" access="r" />
-      <point id="LnkCtl" offset="53" type="bitfield16" access="rw" >
+      <point id="Addr" offset="6" type="string" len="8" mandatory="true" access="rw" />
+      <point id="Msk" offset="14" type="string" len="8" mandatory="true" access="rw" />
+      <point id="Gw" offset="22" type="string" len="8" access="rw" />
+      <point id="DNS1" offset="30" type="string" len="8" access="rw" />
+      <point id="DNS2" offset="38" type="string" len="8" access="rw" />
+      <point id="MAC" offset="46" type="uint64" access="r" />
+      <point id="LnkCtl" offset="50" type="bitfield16" access="rw" >
         <symbol id="AUTONEGOTIATE">0</symbol>
         <symbol id="FULL_DUPLEX">1</symbol>
         <symbol id="FORCE_10MB">2</symbol>
         <symbol id="FORCE_100MB">3</symbol>
         <symbol id="FORCE_1GB">3</symbol>
       </point>
-      <point id="Pad" offset="54" type="pad" />
+      <point id="Pad" offset="51" type="pad" />
     </block>
   </model>
   <strings id="16" locale="en">
