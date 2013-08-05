@@ -43,6 +43,7 @@
 #include <unistd.h>
 #include <math.h>
 #include <time.h>
+#include <inttypes.h>
 
 #include "trx/macros.h"
 #include "trx/string.h"
@@ -334,7 +335,7 @@ int suns_snprintf_type_pair(char *str, size_t size, suns_type_pair_t *tp)
         return len;
     
     if (tp->type == SUNS_STRING)
-        len += snprintf(str + len, size - len, ".%d", tp->len);
+        len += snprintf(str + len, size - len, ".%zd", tp->len);
     else if (tp->sf != 0)
         len += snprintf(str + len, size - len, ".%d", tp->sf);
     else if (tp->name)
@@ -445,7 +446,7 @@ static int value_output_meta(char *buf, size_t len, suns_value_t *v)
 
 static int value_output_int64(char *buf, size_t len, suns_value_t *v)
 {
-    return snprintf(buf, len, "%lld", v->value.i64);    
+    return snprintf(buf, len, "%" PRId64, v->value.i64);    
 }
 
 static int value_output_int64_sf(char *buf, size_t len, suns_value_t *v)
@@ -455,7 +456,7 @@ static int value_output_int64_sf(char *buf, size_t len, suns_value_t *v)
     
 static int value_output_uint64(char *buf, size_t len, suns_value_t *v)
 {
-    return snprintf(buf, len, "%llu", v->value.u64);
+    return snprintf(buf, len, "%" PRIu64, v->value.u64);
 }
 
 static int value_output_uint64_sf(char *buf, size_t len, suns_value_t *v)
@@ -730,7 +731,7 @@ int suns_snprintf_value_sf_text(char *str, size_t size,
 
 void suns_data_fprintf(FILE *stream, suns_data_t *data)
 {
-    fprintf(stream, "%d (%d): ", data->offset, buffer_len(data->data));
+    fprintf(stream, "%d (%zd): ", data->offset, buffer_len(data->data));
     if (data->data)
         dump_buffer(stream, (unsigned char *)buffer_data(data->data),
                     buffer_len(data->data));
@@ -769,8 +770,11 @@ int suns_dataset_text_fprintf(FILE *stream, suns_dataset_t *data)
         if ((verbose_level < 1) && (v->tp.type == SUNS_SF))
             continue;
 
-        /* don't display not-implemented values unless verbose_level > 1 */
-        if ((verbose_level < 1) && (v->meta == SUNS_VALUE_NOT_IMPLEMENTED))
+        /* don't display not-implemented or pad values
+           unless verbose_level > 1 */
+        if ((verbose_level < 1) &&
+            ((v->meta == SUNS_VALUE_NOT_IMPLEMENTED) || 
+             (v->tp.type == SUNS_PAD)))
             continue;
 
         suns_snprintf_value_sf_text(scaled_value_buf, BUFFER_SIZE, v);
@@ -786,9 +790,11 @@ int suns_dataset_text_fprintf(FILE *stream, suns_dataset_t *data)
         if (v->units)
             fprintf(stream, " %s", v->units);
 
-        /* display enum values */
+        /* display enum values if value is implemented
+           and enum symbols are defined */
         if (((v->tp.type == SUNS_ENUM16) ||
              (v->tp.type == SUNS_ENUM32)) &&
+            (v->meta != SUNS_VALUE_NOT_IMPLEMENTED) &&
             (v->tp.name != NULL)) {
             suns_define_block_t *b;
             b = suns_search_define_blocks(data->did->model->defines,
@@ -1320,7 +1326,7 @@ void suns_model_xml_dp_fprintf(FILE *stream,
             suns_type_string(dp->type_pair->type));
     
     if (dp->type_pair->type == SUNS_STRING)
-        fprintf(stream, " len=\"%d\"", dp->type_pair->len / 2);
+        fprintf(stream, " len=\"%zd\"", dp->type_pair->len / 2);
     else if (dp->type_pair->sf != 0) {
         fprintf(stream, " sf=\"%d\"", dp->type_pair->sf);
     } else if (dp->type_pair->name != NULL) {
@@ -1404,10 +1410,10 @@ int suns_snprintf_int_sf_e(char *buf,
     int numlen;
     char tmpbuf[BUFFER_SIZE];
 
-    numlen = snprintf(tmpbuf, BUFFER_SIZE - 1, "%lld", (int64_t) x);
+    numlen = snprintf(tmpbuf, BUFFER_SIZE - 1, "%" PRId64, (int64_t) x);
     if (numlen > BUFFER_SIZE - 1) {
         /* tmpbuf is too small */
-        debug("tmpbuf[BUFFER_SIZE] is too small to hold x = %lld", x);
+        debug("tmpbuf[BUFFER_SIZE] is too small to hold x = %" PRId64, x);
         return -1;
     }
 
@@ -1422,10 +1428,10 @@ int suns_snprintf_uint_sf_e(char *buf,
     int numlen;
     char tmpbuf[BUFFER_SIZE];
     
-    numlen = snprintf(tmpbuf, BUFFER_SIZE - 1, "%llu", (uint64_t) x);
+    numlen = snprintf(tmpbuf, BUFFER_SIZE - 1, "%" PRIu64, (uint64_t) x);
     if (numlen > BUFFER_SIZE - 1) {
         /* tmpbuf is too small */
-        debug("tmpbuf[BUFFER_SIZE] is too small to hold x = %llu", x);
+        debug("tmpbuf[BUFFER_SIZE] is too small to hold x = %" PRIu64, x);
         return -1;
     }
 
@@ -1444,7 +1450,7 @@ int _suns_snprintf_int_sf_e(char *buf,
     int i;
 
     if (numlen + 2 > len) {
-        debug("len = %d is too small for the base integer", len);
+        debug("len = %zd is too small for the base integer", len);
         return -1;
     }
 
@@ -1465,7 +1471,7 @@ int _suns_snprintf_int_sf_e(char *buf,
        
         int offset = snprintf(buf + numlen + 2, len - numlen - 3, "%d", e);
         if (offset > len - numlen - 3) {
-            debug("len %d is to small (only have %d space)",
+            debug("len %zd is to small (only have %zd space)",
                   len,
                   len - numlen - 3);
             return -1;
@@ -1500,10 +1506,10 @@ int suns_snprintf_int_sf(char *buf,
         return 0;
     }
 
-    numlen = snprintf(tmpbuf, BUFFER_SIZE, "%lld", x);
+    numlen = snprintf(tmpbuf, BUFFER_SIZE, "%" PRId64, x);
     if (numlen > BUFFER_SIZE) {
         /* tmpbuf is too small */
-        debug("tmpbuf[BUFFER_SIZE] is too small to hold x = %lld", x);
+        debug("tmpbuf[BUFFER_SIZE] is too small to hold x = %" PRId64, x);
         return -1;
     }
 
@@ -1525,10 +1531,10 @@ int suns_snprintf_uint_sf(char *buf,
         return 0;
     }
 
-    numlen = snprintf(tmpbuf, BUFFER_SIZE, "%llu", x);
+    numlen = snprintf(tmpbuf, BUFFER_SIZE, "%" PRIu64, x);
     if (numlen > BUFFER_SIZE) {
         /* tmpbuf is too small */
-        debug("tmpbuf[BUFFER_SIZE] is too small to hold x = %lld", x);
+        debug("tmpbuf[BUFFER_SIZE] is too small to hold x = %" PRId64, x);
         return -1;
     }
 
@@ -1547,7 +1553,7 @@ int _suns_snprintf_int_sf(char *buf,
     int buf_char = 0;
 
     if (numlen > len) {
-        debug("len = %d < required minimum length for number = %d",
+        debug("len = %zd < required minimum length for number = %d",
               len, numlen);
         return -1;
     }
