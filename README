@@ -243,7 +243,7 @@ can follow.
     |                   |
     +-------------------+
     | end marker        |
-    | 0xFFFF            |
+    | 0xFFFF 0x0000     |
     +-------------------+
 
 Every SunSpec data model starts with a Device ID (DID) value, followed
