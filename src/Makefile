@@ -104,9 +104,6 @@ suns_lang.tab.h: suns_lang.tab.c
 suns_lang.yy.c: suns_lang.l suns_lang.tab.h
 	$(LEX) -o suns_lang.yy.c suns_lang.l
 
-check: $(SRC) suns_unit_tests.c
-	splint -posixlib $(CFLAGS) $(SRC) suns_unit_tests.c
-
 suns_host_test: $(HOST_TEST_OBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) -lsqlite3 $(HOST_TEST_OBJ) $(LIBEZXML) $(LIBTRX) -o suns_host_test
 
