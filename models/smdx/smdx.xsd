@@ -56,7 +56,7 @@ This document may be used, copied, and furnished to others, without restrictions
     <xs:attribute name="sf" type="xs:string" />
     <xs:attribute name="units" type="xs:string" />
     <xs:attribute name="access" type="PointAccessDefinition" default="r" />
-    <xs:attribute name="mandatory" type="xs:boolean" />
+    <xs:attribute name="mandatory" type="xs:boolean" default="false"/>
   </xs:complexType>
 
   <xs:complexType name="SymbolDefinition">
