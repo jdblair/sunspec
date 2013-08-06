@@ -80,7 +80,7 @@ void timestamp_dump_buffer(FILE *fp, char *comment,
                            unsigned char *buffer, size_t len)
 {
     debug_timestamp(fp);
-    fprintf(fp, "%s[%02x] ", comment, len);
+    fprintf(fp, "%s[%02x] ", comment, (unsigned int) len);
     dump_buffer(fp, buffer, len);
 }
 

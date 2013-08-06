@@ -71,7 +71,8 @@ LIBEZXML=../lib/ezxml/libezxml.a
 
 # cflags
 CFLAGS=-std=gnu99 -g
-CFLAGS+=-DDEBUG
+CFLAGS+=-DDEBUG -DYY_NO_INPUT
+
 ifdef SUNS_MODELPATH
 CFLAGS+=-DSUNS_MODELPATH="$(SUNS_MODELPATH)"
 endif

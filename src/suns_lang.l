@@ -51,6 +51,7 @@ extern int line_no;
     
 %}
 
+%option nounput
 
 %%
 model             { return MODELTOK; }
@@ -73,19 +74,19 @@ data              { return DATATOK; }
                     return CHARS;
                   }
 [\-+][0-9]+       {
-                    if (sscanf(yytext, "%lld", &(yylval.number_i)) != 1) {
+                    if (sscanf(yytext, "%" PRId64, &(yylval.number_i)) != 1) {
                       yyerror("'%s' is not a valid integer");
                     }
                     return INT;
                   }
 [0-9]+            {
-                    if (sscanf(yytext, "%llu", &(yylval.number_u)) != 1) {
+                    if (sscanf(yytext, "%" PRIu64, &(yylval.number_u)) != 1) {
                       yyerror("'%s' is not a valid unsigned integer");
                     }
                     return UINT;
                   }
 0x[0-9A-Fa-f]+    {
-                    if (sscanf(yytext, "%llx", &(yylval.number_u)) != 1) {
+                    if (sscanf(yytext, "%" PRIx64, &(yylval.number_u)) != 1) {
                       yyerror("'%s' is not a valid unsigned integer");
                     }
                     return UINT;

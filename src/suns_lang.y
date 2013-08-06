@@ -46,6 +46,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <endian.h>
+#include <inttypes.h>
 
 #include "trx/macros.h"
 #include "trx/debug.h"
@@ -357,7 +358,7 @@ attribute: NAME EQUAL STRING
     $$->name = strdup($1);
     /* malloc() b/c we need a buffer to snprintf() the integer into */
     $$->value = malloc(32);
-    snprintf($$->value, 32, "%lld", $3);
+    snprintf($$->value, 32, "%" PRIu64, $3);
 }
          | NAME EQUAL INT
 {
@@ -365,7 +366,7 @@ attribute: NAME EQUAL STRING
     $$->name = strdup($1);
     /* malloc() b/c we need a buffer to snprintf() the integer into */
     $$->value = malloc(32);
-    snprintf($$->value, 32, "%lld", $3);
+    snprintf($$->value, 32, "%" PRId64, $3);
 }
          | NAME EQUAL OBRACE attributes EBRACE /* nested attributes */
 {
@@ -378,7 +379,7 @@ attribute: NAME EQUAL STRING
     $$ = suns_attribute_new();
     /* malloc() b/c we need a buffer to snprintf() the integer into */
     $$->name = malloc(32);
-    snprintf($$->name, 32, "%lld", $1);
+    snprintf($$->name, 32, "%" PRIu64, $1);
     $$->value = NULL;
 }
          | INT
@@ -386,7 +387,7 @@ attribute: NAME EQUAL STRING
     $$ = suns_attribute_new();
     /* malloc() b/c we need a buffer to snprintf() the integer into */
     $$->name = malloc(32);
-    snprintf($$->name, 32, "%lld", $1);
+    snprintf($$->name, 32, "%" PRId64, $1);
     $$->value = NULL;
 }
 
@@ -396,13 +397,13 @@ attribute: NAME EQUAL STRING
    this is a number or string optionally accompanied by a type_pair */
 suns_value: UINT
 {
-    /* debug("UINT %llu", $1); */
+    /* debug("UINT %" PRIu64, $1); */
     $$ = suns_value_new();
     suns_value_set_uint16($$, $1);
 }
     | INT
 {
-    /* debug("INT %lld", $1); */
+    /* debug("INT %" PRId64, $1); */
     $$ = suns_value_new();
     suns_value_set_int16($$, $1);
 }

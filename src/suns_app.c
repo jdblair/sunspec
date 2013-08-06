@@ -391,7 +391,9 @@ int suns_app_test_server(suns_app_t *app)
 
     /* tack on the end marker */
     mapping->tab_registers[offset] = 0xFFFF;
+    mapping->tab_registers[offset+1] = 0x0000;
     mapping->tab_input_registers[offset] = 0xFFFF;
+    mapping->tab_input_registers[offset+1] = 0x0000;
 
     /* start listening if we are a modbus tcp server */
     if (app->transport == SUNS_TCP) {
@@ -445,7 +447,7 @@ int suns_app_test_server(suns_app_t *app)
     free(q);
     modbus_free(app->mb_ctx);
 
-    return 0;
+    return rc;
 }
 
 
@@ -569,6 +571,12 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
     int search_registers[] = { 40001, 1, 50001, 0x40001, -1 };
     int base_register = -1;
 
+    /* record if we've found a common model and an end marker */
+    int found_common_model = 0;
+    int found_common_model_first = 0;
+    int found_end_marker = 0;
+    int model_count = 0;
+
     /* look for sunspec signature */
     for (i = 0; search_registers[i] >= 0; i++) {
         int retries;
@@ -640,11 +648,14 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
             break;
         }
 
+        model_count++;
+
         /* did we stumble upon an end marker? */
-        if ((regs[0] == 0xFFFF) ||
+        if ((regs[0] == 0xFFFF) &&
             (regs[1] == 0x0000)) {
             verbose(1, "found end marker at register %d and %d",
                     base_register + offset , base_register + offset + 1);
+            found_end_marker = 1;
             rc = 0;
             break;
         }
@@ -654,8 +665,8 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
            we can't tell the difference between a did we don't know
            and some other data. */
         if (regs[0] == 0) {
-            verbose(1, "found 0x0000 where we should have found "
-                    "an end marker or another did.");
+            error("found 0x0000 where we should have found "
+                  "an end marker or another did.");
             rc = -1;
             break;
         }
@@ -680,6 +691,13 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
                    (did->model->len - did->model->base_len)) != 0))) {
                 error("data model length %d does not match expected length (base length %d + multiple of repeating block length %d)",
                       len, did->model->len, (did->model->len - did->model->base_len));
+            }
+
+            /* record if we found a common model where we expect it */
+            if (did->did == 1) {
+                found_common_model = 1;
+                if (model_count == 1)
+                    found_common_model_first = 1;
             }
         }
 
@@ -730,6 +748,19 @@ int suns_app_read_device(suns_app_t *app, suns_device_t *device)
         offset += len + 2;
     }
 
+    if (! found_common_model) {
+        error("no common model found");
+        rc = -1;
+    }
+    if (found_common_model && (! found_common_model_first)) {
+        error("common model exists but is not the first model");
+        rc = -1;
+    }
+    if (! found_end_marker) {
+        error("end marker model is not present");
+        rc = -1;
+    }
+    
     return rc;
 }
 
@@ -842,7 +873,8 @@ int main(int argc, char **argv)
     /* run server / slave */
     if (app.test_server) {
         debug("test server mode - acting as modbus slave");
-        suns_app_test_server(&app);
+        if (suns_app_test_server(&app) < 0)
+            exit(EXIT_FAILURE);
     } else {
         /* run client / master */
         debug("suns client (master) mode");
@@ -857,7 +889,7 @@ int main(int argc, char **argv)
         device->ns = app.ns;
                   
         if (suns_app_read_device(&app, device) < 0) {
-            error("failure to read device");
+            error("failure while reading device");
             exit(EXIT_FAILURE);
             suns_device_free(device);
         }

@@ -129,10 +129,10 @@ void buffer_free(buffer_t *buf)
 /* print out information about the buffer for debugging */
 void buffer_info(buffer_t *buf)
 {
-    printf("buffer at 0x%x:\n", (unsigned int) buf);
-    printf("  total size =   %d\n", buf->size);
-    printf("  current size = %d\n", buffer_len(buf));
-    printf("  space left =   %d\n", buffer_space(buf));
+    printf("buffer at 0x%p:\n", buf);
+    printf("  total size =   %d\n", (int) buf->size);
+    printf("  current size = %ld\n", buffer_len(buf));
+    printf("  space left =   %ld\n", buffer_space(buf));
     printf("  buf->in =      %p\n", buf->in);
     printf("  buf->out =     %p\n", buf->out);
     debug("buf->start = \"%s\"", buf->start);

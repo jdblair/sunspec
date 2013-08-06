@@ -154,7 +154,7 @@ int unit_test_type_sizes(const char **name)
             debug("sizeof(%s) passed", type_check[i].name);
             pass++;
         } else {
-            debug("sizeof(%s) failed (required = %d, actual = %d)",
+            debug("sizeof(%s) failed (required = %zu, actual = %zu)",
                   type_check[i].name,
                   type_check[i].required,
                   type_check[i].actual);
@@ -178,7 +178,7 @@ int unit_test_byte_order(const char **name)
     uint64_t h8, t8;
 
     /* pointers to these test values */
-    unsigned char *ph2, *pt2, *ph4, *pt4, *ph8, *pt8;
+    unsigned char *ph2, *pt2, *ph4, *pt4, *pt8;
 
     int pass = 0;
     int total = 0;
@@ -205,7 +205,6 @@ int unit_test_byte_order(const char **name)
     pt2 = (unsigned char *) &t2;
     ph4 = (unsigned char *) &h4;
     pt4 = (unsigned char *) &t4;
-    ph8 = (unsigned char *) &h8;
     pt8 = (unsigned char *) &t8;
 
     /* test that endian defines are set */

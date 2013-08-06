@@ -523,9 +523,7 @@ int list_insertion_sort(list_t *list, list_node_compare_f compare)
     list->current = NULL;
     list->count = 0;
 
-    list_node_t *p;
     while (tmplist.head) {
-        p = c->prev;
         c = list_node_del(&tmplist, tmplist.head);
         list_node_insert_sorted(list, c, compare);
     }
