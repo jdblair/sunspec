@@ -86,6 +86,16 @@ Updates
               test data.  A library of test data can be found in
               models/test.
 
+2013-Aug-13:  Implement error checking for the presence and correct location
+              of the common model and the end marker.
+
+              Include the complete end marker in the test server (0xFFFF 0x0000,
+              not just 0xFFFF).
+
+              Fix warnings output when built using the 64 bit version of
+              gcc 4.6.3 on Ubuntu 12.04.
+
+
 Dependencies
 ------------
 
